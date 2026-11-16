@@ -10,6 +10,8 @@ Quellight is your private space for conversations, organized into rooms. Use the
 
 Phase 1 is live at the production address. The same account opens your saved rooms and conversations on both devices.
 
+The current [local design preview](http://127.0.0.1:4320/) uses sample content. Start **New conversation** from the plus icon in the sidebar. On a phone, open the Rooms drawer first. Expand **Settings** at the bottom of the sidebar for appearance, archived rooms and sign-out. The three-dot **More** menu opens Room details or exports the conversation. Use **Back to conversation** from Room details to return to your draft.
+
 ## Rooms and conversations
 
 - Select **New room**, give it a name and optionally a purpose, then select **Create room**. A room keeps related conversations together.

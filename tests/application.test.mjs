@@ -47,7 +47,7 @@ test('an undeclared send action cannot be silently introduced', () => {
 
 test('appearance remains presentation state and cannot enable memory or execution', () => {
   assert.equal(product.document.localState.dark.type, 'boolean');
-  assert.equal(product.document.nodes.appearance.definitionId, 'vict.catalog.switch');
+  assert.equal(product.document.nodes['desktopSettings-appearance'].definitionId, 'vict.catalog.switch');
   assert.equal(product.document.localState.draft.type, 'string');
   assert.equal(product.document.localState.memory, undefined);
   assert.equal(product.document.localState.permissions, undefined);

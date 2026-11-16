@@ -17,6 +17,7 @@
     "build": "node scripts/build.mjs",
     "start": "node scripts/start.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4317 --strictPort",
+    "preview:ui": "node scripts/preview-ui.mjs",
     "build:node": "node scripts/build.mjs node",
     "build:vercel": "node scripts/build.mjs vercel",
     "test:vercel": "node scripts/check-vercel.mjs"
@@ -38,6 +39,8 @@
     "@victframework/store-postgres": "file:packs/victframework-store-postgres-0.4.0-rc.1.tgz",
     "@victframework/ui": "file:packs/victframework-ui-0.4.0-rc.1.tgz",
     "@victframework/ui-ai-svelte": "file:packs/victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
+    "@victframework/ui-media-svelte": "file:packs/victframework-ui-media-svelte-0.4.0-rc.1.tgz",
+    "@victframework/ui-patterns-svelte": "file:packs/victframework-ui-patterns-svelte-0.4.0-rc.1.tgz",
     "@victframework/ui-svelte": "file:packs/victframework-ui-svelte-0.4.0-rc.1.tgz"
   },
   "devDependencies": {

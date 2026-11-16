@@ -10,7 +10,11 @@ Read the accepted [product direction](../docs/QUELLIGHT-PRODUCT-DIRECTION.md) an
 
 Conversation is the primary task. Rooms organize conversations; the Desk supports shared work. Memory details remain secondary. Use Quellight in new product copy, retain truthful historical provenance. Only installed public ready-made VICT UI may provide controls: no Pi/Lit widgets, alternate UI kit, or hand-built replacement for a covered VICT interaction. Composition, application bindings and supported semantic styling belong to the app. Keep framework mechanics in engineering records unless a user needs them to complete a task.
 
-Phase 1 implements owner sign-in, rooms, persistent conversation, streaming, Stop, reopening, copying and export. Read the [experience brief and public-control provenance](docs/PHASE-1-EXPERIENCE.md) and [owner guide](docs/USING-QUELLIGHT.md). Keep the transcript and reachable composer primary, with room navigation secondary; the phone uses VICT's public Dialog. The public Rhea field recipe supplies room, email and password fields. Empty, loading, unavailable and error states must describe actual behavior. Automatic memory/adaptation is Phase 2 and Desk follows later; never simulate those capabilities.
+Phase 1 implements owner sign-in, rooms, persistent conversation, streaming, Stop, reopening, copying and export. Read the [experience brief and public-control provenance](docs/PHASE-1-EXPERIENCE.md) and [owner guide](docs/USING-QUELLIGHT.md). Keep the transcript and reachable composer primary, with room navigation secondary; the phone uses VICT's public Drawer. The public Rhea field recipe supplies room, email and password fields. Empty, loading, unavailable and error states must describe actual behavior. Automatic memory/adaptation is Phase 2 and Desk follows later; never simulate those capabilities.
+
+The owner's UI review on 16 November calls for a quieter, minimal interface: reduce bulky headers and buttons, investigate the installed VICT UI's full composition and styling capabilities, and keep conversation visually primary. Review this refinement locally before any hosted update. The local review may use explicitly labelled sample content isolated from production; it must not invoke the real provider, authentication, or database. Preserve the canonical VICT document, ready controls, accessible names and usable phone touch targets.
+
+The continuing local review on 17 November places **New conversation only in the sidebar**, including the phone's slide-out sidebar. Do not restore header or welcome-screen creation shortcuts. Scrollbars should be quiet, slim and consistent across conversation, navigation, drawers and the composer in both appearances.
 
 ## How agents work
 
@@ -33,7 +37,7 @@ This `app` directory is the implementation root, initialized as a Git repository
 
 ## Current continuity
 
-Phase 1 is implemented and deployed at quellight.com. Clean Node/Vercel packaging and the live owner/GLM journey passed; the owner privately set a password and confirmed that Quellight opened. Phase 0 is complete for its historical foundation and scoped hosted integration route. Read [STATE.md](STATE.md) for the latest handoff, [baseline.json](baseline.json) for the twelve pinned archive identities, and [hosting setup](docs/HOSTING.md) for infrastructure. The current Phase 1 lock SHA-256 is `e265b4b1bedf009432ee353822ac90256456d7ef9d05f5b0127d08b80e1c09e7`; earlier hashes remain attributed to their stage. The existing `@mastra/libsql@1.22.3` is directly pinned for correct Node native-loader externalization; product storage remains PostgreSQL. Isolated qualification work lives under `../qualification/`.
+Phase 1 is implemented and deployed at quellight.com. The owner approved the quieter UI in the local preview and requested a Git commit. Clean Node/Vercel packaging and the live owner/GLM journey passed for the first release; the owner privately set a password and confirmed that Quellight opened. Phase 0 is complete for its historical foundation and scoped hosted integration route. Read [STATE.md](STATE.md) for the latest handoff, [baseline.json](baseline.json) for the fourteen local candidate archive identities (the original twelve plus ready patterns/media), and [hosting setup](docs/HOSTING.md) for infrastructure. The local candidate lock SHA-256 is `92a11d0af44750c6be9318b5d6b1b0e6b4a4b84a63f73a8a63e021b8bd02bd54`; the deployed Phase 1 lock is `e265b4b1bedf009432ee353822ac90256456d7ef9d05f5b0127d08b80e1c09e7`. The existing `@mastra/libsql@1.22.3` is directly pinned for correct Node native-loader externalization; product storage remains PostgreSQL. Isolated qualification work lives under `../qualification/`.
 
 The approved production address is **[quellight.com](https://quellight.com)**, with `www` redirecting there. Production `dpl_6YmU9LkJyhxma97oT4zXSfQroPat` is READY and promoted; [production evidence](../qualification/phase1-ops/production.json). The [11-check real hosted journey](../qualification/phase1-ops/live-test.json) ran on the prior Phase 1 Preview. Vercel Authentication protects Preview and immutable deployment URLs; the custom production domain uses Quellight owner sign-in. The owner is `radziamin91@gmail.com` and Home is seeded. [Verified domain setup](docs/DOMAIN.md).
 
@@ -48,12 +52,13 @@ Run from this app root with Node 22.23.5 and npm 11.21.2. The workspace has a ve
 | Exact install | `npx --yes npm@11.21.2 ci` | The mixed archive graph passed isolated installation and checksum checks |
 | Types and Svelte | `npm run check` | Zero errors/warnings |
 | Application/config tests | `npm test` | Phase 1: 14 passed |
-| Archive bindings | `npm run verify:baseline` | Twelve digests and lock bindings passed |
+| Archive bindings | `npm run verify:baseline` | Fourteen local candidate digests and lock bindings passed |
 | Local Node build | `npm run build:node` | Phase 1 clean Linux build passed with direct native-loader dependency pin |
 | Vercel build | `npm run build:vercel` | Final clean Linux and actual cloud builds passed. Windows lacks required symlink privilege |
 | Generated Vercel handler | `npm run test:vercel` | All three handlers passed; 4,424 files and 26 route aliases inspected |
 | Actual Node HTTP checks | `npm run test:http` | Phase 1 auth pages, owner API refusal, origin and startup guards passed |
 | Product preview | `npm start` | Starts the chosen built host; use current personal-mode configuration for real product features |
+| Local UI review | `npm run preview:ui` | Real app with isolated sample transport at 127.0.0.1:4320; no live services. See [preview guide](docs/LOCAL-UI-PREVIEW.md) |
 | Browser fixture journey | `node scripts/check-phase1-ui.mjs` | Desktop/phone normal and dropped-response runs passed; see the experience brief for isolated Playwright setup |
 | Simultaneous browser views | `node scripts/check-phase1-two-devices.mjs` | Two independent contexts passed shared observation, remote-turn handoff and separate drafts with synthetic transport |
 

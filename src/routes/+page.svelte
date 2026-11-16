@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick, untrack } from 'svelte';
   import { goto, afterNavigate } from '$app/navigation';
   import { page } from '$app/state';
   import { ControlScope, DocumentHost, type ActionResult } from '@victframework/ui-svelte';
@@ -27,6 +27,14 @@
   let pendingMutation: { signature: string; key: string } | undefined;
   const currentRoom = $derived(data?.rooms.find(room => room.id === roomId));
   const currentConversation = $derived(data?.conversations.find(item => item.id === conversationId));
+  const roomDetails = $derived(!!currentRoom && !currentRoom.archivedAt && page.url.searchParams.get('view') === 'room-details');
+  let detailsRoomId = '';
+  $effect(() => {
+    const next = roomDetails ? currentRoom : undefined;
+    if ((next?.id ?? '') === detailsRoomId) return;
+    detailsRoomId = next?.id ?? '';
+    untrack(() => setLocal({ editedName: next?.name ?? '', archiveOpen: false }));
+  });
   const busy = $derived(!!activeTurn && (!terminal(activeTurn.status) || !activeTurn.projectionSettled));
   const visibleRooms = $derived((data?.rooms ?? []).filter(room => Boolean(room.archivedAt) === Boolean(local.showArchived)));
   const view = $derived({ ...initialView,
@@ -39,7 +47,10 @@
       ...(streamed && activeTurn ? [{ id: `stream-${activeTurn.id}`, role: 'assistant', text: streamed }] : [])
     ] }), busy, pending, canSend: !!conversationId && !loading && !pending && !busy && !currentRoom?.archivedAt,
     canStop: !!activeTurn && !terminal(activeTurn.status) && !pending, loading, error, hasError: !!error, ready: !!data && !loading,
-    hasConversation: !!conversationId && !loading, activeRoom: !!currentRoom && !currentRoom.archivedAt,
+    hasConversation: !!conversationId && !loading, hasMoreActions: !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
+    roomDetails, headerTitle: roomDetails ? currentRoom?.name ?? 'Your space' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
+    roomDetailsBackLabel: conversationId ? 'Back to conversation' : 'Back to room',
+    activeRoom: !!currentRoom && !currentRoom.archivedAt,
     emptyRooms: visibleRooms.length === 0, roomsEmptyText: local.showArchived ? 'No archived rooms.' : 'Create a room to begin.',
     statusText: busy ? (activeTurn && terminal(activeTurn.status) ? 'Saving the response…' : statusText === 'Stopping…' ? statusText : streamed ? 'Writing…' : 'Thinking… You can leave and come back.') : (currentRoom?.archivedAt ? 'This room is archived.' : statusText)
   });
@@ -53,7 +64,7 @@
     if (key === 'draft') saveDraft();
     if (key === 'dark') storageWrite('quellight:appearance', value ? 'dark' : 'light');
   }
-  function dismissEditors() { setLocal({ newRoomOpen: false, renameOpen: false, archiveOpen: false, navigationOpen: false }); }
+  function dismissEditors() { setLocal({ newRoomOpen: false, archiveOpen: false, navigationOpen: false, moreOpen: false, settingsOpen: false, mobileSettingsOpen: false }); }
   function failure(cause: unknown): ActionResult {
     if (cause instanceof RequestError && cause.status === 401) void goto('/auth/sign-in');
     error = cause instanceof Error ? cause.message : 'Something interrupted this request. Please try again.';
@@ -66,6 +77,16 @@
     if (nextConversation) query.set('conversation', nextConversation);
     await goto(`/${query.size ? `?${query}` : ''}`, { replaceState, noScroll: true, keepFocus: true });
     await resolveSelection();
+  }
+  async function navigateRoomDetails(open: boolean) {
+    const url = new URL(page.url);
+    if (open) {
+      url.searchParams.set('room', roomId);
+      url.searchParams.set('view', 'room-details');
+    } else url.searchParams.delete('view');
+    await goto(url, { noScroll: true, replaceState: !open });
+    await tick();
+    globalThis.document.querySelector<HTMLElement>(open ? '[data-ui-node="editTitle"]' : '[data-ui-node="moreMenu"][data-ui-part="root"]')?.focus();
   }
   async function resolveSelection(force = false) {
     if (!data || !alive) return;
@@ -167,7 +188,9 @@
       } else if (actionId === 'conversation.create') {
         await navigateSelection((result.value as Conversation).roomId, result.value.id);
       } else if (actionId === 'room.archive') {
-        await navigateSelection(data?.rooms.find(room => !room.archivedAt)?.id ?? '');
+        await navigateSelection(data?.rooms.find(room => !room.archivedAt)?.id ?? '', '', true);
+      } else if (actionId === 'room.rename') {
+        await navigateRoomDetails(false);
       }
       return { ok: true, message: '' };
     } catch {
@@ -177,20 +200,28 @@
   }
   async function dispatch(actionId: string, value?: unknown): Promise<ActionResult> {
     const input = (value ?? {}) as Record<string, unknown>;
-    if (actionId === 'ui.room.new') { dismissEditors(); setLocal({ newRoomOpen: true }); return { ok: true, message: '' }; }
-    if (actionId === 'ui.room.dismiss') { dismissEditors(); return { ok: true, message: '' }; }
-    if (actionId === 'ui.room.edit') { dismissEditors(); setLocal({ renameOpen: true, editedName: currentRoom?.name ?? '' }); return { ok: true, message: '' }; }
-    if (actionId === 'ui.archive.open') { dismissEditors(); setLocal({ archiveOpen: true }); return { ok: true, message: '' }; }
+    if (actionId === 'ui.archive.open' || actionId === 'ui.archive.dismiss') {
+      if (roomDetails) setLocal({ archiveOpen: actionId === 'ui.archive.open' });
+      return { ok: true, message: '' };
+    }
     if (pending) return { ok: false, code: 'REQUEST_PENDING', message: 'Your request is being saved.' };
     pending = true; error = '';
     try {
-      if (actionId === 'ui.room.select') await navigateSelection(String(input.id));
+      if (actionId === 'ui.room.edit') {
+        dismissEditors();
+        if (currentRoom && !currentRoom.archivedAt) await navigateRoomDetails(true);
+      } else if (actionId === 'ui.room.dismiss' || actionId === 'ui.room.new') {
+        dismissEditors();
+        if (roomDetails) await navigateRoomDetails(false);
+        if (actionId === 'ui.room.new') setLocal({ newRoomOpen: true });
+      } else if (actionId === 'ui.room.select') await navigateSelection(String(input.id));
       else if (actionId === 'ui.conversation.select') {
         const selected = data?.conversations.find(item => item.id === input.id);
         if (selected) await navigateSelection(selected.roomId, selected.id);
       } else if (actionId === 'ui.reload') { await refreshData(); await resolveSelection(true); }
       else if (actionId === 'ui.export') {
         if (!conversationId) throw new Error('Open a conversation first.');
+        setLocal({ moreOpen: false });
         window.location.assign(`/api/conversations/${conversationId}/export`);
       } else if (actionId === 'auth.sign-out') {
         await request('/auth/sign-out', {});
@@ -218,11 +249,11 @@
 </script>
 
 <svelte:head>
-  <title>{currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
+  <title>{roomDetails ? 'Room details · Quellight' : currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
   <meta name="description" content="Your private space to think and work through what matters." />
 </svelte:head>
 
-<div class="quellight" data-appearance={local.dark ? 'dark' : 'light'}>
+<div class="quellight" data-ui-application-viewport data-appearance={local.dark ? 'dark' : 'light'}>
   <ControlScope>
     <DocumentHost {plan} extensionDescriptors={descriptors} extensionImplementations={implementations}
       localState={document.localState} stateValues={local} {view} {dispatch}

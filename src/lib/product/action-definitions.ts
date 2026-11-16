@@ -29,7 +29,7 @@ export const interfaceActions: ApplicationDefinitionV3['actions'] = [
   ...['ui.room.select', 'ui.conversation.select'].map(id => ({
     kind: 'local' as const, id, revision: '1', inputContractId: 'quellight.selection.input'
   })),
-  ...['ui.room.edit', 'ui.room.dismiss', 'ui.room.new', 'ui.archive.open', 'ui.reload', 'ui.export'].map(id => ({
+  ...['ui.room.edit', 'ui.room.dismiss', 'ui.room.new', 'ui.archive.open', 'ui.archive.dismiss', 'ui.reload', 'ui.export'].map(id => ({
     kind: 'local' as const, id, revision: '1'
   }))
 ];

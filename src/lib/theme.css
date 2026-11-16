@@ -1,3 +1,8 @@
+/* Keep VICT defaults below authored document styles on initial load and navigation. */
+@import '@victframework/ui-svelte/styles.css' layer(vict-controls);
+@import '@victframework/ui-svelte/catalog.css' layer(vict-controls);
+@import '@victframework/ui-svelte/rhea.css' layer(vict-controls);
+
 /* Product theme uses VICT's supported semantic tokens; controls retain VICT styling. */
 body { margin: 0; }
 .quellight {
@@ -16,6 +21,8 @@ body { margin: 0; }
   --vict-color-focusRing: #397653;
   --ql-sidebar: #f1f2eb;
   --ql-selected: #e1e8db;
+  --ql-scroll-thumb: color-mix(in srgb, var(--vict-color-textMuted) 58%, transparent);
+  --ql-scroll-thumb-hover: color-mix(in srgb, var(--vict-color-textMuted) 82%, transparent);
   --vict-theme-surface: var(--vict-color-surface);
   --vict-theme-text: var(--vict-color-text);
   --vict-theme-accent: var(--vict-color-accent);
@@ -49,64 +56,91 @@ body { margin: 0; }
   --ql-selected: #2d4032;
 }
 
-/* App-owned layout only. Covered controls keep their public VICT styling. */
+/* Product layout uses public controls and their named presentation targets. */
 .quellight * { box-sizing: border-box; }
-.ql-shell { display: grid; grid-template-columns: 264px minmax(0, 1fr); height: 100dvh; min-height: 0; }
-.ql-sidebar { display: flex; flex-direction: column; gap: 28px; min-height: 0; padding: 30px 20px 20px; background: var(--ql-sidebar); border-right: 1px solid var(--vict-color-border); }
-.ql-brand { padding: 0 10px; }
-.ql-brand h1 { margin: 0; font-size: 24px; font-weight: 650; letter-spacing: -.8px; }
-.ql-brand p { margin: 6px 0 0; color: var(--vict-color-textMuted); font-size: 12px; }
-.ql-navigation { display: flex; flex-direction: column; gap: 7px; min-height: 0; overflow: auto; }
+/* Native scrollbars keep the ready controls' scrolling and keyboard behavior. */
+.quellight { scrollbar-color: var(--ql-scroll-thumb) transparent; }
+.quellight, .quellight * { scrollbar-width: thin; }
+@supports not (scrollbar-color: auto) {
+  .quellight::-webkit-scrollbar, .quellight *::-webkit-scrollbar { width: 8px; height: 8px; }
+  .quellight::-webkit-scrollbar-track, .quellight *::-webkit-scrollbar-track { background: transparent; }
+  .quellight::-webkit-scrollbar-thumb, .quellight *::-webkit-scrollbar-thumb { background: var(--ql-scroll-thumb); border: 2px solid transparent; background-clip: padding-box; border-radius: 999px; }
+  .quellight::-webkit-scrollbar-thumb:hover, .quellight *::-webkit-scrollbar-thumb:hover { background-color: var(--ql-scroll-thumb-hover); }
+  .quellight::-webkit-scrollbar-corner, .quellight *::-webkit-scrollbar-corner { background: transparent; }
+}
+.quellight[data-ui-application-viewport] { position: relative; height: 100dvh; overflow: hidden; }
+.quellight { --ql-nav-height: 34px; }
+.ql-shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); height: 100dvh; min-height: 0; }
+.ql-sidebar { display: flex; flex-direction: column; gap: 20px; min-height: 0; padding: 14px 12px 8px; background: var(--ql-sidebar); border-right: 1px solid var(--vict-color-border); }
+.ql-brand { display: flex; align-items: center; min-height: 28px; padding: 0 10px; }
+.ql-brand h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -.6px; }
+.ql-navigation { display: flex; flex-direction: column; gap: 2px; min-height: 0; overflow: auto; }
+.ql-navigation .vict-action-control { gap: 0; }
 .ql-sidebar > .ql-navigation { flex: 1; }
-.ql-section-label { margin: 0 10px 8px; color: var(--vict-color-textMuted); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.ql-recent-label { margin-top: 27px; }
-.ql-sidebar-footer { display: flex; flex-direction: column; gap: 15px; padding: 18px 8px 0; border-top: 1px solid var(--vict-color-border); }
-.ql-workspace { display: flex; flex-direction: column; height: 100dvh; min-width: 0; padding: 0 32px 18px; overflow: hidden; }
-.ql-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex: none; min-height: 108px; padding: 20px 0; border-bottom: 1px solid var(--vict-color-border); }
-.ql-room-identity { min-width: 0; }
-.ql-room-identity h2 { margin: 0; font-size: 18px; line-height: 1.4; font-weight: 600; overflow-wrap: anywhere; }
-.ql-room-identity p { margin: 5px 0 0; color: var(--vict-color-textMuted); font-size: 12px; white-space: pre-wrap; max-height: 3.1em; overflow: auto; }
-.ql-room-identity p:empty { display: none; }
-.ql-toolbar-actions, .ql-button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.ql-toolbar-actions { flex: none; justify-content: flex-end; }
-.ql-transcript { flex: 1; min-height: 0; width: 100%; max-width: 940px; margin: 0 auto; }
-.ql-conversation-footer { display: flex; justify-content: space-between; align-items: center; flex: none; gap: 14px; padding: 8px 4px 0; color: var(--vict-color-textMuted); font-size: 12px; }
-.ql-welcome { display: flex; flex: 1; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; width: 100%; max-width: 650px; margin: auto; padding: 48px 24px 100px; }
-.ql-welcome h2 { margin: 0; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; font-weight: 500; letter-spacing: -1.2px; }
-.ql-welcome p { margin: 10px 0 24px; max-width: 430px; color: var(--vict-color-textMuted); font-size: 15px; line-height: 1.7; }
+.ql-section-label { margin: 0 10px 4px; color: var(--vict-color-textMuted); font-size: 11px; font-weight: 500; letter-spacing: .025em; }
+.ql-conversation-heading { display: flex; align-items: center; justify-content: space-between; flex: none; min-height: 36px; margin-top: 8px; }
+.ql-recent-label { margin-bottom: 0; }
+.ql-sidebar-footer { flex: none; min-height: 44px; padding: 4px 0 0; border-top: 1px solid var(--vict-color-border); }
+.ql-workspace { display: flex; flex-direction: column; height: 100dvh; min-width: 0; padding: 0 24px 8px; overflow: hidden; }
+.ql-toolbar { display: flex; align-items: center; gap: 4px; flex: none; height: 56px; min-height: 56px; border-bottom: 1px solid var(--vict-color-border); }
+.ql-room-identity { flex: 1; min-width: 0; padding-right: 8px; }
+.ql-room-identity h2 { margin: 0; font-size: 13px; line-height: 1.4; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ql-button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ql-transcript { flex: 1; min-height: 0; width: 100%; max-width: 800px; margin: 0 auto; }
+.ql-conversation-footer { display: flex; align-items: center; flex: none; min-height: 18px; padding: 0 12px; color: var(--vict-color-textMuted); font-size: 11px; line-height: 1.4; }
+.ql-welcome { display: flex; flex: 1; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; width: 100%; max-width: 650px; margin: auto; padding: 36px 24px 80px; }
+.ql-welcome h2 { margin: 0; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; font-weight: 450; letter-spacing: -.9px; }
+.ql-welcome p { margin: 8px 0 18px; max-width: 430px; color: var(--vict-color-textMuted); font-size: 14px; line-height: 1.7; }
 .ql-muted { color: var(--vict-color-textMuted); font-size: 13px; }
-.ql-loading { padding: 28px 0; color: var(--vict-color-textMuted); }
-.ql-error { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: none; margin: 12px 0; padding: 12px 16px; border: 1px solid var(--vict-color-border); border-left: 3px solid var(--vict-color-accent); border-radius: 8px; background: var(--vict-color-surface); font-size: 13px; }
-.ql-editor { flex: none; width: 100%; max-width: 600px; max-height: 70dvh; overflow: auto; margin: 20px auto; padding: 24px; border: 1px solid var(--vict-color-border); border-radius: 14px; background: var(--vict-color-surface); }
-.ql-editor h2 { margin: 0 0 4px; font-size: 20px; font-weight: 550; letter-spacing: -.5px; }
-.ql-form { display: flex; flex-direction: column; gap: 18px; }
+.ql-loading { padding: 24px 0; color: var(--vict-color-textMuted); }
+.ql-error { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: none; margin: 10px 0; padding: 10px 14px; border: 1px solid var(--vict-color-border); border-left: 3px solid var(--vict-color-accent); border-radius: 8px; background: var(--vict-color-surface); font-size: 13px; }
+.ql-editor { flex: none; width: 100%; max-width: 540px; max-height: 70dvh; overflow: auto; margin: 16px auto; padding: 20px; border: 1px solid var(--vict-color-border); border-radius: 12px; background: var(--vict-color-surface); }
+.ql-editor h2 { margin: 0 0 4px; font-size: 18px; font-weight: 500; letter-spacing: -.4px; }
+.ql-form { display: flex; flex-direction: column; gap: 16px; }
 .ql-form p { margin: 0; }
+.ql-settings { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.quellight .ql-settings .vict-control-row { min-height: 34px; gap: 9px; font-size: 13px; cursor: pointer; }
+.quellight .ql-settings [data-switch-root] { flex-basis: 30px; width: 30px; height: 18px; padding: 2px; }
+.quellight .ql-settings [data-switch-thumb] { width: 14px; height: 14px; }
+.quellight .ql-settings [data-switch-root][data-state='checked'] [data-switch-thumb] { transform: translateX(12px); }
+.ql-settings-disclosure [data-collapsible-trigger] { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; }
+.ql-settings-chevron { display: inline-flex; margin-inline-start: auto; opacity: .75; }
+.ql-settings-chevron svg { width: 14px; height: 14px; }
+.ql-settings-disclosure [aria-expanded='true'] .ql-settings-chevron { transform: rotate(180deg); }
+.quellight [data-ui-part='header'] > [data-dialog-close] { border-color: transparent; background: transparent; box-shadow: none; color: var(--vict-color-textMuted); padding: 0; font-size: 18px; font-weight: 400; }
+.quellight [data-ui-part='header'] > [data-dialog-close]:hover { color: var(--vict-color-text); }
+.quellight [data-ui-node='mobileMenu'][data-ui-part='header'] [data-dialog-title] { font-size: 18px; font-weight: 600; letter-spacing: -.6px; }
+.ql-vertical-dots { display: inline-flex; transform: rotate(90deg); pointer-events: none; }
+.ql-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.quellight [data-ui-node='moreMenu'][data-ui-part='content'] { box-shadow: 0 6px 20px rgb(0 0 0 / .12); }
+.quellight [data-ui-node='moreMenu'][data-ui-part='content'] [role='menuitem'] { min-height: 34px; padding: 6px 10px; border-radius: 6px; background: transparent; }
+.quellight [data-ui-node='moreMenu'][data-ui-part='content'] [role='menuitem']:hover:not([aria-disabled='true']) { background: var(--ql-selected); }
+.quellight [data-ui-node='moreMenu'][data-ui-part='content'] [role='menuitem']:focus-visible { outline: 1px solid var(--vict-color-focusRing); outline-offset: -1px; }
+.ql-transcript [data-ui-part='message-text'] p { margin-block: 0 .65em; }
+.ql-transcript [data-ui-part='message-text'] p:last-child { margin-block-end: 0; }
+.ql-room-purpose { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ql-room-purpose:empty { display: none; }
+.ql-room-page { flex: 1; min-height: 0; overflow: auto; width: min(100%, 560px); margin: 0 auto; padding: 16px 12px 32px; }
+.ql-room-page > .ql-form { margin-top: 18px; }
+.ql-room-page h1 { margin: 0; font-size: 24px; font-weight: 550; letter-spacing: -.5px; }
+.ql-room-page h1:focus { outline: none; }
 .ql-auth { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; padding: 44px 22px; }
 .ql-auth-brand { font-size: 26px; font-weight: 650; letter-spacing: -.9px; }
 .ql-auth-card { width: 100%; max-width: 420px; padding: 36px; background: var(--vict-color-surface); border: 1px solid var(--vict-color-border); border-radius: 18px; box-shadow: 0 10px 36px #1c2a1510; }
 .ql-auth-card h1 { margin: 0 0 8px; font-size: 27px; font-weight: 500; letter-spacing: -.8px; line-height: 1.3; }
 .ql-auth-card > .ql-muted { margin: 0 0 28px; line-height: 1.6; }
 .ql-auth-foot { max-width: 290px; margin: 0; text-align: center; color: var(--vict-color-textMuted); font-size: 12px; }
-.ql-mobile-bar { display: none; }
-@media (max-width: 1000px) and (min-width: 761px) {
-  .ql-shell { grid-template-columns: 224px minmax(0, 1fr); }
-  .ql-workspace { padding-right: 22px; padding-left: 22px; }
-  .ql-toolbar { align-items: flex-start; }
-  .ql-toolbar-actions { max-width: 170px; }
-}
+.ql-mobile-nav { display: none; }
 @media (max-width: 760px) {
   .ql-shell { display: block; }
   .ql-sidebar { display: none; }
-  .ql-workspace { padding: 0 14px max(10px, env(safe-area-inset-bottom)); }
-  .ql-mobile-bar { display: flex; flex: none; justify-content: space-between; align-items: center; min-height: 62px; padding: 8px 0; border-bottom: 1px solid var(--vict-color-border); }
-  .ql-mobile-bar > strong { font-size: 19px; letter-spacing: -.5px; }
-  .ql-toolbar { min-height: 90px; padding: 14px 0; gap: 12px; }
-  .ql-toolbar-actions { max-width: 148px; }
-  .ql-room-identity h2 { font-size: 17px; }
-  .ql-welcome { padding: 36px 16px 70px; }
-  .ql-editor { padding: 20px; max-height: 59dvh; }
+  .ql-workspace { padding: 0 8px max(6px, env(safe-area-inset-bottom)); }
+  .ql-mobile-nav { display: flex; flex: none; align-items: center; }
+  .ql-toolbar { gap: 2px; }
+  .ql-room-identity { padding-left: 4px; }
+  .ql-welcome { padding: 28px 16px 60px; }
+  .ql-editor { padding: 18px; max-height: 64dvh; }
   .ql-auth-card { padding: 28px 24px; }
-  .ql-conversation-footer { gap: 8px; align-items: flex-start; font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .quellight { scroll-behavior: auto; }

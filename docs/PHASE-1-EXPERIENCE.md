@@ -1,5 +1,25 @@
 # Phase 1 conversation experience
 
+## Local UI refinement, 17 November 2026
+
+The owner found the first release's header and buttons too bulky. The revised brief keeps one slim context bar, quiet navigation and a comfortable reading width. Icon actions have explicit accessible names, restrained glyphs and usable touch targets. Navigation and secondary controls use ready VICT drawers, so the conversation and composer keep the main space. Room, conversation, draft, error and streaming behavior remain the same. Review locally before deploying this refinement.
+
+During that local review the owner requested that New conversation be available only in the sidebar (the slide-out Rooms sidebar on phones), and asked for improved scrolling presentation. Keep the header and welcome view free of conversation-creation shortcuts. Scrollbars should use thin, subtle, theme-aware thumbs across real overflow areas while retaining native scrolling and the public VICT message scroller.
+
+The wider VICT UI is not limited to `vict.catalog.button@1`. The same qualified foundation provides `@victframework/ui-patterns-svelte` and `@victframework/ui-media-svelte`: canonical drawer, icon action-button, adaptive navigation and supplied/custom icon composition. Quellight adds those two exact archives from the study's verified artifact set, retaining the existing twelve archives. No new replacement control or separate UI kit is needed. The expanded local baseline is recorded in `baseline.json`.
+
+`vict.pattern.drawer@1` supplies controlled open/close, authored trigger/body/footer, focus containment and return within the marked application viewport. `vict.pattern.action-button@1` preserves its accessible label when `iconOnly` is enabled; `vict.media.icon@1` uses an exact registered icon identity. Transcript and composer styling uses their public named `partStyles`, rather than private component markup. Appearance, navigation and drawer state remain ordinary local presentation state.
+
+The dedicated local preview uses explicit sample content and an isolated in-memory transport. It does not exercise owner authentication, persistence or GLM. Production remains on the previously deployed Phase 1 UI until the local design is reviewed.
+
+Settings expands in the desktop sidebar and in the phone Rooms drawer using the same `vict.catalog.collapsible@1` composition. A chevron changes direction with its expanded state. Sign out uses a ready VICT icon action with an authored exit glyph. VICT's default styles load in a cascade layer so the authored quiet styles also apply when opening a conversation directly.
+
+The owner's annotated review asked for less space throughout, a smaller Send control and settings switches, a quiet drawer close control, and a vertical three-dot dropdown. The Rooms drawer shares the desktop sidebar's colors, typography, and navigation row spacing. Settings sits at the foot of both. More uses the public VICT dropdown with hover and keyboard focus treatments. Room details has a dedicated URL view in the workspace, with the room's purpose, rename and archive actions, and a way back to the same conversation and draft.
+
+The final local review passed 116 browser checks across four viewport sizes. The checks cover sidebar-only creation placement, dropdown and drawer focus, inline Settings, draft retention after reloading Room details, light and dark appearance, real overflow with long drafts and transcripts, and composer reachability in a shortened viewport. The separate synthetic recovery journey exercises creation from each sidebar, room rename and archive, and Send, Stop and reconnect behavior. The owner approved the local design and requested a Git commit.
+
+## First release
+
 Quellight gives the owner one quiet space to write, read a reply, and return to a conversation from phone or laptop. The transcript and composer are primary. A restrained sidebar groups conversations into rooms; on a phone, the same navigation opens in a VICT Dialog. Room details, new-room fields, and archive confirmation appear only when requested. Warm neutral surfaces and green accents carry through both light and dark appearances.
 
 The first usable journey is password setup or sign-in → choose a room → open or create a conversation → write → read the streamed reply. The composer stays within the available viewport. Existing conversation controls provide copying; the footer offers text export. Empty rooms invite a conversation, a genuinely empty account invites a room, and errors retain the draft and offer reconnection. No demo messages or invented memory are shipped.

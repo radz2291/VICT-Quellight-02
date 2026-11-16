@@ -1,6 +1,14 @@
 # Quellight implementation state
 
-Updated 16 November 2026. **Phase 1 is implemented and deployed at quellight.com.** Clean Linux Node/Vercel packaging and the live GLM conversation journey passed. The owner privately set a password and confirmed that Quellight opened. Phase 0 is complete for its earlier foundation and scoped hosted integration route.
+Updated 17 November 2026. **Phase 1 remains deployed at quellight.com. The owner approved the quieter UI in the local preview and requested a Git commit.** Clean Linux Node/Vercel packaging and the live GLM conversation journey passed for the first release. The owner privately set a password and confirmed that Quellight opened. Phase 0 is complete for its earlier foundation and scoped hosted integration route.
+
+## Local UI review
+
+The owner requested smaller, quieter headers and controls, broader use of VICT's ready drawers/icons, sidebar-only conversation creation, and improved scroll styling. The candidate uses a single 56px header, 220px sidebar, ready icon controls and drawers, and public transcript/composer part styling. New conversation belongs only in the desktop sidebar or phone's Rooms drawer. No product/provider behavior changes are intended.
+
+[The local preview](http://127.0.0.1:4320/) renders the real app with clearly labelled in-memory sample content. Run `npm run preview:ui` using the pinned toolchain. [Preview guide](docs/LOCAL-UI-PREVIEW.md).
+
+The two additional ready UI packages passed a fresh [isolated installed consumer](../qualification/ui-patterns-20261117/README.md): exact archive/source matching, canonical compilation, Svelte/type checks, production build and fourteen desktop/phone browser checks including supplied/custom SVG, keyboard activation and drawer dismissal/focus return. Those are delegated capability results; integrated product layout and recovery checks are recorded separately in the [experience record](docs/PHASE-1-EXPERIENCE.md).
 
 ## Current product
 
@@ -22,11 +30,13 @@ Full conversation history is retained in storage. The model context uses the lat
 
 ## Current artifact identity
 
-The app repository is `app/`; the parent workspace retains product decisions and isolated qualification consumers. The twelve pinned VICT archives are unchanged from the accepted mixed baseline. [baseline.json](baseline.json) retains the archive digests and source attribution; its Phase 0 label describes that qualification stage.
+The app repository is `app/`; the parent workspace retains product decisions and isolated qualification consumers. The local UI candidate retains the twelve accepted VICT archives and adds the qualified `ui-patterns-svelte` and `ui-media-svelte` archives from foundation `6b420a3e`. [baseline.json](baseline.json) now records fourteen exact archive digests. No existing package was upgraded by this addition. Production still uses the prior twelve-archive release.
 
 Phase 1 adds `@supabase/ssr@0.12.7`, `@supabase/supabase-js@2.119.0` and `@vercel/functions@3.11.3`, retaining `@mastra/core@1.64.0`. The already installed `@mastra/libsql@1.22.3` is directly pinned so the Node adapter preserves its native-loader externalization. PostgreSQL remains the product storage provider. Current `package-lock.json` SHA-256:
 
-`e265b4b1bedf009432ee353822ac90256456d7ef9d05f5b0127d08b80e1c09e7`
+`92a11d0af44750c6be9318b5d6b1b0e6b4a4b84a63f73a8a63e021b8bd02bd54`
+
+The deployed Phase 1 lock hash is `e265b4b1bedf009432ee353822ac90256456d7ef9d05f5b0127d08b80e1c09e7`.
 
 The earlier Phase 0 combined lock hash was `4969ccda2adaae5768b4798f269a9022e55be3781571e2c015d9527a52051e71`; it is historical, not the current lock identity. Local qualification uses the separately installed Node 22.23.5. Its official archive SHA-256 was `4a191082e9706866830379d577d2cc8a50c776fcd9436a8d061b063ed0d9a0e3`. It does not replace the machine's Node 22.13.1.
 
@@ -62,5 +72,7 @@ The foundation stage intentionally had sending disabled, page-local drafts, no p
 The reusable VICT extension is separate framework work. Quellight consumes its public persistence/coordination and owns product rules and composition. Earlier Oracle/Render assessments remain historical alternatives, not selected hosts. Docker execution remains unproven.
 
 ## Next handoff
+
+The owner has approved the local UI. The current request covers committing it locally. Hosted delivery and Phase 2 are separate next steps.
 
 The owner completed private password setup and reported “Done — Quellight opened.” [Owner setup confirmation](../qualification/phase1-ops/owner-setup-completed.json), [packaging record](../qualification/phase1-ops/packaging.json), [exact release inputs](../qualification/phase1-ops/release-inputs.json), and [operator notes](../qualification/phase1-ops/README.md) preserve delivery evidence. Keep the free-service boundary, source-checkout preservation and separate builder/independent/live/owner evidence. Begin Phase 2 automatic memory only under the accepted product plan and subsequent phase authority.

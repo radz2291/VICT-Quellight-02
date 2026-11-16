@@ -7,7 +7,8 @@ import { pathToFileURL } from 'node:url';
 const { chromium } = await import(process.env.QUELLIGHT_PLAYWRIGHT_MODULE ? pathToFileURL(process.env.QUELLIGHT_PLAYWRIGHT_MODULE).href : 'playwright');
 const base = process.env.QUELLIGHT_UI_URL ?? 'http://127.0.0.1:4318';
 const dropStartResponse = process.env.QUELLIGHT_UI_DROP_START === '1';
-const output = dropStartResponse ? 'test-results/phase1-ui-recovery' : 'test-results/phase1-ui';
+const outputRoot = process.env.QUELLIGHT_UI_OUTPUT ?? 'test-results/phase1-ui';
+const output = dropStartResponse ? `${outputRoot}-recovery` : outputRoot;
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -85,6 +86,10 @@ try {
   await page.screenshot({ path: `${output}/sign-in-desktop.png`, fullPage: true });
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
   await page.getByRole('heading', { name: 'What’s on your mind?' }).waitFor();
+  assert.equal(await page.locator('.ql-toolbar').getByRole('button', { name: 'New conversation', exact: true }).count(), 0, 'Header has no conversation-creation shortcut');
+  assert.equal(await page.getByRole('button', { name: 'Start a conversation', exact: true }).count(), 0, 'Welcome has no conversation-creation shortcut');
+  await page.locator('.ql-sidebar .ql-conversation-heading').getByRole('button', { name: 'New conversation', exact: true }).click();
+  await page.getByRole('heading', { name: 'New conversation', exact: true }).waitFor();
   await page.getByRole('button', { name: 'Making room for the week', exact: true }).click();
   await page.getByText('Let’s start with what matters most.', { exact: false }).waitFor();
   await page.getByRole('textbox', { name: 'Message', exact: true }).fill('A draft to keep.');
@@ -92,10 +97,16 @@ try {
   await page.getByRole('button', { name: 'Making room for the week', exact: true }).click();
   assert.equal(await page.getByRole('textbox', { name: 'Message', exact: true }).inputValue(), 'A draft to keep.');
   await page.screenshot({ path: `${output}/conversation-desktop.png`, fullPage: true });
+  assert.ok((await page.locator('.ql-toolbar').boundingBox()).height <= 64, 'Conversation has one slim header');
+  const lightTextareaColor = await page.getByRole('textbox', { name: 'Message', exact: true }).evaluate(element => getComputedStyle(element).color);
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.getByRole('switch', { name: 'Dark appearance', exact: true }).click();
-  await page.waitForFunction(() => getComputedStyle(document.querySelector('textarea')).color === 'rgb(236, 241, 233)');
+  await page.waitForFunction(light => getComputedStyle(document.querySelector('textarea')).color !== light, lightTextareaColor);
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.screenshot({ path: `${output}/conversation-dark.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.getByRole('switch', { name: 'Dark appearance', exact: true }).click();
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.getByRole('textbox', { name: 'Message', exact: true }).fill('  Keep this test conversation going.  ');
   await page.getByRole('button', { name: 'Send', exact: true }).click();
   if (dropStartResponse) {
@@ -121,11 +132,13 @@ try {
   await page.getByRole('textbox', { name: 'What is this room for?', exact: true }).fill('Space for small plans.');
   await page.getByRole('button', { name: 'Create room', exact: true }).click();
   await page.getByRole('heading', { name: 'A calmer week', exact: true }).waitFor();
-  await page.getByRole('button', { name: 'Room details', exact: true }).click();
+  await page.getByRole('button', { name: 'More', exact: true }).click();
+  await page.getByRole('menuitem', { name: 'Room details', exact: true }).click();
   await page.getByRole('textbox', { name: 'Room name', exact: true }).fill('Small plans');
   await page.getByRole('button', { name: 'Save name', exact: true }).click();
   await page.getByRole('heading', { name: 'Small plans', exact: true }).waitFor();
-  await page.getByRole('button', { name: 'Room details', exact: true }).click();
+  await page.getByRole('button', { name: 'More', exact: true }).click();
+  await page.getByRole('menuitem', { name: 'Room details', exact: true }).click();
   await page.getByRole('button', { name: 'Archive room', exact: true }).click();
   await page.getByRole('button', { name: 'Archive room', exact: true }).click();
   await page.getByRole('heading', { name: 'Home', exact: true }).waitFor();
@@ -135,9 +148,23 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   const composer = await page.getByRole('textbox', { name: 'Message', exact: true }).boundingBox();
   assert.ok(composer.y + composer.height <= 844, 'Phone composer remains in viewport');
+  assert.ok((await page.locator('.ql-toolbar').boundingBox()).height <= 64, 'Phone keeps a single slim header');
+  for (const name of ['Open rooms', 'More']) {
+    const target = await page.getByRole('button', { name, exact: true }).boundingBox();
+    assert.ok(target.width >= 44 && target.height >= 44, `${name} retains a usable phone target`);
+  }
   await page.getByRole('button', { name: 'Open rooms', exact: true }).click();
   await page.getByRole('dialog').waitFor();
+  assert.equal(await page.getByRole('dialog').locator('.ql-conversation-heading').getByRole('button', { name: 'New conversation', exact: true }).isVisible(), true, 'Phone starts conversations from its sidebar');
   await page.screenshot({ path: `${output}/rooms-phone.png`, fullPage: true });
+  await page.keyboard.press('Escape');
+  await page.getByRole('dialog').waitFor({ state: 'hidden' });
+  assert.equal(await page.getByRole('button', { name: 'Open rooms', exact: true }).evaluate(element => element === document.activeElement), true, 'Drawer Escape restores the named trigger');
+  await page.getByRole('button', { name: 'Open rooms', exact: true }).click();
+  await page.getByRole('dialog').locator('.ql-conversation-heading').getByRole('button', { name: 'New conversation', exact: true }).click();
+  await page.getByRole('dialog').waitFor({ state: 'hidden' });
+  await page.getByRole('heading', { name: 'New conversation', exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Open rooms', exact: true }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'A small idea', exact: true }).click();
   await page.getByRole('dialog').waitFor({ state: 'hidden' });
   assert.equal(new URL(page.url()).searchParams.get('conversation'), nextConversationId);
@@ -145,7 +172,8 @@ try {
   await writeFile(`${output}/result.json`, JSON.stringify({ kind: 'synthetic-browser-transport', passed: true, dropStartResponse, viewport: ['1440x1000', '390x844'], checks: ['canonical auth fields', 'draft across conversations', 'theme', 'turn streaming and Stop', 'terminal projection settlement', ...(dropStartResponse ? ['same-key retry after committed response loss and reconnect'] : []), 'room create/rename/archive', 'phone navigation', 'phone composer', 'no unexpected browser errors'], calls }, null, 2));
   console.log('Phase 1 synthetic browser journeys passed. No live provider or authentication used.');
 } catch (error) {
-  await page.screenshot({ path: `${output}/failure.png`, fullPage: true });
-  console.error(JSON.stringify({ url: page.url(), errors, calls, text: await page.locator('body').innerText() }));
+  console.error(error);
+  console.error(JSON.stringify({ url: page.url(), errors, calls }));
+  await page.screenshot({ path: `${output}/failure.png`, fullPage: true, timeout: 10000 }).catch(() => {});
   throw error;
 } finally { await browser.close(); }
