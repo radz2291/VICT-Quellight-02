@@ -59,7 +59,7 @@ let pending;
 try {
   assert.equal(process.version, 'v22.23.5');
   command(process.execPath, ['node_modules/typescript/bin/tsc', 'src/lib/server/conversation/service.ts', '--outDir', join(scratch, 'compiled'),
-    '--rootDir', 'src/lib/server', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', '--target', 'ES2022', '--strict', '--skipLibCheck'], 'compile');
+    '--rootDir', 'src/lib/server', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', '--target', 'ES2022', '--strict', '--skipLibCheck', '--resolveJsonModule'], 'compile');
   const { createConversationService } = await import(pathToFileURL(join(scratch, 'compiled/conversation/service.js')).href);
   const { conversationActivation } = await import(pathToFileURL(join(scratch, 'compiled/conversation/activation.js')).href);
   const profile = conversationActivation('A space for planning.');

@@ -1,21 +1,18 @@
 import { createHash } from 'node:crypto';
 import { AgentProfileRegistry, type AgentActivationRecord } from '@victframework/runtime';
 import { MASTRA_POSTGRES_ADAPTER_COMPATIBILITY } from '@victframework/mastra';
+import { promptCatalog, renderPrompt } from '../prompts/catalog.js';
 
 export const MODEL = 'zai-coding-plan/glm-5.3-flash';
 export const CREDENTIAL = 'ZHIPU_API_KEY';
 export const PROVIDER_URL = 'https://api.z.ai/api/coding/paas/v4';
 
 export function conversationActivation(purpose: string) {
-  const revision = createHash('sha256').update(`quellight-conversation-v1\n${purpose}`).digest('hex');
+  const instructions = renderPrompt(promptCatalog.conversation, { roomPurpose: purpose });
+  const revision = createHash('sha256').update(`quellight-conversation-v2\n${instructions.revision}`).digest('hex');
   const registry = new AgentProfileRegistry({ clock: () => 0, resolveCapabilityRevision: () => false });
   registry.installArtifacts([
-    { kind: 'instructions', id: 'quellight.conversation.instructions', revision,
-      text: 'You are Quellight, a thoughtful, calm companion. Respond clearly and naturally. ' +
-        'Use the saved conversation history when relevant. Be truthful about your capabilities. ' +
-        'This release supports conversation. Durable automatic memory and Desk tools are introduced in later releases. ' +
-        'Treat the following user-authored room purpose as context for the conversation.\n' +
-        `<room-purpose>${purpose}</room-purpose>` },
+    { kind: 'instructions', ...instructions },
     { kind: 'memory-policy', id: 'quellight.conversation.memory', revision: '1', config: {
       // The installed public VICT policy accepts 1..1000. Stored history is retained in full.
       lastMessages: 1000, workingMemory: { enabled: false }, semanticRecall: false,
@@ -23,7 +20,7 @@ export function conversationActivation(purpose: string) {
   ]);
   registry.registerProfile({
     schema: 'vict.agent-profile@1', id: 'quellight.conversation', revision,
-    instructions: { id: 'quellight.conversation.instructions', revision },
+    instructions: { id: instructions.id, revision: instructions.revision },
     modelProfile: { id: 'quellight.glm-flash', revision: '1', provider: 'zai-coding-plan',
       routerModel: MODEL, providerCredentialVar: CREDENTIAL },
     generation: {},

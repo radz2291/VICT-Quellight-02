@@ -16,6 +16,10 @@ The owner's UI review on 16 November calls for a quieter, minimal interface: red
 
 The continuing local review on 17 November places **New conversation only in the sidebar**, including the phone's slide-out sidebar. Do not restore header or welcome-screen creation shortcuts. Scrollbars should be quiet, slim and consistent across conversation, navigation, drawers and the composer in both appearances.
 
+Memory must be inspectable through quiet optional access. The owner requested a **Memory** entry in each conversation's three-dot menu to see that thread's observations, actual memory activity, sources and context when desired. Include this in Phase 2 delivery and extend coverage as memory features arrive. Use ready VICT controls and recorded state. The [inspection design](docs/PROMPTS-AND-CONTEXT.md) covers scope, prompts, history and reconnect behavior. Automatic learning remains independent of opening the inspection view.
+
+The revised [Phase 2 plan](docs/PHASE-2-PLAN.md) replaces wholesale ARA capture/digest porting with a Mastra-first architecture to qualify. On 17 November the owner authorized Phase 2 implementation with delegated agents, beginning with reusable VICT memory support and GLM tests. Begin with public VICT exposure and real GLM/hosted memory proof, then implement product memory, versioned room/prompt overrides, quiet inspection and basic correction/forgetting. Native memory remains unqualified until its evidence passes. Deeper adaptation and Desk remain later increments.
+
 ## How agents work
 
 The root agent coordinates bounded ownership and integrates work. Read current instructions and linked evidence. Routine implementation, tests and repairs are authorized. Preserve manual changes and other agents' files. Independent review must be attributed separately from builder checks. Ask only for a consequential missing dependency or decision after making the result concrete. **Use free services only.** Do not upgrade a plan or incur new nonzero service/model charges. The owner selected the existing ARA Supabase organization for a separate Quellight project; ARA's live project remains a reference, not this app's database.
@@ -34,6 +38,7 @@ This `app` directory is the implementation root, initialized as a Git repository
 - Production data uses restricted TLS role `ql_app_runtime` and separate `quellight_product_v1`, `quellight_memory_v1` and `quellight_ops_v1` schemas. Public sign-up is disabled. The current release authorizes only the configured owner and verifies their active session; future multi-user access is not enabled by this release.
 - Retain an uncertain start's original idempotency key until that exact POST is acknowledged. Do not clear it because another active turn exists. Keep observing terminal turns until transcript projection is settled; preserve partial text and transfer observation to any newly active turn. Closing a page must never be treated as Stop.
 - Quiet automatic writes require trusted server policy selecting exact permitted capability revisions; this is not blanket approval for arbitrary effects.
+- Memory and context are core product capabilities. Keep app-owned model prompts in the server-only `src/lib/server/prompts` catalog, with content-derived revisions pinned into activations. Start newly adopted Mastra memory roles with qualified upstream defaults and provide explicit customization modes. Preserve authored overrides when defaults change. Read [prompts and context](docs/PROMPTS-AND-CONTEXT.md) for the current catalog, native prompt boundaries and proposed app/room inheritance.
 
 ## Current continuity
 
