@@ -1,0 +1,13 @@
+{
+  "name": "quellight",
+  "framework": "sveltekit",
+  "buildCommand": "npm run build:vercel",
+  "installCommand": "npm ci --no-audit --no-fund",
+  "publicSource": false,
+  "ssoProtection": { "deploymentType": "all" },
+  "resourceConfig": {
+    "fluid": true,
+    "functionDefaultRegions": ["sin1"],
+    "functionDefaultTimeout": 30
+  }
+}

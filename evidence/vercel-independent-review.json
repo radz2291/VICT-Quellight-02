@@ -1,0 +1,271 @@
+{
+  "schema": "quellight.vercel-independent-review@1",
+  "recordedOn": "2026-11-16",
+  "reviewer": "quellight_vercel_review",
+  "verdict": "PASS-for-foundation-source-and-local-generated-vercel-artifact",
+  "gitCommit": null,
+  "sourceManifestSha256": "39e4e80945668ceee30ea96144adb38690bca80e9ff7a4e829f0ffe5ee0ccde0",
+  "inputs": [
+    {
+      "file": ".env.example",
+      "sha256": "0b9cd812180508bcc0792f3226627257460aaa020abfaa06a66773b31f180a03"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "9ffaeb9bdfbdcc487286c2d66f11dc6070a23b68dacb9d285577086e93267157"
+    },
+    {
+      "file": ".node-version",
+      "sha256": "b2afc67902c3f2fda89443fd46f58866d10ae3313e6b23257ecf6d4b322cfc90"
+    },
+    {
+      "file": ".npmrc",
+      "sha256": "be85cc462e740587626bbcbb1c3ed1c40b26e62ec072e8cbd2768f23915c28e6"
+    },
+    {
+      "file": ".vercelignore",
+      "sha256": "ccc10c5429aef999a0c19e251cdb12a2ef9a2e520b37d77501ffe5437cb4b635"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "bf2d7ee43f246d9496d2a64720b831892a39156e2d3943b0e98e344b0c9447ba"
+    },
+    {
+      "file": "config/build.mjs",
+      "sha256": "1af339255b0a07ba894dcbc09b71f30e09d91e88fc78b44731c08ad9af8104dd"
+    },
+    {
+      "file": "config/runtime.mjs",
+      "sha256": "f7657533aac7d1b74d3669cb3c6431bb78495fcf726d774fa8cbc526576b3ef0"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "c19d455cd3559287d28bd45ce05e5f194a7b606c2e698f2deb03a2c7b81cefe1"
+    },
+    {
+      "file": "package.json",
+      "sha256": "d179c8c4888e6813e025e0c68e64be74848f8974c3dcccb8419f92e1a111a5ae"
+    },
+    {
+      "file": "scripts/build.mjs",
+      "sha256": "98ae588507c95925157a3a846613732d96cb983d48e7bba7dce0ed0b423b91b1"
+    },
+    {
+      "file": "scripts/check-http.mjs",
+      "sha256": "9049a9dedda17a5000a26d3fcc20f48cc814efecaad0903d9fcb2054df35d408"
+    },
+    {
+      "file": "scripts/check-vercel.mjs",
+      "sha256": "bbce93170e12d996030783eb5350c409de40c58c4b6067ad7b273614de576a8f"
+    },
+    {
+      "file": "scripts/start.mjs",
+      "sha256": "3ede1a4f7dbcc71be51cee2f582ca0d1be5c1a31cb2d48d5f6052c747c708198"
+    },
+    {
+      "file": "scripts/verify-baseline.mjs",
+      "sha256": "f7e7be3512657b241a1628c8e9c431830198bce95bc22f4613d7aed700da31a6"
+    },
+    {
+      "file": "src/app.d.ts",
+      "sha256": "cad0b05fcbd32b83dde20aeccfde311f9340fbde0e5aeec4979eee66b6d9c435"
+    },
+    {
+      "file": "src/app.html",
+      "sha256": "757c01c2551286c84b4d6fd646d312b171c73d3ffe1affa311832da5ddbe9a3c"
+    },
+    {
+      "file": "src/hooks.server.ts",
+      "sha256": "13761f552c3f605a06aff79d70c8bc125c87fed7da35cb4dbc7994494dd889db"
+    },
+    {
+      "file": "src/lib/product/definition.ts",
+      "sha256": "e45095aa68141b9ceef5df964d5fff303e45c2701cfbd19a2965fe12b704a9cc"
+    },
+    {
+      "file": "src/lib/theme.css",
+      "sha256": "268f5aaabc32da16ad85f670824a7263e80f01e4450fff99f1fad2558d96ccc2"
+    },
+    {
+      "file": "src/routes/+error.svelte",
+      "sha256": "3a14f0272a73f91000914b81f9628035edf2f65cbbe87088f2b6c7f6d00e566a"
+    },
+    {
+      "file": "src/routes/+layout.svelte",
+      "sha256": "db81054f18255583275768140758faaf53f604e679fcb2b7b3b46dabe59b65e0"
+    },
+    {
+      "file": "src/routes/+page.svelte",
+      "sha256": "21ea48d532e83db47b71af89594c2f4a8d571daea3fdadde9b389da443b5df93"
+    },
+    {
+      "file": "src/routes/healthz/+server.ts",
+      "sha256": "e6057abd5d439b3c043f026da641b465cfdea6f4fdc57a2f9e18f515c556e860"
+    },
+    {
+      "file": "src/routes/readyz/+server.ts",
+      "sha256": "9b59eec8baa78c7758f0d8f7d8a079fde59fd9a88ceedb7eaead315728013524"
+    },
+    {
+      "file": "svelte.config.js",
+      "sha256": "342a623c44bab8d3a08f6f902e8e9d3607fb7ab69f3336c0bd2e90852762c876"
+    },
+    {
+      "file": "tests/application.test.mjs",
+      "sha256": "ca6aba4ae7d1b1114c1adc554599d5026e650e192e445f9aa7d32bde9b52b25e"
+    },
+    {
+      "file": "tests/runtime.test.mjs",
+      "sha256": "9b2bda7e1401a31e3156eb24d831bbe946462690acb4d034f7661fc330259a33"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "0374d911148fdc6cd5eaf484a277ef6d685e71f1aec6d2812c412c97cf960e94"
+    },
+    {
+      "file": "vite.config.ts",
+      "sha256": "c652bee9a7193fd51576867535a4906c0dee88431c7f73d40a6519f14ef78d12"
+    }
+  ],
+  "toolchains": {
+    "windowsNode": "22.23.5",
+    "linuxNode": "22.23.5",
+    "linuxDistro": "Ubuntu-24.04"
+  },
+  "independentlyExecuted": {
+    "existingTests": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 143585.3132,
+      "command": "node --test tests/runtime.test.mjs tests/application.test.mjs"
+    },
+    "archiveBindings": {
+      "windows": 6,
+      "linux": 6,
+      "command": "node scripts/verify-baseline.mjs"
+    },
+    "extraSourceRuntimeNegatives": 8,
+    "lockedReadinessCapabilities": 3,
+    "realBuildEntryNegatives": 3,
+    "buildEnteredOnInvalidInput": false,
+    "priorSourceHashesUnchanged": 9,
+    "candidateManifestEntriesMatched": 21,
+    "crossPlatformIdentity": {
+      "compared": 29,
+      "matched": 26,
+      "missingNonCompileInputs": [
+        ".env.example",
+        ".gitignore",
+        ".vercelignore"
+      ]
+    }
+  },
+  "generatedArtifact": {
+    "sourceRoot": "/root/quellight-vercel-proof-20261116-1b2az8/app",
+    "handler": ".vercel/output/functions/![-]/catchall.func/.svelte-kit/vercel-tmp/index.js",
+    "buildOutputApiVersion": 3,
+    "actualFunctionCount": 1,
+    "runtime": "nodejs22.x",
+    "region": "sin1",
+    "maxDurationSeconds": 30,
+    "relativeAliases": true,
+    "relocatedImport": "passed",
+    "outputManifestSha256": "0448c8885679f31f12d0e5c06ac840632d8431da773ae5941b46f4bef666c670",
+    "outputEntries": 182,
+    "configSha256": "6cd7462a2141233d6d80829eb26038ea435eb8adc9d3b7378bd0299a8222fa2e",
+    "functionConfigSha256": "87257011bad0b7292723d9bc3f2e77fe756585335cdff45294ee21b3a2678e57",
+    "privateCanaryFound": false,
+    "environmentFilesFound": false,
+    "routeOutcomes": [
+      {
+        "request": "GET /healthz",
+        "status": 200,
+        "noStore": true
+      },
+      {
+        "request": "GET /readyz",
+        "status": 503,
+        "noStore": true,
+        "allCapabilities": false
+      },
+      {
+        "request": "POST /api/chat",
+        "status": 404
+      },
+      {
+        "request": "POST /api/jobs/dispatch",
+        "status": 404
+      },
+      {
+        "request": "POST /api/memory",
+        "status": 404
+      },
+      {
+        "request": "POST / same-origin attempted send",
+        "status": 405
+      },
+      {
+        "request": "GET /",
+        "status": 200,
+        "honestFoundationCopy": true,
+        "disabledControlsPresent": true
+      }
+    ],
+    "coldStartNegatives": {
+      "passed": 4,
+      "cases": [
+        "HTTP origin",
+        "credential-bearing Vercel hostname",
+        "IP Vercel hostname",
+        "production mode"
+      ]
+    },
+    "directFetchHead": {
+      "status": 200,
+      "bodyBytes": 61,
+      "wireBehaviorProven": false
+    }
+  },
+  "preservedObservations": [
+    {
+      "kind": "resolved-input-drift",
+      "file": ".gitignore",
+      "observedSha256": "e18c19b0ed6bcb8e1882e1b61b5e4e241bc63dd39d9321d5167f53a4959f2ca3",
+      "resolvedSha256": "9ffaeb9bdfbdcc487286c2d66f11dc6070a23b68dacb9d285577086e93267157",
+      "cause": "CLI appended redundant ignores and overrode .env.example exception",
+      "repairBy": "builder",
+      "independentRecheck": "passed"
+    },
+    {
+      "kind": "failed-review-probe",
+      "detail": "Initial direct Fetch HEAD probe expected an empty Response body; actual61bytes. Corrected scope excludes HTTP transport behavior. No application repair requested."
+    },
+    {
+      "kind": "builder-platform-limitation",
+      "detail": "Windows adapter output incomplete after EPERM creating route symlink. Linux build is the qualified artifact."
+    }
+  ],
+  "builderEvidenceSeparatelyAttributed": [
+    "clean Linux npm ci and Vercel build",
+    "typecheck zero errors and warnings",
+    "eight generated-handler probes",
+    "Windows Node build and owned-process HTTP regression"
+  ],
+  "notEstablished": [
+    "actual Vercel deployment and request transport",
+    "anonymous access protection",
+    "authenticated owner browser journey",
+    "actual CLI upload manifest",
+    "hosted VICT/Mastra PostgreSQL and durable coordination",
+    "app owner identity mapping",
+    "live provider/no-cost inference",
+    "automatic memory",
+    "phone and laptop personal-data acceptance"
+  ],
+  "sourceImplementationChanges": [],
+  "cloudMutations": false,
+  "secretsRead": false,
+  "modelCalls": false,
+  "report": "../docs/VERCEL-INDEPENDENT-REVIEW.md"
+}

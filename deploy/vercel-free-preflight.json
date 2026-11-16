@@ -1,0 +1,76 @@
+{
+  "recordedOn": "2026-11-16",
+  "timezone": "Asia/Kuala_Lumpur",
+  "evidenceKind": "read-only-account-and-official-documentation-preflight",
+  "budget": "free-only",
+  "vercel": {
+    "cliVersion": "54.16.0",
+    "username": "radziamin91-4691",
+    "teamId": "team_Dlwr16zMV68paKlaMa29CDFQ",
+    "teamSlug": "radziamin91-gmailcoms-projects",
+    "teamPlan": "hobby",
+    "teamStatus": "active",
+    "trial": null,
+    "membership": "OWNER",
+    "fetchedProjectCount": 26,
+    "paginationExhausted": true,
+    "quellightProjectFoundAtPreflight": false,
+    "teamDataSharingConsentAtPreflight": "granted",
+    "teamSettingsChanged": false,
+    "projectOptOutVerified": false,
+    "publicApiProjectOptOutFieldFound": false,
+    "allDeploymentsAuthenticationDocumentedFree": true,
+    "protectionDocumentationUpdated": "2026-09-15",
+    "remainingSharedQuotaMeasured": false,
+    "schedulesSchemaPresent": true,
+    "schedulesAccountEligibilityVerified": false,
+    "schedulesMinimumMinutes": 15,
+    "schedulesJitterMinutes": 15,
+    "schedulesRunLimitPerTeamPeriod": 5000,
+    "proposedDispatcherNominalRunsIn31Days": 2976
+  },
+  "local": {
+    "vercelProjectLinkFound": false,
+    "appRootEnvironmentFiles": [".env.example"],
+    "inspectedProcessCredentialNamesPresent": [],
+    "credentialStoresElsewhereInspected": false
+  },
+  "supabase": {
+    "projectRef": "wekfufgllxfpmjtusnre",
+    "projectName": "Quellight",
+    "region": "ap-southeast-1",
+    "status": "ACTIVE_HEALTHY",
+    "postgresVersion": "17.12.0.000",
+    "cliVersion": "2.107.0",
+    "applicationConnectionVerified": false,
+    "credentialsReadOrChanged": false,
+    "ddlExecuted": false
+  },
+  "proposedProvisioning": {
+    "applied": false,
+    "createEndpoint": "/v11/projects",
+    "createMethod": "POST",
+    "scope": "radziamin91-gmailcoms-projects",
+    "body": {
+      "name": "quellight",
+      "framework": "sveltekit",
+      "publicSource": false,
+      "installCommand": "npm ci",
+      "buildCommand": "npm run build:vercel",
+      "ssoProtection": { "deploymentType": "all" },
+      "resourceConfig": {
+        "fluid": true,
+        "functionDefaultRegions": ["sin1"],
+        "functionDefaultTimeout": 30
+      }
+    },
+    "nodePatch": { "nodeVersion": "22.x" },
+    "nodePatchEndpoint": "/v9/projects/{createdProjectId}",
+    "projectDataOptOutRoute": "Authenticated Project Settings before source upload; verify saved Opt-Out; no team-setting change",
+    "sourceUploadPerformed": false
+  },
+  "cloudMutationsPerformed": false,
+  "paidServicesProvisioned": false,
+  "modelCallsPerformed": false,
+  "report": "../docs/VERCEL-HOST-READINESS.md"
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "quellight.zai-live-qualification@1",
+  "model": "zai-coding-plan/glm-5.3-flash",
+  "endpoint": "https://api.z.ai/api/coding/paas/v4/chat/completions",
+  "credentialVariable": "ZHIPU_API_KEY",
+  "appLockSha256": "4969ccda2adaae5768b4798f269a9022e55be3781571e2c015d9527a52051e71",
+  "appInferenceTimeout": null,
+  "appOutputTokenCap": null,
+  "appTurnCap": null,
+  "platformMaximumSeconds": 300,
+  "router": {
+    "schema": "quellight.zai-preview-test@1",
+    "startedAt": "2026-11-16T14:36:33.593Z",
+    "model": "zai-coding-plan/glm-5.3-flash",
+    "sourceSha256": "8133345470490049ec35347dcda8124537bce94a3024ea9a9a454e531647d9f9",
+    "lockSha256": "514020ca475d76e23b70fb171a45332d182dc12132df4aaf246502484001841e",
+    "operatorRequestAttempted": true,
+    "result": "failed",
+    "keyEnvironments": [
+      "development",
+      "preview",
+      "production"
+    ],
+    "productionDeployment": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+    "deploymentId": "dpl_5ALn1UEJx9dqZrWcV4UgyUit9V93",
+    "functionDurationSeconds": 300,
+    "anonymousStatus": 302,
+    "operatorGateStatus": 401,
+    "httpStatus": 429,
+    "code": "PROVIDER_RATE_LIMIT",
+    "previewRemoved": true,
+    "finishedAt": "2026-11-16T14:38:15.977Z"
+  },
+  "adapter": {
+    "schema": "quellight.zai-preview-test@1",
+    "startedAt": "2026-11-16T14:55:28.895Z",
+    "model": "zai-coding-plan/glm-5.3-flash",
+    "probeKind": "adapter",
+    "sourceSha256": "a9995db4014d60c6d02f9dd080ce3a75bb259e44054cda883be2bae76a68a7b3",
+    "lockSha256": "514020ca475d76e23b70fb171a45332d182dc12132df4aaf246502484001841e",
+    "operatorRequestAttempted": true,
+    "result": "passed",
+    "keyEnvironments": [
+      "development",
+      "preview",
+      "production"
+    ],
+    "productionDeployment": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+    "deploymentId": "dpl_Fr7csyAxb4DraTCZY44N5AJXUFiM",
+    "functionDurationSeconds": 300,
+    "anonymousStatus": 302,
+    "operatorGateStatus": 401,
+    "phase": "provider",
+    "httpStatus": 200,
+    "adapterTurnCompleted": true,
+    "automaticWriteWithoutApproval": true,
+    "recordedWriteEffect": true,
+    "streamFinished": true,
+    "textStreamed": true,
+    "toolArgumentsMatched": true,
+    "writeCount": 1,
+    "previewRemoved": true,
+    "finishedAt": "2026-11-16T14:57:48.438Z"
+  },
+  "qualificationScope": "Synthetic protected Preview; real product conversation remains Phase 1",
+  "result": "passed",
+  "localAdapterChecks": {
+    "linuxRegression": "passed",
+    "strictTypeScriptDiagnostics": 0,
+    "turnPolicy": "vict.agent-turn-policy@2 until-completion-or-cancel",
+    "generation": {},
+    "windows": "Temporary database cleanup failed during the test; both owned files removed after process exit"
+  },
+  "previousAdapterAttempts": [
+    {
+      "schema": "quellight.zai-preview-test@1",
+      "startedAt": "2026-11-16T14:46:19.415Z",
+      "model": "zai-coding-plan/glm-5.3-flash",
+      "probeKind": "adapter",
+      "sourceSha256": "a9995db4014d60c6d02f9dd080ce3a75bb259e44054cda883be2bae76a68a7b3",
+      "lockSha256": "514020ca475d76e23b70fb171a45332d182dc12132df4aaf246502484001841e",
+      "operatorRequestAttempted": true,
+      "result": "failed",
+      "keyEnvironments": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "productionDeployment": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+      "deploymentId": "dpl_5jvG7TLzeZBdAgPWUHswNPrX4jwF",
+      "functionDurationSeconds": 300,
+      "anonymousStatus": 302,
+      "operatorGateStatus": 401,
+      "phase": "provider",
+      "httpStatus": 429,
+      "providerHttpStatus": 429,
+      "providerCode": "1113",
+      "code": "PROVIDER_RATE_LIMIT",
+      "previewRemoved": true,
+      "finishedAt": "2026-11-16T14:48:34.875Z"
+    }
+  ]
+}

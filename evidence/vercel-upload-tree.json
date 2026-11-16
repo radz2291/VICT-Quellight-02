@@ -1,0 +1,353 @@
+[
+  {
+    "name": "src",
+    "type": "directory",
+    "mode": 16749,
+    "children": [
+      {
+        "name": ".node-version",
+        "type": "file",
+        "mode": 33206,
+        "uid": "3019d4e0b4a352fcc19df872c2c403a5560409e7"
+      },
+      {
+        "name": ".npmrc",
+        "type": "file",
+        "mode": 33206,
+        "uid": "9c833b71aa8b1efb0016bd41c4615555a7a5a6d1"
+      },
+      {
+        "name": ".svelte-kit",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": "build",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": "deploy",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": "docs",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": "evidence",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": "tests",
+        "type": "directory",
+        "mode": 16822
+      },
+      {
+        "name": ".vercelignore",
+        "type": "file",
+        "mode": 33206,
+        "uid": "e4c96df569048bc663131c1597ebca46a7a9b0e8"
+      },
+      {
+        "name": "baseline.json",
+        "type": "file",
+        "mode": 33206,
+        "uid": "0db341ec9d409e61c9c2ef2e8b93abbef91eebd3"
+      },
+      {
+        "name": "config",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "build.mjs",
+            "type": "file",
+            "mode": 33206,
+            "uid": "a4e5b8aaf3e6ecee6a3245357ffd1195369304ed"
+          },
+          {
+            "name": "runtime.mjs",
+            "type": "file",
+            "mode": 33206,
+            "uid": "fc45ee7f6c4d34564360d92b66fe4aad6bd52494"
+          }
+        ]
+      },
+      {
+        "name": "package-lock.json",
+        "type": "file",
+        "mode": 33206,
+        "uid": "54031a9a244f7409ec5e5a6c25bf41a1f2d2133a"
+      },
+      {
+        "name": "package.json",
+        "type": "file",
+        "mode": 33206,
+        "uid": "3f9e8cc225c29784aecc3234748354821030d4a7"
+      },
+      {
+        "name": "packs",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "victframework-application-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "bcc42211fcabdf5502fae8230864eb08d67ee2a4"
+          },
+          {
+            "name": "victframework-contracts-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "b64b7189055e98a296210050b2b156595e5dc83a"
+          },
+          {
+            "name": "victframework-sdk-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "15b82ed027655e474004f839fd13ee778550df15"
+          },
+          {
+            "name": "victframework-ui-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "ef7fa2fc237907c492d1d9494b14451a44010414"
+          },
+          {
+            "name": "victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "79878447f4c63777c107eb745cb76fa26fd154f1"
+          },
+          {
+            "name": "victframework-ui-svelte-0.4.0-rc.1.tgz",
+            "type": "file",
+            "mode": 33206,
+            "uid": "22f3f912e4f4efe847dbca07350a92129fc11647"
+          }
+        ]
+      },
+      {
+        "name": "scripts",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "build.mjs",
+            "type": "file",
+            "mode": 33206,
+            "uid": "9279a076408895e5132271a7aaff5f7b5529e657"
+          },
+          {
+            "name": "verify-baseline.mjs",
+            "type": "file",
+            "mode": 33206,
+            "uid": "a6eda7fcf2d93c5f7b7a331324ad038cfdc2836f"
+          }
+        ]
+      },
+      {
+        "name": "src",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "app.d.ts",
+            "type": "file",
+            "mode": 33206,
+            "uid": "09502ee76a2a0e8fe460695998ee4c1865442144"
+          },
+          {
+            "name": "app.html",
+            "type": "file",
+            "mode": 33206,
+            "uid": "47fcb2411dd4f7109962352c413739be822cd86b"
+          },
+          {
+            "name": "hooks.server.ts",
+            "type": "file",
+            "mode": 33206,
+            "uid": "9c66867a8cd12c143dd41d1fcc98be6089d3be75"
+          },
+          {
+            "name": "lib",
+            "type": "directory",
+            "mode": 16749,
+            "children": [
+              {
+                "name": "product",
+                "type": "directory",
+                "mode": 16749,
+                "children": [
+                  {
+                    "name": "definition.ts",
+                    "type": "file",
+                    "mode": 33206,
+                    "uid": "5d1b3598db21af4f40a7f0235630e96ef8fe94b9"
+                  }
+                ]
+              },
+              {
+                "name": "theme.css",
+                "type": "file",
+                "mode": 33206,
+                "uid": "0b1f67e0cbfe91faf2e56065650577bcaea6e711"
+              }
+            ]
+          },
+          {
+            "name": "routes",
+            "type": "directory",
+            "mode": 16749,
+            "children": [
+              {
+                "name": "+error.svelte",
+                "type": "file",
+                "mode": 33206,
+                "uid": "1467be20441714bf06c6874ac448f3fc9de64423"
+              },
+              {
+                "name": "+layout.svelte",
+                "type": "file",
+                "mode": 33206,
+                "uid": "283a1aa18270b36dafb8a46ff6349b1fbc98f594"
+              },
+              {
+                "name": "+page.svelte",
+                "type": "file",
+                "mode": 33206,
+                "uid": "93575bb57db0d14cac02345d4b03527c442b1b3f"
+              },
+              {
+                "name": "healthz",
+                "type": "directory",
+                "mode": 16749,
+                "children": [
+                  {
+                    "name": "+server.ts",
+                    "type": "file",
+                    "mode": 33206,
+                    "uid": "694140c8abf5cbf2d5974cc84b406cfa4ca00aeb"
+                  }
+                ]
+              },
+              {
+                "name": "readyz",
+                "type": "directory",
+                "mode": 16749,
+                "children": [
+                  {
+                    "name": "+server.ts",
+                    "type": "file",
+                    "mode": 33206,
+                    "uid": "8f275691c380046c941cf721dc992b83465b3d80"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "svelte.config.js",
+        "type": "file",
+        "mode": 33206,
+        "uid": "e23c43178be0e2fbd2154d997f8c2d5cb884498f"
+      },
+      {
+        "name": "tsconfig.json",
+        "type": "file",
+        "mode": 33206,
+        "uid": "1090d44ae2b6cc29ba6a6f649817915ca38a1375"
+      },
+      {
+        "name": "vite.config.ts",
+        "type": "file",
+        "mode": 33206,
+        "uid": "e8c5350e622951dc74eb2458f706087cd3df5a96"
+      }
+    ]
+  },
+  {
+    "name": "out",
+    "type": "directory",
+    "mode": 16749,
+    "children": [
+      {
+        "name": "index",
+        "type": "lambda",
+        "mode": 49590,
+        "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+      },
+      {
+        "name": "![-]",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "catchall",
+            "type": "lambda",
+            "mode": 49590,
+            "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+          }
+        ]
+      },
+      {
+        "name": "healthz",
+        "type": "lambda",
+        "mode": 49590,
+        "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+      },
+      {
+        "name": "healthz",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "__data.json",
+            "type": "lambda",
+            "mode": 49590,
+            "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+          }
+        ]
+      },
+      {
+        "name": "index",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "__data.json",
+            "type": "lambda",
+            "mode": 49590,
+            "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+          }
+        ]
+      },
+      {
+        "name": "readyz",
+        "type": "lambda",
+        "mode": 49590,
+        "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+      },
+      {
+        "name": "readyz",
+        "type": "directory",
+        "mode": 16749,
+        "children": [
+          {
+            "name": "__data.json",
+            "type": "lambda",
+            "mode": 49590,
+            "uid": "team_Dlwr16zMV68paKlaMa29CDFQ-7b36d1b25274ce08dc6f25744ca4e07a1a"
+          }
+        ]
+      }
+    ]
+  }
+]

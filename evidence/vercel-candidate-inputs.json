@@ -1,0 +1,91 @@
+{
+  "schema": "quellight.vercel-candidate-inputs@1",
+  "recorded": "2026-11-16",
+  "builder": "quellight_vercel_build",
+  "sources": [
+    {
+      "file": "package.json",
+      "sha256": "d179c8c4888e6813e025e0c68e64be74848f8974c3dcccb8419f92e1a111a5ae"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "c19d455cd3559287d28bd45ce05e5f194a7b606c2e698f2deb03a2c7b81cefe1"
+    },
+    {
+      "file": "svelte.config.js",
+      "sha256": "342a623c44bab8d3a08f6f902e8e9d3607fb7ab69f3336c0bd2e90852762c876"
+    },
+    {
+      "file": "vite.config.ts",
+      "sha256": "c652bee9a7193fd51576867535a4906c0dee88431c7f73d40a6519f14ef78d12"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "0374d911148fdc6cd5eaf484a277ef6d685e71f1aec6d2812c412c97cf960e94"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "9ffaeb9bdfbdcc487286c2d66f11dc6070a23b68dacb9d285577086e93267157"
+    },
+    {
+      "file": ".env.example",
+      "sha256": "0b9cd812180508bcc0792f3226627257460aaa020abfaa06a66773b31f180a03"
+    },
+    {
+      "file": ".vercelignore",
+      "sha256": "ccc10c5429aef999a0c19e251cdb12a2ef9a2e520b37d77501ffe5437cb4b635"
+    },
+    {
+      "file": ".node-version",
+      "sha256": "b2afc67902c3f2fda89443fd46f58866d10ae3313e6b23257ecf6d4b322cfc90"
+    },
+    {
+      "file": ".npmrc",
+      "sha256": "be85cc462e740587626bbcbb1c3ed1c40b26e62ec072e8cbd2768f23915c28e6"
+    },
+    {
+      "file": "baseline.json",
+      "sha256": "bf2d7ee43f246d9496d2a64720b831892a39156e2d3943b0e98e344b0c9447ba"
+    },
+    {
+      "file": "config/build.mjs",
+      "sha256": "1af339255b0a07ba894dcbc09b71f30e09d91e88fc78b44731c08ad9af8104dd"
+    },
+    {
+      "file": "config/runtime.mjs",
+      "sha256": "f7657533aac7d1b74d3669cb3c6431bb78495fcf726d774fa8cbc526576b3ef0"
+    },
+    {
+      "file": "src/hooks.server.ts",
+      "sha256": "13761f552c3f605a06aff79d70c8bc125c87fed7da35cb4dbc7994494dd889db"
+    },
+    {
+      "file": "src/lib/product/definition.ts",
+      "sha256": "e45095aa68141b9ceef5df964d5fff303e45c2701cfbd19a2965fe12b704a9cc"
+    },
+    {
+      "file": "scripts/build.mjs",
+      "sha256": "98ae588507c95925157a3a846613732d96cb983d48e7bba7dce0ed0b423b91b1"
+    },
+    {
+      "file": "scripts/check-vercel.mjs",
+      "sha256": "bbce93170e12d996030783eb5350c409de40c58c4b6067ad7b273614de576a8f"
+    },
+    {
+      "file": "scripts/verify-baseline.mjs",
+      "sha256": "f7e7be3512657b241a1628c8e9c431830198bce95bc22f4613d7aed700da31a6"
+    },
+    {
+      "file": "scripts/check-http.mjs",
+      "sha256": "9049a9dedda17a5000a26d3fcc20f48cc814efecaad0903d9fcb2054df35d408"
+    },
+    {
+      "file": "scripts/start.mjs",
+      "sha256": "3ede1a4f7dbcc71be51cee2f582ca0d1be5c1a31cb2d48d5f6052c747c708198"
+    },
+    {
+      "file": "tests/runtime.test.mjs",
+      "sha256": "9b2bda7e1401a31e3156eb24d831bbe946462690acb4d034f7661fc330259a33"
+    }
+  ]
+}

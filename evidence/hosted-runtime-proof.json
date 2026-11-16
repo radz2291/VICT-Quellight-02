@@ -1,0 +1,407 @@
+{
+  "schema": "quellight.hosted-runtime-proof@1",
+  "verifiedAt": "2026-11-16T14:01:59.359Z",
+  "verdict": "PASS for the synthetic Vercel and Supavisor runtime path",
+  "scope": "A deterministic synthetic tool turn through public VICT control/runtime/Mastra/PostgreSQL APIs with a temporary preview bearer",
+  "framework": {
+    "source": "1b11d4a5f4298310c7ab16e0808b8bfbed551ee5",
+    "manifestSha256": "33b544b6be657144560fb6a471d5ad756c72406163524af711027a0ce1b8d99f",
+    "archiveCount": 12,
+    "retainedAppArchives": 6,
+    "appLockSha256": "4969ccda2adaae5768b4798f269a9022e55be3781571e2c015d9527a52051e71",
+    "installedConsumer": "../../qualification/vercel-integration/evidence/acceptance.json"
+  },
+  "database": {
+    "projectRef": "wekfufgllxfpmjtusnre",
+    "plan": "free",
+    "sslEnforcement": true,
+    "observedBeforeEnforcement": {
+      "checkedAt": "2026-11-16T13:25:57.502Z",
+      "node": "v22.23.5",
+      "driver": "8.22.0",
+      "projectRef": "wekfufgllxfpmjtusnre",
+      "trustRootFingerprint256": "80:70:25:AD:50:D4:ED:21:9D:2C:9C:7D:29:9C:00:4F:82:4E:B0:0C:F7:F6:5A:FE:F6:07:D0:7B:72:E6:CA:FA",
+      "checks": [
+        {
+          "mode": "migrator",
+          "passed": true,
+          "host": "aws-1-ap-southeast-1.pooler.supabase.com",
+          "port": "5432",
+          "tlsAuthorized": true,
+          "certificateHostnameChecked": true,
+          "role": "ql_proof_migrator",
+          "version": "17.12",
+          "upstream_tls": false,
+          "create_schema": true,
+          "auth_schema_usage": false
+        },
+        {
+          "mode": "runtime",
+          "passed": true,
+          "host": "aws-1-ap-southeast-1.pooler.supabase.com",
+          "port": "6543",
+          "tlsAuthorized": true,
+          "certificateHostnameChecked": true,
+          "role": "ql_proof_runtime",
+          "version": "17.12",
+          "upstream_tls": false,
+          "create_schema": false,
+          "auth_schema_usage": false
+        }
+      ]
+    },
+    "observedWithEnforcement": {
+      "checkedAt": "2026-11-16T13:26:40.457Z",
+      "node": "v22.23.5",
+      "driver": "8.22.0",
+      "projectRef": "wekfufgllxfpmjtusnre",
+      "trustRootFingerprint256": "80:70:25:AD:50:D4:ED:21:9D:2C:9C:7D:29:9C:00:4F:82:4E:B0:0C:F7:F6:5A:FE:F6:07:D0:7B:72:E6:CA:FA",
+      "checks": [
+        {
+          "mode": "migrator",
+          "passed": true,
+          "host": "aws-1-ap-southeast-1.pooler.supabase.com",
+          "port": "5432",
+          "tlsAuthorized": true,
+          "certificateHostnameChecked": true,
+          "role": "ql_proof_migrator",
+          "version": "17.12",
+          "upstream_tls": true,
+          "create_schema": true,
+          "auth_schema_usage": false
+        },
+        {
+          "mode": "runtime",
+          "passed": true,
+          "host": "aws-1-ap-southeast-1.pooler.supabase.com",
+          "port": "6543",
+          "tlsAuthorized": true,
+          "certificateHostnameChecked": true,
+          "role": "ql_proof_runtime",
+          "version": "17.12",
+          "upstream_tls": true,
+          "create_schema": false,
+          "auth_schema_usage": false
+        }
+      ]
+    },
+    "runtimeVerifyOnlyFactoryCheck": {
+      "passed": true,
+      "unprivileged": true,
+      "ownedSchemas": 0,
+      "schemaCreate": false,
+      "applicationMarkersWritable": false,
+      "unsupportedMemoryWritable": false,
+      "inheritedTemp": true
+    }
+  },
+  "deploy": {
+    "plan": "hobby",
+    "runtime": "nodejs22.x",
+    "region": "sin1",
+    "maxDurationSeconds": 60,
+    "pinnedNpm": "11.21.2",
+    "original": {
+      "id": "dpl_5VDsBaCkxkarT5wv3bYz5QVJycgR",
+      "url": "https://quellight-8of2vi1r1-radziamin91-gmailcoms-projects.vercel.app",
+      "target": "preview",
+      "readyState": "READY",
+      "sourceFiles": 40,
+      "pinnedPackageManager": "npx --yes npm@11.21.2 ci --no-audit --no-fund",
+      "passed": true,
+      "absent": [],
+      "changed": [],
+      "extra": [],
+      "lockSha256": "d81f40a5b0864fabb5519013638e23edde62d1c62d20fcbe43b9b5ca256008b9",
+      "handlerSha256": "de990869a20f3d08b8a019e6453c9c354475ca823b4d12bdc0a3822d33b9ac85",
+      "firstTurnHttpStatus": 503,
+      "firstTurnOutcome": "uncertain"
+    },
+    "recovery": {
+      "id": "dpl_9hsD68viX7Yexs4CuzjizgK2rwro",
+      "url": "https://quellight-pw7h9mbfj-radziamin91-gmailcoms-projects.vercel.app",
+      "target": "preview",
+      "readyState": "READY",
+      "sourceFiles": 40,
+      "pinnedPackageManager": "npx --yes npm@11.21.2 ci --no-audit --no-fund",
+      "passed": true,
+      "absent": [],
+      "changed": [],
+      "extra": [],
+      "lockSha256": "4969ccda2adaae5768b4798f269a9022e55be3781571e2c015d9527a52051e71",
+      "handlerSha256": "be20573b383b65da9bbd940bb736a92a1f262172a247c9fe3b8a274277bf9046",
+      "transitiveIntegrityFieldsComplete": true
+    },
+    "production": {
+      "id": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+      "url": "https://quellight.com",
+      "protection": "all",
+      "anonymousHttpStatus": 302
+    }
+  },
+  "resultLookupRepair": "Read both restoration and final observation through execution.getRun for the sequential proof graph.",
+  "firstDurableObservation": {
+    "schema": "quellight.durable-turn-observation@1",
+    "action": "observe",
+    "run": {
+      "status": "completed",
+      "activationVersion": "v1_8cee9b49c32a35ee3db59fef0f1b77afe7390a9138817a73e39c612f33132e23",
+      "runId": "proof-run:5e7a05a65a704dd68409e386a6ae7628a571be5eee9fd7df6c7bed3451747d53",
+      "recordRevision": 3,
+      "result": {
+        "action": "turn",
+        "checks": {
+          "agentActivation": "v1_93eb26f472fbb5029003edffd7f78fc853a07079fa4bf73d1daaa90bab0210ba",
+          "automaticWriteWithoutApproval": true,
+          "persistedReply": true,
+          "recordedWriteEffect": true,
+          "turnStatus": "completed"
+        },
+        "syntheticOnly": true
+      }
+    },
+    "orchestrationPresent": false,
+    "turn": {
+      "status": "completed",
+      "modelRunRecorded": false
+    },
+    "receipts": [
+      {
+        "status": "completed",
+        "effect": "write",
+        "approvalDisposition": "host-policy-write-without-separate-approval"
+      }
+    ],
+    "effect": "applied",
+    "domainCount": 1
+  },
+  "finalDurableObservation": {
+    "schema": "quellight.durable-turn-observation@1",
+    "action": "observe",
+    "run": {
+      "status": "completed",
+      "activationVersion": "v1_8cee9b49c32a35ee3db59fef0f1b77afe7390a9138817a73e39c612f33132e23",
+      "runId": "proof-run:5e7a05a65a704dd68409e386a6ae7628a571be5eee9fd7df6c7bed3451747d53",
+      "recordRevision": 3,
+      "result": {
+        "action": "turn",
+        "checks": {
+          "agentActivation": "v1_93eb26f472fbb5029003edffd7f78fc853a07079fa4bf73d1daaa90bab0210ba",
+          "automaticWriteWithoutApproval": true,
+          "persistedReply": true,
+          "recordedWriteEffect": true,
+          "turnStatus": "completed"
+        },
+        "syntheticOnly": true
+      }
+    },
+    "orchestrationPresent": false,
+    "turn": {
+      "status": "completed",
+      "modelRunRecorded": false
+    },
+    "receipts": [
+      {
+        "status": "completed",
+        "effect": "write",
+        "approvalDisposition": "host-policy-write-without-separate-approval"
+      }
+    ],
+    "effect": "applied",
+    "domainCount": 1
+  },
+  "replayDidNotWriteAgain": true,
+  "httpRecovery": {
+    "schema": "quellight.http-proof@1",
+    "status": "passed",
+    "provider": "deterministic-offline",
+    "phase": "recover",
+    "deploymentHost": "quellight-pw7h9mbfj-radziamin91-gmailcoms-projects.vercel.app",
+    "unauthorizedDenied": true,
+    "actorInjectionDenied": true,
+    "replayIdentical": true,
+    "conflictingReplayDenied": true,
+    "crossDeploymentReplay": true,
+    "records": [
+      {
+        "action": "turn-recovered-from-new-deployment",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:5e7a05a65a704dd68409e386a6ae7628a571be5eee9fd7df6c7bed3451747d53",
+          "activationVersion": "v1_8cee9b49c32a35ee3db59fef0f1b77afe7390a9138817a73e39c612f33132e23",
+          "recordRevision": 3,
+          "result": {
+            "action": "turn",
+            "checks": {
+              "agentActivation": "v1_93eb26f472fbb5029003edffd7f78fc853a07079fa4bf73d1daaa90bab0210ba",
+              "automaticWriteWithoutApproval": true,
+              "persistedReply": true,
+              "recordedWriteEffect": true,
+              "turnStatus": "completed"
+            },
+            "syntheticOnly": true
+          }
+        }
+      },
+      {
+        "action": "inspect",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:6e9b8c9f97e26071c7ff148e42c8c18dcee0b099d8002e78394c7c970e0e279a",
+          "activationVersion": "v1_702833ccbe95bad59cb90159e2a7108e2078cf7d61fba1a1b494e03a36f27cdc",
+          "recordRevision": 3,
+          "result": {
+            "action": "inspect",
+            "checks": {
+              "crossActorDenied": true,
+              "reopenedPersistedReply": true
+            },
+            "syntheticOnly": true
+          }
+        }
+      },
+      {
+        "action": "fences",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:35df8a81949993558a161d4024cf200aec13e6094ad0d071671ced6dedc1f5c6",
+          "activationVersion": "v1_7a972cfc3773912594ef7f91bc8f1eae6e580be82d1147859578402c455d543a",
+          "recordRevision": 3,
+          "result": {
+            "action": "fences",
+            "checks": {
+              "closedMemoryRejectsNewWork": true,
+              "databaseClockExpiryRejected": true,
+              "failureDiagnosticExercised": true,
+              "releasedLeaseRejectedBeforeCallback": true,
+              "staleReleasePreservedSuccessor": true
+            },
+            "syntheticOnly": true
+          }
+        }
+      },
+      {
+        "action": "failure",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:d73ab9dc2c3981c7d023c40242fc4a0316f70a36d37b5a0353a5bdeb6396c112",
+          "activationVersion": "v1_ff81d7664785549e726bff7e14fa7dad8f2ea4d1279ac37b123636c3536059d4",
+          "recordRevision": 3,
+          "result": {
+            "action": "failure",
+            "checks": {
+              "agentActivation": "v1_93eb26f472fbb5029003edffd7f78fc853a07079fa4bf73d1daaa90bab0210ba",
+              "providerErrorSanitized": true,
+              "turnStatus": "failed"
+            },
+            "syntheticOnly": true
+          }
+        }
+      },
+      {
+        "action": "delete",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:d38b6ae81f5300acc228c236759442890f352f512ed7a12a2a7e5980c8bc0873",
+          "activationVersion": "v1_360ad82bda9286d86b6ef06f5a9ba6d249fdf61b1b1803a90a240327aea7ccdd",
+          "recordRevision": 3,
+          "result": {
+            "action": "delete",
+            "checks": {
+              "syntheticConversationDeleted": true
+            },
+            "syntheticOnly": true
+          }
+        }
+      },
+      {
+        "action": "inspect-deleted",
+        "status": 200,
+        "body": {
+          "status": "completed",
+          "runId": "proof-run:863a7dc990a22c69d026a55523c38abe78dda64bfd55c46e9b2e6857a94c0517",
+          "activationVersion": "v1_98f95baf626ad445599f9ef1009accde6441f05e2743c38b88ef44007aeda462",
+          "recordRevision": 3,
+          "result": {
+            "action": "inspect-deleted",
+            "checks": {
+              "persistedDeletionTombstone": true
+            },
+            "syntheticOnly": true
+          }
+        }
+      }
+    ]
+  },
+  "logs": {
+    "schema": "quellight.preview-log-audit@1",
+    "passed": true,
+    "deployments": [
+      {
+        "id": "dpl_5VDsBaCkxkarT5wv3bYz5QVJycgR",
+        "requestLogCount": 4,
+        "statuses": [
+          503,
+          400,
+          401,
+          401
+        ],
+        "codes": [
+          "VICT_MASTRA_DIAGNOSTIC",
+          "VICT_MASTRA_FAILURE"
+        ],
+        "leaked": []
+      },
+      {
+        "id": "dpl_9hsD68viX7Yexs4CuzjizgK2rwro",
+        "requestLogCount": 10,
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          409,
+          200,
+          200,
+          400,
+          401
+        ],
+        "codes": [
+          "VICT_MASTRA_DIAGNOSTIC",
+          "VICT_MASTRA_FAILURE"
+        ],
+        "leaked": []
+      }
+    ]
+  },
+  "localChecks": {
+    "appTestsPassed": 12,
+    "appArchiveBindingsPassed": 12,
+    "hostedProofBuilderTestsPassed": 6,
+    "svelteCheckErrors": 0,
+    "svelteCheckWarnings": 0,
+    "testedInIsolatedLinuxPreview": true
+  },
+  "cleanup": {
+    "removedPreviewDeployments": 2,
+    "removedPreviewVariables": 6,
+    "remainingProofSchemas": 0,
+    "remainingProofRoles": 0,
+    "remainingPublicTables": 0,
+    "supabaseSecurityAdvisoriesAfterCleanup": 0
+  },
+  "liveProduct": {
+    "mode": "foundation",
+    "ownedSessions": false,
+    "liveProviderTested": false,
+    "scheduledMemoryTested": false
+  },
+  "testModel": "deterministic-offline",
+  "paidServicesProvisioned": false
+}

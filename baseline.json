@@ -1,0 +1,103 @@
+{
+  "schema": "quellight.baseline@1",
+  "status": "phase-0-candidate",
+  "checked": "2026-11-16",
+  "source": {
+    "foundation": "6b420a3e9eada6f694cc2550debda7753316b5b3",
+    "contracts": "02c63c31f8f4dc42840fc8975927c98b21f30058",
+    "uiAi": "cfa3cb9f009b55a551f0dce7c0e5c762a46e7106",
+    "hosted": "1b11d4a5f4298310c7ab16e0808b8bfbed551ee5",
+    "hostedManifestSha256": "33b544b6be657144560fb6a471d5ad756c72406163524af711027a0ce1b8d99f"
+  },
+  "artifacts": [
+    {
+      "name": "@victframework/application",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-application-0.4.0-rc.1.tgz",
+      "sha256": "ea0fdde59f165379154517f4be4ca99e3c8790033862e4a56f6df5fdb09b5db7",
+      "integrity": "sha512-In1UqfocrTrjBQ/9B6QzPGxadtJQERbW9r+CX9FWB3LWbI6ADXuJB4OHEYoKJ43uokupx5PHRydCp2KPlTCkDg=="
+    },
+    {
+      "name": "@victframework/contracts",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-contracts-0.4.0-rc.1.tgz",
+      "sha256": "5fa012bb69ba3a278da35911d95ee079ac3a697a4c12554c298f9add2b7514e2",
+      "integrity": "sha512-90Nhz2/hmUzM4Q9SFzc3zD78lOKVLBIlrPWDoy9Q2Xv6IswgsYtZwh1Yf/I5N8sdzYaCyyOO8p4ViZtWbl1jAg=="
+    },
+    {
+      "name": "@victframework/sdk",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-sdk-0.4.0-rc.1.tgz",
+      "sha256": "c37e97319a52463c9b422a3de2870247beaee97b811fe378b3a4ee8e00e2ce7a",
+      "integrity": "sha512-Dx5/fOVaeKcrJtwseruSC3w2QzOFZ5qwRc5p4spHzwCXAFKffR/Pd8Q6bKgxDHo3X0WvQu27CGYPiGdf0Un4rg=="
+    },
+    {
+      "name": "@victframework/ui",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-0.4.0-rc.1.tgz",
+      "sha256": "15dd5f5da2a38b6cbf0bc56677c7f6ccae190c4c7a5029d8cc7c8994263a7cb2",
+      "integrity": "sha512-zobQELIijYzh7l5GRrgXOt8WeCNt/lmZJxGPVRw5ohzddHGuF5Qxmy5AfO/aS82fPNAIW0qd3MQkjwtvi1iqAg=="
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
+      "sha256": "74df4aac5bed13a556f684373e2d4d8ce021521db24edddfe22a414e46be2ac8",
+      "integrity": "sha512-GZa33+wCOe4YzD1sk/QQxdEi9ewlkGTK7GvAh4lD08arsddDrQGtQ3hGgdDSOezV2zswTvuiZYTcppgB11Je+A=="
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-svelte-0.4.0-rc.1.tgz",
+      "sha256": "f578759a74fb2ac509e52850d27292871115de3103acbe9f7b6fc7d0ef606336",
+      "integrity": "sha512-azH01cpUNu6lsXI0rMfGe6v9mgB2rK48LBZO45TvW49xWu8cmgmQur9z6b7dY4gLr0UWfUu/KR8dKcPNupsWBA=="
+    },
+    {
+      "name": "@victframework/kernel",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-kernel-0.4.0-rc.1.tgz",
+      "sha256": "a865551c64cb25b9314862e1a0afa19d5b8f61ebdb817dcb55f68085a431b5a6",
+      "integrity": "sha512-7pt9eZ1pMEFEGaGdnTmOcfGbUPeMhhGp0howTKE9Y0l9ztna8y5f6G5eeZwKheBJtZu0xz01snWsVhiZUnnqXw=="
+    },
+    {
+      "name": "@victframework/control",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-control-0.4.0-rc.1.tgz",
+      "sha256": "2f42f94df4c2c72ba84e6ee0d9bb59eb3feee8e0766ea248f00e81afb1acb82a",
+      "integrity": "sha512-YU35Dz2ILEfZqMySvuQ68zIr4vT3eaM8zKeHCyl7ax/iZp7ScqDmf/KzkGqpcICYw5AO4OWAZlCVo2hiS9Wt/A=="
+    },
+    {
+      "name": "@victframework/runtime",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-runtime-0.4.0-rc.1.tgz",
+      "sha256": "bbb8fb37ad7a93dfd77e17af3a909a16cb8d7b57522bfb0ddd537d631353b881",
+      "integrity": "sha512-NVdJajuE8GFXW1ILnHVV07yKb0D5g2UB6yNJn1DwFgsmWMq2QX+84KxIOjbGuAXGb/4TVV3f3E7nGuNjc7QSOw=="
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-store-postgres-0.4.0-rc.1.tgz",
+      "sha256": "74f4681ee0d86d487f7fd304ae88cf181aa6e6dff92a0f3bb01ad6dbe84129cb",
+      "integrity": "sha512-M9HBd4ZjsHqO0zBkDqJvrpzXFCKrMx2wK70BvC/zBdUXKs02kpZ4eN5FXcSPAARzIC5gDl7womAyGaHK6rkaMA=="
+    },
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-mastra-0.4.0-rc.1.tgz",
+      "sha256": "ecf3f6bfce73457bbf25e9c0b81b64db9e532db386f5586e2e87d6ac0765eb01",
+      "integrity": "sha512-WsGU3jYebHPd7bE9O8uQQEy0JhUnWwn5itAKBl0WVrGPj2VMAlvWSWQsQrRGzrT+UxP9qXOykbi+k4QXCnl7qw=="
+    },
+    {
+      "name": "@victframework/hosted",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-hosted-0.4.0-rc.1.tgz",
+      "sha256": "4aa6581aa7d26f067ddb3ec28dc8f7fd67bb34467e08132132972ed25c880de4",
+      "integrity": "sha512-zS6rSPaPn0rHqzgOXoOFJqxnqdcwdfZi5ipIF6R1FVyp33VStUCeZO2e/ykB2J8SgD/VMFgyLRsgolwNHDP1sA=="
+    }
+  ],
+  "toolchain": {
+    "node": "22.23.5",
+    "npm": "11.21.2"
+  },
+  "scope": "Pinned VICT Application Layer, ready UI, and qualified public hosted extension inputs for Quellight. The app enablement state is in STATE.md."
+}

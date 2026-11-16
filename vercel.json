@@ -1,0 +1,4 @@
+{
+  "installCommand": "npx --yes npm@11.21.2 ci --no-audit --no-fund",
+  "buildCommand": "npm run build:vercel"
+}

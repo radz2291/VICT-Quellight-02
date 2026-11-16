@@ -1,0 +1,75 @@
+{
+  "schema": "quellight.phase-0-evidence@1",
+  "recordedOn": "2026-11-16",
+  "timezone": "Asia/Kuala_Lumpur",
+  "status": "foundation-qualified-hosted-runtime-pending",
+  "gitCommit": null,
+  "toolchain": {
+    "platform": "Windows x64",
+    "npm": "10.9.9",
+    "node": "22.23.5"
+  },
+  "builder": {
+    "clientEntryKilobytes": 1636.58,
+    "typecheckWarnings": 0,
+    "productionBuild": "passed",
+    "archiveBindingsVerified": 6,
+    "ownedProcessHttp": "passed",
+    "agent": "app_foundation",
+    "typecheckErrors": 0,
+    "cleanInstall": "passed",
+    "testsPassed": 10,
+    "clientEntryGzipKilobytes": 441.57
+  },
+  "independentUiReview": {
+    "evidence": "../../qualification/public-ui/evidence/independent-app-review.json",
+    "agent": "public_ui_proof",
+    "result": "passed-for-foundation-ui"
+  },
+  "independentHostConfigReview": {
+    "occupiedPortFaultInjection": "rejected-before-impostor-request",
+    "runtimeTestsPassed": 5,
+    "agent": "hosted_capability",
+    "additionalOriginNegatives": 7,
+    "result": "passed-after-repair"
+  },
+  "rootVisualInspection": {
+    "preview": "http://127.0.0.1:4317",
+    "result": "observed-rendered-foundation",
+    "surface": "Codex in-app browser"
+  },
+  "notEstablished": [
+    "hosted runtime",
+    "live provider",
+    "durable product mutation",
+    "owner authentication",
+    "actual phone HTTPS use",
+    "Docker container execution",
+    "owner acceptance"
+  ],
+  "candidateFiles": {
+    "package.json": "e49bb2d5ec1e00ffdc4bac3580e46f294941f19848ff722ec8f93985422eb4a1",
+    "package-lock.json": "67798e3e39a927d35391aa278e8b66be2b2218b67dae2046562540bab087e8be",
+    "baseline.json": "bf2d7ee43f246d9496d2a64720b831892a39156e2d3943b0e98e344b0c9447ba",
+    "svelte.config.js": "afdcff45b905b3a79a6836d114975aacffd5750cffa53105f8b9f2aaf0b80327",
+    "vite.config.ts": "c652bee9a7193fd51576867535a4906c0dee88431c7f73d40a6519f14ef78d12",
+    "tsconfig.json": "0374d911148fdc6cd5eaf484a277ef6d685e71f1aec6d2812c412c97cf960e94",
+    "Dockerfile": "3e1fff48c93489f8e9672150de2a8272e432663c3b26856e24c733903944489b",
+    "deploy/render.free.yaml": "d00a2d2ab365dbcdd303828319f283fe4380ca882283fe8e76149da1e985d426",
+    "tests/runtime.test.mjs": "57e1e62a99d37a3af99858c86721cc5ae0c86d4b698a5de90933d545925b7e40",
+    "tests/application.test.mjs": "ca6aba4ae7d1b1114c1adc554599d5026e650e192e445f9aa7d32bde9b52b25e",
+    "config/runtime.mjs": "b6169399b637945247c0eadf252df4849be95a0d1c1caec16da7f54cace4a81f",
+    "scripts/verify-baseline.mjs": "f7e7be3512657b241a1628c8e9c431830198bce95bc22f4613d7aed700da31a6",
+    "scripts/start.mjs": "3ede1a4f7dbcc71be51cee2f582ca0d1be5c1a31cb2d48d5f6052c747c708198",
+    "scripts/check-http.mjs": "9049a9dedda17a5000a26d3fcc20f48cc814efecaad0903d9fcb2054df35d408",
+    "src/app.html": "757c01c2551286c84b4d6fd646d312b171c73d3ffe1affa311832da5ddbe9a3c",
+    "src/app.d.ts": "cad0b05fcbd32b83dde20aeccfde311f9340fbde0e5aeec4979eee66b6d9c435",
+    "src/lib/theme.css": "268f5aaabc32da16ad85f670824a7263e80f01e4450fff99f1fad2558d96ccc2",
+    "src/routes/readyz/+server.ts": "9b59eec8baa78c7758f0d8f7d8a079fde59fd9a88ceedb7eaead315728013524",
+    "src/lib/product/definition.ts": "e45095aa68141b9ceef5df964d5fff303e45c2701cfbd19a2965fe12b704a9cc",
+    "src/routes/+layout.svelte": "db81054f18255583275768140758faaf53f604e679fcb2b7b3b46dabe59b65e0",
+    "src/routes/+error.svelte": "3a14f0272a73f91000914b81f9628035edf2f65cbbe87088f2b6c7f6d00e566a",
+    "src/routes/+page.svelte": "21ea48d532e83db47b71af89594c2f4a8d571daea3fdadde9b389da443b5df93",
+    "src/routes/healthz/+server.ts": "e6057abd5d439b3c043f026da641b465cfdea6f4fdc57a2f9e18f515c556e860"
+  }
+}

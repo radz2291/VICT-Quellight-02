@@ -1,0 +1,104 @@
+{
+  "recordedAtUtc": "2026-11-16T12:40:09Z",
+  "completedAtUtc": "2026-11-16T12:43:48Z",
+  "budget": "free-only",
+  "authorization": "Owner approved quellight.com for Quellight, using the apex and a www redirect.",
+  "provider": "Vercel",
+  "projectId": "prj_tcqb8vUdK535B2uCppRSbVFZipMK",
+  "teamId": "team_Dlwr16zMV68paKlaMa29CDFQ",
+  "teamSlug": "radziamin91-gmailcoms-projects",
+  "productionDeploymentId": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+  "domains": [
+    {
+      "name": "quellight.com",
+      "attached": true,
+      "ownershipVerified": true,
+      "verificationChallenges": [],
+      "redirect": null,
+      "redirectStatusCode": null
+    },
+    {
+      "name": "www.quellight.com",
+      "attached": true,
+      "ownershipVerified": true,
+      "verificationChallenges": [],
+      "redirect": "quellight.com",
+      "redirectStatusCode": 308
+    }
+  ],
+  "dns": {
+    "owner": "Root orchestrator through Cloudflare",
+    "source": "Authenticated GET /v6/domains/{domain}/config?projectIdOrName=prj_tcqb8vUdK535B2uCppRSbVFZipMK",
+    "preferredAValues": ["216.198.79.1", "64.29.17.1"],
+    "preferredCnameValue": "40425edb6e98f062.vercel-dns-017.com.",
+    "requiredOwnershipTxtRecords": [],
+    "proposedRecords": [
+      { "type": "A", "name": "@", "content": "216.198.79.1", "proxied": false },
+      { "type": "CNAME", "name": "www", "content": "40425edb6e98f062.vercel-dns-017.com", "proxied": false }
+    ],
+    "nameserversBefore": ["malavika.ns.cloudflare.com", "yew.ns.cloudflare.com"],
+    "dnsRecordsMutatedByThisAgent": false,
+    "cloudflareSaveReportedByRoot": true,
+    "cloudflareTtlReportedByRoot": "Auto",
+    "cloudflareReloadVerifiedByRoot": true,
+    "cloudflareRecordCountAfter": 8,
+    "originalSixRecordsUnchangedVerifiedByRoot": true,
+    "cloudflareScreenshot": "../evidence/browser/cloudflare-dns.jpg",
+    "initialMisconfigured": { "quellight.com": true, "www.quellight.com": true },
+    "finalMisconfigured": { "quellight.com": false, "www.quellight.com": false },
+    "configuredBy": { "quellight.com": "A", "www.quellight.com": "CNAME" },
+    "acceptedCertificateChallenges": ["http-01"],
+    "nameserversAfter": ["malavika.ns.cloudflare.com", "yew.ns.cloudflare.com"],
+    "nameserversUnchanged": true,
+    "propagationVerified": true
+  },
+  "security": {
+    "ssoProtection": "all",
+    "projectProtectionChanged": false,
+    "teamSettingsChanged": false,
+    "anonymousProtectionVerified": true,
+    "tlsVerified": true,
+    "ownerBrowserCheck": {
+      "verified": true,
+      "attribution": "Root orchestrator's authenticated browser observation",
+      "requestedUrl": "https://www.quellight.com",
+      "finalUrl": "https://quellight.com/",
+      "observed": "Hydrated Quellight foundation, disabled Send and expected ready-made VICT controls",
+      "screenshot": "../evidence/browser/quellight-domain.jpg"
+    }
+  },
+  "publicChecks": {
+    "checkedAtUtc": "2026-11-16T12:42:13.742Z",
+    "apex": {
+      "resolvedA": ["216.198.79.1"],
+      "anonymousHttpStatus": 302,
+      "anonymousRedirectOrigin": "https://vercel.com",
+      "anonymousRedirectPath": "/sso-api",
+      "tlsAuthorized": true,
+      "certificateSubject": "quellight.com",
+      "certificateIssuerCommonName": "YR1",
+      "certificateExpires": "Feb 14 11:42:40 2027 GMT",
+      "certificateFingerprint256": "FF:8A:FF:1E:69:87:E4:89:5D:4D:3A:62:49:EF:61:26:C0:B3:30:E6:1F:51:AD:58:86:45:A8:2A:D6:FF:3A:1F"
+    },
+    "www": {
+      "resolvedCname": ["40425edb6e98f062.vercel-dns-017.com"],
+      "anonymousHttpStatus": 302,
+      "anonymousRedirectOrigin": "https://vercel.com",
+      "anonymousRedirectPath": "/sso-api",
+      "tlsAuthorized": true,
+      "certificateSubject": "www.quellight.com",
+      "certificateIssuerCommonName": "YR2",
+      "certificateExpires": "Feb 14 11:43:03 2027 GMT",
+      "certificateFingerprint256": "11:04:07:E8:E5:6A:6A:AC:F3:64:E3:FD:F8:F8:77:C4:46:0E:DA:2D:63:B0:CF:37:01:73:72:93:18:E8:9C:34",
+      "authenticatedRedirectJourneyVerifiedByRoot": true,
+      "authenticatedRedirectHttpStatusObserved": null,
+      "note": "Vercel Authentication precedes the domain redirect. API configuration confirms 308; the root observed authenticated www navigation ending at the apex without independently capturing its HTTP status."
+    },
+    "secretsOrCookiesRecorded": false
+  },
+  "status": "connected-and-verified",
+  "paidServicesAdded": false,
+  "domainPurchased": false,
+  "otherProjectsChanged": false,
+  "applicationReadiness": "foundation-only"
+}

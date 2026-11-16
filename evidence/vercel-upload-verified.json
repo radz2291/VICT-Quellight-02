@@ -1,0 +1,123 @@
+{
+  "deployment": "dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG",
+  "comparedFiles": 29,
+  "allMatch": true,
+  "files": [
+    {
+      "path": ".node-version",
+      "sha1": "3019d4e0b4a352fcc19df872c2c403a5560409e7"
+    },
+    {
+      "path": ".npmrc",
+      "sha1": "9c833b71aa8b1efb0016bd41c4615555a7a5a6d1"
+    },
+    {
+      "path": ".vercelignore",
+      "sha1": "e4c96df569048bc663131c1597ebca46a7a9b0e8"
+    },
+    {
+      "path": "baseline.json",
+      "sha1": "0db341ec9d409e61c9c2ef2e8b93abbef91eebd3"
+    },
+    {
+      "path": "config/build.mjs",
+      "sha1": "a4e5b8aaf3e6ecee6a3245357ffd1195369304ed"
+    },
+    {
+      "path": "config/runtime.mjs",
+      "sha1": "fc45ee7f6c4d34564360d92b66fe4aad6bd52494"
+    },
+    {
+      "path": "package-lock.json",
+      "sha1": "54031a9a244f7409ec5e5a6c25bf41a1f2d2133a"
+    },
+    {
+      "path": "package.json",
+      "sha1": "3f9e8cc225c29784aecc3234748354821030d4a7"
+    },
+    {
+      "path": "packs/victframework-application-0.4.0-rc.1.tgz",
+      "sha1": "bcc42211fcabdf5502fae8230864eb08d67ee2a4"
+    },
+    {
+      "path": "packs/victframework-contracts-0.4.0-rc.1.tgz",
+      "sha1": "b64b7189055e98a296210050b2b156595e5dc83a"
+    },
+    {
+      "path": "packs/victframework-sdk-0.4.0-rc.1.tgz",
+      "sha1": "15b82ed027655e474004f839fd13ee778550df15"
+    },
+    {
+      "path": "packs/victframework-ui-0.4.0-rc.1.tgz",
+      "sha1": "ef7fa2fc237907c492d1d9494b14451a44010414"
+    },
+    {
+      "path": "packs/victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
+      "sha1": "79878447f4c63777c107eb745cb76fa26fd154f1"
+    },
+    {
+      "path": "packs/victframework-ui-svelte-0.4.0-rc.1.tgz",
+      "sha1": "22f3f912e4f4efe847dbca07350a92129fc11647"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha1": "9279a076408895e5132271a7aaff5f7b5529e657"
+    },
+    {
+      "path": "scripts/verify-baseline.mjs",
+      "sha1": "a6eda7fcf2d93c5f7b7a331324ad038cfdc2836f"
+    },
+    {
+      "path": "src/app.d.ts",
+      "sha1": "09502ee76a2a0e8fe460695998ee4c1865442144"
+    },
+    {
+      "path": "src/app.html",
+      "sha1": "47fcb2411dd4f7109962352c413739be822cd86b"
+    },
+    {
+      "path": "src/hooks.server.ts",
+      "sha1": "9c66867a8cd12c143dd41d1fcc98be6089d3be75"
+    },
+    {
+      "path": "src/lib/product/definition.ts",
+      "sha1": "5d1b3598db21af4f40a7f0235630e96ef8fe94b9"
+    },
+    {
+      "path": "src/lib/theme.css",
+      "sha1": "0b1f67e0cbfe91faf2e56065650577bcaea6e711"
+    },
+    {
+      "path": "src/routes/+error.svelte",
+      "sha1": "1467be20441714bf06c6874ac448f3fc9de64423"
+    },
+    {
+      "path": "src/routes/+layout.svelte",
+      "sha1": "283a1aa18270b36dafb8a46ff6349b1fbc98f594"
+    },
+    {
+      "path": "src/routes/+page.svelte",
+      "sha1": "93575bb57db0d14cac02345d4b03527c442b1b3f"
+    },
+    {
+      "path": "src/routes/healthz/+server.ts",
+      "sha1": "694140c8abf5cbf2d5974cc84b406cfa4ca00aeb"
+    },
+    {
+      "path": "src/routes/readyz/+server.ts",
+      "sha1": "8f275691c380046c941cf721dc992b83465b3d80"
+    },
+    {
+      "path": "svelte.config.js",
+      "sha1": "e23c43178be0e2fbd2154d997f8c2d5cb884498f"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha1": "1090d44ae2b6cc29ba6a6f649817915ca38a1375"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha1": "e8c5350e622951dc74eb2458f706087cd3df5a96"
+    }
+  ]
+}

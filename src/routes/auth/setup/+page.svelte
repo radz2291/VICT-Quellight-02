@@ -1,0 +1,5 @@
+<script lang="ts">
+  import AuthView from '$lib/components/AuthView.svelte';
+</script>
+
+<AuthView setup />

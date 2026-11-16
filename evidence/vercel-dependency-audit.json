@@ -1,0 +1,385 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@rollup/plugin-node-resolve": {
+      "name": "@rollup/plugin-node-resolve",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "deepmerge"
+      ],
+      "effects": [],
+      "range": ">=8.0.0",
+      "nodes": [
+        "node_modules/@rollup/plugin-node-resolve"
+      ],
+      "fixAvailable": true
+    },
+    "@shadcn-svelte/primitives": {
+      "name": "@shadcn-svelte/primitives",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "runed",
+        "svelte-toolbelt"
+      ],
+      "effects": [],
+      "range": ">=0.0.1",
+      "nodes": [
+        "node_modules/@shadcn-svelte/primitives"
+      ],
+      "fixAvailable": true
+    },
+    "@sveltejs/adapter-node": {
+      "name": "@sveltejs/adapter-node",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@rollup/plugin-node-resolve",
+        "@sveltejs/kit"
+      ],
+      "effects": [],
+      "range": "1.0.0-next.0 - 5.5.8",
+      "nodes": [
+        "node_modules/@sveltejs/adapter-node"
+      ],
+      "fixAvailable": {
+        "name": "@sveltejs/adapter-node",
+        "version": "6.0.2",
+        "isSemVerMajor": true
+      }
+    },
+    "@sveltejs/adapter-vercel": {
+      "name": "@sveltejs/adapter-vercel",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@sveltejs/kit"
+      ],
+      "effects": [],
+      "range": "1.0.0-next.0 - 6.3.5",
+      "nodes": [
+        "node_modules/@sveltejs/adapter-vercel"
+      ],
+      "fixAvailable": {
+        "name": "@sveltejs/adapter-vercel",
+        "version": "7.0.3",
+        "isSemVerMajor": true
+      }
+    },
+    "@sveltejs/kit": {
+      "name": "@sveltejs/kit",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@sveltejs/vite-plugin-svelte",
+        {
+          "source": 1243067,
+          "name": "@sveltejs/kit",
+          "dependency": "@sveltejs/kit",
+          "title": "SvelteKit: URL redirection to untrusted site via enhanced form submission",
+          "url": "https://github.com/advisories/GHSA-pfhg-q3qv-9q6r",
+          "severity": "low",
+          "cwe": [
+            "CWE-601"
+          ],
+          "cvss": {
+            "score": 4.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+          },
+          "range": "<3.0.0"
+        },
+        {
+          "source": 1243076,
+          "name": "@sveltejs/kit",
+          "dependency": "@sveltejs/kit",
+          "title": "SvelteKit : XSS via untrusted cache-control header in prerendered page",
+          "url": "https://github.com/advisories/GHSA-27mw-82g8-phjj",
+          "severity": "low",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:N"
+          },
+          "range": "<3.0.0"
+        },
+        "cookie"
+      ],
+      "effects": [
+        "@sveltejs/adapter-node",
+        "@sveltejs/adapter-vercel",
+        "runed"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@sveltejs/kit"
+      ],
+      "fixAvailable": false
+    },
+    "@sveltejs/vite-plugin-svelte": {
+      "name": "@sveltejs/vite-plugin-svelte",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@sveltejs/vite-plugin-svelte-inspector",
+        "deepmerge"
+      ],
+      "effects": [
+        "@sveltejs/kit",
+        "@sveltejs/vite-plugin-svelte-inspector"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@sveltejs/vite-plugin-svelte"
+      ],
+      "fixAvailable": false
+    },
+    "@sveltejs/vite-plugin-svelte-inspector": {
+      "name": "@sveltejs/vite-plugin-svelte-inspector",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@sveltejs/vite-plugin-svelte"
+      ],
+      "effects": [
+        "@sveltejs/vite-plugin-svelte"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@sveltejs/vite-plugin-svelte-inspector"
+      ],
+      "fixAvailable": false
+    },
+    "@victframework/ui-ai-svelte": {
+      "name": "@victframework/ui-ai-svelte",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@shadcn-svelte/primitives",
+        "@victframework/ui-svelte",
+        "bits-ui",
+        "runed",
+        "svelte-streamdown",
+        "svelte-toolbelt"
+      ],
+      "effects": [],
+      "range": "",
+      "nodes": [
+        "node_modules/@victframework/ui-ai-svelte"
+      ],
+      "fixAvailable": false
+    },
+    "@victframework/ui-svelte": {
+      "name": "@victframework/ui-svelte",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "bits-ui"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@victframework/ui-svelte"
+      ],
+      "fixAvailable": false
+    },
+    "bits-ui": {
+      "name": "bits-ui",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "runed",
+        "svelte-toolbelt"
+      ],
+      "effects": [
+        "@victframework/ui-svelte"
+      ],
+      "range": ">=2.11.8",
+      "nodes": [
+        "node_modules/bits-ui"
+      ],
+      "fixAvailable": false
+    },
+    "cookie": {
+      "name": "cookie",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1103907,
+          "name": "cookie",
+          "dependency": "cookie",
+          "title": "cookie accepts cookie name, path, and domain with out of bounds characters",
+          "url": "https://github.com/advisories/GHSA-pxg6-pf52-xh8x",
+          "severity": "low",
+          "cwe": [
+            "CWE-74"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.7.0"
+        }
+      ],
+      "effects": [
+        "@sveltejs/kit"
+      ],
+      "range": "<0.7.0",
+      "nodes": [
+        "node_modules/cookie"
+      ],
+      "fixAvailable": false
+    },
+    "deepmerge": {
+      "name": "deepmerge",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1243505,
+          "name": "deepmerge",
+          "dependency": "deepmerge",
+          "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+          "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+          "severity": "low",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": ">=4.2.0 <=4.3.1"
+        }
+      ],
+      "effects": [
+        "@rollup/plugin-node-resolve",
+        "@sveltejs/vite-plugin-svelte"
+      ],
+      "range": ">=4.2.0",
+      "nodes": [
+        "node_modules/deepmerge"
+      ],
+      "fixAvailable": false
+    },
+    "katex": {
+      "name": "katex",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1241206,
+          "name": "katex",
+          "dependency": "katex",
+          "title": "KaTeX: Existing prototype pollution can bypass trust restrictions",
+          "url": "https://github.com/advisories/GHSA-238p-pmpm-9mq7",
+          "severity": "low",
+          "cwe": [
+            "CWE-807"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=0.11.0 <0.18.2"
+        }
+      ],
+      "effects": [
+        "mermaid",
+        "svelte-streamdown"
+      ],
+      "range": "0.11.0 - 0.18.1",
+      "nodes": [
+        "node_modules/katex"
+      ],
+      "fixAvailable": true
+    },
+    "mermaid": {
+      "name": "mermaid",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "katex"
+      ],
+      "effects": [
+        "svelte-streamdown"
+      ],
+      "range": "10.9.0-rc.1 - 12.1.0",
+      "nodes": [
+        "node_modules/mermaid"
+      ],
+      "fixAvailable": true
+    },
+    "runed": {
+      "name": "runed",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@sveltejs/kit"
+      ],
+      "effects": [
+        "@shadcn-svelte/primitives",
+        "@victframework/ui-ai-svelte",
+        "bits-ui",
+        "svelte-toolbelt"
+      ],
+      "range": "0.32.0 - 0.37.1",
+      "nodes": [
+        "node_modules/bits-ui/node_modules/runed",
+        "node_modules/runed",
+        "node_modules/svelte-toolbelt/node_modules/runed"
+      ],
+      "fixAvailable": false
+    },
+    "svelte-streamdown": {
+      "name": "svelte-streamdown",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "katex",
+        "mermaid"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/svelte-streamdown"
+      ],
+      "fixAvailable": true
+    },
+    "svelte-toolbelt": {
+      "name": "svelte-toolbelt",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "runed"
+      ],
+      "effects": [],
+      "range": ">=0.10.6",
+      "nodes": [
+        "node_modules/svelte-toolbelt"
+      ],
+      "fixAvailable": true
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 17,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 17
+    },
+    "dependencies": {
+      "prod": 233,
+      "dev": 142,
+      "optional": 81,
+      "peer": 1,
+      "peerOptional": 0,
+      "total": 375
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Upload only the application/build inputs, never development evidence or credentials.
+.git/
+.vercel/
+.svelte-kit/
+node_modules/
+.local/
+build/
+.env
+.env.*
+*.log
+.DS_Store
+AGENTS.md
+STATE.md
+docs/
+evidence/
+deploy/
+tests/
+test-results/
+migrations/
+Dockerfile
+.dockerignore
+scripts/check-*.mjs
+scripts/start.mjs

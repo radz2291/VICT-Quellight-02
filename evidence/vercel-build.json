@@ -1,0 +1,73 @@
+{
+  "schema": "quellight.vercel-build-evidence@1",
+  "recorded": "2026-11-16",
+  "builder": "quellight_vercel_build",
+  "status": "local-linux-build-and-generated-handler-qualified",
+  "inputs": "vercel-candidate-inputs.json",
+  "adapter": {
+    "package": "@sveltejs/adapter-vercel",
+    "version": "6.3.5",
+    "peerSvelteKit": "^2.4.0",
+    "installedSvelteKit": "2.70.4",
+    "latestVersionNotSelected": "7.0.3 requires SvelteKit ^3.0.0-next.0"
+  },
+  "checks": {
+    "svelteCheck": { "exitCode": 0, "errors": 0, "warnings": 0 },
+    "appTests": { "exitCode": 0, "passed": 12, "failed": 0 },
+    "archiveBindings": { "passed": 6, "changed": false },
+    "linuxCleanInstall": { "exitCode": 0, "packagesInstalled": 300 },
+    "linuxVercelBuild": { "exitCode": 0, "log": "vercel-linux-build.log" },
+    "windowsNodeBuild": { "exitCode": 0, "log": "vercel-node-build.log" },
+    "windowsOwnedProcessHttp": {
+      "exitCode": 0,
+      "probes": ["health-200", "readiness-503", "foundation-SSR", "VICT-error-404", "foreign-origin-POST-rejected"]
+    },
+    "dependencyAudit": { "low": 17, "moderate": 0, "high": 0, "critical": 0, "record": "vercel-dependency-audit.json" }
+  },
+  "linuxProof": {
+    "distro": "Ubuntu-24.04",
+    "node": "22.23.5",
+    "npm": "10.9.9",
+    "path": "/root/quellight-vercel-proof-20261116-1b2az8/app",
+    "toolchain": "/root/quellight-vercel-proof-20261116-1b2az8/toolchain/node-v22.23.5-linux-x64/bin",
+    "nodeArchiveVerification": "Official nodejs.org SHASUMS256.txt verified before extraction; sha256sum returned OK.",
+    "nodeArchiveSha256": "cdeb8670a0c81f51b4dc4ac61919f9b1ad917b304bf8221eb939570663d240f8",
+    "relocation": "The initial WSL command expanded its temporary-path variable unexpectedly, creating new /app and /toolchain directories. Both were task-created (mkdir without -p succeeded), their exact identities and package/lock hashes were checked, then they were moved into the recorded dedicated persistent proof directory. No existing source checkout was moved. See relocate-vercel-proof.sh."
+  },
+  "generatedHandler": {
+    "scope": "local-generated-vercel-artifact",
+    "runtime": "nodejs22.x",
+    "region": "sin1",
+    "maxDurationSeconds": 30,
+    "functionBytes": 3826054,
+    "staticBytes": 2984119,
+    "inspectedFiles": 175,
+    "privateCanaryFound": false,
+    "unexpectedEnvironmentKeyDatabaseArchiveFiles": false,
+    "probes": ["health-200", "readiness-503", "foundation-SSR", "error-404", "foreign-origin-POST-rejected", "live-mode-refused", "local-mode-on-Vercel-refused", "missing-host-origin-refused"]
+  },
+  "windowsVercelFailureRetained": "vercel-windows-failure.json",
+  "cloudSetup": {
+    "installCommand": "npm ci --no-audit --no-fund",
+    "buildCommand": "npm run build:vercel",
+    "nodeMajor": "22.x",
+    "requiredUserSecretsForFoundation": [],
+    "environment": "Vercel's platform VERCEL=1 and VERCEL_URL select and validate hosted foundation mode. Optional explicit QUELLIGHT_MODE=foundation and QUELLIGHT_DEPLOYMENT=hosted. Do not copy the local .env.example settings into a hosted environment.",
+    "uploads": ".vercelignore excludes engineering records, test/probe scripts, local output, environment files, Git state and Node-only deployment files. Required source/config/build script/lock/baseline/six archives are retained."
+  },
+  "limits": [
+    "Builder checks are separate from independent review.",
+    "No Vercel resource or deployment was created by this build workstream; a Linux artifact is not live-host evidence.",
+    "The function remains foundation-only and cannot enable owner authentication, conversation, memory, storage or providers with environment flags.",
+    "The 30-second cap is for the empty foundation; governed jobs and streaming require later qualified route budgets and durable coordination.",
+    "Vercel controls Node minor and patch rollout; hosted runtime must be checked separately.",
+    "The existing broad VICT catalog client chunk remains about 1.64 MB (about 442 kB gzip).",
+    "The added low audit entry is adapter-vercel inheriting existing SvelteKit advisories; no broad framework upgrade was performed.",
+    "Canary and artifact-path inspection are bounded checks, not proof that all future secret or log paths are safe."
+  ],
+  "references": [
+    "https://svelte.dev/docs/kit/adapter-vercel",
+    "https://vercel.com/docs/functions/runtimes/node-js/node-js-versions",
+    "https://vercel.com/docs/functions/limitations"
+  ]
+}

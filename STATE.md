@@ -1,0 +1,66 @@
+# Quellight implementation state
+
+Updated 16 November 2026. **Phase 1 is implemented and deployed at quellight.com.** Clean Linux Node/Vercel packaging and the live GLM conversation journey passed. The owner privately set a password and confirmed that Quellight opened. Phase 0 is complete for its earlier foundation and scoped hosted integration route.
+
+## Current product
+
+The owner can sign in, use the seeded Home room, create/rename/archive rooms, create and reopen conversations, stream a reply, Stop a turn, copy text and export a conversation. Phone and laptop share server-owned rooms and sent history. Unsent drafts remain device-local and are cleared on sign-out. The main page, sign-in and setup pages are canonical `vict.application@3` UI documents rendered with installed public VICT controls. [Experience and component provenance](docs/PHASE-1-EXPERIENCE.md); [owner guide](docs/USING-QUELLIGHT.md).
+
+Conversation runs through the public VICT/Mastra boundary using `zai-coding-plan/glm-5.3-flash` and the owner's saved `ZHIPU_API_KEY`. The app uses provider generation defaults and completion-or-cancellation turns: no app generation timeout, output cap or step cap. The actual Vercel turn-function ceiling is 300 seconds. A host interruption remains possible and is reported truthfully; it is not a user-configurable model limit.
+
+Full conversation history is retained in storage. The model context uses the latest **1,000 messages**, the maximum accepted by the installed public VICT memory policy. This context window does not truncate stored history. Working memory and semantic recall are disabled in Phase 1. **ARA-style automatic memory/adaptation is Phase 2**, without per-memory approval; Desk follows later. No ARA data has been imported.
+
+## Identity and infrastructure
+
+- Supabase project `wekfufgllxfpmjtusnre` is the separate free Quellight project in the existing ARA organization, Singapore, PostgreSQL 17.12. The product migrations are active. The application connects with verified TLS through restricted role `ql_app_runtime`; migration/admin credentials are not deployed.
+- The active schemas are `quellight_ops_v1`, `quellight_memory_v1` and `quellight_product_v1`. VICT operational state, Mastra conversation storage and product records keep separate ownership boundaries.
+- The allowed owner is `radziamin91@gmail.com`, account UUID `d84e888e-4be3-414e-81b7-8bbc000423ee`. Home is seeded. Public sign-up is disabled. Server authorization verifies the owner and active session; it does not trust browser-supplied actor identity.
+- Vercel project `quellight` remains on the active Hobby account, Node 22.x, Singapore. Supabase remains free. No paid service was added. Vercel Authentication protects Preview and immutable deployment URLs. The production domain uses Quellight owner sign-in, so a phone does not need a Vercel account.
+- Preview `dpl_4X3LWLNVaRCANy97Lwoyi266CTd1` passed its real GLM journey. **Production `dpl_6YmU9LkJyhxma97oT4zXSfQroPat` is READY and promoted.** [Production verification](../qualification/phase1-ops/production.json).
+- The owner-approved primary address **[quellight.com](https://quellight.com)** now serves Phase 1, with `www` redirecting to the apex. The public sign-in page returns 200, anonymous product access returns 401, and database readiness returns 200. [Domain evidence](docs/DOMAIN.md).
+- The saved provider Secret's target metadata now covers Preview and Production. The key value was not read or copied. Project code-training sharing remains disabled. [Host configuration evidence](../qualification/phase1-ops/host-configuration.json).
+
+## Current artifact identity
+
+The app repository is `app/`; the parent workspace retains product decisions and isolated qualification consumers. The twelve pinned VICT archives are unchanged from the accepted mixed baseline. [baseline.json](baseline.json) retains the archive digests and source attribution; its Phase 0 label describes that qualification stage.
+
+Phase 1 adds `@supabase/ssr@0.12.7`, `@supabase/supabase-js@2.119.0` and `@vercel/functions@3.11.3`, retaining `@mastra/core@1.64.0`. The already installed `@mastra/libsql@1.22.3` is directly pinned so the Node adapter preserves its native-loader externalization. PostgreSQL remains the product storage provider. Current `package-lock.json` SHA-256:
+
+`e265b4b1bedf009432ee353822ac90256456d7ef9d05f5b0127d08b80e1c09e7`
+
+The earlier Phase 0 combined lock hash was `4969ccda2adaae5768b4798f269a9022e55be3781571e2c015d9527a52051e71`; it is historical, not the current lock identity. Local qualification uses the separately installed Node 22.23.5. Its official archive SHA-256 was `4a191082e9706866830379d577d2cc8a50c776fcd9436a8d061b063ed0d9a0e3`. It does not replace the machine's Node 22.13.1.
+
+## Phase 1 evidence
+
+| Scope | Observed result |
+| --- | --- |
+| Application/config unit checks | 14 passed |
+| Types/Svelte | Zero errors and warnings |
+| Domain on real local PostgreSQL | 9 groups passed: governed bootstrap, replay, identity, authority, revisions/archive, simultaneous edits, uncertain settlement, session enforcement and role isolation |
+| Conversation on real local PostgreSQL | 12 groups passed; independent review identified and repaired lifecycle races before the final regression |
+| Browser UI with synthetic transport | Desktop 1440×1000 and phone 390×844 journeys passed; light/dark, draft retention, streaming/Stop, rooms and mobile navigation inspected |
+| Browser recovery with synthetic transport | A committed start with a dropped response reused the original key on retry; terminal projection retained partial text and disabled Send until settlement |
+| Simultaneous browser views with synthetic transport | Two independent desktop/phone contexts observed the same active turn, followed a new remote turn, settled to identical history without duplicates and retained separate drafts |
+| Real hosted product/provider | 11 checks passed on the READY Phase 1 Preview, including an actual GLM response and saved/reopened transcript |
+| Production browser continuity | Two independent desktop/phone browser contexts rendered the same saved GLM reply after redeployment; both text exports matched and neither had browser errors |
+| Hosted session revocation | The test session was signed out; its stale cookie immediately received 401, and its local cookie file was removed |
+| Final packaging/production | Clean Node and Vercel builds passed, actual Node HTTP and all three generated Vercel handlers passed, 4,424 output files inspected, production promoted |
+
+[Domain evidence](../qualification/phase1-domain/evidence/latest.json), [conversation evidence index](../qualification/phase1-conversation/latest.json), and [browser builder record](docs/PHASE-1-EXPERIENCE.md) retain their separate scopes. The [live test record](../qualification/phase1-ops/live-test.json) ran from `2026-11-16T15:28:02.454Z` to `15:28:22.963Z` and passed: anonymous refusal, foreign-origin refusal, owner authentication, governed room/conversation creation, exact-key replay, conflicting-key refusal, live GLM completion, streamed text persistence, matching reopen, remote Stop settlement and archive history preservation. This is real hosted integration evidence, separate from synthetic browser fixtures and the owner's eventual review.
+
+The UI preserves uncertain send keys through reconnect/reload, waits for durable transcript projection after a terminal turn, and transfers observation when another device starts a new active turn. Navigating away stops observation only; explicit Stop requests cancellation. [Production browser evidence](../qualification/phase1-ops/browser/result.json) used a verified owner session in two independent contexts; it does not claim two independent password logins. [Session revocation](../qualification/phase1-ops/session-revocation.json) passed. The private owner password has not been created by an agent, and a fresh one-time setup link has been handed to the owner.
+
+## Historical Phase 0 record — 16 November 2026
+
+The foundation stage intentionally had sending disabled, page-local drafts, no product records and readiness 503. Those descriptions apply only to its earlier deployments and tests. The protected foundation deployment was `dpl_5nwgRcjdb7aT5hav2mdh8ip7NfAG`; its 12-check suite and six-then-twelve archive stages are not the current Phase 1 product evidence.
+
+- [Phase 0 app evidence](docs/PHASE-0-EVIDENCE.md), [machine record](evidence/phase-0.json), [Vercel foundation deployment](docs/VERCEL-DEPLOYMENT.md) and [independent hosting review](docs/VERCEL-INDEPENDENT-REVIEW.md).
+- [Installed UI proof](../docs/phase-0/public-ui-proof.md), [hosted boundary proof](../docs/phase-0/hosted-capability.md) and [combined twelve-archive consumer](../docs/phase-0/vercel-extension-consumer.md).
+- [Hosted synthetic runtime qualification](docs/HOSTED-RUNTIME-QUALIFICATION.md) and [declared-action proof](../qualification/phase0-action-boundary/README.md).
+- [GLM adapter qualification](../qualification/zai-provider/ADAPTER-QUALIFICATION.md) and [live Preview provider record](evidence/zai-provider-live-preview.json). After the owner updated the key, the temporary provider test completed through VICT/Mastra with one synthetic automatic write and its authorization receipt; that test deployment was removed.
+
+The reusable VICT extension is separate framework work. Quellight consumes its public persistence/coordination and owns product rules and composition. Earlier Oracle/Render assessments remain historical alternatives, not selected hosts. Docker execution remains unproven.
+
+## Next handoff
+
+The owner completed private password setup and reported “Done — Quellight opened.” [Owner setup confirmation](../qualification/phase1-ops/owner-setup-completed.json), [packaging record](../qualification/phase1-ops/packaging.json), [exact release inputs](../qualification/phase1-ops/release-inputs.json), and [operator notes](../qualification/phase1-ops/README.md) preserve delivery evidence. Keep the free-service boundary, source-checkout preservation and separate builder/independent/live/owner evidence. Begin Phase 2 automatic memory only under the accepted product plan and subsequent phase authority.

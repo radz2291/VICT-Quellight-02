@@ -1,0 +1,25 @@
+{
+  "schema": "quellight.vercel-build-observation@1",
+  "recorded": "2026-11-16",
+  "kind": "builder-observation-from-command-output",
+  "platform": "Windows x64",
+  "runtime": "Node 22.23.5 / npm 10.9.9",
+  "command": "npm run build:vercel",
+  "exitCode": 1,
+  "adapter": "@sveltejs/adapter-vercel@6.3.5",
+  "ssrAndClientCompilationSucceeded": true,
+  "completeVercelArtifact": false,
+  "failure": {
+    "code": "EPERM",
+    "operation": "symlink",
+    "source": "![-]\\catchall.func",
+    "destination": ".vercel/output/functions/index.func",
+    "adapterLocation": "node_modules/@sveltejs/adapter-vercel/index.js:483:9"
+  },
+  "followupProbe": {
+    "command": "npm run test:vercel",
+    "exitCode": 1,
+    "failure": "ENOENT: .vercel/output/config.json was not produced by the incomplete build"
+  },
+  "disposition": "Windows symlink privileges were not changed and adapter source was not patched. Qualify the unchanged application inputs in isolated Linux instead. This failed attempt remains distinct from subsequent Linux evidence."
+}
