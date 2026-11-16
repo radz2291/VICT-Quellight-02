@@ -1,6 +1,6 @@
 # Phase 2 — Automatic, inspectable memory
 
-Prepared 17 November 2026 using the VICT app-development skill. The owner subsequently authorized Phase 2 implementation with delegated agents, beginning with reusable VICT memory support and GLM tests. Phase 2A is in progress. Native memory, its hosted lifecycle and its GLM behavior have not yet passed that qualification.
+Prepared 17 November 2026 using the VICT app-development skill. The owner subsequently authorized Phase 2 implementation with delegated agents, beginning with reusable VICT memory support and GLM tests. Phase 2A is in progress. The isolated maintenance candidate has passed installed tests and independent review; the current live and integration results are recorded in [STATE.md](../STATE.md). Full hosted lifecycle and product adoption remain unqualified.
 
 ## Outcome and decisions
 
@@ -25,7 +25,7 @@ Vector semantic search is a later optional enhancement if it adds measurable val
 
 - Phase 1 provides authenticated rooms, persistent conversation, governed GLM execution and hosted storage. Its evidence remains scoped to those features.
 - The approved quiet UI is committed locally as `01fd00f`. Production still serves the earlier Phase 1 UI. New memory UI follows local owner review before hosting.
-- The conversation prompt is already in a server-only catalog with content-derived activation revisions. Prompt extraction passed local tests and remains uncommitted at this planning checkpoint.
+- The conversation prompt is in a server-only catalog with content-derived activation revisions. Prompt extraction and the plan were committed as `1e6023b`; the pure room-inheritance model followed in `03767c1`.
 - Installed VICT memory policy exposes history and limited Working Memory settings, with semantic recall disabled. Its hosted PostgreSQL guard explicitly rejects OM writes. The installed baseline is not ready to enable the target architecture by changing a flag.
 - Native memory writes, resource-level concurrency, source/context evidence, recovery and a free browser-independent wakeup mechanism remain implementation dependencies. Prove them in the first work package.
 
