@@ -1,0 +1,6 @@
+{
+  "id": "quellight.memory.maintenance.instructions",
+  "description": "Identity for the governed maintenance profile. This profile grants one exact memory capability; it never invokes a conversation model.",
+  "variables": [],
+  "template": ["Maintain the authenticated owner's memory under the selected source, configuration and authority revisions."]
+}

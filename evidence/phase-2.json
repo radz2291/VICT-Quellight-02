@@ -1,0 +1,323 @@
+{
+  "schema": "quellight.phase-2-delivery@1",
+  "recordedAt": "2026-11-17T02:56:52.028Z",
+  "status": "production-live",
+  "previewQualified": true,
+  "productionReleased": true,
+  "ownerAcceptance": "not-yet-recorded",
+  "production": {
+    "url": "https://quellight.com",
+    "status": "verified",
+    "deploymentId": "dpl_5qKJLV218S9rjqababvbkBbbbF4v",
+    "verifiedAt": "2026-11-17T02:52:24.919Z",
+    "schedulerTargetVerified": true,
+    "schedulerEnabled": true,
+    "schedulerOrigin": "https://quellight.com",
+    "verificationScope": "Production host/configuration, unchanged owner rooms/conversations/turns and readiness; authenticated functional/browser journeys used isolated Preview owner. Domain identity is inferred from the project production target. No real-owner session was created.",
+    "ownerRecordsUnchanged": true
+  },
+  "cleanup": {
+    "status": "hosted-complete-local-staging-retained",
+    "hostedComplete": true,
+    "fixtureAuthAccountsDeleted": 2,
+    "fixtureSessionsRevoked": true,
+    "staleCookiesRejected": true,
+    "fixtureActorsDisabled": true,
+    "temporaryPreviewsRemoved": 3,
+    "productionUnchanged": "dpl_5qKJLV218S9rjqababvbkBbbbF4v",
+    "retainedSyntheticHistoryAndAudit": true,
+    "privateOperatorFilesRetained": true,
+    "realOwnerChanged": false,
+    "localStaging": {
+      "deleted": false,
+      "automaticApprovalReview": "rejected",
+      "rejectedAction": "PowerShell recursive deletion of the owned interruption source staging folder after resolved-path and reparse-point checks",
+      "reason": "blocked by policy",
+      "retainedPaths": [
+        "C:/Users/RZ1/Desktop/RZ/261116-Quellight-VICT/qualification/phase2-hosted/.staging/interruption-e9eb4b82-b175-43ba-acdb-1e0dfd3c5870",
+        "C:/Users/RZ1/AppData/Local/Temp/vict-memory-stage-Rec7zd"
+      ],
+      "historicalSecondPathRejection": true,
+      "deletionRetriedOrBypassed": false,
+      "productImpact": "none"
+    },
+    "evidenceIds": [
+      "fixture_cleanup",
+      "temporary_preview_cleanup",
+      "local_staging_cleanup"
+    ]
+  },
+  "source": {
+    "buildInputSha256": "7cb4a8abfc0812f40289395dce52737c17f891aa4a23e5c7be19182520f4e177",
+    "appLockSha256": "8b821ffabf5d8f184f69862deb9cab7495a63a37a51641e6e074ba342de3d4dc",
+    "baselineSha256": "a42a43c7f77f66044e8e3acd9a7de6cc1ef333a564a2a1eda7a4debd5235ffc1",
+    "archiveCount": 14,
+    "memoryFrameworkCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
+    "memoryManifestSha256": "4fc42793ec49f39d5819a358696880e53f94e3c6d1348c66fc9673e4942d3a1f",
+    "memoryProfile": "native-thread-recoverable",
+    "memoryArtifacts": [
+      {
+        "name": "@victframework/runtime",
+        "sha256": "e94ee682d7f57efbbc9722818f2ab6059ad6a9bb3f9c8229e73c24197b0abb3f"
+      },
+      {
+        "name": "@victframework/mastra",
+        "sha256": "2d136123705f92e88a15e7e2b80e1732218ca00018c9cc55165a69a7774a84d3"
+      }
+    ],
+    "qualifiedPreview": {
+      "id": "dpl_Frok872d3DTkeAbDLvpppNrN5d44",
+      "origin": "https://quellight-nkr71y6h0-radziamin91-gmailcoms-projects.vercel.app"
+    },
+    "documentationExcludedFromBuild": true
+  },
+  "deliveredCapabilities": [
+    "automatic-after-conversation-learning",
+    "native-thread-observations-and-reflection",
+    "optional-owner-personal-memory",
+    "governed-original-source-recall",
+    "app-and-room-settings-inheritance",
+    "versioned-prompts-and-templates",
+    "quiet-read-only-memory-inspection",
+    "protected-full-profile-correction-and-resume",
+    "source-exclusion-and-generated-source-quarantine",
+    "durable-checkpoint-reconciliation-and-scheduled-catch-up"
+  ],
+  "evidence": [
+    {
+      "id": "installed_c12",
+      "path": "../../qualification/phase2-memory/evidence/1de39f27-d530-4264-81fb-78849b58be25/summary.json",
+      "sha256": "6bb25a774ccab5ab823434b14316f9326b5ca18ce7ced46c4cfad28c100cb694",
+      "scope": "installed artifacts, real local PostgreSQL, deterministic models",
+      "checksPassed": 28
+    },
+    {
+      "id": "automatic_reflection",
+      "path": "../../qualification/phase2-memory/evidence/6648420f-0383-4a3f-9c5a-d59bd83757b4/summary.json",
+      "sha256": "63e9d370661ee2c797d3e493c14ed8d8c143a34cb72d5c2554b3ade7459ea9e3",
+      "scope": "installed deterministic native threshold path",
+      "checksPassed": 1
+    },
+    {
+      "id": "framework_independent_review",
+      "path": "../../qualification/phase2-memory/INDEPENDENT-CANDIDATE-12.md",
+      "sha256": "1fc577a4471d7094dda55b217209f7214b13dd1ba56b1166fc5ba4be672d4a78",
+      "scope": "independent source and installed-artifact review"
+    },
+    {
+      "id": "live_glm_framework",
+      "path": "../../qualification/phase2-memory-live/LIVE-C12.md",
+      "sha256": "9720112060a364012e8bf621dc3e9b6e3ed07be05b3e7a42cbf91aaf3e51fa13",
+      "scope": "actual GLM roles on protected isolated Previews; fresh-host persistence",
+      "checksPassed": 10
+    },
+    {
+      "id": "actual_product_api",
+      "path": "../../qualification/phase2-hosted/evidence/b0c81dd1-7899-4e8e-8e0e-aa95b1ccfa70.json",
+      "sha256": "a98b5c6b18514b4d93c0a3e7c0d2f582e457b12272b53bae4324866ebcd04475",
+      "scope": "actual GLM through app APIs; two independent HTTP cookie jars",
+      "checksPassed": 24
+    },
+    {
+      "id": "actual_browser",
+      "path": "../../qualification/phase2-hosted/evidence/browser-a9a4a57f-c833-410d-bcf2-b8884db500cb/summary.json",
+      "sha256": "b82305f96ae1a932bc5418d81faf3d7764aee17705f2d2ba559d82741e2f0f56",
+      "scope": "Actual authenticated Preview, two independent browser contexts using the same isolated synthetic owner session; read-only browser actions",
+      "checksPassed": 48
+    },
+    {
+      "id": "hosted_recovery",
+      "path": "../../qualification/phase2-hosted/evidence/interruption-result.json",
+      "sha256": "e854aed0d75b19a4c743ac2521279e4a5b393c2219b6c22df9645c6c53da7d71",
+      "scope": "actual host timeout, prepared checkpoint and clean-host reconciliation"
+    },
+    {
+      "id": "actual_scheduler",
+      "path": "../../qualification/phase2-hosted/evidence/interruption-scheduler.json",
+      "sha256": "6bca3634d63297a4472a6d2a094c6e0d91edaf59ff131dd0d25b847e8653855a",
+      "scope": "actual pg_cron plus pg_net delivery; operator absence-of-manual-retry attestation"
+    },
+    {
+      "id": "post_recovery_chat",
+      "path": "../../qualification/phase2-hosted/evidence/interruption-post-recovery-chat.json",
+      "sha256": "a92312f0b6400913bd2dab2cfd09b1d5ce8e39a60a5bb5f039a79ab06a8c90ba",
+      "scope": "actual clean-host new conversation and governed source tool"
+    },
+    {
+      "id": "settings_queue",
+      "path": "../../qualification/phase2-settings/evidence/696b3f2a-f5d2-48b0-99d3-b9e53d88cdc6/summary.json",
+      "sha256": "b2135a0f272efce5c3d302b83f1a73c582f4f3329b14bf86a5bd9d151b7461ad",
+      "scope": "real local PostgreSQL, deterministic models",
+      "checksPassed": 14
+    },
+    {
+      "id": "conversation",
+      "path": "../../qualification/phase2-conversation/evidence/b4a4ba0c-8495-457f-a7ed-28d36fc257ca/summary.json",
+      "sha256": "6e64a351072b7de69af6a85d70f7aa9b6b088282860cc552b09403d4a5e4d945",
+      "scope": "real local PostgreSQL, deterministic models",
+      "checksPassed": 13
+    },
+    {
+      "id": "care",
+      "path": "../../qualification/phase2-care/evidence/c4bd8e8a-44bd-44c2-a00b-839c0ef01e98/summary.json",
+      "sha256": "6b316a1fbcbe29977df416b92cf439df71a10dacfb8e39769744dce04205ac7e",
+      "scope": "real local PostgreSQL, deterministic models",
+      "checksPassed": 11
+    },
+    {
+      "id": "worker",
+      "path": "../../qualification/phase2-native/evidence/7f645e43-bfa9-4673-8082-c5c3c0290722.json",
+      "sha256": "0ee7e3d315437a9be191771eaec3ce3e32959ec23bd24ae5998599fd7aaedece",
+      "scope": "actual worker, real local PostgreSQL, deterministic models and injected provider failures",
+      "checksPassed": 7
+    },
+    {
+      "id": "keyless_helper",
+      "path": "../../qualification/phase2-native/evidence/3aa875e9-cdb5-4a70-b6b3-35203c7edb19.json",
+      "sha256": "74c165e35261c285404855751269dabf20ca7140e136cd64095d13fde866da6e",
+      "scope": "keyless public helper with zero persistent read effects",
+      "checksPassed": 4
+    },
+    {
+      "id": "independent_app_integration",
+      "path": "../../qualification/phase2-integration-review/evidence/f34fc4e3-105f-4a06-bf81-8aada76cabf1/summary.json",
+      "sha256": "175ad1762351a4f2f8f5507ce848608ba64dd7dea6478eb196c855e3577e0dca",
+      "scope": "independent real local PostgreSQL integration",
+      "checksPassed": 4
+    },
+    {
+      "id": "packaging_node",
+      "path": "../../qualification/phase2-hosted/evidence/packaging-node.json",
+      "sha256": "c095a41527a15e9b1011e6918ebaafa54644a614a0393ed59ed2773d13b08ccd",
+      "scope": "clean Linux build and actual Node HTTP checks"
+    },
+    {
+      "id": "packaging_vercel",
+      "path": "../../qualification/phase2-hosted/evidence/packaging-vercel.json",
+      "sha256": "f526f964cf5d478aedd699f2ed193b08387c4d28fbf8abe5c4cdd9b8ca2019cd",
+      "scope": "generated Vercel handlers, 4444 files and 34 aliases"
+    },
+    {
+      "id": "qualified_inputs",
+      "path": "../../qualification/phase2-hosted/evidence/packaging-inputs.json",
+      "sha256": "25ab8c0b9a8da646f1af129a998e2528c8f3649383971c4458b332979f8ad1db",
+      "scope": "exact current build input map"
+    },
+    {
+      "id": "preview_gates",
+      "path": "../../qualification/phase2-hosted/evidence/preview-gates.json",
+      "sha256": "1600e07658ab81c7a03c6fdd9f1c1f840b829169ed6a61fc4cb96e6b06dc6ae0",
+      "scope": "Preview authentication, fixture identity, Hobby and production-preservation gates"
+    },
+    {
+      "id": "native_schema",
+      "path": "../../qualification/phase2-hosted/evidence/native-schema.json",
+      "sha256": "41d3ab635bff22fe64ae1fb5ee8550539455297ae110c7afed447a927bd9d968",
+      "scope": "new private native schema; legacy preserved"
+    },
+    {
+      "id": "production",
+      "path": "../../qualification/phase2-hosted/evidence/production.json",
+      "sha256": "6db5868516b3f47969b1a9814b0fb76791d3b0d0f2faca3b97d474d17cc58fe1",
+      "scope": "Production host/configuration, unchanged owner rooms/conversations/turns and readiness; authenticated functional/browser journeys used isolated Preview owner. Domain identity is inferred from the project production target. No real-owner session was created."
+    },
+    {
+      "id": "production_scheduler",
+      "path": "../../qualification/phase2-hosted/evidence/production-scheduler.json",
+      "sha256": "75d76bf8f6740468890221625d33e4a2961d307fc49d825555532edb96080fa3",
+      "scope": "enabled production scheduler target; sealed elevated privileges"
+    },
+    {
+      "id": "fixture_cleanup",
+      "path": "../../qualification/phase2-hosted/evidence/cleanup-fixtures-cb519774-d9fb-402e-b7c5-486e1d0e4ae5.json",
+      "sha256": "3e6c2732bf19abe780e245bb3044ad8471a4a610e2bb00f4725b118f285b7495",
+      "scope": "two synthetic Auth accounts removed, sessions revoked, stale cookies refused; actors disabled and history retained"
+    },
+    {
+      "id": "temporary_preview_cleanup",
+      "path": "../../qualification/phase2-hosted/evidence/preview-cleanup.json",
+      "sha256": "f60d730c3c4812b6d0d990b148d6231083ec96a90538316a6d4d13a0051b1b93",
+      "scope": "exactly three temporary Previews removed; production unchanged"
+    },
+    {
+      "id": "local_staging_cleanup",
+      "path": "../../qualification/phase2-hosted/evidence/local-cleanup.json",
+      "sha256": "6ffccccad0d2bca1d684884c3663de68d3a50e2e204d3651f786e820710d68aa",
+      "scope": "automatic approval rejected local recursive deletion; staging retained without retry or bypass"
+    }
+  ],
+  "provider": {
+    "profile": "zai-coding-plan/glm-5.3-flash",
+    "credentialLocation": "existing private Vercel environment",
+    "generationPolicy": "provider-defaults",
+    "appGenerationTimeLimit": false,
+    "appOutputTokenLimit": false,
+    "appGenerationStepLimit": false,
+    "hostFunctionCeilingSeconds": 300,
+    "observationThresholdIsGenerationLimit": false,
+    "directBillingOrHttpRetryAudit": false
+  },
+  "hostedRecovery": {
+    "passed": true,
+    "actualHostTermination": true,
+    "actualHostExit86": false,
+    "observedTermination": {
+      "kind": "vercel-timeout",
+      "limitSeconds": 300
+    },
+    "sameJobAndOperation": true,
+    "sameCheckpoint": true,
+    "onePublication": true,
+    "publishedObservationsMatchCheckpoint": true,
+    "originalInterruptedReceiptUnchanged": true,
+    "distinctCompletedReconcileReceipt": true,
+    "nativeGenerationEventsUnchanged": true,
+    "shadowModelMethodCalls": {
+      "generate": 0,
+      "stream": 1,
+      "total": 1
+    },
+    "cronRunIds": [
+      79
+    ],
+    "acceptedDeliveries": [
+      {
+        "requestId": 11,
+        "statusCode": 202,
+        "requestedAt": "2026-11-17T02:36:00.063732+00:00"
+      }
+    ],
+    "postRecoveryChatPassed": true,
+    "providerNetworkAudit": false,
+    "schedulerAttribution": "Actual cron/delivery timestamps precede this same job completion. Absence of manual wake/retry or job edits is the root operator attestation, not independently detected by this script."
+  },
+  "services": {
+    "vercel": "existing Hobby project",
+    "supabase": "existing separate free Quellight project",
+    "newPaidServiceAdded": false,
+    "alternativeProviderAdded": false,
+    "planUpgrade": false,
+    "araProjectUnchanged": true,
+    "legacyMemorySchemaPreserved": true,
+    "projectDataSharing": {
+      "priorOptOutRecorded": true,
+      "changedByThisRelease": false,
+      "currentVerifiedOff": false,
+      "currentVerificationStatus": "unavailable: UI access failed; public API does not expose this flag"
+    }
+  },
+  "limitations": [
+    "Hosted cleanup is complete. Local staging is retained after automatic approval review rejected deletion; the root operator records the release commit.",
+    "Owner review is separate from builder and independent qualification.",
+    "Browser checks use one synthetic owner session in independent contexts, not independent password logins.",
+    "Provider failure tests use deterministic errors, not a deliberate live Z.AI outage.",
+    "Selected reply memory is not the complete prompt or private reasoning.",
+    "Forgetting excludes selected original source IDs and quarantined derived sources; it does not erase retained conversation history or independently edited profile text.",
+    "No direct provider network retry or billing audit is claimed.",
+    "ARA comparison is based on inspected source and representative scenarios; no controlled live A/B or superiority claim.",
+    "Vector semantic search, Desk, deeper attunement and multi-user access remain outside Phase 2.",
+    "Production checks cover host/configuration/readiness and unchanged owner records; no real-owner authenticated session was created.",
+    "Historical project data-sharing opt-out was unchanged; it was not freshly verified off during this release."
+  ],
+  "commitRecord": "../../qualification/phase2-hosted/evidence/release-commit.json"
+}

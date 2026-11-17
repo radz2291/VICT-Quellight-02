@@ -8,6 +8,8 @@ import { patternAuthoringDescriptors, patternAuthoringImplementations } from '@v
 import { mediaAuthoringDescriptors, mediaAuthoringImplementations } from '@victframework/ui-media-svelte/authoring';
 import { productActions, productResources, productContracts } from './domain-contracts';
 import { interfaceActions, interfaceResources, interfaceContracts } from './action-definitions';
+import { memoryNodes, memoryLocalState, memoryConditions, memoryViewFields, memoryInitialView } from './memory-ui';
+import { memorySettingsActions, memorySettingsContracts, memorySettingsResource, memoryCareActions, memoryCareContracts, memoryCareResource } from './memory-contracts';
 
 export const descriptors = [...catalogDescriptors, ...aiAuthoringDescriptors, ...patternAuthoringDescriptors, ...mediaAuthoringDescriptors];
 export const implementations = [...catalogImplementations, ...aiAuthoringImplementations, ...patternAuthoringImplementations, ...mediaAuthoringImplementations];
@@ -75,7 +77,8 @@ function settingsDisclosure(id: string, stateKey: string): Record<string, UiNode
     [`${id}-label`]: text(`${id}-label`, 'Settings'),
     [`${id}-chevron`]: element(`${id}-chevron`, 'span', [`${id}-chevron-icon`], ['ql-settings-chevron']),
     [`${id}-chevron-icon`]: icon(`${id}-chevron-icon`, 'chevron-down'),
-    [`${id}-body`]: element(`${id}-body`, 'div', [`${id}-appearance`, `${id}-archived`, `${id}-signout`], ['ql-settings']),
+    [`${id}-body`]: element(`${id}-body`, 'div', [`${id}-appearance`, `${id}-archived`, `${id}-memory`, `${id}-signout`], ['ql-settings']),
+    [`${id}-memory`]: { ...button(`${id}-memory`, 'Memory defaults', 'ui.memory.defaults', undefined, true), localStyle: [...quietControl, style('padding', '4px 0'), style('min-height', '34px'), style('font-size', '13px')] },
     [`${id}-appearance`]: settingsSwitch(`${id}-appearance`, 'Dark appearance', 'dark'),
     [`${id}-archived`]: settingsSwitch(`${id}-archived`, 'Archived rooms', 'showArchived'),
     [`${id}-signout`]: { kind: 'component', id: `${id}-signout`, definitionId: 'vict.pattern.action-button', revision: '1',
@@ -143,7 +146,8 @@ function navigation(prefix: string): Record<string, UiNode> {
 }
 
 const nodes: Record<string, UiNode> = {
-  shell: element('shell', 'div', ['sidebar', 'workspace'], ['ql-shell']),
+  shell: element('shell', 'div', ['sidebar', 'workspace', 'memoryDrawer'], ['ql-shell']),
+  ...memoryNodes,
   sidebar: element('sidebar', 'aside', ['brand', 'navigation', 'sidebarFooter'], ['ql-sidebar']),
   brand: element('brand', 'div', ['brandName'], ['ql-brand']),
   brandName: element('brandName', 'h1', ['brandText']),
@@ -185,7 +189,8 @@ const nodes: Record<string, UiNode> = {
   moreLabelText: text('moreLabelText', 'More'),
   moreRoomActions: conditional('moreRoomActions', 'activeRoom', ['rename']),
   rename: menuItem('rename', 'Room details', 'ui.room.edit'),
-  moreConversationActions: conditional('moreConversationActions', 'hasConversation', ['export']),
+  moreConversationActions: conditional('moreConversationActions', 'hasConversation', ['openMemory', 'export']),
+  openMemory: menuItem('openMemory', 'Memory', 'ui.memory.open'),
   error: conditional('error', 'hasError', ['errorBox']),
   errorBox: { ...element('errorBox', 'div', ['errorText', 'reload'], ['ql-error']), attributes: { role: 'alert' } },
   errorText: text('errorText', 'view.error', true),
@@ -194,6 +199,7 @@ const nodes: Record<string, UiNode> = {
   loadingText: { ...element('loadingText', 'p', ['loadingCopy'], ['ql-loading']), attributes: { role: 'status' } },
   loadingCopy: text('loadingCopy', 'Opening your space…'),
   mainContent: { kind: 'conditional', id: 'mainContent', branches: [
+    { when: 'memoryDefaults', children: ['memoryDefaultsPage'] },
     { when: 'roomDetails', children: ['roomDetailsPage'] }, { when: 'hasConversation', children: ['conversation'] }, { when: 'ready', children: ['welcome'] }
   ] },
   welcome: element('welcome', 'section', ['welcomeTitle', 'welcomeCopy'], ['ql-welcome']),
@@ -250,7 +256,7 @@ const nodes: Record<string, UiNode> = {
   roomDetailsContent: { kind: 'conditional', id: 'roomDetailsContent', branches: [
     { when: 'archiveOpen', children: ['archivePanel'] }, { when: 'roomDetails', children: ['renameForm'] }
   ] },
-  renameForm: element('renameForm', 'section', ['editTitle', 'editPurpose', 'editName', 'renameButtons'], ['ql-form']),
+  renameForm: element('renameForm', 'section', ['editTitle', 'editPurpose', 'editName', 'renameButtons', 'roomMemorySettings'], ['ql-form']),
   editTitle: { ...element('editTitle', 'h1', ['editTitleText']), attributes: { tabindex: '-1' } },
   editTitleText: text('editTitleText', 'Room details'),
   editPurpose: element('editPurpose', 'p', ['editPurposeText'], ['ql-muted', 'ql-room-purpose']),
@@ -270,17 +276,18 @@ const nodes: Record<string, UiNode> = {
 };
 
 export const document: UiDocument = {
-  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '5', root: 'shell',
+  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '6', root: 'shell',
   nodes, componentDefinitions: {}, styleSources: {}, tokens: {}, assets: {},
   conditions: {
+    ...memoryConditions,
     ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'emptyRooms', 'roomDetails'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
     ...Object.fromEntries(['newRoomOpen', 'archiveOpen'].map(id => [id, { id, kind: 'localState' as const, when: ref(`state.${id}`) }]))
   },
-  localState: Object.fromEntries([
+  localState: { ...memoryLocalState, ...Object.fromEntries([
     state('draft', ''), state('dark', false), state('showArchived', false), state('navigationOpen', false), state('moreOpen', false), state('settingsOpen', false), state('mobileSettingsOpen', false),
     state('newRoomOpen', false), state('roomName', ''), state('roomPurpose', ''),
     state('editedName', ''), state('archiveOpen', false)
-  ].map(declaration => [declaration.key, declaration]))
+  ].map(declaration => [declaration.key, declaration])) }
 };
 
 export function authDocument(setup: boolean): UiDocument {
@@ -319,16 +326,17 @@ export function authDocument(setup: boolean): UiDocument {
 export const signInDocument = authDocument(false);
 export const setupDocument = authDocument(true);
 const documents = [document, signInDocument, setupDocument];
-const resources = [...productResources, ...interfaceResources];
+const resources = [...productResources, ...interfaceResources, memorySettingsResource, memoryCareResource];
 export const application: ApplicationDefinitionV3 = {
   schema: 'vict.application@3', id: 'quellight', revision: '3', name: 'Quellight',
   compatibility: { applicationSchema: 'vict.application@3' },
   composition: { navigation: 'none', responsive: { navigationAt: 'small' } },
   routes: [{ id: 'conversation', path: '/', screenId: 'conversation' }, { id: 'sign-in', path: '/auth/sign-in', screenId: 'sign-in' }, { id: 'setup', path: '/auth/setup', screenId: 'setup' }],
   screens: documents.map((source, index) => ({ id: ['conversation', 'sign-in', 'setup'][index], title: 'Quellight', uiDocument: { documentId: source.id, revision: source.revision } })),
-  actions: [...productActions, ...interfaceActions], resources: resources.map(resource => ({ resourceId: resource.id, revision: resource.revision })), views: [], forms: [], components: []
+  actions: [...productActions, ...interfaceActions, ...memorySettingsActions, ...memoryCareActions], resources: resources.map(resource => ({ resourceId: resource.id, revision: resource.revision })), views: [], forms: [], components: []
 };
 export const viewFields = {
+  ...memoryViewFields,
   rooms: 'array', 'rooms.id': 'string', 'rooms.name': 'string', 'rooms.selected': 'boolean',
   conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean',
   transcript: 'string', roomId: 'string', roomName: 'string', roomPurpose: 'string', roomRevision: 'number',
@@ -338,6 +346,7 @@ export const viewFields = {
   hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', emptyRooms: 'boolean'
 } as const;
 export const view = {
+  ...memoryInitialView,
   rooms: [], conversations: [], transcript: JSON.stringify({ version: 1, messages: [] }),
   roomId: '', roomName: 'Your space', roomPurpose: '', roomRevision: 1,
   conversationId: '', conversationTitle: '', turnId: '', busy: false, canSend: false, canStop: false,
@@ -347,13 +356,13 @@ export const view = {
 };
 export function compile(candidate: UiDocument = document) {
   return compileApplication({ application, resources,
-    contracts: [...productContracts.map(({ id, revision, presentationFields }) => ({ id, revision, presentationFields })), ...interfaceContracts],
+    contracts: [...[...productContracts, ...memorySettingsContracts, ...memoryCareContracts].map(({ id, revision, presentationFields }) => ({ id, revision, presentationFields })), ...interfaceContracts],
     uiDocuments: documents.map(source => ({ document: source.id === candidate.id ? candidate : source })),
     uiExtensions: descriptors, uiViewFields: viewFields });
 }
 export function requireRenderPlan(candidate: UiDocument = document) {
   const compiled = compile(candidate);
-  if (!compiled.ok) throw new Error(`Quellight application compilation failed: ${compiled.issues.map(issue => `${issue.code} ${issue.path}`).join(', ')}`);
+  if (!compiled.ok) throw new Error(`Quellight application compilation failed: ${compiled.issues.map(issue => `${issue.code} ${issue.path}`).join(', ')} ${'uiIssues' in compiled ? JSON.stringify(compiled.uiIssues) : ''}`);
   if (compiled.plan.uiDiagnostics?.length) throw new Error(`Quellight UI is not ready: ${compiled.plan.uiDiagnostics.map(issue => `${issue.code} ${issue.message}`).join(', ')}`);
   const plan = compiled.plan.documentPlans?.[`${candidate.id}@${candidate.revision}`];
   if (!plan) throw new Error('Quellight render plan is missing.');

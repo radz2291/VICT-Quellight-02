@@ -1,0 +1,9 @@
+{
+  "id": "quellight.conversation.context",
+  "description": "Combines the selected conversation instructions with versioned response guidance.",
+  "variables": ["conversationInstructions", "responseGuidance"],
+  "template": [
+    "{{conversationInstructions}}",
+    "<response-guidance>{{responseGuidance}}</response-guidance>"
+  ]
+}

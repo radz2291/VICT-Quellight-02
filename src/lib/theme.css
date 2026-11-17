@@ -124,6 +124,26 @@ body { margin: 0; }
 .ql-room-page > .ql-form { margin-top: 18px; }
 .ql-room-page h1 { margin: 0; font-size: 24px; font-weight: 550; letter-spacing: -.5px; }
 .ql-room-page h1:focus { outline: none; }
+.ql-memory-settings { display: flex; flex-direction: column; gap: 12px; padding-top: 22px; margin-top: 18px; border-top: 1px solid var(--vict-color-border); }
+.ql-memory-settings h2, .ql-memory-heading { margin: 0; font-size: 16px; line-height: 1.45; font-weight: 550; letter-spacing: -.2px; }
+.ql-memory-settings .ql-form { gap: 14px; }
+.ql-memory-settings p { margin: 0; }
+.ql-memory-field { width: 100%; min-width: 0; }
+.quellight .ql-memory-field label { font-size: 12px; font-weight: 500; }
+.quellight .ql-memory-field textarea { min-height: 92px; padding: 10px 12px; font-family: inherit; font-size: 13px; line-height: 1.6; resize: vertical; border-radius: 9px; }
+.quellight .ql-memory-field select { width: 100%; min-height: 38px; font: inherit; font-size: 13px; border-radius: 9px; }
+.ql-memory-prompt + .ql-memory-prompt { margin-top: 16px; }
+.ql-memory-prompt > span > .ql-memory-field { margin-top: 8px; }
+.ql-memory-copy { white-space: pre-wrap; overflow-wrap: anywhere; margin: 10px 0 18px; font-size: 13px; line-height: 1.7; }
+.ql-memory-preview { padding: 14px; border: 1px solid var(--vict-color-border); border-radius: 9px; max-height: 420px; overflow: auto; }
+.ql-memory-disclosure { border-top: 1px solid var(--vict-color-border); }
+.ql-memory-chevron { margin-left: auto; display: inline-flex; color: var(--vict-color-textMuted); }
+.ql-memory-disclosure [data-collapsible-trigger][aria-expanded='true'] .ql-memory-chevron { transform: rotate(180deg); }
+.ql-memory-source { padding: 10px 0; border-bottom: 1px solid var(--vict-color-border); }
+.ql-memory-source .ql-memory-copy { margin: 6px 0 0 28px; font-size: 12px; }
+.ql-memory-source .vict-control-row { font-size: 12px; }
+.quellight [data-ui-node='memoryDrawer'][data-ui-part='body'] > .ql-memory-heading { margin-top: 18px; }
+.quellight [data-ui-node='memoryDrawer'][data-ui-part='body'] .ql-muted { font-size: 12px; line-height: 1.6; }
 .ql-auth { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; padding: 44px 22px; }
 .ql-auth-brand { font-size: 26px; font-weight: 650; letter-spacing: -.9px; }
 .ql-auth-card { width: 100%; max-width: 420px; padding: 36px; background: var(--vict-color-surface); border: 1px solid var(--vict-color-border); border-radius: 18px; box-shadow: 0 10px 36px #1c2a1510; }

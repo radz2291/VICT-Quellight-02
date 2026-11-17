@@ -63,6 +63,9 @@ export async function probePublicHttp(invoke, origin) {
     ['/api/bootstrap'],
     [`/api/conversations/${fixtureConversation}`],
     [`/api/conversations/${fixtureConversation}/export`],
+    [`/api/conversations/${fixtureConversation}/memory`],
+    ['/api/memory/settings'],
+    ['/api/memory/settings/preview', post({ target: 'app', roomId: '', content: '{}' })],
     [`/api/turns/${fixtureTurn}/events?after=0`],
     ['/api/actions', post({ actionId: 'room.create', input: { name: 'Transport fixture' }, idempotencyKey: fixtureConversation })],
     [`/api/conversations/${fixtureConversation}/turns`, post({ input: 'Never sent to a model.', idempotencyKey: fixtureConversation })],
@@ -73,6 +76,14 @@ export async function probePublicHttp(invoke, origin) {
     assert.match(response.headers.get('cache-control') ?? '', /no-store/);
     assert.match((await response.json()).message, /Sign in to continue/);
   }
+  // Exercise the separate maintenance handler without any live machine credential.
+  // An HTTP wake acknowledgement would not prove job completion; this request must refuse.
+  const wake = await invoke('/api/internal/memory/wake', {
+    method: 'POST', headers: { accept: 'application/json', 'content-type': 'application/json' }, body: '{}'
+  });
+  assert.equal(wake.status, 401, 'The memory worker must reject an unauthenticated machine wake.');
+  assert.deepEqual(await wake.json(), { accepted: false });
+  assert.match(wake.headers.get('cache-control') ?? '', /no-store/);
   for (const path of ['/auth/sign-in', '/auth/setup', '/auth/sign-out', `/api/turns/${fixtureTurn}/cancel`]) {
     const response = await invoke(path, { ...post({}), headers: { origin: 'https://foreign.example', accept: 'application/json', 'content-type': 'application/json' } });
     assert.equal(response.status, 403, `${path} must refuse a foreign-origin write.`);
@@ -80,7 +91,8 @@ export async function probePublicHttp(invoke, origin) {
   const missing = await invoke('/missing-page', documentRequest);
   assert.equal(missing.status, 404);
   assert.match(await missing.text(), /Return to Quellight/);
-  return [entry, 'sign-in-SSR', 'setup-SSR', 'owner-api-401', 'foreign-origin-403', 'health-200', 'foundation-readiness-503', 'error-404'];
+  return [entry, 'sign-in-SSR', 'setup-SSR', 'owner-api-401', 'memory-owner-api-401', 'memory-wake-401',
+    'foreign-origin-403', 'health-200', 'foundation-readiness-503', 'error-404'];
 }
 
 async function checkNode() {

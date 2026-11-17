@@ -1,0 +1,61 @@
+{
+  "schema": "quellight.memory-prompt-catalog@1",
+  "roles": {
+    "conversation": {
+      "id": "quellight.conversation.instructions",
+      "label": "Conversation",
+      "editMode": "Full app prompt replacement",
+      "description": "Use the app conversation catalog or replace its full instructions. {{roomPurpose}} is optional in a replacement.",
+      "source": "conversation.json"
+    },
+    "observer": {
+      "id": "quellight.memory.observer",
+      "label": "Observer",
+      "editMode": "Additional native instructions",
+      "description": "Keep Mastra's Observer instructions and optionally add guidance.",
+      "native": { "package": "@mastra/memory", "version": "1.28.2", "field": "observation.instruction", "mode": "append" }
+    },
+    "reflector": {
+      "id": "quellight.memory.reflector",
+      "label": "Reflector",
+      "editMode": "Additional native instructions",
+      "description": "Keep Mastra's Reflector instructions and optionally add guidance.",
+      "native": { "package": "@mastra/memory", "version": "1.28.2", "field": "reflection.instruction", "mode": "append" }
+    },
+    "recall": {
+      "id": "quellight.memory.recall",
+      "label": "Source recall",
+      "editMode": "Additional native instructions",
+      "description": "Keep Mastra's source-recall instructions and optionally add guidance.",
+      "native": { "package": "@mastra/memory", "version": "1.28.2", "field": "retrieval.instructions", "mode": "append" }
+    },
+    "workingMemory": {
+      "id": "quellight.memory.working-template",
+      "label": "Personal memory template",
+      "editMode": "Template selection or replacement",
+      "description": "Choose the native template, Quellight's personal-preference preset, or a custom template. This changes future instructions, not learned content.",
+      "native": { "package": "@mastra/memory", "version": "1.28.2", "field": "workingMemory.template", "mode": "template" }
+    }
+  },
+  "presets": {
+    "personal-preferences": {
+      "id": "quellight.memory.personal-preferences",
+      "label": "Quellight personal preferences",
+      "source": "quellight-preset",
+      "description": "A small profile for explicit, stable preferences shared across this person's rooms. This is a Quellight preset, not Mastra's native template.",
+      "template": [
+        "# Personal preferences",
+        "",
+        "## Communication preferences",
+        "- Preferred answer length and format:",
+        "- Preferred language and tone:",
+        "",
+        "## Stable personal preferences",
+        "- Explicit preferences that apply across conversations:",
+        "",
+        "## Explicit corrections",
+        "- Newer stated preferences that replace earlier preferences:"
+      ]
+    }
+  }
+}

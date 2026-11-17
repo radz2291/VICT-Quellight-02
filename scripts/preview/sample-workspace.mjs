@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { createSampleMemory } from './sample-memory.mjs';
 
 // Synthetic UI transport only. Nothing here is imported by a product route.
 export const SAMPLE_OWNER = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
@@ -34,6 +35,7 @@ export function createSampleWorkspace() {
     ]]
   ]);
   const receipts = new Map();
+  const memory = createSampleMemory({ rooms, conversations, messages, receipts });
   const turns = new Map();
   const latest = new Map();
   const requests = new Map();
@@ -117,6 +119,8 @@ export function createSampleWorkspace() {
     handle(method, url, body) {
       if (disposed) return failure(503, 'PREVIEW_CLOSED', 'Restart the local preview.');
       const path = url.pathname;
+      const memoryResult = memory.handle(method, url, body);
+      if (memoryResult) return memoryResult;
       if (path.startsWith('/auth/') && method !== 'GET' && method !== 'HEAD') {
         return failure(403, 'LOCAL_PREVIEW_NO_AUTH', 'This local preview uses sample content and does not use sign-in.');
       }

@@ -26,10 +26,12 @@ export const interfaceActions: ApplicationDefinitionV3['actions'] = [
     kind: 'mutation' as const, id, revision: '1', resourceId: 'quellight.interface', resourceRevision: '1',
     op: id, inputContractId: `quellight.${id}.input`, inputContractRevision: '1'
   })),
-  ...['ui.room.select', 'ui.conversation.select'].map(id => ({
+  ...['ui.room.select', 'ui.conversation.select', 'ui.memory.source.toggle'].map(id => ({
     kind: 'local' as const, id, revision: '1', inputContractId: 'quellight.selection.input'
   })),
-  ...['ui.room.edit', 'ui.room.dismiss', 'ui.room.new', 'ui.archive.open', 'ui.archive.dismiss', 'ui.reload', 'ui.export'].map(id => ({
+  ...['ui.room.edit', 'ui.room.dismiss', 'ui.room.new', 'ui.archive.open', 'ui.archive.dismiss', 'ui.reload', 'ui.export',
+    'ui.memory.open', 'ui.memory.context', 'ui.memory.reload', 'ui.memory.defaults', 'ui.memory.defaults.close', 'ui.memory.settings.preview',
+    'ui.memory.forget.open', 'ui.memory.forget.close'].map(id => ({
     kind: 'local' as const, id, revision: '1'
   }))
 ];

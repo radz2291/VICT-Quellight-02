@@ -26,7 +26,7 @@ async function discoverFunctions(directory) {
   }
 }
 await discoverFunctions(functionsRoot);
-assert.ok(functionDirectories.length >= 2, 'Phase 1 must produce separate ordinary and conversation-start groups.');
+assert.ok(functionDirectories.length >= 2, 'Ordinary requests and conversation/maintenance work must use separately configured groups.');
 const bundles = new Map();
 for (const functionRoot of functionDirectories) {
   const config = JSON.parse(await readFile(join(functionRoot, '.vc-config.json'), 'utf8'));
@@ -59,11 +59,14 @@ async function bundleFor(pathname) {
 }
 const probePaths = ['/', '/healthz', '/readyz', '/auth/sign-in', '/auth/setup', '/auth/sign-out', '/api/bootstrap', '/api/actions',
   `/api/conversations/${fixtureConversation}`, `/api/conversations/${fixtureConversation}/export`,
-  `/api/conversations/${fixtureConversation}/turns`, `/api/turns/${fixtureTurn}/events`, `/api/turns/${fixtureTurn}/cancel`, '/missing-page'];
+  `/api/conversations/${fixtureConversation}/turns`, `/api/conversations/${fixtureConversation}/memory`,
+  '/api/memory/settings', '/api/memory/settings/preview', '/api/internal/memory/wake',
+  `/api/turns/${fixtureTurn}/events`, `/api/turns/${fixtureTurn}/cancel`, '/missing-page'];
+const hostWindowPaths = new Set(['/api/actions', '/api/internal/memory/wake', `/api/conversations/${fixtureConversation}/turns`]);
 const handlers = {};
 for (const path of probePaths) {
   const bundle = await bundleFor(path);
-  assert.equal(bundle.config.maxDuration, path.endsWith('/turns') ? 300 : 30, `${path} must use its declared host configuration.`);
+  assert.equal(bundle.config.maxDuration, hostWindowPaths.has(path) ? 300 : 30, `${path} must use its declared host configuration.`);
   handlers[path] = bundle.handlerUrl;
 }
 

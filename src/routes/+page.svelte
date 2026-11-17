@@ -5,6 +5,7 @@
   import { ControlScope, DocumentHost, type ActionResult } from '@victframework/ui-svelte';
   import type { UiValue } from '@victframework/ui';
   import { document, descriptors, implementations, view as initialView, requireRenderPlan } from '$lib/product/definition';
+  import { memoryRoles, memoryDraft, memoryDraftContent, describeMemoryPreview, type MemoryInspection, type MemorySettingsPayload } from '$lib/product/memory-client';
   import { request, RequestError, terminal, storageRead, storageWrite, draftKey, pendingKey, clearActorStorage, delayObservation,
     type Bootstrap, type Room, type Conversation, type Message, type Turn, type Detail, type Observation } from '$lib/product/client';
 
@@ -25,9 +26,39 @@
   let observer: AbortController | undefined;
   let selectionRequest: AbortController | undefined;
   let pendingMutation: { signature: string; key: string } | undefined;
+  let memoryData = $state<MemoryInspection | null>(null);
+  let memoryLoading = $state(false);
+  let selectedSources = $state<string[]>([]);
+  let memoryCareStatus = $state('');
+  let memoryCareRevision = $state('');
+  let memoryConflict = $state(false);
+  let memoryConnectionMessage = $state('');
+  let memoryReadController: AbortController | undefined;
+  let memorySettings = $state<MemorySettingsPayload | null>(null);
+  let memorySettingsLoading = $state(false);
+  let memorySettingsStatus = $state('');
+  let memoryPreviewText = $state('');
+  let memoryRequestVersion = 0;
+  let settingsRequestVersion = 0;
+  let settingsTargetKey = '';
+  const memoryIsOpen = $derived(Boolean(local.memoryOpen));
+  $effect(() => {
+    const open = memoryIsOpen, selectedConversation = conversationId;
+    if (!open || !selectedConversation) return;
+    const controller = new AbortController();
+    untrack(() => { void watchMemory(controller, selectedConversation); });
+    return () => { controller.abort(); memoryReadController?.abort(); ++memoryRequestVersion; };
+  });
   const currentRoom = $derived(data?.rooms.find(room => room.id === roomId));
   const currentConversation = $derived(data?.conversations.find(item => item.id === conversationId));
   const roomDetails = $derived(!!currentRoom && !currentRoom.archivedAt && page.url.searchParams.get('view') === 'room-details');
+  const memoryDefaults = $derived(page.url.searchParams.get('view') === 'memory-defaults');
+  $effect(() => {
+    const key = roomDetails ? `room:${roomId}` : memoryDefaults ? 'app' : '';
+    if (key === settingsTargetKey) return;
+    settingsTargetKey = key;
+    untrack(() => { if (key) void loadMemorySettings(key.startsWith('room:') ? 'room' : 'app'); });
+  });
   let detailsRoomId = '';
   $effect(() => {
     const next = roomDetails ? currentRoom : undefined;
@@ -37,7 +68,51 @@
   });
   const busy = $derived(!!activeTurn && (!terminal(activeTurn.status) || !activeTurn.projectionSettled));
   const visibleRooms = $derived((data?.rooms ?? []).filter(room => Boolean(room.archivedAt) === Boolean(local.showArchived)));
+  const memorySnapshot = $derived(roomDetails ? memorySettings?.room : memorySettings?.app);
+  const memoryChanged = $derived(memoryConflict || (!!memoryCareRevision && !!memoryData && memoryData.authority.revision !== memoryCareRevision));
+  const memoryHistory = $derived((roomDetails ? memorySettings?.roomHistory : memorySettings?.appHistory) ?? []);
+  const memoryOptions = $derived.by(() => {
+    const inherited = roomDetails ? [{ value: 'inherit', label: 'Use app default' }] : [];
+    return {
+      memoryBooleanOptions: [...inherited, { value: 'true', label: 'On' }, { value: 'false', label: 'Off' }],
+      memoryRecallOptions: [...inherited, { value: 'current-room', label: 'This room only' }, { value: 'same-owner', label: 'Across your rooms' }],
+      memoryOverrideOptions: [{ value: 'inherit', label: 'Use app default' }, { value: 'override', label: 'Set for this room' }],
+      memoryHistoryOptions: memoryHistory.map(item => ({ value: String(item.revision), label: `Version ${item.revision}${item.revision === memorySnapshot?.revision ? ' · current' : ''}${item.createdAt ? ` · ${new Date(item.createdAt).toLocaleString()}` : ' · initial defaults'}` })),
+      ...Object.fromEntries(memoryRoles.map(role => [`memory_${role}_options`, [...inherited, ...(role === 'conversation'
+        ? [{ value: 'catalog', label: 'Quellight default' }, { value: 'replace', label: 'Custom instructions' }]
+        : role === 'workingMemory' ? [{ value: 'preset', label: 'Quellight · personal preferences' }, { value: 'native-default', label: 'Mastra native template' }, { value: 'template', label: 'Custom template' }]
+        : [{ value: 'native-default', label: 'Mastra native default' }, { value: 'append', label: 'Add custom instructions' }])]])),
+      ...Object.fromEntries(memoryRoles.map(role => [`memory_${role}_custom`, ['replace', 'append', 'template'].includes(String(local[`m_${role}_mode`]))]))
+    };
+  });
   const view = $derived({ ...initialView,
+    ...memoryOptions, memoryDefaults, memoryIsRoom: roomDetails, memorySettingsLoading,
+    hasMemorySettings: !!memorySnapshot && !memorySettingsLoading,
+    memoryTarget: roomDetails ? 'room' : 'app', memorySettingsRoomId: roomDetails ? roomId : '',
+    memorySettingsRevision: memorySnapshot?.revision ?? 0, memoryRestoreRevision: Number(local.mRestore) || 0,
+    memoryCannotRestore: pending || memorySettingsLoading || !memorySnapshot || Number(local.mRestore) === memorySnapshot.revision || !memoryHistory.some(item => item.revision === Number(local.mRestore)),
+    memoryDraftJson: JSON.stringify(memoryDraftContent(local, roomDetails)),
+    memorySettingsTitle: roomDetails ? 'Memory in this room' : 'Memory defaults',
+    memorySettingsIntro: roomDetails ? 'Use app defaults, or make this room different. Home follows the same rules as every room.' : 'Defaults for every room. Existing room overrides are preserved.',
+    memorySettingsStatus, memoryPreviewText, hasMemoryPreview: !!memoryPreviewText,
+    memoryGuidanceCustom: !roomDetails || local.mGuidanceMode === 'override',
+    memoryRevisionLabel: memorySnapshot ? `Saved version ${memorySnapshot.revision}. Restoring creates a new version and keeps this history.` : '',
+    memoryStatusLabel: memoryConnectionMessage || (memoryLoading ? 'Opening saved memory…' : memoryData?.statusLabel ?? 'Memory has not been opened.'),
+    memoryObservationText: memoryData?.observations.text || memoryData?.observations.emptyText || 'No saved observations yet.',
+    memoryObservationHistory: memoryData?.observations.history.map(item => `${item.updatedAt ? new Date(item.updatedAt).toLocaleString() + '\n' : ''}${item.text}`).join('\n\n—\n\n') || 'No earlier observations are available.',
+    memoryPreparedText: memoryData?.observations.prepared.map(item => item.text).join('\n\n') || 'No prepared observations are recorded.',
+    memoryPersonalText: memoryData?.personal.text || 'No personal preferences have been saved yet.',
+    memoryPersonalHelp: memoryData?.personal.enabled === false ? 'Personal memory is not used in this room.' : memoryData?.personal.ownerManaged ? 'Your edited personal memory is kept as written. Observations continue to update automatically.' : 'Preferences shared across your rooms. Room instructions remain separate.',
+    memoryOwnerManaged: memoryData?.personal.ownerManaged ?? false,
+    memoryActivityText: memoryData?.activity.map(item => `${item.label} · ${item.status}${item.at ? '\n' + new Date(item.at).toLocaleString() : ''}`).join('\n\n') || 'No memory activity is recorded yet.',
+    memorySources: (memoryData?.sources ?? []).map(source => ({ ...source, label: `${source.label}${source.excluded ? ' · excluded from memory' : ''}`, selected: selectedSources.includes(source.id) })),
+    memorySourceStatus: selectedSources.length ? `${selectedSources.length} source${selectedSources.length === 1 ? '' : 's'} selected.` : memoryData?.sources.length ? 'No sources selected.' : 'No original sources are available.',
+    memoryReplyOptions: (memoryData?.replies ?? []).map(reply => ({ value: reply.turnId, label: reply.label })),
+    memoryContextText: memoryData?.context ? `${memoryData.context.text}\n\n${memoryData.context.revisionLabel}\nOmitted: ${memoryData.context.omissions.join(', ')}.` : 'Choose a reply with a recorded memory context.',
+    memoryAuthorityRevision: memoryCareRevision, memorySelectedSources: JSON.stringify(selectedSources), memoryCareStatus, memoryChanged,
+    memoryCannotCorrect: pending || memoryLoading || memoryChanged || !memoryData?.controls.canCorrect,
+    memoryCannotForget: pending || memoryLoading || memoryChanged || !memoryData?.controls.canForget || !selectedSources.length,
+    memoryCanRetry: memoryData?.controls.canRetry ?? false, memoryCannotRetry: pending || memoryLoading || memoryChanged || !memoryData?.controls.canRetry,
     rooms: visibleRooms.map(room => ({ id: room.id, name: room.name, selected: room.id === roomId })),
     conversations: (data?.conversations ?? []).filter(item => item.roomId === roomId).map(item => ({ id: item.id, title: item.title, selected: item.id === conversationId })),
     roomId, roomName: currentRoom?.name ?? 'Your space', roomPurpose: currentRoom?.archivedAt ? 'Archived room' : (currentRoom?.purpose ?? ''), roomRevision: currentRoom?.revision ?? 1,
@@ -47,8 +122,8 @@
       ...(streamed && activeTurn ? [{ id: `stream-${activeTurn.id}`, role: 'assistant', text: streamed }] : [])
     ] }), busy, pending, canSend: !!conversationId && !loading && !pending && !busy && !currentRoom?.archivedAt,
     canStop: !!activeTurn && !terminal(activeTurn.status) && !pending, loading, error, hasError: !!error, ready: !!data && !loading,
-    hasConversation: !!conversationId && !loading, hasMoreActions: !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
-    roomDetails, headerTitle: roomDetails ? currentRoom?.name ?? 'Your space' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
+    hasConversation: !!conversationId && !loading, hasMoreActions: !memoryDefaults && !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
+    roomDetails, headerTitle: memoryDefaults ? 'Memory defaults' : roomDetails ? currentRoom?.name ?? 'Your space' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
     roomDetailsBackLabel: conversationId ? 'Back to conversation' : 'Back to room',
     activeRoom: !!currentRoom && !currentRoom.archivedAt,
     emptyRooms: visibleRooms.length === 0, roomsEmptyText: local.showArchived ? 'No archived rooms.' : 'Create a room to begin.',
@@ -61,10 +136,74 @@
   }
   function onStateChange(key: string, value: UiValue) {
     setLocal({ [key]: value });
+    if (key.startsWith('m_') || key.startsWith('mGuidance') || ['mPurpose', 'mAutomatic', 'mPersonal', 'mRecall'].includes(key)) { memoryPreviewText = ''; memorySettingsStatus = 'Unsaved changes'; }
     if (key === 'draft') saveDraft();
     if (key === 'dark') storageWrite('quellight:appearance', value ? 'dark' : 'light');
   }
-  function dismissEditors() { setLocal({ newRoomOpen: false, archiveOpen: false, navigationOpen: false, moreOpen: false, settingsOpen: false, mobileSettingsOpen: false }); }
+  function dismissEditors() { setLocal({ newRoomOpen: false, archiveOpen: false, navigationOpen: false, moreOpen: false, settingsOpen: false, mobileSettingsOpen: false, memoryOpen: false, memoryForgetOpen: false }); }
+  async function loadMemorySettings(target: 'app' | 'room') {
+    const selectedRoom = target === 'room' ? roomId : '';
+    const version = ++settingsRequestVersion;
+    memorySettingsLoading = true; memorySettings = null; memoryPreviewText = ''; memorySettingsStatus = '';
+    try {
+      const result = await request<MemorySettingsPayload>(`/api/memory/settings${selectedRoom ? `?roomId=${encodeURIComponent(selectedRoom)}` : ''}`);
+      if (!alive || version !== settingsRequestVersion || (selectedRoom && selectedRoom !== roomId)) return false;
+      memorySettings = result;
+      const snapshot = target === 'room' ? result.room : result.app;
+      if (!snapshot) throw new Error('These room settings are unavailable.');
+      setLocal({ ...memoryDraft(snapshot, target === 'room', currentRoom?.purpose ?? ''), mRestore: String(snapshot.revision) });
+      memorySettingsStatus = `Saved version ${snapshot.revision}`;
+      return true;
+    } catch (cause) { if (alive && version === settingsRequestVersion) failure(cause); return false; }
+    finally { if (alive && version === settingsRequestVersion) memorySettingsLoading = false; }
+  }
+  async function loadMemory(turnId = '', reset = false, background = false, signal?: AbortSignal) {
+    const selectedConversation = conversationId, version = ++memoryRequestVersion;
+    if (!background) memoryLoading = true;
+    if (reset) { memoryData = null; selectedSources = []; memoryCareStatus = ''; memoryCareRevision = ''; memoryConflict = false; }
+    memoryReadController?.abort(); memoryReadController = new AbortController();
+    const readSignal = signal ? AbortSignal.any([signal, memoryReadController.signal]) : memoryReadController.signal;
+    try {
+      const result = await request<MemoryInspection>(`/api/conversations/${selectedConversation}/memory${turnId ? `?turnId=${encodeURIComponent(turnId)}` : ''}`, undefined, readSignal);
+      if (!alive || readSignal.aborted || version !== memoryRequestVersion || selectedConversation !== conversationId) return false;
+      memoryData = result; memoryConnectionMessage = '';
+      if (reset) { memoryCareRevision = result.authority.revision; setLocal({ memoryProfileText: result.personal.text }); }
+      if (!background) setLocal({ memoryReply: result.context?.turnId ?? (turnId || result.replies[0]?.turnId || '') });
+      return true;
+    } catch (cause) {
+      if (readSignal.aborted || !alive || version !== memoryRequestVersion) return false;
+      if (background) memoryConnectionMessage = 'Connection interrupted. Reconnecting to saved memory…';
+      else failure(cause);
+      return false;
+    }
+    finally { if (alive && version === memoryRequestVersion && !background) memoryLoading = false; }
+  }
+  async function watchMemory(controller: AbortController, selectedConversation: string) {
+    while (alive && !controller.signal.aborted && selectedConversation === conversationId) {
+      await delayObservation(controller.signal);
+      if (controller.signal.aborted || !alive || selectedConversation !== conversationId) return;
+      if (globalThis.document.visibilityState !== 'visible' || pending || memoryLoading) continue;
+      await loadMemory(String(local.memoryReply ?? ''), false, true, controller.signal);
+    }
+  }
+  async function memoryMutation(actionId: string, input: Record<string, unknown>): Promise<ActionResult> {
+    const signature = JSON.stringify({ actionId, input });
+    if (pendingMutation?.signature !== signature) pendingMutation = { signature, key: crypto.randomUUID() };
+    try { await request('/api/actions', { actionId, input, idempotencyKey: pendingMutation.key }); }
+    catch (cause) {
+      if (!actionId.startsWith('memory.settings.') && cause instanceof RequestError && cause.status === 409) memoryConflict = true;
+      throw cause;
+    }
+    pendingMutation = undefined;
+    try { if (actionId.startsWith('memory.settings.')) {
+      await refreshData(); if (!await loadMemorySettings(input.target === 'room' ? 'room' : 'app')) throw new Error('MEMORY_REFRESH_UNAVAILABLE');
+      memorySettingsStatus = actionId.endsWith('restore') ? 'Version restored and saved. Learned memory is unchanged.' : 'Settings saved. Learned memory is unchanged.';
+    } else {
+      setLocal({ memoryForgetOpen: false }); if (!await loadMemory(String(local.memoryReply ?? ''), actionId !== 'memory.retry')) throw new Error('MEMORY_REFRESH_UNAVAILABLE');
+      memoryCareStatus = actionId === 'memory.forget' ? 'Selected sources are excluded from memory. Your conversation is unchanged.' : actionId === 'memory.resume' ? 'Personal memory can update automatically again.' : actionId === 'memory.retry' ? 'Pending memory was queued for another attempt.' : 'Correction saved. Your conversation is unchanged.';
+    } } catch { error = 'Your change was saved. Reopen memory to refresh the recorded state.'; return { ok: true, dataStale: true }; }
+    return { ok: true, message: '' };
+  }
   function failure(cause: unknown): ActionResult {
     if (cause instanceof RequestError && cause.status === 401) void goto('/auth/sign-in');
     error = cause instanceof Error ? cause.message : 'Something interrupted this request. Please try again.';
@@ -100,6 +239,7 @@
     observer?.abort(); selectionRequest?.abort();
     const version = ++selectionVersion;
     roomId = nextRoom; conversationId = nextConversation; messages = []; activeTurn = null; streamed = ''; statusText = '';
+    ++memoryRequestVersion; memoryData = null; selectedSources = [];
     dismissEditors();
     setLocal({ draft: nextConversation ? (storageRead(draftKey(data.user.id, nextConversation)) ?? '') : '', showArchived: !!wantedRoom?.archivedAt });
     if (!nextConversation) { loading = false; return; }
@@ -200,6 +340,15 @@
   }
   async function dispatch(actionId: string, value?: unknown): Promise<ActionResult> {
     const input = (value ?? {}) as Record<string, unknown>;
+    if (actionId === 'ui.memory.source.toggle') {
+      const id = String(input.id);
+      if (memoryData?.sources.some(source => source.id === id && !source.excluded)) selectedSources = selectedSources.includes(id) ? selectedSources.filter(item => item !== id) : [...selectedSources, id];
+      return { ok: true, message: '' };
+    }
+    if (actionId === 'ui.memory.forget.open' || actionId === 'ui.memory.forget.close') {
+      setLocal({ memoryForgetOpen: actionId.endsWith('.open') && selectedSources.length > 0 });
+      return { ok: true, message: '' };
+    }
     if (actionId === 'ui.archive.open' || actionId === 'ui.archive.dismiss') {
       if (roomDetails) setLocal({ archiveOpen: actionId === 'ui.archive.open' });
       return { ok: true, message: '' };
@@ -207,7 +356,20 @@
     if (pending) return { ok: false, code: 'REQUEST_PENDING', message: 'Your request is being saved.' };
     pending = true; error = '';
     try {
-      if (actionId === 'ui.room.edit') {
+      if (actionId === 'ui.memory.open') {
+        setLocal({ moreOpen: false, memoryOpen: true }); await loadMemory('', true);
+      } else if (actionId === 'ui.memory.context') await loadMemory(String(local.memoryReply ?? ''));
+      else if (actionId === 'ui.memory.reload') await loadMemory(String(local.memoryReply ?? ''), true);
+      else if (actionId === 'ui.memory.defaults' || actionId === 'ui.memory.defaults.close') {
+        dismissEditors();
+        const url = new URL(page.url);
+        if (actionId === 'ui.memory.defaults') url.searchParams.set('view', 'memory-defaults'); else url.searchParams.delete('view');
+        await goto(url, { noScroll: true });
+      } else if (actionId === 'ui.memory.settings.preview') {
+        const result = await request<{ effective: MemorySettingsPayload['effective'] }>('/api/memory/settings/preview', { target: roomDetails ? 'room' : 'app', roomId: roomDetails ? roomId : '', content: JSON.stringify(memoryDraftContent(local, roomDetails)) });
+        memoryPreviewText = describeMemoryPreview(result.effective); memorySettingsStatus = 'Preview only. Nothing has been saved.';
+      } else if (['memory.settings.save', 'memory.settings.restore', 'memory.correct', 'memory.forget', 'memory.resume', 'memory.retry'].includes(actionId)) return await memoryMutation(actionId, input);
+      else if (actionId === 'ui.room.edit') {
         dismissEditors();
         if (currentRoom && !currentRoom.archivedAt) await navigateRoomDetails(true);
       } else if (actionId === 'ui.room.dismiss' || actionId === 'ui.room.new') {
@@ -218,7 +380,7 @@
       else if (actionId === 'ui.conversation.select') {
         const selected = data?.conversations.find(item => item.id === input.id);
         if (selected) await navigateSelection(selected.roomId, selected.id);
-      } else if (actionId === 'ui.reload') { await refreshData(); await resolveSelection(true); }
+      } else if (actionId === 'ui.reload') { await refreshData(); await resolveSelection(true); if (roomDetails || memoryDefaults) await loadMemorySettings(roomDetails ? 'room' : 'app'); }
       else if (actionId === 'ui.export') {
         if (!conversationId) throw new Error('Open a conversation first.');
         setLocal({ moreOpen: false });
@@ -244,12 +406,12 @@
       try { await refreshData(); await resolveSelection(true); }
       catch (cause) { failure(cause); loading = false; }
     })();
-    return () => { alive = false; saveDraft(); observer?.abort(); selectionRequest?.abort(); };
+    return () => { alive = false; saveDraft(); observer?.abort(); selectionRequest?.abort(); memoryReadController?.abort(); };
   });
 </script>
 
 <svelte:head>
-  <title>{roomDetails ? 'Room details · Quellight' : currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
+  <title>{memoryDefaults ? 'Memory defaults · Quellight' : roomDetails ? 'Room details · Quellight' : currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
   <meta name="description" content="Your private space to think and work through what matters." />
 </svelte:head>
 

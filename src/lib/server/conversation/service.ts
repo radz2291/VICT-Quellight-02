@@ -2,23 +2,27 @@ import { createHash, randomUUID } from 'node:crypto';
 import { ModelRouterLanguageModel } from '@mastra/core/llm';
 import { AgentTurnService } from '@victframework/control';
 import {
-  composeMastraTurnExecutor, createPostgresMastraStore,
-  MastraSanitizedLogger, mastraResourceIdForActor, type MastraProductAgentConfig,
+  composeMastraTurnExecutor,
+  MastraSanitizedLogger, mastraThreadIdForConversation, type MastraProductAgentConfig,
 } from '@victframework/mastra';
 import {
-  AgentStreamHub, assertActorScope, authenticatedActorContext,
+  AgentStreamHub, assertActorScope, authenticatedActorContext, gateCapabilityInvoke,
   type AuthenticatedActorContext, type AgentTurnRecord, type HostedLease,
 } from '@victframework/runtime';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
+import type { CapabilityContext } from '@victframework/sdk';
 import { getConversation, ProductError, type Owner } from '../domain/queries.js';
 import { conversationActivation, MODEL, PROVIDER_URL } from './activation.js';
+import { loadEffectiveMemorySettings, type EffectiveMemorySettings } from '../memory/settings.js';
+import { enqueueMemoryJob, publicConversationSources } from '../memory/jobs.js';
+import { openQuellightMemory, QUELLIGHT_MEMORY_RECALL_PERMISSION } from '../memory/native.js';
+import { ensureNativeSources } from '../memory/import.js';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ACTIVE = ['queued', 'running'];
 const TERMINAL = new Set(['completed', 'failed', 'cancelled', 'blocked']);
 // This matches the selected Vercel Hobby platform maximum, rather than a generation budget.
 const HOST_LEASE_MS = 300_000;
-const MEMORY_SCHEMA = 'quellight_memory_v1';
 const TABLE = 'quellight_product_v1.conversation_turns';
 const FRAGMENTS = 'quellight_product_v1.turn_fragments';
 
@@ -27,6 +31,8 @@ interface TurnRow {
   input_digest: string; input_text: string; activation_version: string;
   execution_state: string; output_text: string | null; error_code: string | null;
   published_sequence: string | number; created_at: Date; updated_at: Date;
+  memory_configuration?: EffectiveMemorySettings | null;
+  memory_authority_revision?: string | null;
 }
 export interface ConversationServiceOptions {
   openDatabase(): Promise<PostgresStoreSet>;
@@ -66,6 +72,13 @@ export function createConversationService(options: ConversationServiceOptions) {
         output_text=(SELECT string_agg(delta,'' ORDER BY sequence) FROM ${FRAGMENTS} WHERE turn_id=$1), updated_at=now()
         WHERE turn_id=$1 AND actor_id=$4`, [row.turn_id, errorCode ? 'interrupted' : 'settled', errorCode ?? null, row.actor_id]);
       await client.query(`UPDATE quellight_product_v1.conversations SET updated_at=now() WHERE id=$1 AND actor_id=$2`, [row.conversation_id, row.actor_id]);
+      // The public transcript and its durable catch-up intent commit together. A host
+      // exit cannot leave a settled Phase 2 reply with no browser-independent wake path.
+      if (row.memory_configuration && row.memory_authority_revision !== null && row.memory_authority_revision !== undefined) {
+        const source = await publicConversationSources(client, row.actor_id, row.conversation_id);
+        await enqueueMemoryJob(client, { actorId: row.actor_id, conversationId: row.conversation_id, kind: 'observe',
+          sourceRevision: source.revision, configuration: row.memory_configuration, authorityRevision: row.memory_authority_revision });
+      }
     });
   }
   async function reconcileOwned(stores: PostgresStoreSet, lease: HostedLease, owner: Owner, conversationId: string) {
@@ -138,8 +151,18 @@ export function createConversationService(options: ConversationServiceOptions) {
         return { turnId: afterClaim.rows[0].turn_id, conversationId,
           status: viewTurn(afterClaim.rows[0], await stores.turns.getTurn(afterClaim.rows[0].turn_id)).status, completion: Promise.resolve() };
       }
-      const purpose = await stores.coordination.pool.query<{ purpose: string }>('SELECT purpose FROM quellight_product_v1.rooms WHERE id=$1 AND actor_id=$2', [conversation.roomId, owner.actorId]);
-      const profile = conversationActivation(purpose.rows[0]?.purpose ?? '');
+      const effective = await loadEffectiveMemorySettings(stores.coordination.pool, owner.actorId, conversation.roomId);
+      const prepared = await openQuellightMemory({ stores, ownerActorId: owner.actorId, conversationId,
+        effective, leaseMs: Math.min(remaining, HOST_LEASE_MS) });
+      let authorityRevision: string;
+      let profile: ReturnType<typeof conversationActivation>;
+      try {
+        await ensureNativeSources({ stores, lease, owner, conversation, memory: prepared });
+        authorityRevision = (await prepared.service.authority(conversationId)).revision;
+        profile = conversationActivation(effective.configuration.purpose, { effective,
+          memory: { id: prepared.config.id, revision: prepared.service.configurationRevision },
+          recall: { id: prepared.recallCapability.id, revision: prepared.recallCapability.revision } });
+      } finally { await prepared.hosted.close(); }
       const fenced = stores.forLease(lease);
       const persisted = await fenced.governance.getAgentActivation(profile.activation.activationVersion);
       if (persisted && !profile.registry.restoreActivation(persisted).ok) throw new ProductError('AGENT_ACTIVATION_INVALID', 503);
@@ -150,13 +173,14 @@ export function createConversationService(options: ConversationServiceOptions) {
           JOIN quellight_product_v1.rooms r ON r.id=c.room_id AND r.actor_id=c.actor_id
           WHERE c.id=$1 AND c.actor_id=$2 AND c.archived_at IS NULL AND r.archived_at IS NULL FOR UPDATE OF c,r`, [conversationId, owner.actorId]);
         if (!locked.rows.length) throw new ProductError('ROOM_ARCHIVED', 409);
-        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state)
-          VALUES($1,$2,$3,$4,$5,$6,$7,'queued') RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input, profile.activation.activationVersion]);
+        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state,memory_configuration,memory_authority_revision)
+          VALUES($1,$2,$3,$4,$5,$6,$7,'queued',$8::jsonb,$9) RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input,
+          profile.activation.activationVersion, JSON.stringify(effective), authorityRevision]);
         return result.rows[0];
       });
       let ready!: () => void;
       const admittedToVICT = new Promise<void>(resolve => { ready = resolve; });
-      const completion = execute(stores, lease, actor, admitted, conversation.threadId, profile.activation, ready, deadline)
+      const completion = execute(stores, lease, actor, admitted, mastraThreadIdForConversation(conversationId), profile.activation, ready, deadline)
         .catch(() => { console.error('QUELLIGHT_TURN_CLEANUP_UNCONFIRMED'); });
       backgroundOwnsResources = true;
       // A returned turn is already durably cancellable through the public service.
@@ -172,7 +196,7 @@ export function createConversationService(options: ConversationServiceOptions) {
 
   async function execute(stores: PostgresStoreSet, lease: HostedLease, actor: AuthenticatedActorContext,
     row: TurnRow, threadId: string, activation: ReturnType<typeof conversationActivation>['activation'], ready: () => void, deadline?: Date) {
-    let memory: Awaited<ReturnType<typeof createPostgresMastraStore>> | undefined;
+    let memory: Awaited<ReturnType<typeof openQuellightMemory>>['hosted'] | undefined;
     let composition: ReturnType<typeof composeMastraTurnExecutor> | undefined;
     let stopPolling = false;
     let poll: Promise<void> | undefined;
@@ -183,17 +207,25 @@ export function createConversationService(options: ConversationServiceOptions) {
       const key = await options.readCredential();
       const remaining = deadline ? Math.floor(deadline.getTime() - Date.now()) : HOST_LEASE_MS;
       if (remaining < 100) throw new Error('HOST_REQUEST_ENDING');
-      memory = await createPostgresMastraStore({ coordination: stores.coordination, schemaName: MEMORY_SCHEMA,
-        migration: 'verify', leaseMs: Math.min(remaining, HOST_LEASE_MS), logger: new MastraSanitizedLogger() });
+      if (!row.memory_configuration) throw new Error('MEMORY_CONFIGURATION_MISSING');
+      const modelFactory = options.modelFactory ?? (() => new ModelRouterLanguageModel({ id: MODEL, url: PROVIDER_URL, apiKey: key }));
+      const native = await openQuellightMemory({ stores, ownerActorId: actor.actorId, conversationId: row.conversation_id,
+        effective: row.memory_configuration, modelFactory, leaseMs: Math.min(remaining, HOST_LEASE_MS) });
+      memory = native.hosted;
+      const recall = native.recallCapability;
+      const invokeRecall = gateCapabilityInvoke(recall, { grants: [QUELLIGHT_MEMORY_RECALL_PERMISSION] });
       const hub = new AgentStreamHub({ ledger: fenced.streamLedger });
       const tools = new AgentTurnService({ stores: fenced, ids: turnIds(row.turn_id) });
       composition = composeMastraTurnExecutor({ stores: fenced, activation, hub, ids: turnIds(row.turn_id),
-        agentConfig: { store: memory.store, threadCoordinator: memory.coordinator, logger: new MastraSanitizedLogger(),
+        agentConfig: { store: memory.store, threadCoordinator: memory.coordinator, managedMemory: native.service, logger: new MastraSanitizedLogger(),
           tracing: { sampling: { type: 'never' } },
-          modelFactory: options.modelFactory ?? (() => new ModelRouterLanguageModel({ id: MODEL, url: PROVIDER_URL, apiKey: key })) },
+          modelFactory },
         capabilityBridge: {
-          resolveCapability: () => undefined,
-          invoke: async () => { throw new Error('CAPABILITY_UNAVAILABLE'); },
+          resolveCapability: (id, revision) => id === recall.id && revision === recall.revision ? recall : undefined,
+          invoke: async (definition, input, context) => {
+            if (definition !== recall) throw new Error('CAPABILITY_UNAVAILABLE');
+            return invokeRecall(input, context as CapabilityContext);
+          },
           recordInvocationIntent: input => tools.recordToolInvocationIntent(input),
           claimInvocationRun: input => fenced.invocations.claimInvocationRun(input),
           settleInvocationRun: input => fenced.invocations.settleInvocationRun(input),
@@ -247,21 +279,12 @@ export function createConversationService(options: ConversationServiceOptions) {
       if (timer) clearTimeout(timer);
       wake?.();
       await poll?.catch(() => undefined);
-      try {
-        if (composition && memory) {
-          // Hosted flush performs memory reads; give those reads their required
-          // public actor/thread scope after the executor released its turn handle.
-          const flushHandle = await memory.coordinator.beginTurn(threadId, mastraResourceIdForActor(actor.actorId));
-          try { await flushHandle.run(() => composition!.productAgent.flush()); }
-          finally { await flushHandle.release(); }
-        }
-      }
+      // The managed adapter settles completed chat persistence in its original
+      // authority scope. A new cleanup scope must not reclassify a late reply after Forget.
+      try { await memory?.close(); }
       finally {
-        try { await memory?.close(); }
-        finally {
-          try { await stores.coordination.release(lease); }
-          finally { await stores.close(); }
-        }
+        try { await stores.coordination.release(lease); }
+        finally { await stores.close(); }
       }
     }
   }

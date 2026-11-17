@@ -1,6 +1,6 @@
 # Phase 2 — Automatic, inspectable memory
 
-Prepared 17 November 2026 using the VICT app-development skill. The owner subsequently authorized Phase 2 implementation with delegated agents, beginning with reusable VICT memory support and GLM tests. Phase 2A is in progress. The isolated maintenance candidate has passed installed tests and independent review; the current live and integration results are recorded in [STATE.md](../STATE.md). Full hosted lifecycle and product adoption remain unqualified.
+Completed 17 November 2026 using the VICT skill and delegated agents. **Phase 2A–2E is delivered at [quellight.com](https://quellight.com).** Production `dpl_5qKJLV218S9rjqababvbkBbbbF4v` matches the qualified source. [Delivery record](PHASE-2-DELIVERY.md), [STATE.md](../STATE.md) and [portable evidence](../evidence/phase-2.json) distinguish local, independent, actual GLM, browser and owner-review scopes.
 
 ## Outcome and decisions
 
@@ -8,28 +8,32 @@ After an ordinary conversation, Quellight should remember useful information aut
 
 Accepted requirements are automatic learning, ready-made VICT UI, VICT/Mastra execution, hosted phone/laptop access, free services, the existing GLM-5.3-Flash provider, organized editable prompts, configurable room behavior and optional memory visibility. ARA remains the reference for useful companion behavior and user control.
 
-The recommended implementation uses four cooperating parts. This is the architecture to qualify, not a claim that it has already outperformed ARA with GLM.
+The owner has explicitly authorized autonomous completion of all five work packages, using delegated agents, with owner review after completion. Perform local UI browser review and independent checks before hosted delivery; do not wait for interim owner design approval.
+
+The implemented candidate uses four cooperating parts. Their qualification scopes are below; no controlled comparison or claim that the system outperforms ARA with GLM is made.
 
 | Part | Responsibility in Quellight | Phase 2 status |
 | --- | --- | --- |
-| Message History | Preserve original messages and supply recent conversation context; retain source material for recall | Already active; qualify its interaction with OM and retrieval |
-| Observational Memory | Maintain dated observations within each conversation and consolidate them as needed | Requires reusable VICT exposure and hosted proof |
-| Working Memory | Maintain a small personal profile of stable preferences and facts, with attribution and corrections | Native support needs governed updates and cross-conversation concurrency proof |
-| Source recall | Find relevant earlier conversations and inspect original messages when needed | Qualify native retrieval through VICT; enforce room selection in the product layer |
+| Message History | Preserve original messages and supply recent conversation context; retain source material for recall | Native managed selection and exact-once legacy import qualified; original transcript retained |
+| Observational Memory | Maintain dated observations within each conversation and consolidate them as needed | C12 installed and actual GLM proof passed; product worker/queue locally verified |
+| Working Memory | Maintain a small personal profile of stable preferences and facts, with attribution and corrections | Governed resource updates, protected owner edits and native concurrency/recovery qualified |
+| Source recall | Find relevant earlier conversations and inspect original messages when needed | Native model-selected governed retrieval passed live; product current-room/same-owner policy locally verified |
 
 OM complements stored history. Its context compression does not itself establish short-conversation learning or cross-conversation recall. Native thread scope and retrieval are the starting point. [Mastra OM overview](https://mastra.ai/docs/memory/observational-memory).
 
 Vector semantic search is a later optional enhancement if it adds measurable value and has a qualified free embedding route. Knowledge and experimental memory systems are outside this phase. Do not silently add a paid provider or run a duplicate ARA capture/digest pipeline alongside the new system.
 
-## What is ready and what needs proof
+## Completion evidence
 
-- Phase 1 provides authenticated rooms, persistent conversation, governed GLM execution and hosted storage. Its evidence remains scoped to those features.
-- The approved quiet UI is committed locally as `01fd00f`. Production still serves the earlier Phase 1 UI. New memory UI follows local owner review before hosting.
-- The conversation prompt is in a server-only catalog with content-derived activation revisions. Prompt extraction and the plan were committed as `1e6023b`; the pure room-inheritance model followed in `03767c1`.
-- Installed VICT memory policy exposes history and limited Working Memory settings, with semantic recall disabled. Its hosted PostgreSQL guard explicitly rejects OM writes. The installed baseline is not ready to enable the target architecture by changing a flag.
-- Native memory writes, resource-level concurrency, source/context evidence, recovery and a free browser-independent wakeup mechanism remain implementation dependencies. Prove them in the first work package.
+| Package | Delivered result |
+| --- | --- |
+| 2A | Reusable C12 native memory:28 installed groups, independent GO, actual GLM roles and fresh-host persistence. |
+| 2B | Automatic memory/context/care; real product API journey24 checks and long-brief/new-chat recall passed. |
+| 2C | Central prompts and versioned app/room inheritance; settings/queue15 groups and actual hosted preview/save/restore passed. |
+| 2D | Quiet ready-VICT memory access; local UI 60+32 and actual hosted desktop/phone48 checks passed. |
+| 2E | Clean Node/Vercel packaging, actual 300-second host interruption with automatic same-checkpoint recovery, final independent release gate 33 checks and verified production delivery. |
 
-Current source findings are recorded in the [capability map](../../docs/reference/QUELLIGHT-CAPABILITY-MAP.md). Newer upstream documentation does not establish availability in the pinned packages.
+The first hosted candidate exposed same-owner delivery contention and stale inspector priority; these were repaired and a fresh final hosted journey passed. The ARA assessment is a source comparison, not a controlled live A/B result. Direct provider billing/HTTP-egress measurement and owner acceptance are not claimed. The work-package text below retains the intended requirements; exact evidence and practical limits are in the delivery record.
 
 ## Work packages and ownership
 
@@ -87,7 +91,7 @@ The UI agent uses the installed VICT menu, drawer, disclosure, text/list, form a
 
 Opening the view only reads/subscribes. It does not initiate observation or approve a memory. Preserve the conversation draft, scroll and selected thread. Use the same quiet typography, density and navigation behavior on phone and desktop. New conversation remains available only in the sidebar/mobile drawer.
 
-**Exit evidence:** local owner review, public-control provenance, keyboard/phone use, long/empty/error states, source navigation, actual lifecycle transitions and restored inspection after reconnect. Label fixtures as sample content until bound to actual memory records.
+**Exit evidence:** local browser review and independent verification, public-control provenance, keyboard/phone use, long/empty/error states, source navigation, actual lifecycle transitions and restored inspection after reconnect. Label fixtures as sample content until bound to actual memory records. The owner will review the completed milestone afterward.
 
 ### 2E — Integrate and verify the hosted milestone
 

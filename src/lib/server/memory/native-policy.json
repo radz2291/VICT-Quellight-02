@@ -1,0 +1,15 @@
+{
+  "schema": "quellight.native-memory-policy@1",
+  "id": "quellight.memory.native",
+  "revision": "1",
+  "generationPolicy": "provider-defaults",
+  "lastMessages": 1000,
+  "observation": {
+    "messageTokens": 1
+  },
+  "modelProfile": {
+    "id": "quellight.glm-flash",
+    "revision": "1",
+    "provider": "zai-coding-plan"
+  }
+}

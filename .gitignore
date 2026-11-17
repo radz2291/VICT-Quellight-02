@@ -3,6 +3,7 @@ node_modules/
 .private/
 test-results/
 .svelte-kit/
+supabase/.temp/
 build/
 .vercel/
 .env
