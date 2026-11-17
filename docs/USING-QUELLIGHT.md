@@ -2,7 +2,7 @@
 
 Quellight is your private space for conversations, organized into rooms. Use the same account on your phone and laptop.
 
-**Release status:** Phase 2 is live at [quellight.com](https://quellight.com), including automatic memory, room settings and optional memory inspection. Your existing rooms, conversations and saved turns are preserved. Phase 3's Desk and room method are being qualified on a separate Preview; the candidate guidance below does not yet claim a production release.
+**Release status:** Phase 3 is live at [quellight.com](https://quellight.com), adding a shared Desk and automatic room-method learning to conversation, automatic memory and quiet inspection. Your existing rooms, conversations and saved turns are preserved.
 
 ## Open your space
 
@@ -79,7 +79,7 @@ To forget sources, select their checkboxes under **Original sources**, then choo
 
 Changes can take time to finish; check **Memory activity** for the recorded state. If memory changes on another device while you are editing, your draft is kept. **Reload saved memory** replaces that draft with the saved version before you make another change. Archived conversations remain readable, including their memory.
 
-## Desk — Phase 3 candidate
+## Desk
 
 Choose a room, then select **Desk** in the sidebar. On a phone, open **Open rooms** first. Every conversation in a room shares that room's Desk. Desktop shows a list beside the item; on a phone, **Back to Desk** returns from the item to the list. **Back to conversation** preserves your unsent chat draft.
 
@@ -87,17 +87,19 @@ Select **New item**, enter an **Item title** and **Item text**, then **Save item
 
 | Attention | How Quellight uses it |
 | --- | --- |
-| **Carried** | The item's complete text is included in the room's conversation context. You choose this level. |
-| **Within reach** | Quellight sees an index entry and opens the item when needed. New items start here. |
+| **Carried** | The item's complete text is included in the room's conversation context. You choose this level for ordinary items. |
+| **Within reach** | Quellight sees an index entry and opens the item when needed. Ordinary new items start here. |
 | **Put away** | The item stays out of ordinary context, but deliberate search can find it. This is separate from archiving. |
 
 Use **Attention filter** to browse any level, including **Put away** without knowing a keyword. **Search Desk → Find items** searches text as well as titles. **More items** loads another page when available. **Archived** shows archived items; **Restore item** returns one to the active Desk.
 
 Expand **Saved versions**, choose a **Version**, and select **Show version** to read earlier text. **Restore this version** creates a new saved revision and keeps the history. If another device saves first, your draft is retained and **Save item** is disabled until you explicitly **Reload saved version**. That confirmation replaces the local draft, so copy anything you still need first. After an interrupted save, **Retry change** checks the original request rather than submitting a different edit.
 
-## Room method — Phase 3 candidate
+## Room method
 
 From **Desk**, select **Room method**. This is a short practical guide to working together in that room. Quellight can learn it after a successful agent-created Desk item; manually creating an item alone does not start method learning. **Method activity** shows recorded work. Opening the page only reads the saved state.
+
+The automatically learned room method starts **Carried**, so it can guide later conversations. Its separate learning permission allows that initial placement; ordinary agent-created items start **Within reach**. You can change the method's attention, and later automatic updates preserve your choice.
 
 **Edit method and view versions** opens the method as a Desk item. You can edit its wording, inspect its history, or choose its attention. **Within reach** keeps the method editable and available through its index; future automatic updates preserve that placement. **Put away** or archiving the method suspends its automatic updates. Restore it and choose **Carried** or **Within reach** when you want it eligible again.
 

@@ -1,0 +1,392 @@
+{
+  "schema": "quellight.phase-3-delivery@1",
+  "recordedAt": "2026-11-17T09:03:06.172Z",
+  "status": "production-live",
+  "ownerAcceptance": "not-yet-recorded",
+  "production": {
+    "schema": "quellight.phase3-presentation-production@1",
+    "variant": "presentation",
+    "corePreviewDeploymentId": "dpl_AqCniAv7ReBQ4QzW9c7h6of7gukH",
+    "coreSourceTreeSha256": "a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca",
+    "presentationPreviewDeploymentId": "dpl_GE9RdkgbTE4GD8v6CRVcGq7dqxLJ",
+    "exactThemeOnly": true,
+    "qualificationGates": {
+      "schema": "quellight.phase3-presentation-gates@1",
+      "passed": true,
+      "corePreviewDeploymentId": "dpl_AqCniAv7ReBQ4QzW9c7h6of7gukH",
+      "coreSourceTreeSha256": "a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca",
+      "coreGitCommit": "64035cd7d318079cb75db82d5f4fe633c4435ec6",
+      "coreEvidenceSha256": "84d3793b6431d9f2fbc93f73e9349552c8f0444143bfaf863adf39d4f5278ed2",
+      "coreQualificationGateSha256": "378b8945df4d751e4411aaadd3b865a5dd1c99ee58403065f171811b73121a7d",
+      "presentationPreviewDeploymentId": "dpl_GE9RdkgbTE4GD8v6CRVcGq7dqxLJ",
+      "presentationPreviewOrigin": "https://quellight-q2q3s01gg-radziamin91-gmailcoms-projects.vercel.app",
+      "sourceTreeSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5",
+      "exactThemeOnly": true,
+      "changedFiles": [
+        "src/lib/theme.css"
+      ],
+      "remotePackagingSha256": "623b138cd967fff9c3c856c21aab414699ef1578ea779d726df17a162587999d",
+      "browserEvidenceSha256": "3f627c8c6538d4a844c5e6a1d9cd338b2d26349c2f05950c66dd0bebf3eb6254",
+      "providerAndRecoveryEvidenceScope": "Qualified core A; all non-CSS app bytes unchanged. No GLM or interruption test executed on B.",
+      "providerTestedOnB": false
+    },
+    "deploymentId": "dpl_BFakfdrHUwTgzEPzhQxnbPim8eN8",
+    "status": "READY",
+    "url": "https://quellight.com",
+    "immutableUrl": "https://quellight-jvtojng7e-radziamin91-gmailcoms-projects.vercel.app",
+    "sourceTreeSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5",
+    "phase": 3,
+    "verifiedAt": "2026-11-17T08:58:50.695Z",
+    "hobby": true,
+    "ownerConfigurationVerified": true,
+    "ownerRecordsUnchanged": true,
+    "projectDataSharing": {
+      "priorRecord": "Project opt-out recorded during Phase 0/1",
+      "changedByThisRelease": false,
+      "currentUiRecheck": "Unavailable: CUA initialization failed; browser connector needs reauthentication. Public project API does not expose this flag."
+    },
+    "publicSignIn": true,
+    "databaseReady": true,
+    "anonymousProductRefused": true,
+    "anonymousMachineRefused": true,
+    "wwwRedirect": true,
+    "scope": "Production host/configuration, unchanged owner rooms/conversations/turns and readiness; authenticated functional/browser journeys used isolated Preview owner. Domain identity is inferred from the project production target. No real-owner session was created."
+  },
+  "source": {
+    "buildInputSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5",
+    "appLockSha256": "8b821ffabf5d8f184f69862deb9cab7495a63a37a51641e6e074ba342de3d4dc",
+    "baselineSha256": "a42a43c7f77f66044e8e3acd9a7de6cc1ef333a564a2a1eda7a4debd5235ffc1",
+    "archiveCount": 14,
+    "memoryFrameworkCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
+    "qualifiedPreview": {
+      "id": "dpl_GE9RdkgbTE4GD8v6CRVcGq7dqxLJ",
+      "origin": "https://quellight-q2q3s01gg-radziamin91-gmailcoms-projects.vercel.app",
+      "sourceTreeSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5"
+    },
+    "behavioralPreview": {
+      "id": "dpl_AqCniAv7ReBQ4QzW9c7h6of7gukH",
+      "origin": "https://quellight-m3h03tnqo-radziamin91-gmailcoms-projects.vercel.app",
+      "sourceTreeSha256": "a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca"
+    },
+    "coreGitCommit": "64035cd7d318079cb75db82d5f4fe633c4435ec6",
+    "exactPresentationDelta": {
+      "file": "src/lib/theme.css",
+      "before": "#687068",
+      "after": "#606860",
+      "allOtherInputsUnchanged": true
+    },
+    "documentationExcludedFromBuild": true
+  },
+  "deliveredCapabilities": [
+    "room-shared-desk",
+    "owner-and-agent-revision-checked-editing",
+    "immutable-item-history-and-restore",
+    "carried-within-reach-put-away-attention",
+    "automatic-learned-room-method",
+    "versioned-app-and-room-method-instructions",
+    "recorded-desk-selection-and-completed-read-inspection",
+    "forgotten-source-boundary-for-derived-desk-content",
+    "owner-scoped-maintenance-delivery",
+    "durable-method-checkpoint-recovery"
+  ],
+  "qualifications": {
+    "api": {
+      "passed": true,
+      "checks": 21,
+      "sha256": "56e4f85af6b02d5fd14f264d52c01db756515221209ccadbfb7dcde0aa5808ed",
+      "scope": "Actual owner-authenticated app APIs in two independent cookie jars, real GLM through the app when chat actions run."
+    },
+    "browser": {
+      "passed": true,
+      "checks": 40,
+      "screenshots": 16,
+      "sha256": "7133ab6406f7805fac4b38d694c8e92f95fee45a69eba4a9d3a3ae337444da5d",
+      "scope": "Actual authenticated synthetic Preview in desktop/phone browser viewports; no physical-device or real-owner login claim."
+    },
+    "receipts": {
+      "passed": true,
+      "checks": 7,
+      "sha256": "3aaa0ba107f8e8ee00e2046d4fa34e180da3cf298778291e0c9f12eab4167ea1",
+      "nonfixtureUnchanged": true
+    },
+    "packaging": {
+      "remoteVercel": {
+        "passed": true,
+        "sha256": "bb1d24143eb6fd9a8bd39a3c7cc078d885668bfbe890c4fc7b53ebb71c8c5bb8",
+        "uploadedFiles": 126,
+        "functionAliases": 47,
+        "httpRequests": 17,
+        "cacheRestored": true
+      },
+      "windowsNode": {
+        "passed": true,
+        "sha256": "ef69c5618a4eb465d4700eb7878c146b2f61394c054193cbc7d9de9659613f42",
+        "scope": "Existing exact installation, local Windows Node build and actual HTTP probes; no Vercel artifact or live authentication claim"
+      },
+      "finalLocalLinuxBuild": false
+    },
+    "methodRecovery": {
+      "passed": true,
+      "checks": {
+        "actualHostTermination": true,
+        "actualHostExit86": false,
+        "hostTermination": {
+          "requestedExitCode": 86,
+          "observed": {
+            "kind": "vercel-timeout",
+            "limitSeconds": 300
+          },
+          "deploymentId": "dpl_4qd1t16kEscEF7mu4weEiQXKLaTd",
+          "requestIdSha256": "458b47e6060219ed9b7bf547988357e73950aee46b310b3cd2e4bda1302a2cf3",
+          "requestPathSha256": "8a30b15ec8f0d14d51cc512342de160432842cd4fd191800c8d3f3b334420c09",
+          "runtimeRecordSha256": "264458b149f5ecbb264a11e364d5dd8d5beb0718c8bdbc207632d67672cb55bc",
+          "preparedMarkerOccurrences": 1
+        },
+        "sameJob": true,
+        "samePins": true,
+        "samePrepared": true,
+        "sameGenerationTurn": true,
+        "noNewGenerationTurn": true,
+        "publishedExactPreparedText": true,
+        "onePublication": true,
+        "originalCheckpointRunUnchanged": true,
+        "newPublishRunCompleted": true,
+        "directProviderNetworkAudit": false
+      },
+      "sha256": "29a92e3b8860ad7f38e629cad6d66b91eb8677eab8f01b280116c04279a96d8d",
+      "automaticSchedulerSha256": "7ecc34cf38f6f50170a4a9e360eec2ed5b9fc7cf77ca06b269ba82c3826810bc",
+      "postRecoveryChatSha256": "75f096f0f43f8c8d5869d443eff59ad422dc90e884e017088ecda1c075c094a0"
+    },
+    "releaseGate": {
+      "schema": "quellight.phase3-presentation-gates@1",
+      "passed": true,
+      "corePreviewDeploymentId": "dpl_AqCniAv7ReBQ4QzW9c7h6of7gukH",
+      "coreSourceTreeSha256": "a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca",
+      "coreGitCommit": "64035cd7d318079cb75db82d5f4fe633c4435ec6",
+      "coreEvidenceSha256": "84d3793b6431d9f2fbc93f73e9349552c8f0444143bfaf863adf39d4f5278ed2",
+      "coreQualificationGateSha256": "378b8945df4d751e4411aaadd3b865a5dd1c99ee58403065f171811b73121a7d",
+      "presentationPreviewDeploymentId": "dpl_GE9RdkgbTE4GD8v6CRVcGq7dqxLJ",
+      "presentationPreviewOrigin": "https://quellight-q2q3s01gg-radziamin91-gmailcoms-projects.vercel.app",
+      "sourceTreeSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5",
+      "exactThemeOnly": true,
+      "changedFiles": [
+        "src/lib/theme.css"
+      ],
+      "remotePackagingSha256": "623b138cd967fff9c3c856c21aab414699ef1578ea779d726df17a162587999d",
+      "browserEvidenceSha256": "3f627c8c6538d4a844c5e6a1d9cd338b2d26349c2f05950c66dd0bebf3eb6254",
+      "providerAndRecoveryEvidenceScope": "Qualified core A; all non-CSS app bytes unchanged. No GLM or interruption test executed on B.",
+      "providerTestedOnB": false
+    }
+  },
+  "presentationQualification": {
+    "passed": true,
+    "sourceTreeSha256": "135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5",
+    "remotePackagingSha256": "623b138cd967fff9c3c856c21aab414699ef1578ea779d726df17a162587999d",
+    "contrastRows": [
+      {
+        "viewport": "desktop",
+        "appearance": "light",
+        "control": "room",
+        "visible": true,
+        "foreground": "rgb(44, 52, 46)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 10.237903770061324
+      },
+      {
+        "viewport": "desktop",
+        "appearance": "light",
+        "control": "desk",
+        "visible": true,
+        "foreground": "rgb(96, 104, 96)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 4.598259264642724
+      },
+      {
+        "viewport": "desktop",
+        "appearance": "light",
+        "control": "item",
+        "visible": true,
+        "foreground": "rgb(96, 104, 96)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 4.598259264642724
+      },
+      {
+        "viewport": "desktop",
+        "appearance": "dark",
+        "control": "room",
+        "visible": true,
+        "foreground": "rgb(236, 241, 233)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 9.690846072367124
+      },
+      {
+        "viewport": "desktop",
+        "appearance": "dark",
+        "control": "desk",
+        "visible": true,
+        "foreground": "rgb(180, 196, 183)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 6.092251466844333
+      },
+      {
+        "viewport": "desktop",
+        "appearance": "dark",
+        "control": "item",
+        "visible": true,
+        "foreground": "rgb(180, 196, 183)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 6.092251466844333
+      },
+      {
+        "viewport": "phone",
+        "appearance": "light",
+        "control": "room",
+        "visible": true,
+        "foreground": "rgb(44, 52, 46)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 10.237903770061324
+      },
+      {
+        "viewport": "phone",
+        "appearance": "light",
+        "control": "desk",
+        "visible": true,
+        "foreground": "rgb(96, 104, 96)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 4.598259264642724
+      },
+      {
+        "viewport": "phone",
+        "appearance": "light",
+        "control": "item",
+        "visible": false,
+        "foreground": "rgb(96, 104, 96)",
+        "background": "rgb(225, 232, 219)",
+        "settled": true,
+        "ratio": 4.598259264642724
+      },
+      {
+        "viewport": "phone",
+        "appearance": "dark",
+        "control": "room",
+        "visible": true,
+        "foreground": "rgb(236, 241, 233)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 9.690846072367124
+      },
+      {
+        "viewport": "phone",
+        "appearance": "dark",
+        "control": "desk",
+        "visible": true,
+        "foreground": "rgb(180, 196, 183)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 6.092251466844333
+      },
+      {
+        "viewport": "phone",
+        "appearance": "dark",
+        "control": "item",
+        "visible": false,
+        "foreground": "rgb(180, 196, 183)",
+        "background": "rgb(45, 64, 50)",
+        "settled": true,
+        "ratio": 6.092251466844333
+      }
+    ],
+    "screenshots": 6,
+    "browserSha256": "3f627c8c6538d4a844c5e6a1d9cd338b2d26349c2f05950c66dd0bebf3eb6254",
+    "coreGate": {
+      "schema": "quellight.phase3-production-gates@1",
+      "cleanDeploymentId": "dpl_AqCniAv7ReBQ4QzW9c7h6of7gukH",
+      "cleanBaseUrl": "https://quellight-m3h03tnqo-radziamin91-gmailcoms-projects.vercel.app",
+      "cleanSourceTreeSha256": "a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca",
+      "shadowDeploymentId": "dpl_4qd1t16kEscEF7mu4weEiQXKLaTd",
+      "fixtureOwnerSha256": "0b7ca3dac5b3ee14023f6a601674ff70f7e5c07aeedc8e60a243f1959142f0f0",
+      "fixtureRunSha256": "222fab6d412bdc77e6cd3092f19010328b98e509c2d514bad48e4999b7ca767e",
+      "apiJourneyEvidence": "1a5f4e87-e6e0-4d3b-88e2-fbb75852b432.json",
+      "apiJourneyCanonicalSha256": "56e4f85af6b02d5fd14f264d52c01db756515221209ccadbfb7dcde0aa5808ed",
+      "browserEvidence": "browser-33bc66ca-a1e8-409a-a495-14ab613b4491/summary.json",
+      "browserCanonicalSha256": "7133ab6406f7805fac4b38d694c8e92f95fee45a69eba4a9d3a3ae337444da5d",
+      "receiptAuditCanonicalSha256": "3aaa0ba107f8e8ee00e2046d4fa34e180da3cf298778291e0c9f12eab4167ea1",
+      "nonfixtureBaselineCanonicalSha256": "4a63a92f62b9f8c86628b5ebbed20bfc4c60905e173abc0e7fd52ecfde35d9e0",
+      "methodRecoveryCanonicalSha256": "29a92e3b8860ad7f38e629cad6d66b91eb8677eab8f01b280116c04279a96d8d",
+      "methodSchedulerCanonicalSha256": "7ecc34cf38f6f50170a4a9e360eec2ed5b9fc7cf77ca06b269ba82c3826810bc",
+      "postRecoveryChatCanonicalSha256": "75f096f0f43f8c8d5869d443eff59ad422dc90e884e017088ecda1c075c094a0",
+      "packaging": {
+        "mode": "remote-vercel",
+        "remoteProofSha256": "bb1d24143eb6fd9a8bd39a3c7cc078d885668bfbe890c4fc7b53ebb71c8c5bb8",
+        "windowsProofSha256": "ef69c5618a4eb465d4700eb7878c146b2f61394c054193cbc7d9de9659613f42",
+        "portableLinuxNodeRequalified": false
+      }
+    },
+    "providerAndRecoveryEvidenceScope": "Actual GLM and interruption tests exercised core A; the final release changes only one CSS color. No duplicate GLM test is claimed for B."
+  },
+  "scheduler": {
+    "schema": "quellight.phase3-production-scheduler@1",
+    "passed": true,
+    "cron": {
+      "name": "quellight-memory-wake",
+      "jobId": 1,
+      "active": true,
+      "command": "SELECT quellight_product_v1.wake_memory_worker()",
+      "schedule": "* * * * *"
+    },
+    "capturedAt": "2026-11-17T09:00:53.780523+00:00",
+    "privateWake": true,
+    "functionBody": "\nDECLARE\n  configuration quellight_product_v1.memory_delivery_configuration;\n  machine_secret text;\n  bypass_secret text;\n  headers jsonb;\n  request_id bigint;\nBEGIN\n  SELECT * INTO configuration FROM quellight_product_v1.memory_delivery_configuration WHERE singleton AND enabled;\n  IF NOT FOUND THEN RETURN NULL; END IF;\n  IF NOT EXISTS (SELECT 1 FROM quellight_product_v1.memory_jobs WHERE\n      (state IN ('queued','retryable') AND wake_after<=now()) OR (state='running' AND claim_expires<=now()))\n    AND NOT EXISTS (SELECT 1 FROM quellight_product_v1.desk_method_jobs WHERE\n      (state IN ('queued','retryable') AND wake_after<=now()) OR (state='running' AND claim_expires<=now()))\n    AND NOT EXISTS (SELECT 1 FROM quellight_product_v1.memory_care_commands WHERE state IN ('pending','retryable')\n      AND wake_after<=now() AND (claim_expires IS NULL OR claim_expires<=now())) THEN\n    RETURN NULL;\n  END IF;\n  SELECT decrypted_secret INTO machine_secret FROM vault.decrypted_secrets WHERE name='quellight_memory_dispatch';\n  IF machine_secret IS NULL OR length(machine_secret)<32 THEN RETURN NULL; END IF;\n  headers := jsonb_build_object('Content-Type','application/json','Authorization','Bearer ' || machine_secret);\n  IF configuration.origin <> 'https://quellight.com' THEN\n    SELECT decrypted_secret INTO bypass_secret FROM vault.decrypted_secrets WHERE name='quellight_memory_preview_bypass';\n    IF bypass_secret IS NULL THEN RETURN NULL; END IF;\n    headers := headers || jsonb_build_object('x-vercel-protection-bypass',bypass_secret);\n  END IF;\n  request_id := net.http_post(url:=configuration.origin || '/api/internal/memory/wake',body:='{}'::jsonb,\n    headers:=headers,timeout_milliseconds:=configuration.delivery_timeout_ms);\n  INSERT INTO quellight_product_v1.memory_deliveries(request_id) VALUES(request_id);\n  RETURN request_id;\nEND;\n",
+    "configuration": {
+      "origin": "https://quellight.com",
+      "enabled": true,
+      "deliveryTimeoutMs": 10000
+    },
+    "previewAuditAbsent": true,
+    "previewFunctionAbsent": true,
+    "previewScheduleAbsent": true,
+    "exactAppliedMigrationBody": true,
+    "migration": "20261117070749_quellight_desk_method_wakeup.sql",
+    "scope": "Actual database configuration, production cron preservation, private execution permissions, exact applied native/method/care due-work function and removed temporary preview scheduler/function/audit; no manual wake invoked."
+  },
+  "cleanup": {
+    "hostedComplete": true,
+    "fixtureCount": 2,
+    "authUsersDeleted": true,
+    "sessionsRevoked": true,
+    "staleCookiesRejected": true,
+    "temporaryPreviewsRemoved": 6,
+    "realOwnerChanged": false,
+    "retainedProductHistoryAndAudit": true,
+    "authEvidenceSha256": "4f96774a11e51f844d41060e9ff65afcbf8fd3a77807d7debfc07d89bf14b818",
+    "previewEvidenceSha256": "91b0e147a6e52a3754b0cbe17685621e59140b8ee8bf5d690a677d48b764510d",
+    "localStagingRetained": true,
+    "localDeletionRejectedByAutomaticApprovalReview": true,
+    "localDeletionReason": "blocked by policy",
+    "deletionBypassed": false
+  },
+  "provider": {
+    "profile": "zai-coding-plan/glm-5.3-flash",
+    "keyRemainsInVercel": true,
+    "newPaidServices": false,
+    "applicationGenerationTimeout": false,
+    "applicationOutputOrStepCap": false,
+    "actualHostMaximumSeconds": 300
+  },
+  "limitations": [
+    "Initial Desk collaboration is revision-checked plain text/Markdown, not simultaneous cursors or WYSIWYG.",
+    "Private owner access remains; general multi-user access and ARA data import are not enabled.",
+    "Deeper attunement and semantic vector search remain outside this phase.",
+    "Forget controls source eligibility; it does not delete owner documents or promise semantic erasure everywhere.",
+    "Final Linux rebuild was blocked by local disk exhaustion; exact-source Windows Node and actual hosted Vercel proofs are separate.",
+    "Host interruption evidence distinguishes the actual platform outcome from the requested exit; no direct provider-egress or billing audit is claimed."
+  ]
+}

@@ -1,6 +1,6 @@
 # Phase 3 — collaborative Desk and learned working method
 
-Authorized 17 November 2026 after the owner reviewed the next-phase investigation. Active implementation; no Phase 3 delivery claim yet. Starting app commit `b47f856afe9e1a474f45a0616ae56e76d43f6ad8`; preserve its hosted Phase 2 behavior and existing data. Use the qualified fourteen-package VICT closure, existing GLM-5.3-Flash profile and free Vercel/Supabase services.
+Authorized and delivered 17 November 2026 after the owner reviewed the next-phase investigation. [Delivery and scoped evidence](PHASE-3-DELIVERY.md) record the completed production release. This plan retains the implementation intent and division of work. Starting app commit `b47f856afe9e1a474f45a0616ae56e76d43f6ad8`; existing data and Phase 2 behavior were preserved. The release uses the qualified fourteen-package VICT closure, existing GLM-5.3-Flash profile and free Vercel/Supabase services.
 
 ## User journey and experience
 
