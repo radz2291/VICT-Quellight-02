@@ -2,7 +2,7 @@ import { isHttpError, json } from '@sveltejs/kit';
 import { ProductError } from '../domain/queries.js';
 
 const messages: Record<string, string> = {
-  CONVERSATION_BUSY: 'A reply is still finishing in this conversation. Reopen it to check its progress.',
+  CONVERSATION_BUSY: 'This conversation is finishing some work. Your message is kept; try sending again in a moment.',
   TURN_IDEMPOTENCY_CONFLICT: 'This message request was already used for different text. Refresh before sending again.',
   ROOM_ARCHIVED: 'This room is archived. Choose an active room to continue.',
   CONVERSATION_NOT_FOUND: 'This conversation could not be found.',

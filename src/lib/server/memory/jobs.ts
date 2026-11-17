@@ -16,6 +16,20 @@ export interface PublicMemorySource {
 }
 export const memoryDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
+/** Undefined is available only to explicitly unscoped internal/test compositions. */
+export function validateDeliveryActor(actorId: string | undefined): string | undefined {
+  if (actorId === undefined) return undefined;
+  if (typeof actorId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(actorId))
+    throw Object.assign(new Error('MEMORY_DELIVERY_ACTOR_INVALID'), { code: 'MEMORY_DELIVERY_ACTOR_INVALID' });
+  return actorId.toLowerCase();
+}
+/** Personal-app production delivery always names its configured owner. */
+export function requireDeliveryActor(actorId: string | undefined): string {
+  const owner = validateDeliveryActor(actorId);
+  if (!owner) throw Object.assign(new Error('MEMORY_DELIVERY_OWNER_REQUIRED'), { code: 'MEMORY_DELIVERY_OWNER_REQUIRED' });
+  return owner;
+}
+
 /** Original public text only. Failed/partial assistant replies are not treated as settled facts. */
 export async function publicConversationSources(client: MemorySettingsSqlClient, actorId: string, conversationId: string) {
   const rows = (await client.query(`SELECT turn_id,input_text,output_text,execution_state,error_code,created_at,updated_at
@@ -52,12 +66,14 @@ export async function enqueueMemoryJob(client: FencedMemorySettingsClient, input
 }
 
 /** Run inside the global dispatcher fence; row locks prevent duplicate delivery claims. */
-export async function claimMemoryJob(client: FencedMemorySettingsClient, leaseUntil: Date) {
+export async function claimMemoryJob(client: FencedMemorySettingsClient, leaseUntil: Date, actorId?: string) {
+  const owner = validateDeliveryActor(actorId) ?? null;
   const token = randomUUID();
   // A lost host is retried with the SAME operation/config identity. Native reconcile decides whether
   // it has a prepared publication, a safe retry, or a superseded result; queue expiry alone proves none.
   const expired = await client.query(`UPDATE quellight_product_v1.memory_jobs SET state='retryable',claim_token=NULL,claim_expires=NULL,
-    failure_code='HOST_INTERRUPTED',wake_after=now(),updated_at=now() WHERE state='running' AND claim_expires<=now() RETURNING id`);
+    failure_code='HOST_INTERRUPTED',wake_after=now(),updated_at=now() WHERE state='running' AND claim_expires<=now()
+    AND ($1::uuid IS NULL OR actor_id=$1::uuid) RETURNING id`, [owner]);
   for (const row of expired.rows) await client.query("INSERT INTO quellight_product_v1.memory_job_events(job_id,state,code) VALUES($1,'retryable','HOST_INTERRUPTED')", [row.id]);
   // Native maintenance serializes the owner's shared resource even across conversations.
   // Avoid claiming another job that can only contend with that owner's active delivery;
@@ -65,9 +81,10 @@ export async function claimMemoryJob(client: FencedMemorySettingsClient, leaseUn
   const row = (await client.query(`UPDATE quellight_product_v1.memory_jobs SET state='running',attempts=attempts+1,
     claim_token=$1,claim_expires=$2,updated_at=now() WHERE id=(SELECT candidate.id FROM quellight_product_v1.memory_jobs candidate
     WHERE candidate.state IN ('queued','retryable') AND candidate.wake_after<=now()
+    AND ($3::uuid IS NULL OR candidate.actor_id=$3::uuid)
     AND NOT EXISTS (SELECT 1 FROM quellight_product_v1.memory_jobs running
       WHERE running.actor_id=candidate.actor_id AND running.state='running' AND running.claim_expires>now())
-    ORDER BY candidate.wake_after,candidate.created_at,candidate.id FOR UPDATE OF candidate SKIP LOCKED LIMIT 1) RETURNING *`, [token, leaseUntil])).rows[0];
+    ORDER BY candidate.wake_after,candidate.created_at,candidate.id FOR UPDATE OF candidate SKIP LOCKED LIMIT 1) RETURNING *`, [token, leaseUntil, owner])).rows[0];
   if (!row) return null;
   await client.query("INSERT INTO quellight_product_v1.memory_job_events(job_id,state) VALUES($1,'running')", [row.id]);
   return row as MemoryJob;

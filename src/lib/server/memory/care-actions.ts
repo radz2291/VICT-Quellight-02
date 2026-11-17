@@ -6,8 +6,9 @@ import { neutralJsonContract } from '@victframework/sdk';
 import { memoryCareActionBindings, type MemoryCareActionId, type MemoryCareActionInput } from '../../product/memory-contracts.js';
 import { authorizedActor, getConversation, ProductError, type Owner } from '../domain/queries.js';
 import { openQuellightMemory, QUELLIGHT_NATIVE_MEMORY_SCHEMA } from './native.js';
-import { enqueueMemoryJob, publicConversationSources } from './jobs.js';
+import { enqueueMemoryJob, publicConversationSources, validateDeliveryActor } from './jobs.js';
 import { loadEffectiveMemorySettings, type EffectiveMemorySettings, type FencedMemorySettingsClient } from './settings.js';
+import { memoryCareScope } from './authority-fence.js';
 
 const table = 'quellight_product_v1.memory_care_commands';
 const attempts = 'quellight_product_v1.memory_care_attempts';
@@ -45,7 +46,7 @@ async function sql<T>(context: CareContext, work: (client: FencedMemorySettingsC
 }
 async function withOwnerLease<T>(stores: PostgresStoreSet, actorId: string, openMemory: OpenMemory,
   work: (context: CareContext) => Promise<T>): Promise<T> {
-  const claim = await stores.coordination.acquire({ scopeId: `quellight-memory-care:${actorId}`, actorId, ownerId: randomUUID(), leaseMs });
+  const claim = await stores.coordination.acquire({ scopeId: memoryCareScope(actorId), actorId, ownerId: randomUUID(), leaseMs });
   if (claim.status !== 'acquired') throw new ProductError('MEMORY_CARE_IN_PROGRESS', 409);
   const context = { stores, actorId, lease: claim.lease, openMemory };
   let stopped = false, renewal: Promise<void> | undefined, timer: ReturnType<typeof setTimeout> | undefined;
@@ -244,12 +245,14 @@ export async function executeMemoryCareAction(stores: PostgresStoreSet, owner: O
 /** Dispatcher recovery after browser/process loss. Deadline only controls admission of the next
  * short command; these keyless care operations make no inference calls. */
 export async function processPendingMemoryCare(stores: PostgresStoreSet, deadlineEpochMs: number,
-  dependencies: MemoryCareDependencies = {}) {
+  dependencies: MemoryCareDependencies = {}, actorId?: string) {
+  const owner = validateDeliveryActor(actorId) ?? null;
   const results: { actorId: string; commandKey: string; state: string; code?: string }[] = [];
   const seen = new Set<string>();
   while (Date.now() < deadlineEpochMs) {
     const due = (await stores.coordination.pool.query<MemoryCareCommand>(`SELECT * FROM ${table} WHERE state IN ('pending','retryable')
-      AND wake_after<=now() AND (claim_expires IS NULL OR claim_expires<=now()) ORDER BY wake_after,created_at`)).rows
+      AND wake_after<=now() AND (claim_expires IS NULL OR claim_expires<=now())
+      AND ($1::uuid IS NULL OR actor_id=$1::uuid) ORDER BY wake_after,created_at`, [owner])).rows
       .find(row => !seen.has(`${row.actor_id}:${row.command_key}`));
     if (!due) break;
     seen.add(`${due.actor_id}:${due.command_key}`);

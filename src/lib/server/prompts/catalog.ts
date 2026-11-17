@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import conversation from './conversation.json' with { type: 'json' };
 import maintenance from './maintenance.json' with { type: 'json' };
 import conversationContext from './conversation-context.json' with { type: 'json' };
+import conversationDesk from './conversation-desk.json' with { type: 'json' };
 
 export interface PromptDefinition {
   id: string;
@@ -10,7 +11,7 @@ export interface PromptDefinition {
   template: readonly string[];
 }
 
-export const promptCatalog = { conversation, conversationContext, maintenance } satisfies Record<string, PromptDefinition>;
+export const promptCatalog = { conversation, conversationContext, conversationDesk, maintenance } satisfies Record<string, PromptDefinition>;
 
 /** Resolve template fields once, preserving supplied context as literal text. */
 export function renderPrompt(definition: PromptDefinition, values: Record<string, string>) {

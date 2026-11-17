@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { authenticatedActorContext, assertActorScope } from '@victframework/runtime';
+import { authenticatedActorContext, assertActorScope, type HostedLease } from '@victframework/runtime';
 import type { MastraProductAgentConfig } from '@victframework/mastra';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { enqueueMemoryJob, publicConversationSources, type MemoryJob } from './jobs.js';
@@ -39,6 +39,7 @@ async function currentPolicy(client: MemorySettingsSqlClient, job: MemoryJob) {
 export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
   return async function process(job: MemoryJob, stores: PostgresStoreSet, deadline: Date): Promise<MemoryJobOutcome> {
     let memory: OpenMemory | undefined;
+    let conversationLease: HostedLease | undefined;
     const operationId = `memory-job:${job.id}`;
     const request = { conversationId: job.conversation_id, operationId, authorityRevision: job.authority_revision };
     const expired = () => Date.now() >= deadline.getTime();
@@ -46,14 +47,10 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
 
     async function supersedeAndEnqueue(code: string): Promise<MemoryJobOutcome> {
       if (expired()) return retry('MEMORY_HOST_WINDOW_ENDED');
-      if (!memory) return retry();
+      if (!memory || !conversationLease) return retry();
       // Native reads occur outside the product SQL fence, including with a one-connection pool.
       const authority = await memory.service.authority(job.conversation_id);
-      const claim = await stores.coordination.acquire({ scopeId: `quellight:conversation:${job.conversation_id}`,
-        actorId: job.actor_id, ownerId: randomUUID(), leaseMs: 30_000 });
-      if (claim.status !== 'acquired') return retry('MEMORY_CONVERSATION_BUSY');
-      try {
-        return await stores.coordination.withFence(claim.lease, async client => {
+      return await stores.coordination.withFence(conversationLease, async client => {
           const claimed = (await client.query(`SELECT 1 FROM quellight_product_v1.memory_jobs
             WHERE id=$1 AND actor_id=$2 AND claim_token=$3 AND state='running' AND claim_expires>now()`,
           [job.id, job.actor_id, job.claim_token])).rows[0];
@@ -64,8 +61,7 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
             kind: job.kind === 'purge' ? 'purge' : 'observe', sourceRevision: fresh.source.revision,
             configuration: fresh.configuration, authorityRevision: authority.revision, supersedesJobId: job.id });
           return { state: 'superseded', code };
-        });
-      } finally { await stores.coordination.release(claim.lease); }
+      });
     }
 
     try {
@@ -79,6 +75,15 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       assertActorScope(actor, 'app.data.read'); assertActorScope(actor, 'agent.turn.start');
       const current = await currentPolicy(stores.coordination.pool, job);
       if (!current) return { state: 'blocked', code: 'MEMORY_CONVERSATION_UNAVAILABLE' };
+      const remaining = Math.floor(deadline.getTime() - Date.now());
+      if (remaining <= 0) return retry('MEMORY_HOST_WINDOW_ENDED');
+      // Chat admission and execution use this same product lease. Hold it until
+      // native work has closed, so a live maintainer cannot strand an admitted chat
+      // behind its native thread fence. This is the actual host window, not a model cap.
+      const claim = await stores.coordination.acquire({ scopeId: `quellight:conversation:${job.conversation_id}`,
+        actorId: job.actor_id, ownerId: randomUUID(), leaseMs: remaining });
+      if (claim.status !== 'acquired') return retry('MEMORY_CONVERSATION_BUSY');
+      conversationLease = claim.lease;
       memory = await openQuellightMemory({ stores, ownerActorId: job.actor_id,
         conversationId: job.conversation_id, effective: job.configuration });
       const existing = await memory.service.operation(job.conversation_id, operationId);
@@ -132,6 +137,9 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       if (code && blockedCodes.has(code)) return { state: 'blocked', code };
       if (code === 'VICT_AGENT_THREAD_BUSY') return retry('MEMORY_CONVERSATION_BUSY');
       return retry();
-    } finally { await memory?.hosted.close(); }
+    } finally {
+      try { await memory?.hosted.close(); }
+      finally { if (conversationLease) await stores.coordination.release(conversationLease); }
+    }
   };
 }

@@ -1,0 +1,9 @@
+{
+  "id": "quellight.conversation.desk-context",
+  "description": "Adds the exact room Desk selection to the selected conversation instructions.",
+  "variables": ["conversationInstructions", "deskSelection"],
+  "template": [
+    "{{conversationInstructions}}",
+    "<desk-context>{{deskSelection}}</desk-context>"
+  ]
+}

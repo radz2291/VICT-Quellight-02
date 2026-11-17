@@ -3,7 +3,7 @@ import { ModelRouterLanguageModel } from '@mastra/core/llm';
 import { AgentTurnService } from '@victframework/control';
 import {
   composeMastraTurnExecutor,
-  MastraSanitizedLogger, mastraThreadIdForConversation, type MastraProductAgentConfig,
+  MastraSanitizedLogger, mastraThreadIdForConversation, mastraResourceIdForActor, type MastraProductAgentConfig,
 } from '@victframework/mastra';
 import {
   AgentStreamHub, assertActorScope, authenticatedActorContext, gateCapabilityInvoke,
@@ -17,6 +17,11 @@ import { loadEffectiveMemorySettings, type EffectiveMemorySettings } from '../me
 import { enqueueMemoryJob, publicConversationSources } from '../memory/jobs.js';
 import { openQuellightMemory, QUELLIGHT_MEMORY_RECALL_PERMISSION } from '../memory/native.js';
 import { ensureNativeSources } from '../memory/import.js';
+import { createDeskMemoryContext } from '../desk-memory-context.js';
+import { createDeskCapabilities } from '../desk/capabilities.js';
+import { prepareDeskContext, saveDeskContext, type DeskContextSelection } from '../desk/context.js';
+import { guardDeskModel } from '../desk-model-guard.js';
+import { enqueueMethodOccurrence } from '../desk/method-jobs.js';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ACTIVE = ['queued', 'running'];
@@ -33,6 +38,7 @@ interface TurnRow {
   published_sequence: string | number; created_at: Date; updated_at: Date;
   memory_configuration?: EffectiveMemorySettings | null;
   memory_authority_revision?: string | null;
+  desk_binding?: { roomId: string; authorityRevision: string; sourceMessageIds: string[] } | null;
 }
 export interface ConversationServiceOptions {
   openDatabase(): Promise<PostgresStoreSet>;
@@ -67,6 +73,11 @@ export function createConversationService(options: ConversationServiceOptions) {
     return rows.rows[0];
   }
   async function settleProjection(stores: PostgresStoreSet, lease: HostedLease, row: TurnRow, errorCode?: string) {
+    const settled = await stores.turns.getTurn(row.turn_id);
+    const creates = !errorCode && settled?.status === 'completed' && row.desk_binding
+      ? (await stores.invocations.listInvocationsForTurn(row.turn_id))
+        .filter(invocation => invocation.status === 'completed' && invocation.capabilityId === 'quellight.desk.create')
+        .map(invocation => invocation.invocationId) : [];
     await stores.coordination.withFence(lease, async (client) => {
       await client.query(`UPDATE ${TABLE} SET execution_state=$2, error_code=$3,
         output_text=(SELECT string_agg(delta,'' ORDER BY sequence) FROM ${FRAGMENTS} WHERE turn_id=$1), updated_at=now()
@@ -79,6 +90,10 @@ export function createConversationService(options: ConversationServiceOptions) {
         await enqueueMemoryJob(client, { actorId: row.actor_id, conversationId: row.conversation_id, kind: 'observe',
           sourceRevision: source.revision, configuration: row.memory_configuration, authorityRevision: row.memory_authority_revision });
       }
+      if (row.desk_binding && creates.length) await enqueueMethodOccurrence(client, {
+        actorId: row.actor_id, roomId: row.desk_binding.roomId, conversationId: row.conversation_id,
+        turnId: row.turn_id, completedCreateInvocationIds: creates,
+      });
     });
   }
   async function reconcileOwned(stores: PostgresStoreSet, lease: HostedLease, owner: Owner, conversationId: string) {
@@ -152,30 +167,49 @@ export function createConversationService(options: ConversationServiceOptions) {
           status: viewTurn(afterClaim.rows[0], await stores.turns.getTurn(afterClaim.rows[0].turn_id)).status, completion: Promise.resolve() };
       }
       const effective = await loadEffectiveMemorySettings(stores.coordination.pool, owner.actorId, conversation.roomId);
+      const turnId = `quellight:${randomUUID()}`;
       const prepared = await openQuellightMemory({ stores, ownerActorId: owner.actorId, conversationId,
         effective, leaseMs: Math.min(remaining, HOST_LEASE_MS) });
       let authorityRevision: string;
       let profile: ReturnType<typeof conversationActivation>;
+      let deskSelection: DeskContextSelection;
+      let deskBinding: NonNullable<TurnRow['desk_binding']>;
       try {
         await ensureNativeSources({ stores, lease, owner, conversation, memory: prepared });
+        // A vanished worker's native lease may still be expiring. Probe the public
+        // coordinator before admitting a durable turn. The product conversation
+        // lease prevents a live maintainer from starting between this and execution.
+        const available = await prepared.hosted.coordinator.beginTurn(mastraThreadIdForConversation(conversationId), mastraResourceIdForActor(owner.actorId));
+        await available.release();
         authorityRevision = (await prepared.service.authority(conversationId)).revision;
+        const deskMemory = await createDeskMemoryContext(stores, owner, conversationId, effective, prepared);
+        const sources = await deskMemory.sourceSnapshot();
+        deskSelection = await prepareDeskContext(stores, owner, conversation.roomId, deskMemory.authority);
+        if (sources.authorityRevision !== authorityRevision || deskSelection.authorityRevision !== authorityRevision) throw new ProductError('DESK_SOURCE_CHANGED', 409);
+        deskBinding = { roomId: conversation.roomId, authorityRevision, sourceMessageIds: sources.messages.map(message => message.id) };
+        const desk = createDeskCapabilities(stores, owner, conversation.roomId, turnId,
+          { ...deskBinding, conversationId, authority: deskMemory.authority, withAuthorityFence: deskMemory.withAuthorityFence });
         profile = conversationActivation(effective.configuration.purpose, { effective,
           memory: { id: prepared.config.id, revision: prepared.service.configurationRevision },
-          recall: { id: prepared.recallCapability.id, revision: prepared.recallCapability.revision } });
+          recall: { id: prepared.recallCapability.id, revision: prepared.recallCapability.revision },
+          desk: { selection: deskSelection, capabilities: desk.identities } });
+      } catch (error) {
+        if (error && typeof error === 'object' && 'code' in error && error.code === 'VICT_AGENT_THREAD_BUSY') throw new ProductError('CONVERSATION_BUSY', 409);
+        throw error;
       } finally { await prepared.hosted.close(); }
       const fenced = stores.forLease(lease);
       const persisted = await fenced.governance.getAgentActivation(profile.activation.activationVersion);
       if (persisted && !profile.registry.restoreActivation(persisted).ok) throw new ProductError('AGENT_ACTIVATION_INVALID', 503);
       await fenced.governance.saveAgentActivation(profile.record);
-      const turnId = `quellight:${randomUUID()}`;
       const admitted = await stores.coordination.withFence(lease, async (client) => {
         const locked = await client.query(`SELECT c.id FROM quellight_product_v1.conversations c
           JOIN quellight_product_v1.rooms r ON r.id=c.room_id AND r.actor_id=c.actor_id
           WHERE c.id=$1 AND c.actor_id=$2 AND c.archived_at IS NULL AND r.archived_at IS NULL FOR UPDATE OF c,r`, [conversationId, owner.actorId]);
         if (!locked.rows.length) throw new ProductError('ROOM_ARCHIVED', 409);
-        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state,memory_configuration,memory_authority_revision)
-          VALUES($1,$2,$3,$4,$5,$6,$7,'queued',$8::jsonb,$9) RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input,
-          profile.activation.activationVersion, JSON.stringify(effective), authorityRevision]);
+        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state,memory_configuration,memory_authority_revision,desk_binding)
+          VALUES($1,$2,$3,$4,$5,$6,$7,'queued',$8::jsonb,$9,$10::jsonb) RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input,
+          profile.activation.activationVersion, JSON.stringify(effective), authorityRevision, JSON.stringify(deskBinding)]);
+        await saveDeskContext(client, owner.actorId, turnId, deskSelection);
         return result.rows[0];
       });
       let ready!: () => void;
@@ -213,18 +247,31 @@ export function createConversationService(options: ConversationServiceOptions) {
         effective: row.memory_configuration, modelFactory, leaseMs: Math.min(remaining, HOST_LEASE_MS) });
       memory = native.hosted;
       const recall = native.recallCapability;
-      const invokeRecall = gateCapabilityInvoke(recall, { grants: [QUELLIGHT_MEMORY_RECALL_PERMISSION] });
+      const owner: Owner = { id: actor.actorId, actorId: actor.actorId, email: '' };
+      if (!row.desk_binding) throw new ProductError('DESK_BINDING_MISSING', 503);
+      const deskMemory = await createDeskMemoryContext(stores, owner, row.conversation_id, row.memory_configuration, native);
+      const desk = createDeskCapabilities(stores, owner, row.desk_binding.roomId, row.turn_id, {
+        ...row.desk_binding, conversationId: row.conversation_id, authority: deskMemory.authority,
+        withAuthorityFence: deskMemory.withAuthorityFence,
+      });
+      const capabilities = [recall, ...desk.capabilities];
+      const grants = [QUELLIGHT_MEMORY_RECALL_PERMISSION, ...desk.permissions];
+      const invokers = new Map(capabilities.map(capability => [capability, gateCapabilityInvoke(capability, { grants })]));
       const hub = new AgentStreamHub({ ledger: fenced.streamLedger });
       const tools = new AgentTurnService({ stores: fenced, ids: turnIds(row.turn_id) });
       composition = composeMastraTurnExecutor({ stores: fenced, activation, hub, ids: turnIds(row.turn_id),
         agentConfig: { store: memory.store, threadCoordinator: memory.coordinator, managedMemory: native.service, logger: new MastraSanitizedLogger(),
           tracing: { sampling: { type: 'never' } },
-          modelFactory },
+          modelFactory: profile => guardDeskModel(modelFactory(profile), native.service, {
+            conversationId: row.conversation_id, turnId: row.turn_id, authorityRevision: row.desk_binding!.authorityRevision,
+          }) },
         capabilityBridge: {
-          resolveCapability: (id, revision) => id === recall.id && revision === recall.revision ? recall : undefined,
+          quietWriteApprovals: desk.quietWriteApprovals,
+          resolveCapability: (id, revision) => capabilities.find(capability => capability.id === id && capability.revision === revision),
           invoke: async (definition, input, context) => {
-            if (definition !== recall) throw new Error('CAPABILITY_UNAVAILABLE');
-            return invokeRecall(input, context as CapabilityContext);
+            const invoke = invokers.get(definition);
+            if (!invoke) throw new Error('CAPABILITY_UNAVAILABLE');
+            return invoke(input, context as CapabilityContext);
           },
           recordInvocationIntent: input => tools.recordToolInvocationIntent(input),
           claimInvocationRun: input => fenced.invocations.claimInvocationRun(input),

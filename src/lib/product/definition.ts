@@ -10,6 +10,8 @@ import { productActions, productResources, productContracts } from './domain-con
 import { interfaceActions, interfaceResources, interfaceContracts } from './action-definitions';
 import { memoryNodes, memoryLocalState, memoryConditions, memoryViewFields, memoryInitialView } from './memory-ui';
 import { memorySettingsActions, memorySettingsContracts, memorySettingsResource, memoryCareActions, memoryCareContracts, memoryCareResource } from './memory-contracts';
+import { deskNodes, deskLocalState, deskConditions, deskViewFields, deskInitialView, deskInterfaceActions } from './desk-ui';
+import { deskActions, deskContracts, deskResource, deskMethodSettingsActions, deskMethodSettingsContracts, deskMethodSettingsResource } from './desk-contracts';
 
 export const descriptors = [...catalogDescriptors, ...aiAuthoringDescriptors, ...patternAuthoringDescriptors, ...mediaAuthoringDescriptors];
 export const implementations = [...catalogImplementations, ...aiAuthoringImplementations, ...patternAuthoringImplementations, ...mediaAuthoringImplementations];
@@ -77,7 +79,8 @@ function settingsDisclosure(id: string, stateKey: string): Record<string, UiNode
     [`${id}-label`]: text(`${id}-label`, 'Settings'),
     [`${id}-chevron`]: element(`${id}-chevron`, 'span', [`${id}-chevron-icon`], ['ql-settings-chevron']),
     [`${id}-chevron-icon`]: icon(`${id}-chevron-icon`, 'chevron-down'),
-    [`${id}-body`]: element(`${id}-body`, 'div', [`${id}-appearance`, `${id}-archived`, `${id}-memory`, `${id}-signout`], ['ql-settings']),
+    [`${id}-body`]: element(`${id}-body`, 'div', [`${id}-appearance`, `${id}-archived`, `${id}-memory`, `${id}-desk`, `${id}-signout`], ['ql-settings']),
+    [`${id}-desk`]: { ...button(`${id}-desk`, 'Desk defaults', 'ui.desk.defaults', undefined, true), localStyle: [...quietControl, style('padding', '4px 0'), style('min-height', '34px'), style('font-size', '13px')] },
     [`${id}-memory`]: { ...button(`${id}-memory`, 'Memory defaults', 'ui.memory.defaults', undefined, true), localStyle: [...quietControl, style('padding', '4px 0'), style('min-height', '34px'), style('font-size', '13px')] },
     [`${id}-appearance`]: settingsSwitch(`${id}-appearance`, 'Dark appearance', 'dark'),
     [`${id}-archived`]: settingsSwitch(`${id}-archived`, 'Archived rooms', 'showArchived'),
@@ -121,7 +124,9 @@ function navigation(prefix: string): Record<string, UiNode> {
       when: ref(`repeat.${item}.selected`), then: literal('var(--ql-selected)'), otherwise: literal('transparent') } } }
   ];
   return {
-    [prefix]: element(prefix, 'div', [`${prefix}-heading`, `${prefix}-rooms`, `${prefix}-empty`, `${prefix}-new`, `${prefix}-conversation-heading`, `${prefix}-conversations`], ['ql-navigation']),
+    [prefix]: element(prefix, 'div', [`${prefix}-heading`, `${prefix}-rooms`, `${prefix}-empty`, `${prefix}-new`, `${prefix}-desk-wrap`, `${prefix}-conversation-heading`, `${prefix}-conversations`], ['ql-navigation']),
+    [`${prefix}-desk-wrap`]: conditional(`${prefix}-desk-wrap`, 'hasRoom', [`${prefix}-desk`]),
+    [`${prefix}-desk`]: { ...button(`${prefix}-desk`, 'Desk', 'ui.desk.open'), localStyle: [...quietControl, style('font-size', '13px'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('width', '100%'), style('justify-content', 'flex-start'), style('border-radius', '7px'), { property: 'background', value: { type: 'binding', expression: { type: 'conditionalValue', when: ref('view.deskOpen'), then: literal('var(--ql-selected)'), otherwise: literal('transparent') } } }] },
     [`${prefix}-heading`]: element(`${prefix}-heading`, 'h2', [`${prefix}-heading-text`], ['ql-section-label']),
     [`${prefix}-heading-text`]: text(`${prefix}-heading-text`, 'Your rooms'),
     [`${prefix}-rooms`]: { kind: 'repeat', id: `${prefix}-rooms`, collection: ref('view.rooms'), key: ref('repeat.room.id'), itemName: 'room', templateRoot: `${prefix}-room` },
@@ -148,6 +153,7 @@ function navigation(prefix: string): Record<string, UiNode> {
 const nodes: Record<string, UiNode> = {
   shell: element('shell', 'div', ['sidebar', 'workspace', 'memoryDrawer'], ['ql-shell']),
   ...memoryNodes,
+  ...deskNodes,
   sidebar: element('sidebar', 'aside', ['brand', 'navigation', 'sidebarFooter'], ['ql-sidebar']),
   brand: element('brand', 'div', ['brandName'], ['ql-brand']),
   brandName: element('brandName', 'h1', ['brandText']),
@@ -199,6 +205,8 @@ const nodes: Record<string, UiNode> = {
   loadingText: { ...element('loadingText', 'p', ['loadingCopy'], ['ql-loading']), attributes: { role: 'status' } },
   loadingCopy: text('loadingCopy', 'Opening your space…'),
   mainContent: { kind: 'conditional', id: 'mainContent', branches: [
+    { when: 'deskMethodOpen', children: ['deskMethodPage'] },
+    { when: 'deskOpen', children: ['deskPage'] },
     { when: 'memoryDefaults', children: ['memoryDefaultsPage'] },
     { when: 'roomDetails', children: ['roomDetailsPage'] }, { when: 'hasConversation', children: ['conversation'] }, { when: 'ready', children: ['welcome'] }
   ] },
@@ -276,14 +284,15 @@ const nodes: Record<string, UiNode> = {
 };
 
 export const document: UiDocument = {
-  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '6', root: 'shell',
+  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '7', root: 'shell',
   nodes, componentDefinitions: {}, styleSources: {}, tokens: {}, assets: {},
   conditions: {
     ...memoryConditions,
-    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'emptyRooms', 'roomDetails'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
+    ...deskConditions,
+    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'hasRoom', 'emptyRooms', 'roomDetails'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
     ...Object.fromEntries(['newRoomOpen', 'archiveOpen'].map(id => [id, { id, kind: 'localState' as const, when: ref(`state.${id}`) }]))
   },
-  localState: { ...memoryLocalState, ...Object.fromEntries([
+  localState: { ...memoryLocalState, ...deskLocalState, ...Object.fromEntries([
     state('draft', ''), state('dark', false), state('showArchived', false), state('navigationOpen', false), state('moreOpen', false), state('settingsOpen', false), state('mobileSettingsOpen', false),
     state('newRoomOpen', false), state('roomName', ''), state('roomPurpose', ''),
     state('editedName', ''), state('archiveOpen', false)
@@ -326,37 +335,39 @@ export function authDocument(setup: boolean): UiDocument {
 export const signInDocument = authDocument(false);
 export const setupDocument = authDocument(true);
 const documents = [document, signInDocument, setupDocument];
-const resources = [...productResources, ...interfaceResources, memorySettingsResource, memoryCareResource];
+const resources = [...productResources, ...interfaceResources, memorySettingsResource, memoryCareResource, deskResource, deskMethodSettingsResource];
 export const application: ApplicationDefinitionV3 = {
   schema: 'vict.application@3', id: 'quellight', revision: '3', name: 'Quellight',
   compatibility: { applicationSchema: 'vict.application@3' },
   composition: { navigation: 'none', responsive: { navigationAt: 'small' } },
   routes: [{ id: 'conversation', path: '/', screenId: 'conversation' }, { id: 'sign-in', path: '/auth/sign-in', screenId: 'sign-in' }, { id: 'setup', path: '/auth/setup', screenId: 'setup' }],
   screens: documents.map((source, index) => ({ id: ['conversation', 'sign-in', 'setup'][index], title: 'Quellight', uiDocument: { documentId: source.id, revision: source.revision } })),
-  actions: [...productActions, ...interfaceActions, ...memorySettingsActions, ...memoryCareActions], resources: resources.map(resource => ({ resourceId: resource.id, revision: resource.revision })), views: [], forms: [], components: []
+  actions: [...productActions, ...interfaceActions, ...memorySettingsActions, ...memoryCareActions, ...deskActions, ...deskMethodSettingsActions, ...deskInterfaceActions], resources: resources.map(resource => ({ resourceId: resource.id, revision: resource.revision })), views: [], forms: [], components: []
 };
 export const viewFields = {
   ...memoryViewFields,
+  ...deskViewFields,
   rooms: 'array', 'rooms.id': 'string', 'rooms.name': 'string', 'rooms.selected': 'boolean',
   conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean',
   transcript: 'string', roomId: 'string', roomName: 'string', roomPurpose: 'string', roomRevision: 'number',
   conversationId: 'string', conversationTitle: 'string', turnId: 'string', busy: 'boolean', canSend: 'boolean', canStop: 'boolean',
   pending: 'boolean', error: 'string', statusText: 'string', roomsEmptyText: 'string',
   headerTitle: 'string', roomDetails: 'boolean', roomDetailsBackLabel: 'string',
-  hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', emptyRooms: 'boolean'
+  hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', hasRoom: 'boolean', emptyRooms: 'boolean'
 } as const;
 export const view = {
   ...memoryInitialView,
+  ...deskInitialView,
   rooms: [], conversations: [], transcript: JSON.stringify({ version: 1, messages: [] }),
   roomId: '', roomName: 'Your space', roomPurpose: '', roomRevision: 1,
   conversationId: '', conversationTitle: '', turnId: '', busy: false, canSend: false, canStop: false,
   pending: false, error: '', statusText: '', roomsEmptyText: 'Create a room to begin.',
   headerTitle: 'Your space', roomDetails: false, roomDetailsBackLabel: 'Back to room',
-  hasError: false, loading: true, ready: false, hasConversation: false, hasMoreActions: false, activeRoom: false, emptyRooms: true
+  hasError: false, loading: true, ready: false, hasConversation: false, hasMoreActions: false, activeRoom: false, hasRoom: false, emptyRooms: true
 };
 export function compile(candidate: UiDocument = document) {
   return compileApplication({ application, resources,
-    contracts: [...[...productContracts, ...memorySettingsContracts, ...memoryCareContracts].map(({ id, revision, presentationFields }) => ({ id, revision, presentationFields })), ...interfaceContracts],
+    contracts: [...[...productContracts, ...memorySettingsContracts, ...memoryCareContracts, ...deskContracts, ...deskMethodSettingsContracts].map(({ id, revision, presentationFields }) => ({ id, revision, presentationFields })), ...interfaceContracts],
     uiDocuments: documents.map(source => ({ document: source.id === candidate.id ? candidate : source })),
     uiExtensions: descriptors, uiViewFields: viewFields });
 }

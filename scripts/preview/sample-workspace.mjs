@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { createSampleMemory } from './sample-memory.mjs';
+import { createSampleDesk } from './sample-desk.mjs';
 
 // Synthetic UI transport only. Nothing here is imported by a product route.
 export const SAMPLE_OWNER = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
@@ -36,6 +37,7 @@ export function createSampleWorkspace() {
   ]);
   const receipts = new Map();
   const memory = createSampleMemory({ rooms, conversations, messages, receipts });
+  const desk = createSampleDesk({ rooms, receipts });
   const turns = new Map();
   const latest = new Map();
   const requests = new Map();
@@ -119,6 +121,9 @@ export function createSampleWorkspace() {
     handle(method, url, body) {
       if (disposed) return failure(503, 'PREVIEW_CLOSED', 'Restart the local preview.');
       const path = url.pathname;
+      if (/^\/api\/conversations\/[^/]+\/desk-context$/.test(path) && method === 'GET') return ok({ status: 'selected', selection: { schema: 'quellight.desk-context@1', roomId: SAMPLE_ROOM, authorityRevision: '0', items: [{ id: 'sample-carried', revision: 1, attention: 'carried', title: 'Sample Desk selection · local preview only', kind: 'Note', status: '', body: 'Give the important things time, and let the rest wait.' }, { id: 'sample-within-reach', revision: 1, attention: 'within-reach', title: 'A little room in the week', kind: 'Plan', status: '' }], text: 'Sample Desk selection · local preview only\n\nCarried · What matters this month · version 1\nGive the important things time, and let the rest wait.\n\nWithin reach · A little room in the week · version 1\nIndex only; text was not opened by this selection.', digest: 'synthetic-desk-selection' }, reads: [{ invocationId: 'sample-read', itemId: 'sample-within-reach', revision: 1, title: 'A little room in the week', at: timestamp }] });
+      const deskResult = desk.handle(method, url, body);
+      if (deskResult) return deskResult;
       const memoryResult = memory.handle(method, url, body);
       if (memoryResult) return memoryResult;
       if (path.startsWith('/auth/') && method !== 'GET' && method !== 'HEAD') {

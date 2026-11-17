@@ -3,6 +3,7 @@ import { AgentProfileRegistry, type AgentActivationRecord } from '@victframework
 import { MASTRA_POSTGRES_ADAPTER_COMPATIBILITY, MASTRA_RECOVERABLE_MEMORY_ADAPTER_COMPATIBILITY } from '@victframework/mastra';
 import { promptCatalog, renderPrompt } from '../prompts/catalog.js';
 import type { EffectiveMemorySettings } from '../memory/settings.js';
+import type { DeskContextSelection } from '../desk/context.js';
 
 export const MODEL = 'zai-coding-plan/glm-5.3-flash';
 export const CREDENTIAL = 'ZHIPU_API_KEY';
@@ -12,18 +13,24 @@ export interface ManagedConversationBinding {
   effective: EffectiveMemorySettings;
   memory: { id: string; revision: string };
   recall: { id: string; revision: string };
+  desk?: { selection: DeskContextSelection; capabilities: readonly { id: string; revision: string }[] };
 }
 export function conversationActivation(purpose: string, managed?: ManagedConversationBinding) {
-  const instructions = managed ? renderPrompt(promptCatalog.conversationContext, {
+  const baseInstructions = managed ? renderPrompt(promptCatalog.conversationContext, {
     conversationInstructions: managed.effective.prompts.roles.conversation.text!,
     responseGuidance: managed.effective.configuration.values.responseGuidance,
   }) : renderPrompt(promptCatalog.conversation, { roomPurpose: purpose });
+  const instructions = managed?.desk ? renderPrompt(promptCatalog.conversationDesk, {
+    conversationInstructions: baseInstructions.text,
+    deskSelection: JSON.stringify({ roomId: managed.desk.selection.roomId, ...JSON.parse(managed.desk.selection.text) }),
+  }) : baseInstructions;
+  const capabilities = managed ? [managed.recall, ...(managed.desk?.capabilities ?? [])] : [];
   const revision = createHash('sha256').update(JSON.stringify({ schema: 'quellight-conversation-v3',
     instructions: instructions.revision, memory: managed?.memory, recall: managed?.recall,
-    settings: managed?.effective.revision })).digest('hex');
+    settings: managed?.effective.revision, desk: managed?.desk?.selection.digest, capabilities })).digest('hex');
   const memoryRevision = managed ? revision : '1';
   const registry = new AgentProfileRegistry({ clock: () => 0,
-    resolveCapabilityRevision: (id, revision) => !!managed && id === managed.recall.id && revision === managed.recall.revision });
+    resolveCapabilityRevision: (id, revision) => capabilities.some(capability => capability.id === id && capability.revision === revision) });
   registry.installArtifacts([
     { kind: 'instructions', ...instructions },
     { kind: 'memory-policy', id: 'quellight.conversation.memory', revision: memoryRevision, config: managed ? {
@@ -43,7 +50,7 @@ export function conversationActivation(purpose: string, managed?: ManagedConvers
     generation: {},
     turnPolicy: { schema: 'vict.agent-turn-policy@2', mode: 'until-completion-or-cancel' },
     memoryPolicy: { id: 'quellight.conversation.memory', revision: memoryRevision },
-    capabilities: managed ? [managed.recall] : [],
+    capabilities,
     adapter: managed ? MASTRA_RECOVERABLE_MEMORY_ADAPTER_COMPATIBILITY : MASTRA_POSTGRES_ADAPTER_COMPATIBILITY,
   });
   const activation = registry.activateAgentProfile({ id: 'quellight.conversation', revision });

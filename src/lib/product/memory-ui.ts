@@ -120,7 +120,7 @@ export const memoryNodes: Record<string, UiNode> = {
   memorySourceSelect: { kind: 'component', id: 'memorySourceSelect', definitionId: 'vict.catalog.checkbox', revision: '1', props: { label: r('repeat.source.label'), checked: r('repeat.source.selected'), disabled: r('repeat.source.excluded') }, outputs: { checkedChange: { invokeAction: { actionId: 'ui.memory.source.toggle', input: { id: r('repeat.source.id') } } } } },
   ...copy('memorySourceCopy', 'repeat.source.text', true, ['ql-memory-copy']),
   ...copy('memorySourceStatus', 'view.memorySourceStatus', true),
-  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText']),
+  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText', 'deskContextLoad', 'deskContextCopy']),
   ...field('memoryReplySelect', 'memoryReply', 'Reply', 'memoryReplyOptions'),
   memoryContextLoad: action('memoryContextLoad', 'Show selected reply', 'ui.memory.context'),
   ...copy('memoryContextHelp', 'Memory selected before that reply, rather than its complete prompt or private reasoning.'),

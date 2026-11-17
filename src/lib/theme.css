@@ -98,6 +98,54 @@ body { margin: 0; }
 .ql-editor h2 { margin: 0 0 4px; font-size: 18px; font-weight: 500; letter-spacing: -.4px; }
 .ql-form { display: flex; flex-direction: column; gap: 16px; }
 .ql-form p { margin: 0; }
+.ql-desk-page { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 10px 0 0; }
+.ql-desk-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex: none; }
+.ql-desk-status { min-height: 18px; margin: 2px 8px 8px; color: var(--vict-color-textMuted); font-size: 11px; }
+.ql-desk-layout { display: grid; grid-template-columns: minmax(190px, 260px) minmax(0, 1fr); gap: 24px; flex: 1; min-height: 0; }
+.ql-desk-list { overflow: auto; min-height: 0; padding: 4px 12px 28px 0; border-right: 1px solid var(--vict-color-border); display: flex; flex-direction: column; gap: 4px; }
+.ql-desk-filters { display: flex; align-items: flex-end; gap: 10px; padding: 0 0 10px; }
+.ql-desk-filters > .ql-desk-field { flex: 1; }
+.ql-desk-search-row { display: flex; align-items: flex-end; gap: 2px; }
+.ql-desk-search-row > .ql-desk-field { flex: 1; }
+.ql-desk-search-row button { padding-left: 4px; padding-right: 4px; font-size: 12px; }
+.ql-desk-list .vict-action-control { gap: 0; }
+.ql-desk-filters [data-switch-root] { flex-basis: 30px; width: 30px; height: 18px; padding: 2px; }
+.ql-desk-filters [data-switch-thumb] { width: 14px; height: 14px; }
+.ql-desk-filters [data-switch-root][data-state='checked'] [data-switch-thumb] { transform: translateX(12px); }
+.ql-desk-filters [data-ui-node='deskArchived'] { min-height: 36px; font-size: 12px; }
+.ql-desk-field { min-width: 0; }
+.ql-desk-field label { font-size: 11px; color: var(--vict-color-textMuted); font-weight: 400; }
+.ql-desk-field input, .ql-desk-field select, .ql-desk-field textarea { font: inherit; width: 100%; min-width: 0; }
+.ql-desk-field textarea { min-height: 280px; resize: vertical; line-height: 1.75; }
+.ql-desk-list .ql-desk-field input, .ql-desk-list .ql-desk-field select { font-size: 12px; }
+.ql-desk-detail { overflow: auto; min-height: 0; padding: 4px 12px 32px 0; }
+.ql-desk-detail-content { display: flex; flex-direction: column; gap: 12px; max-width: 780px; margin: 0 auto; }
+.ql-desk-detail-content > p { margin: 0; font-size: 11px; }
+.ql-desk-fields { display: flex; flex-direction: column; gap: 14px; }
+.ql-desk-metadata { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ql-desk-metadata > :last-child { grid-column: 1 / -1; }
+.ql-desk-back-list { display: none; }
+.ql-desk-markdown { font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
+.ql-desk-markdown pre { white-space: pre-wrap; }
+.ql-desk-detail h1 { font-size: 20px; font-weight: 500; letter-spacing: -.4px; margin: 10px 0; }
+[data-ui-node='deskHistoryText'] { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; }
+[data-ui-node='deskContextCopy'] { white-space: pre-wrap; overflow-wrap: anywhere; }
+[data-ui-node='deskMethodHistoryCopy'], [data-ui-node='deskMethodActivityCopy'] { white-space: pre-wrap; overflow-wrap: anywhere; }
+.ql-method-page { display: flex; flex-direction: column; gap: 16px; }
+.ql-method-page h1 { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: -.6px; }
+.ql-method-page > p { margin: 0; }
+.ql-method-page .ql-desk-field textarea { min-height: 200px; }
+.ql-desk-item-actions { border-top: 1px solid var(--vict-color-border); padding-top: 8px; }
+@media (max-width: 760px) {
+  .ql-desk-layout { display: flex; gap: 0; }
+  .ql-desk-list { width: 100%; border: 0; padding-right: 0; }
+  .ql-desk-detail { display: none; width: 100%; padding-right: 0; }
+  .ql-desk-page[data-detail='true'] .ql-desk-list { display: none; }
+  .ql-desk-page[data-detail='true'] .ql-desk-detail { display: block; }
+  .ql-desk-back-list { display: block; align-self: flex-start; }
+  .ql-desk-metadata { grid-template-columns: 1fr; }
+  .ql-desk-field textarea { min-height: 260px; }
+}
 .ql-settings { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
 .quellight .ql-settings .vict-control-row { min-height: 34px; gap: 9px; font-size: 13px; cursor: pointer; }
 .quellight .ql-settings [data-switch-root] { flex-basis: 30px; width: 30px; height: 18px; padding: 2px; }
