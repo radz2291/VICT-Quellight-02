@@ -1,12 +1,35 @@
 import { isIP } from 'node:net';
 /** @typedef {Record<string, string | undefined>} Environment */
 
+/**
+ * @param {Environment} env
+ * @returns {{writerEpoch: number, database: string, role: string}}
+ */
+export function readStoreConfig(env) {
+  const epochText = env.QUELLIGHT_INDEXED_WRITER_EPOCH;
+  const database = env.QUELLIGHT_INDEXED_DATABASE;
+  const role = env.QUELLIGHT_INDEXED_ROLE;
+  if (!epochText || !/^[1-9]\d*$/.test(epochText) || !Number.isSafeInteger(Number(epochText))) {
+    throw new Error('QUELLIGHT_INDEXED_WRITER_EPOCH must be a positive safe integer.');
+  }
+  const identifier = /^[a-z_][a-z0-9_]{0,62}$/;
+  if (!database || !role || !identifier.test(database) || !identifier.test(role)) {
+    throw new Error('Indexed storage requires a named database and runtime role.');
+  }
+  return { writerEpoch: Number(epochText), database, role };
+}
+
 /** Validates deployment intent without claiming unavailable runtime capabilities.
  * @param {Environment} env
  */
 export function readRuntimeConfig(env) {
   const mode = env.QUELLIGHT_MODE ?? 'foundation';
   if (!['foundation', 'personal'].includes(mode)) throw new Error('QUELLIGHT_MODE must be foundation or personal.');
+  if (env.QUELLIGHT_STORE_MODE !== undefined) throw new Error('Remove the retired QUELLIGHT_STORE_MODE setting.');
+  if (mode === 'foundation' && ['QUELLIGHT_INDEXED_DATABASE', 'QUELLIGHT_INDEXED_ROLE', 'QUELLIGHT_INDEXED_WRITER_EPOCH']
+    .some(key => env[key] !== undefined)) {
+    throw new Error('Indexed database settings require personal mode.');
+  }
   const deployment = env.QUELLIGHT_DEPLOYMENT ?? (env.VERCEL === '1' ? 'hosted' : 'local');
   if (deployment !== 'local' && deployment !== 'hosted') throw new Error('QUELLIGHT_DEPLOYMENT must be local or hosted.');
   if (env.VERCEL === '1' && deployment !== 'hosted') throw new Error('Vercel requires hosted deployment configuration.');
@@ -37,6 +60,7 @@ export function readRuntimeConfig(env) {
     if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(env.QUELLIGHT_OWNER_SUBJECT ?? '')) {
       throw new Error('QUELLIGHT_OWNER_SUBJECT must be a verified account UUID.');
     }
+    readStoreConfig(env);
   }
   return Object.freeze({ mode, deployment, origin, host: env.HOST ?? (deployment === 'hosted' ? '0.0.0.0' : '127.0.0.1'), port: Number(portText), persistentStorage: personal, agentExecution: personal, ownerAuthentication: personal });
 }

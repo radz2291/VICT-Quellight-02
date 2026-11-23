@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readRuntimeConfig, readiness } from '../config/runtime.mjs';
+import { readRuntimeConfig, readStoreConfig, readiness } from '../config/runtime.mjs';
 import { readBuildTarget } from '../config/build.mjs';
 
 test('local foundation neither enables execution nor claims hosted readiness', () => {
@@ -73,6 +73,7 @@ test('personal hosted configuration requires owner, persistent storage, provider
     QUELLIGHT_DATABASE_URL: 'postgres://fixture', QUELLIGHT_DATABASE_CA: 'fixture-ca',
     SUPABASE_URL: 'https://fixture.supabase.co', SUPABASE_PUBLISHABLE_KEY: 'fixture-public',
     QUELLIGHT_OWNER_SUBJECT: '11111111-2222-4333-8444-555555555555', QUELLIGHT_OWNER_EMAIL: 'owner@example.invalid',
+    QUELLIGHT_INDEXED_DATABASE: 'fixturedb', QUELLIGHT_INDEXED_ROLE: 'fixture_role', QUELLIGHT_INDEXED_WRITER_EPOCH: '1',
     ZHIPU_API_KEY: 'fixture-only' };
   const config = readRuntimeConfig(fixture);
   assert.equal(config.ownerAuthentication, true);
@@ -82,5 +83,18 @@ test('personal hosted configuration requires owner, persistent storage, provider
     'QUELLIGHT_OWNER_SUBJECT','QUELLIGHT_OWNER_EMAIL','ZHIPU_API_KEY']) {
     assert.throws(() => readRuntimeConfig({ ...fixture, [key]: undefined }), new RegExp(key));
   }
+  for (const key of ['QUELLIGHT_INDEXED_DATABASE','QUELLIGHT_INDEXED_ROLE']) {
+    assert.throws(() => readRuntimeConfig({ ...fixture, [key]: undefined }), /named database and runtime role/);
+  }
+  assert.throws(() => readRuntimeConfig({ ...fixture, QUELLIGHT_INDEXED_WRITER_EPOCH: undefined }), /positive safe integer/);
   assert.throws(() => readRuntimeConfig({ ...fixture, QUELLIGHT_OWNER_SUBJECT: 'unverified-name' }), /UUID/);
+  assert.throws(() => readRuntimeConfig({ ...fixture, QUELLIGHT_INDEXED_WRITER_EPOCH: '0' }), /positive safe integer/);
+  assert.throws(() => readRuntimeConfig({ ...fixture, QUELLIGHT_INDEXED_DATABASE: 'Fixture-DB' }), /named database and runtime role/);
+});
+
+test('readStoreConfig exposes the reviewed indexed composition inputs', () => {
+  assert.deepEqual(readStoreConfig({ QUELLIGHT_INDEXED_DATABASE: 'postgres', QUELLIGHT_INDEXED_ROLE: 'ql_writer', QUELLIGHT_INDEXED_WRITER_EPOCH: '7' }),
+    { writerEpoch: 7, database: 'postgres', role: 'ql_writer' });
+  assert.throws(() => readStoreConfig({ QUELLIGHT_INDEXED_DATABASE: 'postgres', QUELLIGHT_INDEXED_ROLE: 'ql_writer' }), /positive safe integer/);
+  assert.throws(() => readStoreConfig({ QUELLIGHT_INDEXED_DATABASE: 'postgres', QUELLIGHT_INDEXED_ROLE: '9bad', QUELLIGHT_INDEXED_WRITER_EPOCH: '1' }), /named database/);
 });

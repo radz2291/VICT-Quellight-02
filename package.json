@@ -36,7 +36,7 @@
     "@victframework/mastra": "file:packs/mastra-0.4.0-rc.1-memory-2d136123705f.tgz",
     "@victframework/runtime": "file:packs/runtime-0.4.0-rc.1-memory-e94ee682d7f5.tgz",
     "@victframework/sdk": "file:packs/victframework-sdk-0.4.0-rc.1.tgz",
-    "@victframework/store-postgres": "file:packs/victframework-store-postgres-0.4.0-rc.1.tgz",
+    "@victframework/store-postgres": "file:packs/store-postgres-vhost013.tgz",
     "@victframework/ui": "file:packs/victframework-ui-0.4.0-rc.1.tgz",
     "@victframework/ui-ai-svelte": "file:packs/victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
     "@victframework/ui-media-svelte": "file:packs/victframework-ui-media-svelte-0.4.0-rc.1.tgz",

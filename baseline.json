@@ -95,10 +95,10 @@
     },
     {
       "name": "@victframework/store-postgres",
-      "version": "0.4.0-rc.1",
-      "file": "packs/victframework-store-postgres-0.4.0-rc.1.tgz",
-      "sha256": "74f4681ee0d86d487f7fd304ae88cf181aa6e6dff92a0f3bb01ad6dbe84129cb",
-      "integrity": "sha512-M9HBd4ZjsHqO0zBkDqJvrpzXFCKrMx2wK70BvC/zBdUXKs02kpZ4eN5FXcSPAARzIC5gDl7womAyGaHK6rkaMA=="
+      "version": "0.4.0-rc.1+vhost013",
+      "file": "packs/store-postgres-vhost013.tgz",
+      "sha256": "cbe8615cba56511f6d16b303be9ee9258db97f0ccb1c0a13e54ede0bde989210",
+      "integrity": "sha512-4zymeDI13qB0OyUSo7zgXXHRxcePLLEMggcmYpglCCbKUjwq4Uo0Lf2zreIKm6eJhs9TlJVIv2Ou9QMDU4wdjw=="
     },
     {
       "name": "@victframework/mastra",
