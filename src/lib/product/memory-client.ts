@@ -13,6 +13,12 @@ export interface MemoryInspection {
   authority: { revision: string; excludedMessageIds: string[] };
   controls: { canCorrect: boolean; canForget: boolean; canRetry: boolean };
 }
+export interface MemorySummary extends MemoryInspection { version: string; repliesCursor: string | null; moreObservations: boolean }
+export interface MemoryVersion { version: string }
+export interface MemorySourcesPage { sources: MemoryInspection['sources']; nextCursor: string | null; authorityRevision: string }
+export interface MemoryReplyPage { replies: MemoryInspection['replies']; nextCursor: string | null }
+export interface MemoryContextResult { context: MemoryInspection['context']; authorityRevision: string }
+export interface MemoryObservationHistory { history: MemoryInspection['observations']['history']; authorityRevision: string }
 export const memoryRoles = ['conversation', 'observer', 'reflector', 'recall', 'workingMemory'] as const;
 export type MemoryRole = typeof memoryRoles[number];
 export interface PromptChoice { mode: string; text?: string; id?: string }
@@ -26,7 +32,7 @@ export interface MemorySettingsSnapshot {
 }
 export interface MemorySettingsPayload {
   app: MemorySettingsSnapshot; room: MemorySettingsSnapshot | null;
-  effective: { configuration: { purpose: string; values: Record<string, unknown> }; prompts: { roles: Record<string, { text?: string; selection: PromptChoice; source: string }> } };
+  effective: { configuration: { purpose: string; values: Record<string, unknown> }; prompts: { roles: Record<string, { text?: string; selection: PromptChoice; source: string }> }; versions?: { roomRecordRevision: number } };
   appHistory: MemorySettingsSnapshot[]; roomHistory: MemorySettingsSnapshot[];
   catalog: unknown;
 }

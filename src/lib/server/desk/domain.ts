@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { deskActionBindings, type DeskActionId, type DeskActionInput, type DeskItem, type DeskHistoryEntry, type DeskAuthorKind } from '../../product/desk-contracts.js';
+import type { DeskSummary, DeskRevisionPage } from '../../product/desk-client.js';
 import { authorizedActor, ProductError, type Owner } from '../domain/queries.js';
 import { executeMemoryMutation } from '../memory/governed.js';
 import type { MemorySettingsSqlClient } from '../memory/settings.js';
@@ -11,9 +12,10 @@ const table='quellight_product_v1.desk_items';
 const uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 export interface DeskProvenance { authorKind:DeskAuthorKind; commandKey:string; turnId?:string; conversationId?:string; invocationId?:string;
   authorityRevision?:string; sourceMessageIds?:readonly string[]; jobId?:string }
-export function deskItem(row:Record<string,any>):DeskItem {return {id:row.id,roomId:row.room_id,title:row.title,body:row.body,kind:row.kind,status:row.status,
+function deskSummary(row:Record<string,any>):DeskSummary {return {id:row.id,roomId:row.room_id,title:row.title,kind:row.kind,status:row.status,
   attention:row.attention,archivedAt:row.archived_at?new Date(row.archived_at).toISOString():null,revision:row.revision,isMethod:row.is_method,
   createdAt:new Date(row.created_at).toISOString(),updatedAt:new Date(row.updated_at).toISOString()};}
+export function deskItem(row:Record<string,any>):DeskItem { return { ...deskSummary(row), body: row.body }; }
 export async function ownedDeskRoom(client:DeskSql,actorId:string,roomId:string,write=false) {
   if(!uuid.test(roomId))throw new ProductError('ROOM_NOT_FOUND',404);
   const row=(await client.query(`SELECT id,archived_at FROM quellight_product_v1.rooms WHERE id=$1 AND actor_id=$2${write?' FOR UPDATE':''}`,[roomId,actorId])).rows[0];
@@ -22,7 +24,7 @@ export async function ownedDeskRoom(client:DeskSql,actorId:string,roomId:string,
   return row;
 }
 export interface DeskListOptions { query?:string; archived?:boolean; attention?:'carried'|'within-reach'|'put-away'; cursor?:string; pageSize?:number; model?:boolean; authorityRevision?:string }
-export async function listDesk(stores:PostgresStoreSet,owner:Owner,roomId:string,options:DeskListOptions={}) {
+async function selectDeskPage(stores:PostgresStoreSet,owner:Owner,roomId:string,options:DeskListOptions,summary: boolean) {
   await authorizedActor(stores,owner,'app.data.read');await ownedDeskRoom(stores.coordination.pool,owner.actorId,roomId);
   const size=options.pageSize??50;
   if(!Number.isSafeInteger(size)||size<1||size>200||options.query!==undefined&&typeof options.query!=='string'||options.attention&&!['carried','within-reach','put-away'].includes(options.attention))throw new ProductError('DESK_QUERY_INVALID');
@@ -34,17 +36,63 @@ export async function listDesk(stores:PostgresStoreSet,owner:Owner,roomId:string
   if(options.cursor){let cursor:unknown;try{cursor=JSON.parse(Buffer.from(options.cursor,'base64url').toString());}catch{throw new ProductError('DESK_QUERY_INVALID');}
     if(!Array.isArray(cursor)||cursor.length!==2||typeof cursor[0]!=='string'||!Number.isFinite(Date.parse(cursor[0]))||!uuid.test(cursor[1]))throw new ProductError('DESK_QUERY_INVALID');
     args.push(cursor[0],cursor[1]);where.push(`(updated_at,id)<($${args.length-1}::timestamptz,$${args.length}::uuid)`);}
-  args.push(size+1);const rows=(await stores.coordination.pool.query(`SELECT *,updated_at::text AS cursor_time FROM ${table} WHERE ${where.join(' AND ')} ORDER BY updated_at DESC,id DESC LIMIT $${args.length}`,args)).rows;
-  const items=rows.slice(0,size).map(deskItem),last=items.at(-1);
-  return {items,nextCursor:rows.length>size&&last?Buffer.from(JSON.stringify([rows[size-1].cursor_time,last.id])).toString('base64url'):null};
+  const columns = 'id, room_id, title, kind, status, attention, archived_at, revision, is_method, created_at, updated_at';
+  args.push(size+1);const rows=(await stores.coordination.pool.query(`SELECT ${columns}${summary ? '' : ', body'},updated_at::text AS cursor_time FROM ${table} WHERE ${where.join(' AND ')} ORDER BY updated_at DESC,id DESC LIMIT $${args.length}`,args)).rows;
+  const page=rows.slice(0,size),last=page.at(-1);
+  return {rows:page,nextCursor:rows.length>size&&last?Buffer.from(JSON.stringify([last.cursor_time,last.id])).toString('base64url'):null};
 }
-export async function getDeskItem(stores:PostgresStoreSet,owner:Owner,roomId:string,itemId:string,modelAuthority?:string) {
+export async function listDesk(stores:PostgresStoreSet,owner:Owner,roomId:string,options:DeskListOptions={}) {
+  const { rows, nextCursor } = await selectDeskPage(stores, owner, roomId, options, false);
+  return { items: rows.map(deskItem), nextCursor };
+}
+export async function listDeskSummaries(stores: PostgresStoreSet, owner: Owner, roomId: string, options: DeskListOptions = {}) {
+  const { rows, nextCursor } = await selectDeskPage(stores, owner, roomId, options, true);
+  return { items: rows.map(deskSummary), nextCursor };
+}
+async function readDeskItem(stores:PostgresStoreSet,owner:Owner,roomId:string,itemId:string,modelAuthority?:string) {
   await authorizedActor(stores,owner,'app.data.read');await ownedDeskRoom(stores.coordination.pool,owner.actorId,roomId);
   if(!uuid.test(itemId))throw new ProductError('DESK_NOT_FOUND',404);
   const row=(await stores.coordination.pool.query(`SELECT * FROM ${table} WHERE id=$1 AND actor_id=$2 AND room_id=$3`,[itemId,owner.actorId,roomId])).rows[0];
   if(!row||modelAuthority!==undefined&&(row.archived_at||row.derivation_authority_revision!==null&&row.derivation_authority_revision!==modelAuthority))throw new ProductError('DESK_NOT_FOUND',404);
-  const history=(await stores.coordination.pool.query(`SELECT snapshot,revision,author_kind,operation,created_at FROM quellight_product_v1.desk_revisions WHERE item_id=$1 AND actor_id=$2 AND room_id=$3 ORDER BY revision DESC`,[itemId,owner.actorId,roomId])).rows.map(r=>({...r.snapshot,revision:r.revision,authorKind:r.author_kind,operation:r.operation,createdAt:new Date(r.created_at).toISOString()} as DeskHistoryEntry));
-  return {item:deskItem(row),history};
+  return deskItem(row);
+}
+const revisionTable = 'quellight_product_v1.desk_revisions';
+const revisionOwner = 'item_id=$1 AND actor_id=$2 AND room_id=$3';
+function revisionSummary(row: Record<string, any>) {
+  return { revision: row.revision, authorKind: row.author_kind, operation: row.operation, createdAt: new Date(row.created_at).toISOString() };
+}
+function revisionDetail(row: Record<string, any>): DeskHistoryEntry { return { ...row.snapshot, ...revisionSummary(row) }; }
+export async function getDeskItem(stores: PostgresStoreSet, owner: Owner, roomId: string, itemId: string, modelAuthority?: string) {
+  const item = await readDeskItem(stores, owner, roomId, itemId, modelAuthority);
+  const { rows } = await stores.coordination.pool.query(`SELECT snapshot,revision,author_kind,operation,created_at FROM ${revisionTable} WHERE ${revisionOwner} ORDER BY revision DESC`, [itemId, owner.actorId, roomId]);
+  return { item, history: rows.map(revisionDetail) };
+}
+export async function getDeskCurrent(stores: PostgresStoreSet, owner: Owner, roomId: string, itemId: string) {
+  return { item: await readDeskItem(stores, owner, roomId, itemId) };
+}
+export async function getDeskRevisionPage(stores: PostgresStoreSet, owner: Owner, roomId: string, itemId: string, beforeRevision?: number): Promise<DeskRevisionPage> {
+  await authorizedActor(stores, owner, 'app.data.read');
+  await ownedDeskRoom(stores.coordination.pool, owner.actorId, roomId);
+  if (!uuid.test(itemId)) throw new ProductError('DESK_NOT_FOUND', 404);
+  const pageSize = 30;
+  const { rows } = await stores.coordination.pool.query(`SELECT revision,author_kind,operation,created_at FROM ${revisionTable}
+    WHERE ${revisionOwner} AND ($4::integer IS NULL OR revision<$4) ORDER BY revision DESC LIMIT $5`,
+  [itemId, owner.actorId, roomId, beforeRevision ?? null, pageSize + 1]);
+  if (!rows.length) {
+    const found = (await stores.coordination.pool.query(`SELECT 1 FROM ${table} WHERE id=$1 AND actor_id=$2 AND room_id=$3`, [itemId, owner.actorId, roomId])).rows[0];
+    if (!found) throw new ProductError('DESK_NOT_FOUND', 404);
+  }
+  const history = rows.slice(0, pageSize).map(revisionSummary);
+  return { history, nextRevision: rows.length > pageSize ? history.at(-1)!.revision : null };
+}
+export async function getDeskRevision(stores: PostgresStoreSet, owner: Owner, roomId: string, itemId: string, revision: number) {
+  await authorizedActor(stores, owner, 'app.data.read');
+  await ownedDeskRoom(stores.coordination.pool, owner.actorId, roomId);
+  if (!uuid.test(itemId)) throw new ProductError('DESK_NOT_FOUND', 404);
+  const { rows: [row] } = await stores.coordination.pool.query(`SELECT snapshot,revision,author_kind,operation,created_at FROM ${revisionTable}
+    WHERE ${revisionOwner} AND revision=$4`, [itemId, owner.actorId, roomId, revision]);
+  if (!row) throw new ProductError('DESK_NOT_FOUND', 404);
+  return { revision: revisionDetail(row) };
 }
 export const searchDesk=(stores:PostgresStoreSet,owner:Owner,roomId:string,query:string,options:DeskListOptions={})=>{
   if(!query.trim())throw new ProductError('DESK_QUERY_INVALID');return listDesk(stores,owner,roomId,{...options,query});

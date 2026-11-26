@@ -33,7 +33,7 @@
     "@victframework/control": "file:packs/victframework-control-0.4.0-rc.1.tgz",
     "@victframework/hosted": "file:packs/victframework-hosted-0.4.0-rc.1.tgz",
     "@victframework/kernel": "file:packs/victframework-kernel-0.4.0-rc.1.tgz",
-    "@victframework/mastra": "file:packs/mastra-0.4.0-rc.1-memory-2d136123705f.tgz",
+    "@victframework/mastra": "file:packs/mastra-0.4.0-rc.1-vhost028-90b2de7c6515.tgz",
     "@victframework/runtime": "file:packs/runtime-0.4.0-rc.1-memory-e94ee682d7f5.tgz",
     "@victframework/sdk": "file:packs/victframework-sdk-0.4.0-rc.1.tgz",
     "@victframework/store-postgres": "file:packs/store-postgres-vhost013.tgz",

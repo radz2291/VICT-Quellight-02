@@ -3,20 +3,22 @@ import type { RequestHandler } from './$types';
 import { requireOwner } from '$lib/server/auth/index.js';
 import { openProductDatabase } from '$lib/server/db/index.js';
 import { ProductError } from '$lib/server/domain/queries.js';
-import { listDesk, type DeskListOptions } from '$lib/server/desk/domain.js';
+import { listDesk, listDeskSummaries, type DeskListOptions } from '$lib/server/desk/domain.js';
 
 export const GET: RequestHandler = async event => {
   const owner = await requireOwner(event);
   const headers = { 'cache-control': 'no-store' };
   const params = event.url.searchParams;
-  const allowed = ['query', 'archived', 'attention', 'cursor'];
+  const allowed = ['query', 'archived', 'attention', 'cursor', 'view'];
   if ([...params.keys()].some(key => !allowed.includes(key) || params.getAll(key).length !== 1) ||
-    params.has('archived') && !['true', 'false'].includes(params.get('archived')!)) {
+    params.has('archived') && !['true', 'false'].includes(params.get('archived')!) ||
+    params.has('view') && params.get('view') !== 'summary') {
     return json({ code: 'DESK_QUERY_INVALID', message: 'Check the Desk filter.' }, { status: 400, headers });
   }
   const stores = await openProductDatabase();
   try {
-    const result = await listDesk(stores, owner, event.params.id, {
+    const read = params.get('view') === 'summary' ? listDeskSummaries : listDesk;
+    const result = await read(stores, owner, event.params.id, {
       query: params.get('query') || undefined, archived: params.get('archived') === 'true',
       attention: (params.get('attention') || undefined) as DeskListOptions['attention'],
       cursor: params.get('cursor') || undefined,

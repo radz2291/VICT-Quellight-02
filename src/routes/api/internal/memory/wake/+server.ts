@@ -11,6 +11,6 @@ export const POST: RequestHandler = async event => {
     return json({ accepted: false }, { status: 401 });
   }
   // The jobs are already durable. A wake acknowledgement is not a completion receipt.
-  waitUntil(dispatchMemory(getDeadline()).catch(() => { console.error('QUELLIGHT_MEMORY_DISPATCH_UNCONFIRMED'); }));
+  waitUntil(dispatchMemory(getDeadline(), true).catch(() => { console.error('QUELLIGHT_MEMORY_DISPATCH_UNCONFIRMED'); }));
   return json({ accepted: true }, { status: 202 });
 };

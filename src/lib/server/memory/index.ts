@@ -2,6 +2,7 @@ import { env } from '$env/dynamic/private';
 import { ModelRouterLanguageModel } from '@mastra/core/llm';
 import { protectCredentialPort, requireCredential } from '@victframework/runtime';
 import { openProductDatabase } from '../db/index.js';
+import { conversations } from '../conversation/index.js';
 import { MODEL, CREDENTIAL, PROVIDER_URL } from '../conversation/activation.js';
 import { createMemoryDispatcher } from './dispatcher.js';
 import { createMemoryJobProcessor } from './worker.js';
@@ -21,6 +22,7 @@ export const dispatchMemory = createMemoryDispatcher({
   // Required at dispatch, before opening stores/provider; never at build/module import.
   resolveActorId: () => env.QUELLIGHT_OWNER_SUBJECT,
   openDatabase: openProductDatabase,
+  reconcileConversations: conversations.reconcilePending,
   reconcileCare: (stores, deadline, owner) => processPendingMemoryCare(stores, deadline.getTime(), {}, owner),
   process: createMemoryJobProcessor({ modelFactory }),
   processMethod: createMethodJobProcessor({ generate: methodExecutor,

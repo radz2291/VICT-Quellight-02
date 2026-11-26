@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { claimMemoryJob, settleMemoryJob, validateDeliveryActor, requireDeliveryActor, type MemoryJob, type MemoryJobState } from './jobs.js';
+import { MEMORY_YIELD } from './foreground.js';
 import { claimMethodJob, settleMethodJob, type MethodJob, type MethodJobOutcome } from '../desk/method-jobs.js';
 
 export interface MemoryJobOutcome {
@@ -13,6 +14,7 @@ export interface MemoryDispatcherOptions {
   resolveActorId?(): string | undefined;
   openDatabase(): Promise<PostgresStoreSet>;
   reconcileCare?(stores: PostgresStoreSet, deadline: Date, actorId?: string): Promise<unknown>;
+  reconcileConversations?(stores: PostgresStoreSet, deadline: Date, actorId: string): Promise<void>;
   process(job: MemoryJob, stores: PostgresStoreSet, deadline: Date): Promise<MemoryJobOutcome>;
   processMethod?(job: MethodJob, stores: PostgresStoreSet, deadline: Date): Promise<MethodJobOutcome>;
 }
@@ -22,12 +24,17 @@ const DELIVERY_FENCE_MS = 30_000;
 
 export function createMemoryDispatcher(options: MemoryDispatcherOptions) {
   const configuredActor = options.actorId, resolveActorId = options.resolveActorId;
-  return async function dispatch(deadline = new Date(Date.now() + HOST_WINDOW_MS)) {
+  return async function dispatch(deadline = new Date(Date.now() + HOST_WINDOW_MS), fromScheduledWake = false) {
     if (resolveActorId && configuredActor !== undefined) throw new Error('MEMORY_DELIVERY_ACTOR_CONFLICT');
     const actorId = resolveActorId ? requireDeliveryActor(resolveActorId()) : validateDeliveryActor(configuredActor);
     const stores = await options.openDatabase();
     let handled = 0;
     try {
+      if (fromScheduledWake && actorId) {
+        await options.reconcileConversations?.(stores, deadline, actorId).catch(() => {
+          console.error('QUELLIGHT_CONVERSATION_RECOVERY_UNCONFIRMED');
+        });
+      }
       await options.reconcileCare?.(stores, deadline, actorId);
       while (Date.now() < deadline.getTime()) {
         const claim = await stores.coordination.acquire({ scopeId: 'quellight:memory-delivery',
@@ -79,7 +86,10 @@ export function createMemoryDispatcher(options: MemoryDispatcherOptions) {
           try {
             // Bounded exponential delivery backoff avoids hammering a failed provider. It does
             // not abandon the job, impose a generation timeout, or cap reasoning/turns.
-            const delayMs = outcome.state === 'retryable' ? Math.min(60_000 * 2 ** Math.min(job.attempts - 1, 6), 3_600_000) : 0;
+            const foreground = delivery?.kind === 'memory' && [MEMORY_YIELD, 'MEMORY_CONVERSATION_BUSY'].includes(outcome.code ?? '');
+            const delayMs = outcome.state === 'retryable'
+              ? foreground ? Math.min(job.attempts * 1000, 5000) : Math.min(60_000 * 2 ** Math.min(job.attempts - 1, 6), 3_600_000)
+              : 0;
             await stores.coordination.withFence(settlement.lease, client => delivery!.kind === 'method'
               ? settleMethodJob(client, delivery!.job as MethodJob, outcome.state, outcome.code ?? null, new Date(Date.now() + delayMs))
               : settleMemoryJob(client, delivery!.job as MemoryJob, outcome.state, outcome.code ?? null, new Date(Date.now() + delayMs)));

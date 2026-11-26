@@ -3,6 +3,12 @@ import { storageRead, storageWrite } from './client';
 
 export interface DeskList { items: DeskItem[]; nextCursor: string | null }
 export interface DeskDetail { item: DeskItem; history: DeskHistoryEntry[] }
+export type DeskSummary = Omit<DeskItem, 'body'>;
+export type DeskRevisionSummary = Pick<DeskHistoryEntry, 'revision' | 'authorKind' | 'operation' | 'createdAt'>;
+export interface DeskSummaryList { items: DeskSummary[]; nextCursor: string | null }
+export interface DeskCurrent { item: DeskItem }
+export interface DeskRevisionPage { history: DeskRevisionSummary[]; nextRevision: number | null }
+export interface DeskRevisionDetail { revision: DeskHistoryEntry }
 export interface DeskMethodSettings { snapshot: DeskMethodSettingsSnapshot; history: DeskMethodSettingsSnapshot[]; effective?: {enabled:boolean;prompt:string;revision:string;appRevision:number;roomRevision:number} }
 export interface DeskMethodView { item:DeskItem|null; latestJob:{id:string;state:string;stage:string;code:string|null;createdAt:string;updatedAt:string}|null; activity:{id:string;jobId:string;stage:string;code:string|null;at:string}[] }
 export function deskMethodDraft(snapshot: DeskMethodSettingsSnapshot) {

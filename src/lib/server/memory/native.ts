@@ -73,6 +73,7 @@ export function quellightNativeMemoryConfiguration(effective: EffectiveMemorySet
 
 export interface OpenQuellightMemoryOptions {
   stores: PostgresStoreSet;
+  coordination?: PostgresStoreSet['coordination'];
   ownerActorId: string;
   conversationId: string;
   effective: EffectiveMemorySettings;
@@ -86,7 +87,7 @@ export async function openQuellightMemory(options: OpenQuellightMemoryOptions) {
   const { stores, ownerActorId, conversationId, effective } = options;
   const config = quellightNativeMemoryConfiguration(effective);
   const hosted = await createPostgresMastraStore({
-    coordination: stores.coordination,
+    coordination: options.coordination ?? stores.coordination,
     schemaName: QUELLIGHT_NATIVE_MEMORY_SCHEMA,
     migration: 'verify',
     memoryProfile: 'native-thread-recoverable',

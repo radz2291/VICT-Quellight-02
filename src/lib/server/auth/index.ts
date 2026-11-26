@@ -27,26 +27,44 @@ export function requestAuth(event: RequestEvent) {
   if (!event.locals.supabase) throw error(503, 'Sign-in is being configured.');
   return event.locals.supabase;
 }
-export async function loadOwner(event: RequestEvent): Promise<Owner | null> {
+async function tryOpenOwnerAccess(event: RequestEvent) {
   const supabase = event.locals.supabase;
   if (!supabase) return null;
   const { data, error: authError } = await supabase.auth.getUser();
   if (authError || !data.user || !allowedOwner(data.user)) return null;
-  // The user endpoint verifies the token. Decode only to correlate its session
-  // with the authoritative session record, which disappears on revocation.
+  // getUser verifies the token. The decoded session ID is a correlation key,
+  // and the private database function remains the revocation authority.
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return null;
-  let claims: { sub?: string; session_id?: string };
+  let claims: { sub?: string; session_id?: string; exp?: number };
   try { claims = JSON.parse(Buffer.from(session.access_token.split('.')[1], 'base64url').toString('utf8')); }
   catch { return null; }
-  if (claims.sub !== data.user.id || !uuid.test(claims.session_id ?? '')) return null;
+  if (claims.sub !== data.user.id || !claims.session_id || !uuid.test(claims.session_id)) return null;
+  const owner: Owner = { id: data.user.id, actorId: data.user.id, email: data.user.email! };
   const stores = await openProductDatabase();
   try {
     const active = await stores.coordination.pool.query<{ active: boolean }>(
-      'SELECT quellight_product_v1.owner_session_active($1::uuid,$2::uuid) AS active', [data.user.id, claims.session_id]);
-    if (active.rows[0]?.active !== true) return null;
-    return { id: data.user.id, actorId: data.user.id, email: data.user.email! };
-  } finally { await stores.close(); }
+      'SELECT quellight_product_v1.owner_session_active($1::uuid,$2::uuid) AS active', [owner.id, claims.session_id]);
+    if (active.rows[0]?.active === true) {
+      return { owner, stores, sessionId: claims.session_id, expiresAt: Number(claims.exp) * 1000 };
+    }
+  } catch (error) {
+    await stores.close();
+    throw error;
+  }
+  await stores.close();
+  return null;
+}
+export async function openOwnerAccess(event: RequestEvent) {
+  const access = await tryOpenOwnerAccess(event);
+  if (!access) throw error(401, 'Sign in to continue.');
+  return access;
+}
+export async function loadOwner(event: RequestEvent): Promise<Owner | null> {
+  const access = await tryOpenOwnerAccess(event);
+  if (!access) return null;
+  await access.stores.close();
+  return access.owner;
 }
 export async function requireOwner(event: RequestEvent): Promise<Owner> {
   event.locals.ownerPromise ??= loadOwner(event);

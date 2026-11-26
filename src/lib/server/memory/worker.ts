@@ -6,6 +6,7 @@ import { enqueueMemoryJob, publicConversationSources, type MemoryJob } from './j
 import { loadEffectiveMemorySettings, type MemorySettingsSqlClient } from './settings.js';
 import { openQuellightMemory } from './native.js';
 import type { MemoryJobOutcome } from './dispatcher.js';
+import { MEMORY_WORK_LEASE_MS, MEMORY_YIELD, memoryModelForSignal, watchMemoryAttempt } from './foreground.js';
 
 export interface MemoryJobProcessorOptions {
   /** Resolve the explicitly selected provider only when new inference is necessary. */
@@ -40,6 +41,7 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
   return async function process(job: MemoryJob, stores: PostgresStoreSet, deadline: Date): Promise<MemoryJobOutcome> {
     let memory: OpenMemory | undefined;
     let conversationLease: HostedLease | undefined;
+    let watch: ReturnType<typeof watchMemoryAttempt> | undefined;
     const operationId = `memory-job:${job.id}`;
     const request = { conversationId: job.conversation_id, operationId, authorityRevision: job.authority_revision };
     const expired = () => Date.now() >= deadline.getTime();
@@ -52,14 +54,24 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       const authority = await memory.service.authority(job.conversation_id);
       return await stores.coordination.withFence(conversationLease, async client => {
           const claimed = (await client.query(`SELECT 1 FROM quellight_product_v1.memory_jobs
-            WHERE id=$1 AND actor_id=$2 AND claim_token=$3 AND state='running' AND claim_expires>now()`,
-          [job.id, job.actor_id, job.claim_token])).rows[0];
+            WHERE id=$1 AND actor_id=$2 AND claim_token=$3 AND state='running' AND claim_expires>now()
+              AND failure_code IS DISTINCT FROM $4`,
+          [job.id, job.actor_id, job.claim_token, MEMORY_YIELD])).rows[0];
           if (!claimed) return retry('MEMORY_JOB_CLAIM_LOST');
           const fresh = await currentPolicy(client, job);
           if (!fresh) return { state: 'blocked', code: 'MEMORY_CONVERSATION_UNAVAILABLE' };
-          await enqueueMemoryJob(client, { actorId: job.actor_id, conversationId: job.conversation_id,
-            kind: job.kind === 'purge' ? 'purge' : 'observe', sourceRevision: fresh.source.revision,
-            configuration: fresh.configuration, authorityRevision: authority.revision, supersedesJobId: job.id });
+          const kind = job.kind === 'purge' ? 'purge' : 'observe';
+          // A native-only source change still requires a distinct job even if
+          // the public product source digest did not advance.
+          const changedProductBinding = fresh.source.revision !== job.source_revision
+            || fresh.configuration.revision !== job.configuration_revision || authority.revision !== job.authority_revision;
+          const equivalent = changedProductBinding && (await client.query(`SELECT 1 FROM quellight_product_v1.memory_jobs
+            WHERE actor_id=$1 AND conversation_id=$2 AND kind=$3 AND source_revision=$4 AND configuration_revision=$5
+            AND authority_revision=$6 AND id<>$7 AND state IN ('queued','running','retryable','completed') LIMIT 1`,
+          [job.actor_id, job.conversation_id, kind, fresh.source.revision, fresh.configuration.revision, authority.revision, job.id])).rows[0];
+          if (!equivalent) await enqueueMemoryJob(client, { actorId: job.actor_id, conversationId: job.conversation_id,
+            kind, sourceRevision: fresh.source.revision, configuration: fresh.configuration,
+            authorityRevision: authority.revision, supersedesJobId: job.id });
           return { state: 'superseded', code };
       });
     }
@@ -73,19 +85,19 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       if (expired()) return retry('MEMORY_HOST_WINDOW_ENDED');
       const actor = authenticatedActorContext(await stores.actors.get(job.actor_id), job.actor_id);
       assertActorScope(actor, 'app.data.read'); assertActorScope(actor, 'agent.turn.start');
-      const current = await currentPolicy(stores.coordination.pool, job);
-      if (!current) return { state: 'blocked', code: 'MEMORY_CONVERSATION_UNAVAILABLE' };
       const remaining = Math.floor(deadline.getTime() - Date.now());
-      if (remaining <= 0) return retry('MEMORY_HOST_WINDOW_ENDED');
-      // Chat admission and execution use this same product lease. Hold it until
-      // native work has closed, so a live maintainer cannot strand an admitted chat
-      // behind its native thread fence. This is the actual host window, not a model cap.
+      if (remaining < 100) return retry('MEMORY_HOST_WINDOW_ENDED');
+      // Release the product lease only after C12 releases its actual native
+      // fences. A live worker renews both and cooperates with foreground Send.
+      const leaseMs = Math.min(remaining, MEMORY_WORK_LEASE_MS);
       const claim = await stores.coordination.acquire({ scopeId: `quellight:conversation:${job.conversation_id}`,
-        actorId: job.actor_id, ownerId: randomUUID(), leaseMs: remaining });
+        actorId: job.actor_id, ownerId: randomUUID(), leaseMs });
       if (claim.status !== 'acquired') return retry('MEMORY_CONVERSATION_BUSY');
       conversationLease = claim.lease;
-      memory = await openQuellightMemory({ stores, ownerActorId: job.actor_id,
-        conversationId: job.conversation_id, effective: job.configuration });
+      watch = watchMemoryAttempt(stores, job, conversationLease, deadline);
+      memory = await openQuellightMemory({ stores, coordination: watch.coordination, ownerActorId: job.actor_id,
+        conversationId: job.conversation_id, effective: job.configuration, leaseMs });
+      watch.signal.throwIfAborted();
       const existing = await memory.service.operation(job.conversation_id, operationId);
       if (existing && (existing.configuration_revision !== memory.service.configurationRevision ||
         existing.authority_revision !== job.authority_revision ||
@@ -121,16 +133,20 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       if (typeof modelFactory !== 'function') return { state: 'blocked', code: 'MEMORY_MODEL_CONFIGURATION_INVALID' };
       if (expired()) return retry('MEMORY_HOST_WINDOW_ENDED');
       await memory.hosted.close(); memory = undefined;
-      memory = await openQuellightMemory({ stores, ownerActorId: job.actor_id,
-        conversationId: job.conversation_id, effective: job.configuration, modelFactory });
+      memory = await openQuellightMemory({ stores, coordination: watch.coordination, ownerActorId: job.actor_id,
+        conversationId: job.conversation_id, effective: job.configuration,
+        modelFactory: memoryModelForSignal(modelFactory, watch.signal), leaseMs });
+      watch.signal.throwIfAborted();
       // No artificial model duration/step budget. Native observation handles its own
       // threshold-driven reflection; manual reflection is used only for an explicit job.
       if (job.kind === 'reflect') await memory.service.reflect(request);
       else await memory.service.observe(request);
       return { state: 'completed' };
     } catch (error) {
-      const code = errorCode(error);
-      if (code && supersededCodes.has(code)) {
+      const interruption = watch?.interruption();
+      if (interruption && interruption !== 'MEMORY_POLICY_OR_SOURCE_CHANGED') return retry(interruption);
+      const code = interruption ?? errorCode(error);
+      if (code && (code === 'MEMORY_POLICY_OR_SOURCE_CHANGED' || supersededCodes.has(code))) {
         try { return await supersedeAndEnqueue('MEMORY_SOURCE_SUPERSEDED'); }
         catch { return retry(); }
       }
@@ -139,7 +155,10 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       return retry();
     } finally {
       try { await memory?.hosted.close(); }
-      finally { if (conversationLease) await stores.coordination.release(conversationLease); }
+      finally {
+        try { await watch?.close(); }
+        finally { if (conversationLease) await stores.coordination.release(conversationLease); }
+      }
     }
   };
 }

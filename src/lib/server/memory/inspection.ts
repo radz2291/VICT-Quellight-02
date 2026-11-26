@@ -9,7 +9,7 @@ import { openQuellightMemory } from './native.js';
 
 const record = (value: unknown): Record<string, unknown> => value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const text = (value: unknown): string => typeof value === 'string' ? value : '';
-function date(value: unknown): string | null {
+export function date(value: unknown): string | null {
   if (!(value instanceof Date) && typeof value !== 'string' && typeof value !== 'number') return null;
   const parsed = value instanceof Date ? value : new Date(value);
   return Number.isFinite(parsed.getTime()) ? parsed.toISOString() : null;
@@ -21,12 +21,12 @@ function publicText(value: unknown): string {
   const parts = Array.isArray(value) ? value : Array.isArray(content.parts) ? content.parts : [];
   return parts.map(part => record(part)).filter(part => part.type === 'text').map(part => text(part.text)).join('\n');
 }
-const policyIdentity = (value: unknown) => {
+export const policyIdentity = (value: unknown) => {
   const policy = record(value);
   return JSON.stringify([policy.revision, [...(Array.isArray(policy.excludedMessageIds) ? policy.excludedMessageIds : [])].sort(),
     [...(Array.isArray(policy.quarantinedMessageIds) ? policy.quarantinedMessageIds : [])].sort()]);
 };
-const queueLabels: Record<string, string> = { queued: 'Learning queued', running: 'Learning from this conversation', retryable: 'Waiting to retry',
+export const queueLabels: Record<string, string> = { queued: 'Learning queued', running: 'Learning from this conversation', retryable: 'Waiting to retry',
   completed: 'Memory work completed', superseded: 'Replaced by newer memory', blocked: 'Memory needs attention' };
 const nativeLabels: Record<string, string> = { 'observe-started': 'Observation started', 'observer-started': 'Reading messages',
   'observer-completed': 'Observation ready', 'observer-failed': 'Observation could not finish', 'reflect-started': 'Reflection started',
@@ -37,7 +37,43 @@ const omissionLabels: Record<string, string> = { reasoning: 'Private model reaso
   activationInstructions: 'Conversation instructions', currentInput: 'The current message', toolDefinitions: 'Tool definitions', laterToolSteps: 'Later tool activity' };
 // The public store intentionally uses the same unavailable result for a missing or
 // differently owned native thread. Product ownership was already checked above.
-const unavailableThread = (error: unknown) => ['VICT_MEMORY_THREAD_UNAVAILABLE', 'VICT_AGENT_THREAD_ACTOR_MISMATCH'].includes(text(record(error).code));
+export const unavailableThread = (error: unknown) => ['VICT_MEMORY_THREAD_UNAVAILABLE', 'VICT_AGENT_THREAD_ACTOR_MISMATCH'].includes(text(record(error).code));
+
+export function memorySources(messages: readonly { id: string; role: string; content: unknown; createdAt: unknown }[], conversationId: string,
+  authority: { excludedMessageIds: readonly string[]; quarantinedMessageIds?: readonly string[] }): MemoryInspection['sources'] {
+  const excluded = new Set(authority.excludedMessageIds), quarantined = new Set(authority.quarantinedMessageIds ?? []);
+  return messages.filter(message => ['user', 'assistant'].includes(message.role)).map(message => ({ id: message.id, conversationId,
+    label: excluded.has(message.id) ? 'Excluded by you' : quarantined.has(message.id) ? 'Excluded · earlier memory context' : message.role === 'user' ? 'Your message' : 'Quellight reply',
+    text: publicText(message.content), role: message.role, at: date(message.createdAt), excluded: excluded.has(message.id) || quarantined.has(message.id) }));
+}
+export function memoryContext(selected: Record<string, unknown> | null | undefined, turnId: string): NonNullable<MemoryInspection['context']> {
+  const payload = record(selected?.payload);
+  const messages = Array.isArray(payload.context) ? payload.context.map(item => { const message = record(item); const content = publicText(message.content); return content ? `${text(message.role)}\n${content}` : ''; }).filter(Boolean) : [];
+  const invalidated = payload.stage === 'invalidated-by-authority-revision';
+  return { turnId, scope: selected ? text(payload.scope) : 'memory-additions', stage: selected ? text(payload.stage) : 'not-recorded',
+    text: !selected ? 'No saved memory selection is available for this reply.' : invalidated ? 'This memory selection was invalidated by a later memory change.' : [text(payload.systemMessage), ...messages].filter(Boolean).join('\n\n'),
+    omissions: Array.isArray(payload.omittedFields) ? payload.omittedFields.filter(value => typeof value === 'string').map(value => omissionLabels[value] ?? value) : [],
+    revisionLabel: !selected ? 'No saved memory selection' : invalidated ? 'Invalidated by a later memory change' : `Memory configuration ${text(payload.configurationRevision)}` };
+}
+export function appendNativeActivity(dto: MemoryInspection, jobId: string, operation: Record<string, unknown>) {
+  const events = Array.isArray(operation.events) ? operation.events.map(record) : [];
+  events.forEach((event, index) => {
+    const name = text(event.name);
+    const status = name.endsWith('-started') ? 'running' : name.endsWith('-failed') ? 'failed'
+      : name.endsWith('-completed') || name === 'published' ? 'completed'
+      : ['prepared', 'publication-pending'].includes(name) ? 'prepared'
+      : name === 'authority-invalidated' ? 'superseded' : text(operation.status);
+    dto.activity.push({ id: `native:${jobId}:${index}`, label: nativeLabels[name] ?? 'Memory processing', status, at: date(event.at) });
+  });
+  if (operation.status === 'prepared') {
+    const checkpoint = record(operation.checkpoint);
+    for (const item of Array.isArray(checkpoint.observations) ? checkpoint.observations : []) {
+      const observation = record(item);
+      if (typeof observation.id === 'string' && typeof observation.activeObservations === 'string') dto.observations.prepared.push({ id: observation.id,
+        text: observation.activeObservations, updatedAt: date(observation.updatedAt) });
+    }
+  }
+}
 
 /** Injectable only at trusted server composition; the route uses the public native reader. */
 export function createMemoryInspectionReader(openMemory = openQuellightMemory) {
@@ -86,8 +122,7 @@ export function createMemoryInspectionReader(openMemory = openQuellightMemory) {
         dto.activity.sort((a, b) => (b.at ?? '').localeCompare(a.at ?? '') || a.id.localeCompare(b.id));
         return dto;
       }
-      const excluded = new Set(authority.excludedMessageIds), quarantined = new Set(authority.quarantinedMessageIds ?? []);
-      dto.authority = { revision: authority.revision, excludedMessageIds: [...excluded] };
+      dto.authority = { revision: authority.revision, excludedMessageIds: [...new Set(authority.excludedMessageIds)] };
       dto.personal.text = snapshot.workingMemory ?? '';
       dto.personal.ownerManaged = typeof snapshot.workingMemoryOverride === 'string';
       dto.observations.id = snapshot.current?.id ?? null;
@@ -104,42 +139,18 @@ export function createMemoryInspectionReader(openMemory = openQuellightMemory) {
         return { messages: messages.messages, resource };
       });
       dto.personal.updatedAt = !dto.personal.ownerManaged && dto.personal.text && raw.resource?.workingMemory === dto.personal.text ? date(raw.resource.updatedAt) : null;
-      dto.sources = raw.messages.filter(message => ['user', 'assistant'].includes(message.role)).map(message => ({ id: message.id, conversationId,
-        label: excluded.has(message.id) ? 'Excluded by you' : quarantined.has(message.id) ? 'Excluded · earlier memory context' : message.role === 'user' ? 'Your message' : 'Quellight reply',
-        text: publicText(message.content), role: message.role, at: date(message.createdAt), excluded: excluded.has(message.id) || quarantined.has(message.id) }));
+      dto.sources = memorySources(raw.messages, conversationId, authority);
       dto.replies = turns.rows.map(row => ({ turnId: row.turn_id,
         label: `Reply · ${date(row.created_at)?.replace('T', ' ').slice(0, 16) ?? 'Saved conversation'}` }));
       const selectedTurn = selectedTurnId ? turns.rows.find(row => row.turn_id === selectedTurnId) : turns.rows[0];
       if (selectedTurn) {
         const selected = await native.service.selectedContext(conversationId, selectedTurn.turn_id);
-        const payload = record(selected?.payload);
-        const messages = Array.isArray(payload.context) ? payload.context.map(item => { const message = record(item); const content = publicText(message.content); return content ? `${text(message.role)}\n${content}` : ''; }).filter(Boolean) : [];
-        const invalidated = payload.stage === 'invalidated-by-authority-revision';
-        dto.context = { turnId: selectedTurn.turn_id, scope: selected ? text(payload.scope) : 'memory-additions', stage: selected ? text(payload.stage) : 'not-recorded',
-          text: !selected ? 'No saved memory selection is available for this reply.' : invalidated ? 'This memory selection was invalidated by a later memory change.' : [text(payload.systemMessage), ...messages].filter(Boolean).join('\n\n'),
-          omissions: Array.isArray(payload.omittedFields) ? payload.omittedFields.filter(value => typeof value === 'string').map(value => omissionLabels[value] ?? value) : [],
-          revisionLabel: !selected ? 'No saved memory selection' : invalidated ? 'Invalidated by a later memory change' : `Memory configuration ${text(payload.configurationRevision)}` };
+        dto.context = memoryContext(selected, selectedTurn.turn_id);
       }
       for (const job of jobs.rows) {
         const operation = await native.service.operation(conversationId, `memory-job:${job.id}`);
         if (!operation) continue;
-        const events = Array.isArray(operation.events) ? operation.events.map(record) : [];
-        events.forEach((event, index) => {
-          const name = text(event.name);
-          const status = name.endsWith('-started') ? 'running' : name.endsWith('-failed') ? 'failed'
-            : name.endsWith('-completed') || name === 'published' ? 'completed'
-            : ['prepared', 'publication-pending'].includes(name) ? 'prepared'
-            : name === 'authority-invalidated' ? 'superseded' : text(operation.status);
-          dto.activity.push({ id: `native:${job.id}:${index}`, label: nativeLabels[name] ?? 'Memory processing', status, at: date(event.at) });
-        });
-        if (operation.status === 'prepared') {
-          const checkpoint = record(operation.checkpoint);
-          for (const item of Array.isArray(checkpoint.observations) ? checkpoint.observations : []) {
-            const observation = record(item);
-            if (typeof observation.id === 'string' && typeof observation.activeObservations === 'string') dto.observations.prepared.push({ id: observation.id,
-              text: observation.activeObservations, updatedAt: date(observation.updatedAt) });
-          }
-        }
+        appendNativeActivity(dto, job.id, operation);
       }
       const finalAuthority = await native.service.authority(conversationId);
       if (policyIdentity(finalAuthority) !== policyIdentity(authority) || snapshot.authorityRevision !== authority.revision) throw new ProductError('MEMORY_CHANGED', 409);

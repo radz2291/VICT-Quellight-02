@@ -4,7 +4,7 @@ import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { openQuellightMemory } from './memory/native.js';
 import { loadEffectiveMemorySettings, type EffectiveMemorySettings, type FencedMemorySettingsClient } from './memory/settings.js';
 import { withMemoryAuthorityFence } from './memory/authority-fence.js';
-import { getConversation, ProductError, type Owner } from './domain/queries.js';
+import { getConversation, ProductError, type Conversation, type Owner } from './domain/queries.js';
 
 type Native = Awaited<ReturnType<typeof openQuellightMemory>>;
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -27,6 +27,14 @@ export async function createDeskMemoryContext(stores: PostgresStoreSet, owner: O
   const conversation = await getConversation(stores, owner, conversationId);
   const configuration = effective ?? await loadEffectiveMemorySettings(stores.coordination.pool, owner.actorId, conversation.roomId);
   const native = suppliedNative ?? await openQuellightMemory({ stores, ownerActorId: owner.actorId, conversationId, effective: configuration });
+  return { ...bindDeskMemoryContext(stores, owner, conversation, native),
+    close: async () => { if (!suppliedNative) await native.hosted.close(); } };
+}
+
+/** Bind a conversation already authorized by the caller to its open native context. */
+export function bindDeskMemoryContext(stores: PostgresStoreSet, owner: Owner, conversation: Conversation, native: Native) {
+  if (conversation.actorId !== owner.actorId) throw new ProductError('CONVERSATION_NOT_FOUND', 404);
+  const conversationId = conversation.id;
   const read = () => native.service.authority(conversationId);
   async function sourceSnapshot(): Promise<DeskSourceSnapshot> {
     const authority = await read();
@@ -52,6 +60,5 @@ export async function createDeskMemoryContext(stores: PostgresStoreSet, owner: O
     authority: { read }, sourceSnapshot,
     withAuthorityFence: <T>(expected: string, work: (client: FencedMemorySettingsClient) => Promise<T>, validate?: () => Promise<void>) =>
       withMemoryAuthorityFence(stores, owner.actorId, expected, read, work, validate),
-    close: async () => { if (!suppliedNative) await native.hosted.close(); },
   };
 }

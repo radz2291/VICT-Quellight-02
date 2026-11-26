@@ -140,7 +140,7 @@ function navigation(prefix: string): Record<string, UiNode> {
     [`${prefix}-recent-text`]: text(`${prefix}-recent-text`, 'Conversations'),
     [`${prefix}-newConversationContainer`]: conditional(`${prefix}-newConversationContainer`, 'activeRoom', [`${prefix}-newConversation`]),
     [`${prefix}-newConversation`]: { kind: 'component', id: `${prefix}-newConversation`, definitionId: 'vict.pattern.action-button', revision: '1',
-      props: { label: literal('New conversation'), value: literal('new-conversation'), iconOnly: literal(true), disabled: ref('view.pending') },
+      props: { label: literal('New conversation'), value: literal('new-conversation'), iconOnly: literal(true), disabled: ref('view.newChatWaiting') },
       outputs: { activate: { invokeAction: { actionId: 'conversation.create', input: { roomId: ref('view.roomId') } } } },
       slots: { icon: { name: 'icon', children: [`${prefix}-newConversationIcon`] } },
       localStyle: [...iconControl, style('width', '36px'), style('height', '36px'), style('min-width', '36px'), style('min-height', '36px')] },
@@ -208,13 +208,16 @@ const nodes: Record<string, UiNode> = {
     { when: 'deskMethodOpen', children: ['deskMethodPage'] },
     { when: 'deskOpen', children: ['deskPage'] },
     { when: 'memoryDefaults', children: ['memoryDefaultsPage'] },
-    { when: 'roomDetails', children: ['roomDetailsPage'] }, { when: 'hasConversation', children: ['conversation'] }, { when: 'ready', children: ['welcome'] }
+    { when: 'roomDetails', children: ['roomDetailsPage'] }, { when: 'hasConversation', children: ['olderHistory', 'conversation'] }, { when: 'ready', children: ['welcome'] }
   ] },
   welcome: element('welcome', 'section', ['welcomeTitle', 'welcomeCopy'], ['ql-welcome']),
   welcomeTitle: element('welcomeTitle', 'h2', ['welcomeTitleText']),
   welcomeTitleText: text('welcomeTitleText', 'What’s on your mind?'),
   welcomeCopy: element('welcomeCopy', 'p', ['welcomeCopyText']),
   welcomeCopyText: text('welcomeCopyText', 'Bring a question, an idea, or something you’d like to work through.'),
+  olderHistory: conditional('olderHistory', 'hasOlder', ['olderHistoryBar']),
+  olderHistoryBar: element('olderHistoryBar', 'div', ['olderHistoryButton'], ['ql-older-history']),
+  olderHistoryButton: button('olderHistoryButton', 'Load earlier messages', 'ui.history.older', undefined, true),
   conversation: { kind: 'component', id: 'conversation', definitionId: 'vict.ai.transcript', revision: '1',
     classes: ['ql-transcript'],
     props: { data: ref('view.transcript'), title: literal(''), description: literal(''), busy: ref('view.busy'), emptyMessage: literal('Take your time. What would you like to explore?'), inputLabel: literal('Message') },
@@ -227,7 +230,7 @@ const nodes: Record<string, UiNode> = {
       composer: { localStyle: [style('padding', '0')] }
     } },
   composer: { kind: 'component', id: 'composer', definitionId: 'vict.ai.prompt-input', revision: '3',
-    props: { value: ref('state.draft'), label: literal('Message'), placeholder: literal('Write a message…'), busy: ref('view.busy'), sendEnabled: ref('view.canSend'), stopEnabled: ref('view.canStop'), attachEnabled: literal(false) },
+    props: { value: ref('view.composerText'), label: literal('Message'), placeholder: literal('Write a message…'), busy: ref('view.busy'), sendEnabled: ref('view.canSend'), stopEnabled: ref('view.canStop'), attachEnabled: literal(false) },
     outputs: { valueChange: { setState: { key: 'draft' } },
       send: { invokeAction: { actionId: 'conversation.send', input: { conversationId: ref('view.conversationId'), text: ref('$output') } } },
       stop: { invokeAction: { actionId: 'conversation.cancel', input: { turnId: ref('view.turnId') } } } },
@@ -238,7 +241,9 @@ const nodes: Record<string, UiNode> = {
       send: { localStyle: composerAction },
       stop: { localStyle: composerAction }
     } },
-  conversationFooter: element('conversationFooter', 'div', ['status'], ['ql-conversation-footer']),
+  conversationFooter: element('conversationFooter', 'div', ['status', 'retrySend'], ['ql-conversation-footer']),
+  retrySend: conditional('retrySend', 'canRetrySend', ['retrySendButton']),
+  retrySendButton: button('retrySendButton', 'Retry delivery', 'ui.send.retry', undefined, true),
   status: { ...element('status', 'span', ['statusText']), attributes: { role: 'status', 'aria-live': 'polite' } },
   statusText: text('statusText', 'view.statusText', true),
   export: menuItem('export', 'Export conversation', 'ui.export'),
@@ -284,12 +289,12 @@ const nodes: Record<string, UiNode> = {
 };
 
 export const document: UiDocument = {
-  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '7', root: 'shell',
+  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '9', root: 'shell',
   nodes, componentDefinitions: {}, styleSources: {}, tokens: {}, assets: {},
   conditions: {
     ...memoryConditions,
     ...deskConditions,
-    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'hasRoom', 'emptyRooms', 'roomDetails'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
+    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'hasRoom', 'emptyRooms', 'roomDetails', 'hasOlder', 'canRetrySend'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
     ...Object.fromEntries(['newRoomOpen', 'archiveOpen'].map(id => [id, { id, kind: 'localState' as const, when: ref(`state.${id}`) }]))
   },
   localState: { ...memoryLocalState, ...deskLocalState, ...Object.fromEntries([
@@ -337,7 +342,7 @@ export const setupDocument = authDocument(true);
 const documents = [document, signInDocument, setupDocument];
 const resources = [...productResources, ...interfaceResources, memorySettingsResource, memoryCareResource, deskResource, deskMethodSettingsResource];
 export const application: ApplicationDefinitionV3 = {
-  schema: 'vict.application@3', id: 'quellight', revision: '3', name: 'Quellight',
+  schema: 'vict.application@3', id: 'quellight', revision: '4', name: 'Quellight',
   compatibility: { applicationSchema: 'vict.application@3' },
   composition: { navigation: 'none', responsive: { navigationAt: 'small' } },
   routes: [{ id: 'conversation', path: '/', screenId: 'conversation' }, { id: 'sign-in', path: '/auth/sign-in', screenId: 'sign-in' }, { id: 'setup', path: '/auth/setup', screenId: 'setup' }],
@@ -351,6 +356,7 @@ export const viewFields = {
   conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean',
   transcript: 'string', roomId: 'string', roomName: 'string', roomPurpose: 'string', roomRevision: 'number',
   conversationId: 'string', conversationTitle: 'string', turnId: 'string', busy: 'boolean', canSend: 'boolean', canStop: 'boolean',
+  hasOlder: 'boolean', canRetrySend: 'boolean', composerText: 'string', newChatWaiting: 'boolean',
   pending: 'boolean', error: 'string', statusText: 'string', roomsEmptyText: 'string',
   headerTitle: 'string', roomDetails: 'boolean', roomDetailsBackLabel: 'string',
   hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', hasRoom: 'boolean', emptyRooms: 'boolean'
@@ -361,6 +367,7 @@ export const view = {
   rooms: [], conversations: [], transcript: JSON.stringify({ version: 1, messages: [] }),
   roomId: '', roomName: 'Your space', roomPurpose: '', roomRevision: 1,
   conversationId: '', conversationTitle: '', turnId: '', busy: false, canSend: false, canStop: false,
+  hasOlder: false, canRetrySend: false, composerText: '', newChatWaiting: false,
   pending: false, error: '', statusText: '', roomsEmptyText: 'Create a room to begin.',
   headerTitle: 'Your space', roomDetails: false, roomDetailsBackLabel: 'Back to room',
   hasError: false, loading: true, ready: false, hasConversation: false, hasMoreActions: false, activeRoom: false, hasRoom: false, emptyRooms: true

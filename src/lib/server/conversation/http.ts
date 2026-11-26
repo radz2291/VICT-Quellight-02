@@ -9,6 +9,8 @@ const messages: Record<string, string> = {
   TURN_NOT_FOUND: 'This reply could not be found.',
   TURN_STARTING: 'The reply is still starting. Try stopping it again in a moment.',
   TURN_INPUT_INVALID: 'Write a message before sending.',
+  TURN_ADMISSION_UNCONFIRMED: 'Your message is kept here. Retry to check whether the reply started.',
+  STREAM_SESSION_REVOKED: 'Sign in to continue.',
 };
 export function conversationError(value: unknown) {
   if (isHttpError(value)) return json({ code: `HTTP_${value.status}`, message: value.body.message }, { status: value.status });

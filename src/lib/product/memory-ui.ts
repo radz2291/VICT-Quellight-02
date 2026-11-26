@@ -113,14 +113,18 @@ export const memoryNodes: Record<string, UiNode> = {
   ...copy('memoryActivityText', 'view.memoryActivityText', true, ['ql-memory-copy']),
   memoryRetryWrap: cond('memoryRetryWrap', 'memoryCanRetry', ['memoryRetry']),
   memoryRetry: action('memoryRetry', 'Retry pending memory', 'memory.retry', { ...careInput, sourceMessageIds: l('[]') }, 'memoryCannotRetry'),
-  memorySources: disclosure('memorySources', 'Original sources', ['memorySourcesHelp', 'memorySourcesList', 'memorySourceStatus']),
+  memorySources: disclosure('memorySources', 'Original sources', ['memorySourcesHelp', 'memorySourcesList', 'memorySourceStatus', 'memoryMoreSourcesWrap']),
   ...copy('memorySourcesHelp', 'Select original messages below when correcting or forgetting. The conversation itself stays intact.'),
   memorySourcesList: { kind: 'repeat', id: 'memorySourcesList', collection: r('view.memorySources'), key: r('repeat.source.id'), itemName: 'source', templateRoot: 'memorySource' },
   memorySource: el('memorySource', 'article', ['memorySourceSelect', 'memorySourceCopy'], ['ql-memory-source']),
   memorySourceSelect: { kind: 'component', id: 'memorySourceSelect', definitionId: 'vict.catalog.checkbox', revision: '1', props: { label: r('repeat.source.label'), checked: r('repeat.source.selected'), disabled: r('repeat.source.excluded') }, outputs: { checkedChange: { invokeAction: { actionId: 'ui.memory.source.toggle', input: { id: r('repeat.source.id') } } } } },
   ...copy('memorySourceCopy', 'repeat.source.text', true, ['ql-memory-copy']),
   ...copy('memorySourceStatus', 'view.memorySourceStatus', true),
-  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText', 'deskContextLoad', 'deskContextCopy']),
+  memoryMoreSourcesWrap: cond('memoryMoreSourcesWrap', 'memoryMoreSources', ['memoryMoreSourcesButton']),
+  memoryMoreSourcesButton: action('memoryMoreSourcesButton', 'Load older sources', 'ui.memory.more-sources'),
+  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryMoreRepliesWrap', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText', 'deskContextLoad', 'deskContextCopy']),
+  memoryMoreRepliesWrap: cond('memoryMoreRepliesWrap', 'memoryMoreReplies', ['memoryMoreRepliesButton']),
+  memoryMoreRepliesButton: action('memoryMoreRepliesButton', 'Load older replies', 'ui.memory.more-replies'),
   ...field('memoryReplySelect', 'memoryReply', 'Reply', 'memoryReplyOptions'),
   memoryContextLoad: action('memoryContextLoad', 'Show selected reply', 'ui.memory.context'),
   ...copy('memoryContextHelp', 'Memory selected before that reply, rather than its complete prompt or private reasoning.'),
@@ -146,7 +150,7 @@ for (const node of Object.values(memoryNodes)) if (node.kind === 'component' && 
 const stringStates = ['mPurpose', 'mGuidance', 'mGuidanceMode', 'mAutomatic', 'mPersonal', 'mRecall', 'mRestore', 'memoryReply', 'memoryProfileText', ...memoryRoles.flatMap(role => [`m_${role}_mode`, `m_${role}_text`])];
 const booleanStates = ['memoryOpen', 'memoryForgetOpen', ...Object.values(memoryNodes).filter(node => node.kind === 'component' && node.definitionId === 'vict.catalog.collapsible').map(node => `${node.id}Open`)];
 export const memoryLocalState: Record<string, UiLocalStateDecl> = Object.fromEntries([...stringStates.map(key => [key, { key, type: 'string', initial: '' }]), ...booleanStates.map(key => [key, { key, type: 'boolean', initial: false }])]) as Record<string, UiLocalStateDecl>;
-const boolViews = ['memoryDefaults', 'memorySettingsLoading', 'hasMemorySettings', 'memoryIsRoom', 'memoryGuidanceCustom', 'hasMemoryPreview', 'memoryCannotCorrect', 'memoryCannotForget', 'memoryCannotRestore', 'memoryOwnerManaged', 'memoryChanged', 'memoryCanRetry', 'memoryCannotRetry', ...memoryRoles.map(role => `memory_${role}_custom`)];
+const boolViews = ['memoryDefaults', 'memorySettingsLoading', 'hasMemorySettings', 'memoryIsRoom', 'memoryGuidanceCustom', 'hasMemoryPreview', 'memoryCannotCorrect', 'memoryCannotForget', 'memoryCannotRestore', 'memoryOwnerManaged', 'memoryChanged', 'memoryCanRetry', 'memoryCannotRetry', 'memoryMoreSources', 'memoryMoreReplies', ...memoryRoles.map(role => `memory_${role}_custom`)];
 const stringViews = ['memoryTarget', 'memorySettingsRoomId', 'memoryDraftJson', 'memorySettingsTitle', 'memorySettingsIntro', 'memorySettingsStatus', 'memoryPreviewText', 'memoryRevisionLabel', 'memoryStatusLabel', 'memoryObservationText', 'memoryObservationHistory', 'memoryPreparedText', 'memoryPersonalText', 'memoryPersonalHelp', 'memoryActivityText', 'memorySourceStatus', 'memoryContextText', 'memoryAuthorityRevision', 'memorySelectedSources', 'memoryCareStatus'];
 const optionViews = ['memoryBooleanOptions', 'memoryRecallOptions', 'memoryOverrideOptions', 'memoryHistoryOptions', 'memoryReplyOptions', ...memoryRoles.map(role => `memory_${role}_options`)];
 export const memoryViewFields = { ...Object.fromEntries(boolViews.map(key => [key, 'boolean'])), ...Object.fromEntries(stringViews.map(key => [key, 'string'])),

@@ -79,7 +79,7 @@ export async function claimMemoryJob(client: FencedMemorySettingsClient, leaseUn
   // Avoid claiming another job that can only contend with that owner's active delivery;
   // other owners remain eligible. Native fences still decide whether execution is safe.
   const row = (await client.query(`UPDATE quellight_product_v1.memory_jobs SET state='running',attempts=attempts+1,
-    claim_token=$1,claim_expires=$2,updated_at=now() WHERE id=(SELECT candidate.id FROM quellight_product_v1.memory_jobs candidate
+    claim_token=$1,claim_expires=$2,failure_code=NULL,updated_at=now() WHERE id=(SELECT candidate.id FROM quellight_product_v1.memory_jobs candidate
     WHERE candidate.state IN ('queued','retryable') AND candidate.wake_after<=now()
     AND ($3::uuid IS NULL OR candidate.actor_id=$3::uuid)
     AND NOT EXISTS (SELECT 1 FROM quellight_product_v1.memory_jobs running

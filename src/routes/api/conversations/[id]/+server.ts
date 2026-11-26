@@ -1,10 +1,15 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { requireOwner } from '$lib/server/auth/index.js';
+import { openOwnerAccess } from '$lib/server/auth/index.js';
 import { conversations } from '$lib/server/conversation/index.js';
 import { conversationError } from '$lib/server/conversation/http.js';
 
 export const GET: RequestHandler = async event => {
-  try { return json(await conversations.detail(await requireOwner(event), event.params.id)); }
-  catch (error) { return conversationError(error); }
+  try {
+    const access = await openOwnerAccess(event);
+    try {
+      const before = event.url.searchParams.get('before') ?? undefined;
+      return json(await conversations.detail(access.owner, event.params.id, before, access.stores));
+    } finally { await access.stores.close(); }
+  } catch (error) { return conversationError(error); }
 };

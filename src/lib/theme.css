@@ -87,7 +87,8 @@ body { margin: 0; }
 .ql-room-identity h2 { margin: 0; font-size: 13px; line-height: 1.4; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ql-button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .ql-transcript { flex: 1; min-height: 0; width: 100%; max-width: 800px; margin: 0 auto; }
-.ql-conversation-footer { display: flex; align-items: center; flex: none; min-height: 18px; padding: 0 12px; color: var(--vict-color-textMuted); font-size: 11px; line-height: 1.4; }
+.ql-older-history { display: flex; flex: none; justify-content: center; padding-inline: 8px; }
+.ql-conversation-footer { display: flex; align-items: center; gap: 8px; flex: none; min-height: 18px; padding: 0 12px; color: var(--vict-color-textMuted); font-size: 11px; line-height: 1.4; }
 .ql-welcome { display: flex; flex: 1; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; width: 100%; max-width: 650px; margin: auto; padding: 36px 24px 80px; }
 .ql-welcome h2 { margin: 0; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; font-weight: 450; letter-spacing: -.9px; }
 .ql-welcome p { margin: 8px 0 18px; max-width: 430px; color: var(--vict-color-textMuted); font-size: 14px; line-height: 1.7; }

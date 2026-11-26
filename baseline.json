@@ -8,6 +8,16 @@
     "uiAi": "cfa3cb9f009b55a551f0dce7c0e5c762a46e7106",
     "hosted": "1b11d4a5f4298310c7ab16e0808b8bfbed551ee5",
     "hostedManifestSha256": "33b544b6be657144560fb6a471d5ad756c72406163524af711027a0ce1b8d99f",
+    "mastraDurableCompletion": {
+      "sourceCommit": "db7f1ae5f004b64715fba76916a3d265683331e0",
+      "baseSourceCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
+      "baseArchiveSha256": "2d136123705f92e88a15e7e2b80e1732218ca00018c9cc55165a69a7774a84d3",
+      "licensePackaging": {
+        "originalArchiveSha256": "cc7654f30ca5c49916c11fba0fa790ccd72d960410d9ff7134b89cb4caddc8ef",
+        "packagingSourceCommit": "03f1f1e4bffadbf38c6bf1f756754eee8ec6a41a",
+        "description": "Apache-2.0 LICENSE, NOTICE and adapter file change notice only"
+      }
+    },
     "memory": {
       "sourceCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
       "manifestSha256": "4fc42793ec49f39d5819a358696880e53f94e3c6d1348c66fc9673e4942d3a1f",
@@ -103,9 +113,9 @@
     {
       "name": "@victframework/mastra",
       "version": "0.4.0-rc.1",
-      "file": "packs/mastra-0.4.0-rc.1-memory-2d136123705f.tgz",
-      "sha256": "2d136123705f92e88a15e7e2b80e1732218ca00018c9cc55165a69a7774a84d3",
-      "integrity": "sha512-rSw+asqKHYlG8vXIRaAFIopRCOgY2PNa9LefsxQmJpCYD9rTnoBKx4lSPFm5s96UmqWMyq9JeBnrcBESwtsC4Q=="
+      "file": "packs/mastra-0.4.0-rc.1-vhost028-90b2de7c6515.tgz",
+      "sha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "integrity": "sha512-XE9EOIOK8EH2HH6OBLPI32OOl7gECaD6RZSC3iWNoMKCCCPz4A3w4O4MXK5kQWfG1kXVRaF6fNZR0vZLPu7W6A=="
     },
     {
       "name": "@victframework/hosted",

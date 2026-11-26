@@ -35,7 +35,7 @@ const calls = [];
 await page.route('**/api/**', async route => {
   const url = new URL(route.request().url());
   const body = route.request().method() === 'POST' ? route.request().postDataJSON() : undefined;
-  const respond = value => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(value) });
+  const respond = (value, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(value) });
   calls.push({ path: url.pathname, method: route.request().method() });
   if (url.pathname === '/api/bootstrap') return respond({ user: { id: actor, email: 'fixture@example.test' }, rooms, conversations });
   if (url.pathname === '/api/actions') {
@@ -52,15 +52,16 @@ await page.route('**/api/**', async route => {
     assert.equal(body.input, 'Keep this test conversation going.'); startKeys.push(body.idempotencyKey);
     if (startKeys.length > 1) {
       assert.equal(startKeys[1], startKeys[0], 'Uncertain send reuses its original idempotency key');
-      return respond({ turnId, conversationId, status: lastTurn.status });
+      return respond({ turnId, conversationId, status: lastTurn.status, userMessage: messages.find(message => message.id === `${turnId}:user`) }, 202);
     }
     sends++;
-    messages.push({ id: `${turnId}:user`, role: 'user', text: body.input });
+    messages.push({ id: `${turnId}:user`, role: 'user', text: body.input, requestKey: body.idempotencyKey });
     active = { id: turnId, status: 'running', streamId: turnId }; lastTurn = active;
     if (dropStartResponse) return route.abort('failed');
-    return respond({ turnId, conversationId, status: 'running' });
+    return respond({ turnId, conversationId, status: 'running', userMessage: messages.at(-1) }, 202);
   }
   if (url.pathname.endsWith('/cancel')) { stopRequested = true; lastTurn = { id: turnId, status: 'cancelled', projectionSettled: false }; active = lastTurn; return respond({ turnId, status: 'cancelled' }); }
+  if (url.pathname.endsWith('/stream')) return route.fulfill({ status: 200, contentType: 'text/event-stream', body: ': fixture cursor fallback\n\n' });
   if (url.pathname.endsWith('/events')) {
     const after = Number(url.searchParams.get('after'));
     if (!sequence) sequence = 1;
@@ -68,7 +69,8 @@ await page.route('**/api/**', async route => {
       active = null; lastTurn = { ...lastTurn, projectionSettled: true };
       if (!messages.some(message => message.id === `${turnId}:assistant`)) messages.push({ id: `${turnId}:assistant`, role: 'assistant', text: 'We can take this one step at a time.' });
     }
-    return respond({ events: after < 1 ? [{ sequence: 1, kind: 'text.delta', delta: 'We can take this one step at a time.' }] : [], nextCursor: sequence, turn: lastTurn });
+    return respond({ events: after < 1 ? [{ sequence: 1, kind: 'text.delta', delta: 'We can take this one step at a time.' }] : [], nextCursor: sequence, turn: lastTurn,
+      assistantMessage: messages.find(message => message.id === `${turnId}:assistant`) ?? null });
   }
   if (/\/conversations\/[^/]+$/.test(url.pathname)) return respond({ conversation: conversations.find(item => item.id === url.pathname.split('/').at(-1)), messages: url.pathname.endsWith(conversationId) ? messages : [], activeTurn: active, lastTurn });
   throw new Error(`Unhandled fixture URL ${url.pathname}`);
@@ -110,8 +112,7 @@ try {
   await page.getByRole('textbox', { name: 'Message', exact: true }).fill('  Keep this test conversation going.  ');
   await page.getByRole('button', { name: 'Send', exact: true }).click();
   if (dropStartResponse) {
-    await page.getByRole('button', { name: 'Reconnect', exact: true }).waitFor();
-    await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
+    await page.getByRole('button', { name: 'Retry delivery', exact: true }).click();
   }
   await page.getByText('We can take this one step at a time.').waitFor();
   if (!dropStartResponse) assert.equal(await page.getByRole('textbox', { name: 'Message', exact: true }).inputValue(), '', 'Accepted VICT-trimmed messages clear the matching draft');
@@ -121,12 +122,7 @@ try {
   assert.equal(await page.getByText('We can take this one step at a time.').count(), 1);
   await page.getByText('Stopped. You can continue whenever you’re ready.').waitFor();
   assert.equal(sends, 1); assert.equal(stopRequested, true);
-  if (dropStartResponse) {
-    assert.equal(await page.getByRole('textbox', { name: 'Message', exact: true }).inputValue(), '  Keep this test conversation going.  ');
-    await page.getByRole('button', { name: 'Send', exact: true }).click();
-    await page.waitForFunction(() => document.querySelector('textarea').value === '');
-    assert.equal(sends, 1); assert.equal(startKeys.length, 2);
-  }
+  if (dropStartResponse) assert.equal(startKeys.length, 2);
   await page.getByRole('button', { name: 'New room', exact: true }).click();
   await page.getByRole('textbox', { name: 'Room name', exact: true }).fill('A calmer week');
   await page.getByRole('textbox', { name: 'What is this room for?', exact: true }).fill('Space for small plans.');

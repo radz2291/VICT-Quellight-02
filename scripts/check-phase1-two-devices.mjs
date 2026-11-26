@@ -39,12 +39,15 @@ async function device(name, viewport, draft) {
     const respond = value => route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(value) });
     if (url.pathname === '/api/bootstrap') return respond({ user: { id: actorId, email: 'fixture@example.test' }, rooms: [room], conversations: [conversation] });
     if (url.pathname === `/api/conversations/${conversation.id}`) return respond({ conversation, messages, activeTurn, lastTurn });
+    if (url.pathname.endsWith('/stream')) return route.fulfill({ status: 200, contentType: 'text/event-stream', body: ': fixture cursor fallback\n\n' });
     if (url.pathname.endsWith('/events')) {
       const turnId = url.pathname.split('/')[3];
       assert.ok([firstId, secondId].includes(turnId));
       const after = Number(url.searchParams.get('after'));
       observations.push({ device: name, phase, turnId, after });
-      return respond({ events: after === 0 ? [{ sequence: 1, kind: 'text.delta', delta: turnId === firstId ? firstText : secondText }] : [], nextCursor: 1, turn: turnId === firstId ? firstTurn : secondTurn });
+      return respond({ events: after === 0 ? [{ sequence: 1, kind: 'text.delta', delta: turnId === firstId ? firstText : secondText }] : [], nextCursor: 1, turn: turnId === firstId ? firstTurn : secondTurn,
+        assistantMessage: messages.find(message => message.id === `${turnId}:assistant`) ?? null,
+        ...(turnId === firstId && activeTurn?.id === secondId ? { nextActiveTurn: secondTurn, nextUserMessage: messages.find(message => message.id === 'second-user') } : {}) });
     }
     throw new Error(`Unexpected synthetic route: ${url.pathname}`);
   });
@@ -72,7 +75,7 @@ try {
   // Inject the race where a remote device starts a new turn before either
   // observer finishes refreshing the prior terminal turn's transcript.
   firstTurn.status = 'completed'; firstTurn.projectionSettled = true;
-  messages.push({ id: 'first-assistant', role: 'assistant', text: firstText }, { id: 'second-user', role: 'user', text: 'Continue with a new message from another device.' });
+  messages.push({ id: `${firstId}:assistant`, role: 'assistant', text: firstText }, { id: 'second-user', role: 'user', text: 'Continue with a new message from another device.' });
   activeTurn = secondTurn; lastTurn = secondTurn; phase = 'remote-turn-handoff';
   await Promise.all(devices.map(async ({ page, draft }) => {
     await page.getByText(secondText, { exact: true }).waitFor();
@@ -90,7 +93,7 @@ try {
 
   secondTurn.status = 'completed'; secondTurn.projectionSettled = true;
   activeTurn = null; phase = 'all-settled';
-  messages.push({ id: 'second-assistant', role: 'assistant', text: secondText });
+  messages.push({ id: `${secondId}:assistant`, role: 'assistant', text: secondText });
   await Promise.all(devices.map(async ({ page, draft }) => {
     await page.waitForFunction(() => document.querySelector('[data-testid="conversation-send"]')?.disabled === false);
     assert.equal(await page.getByText(firstText, { exact: true }).count(), 1);

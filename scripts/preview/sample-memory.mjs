@@ -34,8 +34,9 @@ export function createSampleMemory({ rooms, conversations, messages, receipts })
   function settings(roomId) {
     const app = history('app')[0], room = roomId ? history(roomId)[0] : null;
     const roomContent = room ? clone(room.content) : inherited('');
-    roomContent.configuration.purpose = rooms.find(room => room.id === roomId)?.purpose ?? '';
-    return { app, room, appHistory: history('app'), roomHistory: roomId ? history(roomId) : [], effective: effective(app.content, roomContent), catalog };
+    const record = rooms.find(room => room.id === roomId);
+    roomContent.configuration.purpose = record?.purpose ?? '';
+    return { app, room, appHistory: history('app'), roomHistory: roomId ? history(roomId) : [], effective: { ...effective(app.content, roomContent), ...(record ? { versions: { roomRecordRevision: record.revision } } : {}) }, catalog };
   }
   function inspect(id, turnId) {
     const source = messages.get(id) ?? [];
@@ -64,7 +65,22 @@ export function createSampleMemory({ rooms, conversations, messages, receipts })
         } catch { return error('MEMORY_SETTINGS_INVALID', 'Check the sample settings.'); }
       }
       const read = /^\/api\/conversations\/([^/]+)\/memory$/.exec(path);
-      if (read && method === 'GET') return conversations.some(item => item.id === read[1]) ? result(inspect(read[1], url.searchParams.get('turnId'))) : error('CONVERSATION_NOT_FOUND', 'Open a sample conversation.', 404);
+      if (read && method === 'GET') {
+        const id = read[1];
+        if (!conversations.some(item => item.id === id)) return error('CONVERSATION_NOT_FOUND', 'Open a sample conversation.', 404);
+        const data = inspect(id, url.searchParams.get('turnId'));
+        const authorityRevision = data.authority.revision;
+        const version = digest([authorityRevision, data.sources.length, personal.get(id)]);
+        switch (url.searchParams.get('view')) {
+          case 'summary': return result({ ...data, sources: [], context: null, version, repliesCursor: null, moreObservations: false });
+          case 'version': return result({ version });
+          case 'sources': return result({ sources: data.sources, nextCursor: null, authorityRevision });
+          case 'replies': return result({ replies: data.replies, nextCursor: null });
+          case 'context': return result({ context: data.context, authorityRevision });
+          case 'observations': return result({ history: data.observations.history, authorityRevision });
+          default: return result(data);
+        }
+      }
       if (path !== '/api/actions' || method !== 'POST' || !String(body?.actionId).startsWith('memory.')) return undefined;
       if (!body.input || !/^[a-zA-Z0-9:_-]{8,128}$/.test(body.idempotencyKey)) return error('ACTION_INPUT_INVALID', 'Check the sample request.');
       const signature = JSON.stringify({ actionId: body.actionId, input: body.input }), prior = receipts.get(body.idempotencyKey);

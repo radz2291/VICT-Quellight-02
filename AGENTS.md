@@ -52,6 +52,8 @@ Core A (`a26bbfd37e69113bef38dc7e09be096734ecc3d374a6765974d6fbfebe6c3cca`, comm
 
 Phase 3 proofs include installedUI14, localUI73, Desk domain11, conversation15, method worker12, independent bridge8, interleaving6, owner isolation5 and actual native care3; app29 and Svelte0/0 remain separately scoped. Release helper115 checks passed. Final local Linux rebuild was blocked by disk exhaustion; core A has a Windows Node build/HTTP proof, while A and B each have actual remote Vercel pinned install/build, fourteen archives,47 aliases and17 HTTP probes. Restored build cache is disclosed. C12 native memory proofs remain separately scoped. Original reference repositories are unchanged. Owner acceptance has not yet been recorded.
 
+VHOST-028 adds unattended recovery for expired foreground turns to the existing signed scheduler. See the [recovery and rollback guide](docs/FOREGROUND-TURN-RECOVERY.md) for the database-first application order, owner scope and safe handback. This candidate has a separate review and release decision.
+
 ## Verified commands
 
 Run from this app root with Node 22.23.5 and npm 11.21.2. The workspace has a verified portable runtime at `../.tools/node-v22.23.5-win-x64`. Use a per-command PATH and `npx --yes npm@11.21.2 ci` for the exact install.

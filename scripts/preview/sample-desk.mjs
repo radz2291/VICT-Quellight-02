@@ -25,10 +25,22 @@ export function createSampleDesk({ rooms, receipts }) {
     const route=/^\/api\/rooms\/([^/]+)\/desk(?:\/([^/]+))?$/.exec(url.pathname);
     if(route&&method==='GET'){
       const room=rooms.find(r=>r.id===route[1]);if(!room)return fail(404,'ROOM_NOT_FOUND','This room is unavailable.');
-      if(route[2]){const item=items.get(route[2]);return item?.roomId===room.id?ok({item,history:[...history.get(item.id)].reverse()}):fail(404,'DESK_ITEM_NOT_FOUND','This item is unavailable.');}
+      const view=url.searchParams.get('view');
+      if(route[2]){
+        const item=items.get(route[2]);
+        if(item?.roomId!==room.id)return fail(404,'DESK_ITEM_NOT_FOUND','This item is unavailable.');
+        const versions=[...history.get(item.id)].reverse();
+        if(view==='current')return ok({item});
+        if(view==='history')return ok({history:versions.map(({revision,authorKind,operation,createdAt})=>({revision,authorKind,operation,createdAt})),nextRevision:null});
+        if(view==='revision'){
+          const revision=versions.find(entry=>entry.revision===Number(url.searchParams.get('revision')));
+          return revision?ok({revision}):fail(404,'DESK_VERSION_NOT_FOUND','This version is unavailable.');
+        }
+        return ok({item,history:versions});
+      }
       const query=(url.searchParams.get('query')??'').toLowerCase(),archived=url.searchParams.get('archived')==='true',attention=url.searchParams.get('attention');
       const all=[...items.values()].filter(i=>i.roomId===room.id&&!!i.archivedAt===archived&&(!attention||i.attention===attention)&&(!query||`${i.title} ${i.body} ${i.kind} ${i.status}`.toLowerCase().includes(query)));
-      const offset=Number(url.searchParams.get('cursor')??0),page=all.slice(offset,offset+50);return ok({items:page,nextCursor:offset+page.length<all.length?String(offset+page.length):null});
+      const offset=Number(url.searchParams.get('cursor')??0),page=all.slice(offset,offset+50);return ok({items:view==='summary'?page.map(({body,...item})=>item):page,nextCursor:offset+page.length<all.length?String(offset+page.length):null});
     }
     if(url.pathname!=='/api/actions'||method!=='POST'||!request?.actionId?.startsWith('desk.'))return null;
     const {actionId,input,idempotencyKey}=request,signature=JSON.stringify({actionId,input});const prior=receipts.get(idempotencyKey);
