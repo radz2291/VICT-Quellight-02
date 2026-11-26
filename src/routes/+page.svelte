@@ -112,7 +112,8 @@
     untrack(() => setLocal({ editedName: next?.name ?? '', archiveOpen: false }));
   });
   const busy = $derived(!!activeTurn && (!terminal(activeTurn.status) || !activeTurn.projectionSettled));
-  const sendingMessage = $derived(sending[conversationId]);
+  const sendingAttempt = $derived(sending[conversationId]);
+  const sendingMessage = $derived(sendingAttempt && !messages.some(message => message.requestKey === sendingAttempt?.key) ? sendingAttempt : null);
   const streamedMessageId = $derived(activeTurn ? `${activeTurn.id}:assistant` : '');
   const visibleRooms = $derived((data?.rooms ?? []).filter(room => Boolean(room.archivedAt) === Boolean(local.showArchived)));
   const memorySnapshot = $derived(roomDetails ? memorySettings?.room : memorySettings?.app);
@@ -197,10 +198,10 @@
       ...messages.filter(message => !streamed || message.id !== streamedMessageId).map(({ id, role, text }) => ({ id, role, text })),
       ...(sendingMessage ? [{ id: `sending-${sendingMessage.key}`, role: 'user', text: sendingMessage.text }] : []),
       ...(streamed && streamedMessageId ? [{ id: streamedMessageId, role: 'assistant', text: streamed }] : [])
-    ] }), busy: busy || !!sendingMessage, pending,
+    ] }), busy: busy || !!sendingAttempt, pending,
     hasOlder: !!olderCursor, historyLoading, olderHistoryLabel: historyLoading ? 'Loading earlier messages…' : 'Load earlier messages',
-    canRetrySend: !!unresolvedSend && !busy && !sendingMessage && !loading && !currentRoom?.archivedAt,
-    canSend: !!conversationId && !loading && !pending && !busy && !sendingMessage && !unresolvedSend && !currentRoom?.archivedAt,
+    canRetrySend: !!unresolvedSend && !busy && !sendingAttempt && !loading && !currentRoom?.archivedAt,
+    canSend: !!conversationId && !loading && !pending && !busy && !sendingAttempt && !unresolvedSend && !currentRoom?.archivedAt,
     canStop: !!activeTurn && !terminal(activeTurn.status) && stoppingTurn !== activeTurn.id,
     loading, error, hasError: !!error, ready: !!data && !loading,
     hasConversation: !!conversationId && !loading, hasMoreActions: !deskMethodOpen && !deskOpen && !memoryDefaults && !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
@@ -565,7 +566,10 @@
       const draft = draftKey(actor, selectedConversation);
       if (storageRead(draft)?.trim() === text) storageWrite(draft, null);
       if (!current()) {
-        if (alive && conversationId === selectedConversation) void resolveSelection(true);
+        if (alive && conversationId === selectedConversation) {
+          if (String(local.draft ?? '').trim() === text) { setLocal({ draft: '' }); saveDraft(); }
+          if (!messages.some(message => message.id === accepted.userMessage?.id)) void resolveSelection(true);
+        }
         return { ok: true, message: '' };
       }
       if (String(local.draft ?? '').trim() === text) { setLocal({ draft: '' }); saveDraft(); }
