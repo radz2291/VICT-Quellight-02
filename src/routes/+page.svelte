@@ -467,19 +467,31 @@
     if (!olderCursor || historyLoading) return;
     const version = selectionVersion;
     const controller = new AbortController(); historyRequest = controller;
+    const findFeed = () => globalThis.document.querySelector<HTMLElement>('.ql-transcript [data-testid="conversation-feed"]');
+    const feed = findFeed();
+    const top = feed?.getBoundingClientRect().top ?? 0;
+    const anchor = [...(feed?.querySelectorAll<HTMLElement>('[data-message-id]') ?? [])]
+      .find(item => item.getBoundingClientRect().bottom > top);
+    const anchorId = anchor?.dataset.messageId;
+    const offset = anchor ? anchor.getBoundingClientRect().top - top : 0;
     historyLoading = true;
     try {
       const older = await request<Detail>(`/api/conversations/${conversationId}?before=${encodeURIComponent(olderCursor)}`, undefined, controller.signal);
       if (!alive || version !== selectionVersion) return;
-      const feed = globalThis.document.querySelector<HTMLElement>('.ql-transcript [data-testid="conversation-feed"]');
-      const top = feed?.getBoundingClientRect().top ?? 0;
-      const anchor = [...(feed?.querySelectorAll<HTMLElement>('[data-message-id]') ?? [])].find(item => item.getBoundingClientRect().bottom > top);
-      const anchorTop = anchor?.getBoundingClientRect().top ?? 0;
       const existing = new Set(messages.map(message => message.id));
       messages = [...older.messages.filter(message => !existing.has(message.id)), ...messages];
       olderCursor = older.olderCursor ?? null;
       await tick();
-      if (version === selectionVersion && feed && anchor?.isConnected) feed.scrollTop += anchor.getBoundingClientRect().top - anchorTop;
+      // VICT's Markdown and message scroller both adjust layout as the older
+      // rows mount. Keep the same message at its viewport offset through that reflow.
+      for (let frame = 0; anchorId && frame < 5 && !controller.signal.aborted; frame++) {
+        await new Promise(requestAnimationFrame);
+        if (!alive || version !== selectionVersion) break;
+        const viewport = findFeed();
+        const restored = [...(viewport?.querySelectorAll<HTMLElement>('[data-message-id]') ?? [])]
+          .find(item => item.dataset.messageId === anchorId);
+        if (viewport && restored) viewport.scrollTop += restored.getBoundingClientRect().top - viewport.getBoundingClientRect().top - offset;
+      }
     } catch (cause) { if (!controller.signal.aborted && alive && version === selectionVersion) failure(cause); }
     finally { if (version === selectionVersion) historyLoading = false; }
   }
@@ -578,6 +590,12 @@
       void observe(accepted.turnId, selectedConversation, version);
       return { ok: true, message: '' };
     } catch (cause) {
+      if (alive && conversationId === selectedConversation && messages.some(message => message.requestKey === attempt.key)) {
+        if (readPendingSend(actor, selectedConversation)?.key === attempt.key) storageWrite(key, null);
+        if (String(local.draft ?? '').trim() === text) { setLocal({ draft: '' }); saveDraft(); }
+        unresolvedSend = null;
+        return { ok: true, message: '' };
+      }
       const uncertain = previous || !(cause instanceof RequestError) || cause.uncertain;
       if (!uncertain && readPendingSend(actor, selectedConversation)?.key === attempt.key) storageWrite(key, null);
       if (alive && conversationId === selectedConversation && uncertain) unresolvedSend = attempt;
