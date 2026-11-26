@@ -20,7 +20,7 @@ function disclosure(id: string, label: string, children: string[]): UiNode {
   return { kind: 'component', id, definitionId: 'vict.catalog.collapsible', revision: '1', classes: ['ql-memory-disclosure'],
     props: { label: l(label), open: r(`state.${id}Open`) }, outputs: { openChange: { setState: { key: `${id}Open` } } },
     slots: { trigger: { name: 'trigger', children: [`${id}-label`, `${id}-chevron`] }, content: { name: 'content', children } },
-    partStyles: { trigger: { localStyle: [...quiet, st('padding', '8px 0'), st('width', '100%'), st('justify-content', 'space-between')] }, content: { localStyle: [st('padding', '4px 0 14px')] } } };
+    partStyles: { trigger: { localStyle: [...quiet, st('min-height', 'var(--ql-disclosure-height)'), st('padding', '8px 0'), st('width', '100%'), st('justify-content', 'space-between')] }, content: { localStyle: [st('padding', '4px 0 14px')] } } };
 }
 function field(id: string, key: string, label: string, options?: string): Record<string, UiNode> {
   const fragment = rheaNativePatterns.find(pattern => pattern.id === (options ? 'native-select' : 'textarea'))!.create(id);
@@ -85,14 +85,13 @@ function settingsForm(prefix: string): Record<string, UiNode> {
   return nodes;
 }
 export const memoryNodes: Record<string, UiNode> = {
-  memoryDefaultsPage: el('memoryDefaultsPage', 'section', ['memoryDefaultsBack', 'appMemorySettings'], ['ql-room-page']),
-  memoryDefaultsBack: action('memoryDefaultsBack', 'Back to conversation', 'ui.memory.defaults.close'),
+  memoryDefaultsPage: el('memoryDefaultsPage', 'section', ['appMemorySettings'], ['ql-room-page']),
   ...settingsForm('appMemorySettings'), ...settingsForm('roomMemorySettings'),
   memoryDrawer: { kind: 'component', id: 'memoryDrawer', definitionId: 'vict.pattern.drawer', revision: '1',
     props: { title: l('Memory'), triggerLabel: l('Open memory'), open: r('state.memoryOpen'), side: l('right'), size: l(440) },
     outputs: { openChange: { setState: { key: 'memoryOpen' } } },
     slots: { body: { name: 'body', children: ['memoryStatus', 'memoryChangedNotice', 'memoryObservationsTitle', 'memoryObservations', 'memoryHistory', 'memoryPrepared', 'memoryPersonal', 'memoryActivity', 'memorySources', 'memoryContext', 'memoryCare'] } },
-    partStyles: { trigger: { localStyle: [st('display', 'none')] }, panel: { localStyle: [st('background', 'var(--vict-color-bg)'), st('color', 'var(--vict-color-text)')] }, header: { localStyle: [st('padding', '8px 14px 8px 20px'), st('min-height', '56px')] }, body: { localStyle: [st('padding', '18px 20px 32px')] } } },
+    partStyles: { trigger: { localStyle: [st('display', 'none')] }, panel: { localStyle: [st('background', 'var(--ql-floating)'), st('color', 'var(--vict-color-text)')] }, header: { localStyle: [st('padding', '8px 14px 8px 20px'), st('min-height', '56px')] }, body: { localStyle: [st('padding', '18px 20px 32px')] } } },
   ...copy('memoryStatus', 'view.memoryStatusLabel', true),
   memoryChangedNotice: cond('memoryChangedNotice', 'memoryChanged', ['memoryChangedCopy', 'memoryReload']),
   ...copy('memoryChangedCopy', 'Memory changed elsewhere. Your draft is kept. Reload saved memory to replace this draft before making a change.'),

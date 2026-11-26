@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { deskActionBindings, type DeskActionId, type DeskActionInput, type DeskItem, type DeskHistoryEntry, type DeskAuthorKind } from '../../product/desk-contracts.js';
-import type { DeskSummary, DeskRevisionPage } from '../../product/desk-client.js';
+import { deskCardPreview, type DeskSummary, type DeskRevisionPage } from '../../product/desk-client.js';
 import { authorizedActor, ProductError, type Owner } from '../domain/queries.js';
 import { executeMemoryMutation } from '../memory/governed.js';
 import type { MemorySettingsSqlClient } from '../memory/settings.js';
@@ -12,7 +12,7 @@ const table='quellight_product_v1.desk_items';
 const uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 export interface DeskProvenance { authorKind:DeskAuthorKind; commandKey:string; turnId?:string; conversationId?:string; invocationId?:string;
   authorityRevision?:string; sourceMessageIds?:readonly string[]; jobId?:string }
-function deskSummary(row:Record<string,any>):DeskSummary {return {id:row.id,roomId:row.room_id,title:row.title,kind:row.kind,status:row.status,
+function deskSummary(row:Record<string,any>):Omit<DeskSummary,'preview'> {return {id:row.id,roomId:row.room_id,title:row.title,kind:row.kind,status:row.status,
   attention:row.attention,archivedAt:row.archived_at?new Date(row.archived_at).toISOString():null,revision:row.revision,isMethod:row.is_method,
   createdAt:new Date(row.created_at).toISOString(),updatedAt:new Date(row.updated_at).toISOString()};}
 export function deskItem(row:Record<string,any>):DeskItem { return { ...deskSummary(row), body: row.body }; }
@@ -33,13 +33,33 @@ async function selectDeskPage(stores:PostgresStoreSet,owner:Owner,roomId:string,
   if(options.model&&!options.query)where.push("attention<>'put-away'");
   if(options.model){args.push(options.authorityRevision??'');where.push(`(derivation_authority_revision IS NULL OR derivation_authority_revision=$${args.length})`);}
   if(options.query){args.push(options.query.toLowerCase());where.push(`strpos(lower(title||E'\\n'||body||E'\\n'||kind||E'\\n'||status),$${args.length})>0`);}
-  if(options.cursor){let cursor:unknown;try{cursor=JSON.parse(Buffer.from(options.cursor,'base64url').toString());}catch{throw new ProductError('DESK_QUERY_INVALID');}
-    if(!Array.isArray(cursor)||cursor.length!==2||typeof cursor[0]!=='string'||!Number.isFinite(Date.parse(cursor[0]))||!uuid.test(cursor[1]))throw new ProductError('DESK_QUERY_INVALID');
-    args.push(cursor[0],cursor[1]);where.push(`(updated_at,id)<($${args.length-1}::timestamptz,$${args.length}::uuid)`);}
+  const methodFirst = !options.model;
+  if (options.cursor) {
+    let cursor: unknown;
+    try { cursor = JSON.parse(Buffer.from(options.cursor, 'base64url').toString()); }
+    catch { throw new ProductError('DESK_QUERY_INVALID'); }
+    if (!Array.isArray(cursor) || (cursor.length !== 2 && !(methodFirst && cursor.length === 3 && cursor[2] === true)) ||
+      typeof cursor[0] !== 'string' || !Number.isFinite(Date.parse(cursor[0])) || typeof cursor[1] !== 'string' || !uuid.test(cursor[1])) {
+      throw new ProductError('DESK_QUERY_INVALID');
+    }
+    args.push(cursor[0], cursor[1]);
+    const ordinaryCursor = `$${args.length - 1}::timestamptz,$${args.length}::uuid`;
+    if (methodFirst) {
+      args.push(cursor[2] === true);
+      where.push(`(is_method,updated_at,id)<($${args.length}::boolean,${ordinaryCursor})`);
+    } else {
+      where.push(`(updated_at,id)<(${ordinaryCursor})`);
+    }
+  }
+  const sort = methodFirst ? 'is_method DESC,updated_at DESC,id DESC' : 'updated_at DESC,id DESC';
+  args.push(size + 1);
   const columns = 'id, room_id, title, kind, status, attention, archived_at, revision, is_method, created_at, updated_at';
-  args.push(size+1);const rows=(await stores.coordination.pool.query(`SELECT ${columns}${summary ? '' : ', body'},updated_at::text AS cursor_time FROM ${table} WHERE ${where.join(' AND ')} ORDER BY updated_at DESC,id DESC LIMIT $${args.length}`,args)).rows;
-  const page=rows.slice(0,size),last=page.at(-1);
-  return {rows:page,nextCursor:rows.length>size&&last?Buffer.from(JSON.stringify([last.cursor_time,last.id])).toString('base64url'):null};
+  const rows = (await stores.coordination.pool.query(`SELECT ${columns}${summary ? ', LEFT(body, 2048) AS preview_source' : ', body'},updated_at::text AS cursor_time FROM ${table} WHERE ${where.join(' AND ')} ORDER BY ${sort} LIMIT $${args.length}`, args)).rows;
+  const page = rows.slice(0, size);
+  if (rows.length <= size) return { rows: page, nextCursor: null };
+  const last = rows[size - 1];
+  const cursor = methodFirst && last.is_method ? [last.cursor_time, last.id, true] : [last.cursor_time, last.id];
+  return { rows: page, nextCursor: Buffer.from(JSON.stringify(cursor)).toString('base64url') };
 }
 export async function listDesk(stores:PostgresStoreSet,owner:Owner,roomId:string,options:DeskListOptions={}) {
   const { rows, nextCursor } = await selectDeskPage(stores, owner, roomId, options, false);
@@ -47,7 +67,7 @@ export async function listDesk(stores:PostgresStoreSet,owner:Owner,roomId:string
 }
 export async function listDeskSummaries(stores: PostgresStoreSet, owner: Owner, roomId: string, options: DeskListOptions = {}) {
   const { rows, nextCursor } = await selectDeskPage(stores, owner, roomId, options, true);
-  return { items: rows.map(deskSummary), nextCursor };
+  return { items: rows.map(row => ({ ...deskSummary(row), preview: deskCardPreview(row.preview_source) })), nextCursor };
 }
 async function readDeskItem(stores:PostgresStoreSet,owner:Owner,roomId:string,itemId:string,modelAuthority?:string) {
   await authorizedActor(stores,owner,'app.data.read');await ownedDeskRoom(stores.coordination.pool,owner.actorId,roomId);

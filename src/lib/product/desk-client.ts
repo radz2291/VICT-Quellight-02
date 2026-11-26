@@ -3,7 +3,12 @@ import { storageRead, storageWrite } from './client';
 
 export interface DeskList { items: DeskItem[]; nextCursor: string | null }
 export interface DeskDetail { item: DeskItem; history: DeskHistoryEntry[] }
-export type DeskSummary = Omit<DeskItem, 'body'>;
+export type DeskSummary = Omit<DeskItem, 'body'> & { preview: string };
+export function deskCardPreview(body: string) {
+  const withoutHeadings = body.replace(/^#{1,6}[ \t]+[^\n]+$/gm, '').trim();
+  const preview = withoutHeadings || body.trim().replace(/^#{1,6}[ \t]+/, '');
+  return preview.split(/\n\s*\n/, 1)[0].slice(0, 200);
+}
 export type DeskRevisionSummary = Pick<DeskHistoryEntry, 'revision' | 'authorKind' | 'operation' | 'createdAt'>;
 export interface DeskSummaryList { items: DeskSummary[]; nextCursor: string | null }
 export interface DeskCurrent { item: DeskItem }

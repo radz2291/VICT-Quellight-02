@@ -92,8 +92,8 @@ try {
         const glyph = await reachable(creation);
         check('desktop: named creation icon is visible and hit-testable', glyph.width >= 36 && glyph.height >= 36 && glyph.inside && glyph.hit && await creation.locator('svg').count() === 1, glyph);
         const quiet = await creation.evaluate(element => getComputedStyle(element).backgroundColor);
-        const rows = await page.locator('.ql-sidebar').getByRole('button', { name: /^(Home|A small idea)$/ }).evaluateAll(buttons => buttons.map(button => getComputedStyle(button).backgroundColor));
-        check('desktop: direct load keeps the icon and unselected row quiet', quiet === 'rgba(0, 0, 0, 0)' && rows.length === 2 && rows[0] !== rows[1] && rows[1] === quiet, { quiet, rows });
+        const rows = await page.locator('.ql-sidebar').getByRole('button', { name: /^(Home|Making room for the week|A small idea)$/ }).evaluateAll(buttons => buttons.map(button => getComputedStyle(button).backgroundColor));
+        check('desktop: the current room reads as context and only the open chat is tinted', quiet === 'rgba(0, 0, 0, 0)' && rows.length === 3 && rows[0] === quiet && rows[1] !== quiet && rows[2] === quiet, { quiet, rows });
       }
       const initial = await scrollMetrics(message);
       check(`${name}: composer initially reachable`, (await reachable(message)).inside);
@@ -101,14 +101,14 @@ try {
         const css = getComputedStyle(button);
         return { width: button.getBoundingClientRect().width, padding: parseFloat(css.paddingLeft), clip: css.backgroundClip };
       });
-      check(`${name}: small Send glyph retains a 40px button`, send.width === 40 && send.width - 2 * send.padding <= 28 && send.clip === 'content-box', send);
+      check(`${name}: small Send glyph retains a 44px button`, send.width === 44 && send.width - 2 * send.padding <= 28 && send.clip === 'content-box', send);
       await capture(page, `${name}-sample-light`);
       const more = page.getByRole('button', { name: 'More', exact: true });
       if (name === 'compact') await more.click();
       else await more.press('ArrowDown');
       const menu = page.getByRole('menu', { name: 'More' });
       await menu.waitFor();
-      check(`${name}: More opens a dropdown with room details and export`, await menu.getByRole('menuitem').count() === 2 && (await reachable(menu)).inside);
+      check(`${name}: More keeps room details, memory and export in view`, await menu.getByRole('menuitem').allTextContents().then(labels => labels.map(label => label.trim()).join('|') === 'Room details|Memory|Export conversation') && (await reachable(menu)).inside);
       if (name === 'compact') {
         const details = menu.getByRole('menuitem', { name: 'Room details', exact: true });
         const color = await details.evaluate(element => getComputedStyle(element).backgroundColor);
@@ -175,12 +175,12 @@ try {
         const closeHover = await close.evaluate(button => ({ background: getComputedStyle(button).backgroundColor, shadow: getComputedStyle(button).boxShadow }));
         check(`${name}: drawer close stays quiet on hover`, closeHover.background === 'rgba(0, 0, 0, 0)' && closeHover.shadow === 'none', closeHover);
         const roomRow = await rooms.getByRole('button', { name: 'Home', exact: true }).boundingBox();
-        check(`${name}: room uses compact sidebar row spacing`, roomRow.height <= 36, roomRow);
+        check(`${name}: room has a 44px touch row`, roomRow.height >= 44, roomRow);
         if (name === 'compact') await capture(page, 'compact-rooms');
         const creation = rooms.locator('.ql-conversation-heading').getByRole('button', { name: 'New conversation', exact: true });
         check(`${name}: New conversation belongs to Rooms navigation heading`, await creation.count() === 1);
         const glyph = await reachable(creation);
-        check(`${name}: named creation icon is visible and hit-testable`, glyph.width >= 36 && glyph.height >= 36 && glyph.inside && glyph.hit && await creation.locator('svg').count() === 1, glyph);
+        check(`${name}: named creation action has a 44px touch row`, glyph.width >= 44 && glyph.height >= 44 && glyph.inside && glyph.hit && await creation.locator('svg').count() === 1, glyph);
         settingsTrigger = rooms.getByRole('button', { name: 'Settings', exact: true });
       } else settingsTrigger = page.locator('.ql-sidebar').getByRole('button', { name: 'Settings', exact: true });
       await settingsTrigger.click();

@@ -4,6 +4,7 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
+import { createSampleWorkspace } from './preview/sample-workspace.mjs';
 const { chromium } = await import(process.env.QUELLIGHT_PLAYWRIGHT_MODULE ? pathToFileURL(process.env.QUELLIGHT_PLAYWRIGHT_MODULE).href : 'playwright');
 const base = process.env.QUELLIGHT_UI_URL ?? 'http://127.0.0.1:4318';
 const dropStartResponse = process.env.QUELLIGHT_UI_DROP_START === '1';
@@ -32,11 +33,13 @@ const rooms = [{ id: home, name: 'Home', purpose: 'A space for everyday thoughts
 const conversations = [{ id: conversationId, roomId: home, title: 'Making room for the week', revision: 1 }, { id: nextConversationId, roomId: home, title: 'A small idea', revision: 1 }];
 const messages = [{ id: 'fixture-user', role: 'user', text: 'I want a little more room in my week.' }, { id: 'fixture-assistant', role: 'assistant', text: 'Let’s start with what matters most.\n\nWhat is one thing you would like to make time for this week?' }];
 const calls = [];
+const sample = createSampleWorkspace();
 await page.route('**/api/**', async route => {
   const url = new URL(route.request().url());
   const body = route.request().method() === 'POST' ? route.request().postDataJSON() : undefined;
   const respond = (value, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(value) });
   calls.push({ path: url.pathname, method: route.request().method() });
+  if (url.pathname === '/api/memory/settings' && route.request().method() === 'GET') return respond(sample.handle('GET', url).body);
   if (url.pathname === '/api/bootstrap') return respond({ user: { id: actor, email: 'fixture@example.test' }, rooms, conversations });
   if (url.pathname === '/api/actions') {
     assert.match(body.idempotencyKey, /^[a-f0-9-]{36}$/);
@@ -87,7 +90,7 @@ try {
   assert.equal(await page.getByLabel('Password', { exact: true }).getAttribute('type'), 'password');
   await page.screenshot({ path: `${output}/sign-in-desktop.png`, fullPage: true });
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await page.getByRole('heading', { name: 'What’s on your mind?' }).waitFor();
+  await page.getByRole('heading', { name: 'Making room for the week', exact: true }).waitFor();
   assert.equal(await page.locator('.ql-toolbar').getByRole('button', { name: 'New conversation', exact: true }).count(), 0, 'Header has no conversation-creation shortcut');
   assert.equal(await page.getByRole('button', { name: 'Start a conversation', exact: true }).count(), 0, 'Welcome has no conversation-creation shortcut');
   await page.locator('.ql-sidebar .ql-conversation-heading').getByRole('button', { name: 'New conversation', exact: true }).click();
@@ -124,8 +127,9 @@ try {
   assert.equal(sends, 1); assert.equal(stopRequested, true);
   if (dropStartResponse) assert.equal(startKeys.length, 2);
   await page.getByRole('button', { name: 'New room', exact: true }).click();
+  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('name')), 'roomName');
   await page.getByRole('textbox', { name: 'Room name', exact: true }).fill('A calmer week');
-  await page.getByRole('textbox', { name: 'What is this room for?', exact: true }).fill('Space for small plans.');
+  await page.getByRole('textbox', { name: 'Room purpose (optional)', exact: true }).fill('Space for small plans.');
   await page.getByRole('button', { name: 'Create room', exact: true }).click();
   await page.getByRole('heading', { name: 'A calmer week', exact: true }).waitFor();
   await page.getByRole('button', { name: 'More', exact: true }).click();
@@ -137,7 +141,7 @@ try {
   await page.getByRole('menuitem', { name: 'Room details', exact: true }).click();
   await page.getByRole('button', { name: 'Archive room', exact: true }).click();
   await page.getByRole('button', { name: 'Archive room', exact: true }).click();
-  await page.getByRole('heading', { name: 'Home', exact: true }).waitFor();
+  await page.getByRole('heading', { name: 'Making room for the week', exact: true }).waitFor();
   await page.getByRole('button', { name: 'Making room for the week', exact: true }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: `${output}/conversation-phone.png`, fullPage: true });
@@ -164,6 +168,10 @@ try {
   await page.getByRole('dialog').getByRole('button', { name: 'A small idea', exact: true }).click();
   await page.getByRole('dialog').waitFor({ state: 'hidden' });
   assert.equal(new URL(page.url()).searchParams.get('conversation'), nextConversationId);
+  await page.getByRole('button', { name: 'Open rooms', exact: true }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Home', exact: true }).click();
+  await page.getByRole('dialog').waitFor({ state: 'hidden' });
+  assert.equal(new URL(page.url()).searchParams.get('conversation'), nextConversationId, 'Reopening the room resumes its last conversation');
   assert.deepEqual(errors, []);
   await writeFile(`${output}/result.json`, JSON.stringify({ kind: 'synthetic-browser-transport', passed: true, dropStartResponse, viewport: ['1440x1000', '390x844'], checks: ['canonical auth fields', 'draft across conversations', 'theme', 'turn streaming and Stop', 'terminal projection settlement', ...(dropStartResponse ? ['same-key retry after committed response loss and reconnect'] : []), 'room create/rename/archive', 'phone navigation', 'phone composer', 'no unexpected browser errors'], calls }, null, 2));
   console.log('Phase 1 synthetic browser journeys passed. No live provider or authentication used.');

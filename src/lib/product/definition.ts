@@ -48,7 +48,16 @@ function icon(id: string, name: string): UiNode {
 }
 const quietControl = [style('background', 'transparent'), style('color', 'var(--vict-color-textMuted)'), style('border-color', 'transparent'), style('box-shadow', 'none')];
 const iconControl = [...quietControl, style('padding', '0'), style('width', '44px'), style('height', '44px'), style('border-radius', '8px')];
-const composerAction = [style('width', '40px'), style('height', '40px'), style('min-width', '40px'), style('min-height', '40px'), style('padding', '6px'), style('background-clip', 'content-box')];
+function toolbarBack(id: string, label: UiExpression, actionId: string): Record<string, UiNode> {
+  return {
+    [id]: { kind: 'component', id, definitionId: 'vict.pattern.action-button', revision: '1',
+      props: { label, iconOnly: literal(true), disabled: ref('view.pending') },
+      outputs: { activate: { invokeAction: { actionId } } },
+      slots: { icon: { name: 'icon', children: [`${id}Icon`] } }, localStyle: iconControl },
+    [`${id}Icon`]: icon(`${id}Icon`, 'arrow-left')
+  };
+}
+const composerAction = [style('width', '44px'), style('height', '44px'), style('min-width', '44px'), style('min-height', '44px'), style('padding', '8px'), style('background-clip', 'content-box')];
 const drawerParts = {
   trigger: { localStyle: iconControl },
   panel: { localStyle: [style('background', 'var(--vict-color-surface)'), style('color', 'var(--vict-color-text)'), style('border-radius', '0')] },
@@ -119,31 +128,44 @@ function navigation(prefix: string): Record<string, UiNode> {
   const selectionStyle = (item: string): UiStyleDeclaration[] => [
     style('width', '100%'), style('justify-content', 'flex-start'), style('text-align', 'left'),
     style('border-color', 'transparent'), style('white-space', 'nowrap'), style('overflow', 'hidden'), style('text-overflow', 'ellipsis'),
-    style('font-size', '13px'), style('font-weight', '400'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('border-radius', '7px'), style('color', 'var(--vict-color-text)'),
+    style('font-size', '13px'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('border-radius', '7px'), style('color', 'var(--vict-color-text)'),
+    { property: 'font-weight', value: { type: 'binding', expression: { type: 'conditionalValue',
+      when: ref(`repeat.${item}.current`), then: literal('550'), otherwise: literal('400') } } },
     { property: 'background', value: { type: 'binding', expression: { type: 'conditionalValue',
       when: ref(`repeat.${item}.selected`), then: literal('var(--ql-selected)'), otherwise: literal('transparent') } } }
   ];
   return {
-    [prefix]: element(prefix, 'div', [`${prefix}-heading`, `${prefix}-rooms`, `${prefix}-empty`, `${prefix}-new`, `${prefix}-desk-wrap`, `${prefix}-conversation-heading`, `${prefix}-conversations`], ['ql-navigation']),
-    [`${prefix}-desk-wrap`]: conditional(`${prefix}-desk-wrap`, 'hasRoom', [`${prefix}-desk`]),
+    [prefix]: element(prefix, 'div', [`${prefix}-rooms-group`, `${prefix}-conversation-heading`, `${prefix}-conversations`, `${prefix}-desk-wrap`], ['ql-navigation']),
+    [`${prefix}-rooms-group`]: element(`${prefix}-rooms-group`, 'section', [`${prefix}-heading`, `${prefix}-rooms`, `${prefix}-empty`], ['ql-room-list']),
+    [`${prefix}-desk-wrap`]: conditional(`${prefix}-desk-wrap`, 'hasRoom', [`${prefix}-tools`]),
+    [`${prefix}-tools`]: element(`${prefix}-tools`, 'section', [`${prefix}-tools-heading`, `${prefix}-desk`, `${prefix}-method`], ['ql-room-tools']),
+    [`${prefix}-tools-heading`]: element(`${prefix}-tools-heading`, 'h2', [`${prefix}-tools-label`], ['ql-section-label']),
+    [`${prefix}-tools-label`]: text(`${prefix}-tools-label`, 'Room tools'),
     [`${prefix}-desk`]: { ...button(`${prefix}-desk`, 'Desk', 'ui.desk.open'), localStyle: [...quietControl, style('font-size', '13px'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('width', '100%'), style('justify-content', 'flex-start'), style('border-radius', '7px'), { property: 'background', value: { type: 'binding', expression: { type: 'conditionalValue', when: ref('view.deskOpen'), then: literal('var(--ql-selected)'), otherwise: literal('transparent') } } }] },
-    [`${prefix}-heading`]: element(`${prefix}-heading`, 'h2', [`${prefix}-heading-text`], ['ql-section-label']),
+    [`${prefix}-method`]: { ...button(`${prefix}-method`, 'Method', 'ui.desk.method'), localStyle: [...quietControl, style('font-size', '13px'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('width', '100%'), style('justify-content', 'flex-start'), style('border-radius', '7px'), { property: 'background', value: { type: 'binding', expression: { type: 'conditionalValue', when: ref('view.deskMethodRoom'), then: literal('var(--ql-selected)'), otherwise: literal('transparent') } } }] },
+    [`${prefix}-heading`]: element(`${prefix}-heading`, 'div', [`${prefix}-room-title`, `${prefix}-new`], ['ql-room-list-heading']),
+    [`${prefix}-room-title`]: element(`${prefix}-room-title`, 'h2', [`${prefix}-heading-text`], ['ql-section-label']),
     [`${prefix}-heading-text`]: text(`${prefix}-heading-text`, 'Your rooms'),
     [`${prefix}-rooms`]: { kind: 'repeat', id: `${prefix}-rooms`, collection: ref('view.rooms'), key: ref('repeat.room.id'), itemName: 'room', templateRoot: `${prefix}-room` },
     [`${prefix}-room`]: { ...button(`${prefix}-room`, '', 'ui.room.select', { id: ref('repeat.room.id') }), props: { label: ref('repeat.room.name') }, localStyle: selectionStyle('room') },
     [`${prefix}-empty`]: conditional(`${prefix}-empty`, 'emptyRooms', [`${prefix}-empty-label`]),
     [`${prefix}-empty-label`]: element(`${prefix}-empty-label`, 'p', [`${prefix}-empty-text`], ['ql-muted']),
     [`${prefix}-empty-text`]: text(`${prefix}-empty-text`, 'view.roomsEmptyText', true),
-    [`${prefix}-new`]: { ...button(`${prefix}-new`, 'New room', 'ui.room.new', undefined, true), localStyle: [...quietControl, style('font-size', '12px'), style('padding', '6px 10px'), style('min-height', 'var(--ql-nav-height)'), style('justify-content', 'flex-start'), style('width', '100%')] },
+    [`${prefix}-new`]: { kind: 'component', id: `${prefix}-new`, definitionId: 'vict.pattern.action-button', revision: '1',
+      props: { label: literal('New room'), iconOnly: literal(true), disabled: ref('view.pending') },
+      slots: { icon: { name: 'icon', children: [`${prefix}-add-room-icon`] } },
+      outputs: { activate: { invokeAction: { actionId: 'ui.room.new' } } }, localStyle: iconControl },
+    [`${prefix}-add-room-icon`]: icon(`${prefix}-add-room-icon`, 'plus'),
     [`${prefix}-conversation-heading`]: element(`${prefix}-conversation-heading`, 'div', [`${prefix}-recent-heading`, `${prefix}-newConversationContainer`], ['ql-conversation-heading']),
     [`${prefix}-recent-heading`]: element(`${prefix}-recent-heading`, 'h2', [`${prefix}-recent-text`], ['ql-section-label', 'ql-recent-label']),
     [`${prefix}-recent-text`]: text(`${prefix}-recent-text`, 'Conversations'),
     [`${prefix}-newConversationContainer`]: conditional(`${prefix}-newConversationContainer`, 'activeRoom', [`${prefix}-newConversation`]),
     [`${prefix}-newConversation`]: { kind: 'component', id: `${prefix}-newConversation`, definitionId: 'vict.pattern.action-button', revision: '1',
-      props: { label: literal('New conversation'), value: literal('new-conversation'), iconOnly: literal(true), disabled: ref('view.newChatWaiting') },
+      classes: ['ql-new-conversation'],
+      props: { label: literal('New conversation'), value: literal('new-conversation'), disabled: ref('view.newChatWaiting') },
       outputs: { activate: { invokeAction: { actionId: 'conversation.create', input: { roomId: ref('view.roomId') } } } },
       slots: { icon: { name: 'icon', children: [`${prefix}-newConversationIcon`] } },
-      localStyle: [...iconControl, style('width', '36px'), style('height', '36px'), style('min-width', '36px'), style('min-height', '36px')] },
+      localStyle: [...quietControl, style('min-height', 'var(--ql-nav-height)'), style('justify-content', 'flex-start'), style('width', '100%'), style('border-color', 'var(--vict-color-border)')] },
     [`${prefix}-newConversationIcon`]: icon(`${prefix}-newConversationIcon`, 'plus'),
     [`${prefix}-conversations`]: { kind: 'repeat', id: `${prefix}-conversations`, collection: ref('view.conversations'), key: ref('repeat.conversation.id'), itemName: 'conversation', templateRoot: `${prefix}-conversation` },
     [`${prefix}-conversation`]: { ...button(`${prefix}-conversation`, '', 'ui.conversation.select', { id: ref('repeat.conversation.id') }), props: { label: ref('repeat.conversation.title') }, localStyle: selectionStyle('conversation') }
@@ -163,7 +185,7 @@ const nodes: Record<string, UiNode> = {
   sidebarFooter: element('sidebarFooter', 'div', ['desktopSettings'], ['ql-sidebar-footer']),
   ...settingsDisclosure('desktopSettings', 'settingsOpen'),
   ...settingsDisclosure('mobileSettings', 'mobileSettingsOpen'),
-  workspace: element('workspace', 'main', ['toolbar', 'error', 'loading', 'roomEditor', 'mainContent'], ['ql-workspace']),
+  workspace: element('workspace', 'main', ['toolbar', 'error', 'loading', 'mainContent'], ['ql-workspace']),
   mobileNav: element('mobileNav', 'div', ['mobileMenu'], ['ql-mobile-nav']),
   mobileMenu: { kind: 'component', id: 'mobileMenu', definitionId: 'vict.pattern.drawer', revision: '1',
     props: { title: literal('Quellight'), triggerLabel: literal('Open rooms'), open: ref('state.navigationOpen'), side: literal('left'), size: literal(252) },
@@ -176,10 +198,26 @@ const nodes: Record<string, UiNode> = {
       footer: { localStyle: [style('padding', '4px 12px 8px')] }
     } },
   mobileMenuIcon: icon('mobileMenuIcon', 'menu'),
-  toolbar: element('toolbar', 'header', ['mobileNav', 'roomIdentity', 'moreControls'], ['ql-toolbar']),
+  toolbar: element('toolbar', 'header', ['mobileNav', 'toolbarBack', 'roomIdentity', 'quickDeskWrap', 'deskHeaderTools', 'moreControls'], ['ql-toolbar']),
+  toolbarBack: { kind: 'conditional', id: 'toolbarBack', branches: [
+    { when: 'newRoomOpen', children: ['newRoomBack'] },
+    { when: 'deskMethodOpen', children: ['deskMethodBack'] },
+    { when: 'deskHasDetail', children: ['deskBackList'] },
+    { when: 'deskOpen', children: ['deskBackConversation'] },
+    { when: 'memoryDefaults', children: ['memoryDefaultsBack'] },
+    { when: 'roomDetails', children: ['roomDetailsBack'] }
+  ] },
+  ...toolbarBack('newRoomBack', literal('Back to workspace'), 'ui.room.dismiss'),
+  ...toolbarBack('deskMethodBack', ref('view.deskMethodBackLabel'), 'ui.desk.method.close'),
+  ...toolbarBack('deskBackList', literal('Back to Desk'), 'ui.desk.list'),
+  ...toolbarBack('deskBackConversation', literal('Back to conversation'), 'ui.desk.close'),
+  ...toolbarBack('memoryDefaultsBack', literal('Back to conversation'), 'ui.memory.defaults.close'),
+  ...toolbarBack('roomDetailsBack', ref('view.roomDetailsBackLabel'), 'ui.room.dismiss'),
   roomIdentity: element('roomIdentity', 'div', ['headerTitle'], ['ql-room-identity']),
-  headerTitle: element('headerTitle', 'h2', ['headerTitleText']),
+  headerTitle: { ...element('headerTitle', 'h2', ['headerTitleText']), attributes: { tabindex: '-1' } },
   headerTitleText: text('headerTitleText', 'view.headerTitle', true),
+  quickDeskWrap: conditional('quickDeskWrap', 'showQuickDesk', ['quickDesk']),
+  quickDesk: { ...button('quickDesk', 'Desk', 'ui.desk.open'), classes: ['ql-quick-desk'], localStyle: [...quietControl, style('min-height', '44px')] },
   moreControls: conditional('moreControls', 'hasMoreActions', ['moreMenu']),
   moreMenu: { kind: 'component', id: 'moreMenu', definitionId: 'vict.catalog.dropdown-menu', revision: '1',
     props: { label: literal('More'), open: ref('state.moreOpen'), disabled: ref('view.pending') },
@@ -205,6 +243,7 @@ const nodes: Record<string, UiNode> = {
   loadingText: { ...element('loadingText', 'p', ['loadingCopy'], ['ql-loading']), attributes: { role: 'status' } },
   loadingCopy: text('loadingCopy', 'Opening your space…'),
   mainContent: { kind: 'conditional', id: 'mainContent', branches: [
+    { when: 'newRoomOpen', children: ['roomEditor'] },
     { when: 'deskMethodOpen', children: ['deskMethodPage'] },
     { when: 'deskOpen', children: ['deskPage'] },
     { when: 'memoryDefaults', children: ['memoryDefaultsPage'] },
@@ -214,7 +253,7 @@ const nodes: Record<string, UiNode> = {
   welcomeTitle: element('welcomeTitle', 'h2', ['welcomeTitleText']),
   welcomeTitleText: text('welcomeTitleText', 'What’s on your mind?'),
   welcomeCopy: element('welcomeCopy', 'p', ['welcomeCopyText']),
-  welcomeCopyText: text('welcomeCopyText', 'Bring a question, an idea, or something you’d like to work through.'),
+  welcomeCopyText: text('welcomeCopyText', 'view.welcomeCopy', true),
   olderHistory: conditional('olderHistory', 'hasOlder', ['olderHistoryBar']),
   olderHistoryBar: element('olderHistoryBar', 'div', ['olderHistoryButton'], ['ql-older-history']),
   olderHistoryButton: button('olderHistoryButton', 'Load earlier messages', 'ui.history.older', undefined, true),
@@ -224,9 +263,9 @@ const nodes: Record<string, UiNode> = {
     slots: { composer: { name: 'composer', children: ['composer'] }, footer: { name: 'footer', children: ['conversationFooter'] } },
     partStyles: {
       surface: { localStyle: [style('background', 'transparent'), style('border', '0'), style('box-shadow', 'none'), style('border-radius', '0')] },
-      messages: { localStyle: [style('padding', '18px 8px 10px'), style('gap', '16px')] },
+      messages: { localStyle: [style('padding', '24px 10px 12px'), style('gap', '16px')] },
       'message-content': { localStyle: [style('max-width', '100%')] },
-      'message-text': { localStyle: [style('font-size', '14px'), style('line-height', '1.6')] },
+      'message-text': { localStyle: [style('font-size', '15px'), style('line-height', '1.65')] },
       composer: { localStyle: [style('padding', '0')] }
     } },
   composer: { kind: 'component', id: 'composer', definitionId: 'vict.ai.prompt-input', revision: '3',
@@ -236,8 +275,8 @@ const nodes: Record<string, UiNode> = {
       stop: { invokeAction: { actionId: 'conversation.cancel', input: { turnId: ref('view.turnId') } } } },
     partStyles: {
       surface: { localStyle: [style('display', 'grid'), style('grid-template-columns', 'minmax(0, 1fr) auto'), style('align-items', 'end'), style('gap', '4px'), style('padding', '3px'), style('border-radius', '13px'), style('box-shadow', 'none')] },
-      field: { localStyle: [style('min-height', '40px'), style('height', 'auto'), style('max-height', '160px'), style('padding', '9px 11px'), style('line-height', '22px'), style('font-size', '14px'), style('resize', 'none'), style('field-sizing', 'content')] },
-      actions: { localStyle: [style('padding', '0'), style('width', '40px'), style('min-height', '40px'), style('align-self', 'end'), style('justify-content', 'center')] },
+      field: { localStyle: [style('min-height', '44px'), style('height', 'auto'), style('max-height', 'min(160px, 35dvh)'), style('padding', '10px 12px'), style('line-height', '22px'), style('font-size', '16px'), style('resize', 'none'), style('field-sizing', 'content')] },
+      actions: { localStyle: [style('padding', '0'), style('width', '44px'), style('min-height', '44px'), style('align-self', 'end'), style('justify-content', 'center')] },
       send: { localStyle: composerAction },
       stop: { localStyle: composerAction }
     } },
@@ -247,31 +286,21 @@ const nodes: Record<string, UiNode> = {
   status: { ...element('status', 'span', ['statusText']), attributes: { role: 'status', 'aria-live': 'polite' } },
   statusText: text('statusText', 'view.statusText', true),
   export: menuItem('export', 'Export conversation', 'ui.export'),
-  roomEditor: conditional('roomEditor', 'newRoomOpen', ['newRoomForm']),
-  newRoomForm: { ...element('newRoomForm', 'form', ['newRoomTitle', 'newRoomName', 'newRoomPurpose', 'newRoomHelp', 'roomButtons'], ['ql-editor', 'ql-form']),
+  roomEditor: element('roomEditor', 'section', ['newRoomForm'], ['ql-room-page']),
+  newRoomForm: { ...element('newRoomForm', 'form', ['newRoomHelp', 'newRoomName', 'newRoomPurpose', 'roomButtons'], ['ql-editor', 'ql-form']),
     interactions: [{ on: 'submit', action: 'invokeAction', actionId: 'room.create', input: { name: ref('state.roomName'), purpose: ref('state.roomPurpose') } }] },
-  newRoomTitle: element('newRoomTitle', 'h2', ['newRoomTitleText']),
-  newRoomTitleText: text('newRoomTitleText', 'A room for what matters.'),
   ...field('newRoomName', 'roomName', 'Room name'),
-  ...field('newRoomPurpose', 'roomPurpose', 'What is this room for?'),
+  ...field('newRoomPurpose', 'roomPurpose', 'Room purpose (optional)'),
   newRoomHelp: element('newRoomHelp', 'p', ['newRoomHelpText'], ['ql-muted']),
-  newRoomHelpText: text('newRoomHelpText', 'A room keeps related conversations together. Its purpose is optional.'),
+  newRoomHelpText: text('newRoomHelpText', 'Keep conversations and Desk items for the same part of your life together.'),
   roomButtons: element('roomButtons', 'div', ['createRoom', 'roomCancel'], ['ql-button-row']),
   createRoom: button('createRoom', 'Create room', 'room.create', { name: ref('state.roomName'), purpose: ref('state.roomPurpose') }),
   roomCancel: button('roomCancel', 'Cancel', 'ui.room.dismiss', undefined, true),
-  roomDetailsPage: element('roomDetailsPage', 'section', ['roomDetailsBack', 'roomDetailsContent'], ['ql-room-page']),
-  roomDetailsBack: { kind: 'component', id: 'roomDetailsBack', definitionId: 'vict.pattern.action-button', revision: '1',
-    props: { label: ref('view.roomDetailsBackLabel'), disabled: ref('view.pending') },
-    outputs: { activate: { invokeAction: { actionId: 'ui.room.dismiss' } } },
-    slots: { icon: { name: 'icon', children: ['roomDetailsBackIcon'] } },
-    localStyle: [...quietControl, style('padding', '0 4px'), style('min-height', '36px'), style('font-weight', '400')] },
-  roomDetailsBackIcon: icon('roomDetailsBackIcon', 'arrow-left'),
+  roomDetailsPage: element('roomDetailsPage', 'section', ['roomDetailsContent'], ['ql-room-page']),
   roomDetailsContent: { kind: 'conditional', id: 'roomDetailsContent', branches: [
     { when: 'archiveOpen', children: ['archivePanel'] }, { when: 'roomDetails', children: ['renameForm'] }
   ] },
-  renameForm: element('renameForm', 'section', ['editTitle', 'editPurpose', 'editName', 'renameButtons', 'roomMemorySettings'], ['ql-form']),
-  editTitle: { ...element('editTitle', 'h1', ['editTitleText']), attributes: { tabindex: '-1' } },
-  editTitleText: text('editTitleText', 'Room details'),
+  renameForm: element('renameForm', 'section', ['editPurpose', 'editName', 'renameButtons', 'roomMemorySettings'], ['ql-form']),
   editPurpose: element('editPurpose', 'p', ['editPurposeText'], ['ql-muted', 'ql-room-purpose']),
   editPurposeText: text('editPurposeText', 'view.roomPurpose', true),
   ...field('editName', 'editedName', 'Room name'),
@@ -289,12 +318,12 @@ const nodes: Record<string, UiNode> = {
 };
 
 export const document: UiDocument = {
-  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '9', root: 'shell',
+  schema: 'vict.ui-document@1', id: 'quellight.conversation', revision: '15', root: 'shell',
   nodes, componentDefinitions: {}, styleSources: {}, tokens: {}, assets: {},
   conditions: {
     ...memoryConditions,
     ...deskConditions,
-    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'hasRoom', 'emptyRooms', 'roomDetails', 'hasOlder', 'canRetrySend'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
+    ...Object.fromEntries(['hasError', 'loading', 'ready', 'hasConversation', 'hasMoreActions', 'activeRoom', 'hasRoom', 'emptyRooms', 'roomDetails', 'showQuickDesk', 'hasOlder', 'canRetrySend'].map(id => [id, { id, kind: 'localState' as const, when: ref(`view.${id}`) }])),
     ...Object.fromEntries(['newRoomOpen', 'archiveOpen'].map(id => [id, { id, kind: 'localState' as const, when: ref(`state.${id}`) }]))
   },
   localState: { ...memoryLocalState, ...deskLocalState, ...Object.fromEntries([
@@ -352,13 +381,13 @@ export const application: ApplicationDefinitionV3 = {
 export const viewFields = {
   ...memoryViewFields,
   ...deskViewFields,
-  rooms: 'array', 'rooms.id': 'string', 'rooms.name': 'string', 'rooms.selected': 'boolean',
-  conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean',
+  rooms: 'array', 'rooms.id': 'string', 'rooms.name': 'string', 'rooms.selected': 'boolean', 'rooms.current': 'boolean',
+  conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean', 'conversations.current': 'boolean',
   transcript: 'string', roomId: 'string', roomName: 'string', roomPurpose: 'string', roomRevision: 'number',
   conversationId: 'string', conversationTitle: 'string', turnId: 'string', busy: 'boolean', canSend: 'boolean', canStop: 'boolean',
   hasOlder: 'boolean', canRetrySend: 'boolean', composerText: 'string', newChatWaiting: 'boolean',
   pending: 'boolean', error: 'string', statusText: 'string', roomsEmptyText: 'string',
-  headerTitle: 'string', roomDetails: 'boolean', roomDetailsBackLabel: 'string',
+  headerTitle: 'string', welcomeCopy: 'string', showQuickDesk: 'boolean', roomDetails: 'boolean', roomDetailsBackLabel: 'string', deskMethodBackLabel: 'string',
   hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', hasRoom: 'boolean', emptyRooms: 'boolean'
 } as const;
 export const view = {
@@ -369,7 +398,7 @@ export const view = {
   conversationId: '', conversationTitle: '', turnId: '', busy: false, canSend: false, canStop: false,
   hasOlder: false, canRetrySend: false, composerText: '', newChatWaiting: false,
   pending: false, error: '', statusText: '', roomsEmptyText: 'Create a room to begin.',
-  headerTitle: 'Your space', roomDetails: false, roomDetailsBackLabel: 'Back to room',
+  headerTitle: 'Your space', welcomeCopy: '', showQuickDesk: false, roomDetails: false, roomDetailsBackLabel: 'Back to room', deskMethodBackLabel: 'Back to Desk',
   hasError: false, loading: true, ready: false, hasConversation: false, hasMoreActions: false, activeRoom: false, hasRoom: false, emptyRooms: true
 };
 export function compile(candidate: UiDocument = document) {

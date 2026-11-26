@@ -105,6 +105,7 @@ try {
       check(`${name}: source exclusion visibly recorded`, await drawer.getByRole('checkbox', { name: 'Your message · excluded from memory', exact: true }).isDisabled());
       await shot('care');
       await drawer.getByRole('button', { name: 'Close drawer', exact: true }).click();
+      check(`${name}: closing Memory restores focus to More`, await page.getByRole('button', { name: 'More', exact: true }).evaluate(button => button === document.activeElement));
       const closedReads = inspectionReads;
       await page.waitForTimeout(1500);
       check(`${name}: closing memory stops its read polling`, inspectionReads === closedReads);

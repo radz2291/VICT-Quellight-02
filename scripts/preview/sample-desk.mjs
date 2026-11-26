@@ -39,8 +39,9 @@ export function createSampleDesk({ rooms, receipts }) {
         return ok({item,history:versions});
       }
       const query=(url.searchParams.get('query')??'').toLowerCase(),archived=url.searchParams.get('archived')==='true',attention=url.searchParams.get('attention');
-      const all=[...items.values()].filter(i=>i.roomId===room.id&&!!i.archivedAt===archived&&(!attention||i.attention===attention)&&(!query||`${i.title} ${i.body} ${i.kind} ${i.status}`.toLowerCase().includes(query)));
-      const offset=Number(url.searchParams.get('cursor')??0),page=all.slice(offset,offset+50);return ok({items:view==='summary'?page.map(({body,...item})=>item):page,nextCursor:offset+page.length<all.length?String(offset+page.length):null});
+      const all=[...items.values()].filter(i=>i.roomId===room.id&&!!i.archivedAt===archived&&(!attention||i.attention===attention)&&(!query||`${i.title} ${i.body} ${i.kind} ${i.status}`.toLowerCase().includes(query)))
+        .sort((a,b)=>Number(b.isMethod)-Number(a.isMethod));
+      const offset=Number(url.searchParams.get('cursor')??0),page=all.slice(offset,offset+50);return ok({items:view==='summary'?page.map(({body,...item})=>({...item,preview:(body.replace(/^#{1,6}[ \t]+[^\n]+$/gm,'').trim()||body.trim().replace(/^#{1,6}[ \t]+/,'')).split(/\n\s*\n/,1)[0].slice(0,200)})):page,nextCursor:offset+page.length<all.length?String(offset+page.length):null});
     }
     if(url.pathname!=='/api/actions'||method!=='POST'||!request?.actionId?.startsWith('desk.'))return null;
     const {actionId,input,idempotencyKey}=request,signature=JSON.stringify({actionId,input});const prior=receipts.get(idempotencyKey);

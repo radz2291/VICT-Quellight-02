@@ -6,7 +6,7 @@
   import type { UiValue } from '@victframework/ui';
   import { document, descriptors, implementations, view as initialView, requireRenderPlan } from '$lib/product/definition';
   import { memoryRoles, memoryDraft, memoryDraftContent, describeMemoryPreview, type MemorySummary, type MemoryVersion, type MemorySourcesPage, type MemoryReplyPage, type MemoryContextResult, type MemoryObservationHistory, type MemorySettingsPayload } from '$lib/product/memory-client';
-  import { deskAttentionLabels, deskDraftFields, newDeskDraft, deskLocalDraft, deskDraftFromLocal, loadDeskDraft, saveDeskDraft as persistDeskDraft, loadDeskPending, saveDeskPending, deskSaveInput, describeDeskContext, deskMethodDraft, deskMethodContent, describeMethodSettings, type DeskMethodSettings, type DeskMethodView, type DeskContext, type DeskSummaryList, type DeskSummary, type DeskCurrent, type DeskRevisionSummary, type DeskRevisionPage, type DeskRevisionDetail, type DeskDraft, type DeskPending } from '$lib/product/desk-client';
+  import { deskCardPreview, deskAttentionLabels, deskDraftFields, newDeskDraft, deskLocalDraft, deskDraftFromLocal, loadDeskDraft, saveDeskDraft as persistDeskDraft, loadDeskPending, saveDeskPending, deskSaveInput, describeDeskContext, deskMethodDraft, deskMethodContent, describeMethodSettings, type DeskMethodSettings, type DeskMethodView, type DeskContext, type DeskSummaryList, type DeskSummary, type DeskCurrent, type DeskRevisionSummary, type DeskRevisionPage, type DeskRevisionDetail, type DeskDraft, type DeskPending } from '$lib/product/desk-client';
   import type { DeskItem, DeskActionId, DeskActionInput, DeskMethodSettingsActionId, DeskMethodSettingsInput } from '$lib/product/desk-contracts';
   import { request, RequestError, terminal, storageRead, storageWrite, draftKey, pendingKey, clearActorStorage, delayObservation, readPendingSend, followTurn,
     type Bootstrap, type Room, type Conversation, type Message, type Turn, type Detail, type Observation, type AcceptedTurn, type PendingSend } from '$lib/product/client';
@@ -81,6 +81,7 @@
   let deskContextText = $state('Choose a reply, then open its recorded Desk context.');
   let deskKey = '', deskRoom = '', deskItem = '';
   let deskReadVersion = 0, deskListVersion = 0;
+  let deskSearchTimer: ReturnType<typeof setTimeout> | undefined;
   let methodSettings = $state<DeskMethodSettings | null>(null), methodView = $state<DeskMethodView | null>(null);
   let methodLoading = $state(false), methodDirty = $state(false), methodConflict = $state(false), methodStatus = $state(''), methodHistoryText = $state('Choose a saved settings version.');
   let methodBaseRevision = $state(0), methodPending = $state<{key:string;actionId:DeskMethodSettingsActionId;input:DeskMethodSettingsInput}|null>(null);
@@ -101,6 +102,8 @@
   const deskSelected = $derived(deskOpen ? page.url.searchParams.get('item') ?? '' : '');
   const deskMethodOpen = $derived(['desk-method','desk-defaults'].includes(page.url.searchParams.get('view') ?? ''));
   const deskMethodRoom = $derived(page.url.searchParams.get('view') === 'desk-method');
+  const methodBackToDesk = $derived(deskMethodRoom && page.url.searchParams.get('methodFrom') !== 'conversation');
+  const conversationVisible = $derived(!deskOpen && !deskMethodOpen && !memoryDefaults && !roomDetails && !local.newRoomOpen);
   $effect(() => {
     const key = deskMethodOpen ? deskMethodRoom ? `room:${roomId}` : 'app' : '';
     if (key === methodKey) return;
@@ -168,7 +171,7 @@
     deskMethodCannotSave: pending || methodLoading || !!methodPending || methodConflict || !methodDirty || (deskMethodRoom && !!currentRoom?.archivedAt) || ((!deskMethodRoom || local.dMethodPromptMode === 'custom') && !String(local.dMethodPrompt).trim()),
     deskMethodCannotRestore: pending || methodLoading || !!methodPending || methodConflict || methodDirty || !methodSettings?.history.some(h => h.revision === Number(local.dMethodVersion)) || Number(local.dMethodVersion) === methodSettings?.snapshot.revision || (deskMethodRoom && !!currentRoom?.archivedAt),
     deskMethodUncertain: !!methodPending, deskMethodConflict: methodConflict, deskMethodStatus: methodStatus,
-    deskMethodTitle: deskMethodRoom ? 'Room method' : 'Desk defaults',
+    deskMethodBackLabel: methodBackToDesk ? 'Back to Desk' : 'Back to conversation',
     deskMethodIntro: deskMethodRoom ? 'A short guide to how we work together in this room. Quellight can refine it after creating useful Desk items.' : 'Defaults for learning a working method in each room. Existing room overrides are preserved.',
     deskMethodText: methodLoading ? 'Opening saved method…' : methodView ? methodView.item?.body || 'No working method has been saved for this room yet.' : 'The saved method is unavailable. Reopen this view to try again.',
     deskMethodActivityText: methodView ? methodView.activity.map(event => `${event.stage.replaceAll('-', ' ')}${event.code ? ' · Needs attention' : ''}\n${new Date(event.at).toLocaleString()}`).join('\n\n') || 'No method activity is recorded yet.' : 'Opening saved method activity…',
@@ -177,8 +180,17 @@
     deskMethodEnabledOptions: [...(deskMethodRoom ? [{value:'inherit',label:'Use app default'}] : []),{value:'enabled',label:'On'},{value:'disabled',label:'Off'}],
     deskMethodPromptOptions: [{value:'inherit',label:'Use app default'},{value:'custom',label:'Custom instructions for this room'}],
     deskMethodHistoryOptions: (methodSettings?.history ?? []).map(h => ({value:String(h.revision),label:`Version ${h.revision}${h.createdAt ? ` · ${new Date(h.createdAt).toLocaleString()}` : ' · Initial defaults'}`})),
-    deskItems: deskItems.map(item => ({ id: item.id, label: `${item.title}\n${item.isMethod ? 'Room method · ' : ''}${deskAttentionLabels[item.attention]}${item.kind ? ` · ${item.kind}` : ''}${item.status ? ` · ${item.status}` : ''}`, selected: item.id === deskSelected })),
-    deskEmpty: !deskLoading && deskItems.length === 0, deskEmptyText: deskListLoading ? 'Opening Desk…' : local.dSearch || local.dFilter !== 'all' ? 'No items match this search.' : local.dArchived ? 'No archived items.' : 'No items yet. Create something worth keeping.',
+    deskItems: [...deskItems].sort((a, b) => Number(b.isMethod) - Number(a.isMethod)).map(item => ({
+      id: item.id, title: item.title,
+      preview: item.preview,
+      attention: deskAttentionLabels[item.attention],
+      isMethod: item.isMethod
+    })),
+    deskShowNew: !local.dArchived,
+    deskBrowse: deskOpen && !deskHasDetail && !local.newRoomOpen,
+    deskSearchOpen: !deskHasDetail && Boolean(local.dSearchOpen),
+    deskFilterSummary: [local.dArchived ? 'Archived items' : '', deskAttentionLabels[local.dFilter as keyof typeof deskAttentionLabels]].filter(Boolean).join(' · '),
+    deskEmpty: !deskLoading && deskItems.length === 0, deskEmptyText: deskListLoading ? 'Opening Desk…' : local.dSearch || local.dFilter !== 'all' ? 'No items match. Try another search or attention filter.' : local.dArchived ? 'No archived items.' : 'No items yet.',
     deskHasMore: !!deskCursor, deskConflict, deskUncertain: !!deskPending, deskReadOnly, deskArchivedItem,
     deskExisting: !!deskDetail, deskEditing: deskHasDetail && !local.dPreview && !deskArchivedItem,
     deskPreview: deskHasDetail && (!!local.dPreview || deskArchivedItem), deskCanEdit: !deskArchivedItem && !currentRoom?.archivedAt,
@@ -189,7 +201,7 @@
     deskRevisionLabel: deskDetail ? `Version ${deskDetail.item.revision} · ${new Date(deskDetail.item.updatedAt).toLocaleString()}${deskArchivedItem ? ' · Archived' : ''}${deskDraft.dirty ? ' · Unsaved draft' : ''}` : 'New item · saved in this room when you choose Save item',
     deskPreviewLabel: local.dPreview ? 'Edit text' : 'Preview', deskHistoryText: deskHistoryLoading ? 'Opening saved versions…' : deskHistoryText, deskMoreVersions: deskNextRevision !== null,
     deskAttentionOptions: Object.entries(deskAttentionLabels).map(([value, label]) => ({ value, label })),
-    deskFilterOptions: [{ value: 'all', label: 'All attention levels' }, ...Object.entries(deskAttentionLabels).map(([value, label]) => ({ value, label }))],
+    deskFilterOptions: [{ value: 'all', label: 'All attention' }, ...Object.entries(deskAttentionLabels).map(([value, label]) => ({ value, label }))],
     deskHistoryOptions: deskHistory.map(h => ({ value: String(h.revision), label: `Version ${h.revision} · ${h.authorKind === 'owner' ? 'You' : h.authorKind === 'method' ? 'Learned method' : 'Quellight'} · ${new Date(h.createdAt).toLocaleString()}` })),
     ...memoryOptions, memoryIsRoom: roomDetails, memorySettingsLoading,
     hasMemorySettings: !!memorySnapshot && !memorySettingsLoading,
@@ -219,8 +231,8 @@
     memoryCannotCorrect: pending || memoryLoading || memoryChanged || !memoryData?.controls.canCorrect,
     memoryCannotForget: pending || memoryLoading || memoryChanged || !memoryData?.controls.canForget || !selectedSources.length,
     memoryCanRetry: memoryData?.controls.canRetry ?? false, memoryCannotRetry: pending || memoryLoading || memoryChanged || !memoryData?.controls.canRetry,
-    rooms: visibleRooms.map(room => ({ id: room.id, name: room.name, selected: room.id === roomId })),
-    conversations: (data?.conversations ?? []).filter(item => item.roomId === roomId).map(item => ({ id: item.id, title: item.title, selected: item.id === conversationId && !deskOpen && !newChat })),
+    rooms: visibleRooms.map(room => ({ id: room.id, name: room.name, current: room.id === roomId, selected: room.id === roomId && (roomDetails || (conversationVisible && !conversationId)) })),
+    conversations: (data?.conversations ?? []).filter(item => item.roomId === roomId).map(item => ({ id: item.id, title: item.title, current: item.id === conversationId && conversationVisible, selected: item.id === conversationId && conversationVisible })),
     roomId, roomName: currentRoom?.name ?? 'Your space', roomPurpose: currentRoom?.archivedAt ? 'Archived room' : (currentRoom?.purpose ?? ''), roomRevision: currentRoom?.revision ?? 1,
     conversationId: newChat ? '' : conversationId, conversationTitle: currentConversation?.title ?? 'New conversation', turnId: activeTurn?.id ?? '',
     composerText: newChat?.text ?? String(local.draft ?? ''), newChatWaiting,
@@ -230,9 +242,15 @@
     canSend: !newChat && currentDetailKnown && !!conversationId && !loading && !busy && !sendingAttempt && !unresolvedSend && !currentRoom?.archivedAt,
     canStop: !newChat && !!activeTurn && !terminal(activeTurn.status) && stoppingTurn !== activeTurn.id,
     loading: !newChat && loading && !cachedTranscript, error, hasError: !!error, ready: !!data && !loading,
-    hasConversation: !!newChat || (!!conversationId && (!loading || cachedTranscript)), hasMoreActions: !newChat && !deskMethodOpen && !deskOpen && !memoryDefaults && !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
+    hasConversation: !!newChat || (!!conversationId && (!loading || cachedTranscript)), hasMoreActions: !newChat && !deskMethodOpen && !deskOpen && !memoryDefaults && !roomDetails && !local.newRoomOpen && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
     roomDetails: roomDetails && !newChat, memoryDefaults: memoryDefaults && !newChat,
-    headerTitle: newChat ? 'New conversation' : deskMethodOpen ? deskMethodRoom ? `${currentRoom?.name ?? 'Your space'} · Room method` : 'Desk defaults' : deskOpen ? `${currentRoom?.name ?? 'Your space'} · Desk` : memoryDefaults ? 'Memory defaults' : roomDetails ? currentRoom?.name ?? 'Your space' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
+    showQuickDesk: !!currentRoom && !deskMethodOpen && !deskOpen && !memoryDefaults && !roomDetails && !local.navigationOpen && !local.newRoomOpen && !newChat && !loading,
+    headerTitle: newChat ? 'New conversation' : local.newRoomOpen ? 'New room' : deskMethodOpen ? deskMethodRoom ? 'Method' : 'Desk defaults' : deskOpen
+      ? deskHasDetail ? deskSelected === 'new' ? 'New Desk item' : deskDetail?.item.title ?? 'Desk item' : 'Desk'
+      : memoryDefaults ? 'Memory defaults' : roomDetails ? 'Room details' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
+    welcomeCopy: currentRoom?.archivedAt ? 'This room is archived.' : currentRoom
+      ? 'Choose New conversation in the sidebar when you’re ready.'
+      : 'Open the sidebar and choose New room to begin.',
     roomDetailsBackLabel: conversationId ? 'Back to conversation' : 'Back to room',
     activeRoom: !!currentRoom && !currentRoom.archivedAt, hasRoom: !!currentRoom,
     emptyRooms: visibleRooms.length === 0, roomsEmptyText: local.showArchived ? 'No archived rooms.' : 'Create a room to begin.',
@@ -240,6 +258,15 @@
   });
 
   function setLocal(values: Record<string, UiValue>) { local = { ...local, ...values }; }
+  async function focusControl(selector: string) {
+    await tick();
+    globalThis.document.querySelector<HTMLElement>(selector)?.focus({ preventScroll: true });
+  }
+  function closeDeskSearchWithEscape(event: KeyboardEvent) {
+    if (event.key !== 'Escape' || event.defaultPrevented || !(event.target instanceof HTMLElement) || !event.target.closest('.ql-desk-search-panel')) return;
+    event.preventDefault();
+    void dispatch('ui.desk.search.toggle');
+  }
   function saveDraft() {
     if (data && conversationId) storageWrite(draftKey(data.user.id, conversationId), String(local.draft ?? ''));
   }
@@ -250,8 +277,15 @@
       return;
     }
     setLocal({ [key]: value });
+    if (key === 'memoryOpen' && value === false) void focusControl('[data-ui-node="moreMenu"][data-ui-part="root"]');
     if ((deskDraftFields as readonly string[]).includes(key)) { deskDraft = deskDraftFromLocal(local, deskDraft.baseRevision); saveDeskDraft(); deskStatus = String(local.dTitle).length > 200 ? 'Item titles can be up to 200 characters. Your draft is kept.' : 'Unsaved changes'; }
     if (key === 'dFilter' || key === 'dArchived') void loadDeskList();
+    if (key === 'dSearch') {
+      clearTimeout(deskSearchTimer);
+      ++deskListVersion;
+      deskCursor = null;
+      deskSearchTimer = setTimeout(() => { if (deskOpen) void loadDeskList(); }, 200);
+    }
     if (key === 'deskHistoryOpen' && value && !deskHistory.length) void loadDeskHistory();
     if (key === 'memoryReply') {
       deskContextText = 'Open the recorded Desk context for this reply.';
@@ -285,7 +319,7 @@
         if(draft && Number.isSafeInteger(draft.revision) && ['dMethodEnabled','dMethodPromptMode','dMethodPrompt'].every(k=>typeof draft.values?.[k]==='string')) {methodBaseRevision=draft.revision;methodDirty=true;methodConflict=draft.revision!==settings.snapshot.revision;setLocal(draft.values);}
       } catch { /* Malformed device drafts do not change server authority. */ }
       try { const prior=JSON.parse(storageRead(methodStorageKey('pending'))??'null');if(prior&&['desk.method.settings.save','desk.method.settings.restore'].includes(prior.actionId)&&typeof prior.key==='string'&&prior.input?.roomId===selectedRoom&&prior.input?.target===(selectedRoom?'room':'app'))methodPending=prior; } catch { /* Server validates every mutation independently. */ }
-      methodStatus=methodPending?'An earlier settings change needs its result checked.':methodDirty?'Your local settings draft is restored.':`Saved version ${settings.snapshot.revision}`;
+      methodStatus=methodPending?'An earlier settings change needs its result checked.':methodDirty?'Your local settings draft is restored.':'';
     } catch(cause){if(alive&&key===methodKey&&version===methodReadVersion)failure(cause);}
     finally{if(alive&&version===methodReadVersion)methodLoading=false;}
   }
@@ -307,15 +341,18 @@
   async function navigateDesk(item = '', close = false) {
     saveDraft(); saveDeskDraft(); dismissEditors();
     const url = new URL(page.url);
+    url.searchParams.delete('methodFrom');
     if (close) { url.searchParams.delete('view'); url.searchParams.delete('item'); }
     else { url.searchParams.set('view', 'desk'); url.searchParams.set('room', roomId); if (item) url.searchParams.set('item', item); else url.searchParams.delete('item'); }
     await goto(url, { noScroll: true });
+    await focusControl('[data-ui-node="headerTitle"]');
   }
   async function loadDeskList(more = false) {
+    clearTimeout(deskSearchTimer);
     if (!roomId) return;
     const selectedRoom = roomId, version = ++deskListVersion;
     deskListLoading = true;
-    const params = new URLSearchParams({ view: 'summary', query: String(local.dSearch), archived: String(!!local.dArchived) });
+    const params = new URLSearchParams({ view: 'summary', query: String(local.dSearch).trim(), archived: String(!!local.dArchived) });
     if (local.dFilter !== 'all') params.set('attention', String(local.dFilter));
     if (more && deskCursor) params.set('cursor', deskCursor);
     try {
@@ -337,7 +374,7 @@
     setLocal({ dPreview: false, deskHistoryOpen: false, deskMetadataOpen: false, deskArchiveOpen: false, deskReloadOpen: false, deskRestoreVersionOpen: false });
     if (changedRoom) {
       ++deskListVersion; deskItems = []; deskCursor = null; deskListReady = false; deskListLoading = false; deskListedQuery = '';
-      setLocal({ dSearch: '', dFilter: 'all', dArchived: false });
+      setLocal({ dSearch: '', dSearchOpen: false, dFilter: 'all', dArchived: false });
     }
     if (!deskListReady && !deskListLoading) void loadDeskList();
     if (!selectedItem || !data) { deskLoading = false; return; }
@@ -353,7 +390,7 @@
       deskConflict = !!result && deskDraft.dirty && deskDraft.baseRevision !== result.item.revision;
       if (replaceDraft) persistDeskDraft(data.user.id, selectedRoom, selectedItem, null);
       setLocal({ ...deskLocalDraft(deskDraft), dHistory: String(result?.item.revision ?? '') });
-      deskStatus = deskPending ? 'A previous change needs its saved result checked.' : deskDraft.dirty ? 'Your local draft is restored.' : received ? 'Saved' : result ? 'Saved item' : '';
+      deskStatus = deskPending ? 'A previous change needs its saved result checked.' : deskDraft.dirty ? 'Your local draft is restored.' : received ? 'Saved' : '';
     } catch (cause) { if (alive && version === deskReadVersion) failure(cause); }
     finally { if (alive && version === deskReadVersion) deskLoading = false; }
   }
@@ -390,7 +427,18 @@
     let result: { ok: true; value: { item: DeskItem } };
     try { result = await request('/api/actions', { actionId: attempt.actionId, input: attempt.input, idempotencyKey: attempt.key }); }
     catch (cause) {
-      if (cause instanceof RequestError && !cause.uncertain) { saveDeskPending(actor, selectedRoom, selectedItem, null); if (alive && roomId === selectedRoom && (deskSelected === 'new' ? '' : deskSelected) === selectedItem) { deskPending = null; if (cause.status === 409) deskConflict = true; } }
+      if (cause instanceof RequestError) {
+        const conflict = cause.status === 409;
+        if (!cause.uncertain) {
+          saveDeskPending(actor, selectedRoom, selectedItem, null);
+          if (alive && roomId === selectedRoom && (deskSelected === 'new' ? '' : deskSelected) === selectedItem) {
+            deskPending = null;
+            if (conflict) deskConflict = true;
+          }
+        }
+        // The item editor presents a recovery notice and the matching action.
+        if (cause.uncertain || conflict) return { ok: false, code: cause.code, message: '' };
+      }
       throw cause;
     }
     saveDeskPending(actor, selectedRoom, selectedItem, null); persistDeskDraft(actor, selectedRoom, selectedItem, null);
@@ -402,7 +450,7 @@
     const visible = Boolean(saved.archivedAt) === Boolean(local.dArchived) &&
       (local.dFilter === 'all' || local.dFilter === saved.attention) &&
       (!query || `${saved.title}\n${body}\n${saved.kind}\n${saved.status}`.toLowerCase().includes(query));
-    deskItems = [...(visible ? [summary] : []), ...deskItems.filter(item => item.id !== saved.id)];
+    deskItems = [...(visible ? [{ ...summary, preview: deskCardPreview(body) }] : []), ...deskItems.filter(item => item.id !== saved.id)];
     deskArrival = saved;
     try {
       if (saved.id !== deskSelected) await navigateDesk(saved.id);
@@ -616,6 +664,13 @@
     const snapshot = await request<Bootstrap>('/api/bootstrap?view=sidebar');
     if (version === workspaceVersion) data = snapshot;
   }
+  function roomResumeKey(actor: string, room: string) { return `quellight:${actor}:room:${room}:conversation`; }
+  function resumeConversation(room: string) {
+    if (!data) return undefined;
+    const remembered = storageRead(roomResumeKey(data.user.id, room));
+    return data.conversations.find(item => item.roomId === room && item.id === remembered)
+      ?? data.conversations.find(item => item.roomId === room);
+  }
   async function navigateSelection(nextRoom: string, nextConversation = '', replaceState = false) {
     const query = new URLSearchParams();
     if (nextRoom) query.set('room', nextRoom);
@@ -631,7 +686,7 @@
     } else url.searchParams.delete('view');
     await goto(url, { noScroll: true, replaceState: !open });
     await tick();
-    globalThis.document.querySelector<HTMLElement>(open ? '[data-ui-node="editTitle"]' : '[data-ui-node="moreMenu"][data-ui-part="root"]')?.focus();
+    globalThis.document.querySelector<HTMLElement>(open ? '[data-ui-node="headerTitle"]' : '[data-ui-node="moreMenu"][data-ui-part="root"]')?.focus();
   }
   async function resolveSelection(force = false) {
     if (!data || !alive) return;
@@ -639,7 +694,7 @@
     const wantedRoom = data.rooms.find(item => item.id === (wantedConversation?.roomId ?? page.url.searchParams.get('room')))
       ?? data.rooms.find(item => !item.archivedAt);
     const nextRoom = wantedRoom?.id ?? '';
-    const nextConversation = wantedConversation?.id ?? '';
+    const nextConversation = wantedConversation?.id ?? (wantedRoom ? resumeConversation(wantedRoom.id)?.id : undefined) ?? '';
     const arrival = arrivingChat?.id === nextConversation ? arrivingChat : undefined;
     if (!force && !arrival && nextRoom === roomId && nextConversation === conversationId) return;
     saveDraft();
@@ -670,6 +725,7 @@
     try {
       const detail = await request<Detail>(`/api/conversations/${nextConversation}`, undefined, controller.signal);
       if (!alive || version !== selectionVersion) return;
+      storageWrite(roomResumeKey(data.user.id, nextRoom), nextConversation);
       currentDetailKnown = true;
       messages = detail.messages; activeTurn = detail.activeTurn; olderCursor = detail.olderCursor ?? null;
       mergeMessage(detail.activeUserMessage);
@@ -919,14 +975,22 @@
       return { ok: true, message: '' };
     }
     if (pending) return { ok: false, code: 'REQUEST_PENDING', message: 'Your request is being saved.' };
+    let restoreFocus = '';
     pending = true; error = '';
     try {
       if (actionId === 'ui.desk.open') await navigateDesk();
       else if (actionId === 'ui.desk.method' || actionId === 'ui.desk.defaults' || actionId === 'ui.desk.method.close') {
         dismissEditors();saveDraft();saveDeskDraft();const url=new URL(page.url);
-        if(actionId==='ui.desk.method.close'){if(deskMethodRoom)url.searchParams.set('view','desk');else url.searchParams.delete('view');}
-        else url.searchParams.set('view',actionId==='ui.desk.method'?'desk-method':'desk-defaults');
+        url.searchParams.delete('methodFrom');
+        if (actionId === 'ui.desk.method.close') {
+          if (methodBackToDesk) url.searchParams.set('view', 'desk');
+          else { url.searchParams.delete('view'); url.searchParams.delete('item'); }
+        } else if (actionId === 'ui.desk.method') {
+          url.searchParams.set('view', 'desk-method');
+          if (!deskOpen) url.searchParams.set('methodFrom', 'conversation');
+        } else url.searchParams.set('view', 'desk-defaults');
         await goto(url,{noScroll:true});
+        await focusControl('[data-ui-node="headerTitle"]');
       }
       else if(actionId==='ui.desk.method.item' && methodView?.item)await navigateDesk(methodView.item.id);
       else if(actionId==='ui.desk.method.reload')await loadMethodSettings(true);
@@ -941,6 +1005,17 @@
       else if (actionId === 'ui.desk.new') await navigateDesk('new');
       else if (actionId === 'ui.desk.list') await navigateDesk();
       else if (actionId === 'ui.desk.search') await loadDeskList();
+      else if (actionId === 'ui.desk.search.toggle') {
+        if (local.dSearchOpen) {
+          const hadQuery = Boolean(String(local.dSearch).trim());
+          setLocal({ dSearchOpen: false, dSearch: '' });
+          if (hadQuery) void loadDeskList();
+          restoreFocus = '[data-ui-node="deskSearchToggle"]';
+        } else {
+          setLocal({ dSearchOpen: true });
+          restoreFocus = '#deskSearch-control';
+        }
+      }
       else if (actionId === 'ui.desk.more') await loadDeskList(true);
       else if (actionId === 'ui.desk.reload') await openDeskSelection(roomId, deskSelected, true);
       else if (actionId === 'ui.desk.preview') setLocal({ dPreview: !local.dPreview });
@@ -973,9 +1048,16 @@
         dismissEditors();
         if (currentRoom && !currentRoom.archivedAt) await navigateRoomDetails(true);
       } else if (actionId === 'ui.room.dismiss' || actionId === 'ui.room.new') {
+        const closingNewRoom = Boolean(local.newRoomOpen);
         dismissEditors();
         if (roomDetails) await navigateRoomDetails(false);
-        if (actionId === 'ui.room.new') setLocal({ newRoomOpen: true });
+        if (actionId === 'ui.room.new') {
+          setLocal({ newRoomOpen: true });
+          restoreFocus = '#newRoomName-control';
+        } else if (closingNewRoom) {
+          restoreFocus = globalThis.matchMedia('(max-width: 760px)').matches
+            ? '[data-ui-node="mobileMenu"][data-ui-part="trigger"]' : '[data-ui-node="navigation-new"]';
+        }
       } else if (actionId === 'ui.reload') { await refreshData(); await resolveSelection(true); if (roomDetails || memoryDefaults) await loadMemorySettings(roomDetails ? 'room' : 'app'); }
       else if (actionId === 'ui.export') {
         if (!conversationId) throw new Error('Open a conversation first.');
@@ -992,7 +1074,10 @@
       else return { ok: false, code: 'UNKNOWN_ACTION', message: 'This action is unavailable.' };
       return { ok: true, message: '' };
     } catch (cause) { return failure(cause); }
-    finally { pending = false; }
+    finally {
+      pending = false;
+      if (restoreFocus) await focusControl(restoreFocus);
+    }
   }
   beforeNavigate(({ to }) => {
     if (!newChat || to?.url.searchParams.get('conversation') === arrivingChat?.id) return;
@@ -1007,14 +1092,16 @@
       try { await refreshData(); await resolveSelection(true); }
       catch (cause) { failure(cause); loading = false; }
     })();
-    return () => { alive = false; saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); memoryReadController?.abort(); };
+    return () => { alive = false; clearTimeout(deskSearchTimer); saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); memoryReadController?.abort(); };
   });
 </script>
 
 <svelte:head>
-  <title>{deskMethodOpen ? `${deskMethodRoom ? 'Room method' : 'Desk defaults'} · Quellight` : deskOpen ? 'Desk · Quellight' : memoryDefaults ? 'Memory defaults · Quellight' : roomDetails ? 'Room details · Quellight' : currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
+  <title>{deskMethodOpen ? `${deskMethodRoom ? 'Method' : 'Desk defaults'} · Quellight` : deskOpen ? 'Desk · Quellight' : memoryDefaults ? 'Memory defaults · Quellight' : roomDetails ? 'Room details · Quellight' : currentRoom ? `${currentRoom.name} · Quellight` : 'Quellight'}</title>
   <meta name="description" content="Your private space to think and work through what matters." />
 </svelte:head>
+
+<svelte:window onkeydown={closeDeskSearchWithEscape} />
 
 <div class="quellight" data-ui-application-viewport data-appearance={local.dark ? 'dark' : 'light'}>
   <ControlScope>
