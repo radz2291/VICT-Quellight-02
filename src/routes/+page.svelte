@@ -466,6 +466,7 @@
   async function loadOlder() {
     if (!olderCursor || historyLoading) return;
     const version = selectionVersion;
+    historyRequest?.abort();
     const controller = new AbortController(); historyRequest = controller;
     const findFeed = () => globalThis.document.querySelector<HTMLElement>('.ql-transcript [data-testid="conversation-feed"]');
     const feed = findFeed();
@@ -481,19 +482,31 @@
       const existing = new Set(messages.map(message => message.id));
       messages = [...older.messages.filter(message => !existing.has(message.id)), ...messages];
       olderCursor = older.olderCursor ?? null;
+      historyLoading = false;
       await tick();
       // VICT's Markdown and message scroller both adjust layout as the older
-      // rows mount. Keep the same message at its viewport offset through that reflow.
-      for (let frame = 0; anchorId && frame < 5 && !controller.signal.aborted; frame++) {
-        await new Promise(requestAnimationFrame);
-        if (!alive || version !== selectionVersion) break;
-        const viewport = findFeed();
-        const restored = [...(viewport?.querySelectorAll<HTMLElement>('[data-message-id]') ?? [])]
-          .find(item => item.dataset.messageId === anchorId);
-        if (viewport && restored) viewport.scrollTop += restored.getBoundingClientRect().top - viewport.getBoundingClientRect().top - offset;
+      // rows mount. Finish the loading state first so its final render cannot
+      // override the reading position after the layout settles.
+      const viewport = findFeed();
+      if (!viewport || !anchorId) return;
+      const interaction = new AbortController();
+      const stopRestoring = () => interaction.abort();
+      for (const event of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
+        viewport.addEventListener(event, stopRestoring, { signal: interaction.signal, passive: true });
       }
+      const settleBy = performance.now() + 250;
+      while (!controller.signal.aborted && !interaction.signal.aborted && performance.now() < settleBy) {
+        await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+        if (!alive || version !== selectionVersion) break;
+        const restored = [...viewport.querySelectorAll<HTMLElement>('[data-message-id]')]
+          .find(item => item.dataset.messageId === anchorId);
+        if (!restored) break;
+        const shift = restored.getBoundingClientRect().top - viewport.getBoundingClientRect().top - offset;
+        if (Math.abs(shift) > 0.5) viewport.scrollTop += shift;
+      }
+      interaction.abort();
     } catch (cause) { if (!controller.signal.aborted && alive && version === selectionVersion) failure(cause); }
-    finally { if (version === selectionVersion) historyLoading = false; }
+    finally { if (historyRequest === controller) { historyRequest = undefined; historyLoading = false; } }
   }
   function mergeMessage(message: Message | null | undefined) {
     if (!message) return;
@@ -632,7 +645,7 @@
     const input = (value ?? {}) as Record<string, unknown>;
     if (actionId === 'conversation.send') return await send(input);
     if (actionId === 'ui.send.retry' && unresolvedSend) return await send({ conversationId, text: unresolvedSend.text }, true);
-    if (actionId === 'ui.history.older') { await loadOlder(); return { ok: true, message: '' }; }
+    if (actionId === 'ui.history.older') { void loadOlder(); return { ok: true, message: '' }; }
     if (actionId === 'conversation.cancel') {
       const turnId = String(input.turnId);
       const version = selectionVersion;
