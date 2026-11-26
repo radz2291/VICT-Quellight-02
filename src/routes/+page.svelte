@@ -19,7 +19,6 @@
   let activeTurn = $state<Turn | null>(null);
   let streamed = $state('');
   let olderCursor = $state<string | null>(null);
-  let historyLoading = $state(false);
   let unresolvedSend = $state<PendingSend | null>(null);
   let sending = $state<Record<string, PendingSend | undefined>>({});
   let stoppingTurn = $state('');
@@ -199,7 +198,7 @@
       ...(sendingMessage ? [{ id: `sending-${sendingMessage.key}`, role: 'user', text: sendingMessage.text }] : []),
       ...(streamed && streamedMessageId ? [{ id: streamedMessageId, role: 'assistant', text: streamed }] : [])
     ] }), busy: busy || !!sendingAttempt, pending,
-    hasOlder: !!olderCursor, historyLoading, olderHistoryLabel: historyLoading ? 'Loading earlier messages…' : 'Load earlier messages',
+    hasOlder: !!olderCursor,
     canRetrySend: !!unresolvedSend && !busy && !sendingAttempt && !loading && !currentRoom?.archivedAt,
     canSend: !!conversationId && !loading && !pending && !busy && !sendingAttempt && !unresolvedSend && !currentRoom?.archivedAt,
     canStop: !!activeTurn && !terminal(activeTurn.status) && stoppingTurn !== activeTurn.id,
@@ -433,10 +432,10 @@
     const nextConversation = wantedConversation?.id ?? '';
     if (!force && nextRoom === roomId && nextConversation === conversationId) return;
     saveDraft();
-    observer?.abort(); selectionRequest?.abort(); historyRequest?.abort();
+    observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); historyRequest = undefined;
     const version = ++selectionVersion;
     roomId = nextRoom; conversationId = nextConversation; messages = []; activeTurn = null; streamed = ''; statusText = ''; stoppingTurn = '';
-    olderCursor = null; historyLoading = false;
+    olderCursor = null;
     unresolvedSend = nextConversation && !sending[nextConversation] ? readPendingSend(data.user.id, nextConversation) : null;
     ++memoryRequestVersion; memoryData = null; selectedSources = [];
     dismissEditors();
@@ -464,9 +463,8 @@
     finally { if (alive && version === selectionVersion) loading = false; }
   }
   async function loadOlder() {
-    if (!olderCursor || historyLoading) return;
+    if (!olderCursor || historyRequest) return;
     const version = selectionVersion;
-    historyRequest?.abort();
     const controller = new AbortController(); historyRequest = controller;
     const findFeed = () => globalThis.document.querySelector<HTMLElement>('.ql-transcript [data-testid="conversation-feed"]');
     const feed = findFeed();
@@ -475,18 +473,16 @@
       .find(item => item.getBoundingClientRect().bottom > top);
     const anchorId = anchor?.dataset.messageId;
     const offset = anchor ? anchor.getBoundingClientRect().top - top : 0;
-    historyLoading = true;
     try {
       const older = await request<Detail>(`/api/conversations/${conversationId}?before=${encodeURIComponent(olderCursor)}`, undefined, controller.signal);
       if (!alive || version !== selectionVersion) return;
       const existing = new Set(messages.map(message => message.id));
       messages = [...older.messages.filter(message => !existing.has(message.id)), ...messages];
       olderCursor = older.olderCursor ?? null;
-      historyLoading = false;
       await tick();
       // VICT's Markdown and message scroller both adjust layout as the older
-      // rows mount. Finish the loading state first so its final render cannot
-      // override the reading position after the layout settles.
+      // rows mount. Keep this request guard outside the document view so its
+      // reset cannot override the reading position after the layout settles.
       const viewport = findFeed();
       if (!viewport || !anchorId) return;
       const interaction = new AbortController();
@@ -506,7 +502,7 @@
       }
       interaction.abort();
     } catch (cause) { if (!controller.signal.aborted && alive && version === selectionVersion) failure(cause); }
-    finally { if (historyRequest === controller) { historyRequest = undefined; historyLoading = false; } }
+    finally { if (historyRequest === controller) historyRequest = undefined; }
   }
   function mergeMessage(message: Message | null | undefined) {
     if (!message) return;

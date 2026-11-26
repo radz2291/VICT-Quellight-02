@@ -217,8 +217,7 @@ const nodes: Record<string, UiNode> = {
   welcomeCopyText: text('welcomeCopyText', 'Bring a question, an idea, or something you’d like to work through.'),
   olderHistory: conditional('olderHistory', 'hasOlder', ['olderHistoryBar']),
   olderHistoryBar: element('olderHistoryBar', 'div', ['olderHistoryButton'], ['ql-older-history']),
-  olderHistoryButton: { ...button('olderHistoryButton', 'Load earlier messages', 'ui.history.older', undefined, true),
-    props: { label: ref('view.olderHistoryLabel'), disabled: ref('view.historyLoading') } },
+  olderHistoryButton: button('olderHistoryButton', 'Load earlier messages', 'ui.history.older', undefined, true),
   conversation: { kind: 'component', id: 'conversation', definitionId: 'vict.ai.transcript', revision: '1',
     classes: ['ql-transcript'],
     props: { data: ref('view.transcript'), title: literal(''), description: literal(''), busy: ref('view.busy'), emptyMessage: literal('Take your time. What would you like to explore?'), inputLabel: literal('Message') },
@@ -357,7 +356,7 @@ export const viewFields = {
   conversations: 'array', 'conversations.id': 'string', 'conversations.title': 'string', 'conversations.selected': 'boolean',
   transcript: 'string', roomId: 'string', roomName: 'string', roomPurpose: 'string', roomRevision: 'number',
   conversationId: 'string', conversationTitle: 'string', turnId: 'string', busy: 'boolean', canSend: 'boolean', canStop: 'boolean',
-  hasOlder: 'boolean', historyLoading: 'boolean', olderHistoryLabel: 'string', canRetrySend: 'boolean',
+  hasOlder: 'boolean', canRetrySend: 'boolean',
   pending: 'boolean', error: 'string', statusText: 'string', roomsEmptyText: 'string',
   headerTitle: 'string', roomDetails: 'boolean', roomDetailsBackLabel: 'string',
   hasError: 'boolean', loading: 'boolean', ready: 'boolean', hasConversation: 'boolean', hasMoreActions: 'boolean', activeRoom: 'boolean', hasRoom: 'boolean', emptyRooms: 'boolean'
@@ -368,7 +367,7 @@ export const view = {
   rooms: [], conversations: [], transcript: JSON.stringify({ version: 1, messages: [] }),
   roomId: '', roomName: 'Your space', roomPurpose: '', roomRevision: 1,
   conversationId: '', conversationTitle: '', turnId: '', busy: false, canSend: false, canStop: false,
-  hasOlder: false, historyLoading: false, olderHistoryLabel: 'Load earlier messages', canRetrySend: false,
+  hasOlder: false, canRetrySend: false,
   pending: false, error: '', statusText: '', roomsEmptyText: 'Create a room to begin.',
   headerTitle: 'Your space', roomDetails: false, roomDetailsBackLabel: 'Back to room',
   hasError: false, loading: true, ready: false, hasConversation: false, hasMoreActions: false, activeRoom: false, hasRoom: false, emptyRooms: true
