@@ -8,6 +8,11 @@
     "uiAi": "cfa3cb9f009b55a551f0dce7c0e5c762a46e7106",
     "hosted": "1b11d4a5f4298310c7ab16e0808b8bfbed551ee5",
     "hostedManifestSha256": "33b544b6be657144560fb6a471d5ad756c72406163524af711027a0ce1b8d99f",
+    "mastraDurableCompletion": {
+      "sourceCommit": "29d355ed815415bca4113fe5855c5adf84e4c0bc",
+      "baseSourceCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
+      "baseArchiveSha256": "2d136123705f92e88a15e7e2b80e1732218ca00018c9cc55165a69a7774a84d3"
+    },
     "memory": {
       "sourceCommit": "a22615b014aa69f7501dc1504da5f9daad639786",
       "manifestSha256": "4fc42793ec49f39d5819a358696880e53f94e3c6d1348c66fc9673e4942d3a1f",
@@ -103,9 +108,9 @@
     {
       "name": "@victframework/mastra",
       "version": "0.4.0-rc.1",
-      "file": "packs/mastra-0.4.0-rc.1-memory-2d136123705f.tgz",
-      "sha256": "2d136123705f92e88a15e7e2b80e1732218ca00018c9cc55165a69a7774a84d3",
-      "integrity": "sha512-rSw+asqKHYlG8vXIRaAFIopRCOgY2PNa9LefsxQmJpCYD9rTnoBKx4lSPFm5s96UmqWMyq9JeBnrcBESwtsC4Q=="
+      "file": "packs/mastra-0.4.0-rc.1-vhost025-7f4b0b8f2cf5.tgz",
+      "sha256": "7f4b0b8f2cf5ece6a5d9a7c82ea3feb4ec6c3e7bd341c2b90e389fbd2a61d630",
+      "integrity": "sha512-LGK/7UxvE20FosY3qQb0vNQqtPNiqNZ5KJsVz2lQ1sRuzStlKa+gc1FrTgQJGBscNAdsp1gYWGEc6tqmWNvR5Q=="
     },
     {
       "name": "@victframework/hosted",

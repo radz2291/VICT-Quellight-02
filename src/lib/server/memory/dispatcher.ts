@@ -13,6 +13,7 @@ export interface MemoryDispatcherOptions {
   resolveActorId?(): string | undefined;
   openDatabase(): Promise<PostgresStoreSet>;
   reconcileCare?(stores: PostgresStoreSet, deadline: Date, actorId?: string): Promise<unknown>;
+  reconcileConversations?(stores: PostgresStoreSet, deadline: Date, actorId: string): Promise<void>;
   process(job: MemoryJob, stores: PostgresStoreSet, deadline: Date): Promise<MemoryJobOutcome>;
   processMethod?(job: MethodJob, stores: PostgresStoreSet, deadline: Date): Promise<MethodJobOutcome>;
 }
@@ -22,12 +23,17 @@ const DELIVERY_FENCE_MS = 30_000;
 
 export function createMemoryDispatcher(options: MemoryDispatcherOptions) {
   const configuredActor = options.actorId, resolveActorId = options.resolveActorId;
-  return async function dispatch(deadline = new Date(Date.now() + HOST_WINDOW_MS)) {
+  return async function dispatch(deadline = new Date(Date.now() + HOST_WINDOW_MS), fromScheduledWake = false) {
     if (resolveActorId && configuredActor !== undefined) throw new Error('MEMORY_DELIVERY_ACTOR_CONFLICT');
     const actorId = resolveActorId ? requireDeliveryActor(resolveActorId()) : validateDeliveryActor(configuredActor);
     const stores = await options.openDatabase();
     let handled = 0;
     try {
+      if (fromScheduledWake && actorId) {
+        await options.reconcileConversations?.(stores, deadline, actorId).catch(() => {
+          console.error('QUELLIGHT_CONVERSATION_RECOVERY_UNCONFIRMED');
+        });
+      }
       await options.reconcileCare?.(stores, deadline, actorId);
       while (Date.now() < deadline.getTime()) {
         const claim = await stores.coordination.acquire({ scopeId: 'quellight:memory-delivery',

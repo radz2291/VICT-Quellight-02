@@ -6,11 +6,27 @@ export interface Conversation {
   id: string; roomId: string; threadId: string; title: string;
   archivedAt: string | null; revision: number; createdAt: string; updatedAt: string;
 }
-export interface Message { id: string; role: 'user' | 'assistant'; text: string; createdAt: string }
+export interface Message { id: string; role: 'user' | 'assistant'; text: string; createdAt: string; requestKey?: string }
 export interface Turn { id: string; status: string; streamId?: string; errorCode?: string; projectionSettled?: boolean }
 export interface Bootstrap { user: { id: string; email: string }; rooms: Room[]; conversations: Conversation[] }
-export interface Detail { conversation: Conversation; messages: Message[]; activeTurn: Turn | null; lastTurn?: Turn | null }
-export interface Observation { events: { sequence: number; kind: string; delta?: string }[]; nextCursor: number; turn: Turn }
+export interface Detail {
+  conversation: Conversation;
+  messages: Message[];
+  activeTurn: Turn | null;
+  activeUserMessage?: Message;
+  lastTurn?: Turn | null;
+  olderCursor?: string | null;
+}
+export interface AcceptedTurn { turnId: string; conversationId: string; status: string; userMessage: Message }
+export interface PendingSend { key: string; text: string; createdAt: string }
+export interface Observation {
+  events: { sequence: number; kind: string; delta?: string }[];
+  nextCursor: number;
+  turn: Turn;
+  assistantMessage?: Message | null;
+  nextActiveTurn?: Turn | null;
+  nextUserMessage?: Message | null;
+}
 export const terminal = (status: string) => ['completed', 'failed', 'cancelled', 'blocked'].includes(status);
 
 export class RequestError extends Error {
@@ -45,15 +61,55 @@ export function storageWrite(key: string, value: string | null) {
 }
 export const draftKey = (actorId: string, conversationId: string) => `quellight:${actorId}:draft:${conversationId}`;
 export const pendingKey = (actorId: string, conversationId: string) => `quellight:${actorId}:pending:${conversationId}`;
+export function readPendingSend(actorId: string, conversationId: string): PendingSend | null {
+  try {
+    const value = JSON.parse(storageRead(pendingKey(actorId, conversationId)) ?? 'null');
+    if (!value || typeof value.text !== 'string' || typeof value.key !== 'string') return null;
+    return { key: value.key, text: value.text, createdAt: value.createdAt ?? new Date().toISOString() };
+  } catch { return null; }
+}
 export function clearActorStorage(actorId: string) {
   try {
     for (const key of Object.keys(localStorage)) if (key.startsWith(`quellight:${actorId}:`)) localStorage.removeItem(key);
   } catch { /* Logout must remain available without storage. */ }
 }
-export function delayObservation(signal: AbortSignal) {
+export function delayObservation(signal: AbortSignal, milliseconds = 1200) {
   return new Promise<void>(resolve => {
-    const stop = () => { clearTimeout(timer); resolve(); };
-    const timer = setTimeout(() => { signal.removeEventListener('abort', stop); resolve(); }, 1200);
+    if (signal.aborted) { resolve(); return; }
+    const stop = () => { clearTimeout(timer); signal.removeEventListener('abort', stop); resolve(); };
+    const timer = setTimeout(stop, milliseconds);
     signal.addEventListener('abort', stop, { once: true });
   });
+}
+
+// Use the applied ledger cursor on reconnect. An SSE frame can be lost after
+// the server writes it, so only consuming a frame can move this cursor.
+export async function followTurn(turnId: string, after: number, signal: AbortSignal, apply: (observation: Observation) => boolean) {
+  const response = await fetch(`/api/turns/${turnId}/stream?after=${after}`, {
+    signal, credentials: 'same-origin', cache: 'no-store', headers: { accept: 'text/event-stream' }
+  });
+  if (!response.ok) throw new RequestError('The response stream is unavailable.', `HTTP_${response.status}`, false, response.status);
+  if (!response.body || !response.headers.get('content-type')?.startsWith('text/event-stream')) {
+    await response.body?.cancel();
+    throw new RequestError('The response stream is unavailable.', 'STREAM_UNAVAILABLE');
+  }
+  const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
+  let buffer = '';
+  try {
+    while (!signal.aborted) {
+      const { value, done } = await reader.read();
+      if (done) return false;
+      buffer += value;
+      let boundary: RegExpExecArray | null;
+      while ((boundary = /\r?\n\r?\n/.exec(buffer))) {
+        const frame = buffer.slice(0, boundary.index).split(/\r?\n/);
+        buffer = buffer.slice(boundary.index + boundary[0].length);
+        const type = frame.find(line => line.startsWith('event:'))?.slice(6).trim() ?? 'message';
+        if (type === 'access-revoked') throw new RequestError('Please sign in again.', 'SESSION_REVOKED', false, 401);
+        const payload = frame.filter(line => line.startsWith('data:')).map(line => line.slice(5).replace(/^ /, '')).join('\n');
+        if (payload && ['message', 'observation'].includes(type) && apply(JSON.parse(payload) as Observation)) return true;
+      }
+    }
+    return false;
+  } finally { await reader.cancel().catch(() => {}); }
 }

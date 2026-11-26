@@ -12,7 +12,8 @@ export const handle: Handle = async ({ event, resolve }) => {
   event.locals.supabase = createRequestAuth(event);
   const response = await resolve(event);
   if (event.url.pathname.startsWith('/api/') || event.url.pathname.startsWith('/auth/') || event.locals.supabase) {
-    response.headers.set('cache-control', 'private, no-store');
+    const streaming = response.headers.get('content-type')?.startsWith('text/event-stream');
+    response.headers.set('cache-control', streaming ? 'private, no-store, no-transform' : 'private, no-store');
   }
   response.headers.set('referrer-policy', 'same-origin');
   return response;

@@ -47,6 +47,7 @@ export function createSampleWorkspace() {
   const conversationById = id => conversations.find(item => item.id === id);
   const roomById = id => rooms.find(item => item.id === id);
   const turnView = turn => ({ id: turn.id, streamId: `sample:${turn.id}`, status: turn.status, projectionSettled: turn.status !== 'running' });
+  const turnMessage = (turn, role) => messages.get(turn.conversationId).find(message => message.id === `${turn.id}:${role}`) ?? null;
   function finish(turn, status) {
     if (turn.status !== 'running') return;
     turn.status = status;
@@ -144,27 +145,28 @@ export function createSampleWorkspace() {
           if (!object(body) || typeof body.input !== 'string' || !body.input.trim() || !validKey(body.idempotencyKey)) return failure(400, 'TURN_INPUT_INVALID', 'Write a message to try the sample reply.');
           const requestKey = `${id}:${body.idempotencyKey}`;
           const prior = requests.get(requestKey);
-          if (prior) return prior.input === body.input ? ok({ turnId: prior.id, conversationId: id, status: prior.status }, 202)
+          if (prior) return prior.input === body.input ? ok({ turnId: prior.id, conversationId: id, status: prior.status, userMessage: turnMessage(prior, 'user') }, 202)
             : failure(409, 'TURN_IDEMPOTENCY_CONFLICT', 'This sample request was already used for different text.');
           if (roomById(conversation.roomId)?.archivedAt) return failure(409, 'ROOM_ARCHIVED', 'Choose an active sample room.');
           if (turns.get(latest.get(id))?.status === 'running') return failure(409, 'CONVERSATION_BUSY', 'Stop the sample reply or let it finish first.');
           const turn = { id: `sample:${randomUUID()}`, conversationId: id, input: body.input, status: 'running', events: [], timer: undefined };
           turns.set(turn.id, turn); latest.set(id, turn.id); requests.set(requestKey, turn);
-          messages.get(id).push({ id: `${turn.id}:user`, role: 'user', text: body.input, createdAt: now() });
+          messages.get(id).push({ id: `${turn.id}:user`, role: 'user', text: body.input, createdAt: now(), requestKey: body.idempotencyKey });
           conversation.updatedAt = now();
           animate(turn);
-          return ok({ turnId: turn.id, conversationId: id, status: 'running' }, 202);
+          return ok({ turnId: turn.id, conversationId: id, status: 'running', userMessage: turnMessage(turn, 'user') }, 202);
         }
       }
-      const turnPath = /^\/api\/turns\/([^/]+)\/(events|cancel)$/.exec(path);
+      const turnPath = /^\/api\/turns\/([^/]+)\/(stream|events|cancel)$/.exec(path);
       if (turnPath) {
         const turn = turns.get(turnPath[1]);
         if (!turn) return failure(404, 'TURN_NOT_FOUND', 'This sample reply could not be found.');
+        if (turnPath[2] === 'stream' && method === 'GET') return failure(404, 'LOCAL_SAMPLE_CURSOR_READ', 'The local sample uses cursor reads.');
         if (turnPath[2] === 'cancel' && method === 'POST') { finish(turn, 'cancelled'); return ok({ turnId: turn.id, status: turn.status }); }
         if (turnPath[2] === 'events' && method === 'GET') {
           const after = Number(url.searchParams.get('after') ?? 0);
           if (!Number.isSafeInteger(after) || after < 0) return failure(400, 'CURSOR_INVALID', 'Refresh this sample conversation.');
-          return ok({ events: turn.events.filter(event => event.sequence > after), nextCursor: Math.max(after, turn.events.length), turn: turnView(turn) });
+          return ok({ events: turn.events.filter(event => event.sequence > after), nextCursor: Math.max(after, turn.events.length), turn: turnView(turn), assistantMessage: turnMessage(turn, 'assistant') });
         }
       }
       // Never pass an unexpected API request through to the real app server.

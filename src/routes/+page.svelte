@@ -8,8 +8,8 @@
   import { memoryRoles, memoryDraft, memoryDraftContent, describeMemoryPreview, type MemoryInspection, type MemorySettingsPayload } from '$lib/product/memory-client';
   import { deskAttentionLabels, deskDraftFields, newDeskDraft, deskLocalDraft, deskDraftFromLocal, loadDeskDraft, saveDeskDraft as persistDeskDraft, loadDeskPending, saveDeskPending, deskSaveInput, describeDeskContext, deskMethodDraft, deskMethodContent, describeMethodSettings, type DeskMethodSettings, type DeskMethodView, type DeskContext, type DeskList, type DeskDetail, type DeskDraft, type DeskPending } from '$lib/product/desk-client';
   import type { DeskItem, DeskActionId, DeskActionInput, DeskMethodSettingsActionId, DeskMethodSettingsInput } from '$lib/product/desk-contracts';
-  import { request, RequestError, terminal, storageRead, storageWrite, draftKey, pendingKey, clearActorStorage, delayObservation,
-    type Bootstrap, type Room, type Conversation, type Message, type Turn, type Detail, type Observation } from '$lib/product/client';
+  import { request, RequestError, terminal, storageRead, storageWrite, draftKey, pendingKey, clearActorStorage, delayObservation, readPendingSend, followTurn,
+    type Bootstrap, type Room, type Conversation, type Message, type Turn, type Detail, type Observation, type AcceptedTurn, type PendingSend } from '$lib/product/client';
 
   const plan = requireRenderPlan();
   let data = $state<Bootstrap | null>(null);
@@ -18,6 +18,11 @@
   let messages = $state<Message[]>([]);
   let activeTurn = $state<Turn | null>(null);
   let streamed = $state('');
+  let olderCursor = $state<string | null>(null);
+  let historyLoading = $state(false);
+  let unresolvedSend = $state<PendingSend | null>(null);
+  let sending = $state<Record<string, PendingSend | undefined>>({});
+  let stoppingTurn = $state('');
   let loading = $state(true);
   let pending = $state(false);
   let error = $state('');
@@ -27,6 +32,7 @@
   let selectionVersion = 0;
   let observer: AbortController | undefined;
   let selectionRequest: AbortController | undefined;
+  let historyRequest: AbortController | undefined;
   let pendingMutation: { signature: string; key: string } | undefined;
   let memoryData = $state<MemoryInspection | null>(null);
   let memoryLoading = $state(false);
@@ -106,6 +112,8 @@
     untrack(() => setLocal({ editedName: next?.name ?? '', archiveOpen: false }));
   });
   const busy = $derived(!!activeTurn && (!terminal(activeTurn.status) || !activeTurn.projectionSettled));
+  const sendingMessage = $derived(sending[conversationId]);
+  const streamedMessageId = $derived(activeTurn ? `${activeTurn.id}:assistant` : '');
   const visibleRooms = $derived((data?.rooms ?? []).filter(room => Boolean(room.archivedAt) === Boolean(local.showArchived)));
   const memorySnapshot = $derived(roomDetails ? memorySettings?.room : memorySettings?.app);
   const memoryChanged = $derived(memoryConflict || (!!memoryCareRevision && !!memoryData && memoryData.authority.revision !== memoryCareRevision));
@@ -186,16 +194,21 @@
     roomId, roomName: currentRoom?.name ?? 'Your space', roomPurpose: currentRoom?.archivedAt ? 'Archived room' : (currentRoom?.purpose ?? ''), roomRevision: currentRoom?.revision ?? 1,
     conversationId, conversationTitle: currentConversation?.title ?? 'New conversation', turnId: activeTurn?.id ?? '',
     transcript: JSON.stringify({ version: 1, messages: [
-      ...messages.map(({ id, role, text }) => ({ id, role, text })),
-      ...(streamed && activeTurn ? [{ id: `stream-${activeTurn.id}`, role: 'assistant', text: streamed }] : [])
-    ] }), busy, pending, canSend: !!conversationId && !loading && !pending && !busy && !currentRoom?.archivedAt,
-    canStop: !!activeTurn && !terminal(activeTurn.status) && !pending, loading, error, hasError: !!error, ready: !!data && !loading,
+      ...messages.filter(message => !streamed || message.id !== streamedMessageId).map(({ id, role, text }) => ({ id, role, text })),
+      ...(sendingMessage ? [{ id: `sending-${sendingMessage.key}`, role: 'user', text: sendingMessage.text }] : []),
+      ...(streamed && streamedMessageId ? [{ id: streamedMessageId, role: 'assistant', text: streamed }] : [])
+    ] }), busy: busy || !!sendingMessage, pending,
+    hasOlder: !!olderCursor, historyLoading, olderHistoryLabel: historyLoading ? 'Loading earlier messages…' : 'Load earlier messages',
+    canRetrySend: !!unresolvedSend && !busy && !sendingMessage && !loading && !currentRoom?.archivedAt,
+    canSend: !!conversationId && !loading && !pending && !busy && !sendingMessage && !unresolvedSend && !currentRoom?.archivedAt,
+    canStop: !!activeTurn && !terminal(activeTurn.status) && stoppingTurn !== activeTurn.id,
+    loading, error, hasError: !!error, ready: !!data && !loading,
     hasConversation: !!conversationId && !loading, hasMoreActions: !deskMethodOpen && !deskOpen && !memoryDefaults && !roomDetails && !loading && (!!conversationId || (!!currentRoom && !currentRoom.archivedAt)),
     roomDetails, headerTitle: deskMethodOpen ? deskMethodRoom ? `${currentRoom?.name ?? 'Your space'} · Room method` : 'Desk defaults' : deskOpen ? `${currentRoom?.name ?? 'Your space'} · Desk` : memoryDefaults ? 'Memory defaults' : roomDetails ? currentRoom?.name ?? 'Your space' : currentConversation?.title ?? currentRoom?.name ?? 'Your space',
     roomDetailsBackLabel: conversationId ? 'Back to conversation' : 'Back to room',
     activeRoom: !!currentRoom && !currentRoom.archivedAt, hasRoom: !!currentRoom,
     emptyRooms: visibleRooms.length === 0, roomsEmptyText: local.showArchived ? 'No archived rooms.' : 'Create a room to begin.',
-    statusText: busy ? (activeTurn && terminal(activeTurn.status) ? 'Saving the response…' : statusText === 'Stopping…' ? statusText : streamed ? 'Writing…' : 'Thinking… You can leave and come back.') : (currentRoom?.archivedAt ? 'This room is archived.' : statusText)
+    statusText: sendingMessage ? 'Sending…' : busy ? (activeTurn && terminal(activeTurn.status) ? 'Saving the response…' : stoppingTurn || statusText === 'Stopping…' ? 'Stopping…' : streamed ? 'Writing…' : 'Thinking… You can leave and come back.') : (currentRoom?.archivedAt ? 'This room is archived.' : unresolvedSend ? 'Delivery is unconfirmed. Your message is kept here.' : statusText)
   });
 
   function setLocal(values: Record<string, UiValue>) { local = { ...local, ...values }; }
@@ -419,9 +432,11 @@
     const nextConversation = wantedConversation?.id ?? '';
     if (!force && nextRoom === roomId && nextConversation === conversationId) return;
     saveDraft();
-    observer?.abort(); selectionRequest?.abort();
+    observer?.abort(); selectionRequest?.abort(); historyRequest?.abort();
     const version = ++selectionVersion;
-    roomId = nextRoom; conversationId = nextConversation; messages = []; activeTurn = null; streamed = ''; statusText = '';
+    roomId = nextRoom; conversationId = nextConversation; messages = []; activeTurn = null; streamed = ''; statusText = ''; stoppingTurn = '';
+    olderCursor = null; historyLoading = false;
+    unresolvedSend = nextConversation && !sending[nextConversation] ? readPendingSend(data.user.id, nextConversation) : null;
     ++memoryRequestVersion; memoryData = null; selectedSources = [];
     dismissEditors();
     setLocal({ draft: nextConversation ? (storageRead(draftKey(data.user.id, nextConversation)) ?? '') : '', showArchived: !!wantedRoom?.archivedAt });
@@ -431,7 +446,14 @@
     try {
       const detail = await request<Detail>(`/api/conversations/${nextConversation}`, undefined, controller.signal);
       if (!alive || version !== selectionVersion) return;
-      messages = detail.messages; activeTurn = detail.activeTurn;
+      messages = detail.messages; activeTurn = detail.activeTurn; olderCursor = detail.olderCursor ?? null;
+      mergeMessage(detail.activeUserMessage);
+      if (unresolvedSend && messages.some(message => message.requestKey === unresolvedSend?.key)) {
+        const attempt = unresolvedSend;
+        if (readPendingSend(data.user.id, nextConversation)?.key === attempt.key) storageWrite(pendingKey(data.user.id, nextConversation), null);
+        if (String(local.draft ?? '').trim() === attempt.text) { setLocal({ draft: '' }); saveDraft(); }
+        unresolvedSend = null;
+      }
       if (!detail.activeTurn && ['failed', 'blocked'].includes(detail.lastTurn?.status ?? '')) statusText = 'The last response was interrupted. You can continue here.';
       if (!detail.activeTurn && detail.lastTurn?.status === 'cancelled') statusText = 'Stopped. You can continue whenever you’re ready.';
       if (detail.activeTurn) {
@@ -440,62 +462,125 @@
     } catch (cause) { if (!controller.signal.aborted && alive && version === selectionVersion) failure(cause); }
     finally { if (alive && version === selectionVersion) loading = false; }
   }
-  async function settleTurn(turn: Turn, selectedConversation: string, version: number) {
-    const detail = await request<Detail>(`/api/conversations/${selectedConversation}`);
-    if (!alive || version !== selectionVersion) return;
-    messages = detail.messages; streamed = ''; activeTurn = detail.activeTurn;
+  async function loadOlder() {
+    if (!olderCursor || historyLoading) return;
+    const version = selectionVersion;
+    const controller = new AbortController(); historyRequest = controller;
+    historyLoading = true;
+    try {
+      const older = await request<Detail>(`/api/conversations/${conversationId}?before=${encodeURIComponent(olderCursor)}`, undefined, controller.signal);
+      if (!alive || version !== selectionVersion) return;
+      const feed = globalThis.document.querySelector<HTMLElement>('.ql-transcript [data-testid="conversation-feed"]');
+      const top = feed?.getBoundingClientRect().top ?? 0;
+      const anchor = [...(feed?.querySelectorAll<HTMLElement>('[data-message-id]') ?? [])].find(item => item.getBoundingClientRect().bottom > top);
+      const anchorTop = anchor?.getBoundingClientRect().top ?? 0;
+      const existing = new Set(messages.map(message => message.id));
+      messages = [...older.messages.filter(message => !existing.has(message.id)), ...messages];
+      olderCursor = older.olderCursor ?? null;
+      await tick();
+      if (version === selectionVersion && feed && anchor?.isConnected) feed.scrollTop += anchor.getBoundingClientRect().top - anchorTop;
+    } catch (cause) { if (!controller.signal.aborted && alive && version === selectionVersion) failure(cause); }
+    finally { if (version === selectionVersion) historyLoading = false; }
+  }
+  function mergeMessage(message: Message | null | undefined) {
+    if (!message) return;
+    const existing = messages.findIndex(item => item.id === message.id);
+    if (existing < 0) messages = [...messages, message];
+    else messages = messages.map(item => item.id === message.id ? message : item);
+  }
+  function settleTurn(turn: Turn, assistantMessage: Message | null | undefined) {
+    mergeMessage(assistantMessage);
+    streamed = ''; activeTurn = null; stoppingTurn = '';
     statusText = turn.status === 'cancelled' ? 'Stopped. You can continue whenever you’re ready.'
       : ['failed', 'blocked'].includes(turn.status) ? 'The response was interrupted. Your conversation is saved.' : '';
     if (['failed', 'blocked'].includes(turn.status)) error = 'The response could not finish. You can send another message to continue.';
-    if (detail.activeTurn && detail.activeTurn.id !== turn.id) void observe(detail.activeTurn.id, selectedConversation, version);
-    await refreshData();
   }
-  async function observe(turnId: string, selectedConversation: string, version: number) {
+  async function observe(turnId: string, selectedConversation: string, version: number, initialCursor = 0) {
     observer?.abort();
     const controller = new AbortController(); observer = controller;
-    let cursor = 0;
+    let cursor = initialCursor;
+    let retry = 200;
     const connectionMessage = 'Connection interrupted. Reconnecting to your saved response…';
-    while (alive && !controller.signal.aborted && version === selectionVersion) {
+    const current = () => alive && !controller.signal.aborted && version === selectionVersion && selectedConversation === conversationId;
+    const apply = (observed: Observation) => {
+      if (!current()) return true;
+      if (observed.turn.id !== turnId || observed.nextCursor < cursor) return false;
+      const previousCursor = cursor;
+      for (const event of observed.events) {
+        if (event.sequence <= cursor) continue;
+        if (event.kind === 'text.delta') streamed += event.delta ?? '';
+        cursor = event.sequence;
+      }
+      cursor = observed.nextCursor;
+      activeTurn = observed.turn;
+      if (cursor > previousCursor) retry = 200;
+      if (error === connectionMessage) error = '';
+      if (!terminal(observed.turn.status) || !observed.turn.projectionSettled) return false;
+      settleTurn(observed.turn, observed.assistantMessage);
+      if (observed.nextActiveTurn && observed.nextActiveTurn.id !== turnId) {
+        mergeMessage(observed.nextUserMessage);
+        activeTurn = observed.nextActiveTurn;
+        void observe(observed.nextActiveTurn.id, selectedConversation, version);
+      }
+      return true;
+    };
+    while (current()) {
+      try {
+        if (await followTurn(turnId, cursor, controller.signal, apply)) return;
+      } catch (cause) {
+        if (current() && cause instanceof RequestError && [401, 403].includes(cause.status)) { failure(cause); return; }
+      }
+      if (!current()) return;
       try {
         const observed = await request<Observation>(`/api/turns/${turnId}/events?after=${cursor}`, undefined, controller.signal);
-        if (controller.signal.aborted || !alive || version !== selectionVersion) return;
-        for (const event of observed.events) if (event.sequence > cursor && event.kind === 'text.delta') streamed += event.delta ?? '';
-        cursor = observed.nextCursor; activeTurn = observed.turn;
-        if (error === connectionMessage) error = '';
-        if (terminal(observed.turn.status) && observed.turn.projectionSettled) { await settleTurn(observed.turn, selectedConversation, version); return; }
+        if (apply(observed)) return;
       } catch (cause) {
-        if (controller.signal.aborted || !alive || version !== selectionVersion) return;
+        if (!current()) return;
         if (cause instanceof RequestError && [401, 403, 404].includes(cause.status)) { failure(cause); return; }
         error = connectionMessage;
       }
-      await delayObservation(controller.signal);
+      await delayObservation(controller.signal, retry);
+      retry = Math.min(retry * 2, 2_000);
     }
   }
-  async function send(input: Record<string, unknown>): Promise<ActionResult> {
+  async function send(input: Record<string, unknown>, retry = false): Promise<ActionResult> {
     const selectedConversation = String(input.conversationId ?? '');
-    const text = String(input.text ?? '');
-    if (!text.trim() || !selectedConversation || selectedConversation !== conversationId || busy || currentRoom?.archivedAt)
+    const text = String(input.text ?? '').trim();
+    if (!data || !text || !selectedConversation || selectedConversation !== conversationId || loading || busy || sending[selectedConversation] || currentRoom?.archivedAt)
       return { ok: false, code: 'MESSAGE_UNAVAILABLE', message: 'Open an active conversation and write a message first.' };
-    const actor = data!.user.id;
-    let attempt: { text: string; key: string } | undefined;
-    try { attempt = JSON.parse(storageRead(pendingKey(actor, selectedConversation)) ?? 'null') ?? undefined; } catch { /* A malformed local draft is not authority. */ }
-    if (!attempt || attempt.text !== text || typeof attempt.key !== 'string') attempt = { text, key: crypto.randomUUID() };
-    storageWrite(pendingKey(actor, selectedConversation), JSON.stringify(attempt));
-    const accepted = await request<{ turnId: string; conversationId: string; status: string }>(`/api/conversations/${selectedConversation}/turns`, { input: text, idempotencyKey: attempt.key });
-    storageWrite(pendingKey(actor, selectedConversation), null);
+    const actor = data.user.id;
     const version = selectionVersion;
-    if (selectedConversation === conversationId) {
+    const previous = unresolvedSend ?? readPendingSend(actor, selectedConversation);
+    if (previous && (!retry || previous.text !== text)) return { ok: false, code: 'DELIVERY_UNCONFIRMED', message: 'Retry the previous message to confirm delivery.' };
+    const attempt = previous ?? { text, key: crypto.randomUUID(), createdAt: new Date().toISOString() };
+    const key = pendingKey(actor, selectedConversation);
+    const current = () => alive && version === selectionVersion && selectedConversation === conversationId;
+    sending[selectedConversation] = attempt;
+    error = ''; statusText = ''; unresolvedSend = null;
+    storageWrite(key, JSON.stringify(attempt));
+    try {
+      const accepted = await request<AcceptedTurn>(`/api/conversations/${selectedConversation}/turns`, { input: text, idempotencyKey: attempt.key });
+      if (accepted.conversationId !== selectedConversation) throw new RequestError('The message receipt did not match this conversation.', 'ADMISSION_MISMATCH', true);
+      if (readPendingSend(actor, selectedConversation)?.key === attempt.key) storageWrite(key, null);
+      const draft = draftKey(actor, selectedConversation);
+      if (storageRead(draft)?.trim() === text) storageWrite(draft, null);
+      if (!current()) {
+        if (alive && conversationId === selectedConversation) void resolveSelection(true);
+        return { ok: true, message: '' };
+      }
       if (String(local.draft ?? '').trim() === text) { setLocal({ draft: '' }); saveDraft(); }
+      mergeMessage(accepted.userMessage);
       activeTurn = { id: accepted.turnId, status: accepted.status }; streamed = '';
-      // Fetch the persisted user message; a successful send remains successful
-      // even if this subsequent display refresh is interrupted.
-      try {
-        const detail = await request<Detail>(`/api/conversations/${selectedConversation}`);
-        if (version === selectionVersion) messages = detail.messages;
-      } catch { error = 'Your message was sent. Reconnecting to the saved conversation…'; }
-      if (version === selectionVersion) void observe(accepted.turnId, selectedConversation, version);
+      void observe(accepted.turnId, selectedConversation, version);
+      return { ok: true, message: '' };
+    } catch (cause) {
+      const uncertain = previous || !(cause instanceof RequestError) || cause.uncertain;
+      if (!uncertain && readPendingSend(actor, selectedConversation)?.key === attempt.key) storageWrite(key, null);
+      if (alive && conversationId === selectedConversation && uncertain) unresolvedSend = attempt;
+      return current() ? failure(cause) : { ok: false, code: 'REQUEST_FAILED', message: 'Check delivery when you reopen the conversation.' };
+    } finally {
+      delete sending[selectedConversation];
     }
-    return { ok: true, message: '' };
   }
   async function mutate(actionId: string, input: Record<string, unknown>): Promise<ActionResult> {
     const signature = JSON.stringify({ actionId, input });
@@ -523,6 +608,22 @@
   }
   async function dispatch(actionId: string, value?: unknown): Promise<ActionResult> {
     const input = (value ?? {}) as Record<string, unknown>;
+    if (actionId === 'conversation.send') return await send(input);
+    if (actionId === 'ui.send.retry' && unresolvedSend) return await send({ conversationId, text: unresolvedSend.text }, true);
+    if (actionId === 'ui.history.older') { await loadOlder(); return { ok: true, message: '' }; }
+    if (actionId === 'conversation.cancel') {
+      const turnId = String(input.turnId);
+      const version = selectionVersion;
+      if (!activeTurn || activeTurn.id !== turnId || terminal(activeTurn.status) || stoppingTurn) return { ok: false, code: 'STOP_UNAVAILABLE', message: 'There is no running response to stop.' };
+      stoppingTurn = turnId;
+      try {
+        await request(`/api/turns/${turnId}/cancel`, {});
+        if (version === selectionVersion && activeTurn?.id === turnId) statusText = 'Stopping…';
+        return { ok: true, message: '' };
+      } catch (cause) {
+        return version === selectionVersion && activeTurn?.id === turnId ? failure(cause) : { ok: false, code: 'STOP_UNCONFIRMED', message: 'Open the conversation to check its status.' };
+      } finally { if (version === selectionVersion && stoppingTurn === turnId) stoppingTurn = ''; }
+    }
     if (actionId === 'ui.memory.source.toggle') {
       const id = String(input.id);
       if (memoryData?.sources.some(source => source.id === id && !source.excluded)) selectedSources = selectedSources.includes(id) ? selectedSources.filter(item => item !== id) : [...selectedSources, id];
@@ -608,10 +709,6 @@
         await request('/auth/sign-out', {});
         if (data) clearActorStorage(data.user.id);
         observer?.abort(); await goto('/auth/sign-in');
-      } else if (actionId === 'conversation.send') return await send(input);
-      else if (actionId === 'conversation.cancel') {
-        const result = await request<{ turnId: string; status: string }>(`/api/turns/${String(input.turnId)}/cancel`, {});
-        statusText = terminal(result.status) ? 'Stopped.' : 'Stopping…';
       } else if (['room.create', 'room.rename', 'room.archive', 'conversation.create'].includes(actionId)) return await mutate(actionId, input);
       else return { ok: false, code: 'UNKNOWN_ACTION', message: 'This action is unavailable.' };
       return { ok: true, message: '' };
@@ -625,7 +722,7 @@
       try { await refreshData(); await resolveSelection(true); }
       catch (cause) { failure(cause); loading = false; }
     })();
-    return () => { alive = false; saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); memoryReadController?.abort(); };
+    return () => { alive = false; saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); memoryReadController?.abort(); };
   });
 </script>
 

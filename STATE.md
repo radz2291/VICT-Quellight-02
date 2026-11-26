@@ -1,5 +1,11 @@
 # Quellight implementation state
 
+## VHOST-025 Preview candidate
+
+This branch starts from the indexed release at `828b64f9407b64d60772525ffb4fb0ca21da47b5`. It shows a pending message before admission, reconciles the canonical user message from HTTP 202, opens a bounded recent transcript, and follows committed reply fragments by cursor. The same signed maintenance wake can reconcile an expired chat turn. Full-history export keeps its existing scope.
+
+The Mastra completion archive and its exact C12 lineage are pinned in [baseline.json](baseline.json). The protected Preview, comparative timing evidence and acceptance status are tracked in Rolladice Work under VHOST-025.
+
 ## Current release — Phase 3
 
 Updated 17 November 2026. **Phase 3 is delivered at [quellight.com](https://quellight.com)**. Production `dpl_BFakfdrHUwTgzEPzhQxnbPim8eN8` is READY, source `135db957013265da774b7d2b4ebbeb261a18a2b7aef2fb34142940ccf0bfe3c5`. Delegated implementation and independent verification completed the [Phase 3 plan](docs/PHASE-3-PLAN.md). [Delivery](docs/PHASE-3-DELIVERY.md), [portable evidence](evidence/phase-3.json) and [owner guide](docs/USING-QUELLIGHT.md) own the current facts. Owner acceptance remains separate from engineering completion.
