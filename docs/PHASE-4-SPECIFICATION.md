@@ -1,12 +1,21 @@
-# Quellight Phase 4 — Attunement specification
+# Quellight Phase 4 — Room understanding, intent and attunement
 
-**Version:** 0.1.0 — pre-identity design baseline  
-**Date:** 27 November 2026  
-**Status:** Consolidated design for owner review; not authorization to implement or deploy.  
+**Version:** 0.2.0 — design reconciled with the identity references  
+**Date:** 28 November 2026 (Malaysia)  
+**Status:** Owner-review draft at 4P.4. The next proposed work is a bounded research ticket after agreement.  
 **Repository:** `radz2291/VICT-Quellight-02`  
 **Inspected main:** `14b6ccaf6f409eac3e041dc3d9abd0bb9f875344` (26 November 2026)
 
-This document is the canonical Phase 4 design reference. After identity review and owner acceptance, the approved revision will govern implementation and Rolladice Work tickets. Tickets are bounded work packages subordinate to this specification, not independent sources of product direction. Research evidence and delivery reports establish observed facts; they do not silently revise requirements. Record changes to this document explicitly and obtain owner agreement on consequential deviations before implementation.
+This document defines the Phase 4 experience. The approved revision will govern implementation and Rolladice Work tickets. Research establishes what the stack can support. Record any evidence that changes a product decision here and bring the change to Radzi before implementation.
+
+| If you need to know… | Read |
+| --- | --- |
+| What a person should experience and which rules must hold | This specification, especially §§1.3, 2.1, 3.2 and 7 |
+| Where the companion's voice came from and how to audition or edit it | [Identity reference](IDENTITY-REFERENCE.md) |
+| What counts as proof, which comparisons to run and what to record | [Qualification protocol](PHASE-4-QUALIFICATION.md) |
+| Where work starts, who decides, and what an agent returns at each stage | [Delivery plan and first research brief](PHASE-4-PLAN.md) |
+
+The two historical checkouts supply design evidence. The implementation target is `radz2291/VICT-Quellight-02`. The private source handoff supplied by the owner locates the historical files on Windows. The application must start, run and be testable without access to either historical checkout.
 
 ## 1. Product intent
 
@@ -38,6 +47,16 @@ These domains illustrate the same architecture. Do not hardcode role categories,
 - **Room continuity:** shared learning across conversations within one room, without implicit cross-room attunement.
 - **Truthful, user-governed state:** attributable sources, correction, restoration and forgetting; no fabricated learning, tool results, evaluations or historical context.
 
+### 1.3 One room across three conversations
+
+In a room named *Product workshop*, the owner says, “I want to describe how something should feel and get to a spec I can give a builder.” Over several conversations they have kept decisions about who can publish and asked the companion to work out recovery and persistence. They also use the room to explore unfinished ideas. Chat alone supplies eligible evidence. The owner never has to fill out a profile or save a Desk item to teach this.
+
+In a fresh conversation they say, “A client needs to keep reviewing the same cut while I prepare the next one. Help me work it out.” Quellight can recognize the territory (both exploration and build design), hold the owner's direction (a usable review experience), and take a complementary role (work out versioning and recovery, leave publication authority with the owner). A good reply explains what the client sees before and after release, proposes where comments belong, and asks who may publish if that consequential choice remains open. The benefit can be assessed from the resulting design and the amount of prompting it took.
+
+The owner adds, “Today I'm just exploring. And in this room, always leave publication decisions to me.” The first sentence governs this exchange. The second explicitly asks for a lasting room boundary. Respect it in this conversation immediately, retain its author and scope, and prioritize it for publication. Another chat can rely on the room-wide change after publication. A direct owner correction in the inspector takes effect at the next admissible turn. Quellight drops the push toward a build-ready spec now, acknowledges the publication boundary, and leaves the room's broader purpose intact. Later, a reopened chat can use the latest eligible revision. In another room the same person can work entirely differently.
+
+From More → Memory, the owner can see what was inferred, its sources, which part they corrected, and which revision reached which reply. If they forget the only source supporting a claim, future eligible work cannot carry that claim forward from an old signal, a queued job or a restored snapshot. The original chat transcript follows the existing care policy.
+
 ## 2. Boundaries and existing baseline
 
 Phase 0 established the application foundation. Phase 1 delivered persistent conversations and rooms. Phase 2 delivered governed Mastra-native message history, thread Observational Memory (OM), shared personal Working Memory and original-source recall, with automatic learning, settings, prompt configuration, correction, forgetting and quiet inspection. Phase 3 delivered the collaborative Desk and an independent learned method.
@@ -50,22 +69,26 @@ Phase 0 established the application foundation. Phase 1 delivered persistent con
 | Source recall | Access to authorized earlier evidence | Existing current-room or explicit same-owner policy |
 | Desk | Shared authored and agent-produced work, artifacts and revisions | Room |
 | Room method | Practical instructions for working on the room's Desk | Room; currently learned from eligible successful agent-created items |
-| Attunement | Evolving understanding of the relationship, complementary role and appropriate contribution | Room |
-| Current conversation | Situated intent and immediate circumstances | Turn/thread |
+| Room understanding (learned) | What this room has become through use, including distinct concerns and tensions | Room |
+| Room intent (learned) | The direction Quellight can hold in service of what the human is reaching for here | Room |
+| Attunement (learned) | How Quellight should contribute alongside this person here, including where to challenge, lead or step back | Room |
+| Current conversation | The person's explicit present request and immediate circumstances | Turn/thread |
 
 Room method and attunement must remain distinct. Method may teach how to produce a specification; attunement should understand why the human needs the specification, what they may be unable to articulate, and which expertise the companion should contribute. An ordinary conversation without any Desk operation must be able to teach attunement.
 
-Do not replace the existing memory engine, repurpose the Desk method as attunement, or introduce a second conversational runtime. Preserve existing data and user-authored settings. Semantic/vector search, a general digest system, ARA migration, broad multi-user enablement, tool expansion and advanced identity development are outside the present scope.
+Do not replace the existing memory engine, repurpose the Desk method as attunement, or introduce a second conversational runtime. Preserve existing data and user-authored settings. Semantic/vector search, a general digest system, ARA migration, broad multi-user enablement, tool expansion and product features from earlier identity roadmaps are outside the present scope. The bounded identity audition and integration in 4I are included.
 
-### 2.1 Identity boundary and deferred review
+### 2.1 Authored identity and learning policy
 
-Use the existing neutral companion baseline while designing and qualifying mechanisms. The current conversation prompt already uses the term companion. The owner's niche identity prompt has deliberately not been supplied or incorporated into this revision.
+The two identity archives have been reviewed. ARA-Light supplies the ancestor voice and the richest historical examples of evidence becoming room understanding, intent and posture. Original Quellight preserved that voice and re-authored it in eight movements. The current application supplies the working runtime, policies, memory and behavior baseline. Historical effectiveness in an older app is a reason to audition a design in this one.
 
-The infrastructure must remain identity-agnostic, while allowing product-owned learning orientation and companion execution to be conditioned by an authored, versioned identity. Identity and learned attunement must be distinguishable, versionable, and independently inspectable. Attunement must not rewrite identity, authored room purpose or explicit instructions, grant capabilities, or override constraints.
+**What stays authored.** Quellight brings independent judgment, can challenge a premise, and leaves the human free to decide and conclude. Its deeper tradition shapes its conduct. Follow the person's lead on spiritual language and preserve their own frame. Keep interpretations provisional, receive corrections plainly, and let a person become more capable without cultivating dependence. One authored companion voice should survive changes of topic or room.
 
-After this pre-identity baseline is established, review the actual identity prompt in a separate design discussion. Determine what is stable, what may emerge relationally, how the learning process should be conditioned and whether existing design needs revision. Pin identity/learning-policy revisions where applicable. If the identity changes later, preserve source evidence and historical revisions and allow deliberate, source-grounded reconsideration rather than silently rewriting past records.
+**What can be learned.** The three dimensions in §3.2 may develop through collaboration. An identity-conditioned learning policy can help distinguish the person's own direction from an aim supplied by the model. Keep observations attributable, interpretations defeasible and policy versions visible. A change of identity may affect how eligible evidence is interpreted in future. It cannot change who supplied that evidence, rewrite an owner's purpose or grant permission.
 
-**Gate:** no final attunement prompt, production implementation, or release authorization is implied by this document. Revise and approve the specification after the identity discussion. Do not invent or preempt the identity philosophy.
+**How to audition it.** After 4R, compare the current app's conversation voice, the frozen legacy voice and the original eight-movement assembly on the same authorized context, model, fixtures and operating rules. Compare assembled text and real conversations. Preserve the source wording of candidates and keep technical policy and runtime metadata separately attributable. The owner judges the felt experience. Technical checks independently judge truthfulness, authority, memory care and the completeness of prompt delivery. Record the selected candidate, any warranted edits and a reversible return to the previous selection. If the audition is inconclusive, keep the choice open. A 4A comparison can use the current voice provisionally if Radzi explicitly selects it for that comparison. The new production voice and any background prompt changes remain decisions for 4I.
+
+Keep framework contracts identity-agnostic. App-authored identity and learning policy have distinct revisions and responsibilities. An evaluator may inspect provenance, conflict with owner guidance and actual outcomes. It must never equate agreement with Quellight's philosophy with a successful outcome. Maintaining an editable, versioned persona does not require a new authoring screen in this slice.
 
 ## 3. Logical architecture
 
@@ -82,8 +105,8 @@ flowchart TD
     O --> E[Relational evidence extraction]
     E --> L[Room evidence and consolidation]
     L --> G{Meaningful development?}
-    G -->|Yes| S[Room-level attunement synthesis]
-    A[Current attunement revision] --> S
+    G -->|Yes| S[Room-level synthesis]
+    A[Current room learning revision] --> S
     I --> S
     S --> V[Validate and governed publication]
     V --> A
@@ -106,7 +129,21 @@ Capture relevant user statements, clarifications, corrections, accepted/rejected
 
 Prefer existing eligible native observations/extractions and source IDs. Use raw sources selectively where an interpretation needs verification. Preserve provenance and uncertainty; avoid copying entire histories into a parallel memory store.
 
-### 3.2 Relational synthesis
+### 3.2 One learning process, three dimensions
+
+Room understanding, room intent and attunement are **all Phase 4 implementation scope**. They draw on eligible room evidence, can evolve on different occasions and are separately inspectable and correctable. They share the mechanisms for evidence collection, selective synthesis, revision history, authorization, delivery and care. These are distinctions in meaning and ownership. The number of tables, calls, prompts and background jobs is a qualification decision.
+
+| Dimension | What counts as a grounded interpretation? | What the owner can correct |
+| --- | --- | --- |
+| Room understanding · territory | A description of what the room has become, anchored in the owner's stated purpose and actual use. It can contain multiple threads. In a sparse room it may still be forming. | “We also use this room to explore ideas.” Correcting this description preserves the authored room name and purpose. |
+| Room intent · direction | A direction apparent from what the person says or demonstrably pursues. It may be tentative or absent. Avoid inventing what would be good for them. | “I want to understand the options before I choose.” Correct the held direction and retain unrelated room knowledge. |
+| Attunement · complementary posture | A situated judgment about how to contribute in service of that direction. It can include missing expertise, appropriate challenge, when to act within scope, or when to step back. | “Work out the engineering details yourself. Ask me who can publish.” Correct this division of responsibility without granting publication rights. |
+
+A room name or authored purpose is a seed. Repeated activity may deepen the interpretation and may reveal a second concern. A request for one quick answer has immediate force without becoming a room-wide preference. For a new or diffuse room, deliver only what has support. Empty or unchanged dimensions are valid. Evidence for one dimension does not justify filling the other two.
+
+**Revision and delivery.** A compatible design can publish one room revision containing separately addressable interpretations, evidence references, scope, uncertainty and correction lineage. A worker may change only the affected interpretations and preserve unrelated corrections. When a correction makes a dependent claim untenable, quarantine that claim and regenerate or omit it. Any physical representation is acceptable if it can reproduce these behaviors, including selective corrections when a single model call produced all three dimensions.
+
+### 3.2.1 Synthesis contract
 
 Derive a coherent, compact understanding from relevant new evidence, prior valid state, authored purpose and applicable guidance. The process should discover relationships not explicitly described by the human, without manufacturing certainty.
 
@@ -169,7 +206,7 @@ Attunement is shared across all eligible conversations in the same owner/room, i
 
 Separate:
 
-1. **Active attunement:** compact current synthesized understanding used in normal conversation.
+1. **Active room understanding, intent and attunement:** compact current guidance. The selected snapshot identifies the eligible dimensions and revisions available to this turn.
 2. **Relational knowledge:** consolidated, attributable experiences/patterns, outcomes and uncertainties used selectively in synthesis or deliberate retrieval.
 3. **Historical evidence:** original source references, revision history, activity, evaluations and corrections retained for inspection and source-grounded reconsideration.
 
@@ -191,11 +228,22 @@ Extend existing source-authority exclusion/quarantine and stale-publication fenc
 
 Enforce owner/room authorization below the UI, with trusted server policy for exact allowed automatic effects. Sources are data, not instructions to change authority. No secrets, credentials or private model reasoning in user-facing operational records.
 
+### 7.1 Authority at the point of use
+
+| Situation | Required behavior |
+| --- | --- |
+| Owner gives a one-turn exception | Apply it to the reply. Keep the longer-term interpretation unless the evidence warrants a scoped update. |
+| Owner edits a dimension in the inspector | Record an attributed correction, its scope and effective revision. The next admitted turn sees it. Old synthesis and signal replay cannot reintroduce the superseded reading. |
+| Current request conflicts with an inferred direction | Follow the request within current permissions. Ask only when its meaning or a consequential choice remains unresolved. A confirmed lasting change may then revise room intent. |
+| Identity, memory, Desk method and room guidance all apply | Preserve authored identity, existing authorized operating rules and source eligibility. Apply method to Desk work and posture to collaboration. None confers a tool or permission. |
+| Source or identity eligibility changes after a worker prepares a result | Recheck actor, room, source authority, policy/identity and parent revision at publication. Suppress or rebase obsolete results. Retain a truthful operation record. |
+| Owner reopens a reply after a revision or correction | Show the eligible history and the recorded selection/delivery status for that reply, subject to care policy. Keep today's room understanding separately accessible. |
+
 ## 8. Token efficiency and cache qualification (mandatory gate)
 
 The owner specifically requires investigation of existing memory efficiency as well as new attunement overhead. This is a blocking engineering investigation before deciding the implementation route.
 
-The inspected `native-policy.json` uses `lastMessages: 1000` and `observation.messageTokens: 1` to support short-chat learning. Upstream OM defaults differ (current docs describe 30,000 message tokens and 40,000 observation tokens). These are triggers/selection settings, not generation caps. Do not assume this configuration is inefficient or optimal without actual measurements. Do not change it blindly or regress short-chat learning.
+The inspected `native-policy.json` uses `lastMessages: 1000` and `observation.messageTokens: 1` to support short-chat learning. The original design recorded different upstream defaults. Pin the installed implementation and the comparison configuration during 4R. These are triggers/selection settings, not generation caps. Do not assume this configuration is inefficient or optimal without actual measurements. Do not change it blindly or regress short-chat learning.
 
 ### 8.1 Baseline and comparative experiments
 
@@ -214,7 +262,7 @@ Conversation stays primary. Extend existing ready-made VICT controls and inspect
 
 | View | Required actual information |
 | --- | --- |
-| Current understanding | Active interpretation, complementary role, scope, revision, uncertainty and applicable corrections |
+| Current understanding | Three separately addressable views of this room’s territory, direction and complementary posture. Show active interpretations, scope, evidence strength, revision and relevant corrections, including when one dimension has insufficient evidence |
 | Evidence and sources | Meaningful Observer/Reflector extractions and supporting original source links, distinct from interpretations |
 | Evolution | Current/prior revisions, differences, reason/evidence for change, superseded/invalidated state |
 | Synthesis and activity | Recorded inputs/outputs, eligible occurrences, queued/running/prepared/published/unchanged/failure status and recovery |
@@ -234,9 +282,10 @@ These are proposed bounded increments; the owner authorizes each consequential d
 
 | Increment | Goal | Exit gate |
 | --- | --- | --- |
-| 4P — Pre-implementation design review | Review this baseline and then the owner's separate identity prompt; revise and approve canonical specification | Owner confirms revised scope and authorization |
+| 4P — Pre-implementation design review | 4P.1–4P.3 covered the pre-identity architecture and historical identity study. At 4P.4 reconcile both and review this four-document set | Owner agreement recorded against the revision before issuing the first research ticket |
 | 4R — Research and qualification | Establish cache/memory baseline; qualify native Extractors, Hooks/events, State Signals and Scorers; compare evidence quality and alternative paths; identify any generic VICT extension | Installed proof, actual provider measurements or disclosed gaps, documented choice and agreed budgets; no product rollout |
-| 4A — First vertical slice: relational attunement | One complete room-scoped evidence → synthesis → application → correction/feedback loop, quiet inspection, cache-aware delivery | Matched comparative software scenario and authority/recovery checks; owner evaluates actual experience |
+| 4I — Identity integration | Audition the current, frozen and eight-movement voices, preserve source and assembly provenance, qualify learning-policy conditioning separately | Owner felt verdict, actual prompt delivery and operating-contract checks, reversible selection recorded |
+| 4A — First vertical slice: relational attunement | One complete room-scoped evidence → synthesis across all three dimensions → application → correction/feedback loop, quiet inspection, cache-aware delivery | Matched comparative software scenario and authority/recovery checks; owner evaluates actual experience |
 | 4B — Situated agency | Deepen application to ambiguous objectives and complementary responsibility; contextual exceptions | Novel held-out tasks show meaningful benefit without overstepping |
 | 4C — Outcome learning | Incorporate confirmed outcomes and selectively qualified scorers, with calibration | Success/failure evidence refines understanding without self-reinforcement |
 | 4D — Longitudinal evolution | Consolidation, selective retrieval, changing abilities and model/identity revisions | Simulated longitudinal quality, storage, latency and correction tests |
@@ -282,7 +331,7 @@ Use Rolladice Work only after owner agreement. The orchestrating agent assigns b
 
 ## 13. Open decisions — resolve explicitly
 
-- Identity philosophy and exact authored identity prompt: deferred separate owner review.
+- The historical identity and its editing discipline are documented. 4I settles the actual voice, warranted edits, policy conditioning, behavior under ordinary use, and the owner’s felt verdict on the current model.
 - Native adapter support for Extractors, Hooks/events, State Signals, Scorers and relevant OM efficiency policies; versions, recovery, source authority, usage telemetry and installed compatibility.
 - Evidence extraction format, significance policy, coalescing and synthesis prompt, quality comparison with dedicated background inference.
 - Cache-aware context delivery mechanism, measured budgets and regression thresholds, including impact of the one-token threshold and existing mutable context.
@@ -291,7 +340,7 @@ Use Rolladice Work only after owner agreement. The orchestrating agent assigns b
 - Comparative evaluation datasets, rubric, blind review protocol and quantitative gates.
 - Final ticket IDs, ownership, order and release authorization.
 
-These are explicit qualification or owner-review items, not permission to invent final choices.
+The research and delivery documents name the stage that owns each decision and the evidence due. Preserve the distinction between a documented design, an installed capability, a measured benefit and a release accepted by the owner.
 
 ## 14. References
 
@@ -317,5 +366,6 @@ Upstream research leads (consult exact installed source during qualification; cu
 
 | Revision | Date | Change |
 | --- | --- | --- |
+| 0.2.0 | 2026-11-28 | Reconcile the two identity archives with the pre-identity architecture. Specify the three dimensions, correction and authority semantics, the 4I audition, qualification protocol and staged handoff. Owner review pending. |
 | 0.1.0 | 2026-11-27 | Consolidate Phase 4 discussion into pre-identity design baseline, with mandatory native-capability/cache research, quiet transparency, room continuity and longitudinal qualification. No implementation approval. |
 
