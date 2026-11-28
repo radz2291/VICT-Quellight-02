@@ -1,0 +1,70 @@
+{
+  "schema": "quellight.q4-011.scenarios@1",
+  "premise": "Fictional museum project. The owner is preparing a small exhibit-label packet for review. Each case starts on a fresh thread in the same fixture room. The single correction prefix is reproduced identically in each voice.",
+  "approvedRoom": {
+    "marker": "museum-rehearsal-17",
+    "territory": "Prepare and review printed exhibit labels.",
+    "direction": "Send a readable review packet before choosing a print run.",
+    "posture": "Help narrow review questions while leaving curatorial decisions with the owner."
+  },
+  "approvedSource": "For this rehearsal, help me prepare the label review packet before we choose the print run. Narrow the review questions when you can. Curatorial decisions stay with me.",
+  "ordinaryMemory": "For exhibit labels, the owner uses metric units and prefers dates written as day month.",
+  "preserveResponseGuidance": "When mentioning an exhibit deadline, distinguish a firm date from a proposed one.",
+  "order": [
+    {
+      "id": "practical",
+      "lookFor": "Sendable help that respects the factual limits and carries the owner's request forward.",
+      "turns": [
+        { "input": "I have eight exhibit labels ready for a curator to review. I need feedback by Friday on dates, object names and anything hard to understand. Write a short note I can send. I haven't decided on a print run." }
+      ]
+    },
+    {
+      "id": "fact-brief",
+      "lookFor": "A direct, correct one-sentence answer.",
+      "turns": [
+        { "input": "The mounting strip is 2.4 metres long. How many centimetres is that? One sentence, please." }
+      ]
+    },
+    {
+      "id": "disagree-depth",
+      "lookFor": "Useful disagreement grounded in the weak premise, with enough depth to make a decision.",
+      "turns": [
+        { "input": "Two reviewers missed a date on my longest label. I think the fix is to add a second sentence explaining the date, even though it appears in the next label too. Think this through with me in some depth. What might I be getting wrong?" }
+      ]
+    },
+    {
+      "id": "vulnerable",
+      "lookFor": "Presence, proportionate language and restraint when the owner has not asked for advice.",
+      "turns": [
+        { "input": "Someone I respect called the draft ordinary. It got to me more than I expected. I don't need to fix anything tonight. I just wanted to say it somewhere." }
+      ]
+    },
+    {
+      "id": "correction",
+      "lookFor": "Accept the correction and continue from the new decision without making the owner reargue it.",
+      "turns": [
+        { "input": "For the opening schedule, use the small gallery and hold Thursday for printing.", "fixedReply": "I have the small gallery and Thursday printing as the working plan." },
+        { "input": "Correction: the main gallery is confirmed, and Thursday is only the review day. Printing is still open. Keep the confirmed gallery and write the two-line schedule note I can paste into our handoff." }
+      ]
+    },
+    {
+      "id": "reserved",
+      "lookFor": "Clarify the trade-off and leave the choice and immediate space with the owner.",
+      "turns": [
+        { "input": "I'm choosing between a more personal opening label and a plainer one. Help me notice the most consequential difference. Please leave the choice with me, and give me a little room to sit with it." }
+      ]
+    },
+    {
+      "id": "delegated",
+      "lookFor": "Make the expressly delegated order decision and leave the reserved wording alone.",
+      "turns": [
+        { "input": "Pick the order for these three review checks: dates, object names, and readability. I trust you to make that routine call. Give me the order and a short reason. Leave the actual label wording alone." }
+      ]
+    }
+  ],
+  "ownerContinuation": {
+    "room": "approved",
+    "case": "practical",
+    "instructions": "After the initial reading, pick one unlabeled conversation and continue it in your own words. You can introduce a real concern, change your mind, or simply ask for another pass. Use the same exact message in the other two threads if you want a matched look. Record what made you want to continue, what changed, and where the voice left the decision with you."
+  }
+}

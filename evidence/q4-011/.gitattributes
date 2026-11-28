@@ -1,0 +1,3 @@
+*.json -text
+*.mjs -text
+SHA256SUMS -text

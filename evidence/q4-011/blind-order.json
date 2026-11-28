@@ -1,0 +1,133 @@
+{
+  "schema": "quellight.q4-011.blind-order@1",
+  "scenarioSha256": "4ffe7b513a5ae1f73ede3c85884fb0aacbcea21d9ee65d957d9295e13ca3e8b3",
+  "keyCommitment": "092df33a28ebf99ac8e2a7303ecda01ff1a8572581681ccbb3d971e60a66b90b",
+  "sequence": [
+    {
+      "room": "empty",
+      "case": "practical",
+      "order": [
+        "Q-50A1CC",
+        "Q-EFCF4B",
+        "Q-EB1B8E"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "fact-brief",
+      "order": [
+        "Q-EFCF4B",
+        "Q-EB1B8E",
+        "Q-50A1CC"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "disagree-depth",
+      "order": [
+        "Q-EB1B8E",
+        "Q-50A1CC",
+        "Q-EFCF4B"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "vulnerable",
+      "order": [
+        "Q-50A1CC",
+        "Q-EFCF4B",
+        "Q-EB1B8E"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "correction",
+      "order": [
+        "Q-EFCF4B",
+        "Q-EB1B8E",
+        "Q-50A1CC"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "reserved",
+      "order": [
+        "Q-EB1B8E",
+        "Q-50A1CC",
+        "Q-EFCF4B"
+      ]
+    },
+    {
+      "room": "empty",
+      "case": "delegated",
+      "order": [
+        "Q-50A1CC",
+        "Q-EFCF4B",
+        "Q-EB1B8E"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "practical",
+      "order": [
+        "Q-EFCF4B",
+        "Q-EB1B8E",
+        "Q-50A1CC"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "fact-brief",
+      "order": [
+        "Q-EB1B8E",
+        "Q-50A1CC",
+        "Q-EFCF4B"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "disagree-depth",
+      "order": [
+        "Q-50A1CC",
+        "Q-EFCF4B",
+        "Q-EB1B8E"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "vulnerable",
+      "order": [
+        "Q-EFCF4B",
+        "Q-EB1B8E",
+        "Q-50A1CC"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "correction",
+      "order": [
+        "Q-EB1B8E",
+        "Q-50A1CC",
+        "Q-EFCF4B"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "reserved",
+      "order": [
+        "Q-50A1CC",
+        "Q-EFCF4B",
+        "Q-EB1B8E"
+      ]
+    },
+    {
+      "room": "approved",
+      "case": "delegated",
+      "order": [
+        "Q-EFCF4B",
+        "Q-EB1B8E",
+        "Q-50A1CC"
+      ]
+    }
+  ]
+}
