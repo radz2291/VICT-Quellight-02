@@ -1,0 +1,78 @@
+{
+  "mode": "audit",
+  "environment": "loopback PostgreSQL, trusted synthetic app service, no HTTP or live provider",
+  "node": "v22.23.5",
+  "postgres": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "lockCanonicalSha256": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "lockWorkingTreeSha256": "a05fde3193f0d5b6df5edc33022235108218fd7e26642a47aa56b0b4ec53bd93",
+  "mastraArchiveSha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+  "productSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+  "nativeSourceDigest": "7659d074c2eafc9a18efb97468867495755839cbb5394255c563601da30e5f13",
+  "pinnedProductConfiguration": "8b5e0437f6acab48c79634dbefa446c72ca59691271fae0f474419165474f8dd",
+  "nativeConfiguration": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd",
+  "pinnedAuthorityRevision": "0",
+  "sourceTurnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+  "sourceIds": [
+    "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+    "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:assistant"
+  ],
+  "negativeDigestControl": "removed and edited source both mismatch",
+  "productJobId": "5523ad19-c64e-4496-a521-6268d8035872",
+  "jobKey": "0dcb5558468e8c7538c277ef31be97e4d67ee851424814f5d2ee6453586d3545",
+  "productJobAttempts": 1,
+  "productActivity": [
+    {
+      "state": "queued",
+      "code": null,
+      "at": "2026-11-27T17:11:46.665Z"
+    },
+    {
+      "state": "running",
+      "code": null,
+      "at": "2026-11-27T17:11:47.048Z"
+    },
+    {
+      "state": "completed",
+      "code": null,
+      "at": "2026-11-27T17:11:48.304Z"
+    }
+  ],
+  "nativeOperationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+  "nativeEvents": [
+    {
+      "at": "2026-11-27T17:11:47.812Z",
+      "name": "observe-started"
+    },
+    {
+      "at": "2026-11-27T17:11:47.916Z",
+      "name": "observer-started"
+    },
+    {
+      "at": "2026-11-27T17:11:48.043Z",
+      "name": "observer-completed"
+    },
+    {
+      "at": "2026-11-27T17:11:48.111Z",
+      "name": "prepared"
+    },
+    {
+      "at": "2026-11-27T17:11:48.238Z",
+      "name": "published"
+    }
+  ],
+  "currentNativeStatus": "superseded",
+  "observed": true,
+  "reflected": false,
+  "historicalAnchor": "Original cold snapshot matches the durable operation and source digests. Native state later superseded.",
+  "maintenanceTurnId": "quellight-memory:e0a11b81-b236-41ea-a85b-352251cb1b1a",
+  "invocationId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+  "invokedCapability": "quellight.memory.maintain@1",
+  "receiptStatus": "completed",
+  "fixtureClaimCheck": "The published fixture observation asserts a visibility outcome absent from its source. Both source sides reserve the decision.",
+  "nativeRangeSourceIds": [
+    "e95fadeb-d348-440e-b598-1fb10e006e00",
+    "13a0e9fd-98e9-43fd-a2ab-fc418dd913b8"
+  ]
+}

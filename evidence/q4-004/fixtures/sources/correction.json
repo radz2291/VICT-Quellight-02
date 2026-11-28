@@ -1,0 +1,29 @@
+{
+  "scope": {
+    "actorId": "synthetic-cedar-owner",
+    "roomId": "synthetic-cedar-correction",
+    "conversationId": "thread-correction"
+  },
+  "messages": [
+    {
+      "nativeId": "correction-turn-1-native-user",
+      "public": {
+        "id": "correction-turn-1:user",
+        "turnId": "correction-turn-1",
+        "role": "user",
+        "text": "Correction: I chose internal-only for unpublished cuts. Keep prior reviewer comments visible to authorized editors.",
+        "at": "2026-11-28T03:00:00.000Z"
+      }
+    },
+    {
+      "nativeId": "correction-turn-1-native-assistant",
+      "public": {
+        "id": "correction-turn-1:assistant",
+        "turnId": "correction-turn-1",
+        "role": "assistant",
+        "text": "Internal-only is fixed. I will make prior comments available to authorized editors.",
+        "at": "2026-11-28T03:00:01.000Z"
+      }
+    }
+  ]
+}

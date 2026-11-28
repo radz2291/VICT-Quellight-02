@@ -1,0 +1,362 @@
+{
+  "schema": "quellight.4r.offline-evidence-fixture@1",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "cases": [
+    {
+      "id": "delegation",
+      "origin": "captured-q4-001-publication-epoch",
+      "scope": {
+        "actorId": "cb7d8b40-872f-402a-8f12-32ef6ea86087",
+        "roomId": "5a389fc6-64e9-4165-bc27-7dc392975f06",
+        "conversationId": "be9fa0e9-a02d-4522-b9c2-dabfde20b759"
+      },
+      "turns": [
+        {
+          "id": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+          "state": "settled"
+        }
+      ],
+      "source": "sources/delegation.json",
+      "authority": {
+        "revision": "0",
+        "excludedNativeIds": []
+      },
+      "job": {
+        "id": "5523ad19-c64e-4496-a521-6268d8035872",
+        "key": "0dcb5558468e8c7538c277ef31be97e4d67ee851424814f5d2ee6453586d3545",
+        "status": "completed",
+        "kind": "observe",
+        "sourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+        "configurationRevision": "8b5e0437f6acab48c79634dbefa446c72ca59691271fae0f474419165474f8dd",
+        "authorityRevision": "0"
+      },
+      "operation": {
+        "id": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+        "status": "completed",
+        "sourceDigest": "7659d074c2eafc9a18efb97468867495755839cbb5394255c563601da30e5f13",
+        "configurationRevision": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd",
+        "authorityRevision": "0",
+        "events": [
+          {
+            "at": "2026-11-27T17:11:47.812Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-27T17:11:47.916Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-27T17:11:48.043Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-27T17:11:48.111Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-27T17:11:48.238Z",
+            "name": "published"
+          }
+        ],
+        "observation": "<observation-group id=\"9696fda6a1484dd6\" range=\"e95fadeb-d348-440e-b598-1fb10e006e00:13a0e9fd-98e9-43fd-a2ab-fc418dd913b8\">\n- Cedar Cut comments stay attached to the reviewed version.\n- The owner delegates routine retry reliability and has selected internal-only unpublished cuts.\n</observation-group>"
+      },
+      "receipt": {
+        "id": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+        "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+        "status": "completed",
+        "capability": "quellight.memory.maintain@1",
+        "sourceDigest": "7659d074c2eafc9a18efb97468867495755839cbb5394255c563601da30e5f13",
+        "configurationRevision": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd",
+        "authorityRevision": "0"
+      }
+    },
+    {
+      "id": "correction",
+      "origin": "authored-synthetic-ledger",
+      "scope": {
+        "actorId": "synthetic-cedar-owner",
+        "roomId": "synthetic-cedar-correction",
+        "conversationId": "thread-correction"
+      },
+      "turns": [
+        {
+          "id": "correction-turn-1",
+          "state": "settled"
+        }
+      ],
+      "source": "sources/correction.json",
+      "authority": {
+        "revision": "synthetic-authority-0",
+        "excludedNativeIds": []
+      },
+      "job": {
+        "id": "synthetic-correction-observe",
+        "key": "c5148ba321953630a57fde999607038bfb0c924ad326dc372ca47613f5d9a1ce",
+        "status": "completed",
+        "kind": "observe",
+        "sourceRevision": "78092281d788b3ddc50bf9e14b7e21e5c00c4d68b00bc0a9bfa26dfe7e6b9854",
+        "configurationRevision": "synthetic-product-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      },
+      "operation": {
+        "id": "memory-job:synthetic-correction-observe",
+        "status": "completed",
+        "sourceDigest": "7f338f1b38397fc7b57a6931624578b29614f44b3c8ee887aad0b79681e9d71e",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0",
+        "events": [
+          {
+            "name": "prepared",
+            "at": "2026-11-28T03:01:00.000Z"
+          },
+          {
+            "name": "published",
+            "at": "2026-11-28T03:01:01.000Z"
+          }
+        ],
+        "observation": "<observation-group id=\"correction-group\" range=\"correction-turn-1-native-user:correction-turn-1-native-assistant\">\n- Internal-only visibility is now approved for unpublished cuts.\n- All historical comments can be deleted.\n</observation-group>"
+      },
+      "receipt": {
+        "id": "synthetic-correction-receipt",
+        "operationId": "memory-job:synthetic-correction-observe",
+        "status": "completed",
+        "capability": "quellight.memory.maintain@1",
+        "sourceDigest": "7f338f1b38397fc7b57a6931624578b29614f44b3c8ee887aad0b79681e9d71e",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      }
+    },
+    {
+      "id": "greeting",
+      "origin": "authored-synthetic-ledger",
+      "scope": {
+        "actorId": "synthetic-cedar-owner",
+        "roomId": "synthetic-cedar-greeting",
+        "conversationId": "thread-greeting"
+      },
+      "turns": [
+        {
+          "id": "greeting-turn-1",
+          "state": "settled"
+        }
+      ],
+      "source": "sources/greeting.json",
+      "authority": {
+        "revision": "synthetic-authority-0",
+        "excludedNativeIds": []
+      },
+      "job": {
+        "id": "synthetic-greeting-observe",
+        "key": "7204c088058f933263c36dcff0b7794254eaf60e4569b16cae5e51ea50c60faa",
+        "status": "completed",
+        "kind": "observe",
+        "sourceRevision": "40438495045c1cd329424df657d825faa2ecb110c71ae302827fd7292782ad0b",
+        "configurationRevision": "synthetic-product-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      },
+      "operation": {
+        "id": "memory-job:synthetic-greeting-observe",
+        "status": "completed",
+        "sourceDigest": "da3299232a112f0f4ebcae86f6609a2e874194ee8334cef1aa7520bdcd5cd57c",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0",
+        "events": [
+          {
+            "name": "prepared",
+            "at": "2026-11-28T03:01:00.000Z"
+          },
+          {
+            "name": "published",
+            "at": "2026-11-28T03:01:01.000Z"
+          }
+        ],
+        "observation": "<observation-group id=\"greeting-group\" range=\"greeting-turn-1-native-user:greeting-turn-1-native-assistant\">\n- The owner is ready to approve release.\n</observation-group>"
+      },
+      "receipt": {
+        "id": "synthetic-greeting-receipt",
+        "operationId": "memory-job:synthetic-greeting-observe",
+        "status": "completed",
+        "capability": "quellight.memory.maintain@1",
+        "sourceDigest": "da3299232a112f0f4ebcae86f6609a2e874194ee8334cef1aa7520bdcd5cd57c",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      }
+    },
+    {
+      "id": "contradiction",
+      "origin": "authored-synthetic-ledger",
+      "scope": {
+        "actorId": "synthetic-cedar-owner",
+        "roomId": "synthetic-cedar-contradiction",
+        "conversationId": "thread-contradiction"
+      },
+      "turns": [
+        {
+          "id": "contradiction-turn-1",
+          "state": "settled"
+        },
+        {
+          "id": "contradiction-turn-2",
+          "state": "settled"
+        }
+      ],
+      "source": "sources/contradiction.json",
+      "authority": {
+        "revision": "synthetic-authority-0",
+        "excludedNativeIds": []
+      },
+      "job": {
+        "id": "synthetic-contradiction-observe",
+        "key": "81a9296e506a3e224dc75bdd7c45a703f3bc8911e4231147c7723871529fc041",
+        "status": "completed",
+        "kind": "observe",
+        "sourceRevision": "67f1395572e3f2601c4291497457ea388cd2010a953fd635f3813e8000271533",
+        "configurationRevision": "synthetic-product-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      },
+      "operation": {
+        "id": "memory-job:synthetic-contradiction-observe",
+        "status": "completed",
+        "sourceDigest": "6cd56e10dc5b3520a08814c05e46e137720ff0182e0d81d47bd585a17d0536f3",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0",
+        "events": [
+          {
+            "name": "prepared",
+            "at": "2026-11-28T03:01:00.000Z"
+          },
+          {
+            "name": "published",
+            "at": "2026-11-28T03:01:01.000Z"
+          }
+        ],
+        "observation": "<observation-group id=\"contradiction-group\" range=\"contradiction-turn-1-native-user:contradiction-turn-2-native-assistant\">\n- Alex may view the unpublished cut during Friday’s private session.\n- Partner access may become the default.\n- Future links are public.\n</observation-group>"
+      },
+      "receipt": {
+        "id": "synthetic-contradiction-receipt",
+        "operationId": "memory-job:synthetic-contradiction-observe",
+        "status": "completed",
+        "capability": "quellight.memory.maintain@1",
+        "sourceDigest": "6cd56e10dc5b3520a08814c05e46e137720ff0182e0d81d47bd585a17d0536f3",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      }
+    },
+    {
+      "id": "verified-outcome",
+      "origin": "authored-synthetic-ledger",
+      "scope": {
+        "actorId": "synthetic-cedar-owner",
+        "roomId": "synthetic-cedar-verified-outcome",
+        "conversationId": "thread-verified-outcome"
+      },
+      "turns": [
+        {
+          "id": "verified-outcome-turn-1",
+          "state": "settled"
+        }
+      ],
+      "source": "sources/verified-outcome.json",
+      "authority": {
+        "revision": "synthetic-authority-0",
+        "excludedNativeIds": []
+      },
+      "job": {
+        "id": "synthetic-verified-outcome-observe",
+        "key": "776687b9151b65807242065f5ffa7549e19ff1c00279c6bfa7ce7b051869a904",
+        "status": "completed",
+        "kind": "observe",
+        "sourceRevision": "081482ca808c192817d2c682f56e33981bd9b3e9f2a020ba9f2203f340aba8a7",
+        "configurationRevision": "synthetic-product-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      },
+      "operation": {
+        "id": "memory-job:synthetic-verified-outcome-observe",
+        "status": "completed",
+        "sourceDigest": "851433fdf5590bf53253840656dbc5ec3015e7d0f9b443c61831ee3232827e49",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0",
+        "events": [
+          {
+            "name": "prepared",
+            "at": "2026-11-28T03:01:00.000Z"
+          },
+          {
+            "name": "published",
+            "at": "2026-11-28T03:01:01.000Z"
+          }
+        ],
+        "observation": "<observation-group id=\"verified-outcome-group\" range=\"verified-outcome-turn-1-native-user:verified-outcome-turn-1-native-assistant\">\n- The duplicate submission kept one logical comment.\n- All checks passed and release is approved.\n</observation-group>"
+      },
+      "receipt": {
+        "id": "synthetic-verified-outcome-receipt",
+        "operationId": "memory-job:synthetic-verified-outcome-observe",
+        "status": "completed",
+        "capability": "quellight.memory.maintain@1",
+        "sourceDigest": "851433fdf5590bf53253840656dbc5ec3015e7d0f9b443c61831ee3232827e49",
+        "configurationRevision": "synthetic-native-policy-1",
+        "authorityRevision": "synthetic-authority-0"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "delegation",
+      "case": "delegation",
+      "state": "as-recorded"
+    },
+    {
+      "id": "correction",
+      "case": "correction",
+      "state": "as-recorded"
+    },
+    {
+      "id": "greeting",
+      "case": "greeting",
+      "state": "as-recorded"
+    },
+    {
+      "id": "contradiction",
+      "case": "contradiction",
+      "state": "as-recorded"
+    },
+    {
+      "id": "duplicate-delivery",
+      "case": "delegation",
+      "state": "as-recorded"
+    },
+    {
+      "id": "verified-outcome",
+      "case": "verified-outcome",
+      "state": "as-recorded"
+    }
+  ],
+  "controls": [
+    {
+      "id": "prepared-only",
+      "case": "correction",
+      "state": "prepared-only"
+    },
+    {
+      "id": "invalidated-after-prepare",
+      "case": "correction",
+      "state": "invalidated-after-prepare"
+    },
+    {
+      "id": "changed-source",
+      "case": "delegation",
+      "state": "changed-source"
+    },
+    {
+      "id": "historical-publication",
+      "case": "delegation",
+      "state": "historical-publication"
+    },
+    {
+      "id": "foreign-scope",
+      "case": "delegation",
+      "state": "foreign-scope"
+    }
+  ]
+}

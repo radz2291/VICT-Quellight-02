@@ -1,0 +1,29 @@
+{
+  "scope": {
+    "actorId": "synthetic-cedar-owner",
+    "roomId": "synthetic-cedar-verified-outcome",
+    "conversationId": "thread-verified-outcome"
+  },
+  "messages": [
+    {
+      "nativeId": "verified-outcome-turn-1-native-user",
+      "public": {
+        "id": "verified-outcome-turn-1:user",
+        "turnId": "verified-outcome-turn-1",
+        "role": "user",
+        "text": "Review the acceptance-run artifact: retry requests R1 and R2 repeat intent INT-1, and the reopened comment should remain on cut v1.",
+        "at": "2026-11-28T03:00:00.000Z"
+      }
+    },
+    {
+      "nativeId": "verified-outcome-turn-1-native-assistant",
+      "public": {
+        "id": "verified-outcome-turn-1:assistant",
+        "turnId": "verified-outcome-turn-1",
+        "role": "assistant",
+        "text": "I expect both checks to pass, but the acceptance-run artifact determines the result.",
+        "at": "2026-11-28T03:00:01.000Z"
+      }
+    }
+  ]
+}

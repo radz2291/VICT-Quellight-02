@@ -1,0 +1,103 @@
+{
+  "delegation": [
+    {
+      "key": "review-version",
+      "claim": "Keep each comment attached to the reviewed version.",
+      "role": "user",
+      "authority": "owner-requirement",
+      "quote": "must keep each comment attached to the reviewed version",
+      "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "retry-delegated",
+      "claim": "The owner delegates routine retry design.",
+      "role": "user",
+      "authority": "owner-delegation",
+      "quote": "Decide routine retries yourself.",
+      "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "visibility-reserved",
+      "claim": "The owner retains the decision about unpublished visibility.",
+      "role": "user",
+      "authority": "owner-reservation",
+      "quote": "I decide who sees unpublished cuts.",
+      "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "correction": [
+    {
+      "key": "visibility-fixed",
+      "claim": "The owner chose internal-only visibility for unpublished cuts.",
+      "role": "user",
+      "authority": "owner-decision",
+      "quote": "I chose internal-only for unpublished cuts.",
+      "sourceId": "correction-turn-1:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "retain-comments",
+      "claim": "Authorized editors must retain access to prior reviewer comments.",
+      "role": "user",
+      "authority": "owner-requirement",
+      "quote": "Keep prior reviewer comments visible to authorized editors.",
+      "sourceId": "correction-turn-1:user",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "greeting": [],
+  "contradiction": [
+    {
+      "key": "friday-exception",
+      "claim": "Only Alex may see the unpublished cut at Friday’s private session.",
+      "role": "user",
+      "authority": "owner-exception",
+      "quote": "Only Alex may see the unreleased cut at Friday’s private session.",
+      "sourceId": "contradiction-turn-1:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "current-internal",
+      "claim": "Existing unpublished links stay internal pending a decision.",
+      "role": "user",
+      "authority": "owner-requirement",
+      "quote": "existing unpublished links stay internal pending my decision.",
+      "sourceId": "contradiction-turn-2:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "permanent-reserved",
+      "claim": "The permanent review policy remains undecided.",
+      "role": "user",
+      "authority": "owner-reservation",
+      "quote": "I haven’t chosen the permanent review policy.",
+      "sourceId": "contradiction-turn-1:user",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "verified-outcome": [
+    {
+      "key": "retry-one-comment",
+      "claim": "The duplicate submissions resolved to one logical comment in the fixture artifact.",
+      "role": "user",
+      "authority": "independent-artifact-verification",
+      "quote": "retry requests R1 and R2 repeat intent INT-1",
+      "check": "retry-one-comment",
+      "sourceId": "verified-outcome-turn-1:user",
+      "uncertainty": "confirmed"
+    },
+    {
+      "key": "reopen-wrong-version",
+      "claim": "The reopened comment returned cut v2. The expected cut was v1.",
+      "role": "user",
+      "authority": "independent-artifact-verification",
+      "quote": "the reopened comment should remain on cut v1.",
+      "check": "reopen-wrong-version",
+      "sourceId": "verified-outcome-turn-1:user",
+      "uncertainty": "confirmed"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "caseId": "verified-outcome",
+  "submissions": [
+    {
+      "requestId": "R1",
+      "intentId": "INT-1",
+      "cutVersion": "v1",
+      "returnedCommentId": "COMMENT-1"
+    },
+    {
+      "requestId": "R2",
+      "intentId": "INT-1",
+      "cutVersion": "v1",
+      "returnedCommentId": "COMMENT-1"
+    }
+  ],
+  "storedComments": [
+    {
+      "id": "COMMENT-1",
+      "intentId": "INT-1",
+      "cutVersion": "v1"
+    }
+  ],
+  "reopenResults": [
+    {
+      "commentId": "COMMENT-1",
+      "renderedCutVersion": "v2"
+    }
+  ]
+}

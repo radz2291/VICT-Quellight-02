@@ -1,0 +1,121 @@
+{
+  "actorId": "cb7d8b40-872f-402a-8f12-32ef6ea86087",
+  "roomId": "5a389fc6-64e9-4165-bc27-7dc392975f06",
+  "conversationId": "be9fa0e9-a02d-4522-b9c2-dabfde20b759",
+  "label": "cold",
+  "turnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+  "input": "The fictional Cedar Cut review portal must keep each comment attached to the reviewed version while we prepare the next. Decide routine retries yourself. I decide who sees unpublished cuts.",
+  "reply": "Keep comments on their version. I recommend an idempotent retry key for routine recovery. You decide who can see unpublished cuts.",
+  "reportedStatus": "completed",
+  "admittedMs": 808.27,
+  "foregroundMs": 1803.64,
+  "firstObservedEventMs": 1586.58,
+  "postgresWire": {
+    "sent": 193488,
+    "received": 160416,
+    "connections": 2
+  },
+  "provableSourceCount": 2,
+  "sourceIds": [
+    "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+    "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:assistant"
+  ],
+  "queued": {
+    "id": "5523ad19-c64e-4496-a521-6268d8035872",
+    "job_key": "0dcb5558468e8c7538c277ef31be97e4d67ee851424814f5d2ee6453586d3545",
+    "created_at": "2026-11-27T17:11:46.690Z",
+    "source_revision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+    "configuration_revision": "8b5e0437f6acab48c79634dbefa446c72ca59691271fae0f474419165474f8dd",
+    "authority_revision": "0",
+    "state": "queued"
+  },
+  "sourceMessages": [
+    {
+      "id": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "turnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+      "role": "user",
+      "text": "The fictional Cedar Cut review portal must keep each comment attached to the reviewed version while we prepare the next. Decide routine retries yourself. I decide who sees unpublished cuts.",
+      "at": "2026-11-27T17:11:45.584Z"
+    },
+    {
+      "id": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:assistant",
+      "turnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+      "role": "assistant",
+      "text": "Keep comments on their version. I recommend an idempotent retry key for routine recovery. You decide who can see unpublished cuts.",
+      "at": "2026-11-27T17:11:46.665Z"
+    }
+  ],
+  "maintenance": {
+    "handled": 1,
+    "busy": false,
+    "wallMs": 1384.44,
+    "postgresWire": {
+      "sent": 195556,
+      "received": 190880,
+      "connections": 2
+    }
+  },
+  "settledJob": {
+    "state": "completed",
+    "attempts": 1,
+    "failure_code": null,
+    "updated_at": "2026-11-27T17:11:48.304Z",
+    "operation_id": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+    "native_status": "completed",
+    "native_config": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd",
+    "native_source_digest": "7659d074c2eafc9a18efb97468867495755839cbb5394255c563601da30e5f13",
+    "result": {
+      "observed": true,
+      "snapshot": {
+        "current": {
+          "id": "082e69a2-03ad-4082-82ff-f435bb2795b7",
+          "updatedAt": "2026-11-27T17:11:48.037Z",
+          "generation": 0,
+          "observations": "<observation-group id=\"9696fda6a1484dd6\" range=\"e95fadeb-d348-440e-b598-1fb10e006e00:13a0e9fd-98e9-43fd-a2ab-fc418dd913b8\">\n- Cedar Cut comments stay attached to the reviewed version.\n- The owner delegates routine retry reliability and has selected internal-only unpublished cuts.\n</observation-group>",
+          "lastObservedAt": "2026-11-27T17:11:46.335Z",
+          "bufferedObservations": [],
+          "observationTokenCount": 80
+        },
+        "history": [
+          {
+            "id": "082e69a2-03ad-4082-82ff-f435bb2795b7",
+            "updatedAt": "2026-11-27T17:11:48.037Z",
+            "generation": 0,
+            "observations": "<observation-group id=\"9696fda6a1484dd6\" range=\"e95fadeb-d348-440e-b598-1fb10e006e00:13a0e9fd-98e9-43fd-a2ab-fc418dd913b8\">\n- Cedar Cut comments stay attached to the reviewed version.\n- The owner delegates routine retry reliability and has selected internal-only unpublished cuts.\n</observation-group>",
+            "lastObservedAt": "2026-11-27T17:11:46.335Z",
+            "bufferedObservations": [],
+            "observationTokenCount": 80
+          }
+        ],
+        "resourceId": "vict-actor-cb7d8b40-872f-402a-8f12-32ef6ea86087",
+        "workingMemory": null,
+        "conversationId": "be9fa0e9-a02d-4522-b9c2-dabfde20b759",
+        "authorityRevision": "0",
+        "configurationRevision": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd",
+        "quarantinedMessageIds": [],
+        "workingMemoryOverride": null
+      },
+      "reflected": false,
+      "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+      "sourceRevision": "7659d074c2eafc9a18efb97468867495755839cbb5394255c563601da30e5f13",
+      "configurationRevision": "1c084b01c6e72964cfb39204b8b26a6e486adbefa458f4a0de0d8614b4e289dd"
+    }
+  },
+  "jobEvents": [
+    {
+      "state": "queued",
+      "at": "2026-11-27T17:11:46.665Z",
+      "code": null
+    },
+    {
+      "state": "running",
+      "at": "2026-11-27T17:11:47.048Z",
+      "code": null
+    },
+    {
+      "state": "completed",
+      "at": "2026-11-27T17:11:48.304Z",
+      "code": null
+    }
+  ]
+}

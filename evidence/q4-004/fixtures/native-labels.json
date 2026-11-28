@@ -1,0 +1,78 @@
+{
+  "delegation": [
+    {
+      "key": "review-version",
+      "nativeSpan": "Cedar Cut comments stay attached to the reviewed version.",
+      "status": "attributable",
+      "reason": "The owner explicitly requires version-bound comments."
+    },
+    {
+      "key": "retry-delegated",
+      "nativeSpan": "The owner delegates routine retry reliability",
+      "status": "attributable",
+      "reason": "The owner delegates routine retry decisions."
+    },
+    {
+      "key": "visibility-selected",
+      "nativeSpan": "has selected internal-only unpublished cuts.",
+      "status": "unsupported",
+      "reason": "The original user and assistant reserve the decision. No access policy has been chosen in these sources."
+    }
+  ],
+  "correction": [
+    {
+      "key": "visibility-fixed",
+      "nativeSpan": "Internal-only visibility is now approved for unpublished cuts.",
+      "status": "attributable",
+      "reason": "The current owner explicitly chose internal-only."
+    },
+    {
+      "key": "delete-comments",
+      "nativeSpan": "All historical comments can be deleted.",
+      "status": "unsupported",
+      "reason": "The owner asked to keep prior reviewer comments visible."
+    }
+  ],
+  "greeting": [
+    {
+      "key": "release-approval",
+      "nativeSpan": "The owner is ready to approve release.",
+      "status": "unsupported",
+      "reason": "The exchange contains only a greeting."
+    }
+  ],
+  "contradiction": [
+    {
+      "key": "friday-exception",
+      "nativeSpan": "Alex may view the unpublished cut during Friday’s private session.",
+      "status": "attributable",
+      "reason": "The bound time, actor and exception are present in the first user source."
+    },
+    {
+      "key": "partner-default",
+      "nativeSpan": "Partner access may become the default.",
+      "status": "ambiguous",
+      "reason": "A one-time exception is compatible with several future policies. The owner left the permanent policy open."
+    },
+    {
+      "key": "public-future",
+      "nativeSpan": "Future links are public.",
+      "status": "unsupported",
+      "reason": "The assistant suggested broader access, but the owner corrected that suggestion and retained authority."
+    }
+  ],
+  "verified-outcome": [
+    {
+      "key": "retry-one-comment",
+      "nativeSpan": "The duplicate submission kept one logical comment.",
+      "status": "attributable",
+      "reason": "The independent check resolves both requests for the same intent to the same stored comment."
+    },
+    {
+      "key": "outcome-release",
+      "nativeSpan": "All checks passed and release is approved.",
+      "status": "unsupported",
+      "reason": "The reopened comment returned the wrong cut. Neither source grants release approval."
+    }
+  ]
+}

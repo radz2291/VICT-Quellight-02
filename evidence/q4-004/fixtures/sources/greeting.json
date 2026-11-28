@@ -1,0 +1,29 @@
+{
+  "scope": {
+    "actorId": "synthetic-cedar-owner",
+    "roomId": "synthetic-cedar-greeting",
+    "conversationId": "thread-greeting"
+  },
+  "messages": [
+    {
+      "nativeId": "greeting-turn-1-native-user",
+      "public": {
+        "id": "greeting-turn-1:user",
+        "turnId": "greeting-turn-1",
+        "role": "user",
+        "text": "Hi.",
+        "at": "2026-11-28T03:00:00.000Z"
+      }
+    },
+    {
+      "nativeId": "greeting-turn-1-native-assistant",
+      "public": {
+        "id": "greeting-turn-1:assistant",
+        "turnId": "greeting-turn-1",
+        "role": "assistant",
+        "text": "Hi.",
+        "at": "2026-11-28T03:00:01.000Z"
+      }
+    }
+  ]
+}

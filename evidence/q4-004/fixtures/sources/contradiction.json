@@ -1,0 +1,49 @@
+{
+  "scope": {
+    "actorId": "synthetic-cedar-owner",
+    "roomId": "synthetic-cedar-contradiction",
+    "conversationId": "thread-contradiction"
+  },
+  "messages": [
+    {
+      "nativeId": "contradiction-turn-1-native-user",
+      "public": {
+        "id": "contradiction-turn-1:user",
+        "turnId": "contradiction-turn-1",
+        "role": "user",
+        "text": "Only Alex may see the unreleased cut at Friday’s private session. I haven’t chosen the permanent review policy.",
+        "at": "2026-11-28T03:00:00.000Z"
+      }
+    },
+    {
+      "nativeId": "contradiction-turn-1-native-assistant",
+      "public": {
+        "id": "contradiction-turn-1:assistant",
+        "turnId": "contradiction-turn-1",
+        "role": "assistant",
+        "text": "Sounds like everyone can review all future cuts.",
+        "at": "2026-11-28T03:00:01.000Z"
+      }
+    },
+    {
+      "nativeId": "contradiction-turn-2-native-user",
+      "public": {
+        "id": "contradiction-turn-2:user",
+        "turnId": "contradiction-turn-2",
+        "role": "user",
+        "text": "No. Friday is an exception; existing unpublished links stay internal pending my decision.",
+        "at": "2026-11-28T03:00:02.000Z"
+      }
+    },
+    {
+      "nativeId": "contradiction-turn-2-native-assistant",
+      "public": {
+        "id": "contradiction-turn-2:assistant",
+        "turnId": "contradiction-turn-2",
+        "role": "assistant",
+        "text": "Friday remains the Alex-only exception.",
+        "at": "2026-11-28T03:00:03.000Z"
+      }
+    }
+  ]
+}
