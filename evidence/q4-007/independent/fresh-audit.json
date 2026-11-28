@@ -1,0 +1,191 @@
+{
+  "candidateCaptureSha256": "66448070ca445dc64a62338a1f9e04a429c5da024b57dbe70f42ee58d5235ed8",
+  "baselineCaptureSha256": "63e8bf378ded8bf8d23014805827d84b1d1971a6a3fc4518e7c85c3be9a49ffb",
+  "fixtureSha256": "d038fa9710703434ef123243a76f5efe6e4e7edf749574ee7f26dc207b289fee",
+  "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "baselineOuterIntervalCount": 10,
+  "baselineOuterAcceptedIds": [],
+  "omittedMiddleTags": [
+    "SYN_U04",
+    "SYN_A04"
+  ],
+  "candidateMembers": [
+    {
+      "label": "open",
+      "groupId": "15652ac9e9813228",
+      "operationId": "memory-job:93eb96e3-30f0-4189-bac5-0ac51e341366",
+      "authority": "0",
+      "sourceTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ],
+      "orderedNativeIds": [
+        "4bda9fc4-668b-47dc-b283-9210141ae3a5",
+        "e156ef55-76cc-447b-99fb-3eb3028eb264",
+        "d86019cc-e25d-4e17-9bcd-1118b20f903f",
+        "7716cf9c-0cc2-41ff-b96a-58d437d74c53",
+        "a547700e-585a-4491-83c6-312fc15215e6",
+        "2bbf8989-d3de-43de-8e7a-5276049a83da"
+      ],
+      "basis": "observe-input",
+      "receiptId": "a85e842b-4163-405f-abe3-5a0cf901d4ad",
+      "receiptArgumentDigest": "a7b1130853a357d476aad7b2ca85847c4c522077d5fdbb60ca6a13d277f4054e"
+    },
+    {
+      "label": "middle",
+      "groupId": "f1a2937f707b33b9",
+      "operationId": "memory-job:c4e90619-300c-4bc2-b3cb-d61134cbd7ba",
+      "authority": "0",
+      "sourceTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "orderedNativeIds": [
+        "7ee852c0-58b7-46d9-82dd-c842e2e4bb19",
+        "415b9607-73a0-4ce7-92ae-119b360c669b"
+      ],
+      "basis": "observe-input",
+      "receiptId": "94665108-58c4-4093-a946-dee2efbb46ac",
+      "receiptArgumentDigest": "6e069287cb4943dfb49780d7ff796256f94d4b880cd930cd55c987ba435202de"
+    },
+    {
+      "label": "close",
+      "groupId": "ea37d5b38e46b492",
+      "operationId": "memory-job:eb7ee7dd-6e88-471d-bf50-c85a8543cd6d",
+      "authority": "0",
+      "sourceTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "orderedNativeIds": [
+        "43588ee7-af47-485b-b7d4-c9b586325ef8",
+        "fe5ddce3-bd57-48e5-804f-2e6ea68c5ac4"
+      ],
+      "basis": "observe-input",
+      "receiptId": "36b70127-9aab-4370-9a93-1332aa681b53",
+      "receiptArgumentDigest": "f3478d7621a4f966f4d42042eb202b4c690432731c587bd600954cb884aee8f8"
+    },
+    {
+      "label": "rebuilt",
+      "groupId": "0b29cc1cb494735a",
+      "operationId": "memory-job:e095f4b5-eb2b-4911-a921-a4217d435261",
+      "authority": "care:243fa489e4cd6c50ad543e0e98beee048d2ac78e955667980c8ee881391a251a",
+      "sourceTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "orderedNativeIds": [
+        "4bda9fc4-668b-47dc-b283-9210141ae3a5",
+        "a547700e-585a-4491-83c6-312fc15215e6",
+        "7ee852c0-58b7-46d9-82dd-c842e2e4bb19",
+        "43588ee7-af47-485b-b7d4-c9b586325ef8"
+      ],
+      "basis": "observe-input",
+      "receiptId": "bf98f189-f77d-4011-bb83-2b27aa8b70a4",
+      "receiptArgumentDigest": "7325df2ffc49b5890c966e50bed1f81c8c4caf64ad954f94aeba656c50edd197"
+    },
+    {
+      "label": "outer-combination",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:24205fb8-ca9f-436e-bfc0-af42e7eb7578",
+      "authority": "0",
+      "sourceTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03",
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "orderedNativeIds": [
+        "4bda9fc4-668b-47dc-b283-9210141ae3a5",
+        "e156ef55-76cc-447b-99fb-3eb3028eb264",
+        "d86019cc-e25d-4e17-9bcd-1118b20f903f",
+        "7716cf9c-0cc2-41ff-b96a-58d437d74c53",
+        "a547700e-585a-4491-83c6-312fc15215e6",
+        "2bbf8989-d3de-43de-8e7a-5276049a83da",
+        "43588ee7-af47-485b-b7d4-c9b586325ef8",
+        "fe5ddce3-bd57-48e5-804f-2e6ea68c5ac4"
+      ],
+      "basis": "retained-parents",
+      "receiptId": "d1ea4c89-8efd-4001-9884-5b670ee663fe",
+      "receiptArgumentDigest": "75a53c56abea4a9acb6012d3849b2ecba8a79abb83c95797c1d4cf8ae5614a02"
+    },
+    {
+      "label": "rebuilt-reflection",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:d605b82c-9302-4927-83fb-3b65b14ec367",
+      "authority": "care:243fa489e4cd6c50ad543e0e98beee048d2ac78e955667980c8ee881391a251a",
+      "sourceTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "orderedNativeIds": [
+        "4bda9fc4-668b-47dc-b283-9210141ae3a5",
+        "a547700e-585a-4491-83c6-312fc15215e6",
+        "7ee852c0-58b7-46d9-82dd-c842e2e4bb19",
+        "43588ee7-af47-485b-b7d4-c9b586325ef8"
+      ],
+      "basis": "retained-parents",
+      "receiptId": "b32a0c4f-038d-4754-b115-1aea50bf741a",
+      "receiptArgumentDigest": "0a2c18c65eaf6b90140f04d671596df0a58185f9c31e0af614447cc51cefb80c"
+    }
+  ],
+  "stale": [
+    {
+      "label": "old-observe",
+      "operationId": "memory-job:93eb96e3-30f0-4189-bac5-0ac51e341366",
+      "acceptedIds": []
+    },
+    {
+      "label": "old-reflect",
+      "operationId": "memory-job:24205fb8-ca9f-436e-bfc0-af42e7eb7578",
+      "acceptedIds": []
+    }
+  ],
+  "forgottenId": "d86019cc-e25d-4e17-9bcd-1118b20f903f",
+  "currentAuthority": "care:243fa489e4cd6c50ad543e0e98beee048d2ac78e955667980c8ee881391a251a",
+  "controls": {
+    "durableReopened": "memory-job:d605b82c-9302-4927-83fb-3b65b14ec367",
+    "legacy": "unavailable",
+    "preparedMembershipMasked": true,
+    "ambiguous": "unavailable",
+    "extraDeterministicReflectCalls": 1
+  },
+  "baselineModelCalls": {
+    "chat": 5,
+    "observe": 4,
+    "reflect": 2
+  },
+  "candidateModelCalls": {
+    "chat": 5,
+    "observe": 4,
+    "reflect": 2
+  },
+  "baselineReadTotals": {
+    "attempts": 8,
+    "namedReads": 44,
+    "namedBytes": 130408,
+    "sent": 112411,
+    "received": 234311
+  },
+  "candidateReadTotals": {
+    "attempts": 8,
+    "namedReads": 38,
+    "namedBytes": 118863,
+    "sent": 64474,
+    "received": 169896
+  },
+  "membershipOnlyJsonBytes": 2863
+}

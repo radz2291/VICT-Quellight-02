@@ -1,0 +1,4468 @@
+{
+  "schema": "quellight.q4-006.installed-replay@1",
+  "status": "passed",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "lockSha": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "fixtureCommit": "5166198b4a39a59701455aa1532deb3243c34059",
+  "node": "v22.23.5",
+  "fixtureSha256": "d038fa9710703434ef123243a76f5efe6e4e7edf749574ee7f26dc207b289fee",
+  "archives": [
+    {
+      "name": "@victframework/ui-media-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "234e78dd8f615622097b5166e5bd7f7646574d3663d3607b390d26ac8be11f22"
+    },
+    {
+      "name": "@victframework/ui-patterns-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "778cc1ab1a0b6b8f8135db80232fb26abbb34d7e4d1c8bb786c81794b2d5ee4b"
+    },
+    {
+      "name": "@victframework/application",
+      "version": "0.4.0-rc.1",
+      "sha256": "ea0fdde59f165379154517f4be4ca99e3c8790033862e4a56f6df5fdb09b5db7"
+    },
+    {
+      "name": "@victframework/contracts",
+      "version": "0.4.0-rc.1",
+      "sha256": "5fa012bb69ba3a278da35911d95ee079ac3a697a4c12554c298f9add2b7514e2"
+    },
+    {
+      "name": "@victframework/sdk",
+      "version": "0.4.0-rc.1",
+      "sha256": "c37e97319a52463c9b422a3de2870247beaee97b811fe378b3a4ee8e00e2ce7a"
+    },
+    {
+      "name": "@victframework/ui",
+      "version": "0.4.0-rc.1",
+      "sha256": "15dd5f5da2a38b6cbf0bc56677c7f6ccae190c4c7a5029d8cc7c8994263a7cb2"
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "74df4aac5bed13a556f684373e2d4d8ce021521db24edddfe22a414e46be2ac8"
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "f578759a74fb2ac509e52850d27292871115de3103acbe9f7b6fc7d0ef606336"
+    },
+    {
+      "name": "@victframework/kernel",
+      "version": "0.4.0-rc.1",
+      "sha256": "a865551c64cb25b9314862e1a0afa19d5b8f61ebdb817dcb55f68085a431b5a6"
+    },
+    {
+      "name": "@victframework/control",
+      "version": "0.4.0-rc.1",
+      "sha256": "2f42f94df4c2c72ba84e6ee0d9bb59eb3feee8e0766ea248f00e81afb1acb82a"
+    },
+    {
+      "name": "@victframework/runtime",
+      "version": "0.4.0-rc.1",
+      "sha256": "e94ee682d7f57efbbc9722818f2ab6059ad6a9bb3f9c8229e73c24197b0abb3f"
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "version": "0.4.0-rc.1+vhost013",
+      "sha256": "cbe8615cba56511f6d16b303be9ee9258db97f0ccb1c0a13e54ede0bde989210"
+    },
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1",
+      "sha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c"
+    },
+    {
+      "name": "@victframework/hosted",
+      "version": "0.4.0-rc.1",
+      "sha256": "4aa6581aa7d26f067ddb3ec28dc8f7fd67bb34467e08132132972ed25c880de4"
+    }
+  ],
+  "scope": {
+    "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+    "roomId": "1c311cf2-1b81-4ade-834d-5b349b6ecac5",
+    "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600"
+  },
+  "settlements": [
+    {
+      "label": "01",
+      "turnId": "quellight:3d6444ac-0036-4e41-b9d0-f8ea416a5dab",
+      "assistantId": "quellight:3d6444ac-0036-4e41-b9d0-f8ea416a5dab:assistant",
+      "status": "completed",
+      "projectionSettled": true
+    },
+    {
+      "label": "02",
+      "turnId": "quellight:fc187f6e-3e1c-4fe1-8257-a985ed3a433e",
+      "assistantId": "quellight:fc187f6e-3e1c-4fe1-8257-a985ed3a433e:assistant",
+      "status": "completed",
+      "projectionSettled": true
+    },
+    {
+      "label": "03",
+      "turnId": "quellight:cbbc8e5a-39ad-4297-b257-75491f03698c",
+      "assistantId": "quellight:cbbc8e5a-39ad-4297-b257-75491f03698c:assistant",
+      "status": "completed",
+      "projectionSettled": true
+    },
+    {
+      "label": "04",
+      "turnId": "quellight:dfe5dff7-d06c-4c5d-9a39-62f1d54dec52",
+      "assistantId": "quellight:dfe5dff7-d06c-4c5d-9a39-62f1d54dec52:assistant",
+      "status": "completed",
+      "projectionSettled": true
+    },
+    {
+      "label": "05",
+      "turnId": "quellight:4ed11192-9db2-437e-b29e-7b7e62616fc5",
+      "assistantId": "quellight:4ed11192-9db2-437e-b29e-7b7e62616fc5:assistant",
+      "status": "completed",
+      "projectionSettled": true
+    }
+  ],
+  "publications": [
+    {
+      "label": "open",
+      "kind": "observe",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "1b10d109b32dc1362ca2ac9303dd3426035984019698f07fcc1075f2b26a6c59",
+        "source_digest": "dc33379c19683bbf8ba1ef89c4ed9e8ced68e50c872ad7cb207239a78ebf4020",
+        "authority_revision": "0",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:51.775Z",
+              "updatedAt": "2026-11-28T03:55:52.121Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:50.159Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+                "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+                "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "72732553-ec0a-49c3-b917-a10fc669ae74"
+              ],
+              "totalTokensObserved": 58,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 58,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "updatedAt": "2026-11-28T03:55:52.121Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:50.159Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 58
+            },
+            "history": [
+              {
+                "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+                "updatedAt": "2026-11-28T03:55:52.121Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:50.159Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 58
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "0",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+          "sourceRevision": "dc33379c19683bbf8ba1ef89c4ed9e8ced68e50c872ad7cb207239a78ebf4020",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:55:51.660Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T03:55:51.785Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T03:55:52.128Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T03:55:52.187Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:55:52.295Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "34f8f7fd2ba504f1",
+        "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74",
+        "kind": "observe",
+        "body": "- The harbor opening inspection covers lamps and temporary passes."
+      },
+      "delivery": {
+        "handled": 3,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "3",
+          "job_id": "d05cbd92-19e4-446f-8b1c-d7e66a137274",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:55:50.288Z"
+        },
+        {
+          "id": "8",
+          "job_id": "d05cbd92-19e4-446f-8b1c-d7e66a137274",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:55:51.162Z"
+        },
+        {
+          "id": "9",
+          "job_id": "d05cbd92-19e4-446f-8b1c-d7e66a137274",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:55:52.347Z"
+        }
+      ]
+    },
+    {
+      "label": "middle",
+      "kind": "observe",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "1bd8fbbe5b69c3b3659609b3c9c4200c5a48022d51e5f16572a66408eb9c981f",
+        "source_digest": "71f4ae73c52c089d4441fe9be000e5915e343bfa4a7a6ca3917bb44d84528b0e",
+        "authority_revision": "0",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:51.775Z",
+              "updatedAt": "2026-11-28T03:55:54.786Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:53.454Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+                "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+                "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "72732553-ec0a-49c3-b917-a10fc669ae74",
+                "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+                "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+              ],
+              "totalTokensObserved": 192,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 134,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "updatedAt": "2026-11-28T03:55:54.786Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:53.454Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 134
+            },
+            "history": [
+              {
+                "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+                "updatedAt": "2026-11-28T03:55:54.786Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:53.454Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 134
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "0",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+          "sourceRevision": "71f4ae73c52c089d4441fe9be000e5915e343bfa4a7a6ca3917bb44d84528b0e",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:55:54.641Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T03:55:54.677Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T03:55:54.793Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T03:55:54.851Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:55:54.929Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "28e59b810d662f52",
+        "range": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "kind": "observe",
+        "body": "- The printed map names the north entrance."
+      },
+      "delivery": {
+        "handled": 1,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "10",
+          "job_id": "30d327ed-b983-4fe0-ab58-7a3ae773645a",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:55:53.637Z"
+        },
+        {
+          "id": "11",
+          "job_id": "30d327ed-b983-4fe0-ab58-7a3ae773645a",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:55:53.970Z"
+        },
+        {
+          "id": "12",
+          "job_id": "30d327ed-b983-4fe0-ab58-7a3ae773645a",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:55:54.986Z"
+        }
+      ]
+    },
+    {
+      "label": "close",
+      "kind": "observe",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "1a22bca6aa6210a340be157851a93fe034e99b57110139f9ddee6b2a25e245cf",
+        "source_digest": "c73a11b4eec297a6f4fe92848776bbafa86f6da3ef4caa50dcb5fb55a4d9194a",
+        "authority_revision": "0",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:51.775Z",
+              "updatedAt": "2026-11-28T03:55:57.402Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.896Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n<observation-group id=\"fb1f7ee383d8f153\" range=\"1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292\">\n- The final handoff is at the eastern pier.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+                "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+                "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "72732553-ec0a-49c3-b917-a10fc669ae74",
+                "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+                "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+                "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+                "e4c91868-0df5-43e5-8381-81efcf373292"
+              ],
+              "totalTokensObserved": 405,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 213,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "updatedAt": "2026-11-28T03:55:57.402Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n<observation-group id=\"fb1f7ee383d8f153\" range=\"1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292\">\n- The final handoff is at the eastern pier.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:55.896Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 213
+            },
+            "history": [
+              {
+                "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+                "updatedAt": "2026-11-28T03:55:57.402Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n<observation-group id=\"fb1f7ee383d8f153\" range=\"1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292\">\n- The final handoff is at the eastern pier.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.896Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 213
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "0",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+          "sourceRevision": "c73a11b4eec297a6f4fe92848776bbafa86f6da3ef4caa50dcb5fb55a4d9194a",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:55:57.245Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T03:55:57.286Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T03:55:57.406Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T03:55:57.459Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:55:57.531Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "fb1f7ee383d8f153",
+        "range": "1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292",
+        "kind": "observe",
+        "body": "- The final handoff is at the eastern pier."
+      },
+      "delivery": {
+        "handled": 1,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "13",
+          "job_id": "f4063ade-5536-45f2-b3f5-fc675e5edab2",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:55:56.116Z"
+        },
+        {
+          "id": "14",
+          "job_id": "f4063ade-5536-45f2-b3f5-fc675e5edab2",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:55:56.489Z"
+        },
+        {
+          "id": "15",
+          "job_id": "f4063ade-5536-45f2-b3f5-fc675e5edab2",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:55:57.580Z"
+        }
+      ]
+    },
+    {
+      "label": "outer-combination",
+      "kind": "reflect",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "1342c693b0631ec48c09243a1c5d529e784880f33fba36585a1c50dce8fe2cd1",
+        "source_digest": "128a547e593dbee94978f9adcbde19c8a20f4318e424c13e0b1132847110fd01",
+        "authority_revision": "0",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "reflect",
+        "status": "completed",
+        "checkpoint": {
+          "observed": false,
+          "reflected": true,
+          "observations": [
+            {
+              "id": "96c541fc-1418-4dd4-85e8-90cfcc705cff",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:58.605Z",
+              "updatedAt": "2026-11-28T03:55:58.605Z",
+              "originType": "reflection",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.896Z",
+              "generationCount": 1,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292\" kind=\"reflection\">\n- The harbor opening inspection covers lamps and temporary passes.\n- The final handoff is at the eastern pier.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "totalTokensObserved": 405,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 78,
+              "isBufferingObservation": false
+            },
+            {
+              "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:51.775Z",
+              "updatedAt": "2026-11-28T03:55:58.606Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.896Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n<observation-group id=\"fb1f7ee383d8f153\" range=\"1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292\">\n- The final handoff is at the eastern pier.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+                "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+                "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "72732553-ec0a-49c3-b917-a10fc669ae74",
+                "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+                "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+                "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+                "e4c91868-0df5-43e5-8381-81efcf373292"
+              ],
+              "totalTokensObserved": 405,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 213,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": false,
+          "snapshot": {
+            "current": {
+              "id": "96c541fc-1418-4dd4-85e8-90cfcc705cff",
+              "updatedAt": "2026-11-28T03:55:58.605Z",
+              "generation": 1,
+              "observations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292\" kind=\"reflection\">\n- The harbor opening inspection covers lamps and temporary passes.\n- The final handoff is at the eastern pier.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:55.896Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 78
+            },
+            "history": [
+              {
+                "id": "96c541fc-1418-4dd4-85e8-90cfcc705cff",
+                "updatedAt": "2026-11-28T03:55:58.605Z",
+                "generation": 1,
+                "observations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292\" kind=\"reflection\">\n- The harbor opening inspection covers lamps and temporary passes.\n- The final handoff is at the eastern pier.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.896Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 78
+              },
+              {
+                "id": "bb60c009-504d-4dcf-a4b2-c9c52108f8be",
+                "updatedAt": "2026-11-28T03:55:58.606Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"34f8f7fd2ba504f1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74\">\n- The harbor opening inspection covers lamps and temporary passes.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n<observation-group id=\"28e59b810d662f52\" range=\"b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039\">\n- The printed map names the north entrance.\n</observation-group>\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n<observation-group id=\"fb1f7ee383d8f153\" range=\"1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292\">\n- The final handoff is at the eastern pier.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.896Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 213
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "0",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": true,
+          "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+          "sourceRevision": "128a547e593dbee94978f9adcbde19c8a20f4318e424c13e0b1132847110fd01",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:55:58.528Z",
+            "name": "reflect-started"
+          },
+          {
+            "at": "2026-11-28T03:55:58.617Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:55:58.661Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "derived-group-1",
+        "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292",
+        "kind": "reflection",
+        "body": "- The harbor opening inspection covers lamps and temporary passes.\n- The final handoff is at the eastern pier."
+      },
+      "delivery": {
+        "handled": 1,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "16",
+          "job_id": "9ad230ff-ccf1-423b-9331-15affeec9a8f",
+          "kind": "reflect",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:55:57.838Z"
+        },
+        {
+          "id": "17",
+          "job_id": "9ad230ff-ccf1-423b-9331-15affeec9a8f",
+          "kind": "reflect",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:55:57.932Z"
+        },
+        {
+          "id": "18",
+          "job_id": "9ad230ff-ccf1-423b-9331-15affeec9a8f",
+          "kind": "reflect",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:55:58.691Z"
+        }
+      ]
+    },
+    {
+      "label": "rebuilt",
+      "kind": "observe",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "2d0fb5f33534b5c8c02e3e0276730bac35d3a910d325953833f3a26be4df750e",
+        "source_digest": "8cca1edd7fb717bdfe9bd4fa80612dc403b9def985c544b8210a00e3982d0733",
+        "authority_revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "3cca90b1-58a9-4285-bb9d-bd4f11863f73",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:59.947Z",
+              "updatedAt": "2026-11-28T03:56:00.027Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.813Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"b4d77ee522003e00\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+                "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+              ],
+              "totalTokensObserved": 58,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 58,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "3cca90b1-58a9-4285-bb9d-bd4f11863f73",
+              "updatedAt": "2026-11-28T03:56:00.027Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"b4d77ee522003e00\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:55.813Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 58
+            },
+            "history": [
+              {
+                "id": "3cca90b1-58a9-4285-bb9d-bd4f11863f73",
+                "updatedAt": "2026-11-28T03:56:00.027Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"b4d77ee522003e00\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.813Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 58
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [
+              "72732553-ec0a-49c3-b917-a10fc669ae74",
+              "e4c91868-0df5-43e5-8381-81efcf373292",
+              "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+              "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+              "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+            ],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+          "sourceRevision": "8cca1edd7fb717bdfe9bd4fa80612dc403b9def985c544b8210a00e3982d0733",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:55:59.920Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T03:55:59.949Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T03:56:00.029Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T03:56:00.065Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:56:00.111Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "b4d77ee522003e00",
+        "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "kind": "observe",
+        "body": "- The rebuilt record retains the eligible harbor instructions."
+      },
+      "delivery": {
+        "handled": 2,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "20",
+          "job_id": "234cdb9e-8f98-4131-91e4-5a52d3610e32",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:55:59.058Z"
+        },
+        {
+          "id": "23",
+          "job_id": "234cdb9e-8f98-4131-91e4-5a52d3610e32",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:55:59.561Z"
+        },
+        {
+          "id": "24",
+          "job_id": "234cdb9e-8f98-4131-91e4-5a52d3610e32",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:56:00.141Z"
+        }
+      ]
+    },
+    {
+      "label": "rebuilt-reflection",
+      "kind": "reflect",
+      "operation": {
+        "resource_id": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+        "operation_id": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+        "thread_id": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "request_digest": "55d3d5dbf5262923b2ffb3039bd32fb6d378e603262fd3c11e308f456919589b",
+        "source_digest": "7303444139c8b102677c8a88cb6b85c951aeb9c23513fc7de84bfb2a804612fa",
+        "authority_revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "configuration_revision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "kind": "reflect",
+        "status": "completed",
+        "checkpoint": {
+          "observed": false,
+          "reflected": true,
+          "observations": [
+            {
+              "id": "a82fe4b5-0f06-400b-8130-d27e9524cc50",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:56:00.878Z",
+              "updatedAt": "2026-11-28T03:56:00.878Z",
+              "originType": "reflection",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.813Z",
+              "generationCount": 1,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\" kind=\"reflection\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "totalTokensObserved": 58,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 66,
+              "isBufferingObservation": false
+            },
+            {
+              "id": "3cca90b1-58a9-4285-bb9d-bd4f11863f73",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+              "createdAt": "2026-11-28T03:55:59.947Z",
+              "updatedAt": "2026-11-28T03:56:00.879Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T03:55:55.813Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"b4d77ee522003e00\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+                "fb4a0219-64de-43f8-81a9-e30636910448",
+                "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+                "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+              ],
+              "totalTokensObserved": 58,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 58,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": false,
+          "snapshot": {
+            "current": {
+              "id": "a82fe4b5-0f06-400b-8130-d27e9524cc50",
+              "updatedAt": "2026-11-28T03:56:00.878Z",
+              "generation": 1,
+              "observations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\" kind=\"reflection\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T03:55:55.813Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 66
+            },
+            "history": [
+              {
+                "id": "a82fe4b5-0f06-400b-8130-d27e9524cc50",
+                "updatedAt": "2026-11-28T03:56:00.878Z",
+                "generation": 1,
+                "observations": "<observation-group id=\"derived-group-1\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\" kind=\"reflection\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.813Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 66
+              },
+              {
+                "id": "3cca90b1-58a9-4285-bb9d-bd4f11863f73",
+                "updatedAt": "2026-11-28T03:56:00.879Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"b4d77ee522003e00\" range=\"e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038\">\n- The rebuilt record retains the eligible harbor instructions.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T03:55:55.813Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 58
+              }
+            ],
+            "resourceId": "vict-actor-662e98a2-a023-42b0-82db-1bac7febd396",
+            "workingMemory": null,
+            "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+            "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+            "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+            "quarantinedMessageIds": [
+              "72732553-ec0a-49c3-b917-a10fc669ae74",
+              "e4c91868-0df5-43e5-8381-81efcf373292",
+              "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+              "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+              "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+            ],
+            "workingMemoryOverride": null
+          },
+          "reflected": true,
+          "operationId": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+          "sourceRevision": "7303444139c8b102677c8a88cb6b85c951aeb9c23513fc7de84bfb2a804612fa",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T03:56:00.806Z",
+            "name": "reflect-started"
+          },
+          {
+            "at": "2026-11-28T03:56:00.891Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T03:56:00.942Z",
+            "name": "published"
+          }
+        ]
+      },
+      "group": {
+        "id": "derived-group-1",
+        "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "kind": "reflection",
+        "body": "- The rebuilt record retains the eligible harbor instructions."
+      },
+      "delivery": {
+        "handled": 1,
+        "busy": false
+      },
+      "events": [
+        {
+          "id": "25",
+          "job_id": "2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+          "kind": "reflect",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T03:56:00.302Z"
+        },
+        {
+          "id": "26",
+          "job_id": "2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+          "kind": "reflect",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T03:56:00.375Z"
+        },
+        {
+          "id": "27",
+          "job_id": "2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+          "kind": "reflect",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T03:56:00.981Z"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "role": "chat",
+      "label": "01"
+    },
+    {
+      "role": "chat",
+      "label": "02"
+    },
+    {
+      "role": "chat",
+      "label": "03"
+    },
+    {
+      "role": "observe",
+      "label": "open",
+      "jobId": "d05cbd92-19e4-446f-8b1c-d7e66a137274",
+      "authorityRevision": "0",
+      "promptSection": "## New Message History to Observe\n\n\nNov 28 2026:\nUser (11:55 AM): SYN_U01 Mark the first harbor inspection pass as finished.\nAssistant: SYN_A01 The first harbor inspection pass is recorded.\nUser: SYN_U02 Remove the temporary boat-pass rule when the trial ends.\nAssistant: SYN_A02 The temporary boat-pass rule is marked for review.\nUser: SYN_U03 Keep the spare lamps available for night inspection.\nAssistant: SYN_A03 The spare lamps stay available.",
+      "reply": "<observations>\n- The harbor opening inspection covers lamps and temporary passes.\n</observations>",
+      "tags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ],
+      "orderedSourceIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74"
+      ]
+    },
+    {
+      "role": "chat",
+      "label": "04"
+    },
+    {
+      "role": "observe",
+      "label": "middle",
+      "jobId": "30d327ed-b983-4fe0-ab58-7a3ae773645a",
+      "authorityRevision": "0",
+      "promptSection": "## New Message History to Observe\n\n\nNov 28 2026:\nUser (11:55 AM): SYN_U04 Label the printed map with the north entrance.\nAssistant: SYN_A04 The north entrance label is set.",
+      "reply": "<observations>\n- The printed map names the north entrance.\n</observations>",
+      "tags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "orderedSourceIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ]
+    },
+    {
+      "role": "chat",
+      "label": "05"
+    },
+    {
+      "role": "observe",
+      "label": "close",
+      "jobId": "f4063ade-5536-45f2-b3f5-fc675e5edab2",
+      "authorityRevision": "0",
+      "promptSection": "## New Message History to Observe\n\n\nNov 28 2026:\nUser (11:55 AM): SYN_U05 Keep the final handoff at the eastern pier.\nAssistant: SYN_A05 The handoff stays at the eastern pier.",
+      "reply": "<observations>\n- The final handoff is at the eastern pier.\n</observations>",
+      "tags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "orderedSourceIds": [
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ]
+    },
+    {
+      "role": "reflect",
+      "label": "outer-combination",
+      "jobId": "9ad230ff-ccf1-423b-9331-15affeec9a8f",
+      "authorityRevision": "0",
+      "promptSection": "## OBSERVATIONS TO REFLECT ON\n\n- The harbor opening inspection covers lamps and temporary passes.\n\n--- message boundary (2026-11-28T03:55:53.454Z) ---\n\n- The printed map names the north entrance.\n\n--- message boundary (2026-11-28T03:55:55.896Z) ---\n\n- The final handoff is at the eastern pier.\n",
+      "reply": "<observations>\n## Group outer-combination\n- The harbor opening inspection covers lamps and temporary passes.\n- The final handoff is at the eastern pier.\n</observations>",
+      "inputParentIds": [
+        "34f8f7fd2ba504f1",
+        "28e59b810d662f52",
+        "fb1f7ee383d8f153"
+      ],
+      "copiedParentIds": [
+        "34f8f7fd2ba504f1",
+        "fb1f7ee383d8f153"
+      ],
+      "orderedSourceIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ]
+    },
+    {
+      "role": "observe",
+      "label": "rebuilt",
+      "jobId": "234cdb9e-8f98-4131-91e4-5a52d3610e32",
+      "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+      "promptSection": "## New Message History to Observe\n\n\nNov 28 2026:\nUser (11:55 AM): SYN_U01 Mark the first harbor inspection pass as finished.\nUser: SYN_U03 Keep the spare lamps available for night inspection.\nUser: SYN_U04 Label the printed map with the north entrance.\nUser: SYN_U05 Keep the final handoff at the eastern pier.",
+      "reply": "<observations>\n- The rebuilt record retains the eligible harbor instructions.\n</observations>",
+      "tags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "orderedSourceIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ]
+    },
+    {
+      "role": "reflect",
+      "label": "rebuilt-reflection",
+      "jobId": "2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+      "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+      "promptSection": "## OBSERVATIONS TO REFLECT ON\n\n- The rebuilt record retains the eligible harbor instructions.\n",
+      "reply": "<observations>\n## Group rebuilt-reflection\n- The rebuilt record retains the eligible harbor instructions.\n</observations>",
+      "inputParentIds": [
+        "b4d77ee522003e00"
+      ],
+      "copiedParentIds": [
+        "b4d77ee522003e00"
+      ],
+      "orderedSourceIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ]
+    }
+  ],
+  "inventories": [
+    {
+      "label": "before-open",
+      "authorityRevision": "0",
+      "orderedOriginals": [
+        {
+          "tag": "SYN_U01",
+          "id": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U01 Mark the first harbor inspection pass as finished.",
+          "role": "user",
+          "at": "2026-11-28T03:55:48.357Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A01",
+          "id": "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A01 The first harbor inspection pass is recorded.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:48.466Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U02",
+          "id": "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U02 Remove the temporary boat-pass rule when the trial ends.",
+          "role": "user",
+          "at": "2026-11-28T03:55:49.358Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A02",
+          "id": "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A02 The temporary boat-pass rule is marked for review.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:49.403Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U03",
+          "id": "fb4a0219-64de-43f8-81a9-e30636910448",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U03 Keep the spare lamps available for night inspection.",
+          "role": "user",
+          "at": "2026-11-28T03:55:50.119Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A03",
+          "id": "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A03 The spare lamps stay available.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:50.159Z",
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "label": "before-middle",
+      "authorityRevision": "0",
+      "orderedOriginals": [
+        {
+          "tag": "SYN_U01",
+          "id": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U01 Mark the first harbor inspection pass as finished.",
+          "role": "user",
+          "at": "2026-11-28T03:55:48.357Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A01",
+          "id": "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A01 The first harbor inspection pass is recorded.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:48.466Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U02",
+          "id": "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U02 Remove the temporary boat-pass rule when the trial ends.",
+          "role": "user",
+          "at": "2026-11-28T03:55:49.358Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A02",
+          "id": "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A02 The temporary boat-pass rule is marked for review.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:49.403Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U03",
+          "id": "fb4a0219-64de-43f8-81a9-e30636910448",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U03 Keep the spare lamps available for night inspection.",
+          "role": "user",
+          "at": "2026-11-28T03:55:50.119Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A03",
+          "id": "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A03 The spare lamps stay available.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:50.159Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U04",
+          "id": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U04 Label the printed map with the north entrance.",
+          "role": "user",
+          "at": "2026-11-28T03:55:53.385Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A04",
+          "id": "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A04 The north entrance label is set.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:53.454Z",
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "label": "before-close",
+      "authorityRevision": "0",
+      "orderedOriginals": [
+        {
+          "tag": "SYN_U01",
+          "id": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U01 Mark the first harbor inspection pass as finished.",
+          "role": "user",
+          "at": "2026-11-28T03:55:48.357Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A01",
+          "id": "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A01 The first harbor inspection pass is recorded.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:48.466Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U02",
+          "id": "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U02 Remove the temporary boat-pass rule when the trial ends.",
+          "role": "user",
+          "at": "2026-11-28T03:55:49.358Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A02",
+          "id": "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A02 The temporary boat-pass rule is marked for review.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:49.403Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U03",
+          "id": "fb4a0219-64de-43f8-81a9-e30636910448",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U03 Keep the spare lamps available for night inspection.",
+          "role": "user",
+          "at": "2026-11-28T03:55:50.119Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A03",
+          "id": "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A03 The spare lamps stay available.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:50.159Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U04",
+          "id": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U04 Label the printed map with the north entrance.",
+          "role": "user",
+          "at": "2026-11-28T03:55:53.385Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A04",
+          "id": "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A04 The north entrance label is set.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:53.454Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_U05",
+          "id": "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U05 Keep the final handoff at the eastern pier.",
+          "role": "user",
+          "at": "2026-11-28T03:55:55.813Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A05",
+          "id": "e4c91868-0df5-43e5-8381-81efcf373292",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Quellight reply",
+          "text": "SYN_A05 The handoff stays at the eastern pier.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:55.896Z",
+          "excluded": false
+        }
+      ]
+    },
+    {
+      "label": "after-forget-before-rebuild",
+      "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+      "orderedOriginals": [
+        {
+          "tag": "SYN_U01",
+          "id": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U01 Mark the first harbor inspection pass as finished.",
+          "role": "user",
+          "at": "2026-11-28T03:55:48.357Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A01",
+          "id": "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded · earlier memory context",
+          "text": "SYN_A01 The first harbor inspection pass is recorded.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:48.466Z",
+          "excluded": true
+        },
+        {
+          "tag": "SYN_U02",
+          "id": "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded by you",
+          "text": "SYN_U02 Remove the temporary boat-pass rule when the trial ends.",
+          "role": "user",
+          "at": "2026-11-28T03:55:49.358Z",
+          "excluded": true
+        },
+        {
+          "tag": "SYN_A02",
+          "id": "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded · earlier memory context",
+          "text": "SYN_A02 The temporary boat-pass rule is marked for review.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:49.403Z",
+          "excluded": true
+        },
+        {
+          "tag": "SYN_U03",
+          "id": "fb4a0219-64de-43f8-81a9-e30636910448",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U03 Keep the spare lamps available for night inspection.",
+          "role": "user",
+          "at": "2026-11-28T03:55:50.119Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A03",
+          "id": "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded · earlier memory context",
+          "text": "SYN_A03 The spare lamps stay available.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:50.159Z",
+          "excluded": true
+        },
+        {
+          "tag": "SYN_U04",
+          "id": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U04 Label the printed map with the north entrance.",
+          "role": "user",
+          "at": "2026-11-28T03:55:53.385Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A04",
+          "id": "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded · earlier memory context",
+          "text": "SYN_A04 The north entrance label is set.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:53.454Z",
+          "excluded": true
+        },
+        {
+          "tag": "SYN_U05",
+          "id": "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Your message",
+          "text": "SYN_U05 Keep the final handoff at the eastern pier.",
+          "role": "user",
+          "at": "2026-11-28T03:55:55.813Z",
+          "excluded": false
+        },
+        {
+          "tag": "SYN_A05",
+          "id": "e4c91868-0df5-43e5-8381-81efcf373292",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "label": "Excluded · earlier memory context",
+          "text": "SYN_A05 The handoff stays at the eastern pier.",
+          "role": "assistant",
+          "at": "2026-11-28T03:55:55.896Z",
+          "excluded": true
+        }
+      ]
+    }
+  ],
+  "consumerReads": [
+    {
+      "label": "open",
+      "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 8322
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 1599
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "34f8f7fd2ba504f1",
+          "kind": "observe",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [],
+          "disposition": "observe-interior-membership-unverified"
+        }
+      ],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "0",
+        "excluded": [],
+        "quarantined": []
+      },
+      "operation": {
+        "id": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "observe",
+        "status": "completed",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "dc33379c19683bbf8ba1ef89c4ed9e8ced68e50c872ad7cb207239a78ebf4020",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:52.295Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 15705,
+        "postgresWire": {
+          "sent": 16483,
+          "received": 27691,
+          "connections": 1
+        },
+        "elapsedMs": 313.697
+      }
+    },
+    {
+      "label": "middle",
+      "operationId": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 9163
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 2097
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "34f8f7fd2ba504f1",
+          "kind": "observe",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [],
+          "disposition": "observe-interior-membership-unverified"
+        },
+        {
+          "groupId": "28e59b810d662f52",
+          "kind": "observe",
+          "range": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "apparentAllIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "apparentEligibleIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "disposition": "bounded-endpoints-resolved"
+        }
+      ],
+      "acceptedIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "authority": {
+        "revision": "0",
+        "excluded": [],
+        "quarantined": []
+      },
+      "operation": {
+        "id": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "observe",
+        "status": "completed",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "71f4ae73c52c089d4441fe9be000e5915e343bfa4a7a6ca3917bb44d84528b0e",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:54.929Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 17044,
+        "postgresWire": {
+          "sent": 16366,
+          "received": 28941,
+          "connections": 0
+        },
+        "elapsedMs": 177.179
+      }
+    },
+    {
+      "label": "close",
+      "operationId": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 10000
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 2598
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "34f8f7fd2ba504f1",
+          "kind": "observe",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [],
+          "disposition": "observe-interior-membership-unverified"
+        },
+        {
+          "groupId": "28e59b810d662f52",
+          "kind": "observe",
+          "range": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "apparentAllIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "apparentEligibleIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "disposition": "bounded-endpoints-resolved"
+        },
+        {
+          "groupId": "fb1f7ee383d8f153",
+          "kind": "observe",
+          "range": "1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292",
+          "apparentAllIds": [
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+            "e4c91868-0df5-43e5-8381-81efcf373292"
+          ],
+          "apparentEligibleIds": [
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+            "e4c91868-0df5-43e5-8381-81efcf373292"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+            "e4c91868-0df5-43e5-8381-81efcf373292"
+          ],
+          "disposition": "bounded-endpoints-resolved"
+        }
+      ],
+      "acceptedIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "authority": {
+        "revision": "0",
+        "excluded": [],
+        "quarantined": []
+      },
+      "operation": {
+        "id": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "observe",
+        "status": "completed",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "c73a11b4eec297a6f4fe92848776bbafa86f6da3ef4caa50dcb5fb55a4d9194a",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:57.531Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 18382,
+        "postgresWire": {
+          "sent": 16366,
+          "received": 30690,
+          "connections": 0
+        },
+        "elapsedMs": 160.021
+      }
+    },
+    {
+      "label": "outer-combination",
+      "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 15673
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 2598
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 198
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "derived-group-1",
+          "kind": "reflection",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+            "e4c91868-0df5-43e5-8381-81efcf373292"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+            "e4c91868-0df5-43e5-8381-81efcf373292"
+          ],
+          "rejectedIds": [],
+          "acceptedIds": [],
+          "disposition": "reflected-membership-unverified"
+        }
+      ],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "0",
+        "excluded": [],
+        "quarantined": []
+      },
+      "operation": {
+        "id": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "reflect",
+        "status": "completed",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "128a547e593dbee94978f9adcbde19c8a20f4318e424c13e0b1132847110fd01",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:58.661Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 24055,
+        "postgresWire": {
+          "sent": 16366,
+          "received": 36618,
+          "connections": 0
+        },
+        "elapsedMs": 103.16
+      }
+    },
+    {
+      "label": "old-observe",
+      "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 447
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 843
+        }
+      ],
+      "groups": [],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "excluded": [
+          "5703c10a-5f6a-4878-bc90-55cd8def2ef4"
+        ],
+        "quarantined": [
+          "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "e4c91868-0df5-43e5-8381-81efcf373292",
+          "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+        ]
+      },
+      "operation": {
+        "id": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "observe",
+        "status": "superseded",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "dc33379c19683bbf8ba1ef89c4ed9e8ced68e50c872ad7cb207239a78ebf4020",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:52.295Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": false,
+        "checkpointPresent": false,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [],
+          "snapshot": [],
+          "current": []
+        }
+      },
+      "disposition": "stale-authority",
+      "metrics": {
+        "namedReads": 4,
+        "namedBytes": 6678,
+        "postgresWire": {
+          "sent": 6777,
+          "received": 15867,
+          "connections": 0
+        },
+        "elapsedMs": 46.284
+      }
+    },
+    {
+      "label": "old-reflect",
+      "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 447
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 721
+        }
+      ],
+      "groups": [],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "excluded": [
+          "5703c10a-5f6a-4878-bc90-55cd8def2ef4"
+        ],
+        "quarantined": [
+          "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "e4c91868-0df5-43e5-8381-81efcf373292",
+          "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+        ]
+      },
+      "operation": {
+        "id": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "reflect",
+        "status": "superseded",
+        "authorityRevision": "0",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "128a547e593dbee94978f9adcbde19c8a20f4318e424c13e0b1132847110fd01",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:55:58.661Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": false,
+        "checkpointPresent": false,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [],
+          "snapshot": [],
+          "current": []
+        }
+      },
+      "disposition": "stale-authority",
+      "metrics": {
+        "namedReads": 4,
+        "namedBytes": 6556,
+        "postgresWire": {
+          "sent": 6777,
+          "received": 23477,
+          "connections": 0
+        },
+        "elapsedMs": 41.086
+      }
+    },
+    {
+      "label": "rebuilt",
+      "operationId": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 634
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 8562
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 2758
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 634
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "b4d77ee522003e00",
+          "kind": "observe",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+          ],
+          "rejectedIds": [
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "acceptedIds": [],
+          "disposition": "observe-interior-membership-unverified"
+        }
+      ],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "excluded": [
+          "5703c10a-5f6a-4878-bc90-55cd8def2ef4"
+        ],
+        "quarantined": [
+          "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "e4c91868-0df5-43e5-8381-81efcf373292",
+          "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+        ]
+      },
+      "operation": {
+        "id": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "observe",
+        "status": "completed",
+        "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "8cca1edd7fb717bdfe9bd4fa80612dc403b9def985c544b8210a00e3982d0733",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:56:00.111Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 17976,
+        "postgresWire": {
+          "sent": 16638,
+          "received": 32368,
+          "connections": 0
+        },
+        "elapsedMs": 109.498
+      }
+    },
+    {
+      "label": "rebuilt-reflection",
+      "operationId": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+      "reads": [
+        {
+          "port": "app.getConversation",
+          "jsonBytes": 370
+        },
+        {
+          "port": "app.loadEffectiveMemorySettings",
+          "jsonBytes": 5018
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 634
+        },
+        {
+          "port": "vict.operation",
+          "jsonBytes": 14598
+        },
+        {
+          "port": "app.memorySourcePage",
+          "jsonBytes": 2758
+        },
+        {
+          "port": "vict.authority",
+          "jsonBytes": 634
+        }
+      ],
+      "groups": [
+        {
+          "groupId": "derived-group-1",
+          "kind": "reflection",
+          "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+          "apparentAllIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+          ],
+          "apparentEligibleIds": [
+            "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+            "fb4a0219-64de-43f8-81a9-e30636910448",
+            "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+            "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+          ],
+          "rejectedIds": [
+            "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+            "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+            "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+            "72732553-ec0a-49c3-b917-a10fc669ae74",
+            "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+          ],
+          "acceptedIds": [],
+          "disposition": "reflected-membership-unverified"
+        }
+      ],
+      "acceptedIds": [],
+      "authority": {
+        "revision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "excluded": [
+          "5703c10a-5f6a-4878-bc90-55cd8def2ef4"
+        ],
+        "quarantined": [
+          "72732553-ec0a-49c3-b917-a10fc669ae74",
+          "e4c91868-0df5-43e5-8381-81efcf373292",
+          "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+          "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+          "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee"
+        ]
+      },
+      "operation": {
+        "id": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+        "threadId": "vict-conv-16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+        "kind": "reflect",
+        "status": "completed",
+        "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+        "configRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+        "sourceDigest": "7303444139c8b102677c8a88cb6b85c951aeb9c23513fc7de84bfb2a804612fa",
+        "publicationEvents": [
+          {
+            "at": "2026-11-28T03:56:00.942Z",
+            "name": "published"
+          }
+        ],
+        "resultPresent": true,
+        "checkpointPresent": true,
+        "fields": {
+          "operation": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "result": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshot": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "current": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ]
+        }
+      },
+      "disposition": "compared",
+      "metrics": {
+        "namedReads": 6,
+        "namedBytes": 24012,
+        "postgresWire": {
+          "sent": 16638,
+          "received": 38659,
+          "connections": 0
+        },
+        "elapsedMs": 114.084
+      }
+    }
+  ],
+  "evidenceSource": "Installed application services on synthetic loopback PostgreSQL. Deterministic model seam.",
+  "postgres": "18.6",
+  "shadowSqlRole": {
+    "can_insert": false,
+    "can_rewrite": false,
+    "namespaceUpdateBlocked": true
+  },
+  "care": {
+    "targetId": "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+    "tag": "SYN_U02",
+    "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+    "cleanup": "queued",
+    "purgeQueued": 1,
+    "rebuildQueued": 1,
+    "retryQueued": 0
+  },
+  "receiptAudit": {
+    "namespaceTurnsRead": 14,
+    "receipts": [
+      {
+        "label": "open",
+        "request": {
+          "kind": "observe",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "dc33379c19683bbf8ba1ef89c4ed9e8ced68e50c872ad7cb207239a78ebf4020",
+          "authorityRevision": "0"
+        },
+        "invocation": {
+          "invocationId": "80a5bfd5-e9f8-48d3-825b-64f8a82a3481",
+          "turnId": "quellight-memory:e336e968-70c3-4a5e-afc6-29cbed540d44",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:e336e968-70c3-4a5e-afc6-29cbed540d44:native-memory:quellight.memory.maintain:1:ad16cd7a6e68257c0a4afe2b583cc4820d8d4e086629aa9c552e9447fa1b705f",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "ad16cd7a6e68257c0a4afe2b583cc4820d8d4e086629aa9c552e9447fa1b705f",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838151362,
+          "updatedAt": 1795838152317,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-469d82a5-3034-4303-b4e8-4c22473d4c8f",
+          "runFenceAt": 1795838151381,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838152317,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:e336e968-70c3-4a5e-afc6-29cbed540d44"
+      },
+      {
+        "label": "middle",
+        "request": {
+          "kind": "observe",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "71f4ae73c52c089d4441fe9be000e5915e343bfa4a7a6ca3917bb44d84528b0e",
+          "authorityRevision": "0"
+        },
+        "invocation": {
+          "invocationId": "ff8e9de8-06d5-45f3-8227-adc22ca5d6a5",
+          "turnId": "quellight-memory:e998e440-7b74-4a82-9988-ada8904045a4",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:e998e440-7b74-4a82-9988-ada8904045a4:native-memory:quellight.memory.maintain:1:d5b3c93d78d74b0545e749c8103eddbd17d0ad7fd8c03db24a733d5fc09b90eb",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "d5b3c93d78d74b0545e749c8103eddbd17d0ad7fd8c03db24a733d5fc09b90eb",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838154308,
+          "updatedAt": 1795838154952,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-01100085-b938-4293-8053-309f12e9d9b5",
+          "runFenceAt": 1795838154324,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838154952,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:e998e440-7b74-4a82-9988-ada8904045a4"
+      },
+      {
+        "label": "close",
+        "request": {
+          "kind": "observe",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "c73a11b4eec297a6f4fe92848776bbafa86f6da3ef4caa50dcb5fb55a4d9194a",
+          "authorityRevision": "0"
+        },
+        "invocation": {
+          "invocationId": "7e6cd1b1-be41-4d99-b08e-db9f03289810",
+          "turnId": "quellight-memory:ff5be492-e2d5-43da-9b80-9c9e1926fd54",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:ff5be492-e2d5-43da-9b80-9c9e1926fd54:native-memory:quellight.memory.maintain:1:80253a5f05ced2b8e4e9fa3d4356c2d22a538e5ed516b9944ea020826a4ff550",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "80253a5f05ced2b8e4e9fa3d4356c2d22a538e5ed516b9944ea020826a4ff550",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838156860,
+          "updatedAt": 1795838157549,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-f00b7084-bc23-4dae-9d9b-78ad5dfa6d76",
+          "runFenceAt": 1795838156877,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838157549,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:ff5be492-e2d5-43da-9b80-9c9e1926fd54"
+      },
+      {
+        "label": "outer-combination",
+        "request": {
+          "kind": "reflect",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "128a547e593dbee94978f9adcbde19c8a20f4318e424c13e0b1132847110fd01",
+          "authorityRevision": "0"
+        },
+        "invocation": {
+          "invocationId": "c97defe6-ad0a-427c-aefd-1b27e2ebed09",
+          "turnId": "quellight-memory:c0ebfa7a-98ef-4b10-8d97-b6903bca8b49",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:c0ebfa7a-98ef-4b10-8d97-b6903bca8b49:native-memory:quellight.memory.maintain:1:5316ba4c7b335c114a0daea637c1ce517deb8f7abdd41a9d2d661adae3e8c493",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "5316ba4c7b335c114a0daea637c1ce517deb8f7abdd41a9d2d661adae3e8c493",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838158253,
+          "updatedAt": 1795838158674,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-19dc13a8-ce6c-4a5f-80eb-fd140e3d771b",
+          "runFenceAt": 1795838158266,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838158674,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:c0ebfa7a-98ef-4b10-8d97-b6903bca8b49"
+      },
+      {
+        "label": "rebuilt",
+        "request": {
+          "kind": "observe",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "8cca1edd7fb717bdfe9bd4fa80612dc403b9def985c544b8210a00e3982d0733",
+          "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d"
+        },
+        "invocation": {
+          "invocationId": "dc4bac5e-b016-4392-99b8-dac000cff8ac",
+          "turnId": "quellight-memory:52713d01-409f-4682-997e-5ef98d537053",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:52713d01-409f-4682-997e-5ef98d537053:native-memory:quellight.memory.maintain:1:493bbde9992e0d30fcc0ada2e159c24c5d7ccfa2e11ba8fb7b3384b98ae06b9e",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "493bbde9992e0d30fcc0ada2e159c24c5d7ccfa2e11ba8fb7b3384b98ae06b9e",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838159717,
+          "updatedAt": 1795838160122,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-add33a8b-4d52-4019-895d-f11d32416eaa",
+          "runFenceAt": 1795838159731,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838160122,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:52713d01-409f-4682-997e-5ef98d537053"
+      },
+      {
+        "label": "rebuilt-reflection",
+        "request": {
+          "kind": "reflect",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "conversationId": "16c51bd6-db8c-4af8-b08b-5ef8b40b0600",
+          "operationId": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+          "configurationRevision": "f4612c2c8cc3360ed05399e42e264040163f2c8860ac69579c9161f6be90dc1e",
+          "sourceRevision": "7303444139c8b102677c8a88cb6b85c951aeb9c23513fc7de84bfb2a804612fa",
+          "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d"
+        },
+        "invocation": {
+          "invocationId": "27ae534f-ed64-4478-827d-3a910d72d683",
+          "turnId": "quellight-memory:77e61dbf-23c3-4344-be5e-f3989c5e477e",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:77e61dbf-23c3-4344-be5e-f3989c5e477e:native-memory:quellight.memory.maintain:1:19e328a96cedfb024feceda28246aa187655cec0e12b874fb3978a524188c213",
+          "actorId": "662e98a2-a023-42b0-82db-1bac7febd396",
+          "argDigest": "19e328a96cedfb024feceda28246aa187655cec0e12b874fb3978a524188c213",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795838160592,
+          "updatedAt": 1795838160959,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-16856-1-a6e6508c-86dd-467c-91f6-6d7bac973639",
+          "runFenceAt": 1795838160605,
+          "runOwnerIdentity": "vict-tool-bridge:16856:ca0180b5-03c3-442b-81c1-a427ef78ed00",
+          "runGeneration": 1,
+          "completedAt": 1795838160959,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:77e61dbf-23c3-4344-be5e-f3989c5e477e"
+      }
+    ]
+  },
+  "comparisons": [
+    {
+      "label": "open",
+      "groupId": "34f8f7fd2ba504f1",
+      "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74"
+      ],
+      "kind": "observe",
+      "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:72732553-ec0a-49c3-b917-a10fc669ae74",
+      "apparentAllIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74"
+      ],
+      "apparentEligibleIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74"
+      ],
+      "rejectedIds": [],
+      "acceptedIds": [],
+      "disposition": "observe-interior-membership-unverified",
+      "extras": [],
+      "omissions": []
+    },
+    {
+      "label": "middle",
+      "groupId": "28e59b810d662f52",
+      "operationId": "memory-job:30d327ed-b983-4fe0-ab58-7a3ae773645a",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "kind": "observe",
+      "range": "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d:e8b0985d-cb65-4f67-9a15-2dd34095a039",
+      "apparentAllIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "apparentEligibleIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "rejectedIds": [],
+      "acceptedIds": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "disposition": "bounded-endpoints-resolved",
+      "extras": [],
+      "omissions": []
+    },
+    {
+      "label": "close",
+      "groupId": "fb1f7ee383d8f153",
+      "operationId": "memory-job:f4063ade-5536-45f2-b3f5-fc675e5edab2",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "kind": "observe",
+      "range": "1fe67b3c-8712-4cc4-91e9-dbb42a32f038:e4c91868-0df5-43e5-8381-81efcf373292",
+      "apparentAllIds": [
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "apparentEligibleIds": [
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "rejectedIds": [],
+      "acceptedIds": [
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "disposition": "bounded-endpoints-resolved",
+      "extras": [],
+      "omissions": []
+    },
+    {
+      "label": "outer-combination",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "kind": "reflection",
+      "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:e4c91868-0df5-43e5-8381-81efcf373292",
+      "apparentAllIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "apparentEligibleIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+        "e4c91868-0df5-43e5-8381-81efcf373292"
+      ],
+      "rejectedIds": [],
+      "acceptedIds": [],
+      "disposition": "reflected-membership-unverified",
+      "extras": [
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "omissions": []
+    },
+    {
+      "label": "old-observe",
+      "acceptedIds": [],
+      "disposition": "stale-authority",
+      "operationId": "memory-job:d05cbd92-19e4-446f-8b1c-d7e66a137274",
+      "publishedAuthority": "0",
+      "readAuthority": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d"
+    },
+    {
+      "label": "old-reflect",
+      "acceptedIds": [],
+      "disposition": "stale-authority",
+      "operationId": "memory-job:9ad230ff-ccf1-423b-9331-15affeec9a8f",
+      "publishedAuthority": "0",
+      "readAuthority": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d"
+    },
+    {
+      "label": "rebuilt",
+      "groupId": "b4d77ee522003e00",
+      "operationId": "memory-job:234cdb9e-8f98-4131-91e4-5a52d3610e32",
+      "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+      "expectedIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "kind": "observe",
+      "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+      "apparentAllIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "apparentEligibleIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "rejectedIds": [
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "acceptedIds": [],
+      "disposition": "observe-interior-membership-unverified",
+      "extras": [],
+      "omissions": []
+    },
+    {
+      "label": "rebuilt-reflection",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:2c077464-e7a5-4a37-9f4a-1b8b28dd7897",
+      "authorityRevision": "care:282c698aa4fa5df46a0326e19a2d1e9f98f5c50ab2bc5700486d2cef9b727e6d",
+      "expectedIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "kind": "reflection",
+      "range": "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c:1fe67b3c-8712-4cc4-91e9-dbb42a32f038",
+      "apparentAllIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "apparentEligibleIds": [
+        "e29c965f-78dd-41e8-810c-bdeb0c9f7d4c",
+        "fb4a0219-64de-43f8-81a9-e30636910448",
+        "b19c98e1-58fe-4f12-a2af-2fcb6cd5e25d",
+        "1fe67b3c-8712-4cc4-91e9-dbb42a32f038"
+      ],
+      "rejectedIds": [
+        "f074d2a2-1a72-4bcf-8c36-1e685e8d0996",
+        "5703c10a-5f6a-4878-bc90-55cd8def2ef4",
+        "fe5da3fd-4bec-4ffb-aa7d-ead2c4892bee",
+        "72732553-ec0a-49c3-b917-a10fc669ae74",
+        "e8b0985d-cb65-4f67-9a15-2dd34095a039"
+      ],
+      "acceptedIds": [],
+      "disposition": "reflected-membership-unverified",
+      "extras": [],
+      "omissions": []
+    }
+  ],
+  "resource": {
+    "chatFixtureCalls": 5,
+    "observeFixtureCalls": 4,
+    "reflectFixtureCalls": 2,
+    "consumerModelCalls": 0,
+    "liveProviderCalls": 0,
+    "addedSendRoundTrips": 0
+  }
+}

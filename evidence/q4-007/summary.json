@@ -1,0 +1,614 @@
+{
+  "schema": "quellight.q4-007-summary@1",
+  "status": "passed",
+  "capture": "capture.json",
+  "source": {
+    "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+    "candidateApp": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+    "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+    "fixture": "5166198b4a39a59701455aa1532deb3243c34059",
+    "fixtureSha256": "d038fa9710703434ef123243a76f5efe6e4e7edf749574ee7f26dc207b289fee",
+    "baselineLockSha256": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+    "candidateCheckoutLockSha256": "9b9c90361392dd0af0f282834ad231011554f04a3e5ac2ab20eff734874563be",
+    "baselineCaptureSha256": "63e8bf378ded8bf8d23014805827d84b1d1971a6a3fc4518e7c85c3be9a49ffb",
+    "baselineMastraArchive": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+    "candidateMastraArchive": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+    "candidateInstalledNativeMemoryJs": "3a2f10ba0741e82a570f3dfbb958a33a8d6322a62745adb390d1a5cc8b8780e2",
+    "candidateNativeMemoryArchive": {
+      "file": "packs/mastra-memory-1.28.2-q4-007.1.tgz",
+      "sha256": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+      "version": "1.28.2-q4-007.1",
+      "executableFiles": {
+        "dist/src-Bewti2w5.cjs": "cf9c1813e8fc16c0eb2a2358405c21bc321b4258946fb321d4621ea423ac72fb",
+        "dist/src-BYrxAUzs.js": "88691252879bbceeaba6b17d6bb36f51a0c11c5f1ba732c47ac0fdbaf2c08ea5"
+      }
+    },
+    "node": "v22.23.5",
+    "postgres": "18.6"
+  },
+  "scope": {
+    "actorId": "27d92f49-ddba-482c-a04f-634613dab94c",
+    "roomId": "a41ec846-b17c-47be-9539-92021cebec55",
+    "conversationId": "ba8203db-b40a-49a3-b315-3a36e3900d1e"
+  },
+  "resource": {
+    "coreModelCalls": {
+      "baseline": {
+        "chat": 5,
+        "observe": 4,
+        "reflect": 2
+      },
+      "candidate": {
+        "chat": 5,
+        "observe": 4,
+        "reflect": 2
+      },
+      "added": 0
+    },
+    "consumerModelCalls": 0,
+    "liveProviderCalls": 0,
+    "addedSendRoundTrips": 0,
+    "reader": {
+      "coreReads": 8,
+      "baseline": {
+        "namedReads": 44,
+        "namedBytes": 130408,
+        "postgresWireSent": 112411,
+        "postgresWireReceived": 234311
+      },
+      "candidate": {
+        "namedReads": 38,
+        "namedBytes": 118863,
+        "postgresWireSent": 64477,
+        "postgresWireReceived": 169846
+      },
+      "addedNamedReads": -6,
+      "membershipOnlyJsonBytes": 2863,
+      "perOperation": [
+        {
+          "label": "open",
+          "operationMembershipDeltaBytes": 405
+        },
+        {
+          "label": "middle",
+          "operationMembershipDeltaBytes": 574
+        },
+        {
+          "label": "close",
+          "operationMembershipDeltaBytes": 743
+        },
+        {
+          "label": "outer-combination",
+          "operationMembershipDeltaBytes": 485
+        },
+        {
+          "label": "old-observe",
+          "operationMembershipDeltaBytes": 0
+        },
+        {
+          "label": "old-reflect",
+          "operationMembershipDeltaBytes": 0
+        },
+        {
+          "label": "rebuilt",
+          "operationMembershipDeltaBytes": 327
+        },
+        {
+          "label": "rebuilt-reflection",
+          "operationMembershipDeltaBytes": 329
+        }
+      ]
+    }
+  },
+  "error": null,
+  "originals": [
+    {
+      "id": "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+      "tag": "SYN_U01",
+      "role": "user",
+      "excluded": false
+    },
+    {
+      "id": "331fbda3-4dd6-48a8-8957-74b168317cb7",
+      "tag": "SYN_A01",
+      "role": "assistant",
+      "excluded": true
+    },
+    {
+      "id": "ca93592e-5d79-4377-a286-9e4b28ef9783",
+      "tag": "SYN_U02",
+      "role": "user",
+      "excluded": true
+    },
+    {
+      "id": "435a865e-7fe1-4570-ae31-6fca05f3a095",
+      "tag": "SYN_A02",
+      "role": "assistant",
+      "excluded": true
+    },
+    {
+      "id": "450b3b3e-038f-4520-abfb-686ada48d577",
+      "tag": "SYN_U03",
+      "role": "user",
+      "excluded": false
+    },
+    {
+      "id": "df3cf109-e515-4c01-9999-6d86994c65a2",
+      "tag": "SYN_A03",
+      "role": "assistant",
+      "excluded": true
+    },
+    {
+      "id": "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+      "tag": "SYN_U04",
+      "role": "user",
+      "excluded": false
+    },
+    {
+      "id": "fb9be2b8-4d89-4f94-b055-32df94765a55",
+      "tag": "SYN_A04",
+      "role": "assistant",
+      "excluded": true
+    },
+    {
+      "id": "2a2fa5f6-7835-4fa0-98d9-abde742905ce",
+      "tag": "SYN_U05",
+      "role": "user",
+      "excluded": false
+    },
+    {
+      "id": "829aa71a-82d2-480b-9fd5-5211052d6788",
+      "tag": "SYN_A05",
+      "role": "assistant",
+      "excluded": true
+    }
+  ],
+  "comparisons": [
+    {
+      "label": "open",
+      "groupId": "5b8d24175b18db23",
+      "operationId": "memory-job:29d779e8-370e-43ec-b631-1f72ec5ef3a3",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "331fbda3-4dd6-48a8-8957-74b168317cb7",
+        "ca93592e-5d79-4377-a286-9e4b28ef9783",
+        "435a865e-7fe1-4570-ae31-6fca05f3a095",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "df3cf109-e515-4c01-9999-6d86994c65a2"
+      ],
+      "expectedTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ],
+      "acceptedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "331fbda3-4dd6-48a8-8957-74b168317cb7",
+        "ca93592e-5d79-4377-a286-9e4b28ef9783",
+        "435a865e-7fe1-4570-ae31-6fca05f3a095",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "df3cf109-e515-4c01-9999-6d86994c65a2"
+      ],
+      "acceptedTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ],
+      "basis": "observe-input",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ],
+      "baselineAcceptedTags": [],
+      "observationTextEquivalent": true
+    },
+    {
+      "label": "middle",
+      "groupId": "d0be352bb55222b7",
+      "operationId": "memory-job:ec63a1a6-1a27-4a36-96f2-25170c58ae42",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "fb9be2b8-4d89-4f94-b055-32df94765a55"
+      ],
+      "expectedTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "acceptedIds": [
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "fb9be2b8-4d89-4f94-b055-32df94765a55"
+      ],
+      "acceptedTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "basis": "observe-input",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "baselineAcceptedTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ],
+      "observationTextEquivalent": true
+    },
+    {
+      "label": "close",
+      "groupId": "e8699e233a4c7767",
+      "operationId": "memory-job:b0fa940d-381a-406a-b9c8-ae3d4220235f",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce",
+        "829aa71a-82d2-480b-9fd5-5211052d6788"
+      ],
+      "expectedTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "acceptedIds": [
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce",
+        "829aa71a-82d2-480b-9fd5-5211052d6788"
+      ],
+      "acceptedTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "basis": "observe-input",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "baselineAcceptedTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "observationTextEquivalent": true
+    },
+    {
+      "label": "outer-combination",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:0f82c9e8-d407-42e6-afe1-733f2ba01db1",
+      "authorityRevision": "0",
+      "expectedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "331fbda3-4dd6-48a8-8957-74b168317cb7",
+        "ca93592e-5d79-4377-a286-9e4b28ef9783",
+        "435a865e-7fe1-4570-ae31-6fca05f3a095",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "df3cf109-e515-4c01-9999-6d86994c65a2",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce",
+        "829aa71a-82d2-480b-9fd5-5211052d6788"
+      ],
+      "expectedTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03",
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "acceptedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "331fbda3-4dd6-48a8-8957-74b168317cb7",
+        "ca93592e-5d79-4377-a286-9e4b28ef9783",
+        "435a865e-7fe1-4570-ae31-6fca05f3a095",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "df3cf109-e515-4c01-9999-6d86994c65a2",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce",
+        "829aa71a-82d2-480b-9fd5-5211052d6788"
+      ],
+      "acceptedTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03",
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "basis": "retained-parents",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03",
+        "SYN_U04",
+        "SYN_A04",
+        "SYN_U05",
+        "SYN_A05"
+      ],
+      "baselineAcceptedTags": [],
+      "observationTextEquivalent": true
+    },
+    {
+      "label": "old-observe",
+      "operationId": "memory-job:29d779e8-370e-43ec-b631-1f72ec5ef3a3",
+      "acceptedIds": [],
+      "acceptedTags": []
+    },
+    {
+      "label": "old-reflect",
+      "operationId": "memory-job:0f82c9e8-d407-42e6-afe1-733f2ba01db1",
+      "acceptedIds": [],
+      "acceptedTags": []
+    },
+    {
+      "label": "rebuilt",
+      "groupId": "7ff1ac1a2e6197ee",
+      "operationId": "memory-job:18775c82-6861-4af6-a317-544a0797204a",
+      "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+      "expectedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+      ],
+      "expectedTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "acceptedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+      ],
+      "acceptedTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "basis": "observe-input",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "baselineAcceptedTags": [],
+      "observationTextEquivalent": true
+    },
+    {
+      "label": "rebuilt-reflection",
+      "groupId": "derived-group-1",
+      "operationId": "memory-job:8963622d-30dd-4dbe-bd81-72d758891f93",
+      "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+      "expectedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+      ],
+      "expectedTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "acceptedIds": [
+        "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+        "450b3b3e-038f-4520-abfb-686ada48d577",
+        "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+        "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+      ],
+      "acceptedTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "basis": "retained-parents",
+      "status": "available",
+      "baselineApparentEligibleTags": [
+        "SYN_U01",
+        "SYN_U03",
+        "SYN_U04",
+        "SYN_U05"
+      ],
+      "baselineAcceptedTags": [],
+      "observationTextEquivalent": true
+    }
+  ],
+  "controls": {
+    "fixtureAuthoredRecords": [
+      {
+        "label": "legacy-without-field",
+        "operationId": "fixture:legacy-without-field:8d40a9c2-70e2-4822-9bbf-7e032544b0ad",
+        "status": "completed",
+        "privateCheckpointHasMembership": false,
+        "resultHasMembership": false,
+        "copiedFromOperation": "memory-job:8963622d-30dd-4dbe-bd81-72d758891f93"
+      },
+      {
+        "label": "prepared-with-private-members",
+        "operationId": "fixture:prepared-with-private-members:969dc22d-355c-4e44-8111-8b838eeae2e5",
+        "status": "prepared",
+        "privateCheckpointHasMembership": true,
+        "resultHasMembership": false,
+        "copiedFromOperation": "memory-job:8963622d-30dd-4dbe-bd81-72d758891f93"
+      }
+    ],
+    "extraDeterministicReflectCalls": 1,
+    "reads": [
+      {
+        "label": "reopened-reflect",
+        "operation": {
+          "id": "memory-job:8963622d-30dd-4dbe-bd81-72d758891f93",
+          "threadId": "vict-conv-ba8203db-b40a-49a3-b315-3a36e3900d1e",
+          "kind": "reflect",
+          "status": "completed",
+          "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+          "configRevision": "c84ddce6ff7b30ad05a1f29b3312155c7edff7ed525780c1a249223db6f2500a",
+          "sourceDigest": "fd877f45a83781eac33e3f8c72af7d4e04991a2c0aef1f0934d7e405c8f23e48",
+          "publicationEvents": [
+            {
+              "at": "2026-11-28T04:04:42.320Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "derived-group-1",
+                "status": "available",
+                "basis": "retained-parents",
+                "messageIds": [
+                  "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+                  "450b3b3e-038f-4520-abfb-686ada48d577",
+                  "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+                  "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+                ]
+              }
+            ]
+          },
+          "containsMembershipInPrivateFields": false,
+          "containsMembership": true
+        },
+        "disposition": "typed-publication",
+        "groups": [
+          {
+            "groupId": "derived-group-1",
+            "kind": "reflection",
+            "basis": "retained-parents",
+            "status": "available",
+            "acceptedIds": [
+              "ad40bb5c-60cd-437a-b736-e5eb40cd1bcb",
+              "450b3b3e-038f-4520-abfb-686ada48d577",
+              "6b5626d6-f7e6-4ced-ae4c-9f9eac3dd053",
+              "2a2fa5f6-7835-4fa0-98d9-abde742905ce"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "legacy-without-field",
+        "operation": {
+          "id": "fixture:legacy-without-field:8d40a9c2-70e2-4822-9bbf-7e032544b0ad",
+          "threadId": "vict-conv-ba8203db-b40a-49a3-b315-3a36e3900d1e",
+          "kind": "reflect",
+          "status": "completed",
+          "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+          "configRevision": "c84ddce6ff7b30ad05a1f29b3312155c7edff7ed525780c1a249223db6f2500a",
+          "sourceDigest": "fd877f45a83781eac33e3f8c72af7d4e04991a2c0aef1f0934d7e405c8f23e48",
+          "publicationEvents": [
+            {
+              "at": "2026-11-28T04:04:42.320Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "derived-group-1",
+                "status": "unavailable"
+              }
+            ]
+          },
+          "containsMembershipInPrivateFields": false,
+          "containsMembership": true
+        },
+        "disposition": "typed-publication",
+        "groups": [
+          {
+            "groupId": "derived-group-1",
+            "kind": "reflection",
+            "status": "unavailable",
+            "acceptedIds": []
+          }
+        ]
+      },
+      {
+        "label": "prepared-with-private-members",
+        "operation": {
+          "id": "fixture:prepared-with-private-members:969dc22d-355c-4e44-8111-8b838eeae2e5",
+          "threadId": "vict-conv-ba8203db-b40a-49a3-b315-3a36e3900d1e",
+          "kind": "reflect",
+          "status": "prepared",
+          "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+          "configRevision": "c84ddce6ff7b30ad05a1f29b3312155c7edff7ed525780c1a249223db6f2500a",
+          "sourceDigest": "fd877f45a83781eac33e3f8c72af7d4e04991a2c0aef1f0934d7e405c8f23e48",
+          "publicationEvents": [],
+          "resultPresent": false,
+          "checkpointPresent": true,
+          "sourceMembership": null,
+          "containsMembershipInPrivateFields": false,
+          "containsMembership": false
+        },
+        "disposition": "no-committed-scope-verified-result",
+        "groups": []
+      },
+      {
+        "label": "ambiguous-ordinal-control",
+        "operation": {
+          "id": "memory-job:1b9e2482-956e-4836-ac01-a4d28427a59e",
+          "threadId": "vict-conv-ba8203db-b40a-49a3-b315-3a36e3900d1e",
+          "kind": "reflect",
+          "status": "completed",
+          "authorityRevision": "care:2344140d0ba3bb6e081547b581d65cb966b4ea1ccb9a3d58e3918d3653faa6ad",
+          "configRevision": "c84ddce6ff7b30ad05a1f29b3312155c7edff7ed525780c1a249223db6f2500a",
+          "sourceDigest": "e4cec43ef35e346f6d93c482acb74460d0b90f1ff1e8f337cf65d00d9e769864",
+          "publicationEvents": [
+            {
+              "at": "2026-11-28T04:04:43.757Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "derived-group-1",
+                "status": "unavailable"
+              }
+            ]
+          },
+          "containsMembershipInPrivateFields": false,
+          "containsMembership": true
+        },
+        "disposition": "typed-publication",
+        "groups": [
+          {
+            "groupId": "derived-group-1",
+            "kind": "reflection",
+            "status": "unavailable",
+            "acceptedIds": []
+          }
+        ]
+      }
+    ]
+  }
+}

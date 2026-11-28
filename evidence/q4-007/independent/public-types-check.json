@@ -1,0 +1,8 @@
+{
+  "verified": true,
+  "typescript": "5.9.3",
+  "node": "22.23.5",
+  "publishedReceiptType": "NativeMemoryOperationReceipt",
+  "availabilityNarrowing": "passed",
+  "readonlyMemberIds": "passed"
+}

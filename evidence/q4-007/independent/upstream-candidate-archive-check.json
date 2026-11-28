@@ -1,0 +1,16 @@
+{
+  "package": "@mastra/memory",
+  "version": "1.28.2-q4-007.1",
+  "node": "v22.23.5",
+  "archiveSha256": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+  "filesMatchedExactly": 205,
+  "treeSha256": "319ce15644f9c80ee228c9afd506cafdf4041e0ab87e9e51ceae9a59f83f8182",
+  "nativeEntryPoints": {
+    "esmWorkerSha256": "88691252879bbceeaba6b17d6bb36f51a0c11c5f1ba732c47ac0fdbaf2c08ea5",
+    "baselineEsmWorkerSha256": "68020175639768e6c7442f0f74bf7dd5fa48fa3c52fcfdd2397ed9d0e3ccbdeb",
+    "commonJsEntriesUnchanged": [
+      "dist/index.cjs",
+      "dist/src-Bewti2w5.cjs"
+    ]
+  }
+}

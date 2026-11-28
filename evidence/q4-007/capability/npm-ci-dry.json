@@ -1,0 +1,2591 @@
+{
+  "add": [
+    {
+      "name": "zwitch",
+      "version": "2.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\zwitch"
+    },
+    {
+      "name": "zod-from-json-schema",
+      "version": "0.5.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\zod-from-json-schema"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\zod-from-json-schema\\node_modules\\zod"
+    },
+    {
+      "name": "zod",
+      "version": "3.25.76",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\zod"
+    },
+    {
+      "name": "zimmerframe",
+      "version": "1.1.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\zimmerframe"
+    },
+    {
+      "name": "yoctocolors",
+      "version": "2.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\yoctocolors"
+    },
+    {
+      "name": "yallist",
+      "version": "5.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\yallist"
+    },
+    {
+      "name": "xxhash-wasm",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\xxhash-wasm"
+    },
+    {
+      "name": "xtend",
+      "version": "4.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\xtend"
+    },
+    {
+      "name": "xdg-portable",
+      "version": "7.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\xdg-portable"
+    },
+    {
+      "name": "xdg-app-paths",
+      "version": "5.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\xdg-app-paths"
+    },
+    {
+      "name": "ws",
+      "version": "8.23.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ws"
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\which"
+    },
+    {
+      "name": "whatwg-url",
+      "version": "5.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\whatwg-url"
+    },
+    {
+      "name": "webidl-conversions",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\webidl-conversions"
+    },
+    {
+      "name": "vitefu",
+      "version": "1.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vitefu"
+    },
+    {
+      "name": "vite",
+      "version": "6.4.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vite"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.25.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vite\\node_modules\\esbuild"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.25.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vite\\node_modules\\@esbuild\\win32-x64"
+    },
+    {
+      "name": "vfile-message",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vfile-message"
+    },
+    {
+      "name": "vfile",
+      "version": "6.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\vfile"
+    },
+    {
+      "name": "uuid",
+      "version": "11.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\uuid"
+    },
+    {
+      "name": "unist-util-visit-parents",
+      "version": "6.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unist-util-visit-parents"
+    },
+    {
+      "name": "unist-util-visit",
+      "version": "5.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unist-util-visit"
+    },
+    {
+      "name": "unist-util-stringify-position",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unist-util-stringify-position"
+    },
+    {
+      "name": "unist-util-position",
+      "version": "5.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unist-util-position"
+    },
+    {
+      "name": "unist-util-is",
+      "version": "6.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unist-util-is"
+    },
+    {
+      "name": "unified",
+      "version": "11.0.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unified"
+    },
+    {
+      "name": "unicorn-magic",
+      "version": "0.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\unicorn-magic"
+    },
+    {
+      "name": "undici-types",
+      "version": "6.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\undici-types"
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\typescript"
+    },
+    {
+      "name": "tslib",
+      "version": "2.9.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tslib"
+    },
+    {
+      "name": "ts-dedent",
+      "version": "2.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ts-dedent"
+    },
+    {
+      "name": "trough",
+      "version": "2.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\trough"
+    },
+    {
+      "name": "trim-lines",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\trim-lines"
+    },
+    {
+      "name": "tr46",
+      "version": "0.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tr46"
+    },
+    {
+      "name": "totalist",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\totalist"
+    },
+    {
+      "name": "tokenx",
+      "version": "1.6.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tokenx"
+    },
+    {
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tinyglobby"
+    },
+    {
+      "name": "tinyexec",
+      "version": "1.3.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tinyexec"
+    },
+    {
+      "name": "tar",
+      "version": "7.5.23",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tar"
+    },
+    {
+      "name": "tailwind-variants",
+      "version": "3.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tailwind-variants"
+    },
+    {
+      "name": "tailwind-merge",
+      "version": "3.3.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tailwind-merge"
+    },
+    {
+      "name": "tabbable",
+      "version": "6.5.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\tabbable"
+    },
+    {
+      "name": "svelte-toolbelt",
+      "version": "0.10.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\svelte-toolbelt"
+    },
+    {
+      "name": "svelte-streamdown",
+      "version": "4.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\svelte-streamdown"
+    },
+    {
+      "name": "svelte-check",
+      "version": "4.7.8",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\svelte-check"
+    },
+    {
+      "name": "svelte",
+      "version": "5.57.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\svelte"
+    },
+    {
+      "name": "is-reference",
+      "version": "3.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\svelte\\node_modules\\is-reference"
+    },
+    {
+      "name": "supports-preserve-symlinks-flag",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\supports-preserve-symlinks-flag"
+    },
+    {
+      "name": "stylis",
+      "version": "4.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\stylis"
+    },
+    {
+      "name": "style-to-object",
+      "version": "1.0.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\style-to-object"
+    },
+    {
+      "name": "strip-final-newline",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\strip-final-newline"
+    },
+    {
+      "name": "strip-bom-string",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\strip-bom-string"
+    },
+    {
+      "name": "stringify-entities",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\stringify-entities"
+    },
+    {
+      "name": "strictdom",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\strictdom"
+    },
+    {
+      "name": "sprintf-js",
+      "version": "1.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\sprintf-js"
+    },
+    {
+      "name": "split2",
+      "version": "4.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\split2"
+    },
+    {
+      "name": "space-separated-tokens",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\space-separated-tokens"
+    },
+    {
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\source-map-js"
+    },
+    {
+      "name": "sirv",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\sirv"
+    },
+    {
+      "name": "signal-exit",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\signal-exit"
+    },
+    {
+      "name": "shiki",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\shiki"
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\shebang-regex"
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\shebang-command"
+    },
+    {
+      "name": "set-cookie-parser",
+      "version": "3.2.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\set-cookie-parser"
+    },
+    {
+      "name": "semver",
+      "version": "7.8.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\semver"
+    },
+    {
+      "name": "section-matter",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\section-matter"
+    },
+    {
+      "name": "sax",
+      "version": "1.6.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\sax"
+    },
+    {
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\safer-buffer"
+    },
+    {
+      "name": "sade",
+      "version": "1.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\sade"
+    },
+    {
+      "name": "rw",
+      "version": "1.3.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\rw"
+    },
+    {
+      "name": "runed",
+      "version": "0.35.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\runed"
+    },
+    {
+      "name": "roughjs",
+      "version": "4.6.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\roughjs"
+    },
+    {
+      "name": "rollup",
+      "version": "4.68.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\rollup"
+    },
+    {
+      "name": "robust-predicates",
+      "version": "3.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\robust-predicates"
+    },
+    {
+      "name": "reusify",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\reusify"
+    },
+    {
+      "name": "resolve-from",
+      "version": "5.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\resolve-from"
+    },
+    {
+      "name": "resolve",
+      "version": "1.22.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\resolve"
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\require-from-string"
+    },
+    {
+      "name": "remend",
+      "version": "1.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\remend"
+    },
+    {
+      "name": "remark-stringify",
+      "version": "11.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\remark-stringify"
+    },
+    {
+      "name": "remark-parse",
+      "version": "11.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\remark-parse"
+    },
+    {
+      "name": "remark-gfm",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\remark-gfm"
+    },
+    {
+      "name": "regex-utilities",
+      "version": "2.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\regex-utilities"
+    },
+    {
+      "name": "regex-recursion",
+      "version": "6.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\regex-recursion"
+    },
+    {
+      "name": "regex",
+      "version": "6.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\regex"
+    },
+    {
+      "name": "readdirp",
+      "version": "4.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\readdirp"
+    },
+    {
+      "name": "property-information",
+      "version": "7.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\property-information"
+    },
+    {
+      "name": "promise-limit",
+      "version": "2.7.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\promise-limit"
+    },
+    {
+      "name": "probe-image-size",
+      "version": "7.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\probe-image-size"
+    },
+    {
+      "name": "pretty-ms",
+      "version": "9.3.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pretty-ms"
+    },
+    {
+      "name": "posthog-node",
+      "version": "5.74.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\posthog-node"
+    },
+    {
+      "name": "postgres-interval",
+      "version": "1.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\postgres-interval"
+    },
+    {
+      "name": "postgres-date",
+      "version": "1.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\postgres-date"
+    },
+    {
+      "name": "postgres-bytea",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\postgres-bytea"
+    },
+    {
+      "name": "postgres-array",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\postgres-array"
+    },
+    {
+      "name": "postcss",
+      "version": "8.5.33",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\postcss"
+    },
+    {
+      "name": "points-on-path",
+      "version": "0.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\points-on-path"
+    },
+    {
+      "name": "points-on-curve",
+      "version": "0.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\points-on-curve"
+    },
+    {
+      "name": "picomatch",
+      "version": "4.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\picomatch"
+    },
+    {
+      "name": "picocolors",
+      "version": "1.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\picocolors"
+    },
+    {
+      "name": "pgpass",
+      "version": "1.0.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pgpass"
+    },
+    {
+      "name": "pg-types",
+      "version": "2.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-types"
+    },
+    {
+      "name": "pg-protocol",
+      "version": "1.16.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-protocol"
+    },
+    {
+      "name": "pg-pool",
+      "version": "3.14.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-pool"
+    },
+    {
+      "name": "pg-int8",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-int8"
+    },
+    {
+      "name": "pg-connection-string",
+      "version": "2.14.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-connection-string"
+    },
+    {
+      "name": "pg-cloudflare",
+      "version": "1.4.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg-cloudflare"
+    },
+    {
+      "name": "pg",
+      "version": "8.22.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\pg"
+    },
+    {
+      "name": "path-scurry",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\path-scurry"
+    },
+    {
+      "name": "path-parse",
+      "version": "1.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\path-parse"
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\path-key"
+    },
+    {
+      "name": "path-data-parser",
+      "version": "0.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\path-data-parser"
+    },
+    {
+      "name": "parse-ms",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\parse-ms"
+    },
+    {
+      "name": "package-manager-detector",
+      "version": "1.9.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\package-manager-detector"
+    },
+    {
+      "name": "p-retry",
+      "version": "7.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\p-retry"
+    },
+    {
+      "name": "p-map",
+      "version": "7.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\p-map"
+    },
+    {
+      "name": "os-paths",
+      "version": "4.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\os-paths"
+    },
+    {
+      "name": "oniguruma-to-es",
+      "version": "4.3.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\oniguruma-to-es"
+    },
+    {
+      "name": "oniguruma-parser",
+      "version": "0.12.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\oniguruma-parser"
+    },
+    {
+      "name": "onetime",
+      "version": "5.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\onetime"
+    },
+    {
+      "name": "npm-run-path",
+      "version": "6.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\npm-run-path"
+    },
+    {
+      "name": "path-key",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\npm-run-path\\node_modules\\path-key"
+    },
+    {
+      "name": "nopt",
+      "version": "8.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\nopt"
+    },
+    {
+      "name": "node-gyp-build",
+      "version": "4.8.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\node-gyp-build"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\node-fetch"
+    },
+    {
+      "name": "needle",
+      "version": "2.9.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\needle"
+    },
+    {
+      "name": "debug",
+      "version": "3.2.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\needle\\node_modules\\debug"
+    },
+    {
+      "name": "nanoid",
+      "version": "3.3.20",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\nanoid"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ms"
+    },
+    {
+      "name": "mrmime",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mrmime"
+    },
+    {
+      "name": "mri",
+      "version": "1.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mri"
+    },
+    {
+      "name": "minizlib",
+      "version": "3.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\minizlib"
+    },
+    {
+      "name": "minipass",
+      "version": "7.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\minipass"
+    },
+    {
+      "name": "minimatch",
+      "version": "11.0.8",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\minimatch"
+    },
+    {
+      "name": "mimic-fn",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mimic-fn"
+    },
+    {
+      "name": "micromark-util-types",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-types"
+    },
+    {
+      "name": "micromark-util-symbol",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-symbol"
+    },
+    {
+      "name": "micromark-util-subtokenize",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-subtokenize"
+    },
+    {
+      "name": "micromark-util-sanitize-uri",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-sanitize-uri"
+    },
+    {
+      "name": "micromark-util-resolve-all",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-resolve-all"
+    },
+    {
+      "name": "micromark-util-normalize-identifier",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-normalize-identifier"
+    },
+    {
+      "name": "micromark-util-html-tag-name",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-html-tag-name"
+    },
+    {
+      "name": "micromark-util-encode",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-encode"
+    },
+    {
+      "name": "micromark-util-edit-map",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-edit-map"
+    },
+    {
+      "name": "micromark-util-decode-string",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-decode-string"
+    },
+    {
+      "name": "micromark-util-decode-numeric-character-reference",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-decode-numeric-character-reference"
+    },
+    {
+      "name": "micromark-util-combine-extensions",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-combine-extensions"
+    },
+    {
+      "name": "micromark-util-classify-character",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-classify-character"
+    },
+    {
+      "name": "micromark-util-chunked",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-chunked"
+    },
+    {
+      "name": "micromark-util-character",
+      "version": "2.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-util-character"
+    },
+    {
+      "name": "micromark-factory-whitespace",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-factory-whitespace"
+    },
+    {
+      "name": "micromark-factory-title",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-factory-title"
+    },
+    {
+      "name": "micromark-factory-space",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-factory-space"
+    },
+    {
+      "name": "micromark-factory-label",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-factory-label"
+    },
+    {
+      "name": "micromark-factory-destination",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-factory-destination"
+    },
+    {
+      "name": "micromark-extension-gfm-task-list-item",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-task-list-item"
+    },
+    {
+      "name": "micromark-extension-gfm-tagfilter",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-tagfilter"
+    },
+    {
+      "name": "micromark-extension-gfm-table",
+      "version": "2.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-table"
+    },
+    {
+      "name": "micromark-extension-gfm-strikethrough",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-strikethrough"
+    },
+    {
+      "name": "micromark-extension-gfm-footnote",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-footnote"
+    },
+    {
+      "name": "micromark-extension-gfm-autolink-literal",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm-autolink-literal"
+    },
+    {
+      "name": "micromark-extension-gfm",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-extension-gfm"
+    },
+    {
+      "name": "micromark-core-commonmark",
+      "version": "2.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark-core-commonmark"
+    },
+    {
+      "name": "micromark",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\micromark"
+    },
+    {
+      "name": "mermaid",
+      "version": "11.17.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mermaid"
+    },
+    {
+      "name": "marked",
+      "version": "16.4.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mermaid\\node_modules\\marked"
+    },
+    {
+      "name": "es-toolkit",
+      "version": "1.53.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mermaid\\node_modules\\es-toolkit"
+    },
+    {
+      "name": "merge-stream",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\merge-stream"
+    },
+    {
+      "name": "mdast-util-to-string",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-to-string"
+    },
+    {
+      "name": "mdast-util-to-markdown",
+      "version": "2.2.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-to-markdown"
+    },
+    {
+      "name": "mdast-util-to-hast",
+      "version": "13.2.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-to-hast"
+    },
+    {
+      "name": "mdast-util-phrasing",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-phrasing"
+    },
+    {
+      "name": "mdast-util-gfm-task-list-item",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm-task-list-item"
+    },
+    {
+      "name": "mdast-util-gfm-table",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm-table"
+    },
+    {
+      "name": "mdast-util-gfm-strikethrough",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm-strikethrough"
+    },
+    {
+      "name": "mdast-util-gfm-footnote",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm-footnote"
+    },
+    {
+      "name": "mdast-util-gfm-autolink-literal",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm-autolink-literal"
+    },
+    {
+      "name": "mdast-util-gfm",
+      "version": "3.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-gfm"
+    },
+    {
+      "name": "mdast-util-from-markdown",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-from-markdown"
+    },
+    {
+      "name": "mdast-util-find-and-replace",
+      "version": "3.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\mdast-util-find-and-replace"
+    },
+    {
+      "name": "marked",
+      "version": "18.0.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\marked"
+    },
+    {
+      "name": "markdown-table",
+      "version": "3.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\markdown-table"
+    },
+    {
+      "name": "magic-string",
+      "version": "0.30.21",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\magic-string"
+    },
+    {
+      "name": "lz-string",
+      "version": "1.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\lz-string"
+    },
+    {
+      "name": "lru-cache",
+      "version": "11.5.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\lru-cache"
+    },
+    {
+      "name": "longest-streak",
+      "version": "3.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\longest-streak"
+    },
+    {
+      "name": "lodash.merge",
+      "version": "4.6.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\lodash.merge"
+    },
+    {
+      "name": "lodash-es",
+      "version": "4.18.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\lodash-es"
+    },
+    {
+      "name": "locate-character",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\locate-character"
+    },
+    {
+      "name": "libsql",
+      "version": "0.5.29",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\libsql"
+    },
+    {
+      "name": "detect-libc",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\libsql\\node_modules\\detect-libc"
+    },
+    {
+      "name": "layout-base",
+      "version": "1.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\layout-base"
+    },
+    {
+      "name": "kleur",
+      "version": "4.1.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\kleur"
+    },
+    {
+      "name": "kind-of",
+      "version": "6.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\kind-of"
+    },
+    {
+      "name": "khroma",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\khroma"
+    },
+    {
+      "name": "katex",
+      "version": "0.16.47",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\katex"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\json-schema-traverse"
+    },
+    {
+      "name": "json-schema-to-zod",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\json-schema-to-zod"
+    },
+    {
+      "name": "json-schema",
+      "version": "0.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\json-schema"
+    },
+    {
+      "name": "js-yaml",
+      "version": "3.15.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\js-yaml"
+    },
+    {
+      "name": "js-base64",
+      "version": "3.9.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\js-base64"
+    },
+    {
+      "name": "jpeg-js",
+      "version": "0.4.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\jpeg-js"
+    },
+    {
+      "name": "jose",
+      "version": "6.2.17",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\jose"
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\isexe"
+    },
+    {
+      "name": "is-unicode-supported",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-unicode-supported"
+    },
+    {
+      "name": "is-stream",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-stream"
+    },
+    {
+      "name": "is-reference",
+      "version": "1.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-reference"
+    },
+    {
+      "name": "is-plain-obj",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-plain-obj"
+    },
+    {
+      "name": "is-network-error",
+      "version": "1.3.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-network-error"
+    },
+    {
+      "name": "is-module",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-module"
+    },
+    {
+      "name": "is-extendable",
+      "version": "0.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-extendable"
+    },
+    {
+      "name": "is-core-module",
+      "version": "2.18.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\is-core-module"
+    },
+    {
+      "name": "internmap",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\internmap"
+    },
+    {
+      "name": "inline-style-parser",
+      "version": "0.2.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\inline-style-parser"
+    },
+    {
+      "name": "import-meta-resolve",
+      "version": "4.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\import-meta-resolve"
+    },
+    {
+      "name": "ignore",
+      "version": "7.0.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ignore"
+    },
+    {
+      "name": "iconv-lite",
+      "version": "0.4.24",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\iconv-lite"
+    },
+    {
+      "name": "iceberg-js",
+      "version": "0.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\iceberg-js"
+    },
+    {
+      "name": "human-signals",
+      "version": "8.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\human-signals"
+    },
+    {
+      "name": "https-proxy-agent",
+      "version": "7.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\https-proxy-agent"
+    },
+    {
+      "name": "html-void-elements",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\html-void-elements"
+    },
+    {
+      "name": "html-to-image",
+      "version": "1.11.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\html-to-image"
+    },
+    {
+      "name": "hast-util-whitespace",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\hast-util-whitespace"
+    },
+    {
+      "name": "hast-util-to-html",
+      "version": "9.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\hast-util-to-html"
+    },
+    {
+      "name": "hasown",
+      "version": "2.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\hasown"
+    },
+    {
+      "name": "hachure-fill",
+      "version": "0.5.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\hachure-fill"
+    },
+    {
+      "name": "gray-matter",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\gray-matter"
+    },
+    {
+      "name": "graceful-fs",
+      "version": "4.2.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\graceful-fs"
+    },
+    {
+      "name": "glob",
+      "version": "14.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\glob"
+    },
+    {
+      "name": "get-stream",
+      "version": "9.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\get-stream"
+    },
+    {
+      "name": "function-bind",
+      "version": "1.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\function-bind"
+    },
+    {
+      "name": "file-uri-to-path",
+      "version": "1.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\file-uri-to-path"
+    },
+    {
+      "name": "figures",
+      "version": "6.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\figures"
+    },
+    {
+      "name": "fdir",
+      "version": "6.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\fdir"
+    },
+    {
+      "name": "fastq",
+      "version": "1.20.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\fastq"
+    },
+    {
+      "name": "fastdom",
+      "version": "1.0.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\fastdom"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\fast-uri"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\fast-deep-equal"
+    },
+    {
+      "name": "extend-shallow",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\extend-shallow"
+    },
+    {
+      "name": "extend",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\extend"
+    },
+    {
+      "name": "execa",
+      "version": "9.6.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\execa"
+    },
+    {
+      "name": "eventsource-parser",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\eventsource-parser"
+    },
+    {
+      "name": "estree-walker",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\estree-walker"
+    },
+    {
+      "name": "esrap",
+      "version": "2.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\esrap"
+    },
+    {
+      "name": "esprima",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\esprima"
+    },
+    {
+      "name": "esm-env",
+      "version": "1.2.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\esm-env"
+    },
+    {
+      "name": "escape-string-regexp",
+      "version": "5.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\escape-string-regexp"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\esbuild"
+    },
+    {
+      "name": "es-errors",
+      "version": "1.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\es-errors"
+    },
+    {
+      "name": "dotenv",
+      "version": "17.4.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dotenv"
+    },
+    {
+      "name": "dompurify",
+      "version": "3.4.18",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dompurify"
+    },
+    {
+      "name": "dom-to-image-more",
+      "version": "3.11.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dom-to-image-more"
+    },
+    {
+      "name": "diff",
+      "version": "8.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\diff"
+    },
+    {
+      "name": "devlop",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\devlop"
+    },
+    {
+      "name": "devalue",
+      "version": "5.9.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\devalue"
+    },
+    {
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\detect-libc"
+    },
+    {
+      "name": "dequal",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dequal"
+    },
+    {
+      "name": "delaunator",
+      "version": "5.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\delaunator"
+    },
+    {
+      "name": "deepmerge",
+      "version": "4.3.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\deepmerge"
+    },
+    {
+      "name": "decode-named-character-reference",
+      "version": "1.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\decode-named-character-reference"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\debug"
+    },
+    {
+      "name": "dayjs",
+      "version": "1.11.23",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dayjs"
+    },
+    {
+      "name": "dagre-d3-es",
+      "version": "7.0.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\dagre-d3-es"
+    },
+    {
+      "name": "d3-zoom",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-zoom"
+    },
+    {
+      "name": "d3-transition",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-transition"
+    },
+    {
+      "name": "d3-timer",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-timer"
+    },
+    {
+      "name": "d3-time-format",
+      "version": "4.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-time-format"
+    },
+    {
+      "name": "d3-time",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-time"
+    },
+    {
+      "name": "d3-shape",
+      "version": "3.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-shape"
+    },
+    {
+      "name": "d3-selection",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-selection"
+    },
+    {
+      "name": "d3-scale-chromatic",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-scale-chromatic"
+    },
+    {
+      "name": "d3-scale",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-scale"
+    },
+    {
+      "name": "d3-sankey",
+      "version": "0.12.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-sankey"
+    },
+    {
+      "name": "internmap",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-sankey\\node_modules\\internmap"
+    },
+    {
+      "name": "d3-shape",
+      "version": "1.3.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-sankey\\node_modules\\d3-shape"
+    },
+    {
+      "name": "d3-path",
+      "version": "1.0.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-sankey\\node_modules\\d3-path"
+    },
+    {
+      "name": "d3-array",
+      "version": "2.12.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-sankey\\node_modules\\d3-array"
+    },
+    {
+      "name": "d3-random",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-random"
+    },
+    {
+      "name": "d3-quadtree",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-quadtree"
+    },
+    {
+      "name": "d3-polygon",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-polygon"
+    },
+    {
+      "name": "d3-path",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-path"
+    },
+    {
+      "name": "d3-interpolate",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-interpolate"
+    },
+    {
+      "name": "d3-hierarchy",
+      "version": "3.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-hierarchy"
+    },
+    {
+      "name": "d3-geo",
+      "version": "3.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-geo"
+    },
+    {
+      "name": "d3-format",
+      "version": "3.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-format"
+    },
+    {
+      "name": "d3-force",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-force"
+    },
+    {
+      "name": "d3-fetch",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-fetch"
+    },
+    {
+      "name": "d3-ease",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-ease"
+    },
+    {
+      "name": "d3-dsv",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-dsv"
+    },
+    {
+      "name": "iconv-lite",
+      "version": "0.6.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-dsv\\node_modules\\iconv-lite"
+    },
+    {
+      "name": "commander",
+      "version": "7.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-dsv\\node_modules\\commander"
+    },
+    {
+      "name": "d3-drag",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-drag"
+    },
+    {
+      "name": "d3-dispatch",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-dispatch"
+    },
+    {
+      "name": "d3-delaunay",
+      "version": "6.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-delaunay"
+    },
+    {
+      "name": "d3-contour",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-contour"
+    },
+    {
+      "name": "d3-color",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-color"
+    },
+    {
+      "name": "d3-chord",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-chord"
+    },
+    {
+      "name": "d3-brush",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-brush"
+    },
+    {
+      "name": "d3-axis",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-axis"
+    },
+    {
+      "name": "d3-array",
+      "version": "3.2.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3-array"
+    },
+    {
+      "name": "d3",
+      "version": "7.9.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\d3"
+    },
+    {
+      "name": "cytoscape-fcose",
+      "version": "2.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cytoscape-fcose"
+    },
+    {
+      "name": "layout-base",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cytoscape-fcose\\node_modules\\layout-base"
+    },
+    {
+      "name": "cose-base",
+      "version": "2.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cytoscape-fcose\\node_modules\\cose-base"
+    },
+    {
+      "name": "cytoscape-cose-bilkent",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cytoscape-cose-bilkent"
+    },
+    {
+      "name": "cytoscape",
+      "version": "3.35.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cytoscape"
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cross-spawn"
+    },
+    {
+      "name": "croner",
+      "version": "10.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\croner"
+    },
+    {
+      "name": "cose-base",
+      "version": "1.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cose-base"
+    },
+    {
+      "name": "cookie",
+      "version": "0.6.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cookie"
+    },
+    {
+      "name": "consola",
+      "version": "3.4.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\consola"
+    },
+    {
+      "name": "commondir",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\commondir"
+    },
+    {
+      "name": "commander",
+      "version": "8.3.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\commander"
+    },
+    {
+      "name": "comma-separated-tokens",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\comma-separated-tokens"
+    },
+    {
+      "name": "cn",
+      "version": "0.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\cn"
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\clsx"
+    },
+    {
+      "name": "chownr",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\chownr"
+    },
+    {
+      "name": "chokidar",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\chokidar"
+    },
+    {
+      "name": "chat",
+      "version": "4.45.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\chat"
+    },
+    {
+      "name": "@workflow/serde",
+      "version": "4.1.0-beta.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\chat\\node_modules\\@workflow\\serde"
+    },
+    {
+      "name": "character-entities-legacy",
+      "version": "3.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\character-entities-legacy"
+    },
+    {
+      "name": "character-entities-html4",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\character-entities-html4"
+    },
+    {
+      "name": "character-entities",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\character-entities"
+    },
+    {
+      "name": "ccount",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ccount"
+    },
+    {
+      "name": "brace-expansion",
+      "version": "5.0.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\brace-expansion"
+    },
+    {
+      "name": "bits-ui",
+      "version": "2.19.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\bits-ui"
+    },
+    {
+      "name": "bindings",
+      "version": "1.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\bindings"
+    },
+    {
+      "name": "balanced-match",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\balanced-match"
+    },
+    {
+      "name": "bail",
+      "version": "2.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\bail"
+    },
+    {
+      "name": "axobject-query",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\axobject-query"
+    },
+    {
+      "name": "async-sema",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\async-sema"
+    },
+    {
+      "name": "async-mutex",
+      "version": "0.5.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\async-mutex"
+    },
+    {
+      "name": "aria-query",
+      "version": "5.3.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\aria-query"
+    },
+    {
+      "name": "argparse",
+      "version": "1.0.10",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\argparse"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\ajv"
+    },
+    {
+      "name": "agent-base",
+      "version": "7.1.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\agent-base"
+    },
+    {
+      "name": "acorn-import-attributes",
+      "version": "1.9.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\acorn-import-attributes"
+    },
+    {
+      "name": "acorn",
+      "version": "8.19.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\acorn"
+    },
+    {
+      "name": "abbrev",
+      "version": "3.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\abbrev"
+    },
+    {
+      "name": "@workflow/serde",
+      "version": "4.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@workflow\\serde"
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui-svelte"
+    },
+    {
+      "name": "@victframework/ui-patterns-svelte",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui-patterns-svelte"
+    },
+    {
+      "name": "@victframework/ui-media-svelte",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui-media-svelte"
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui-ai-svelte"
+    },
+    {
+      "name": "runed",
+      "version": "0.37.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui-ai-svelte\\node_modules\\runed"
+    },
+    {
+      "name": "@victframework/ui",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\ui"
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "version": "0.4.0-rc.1+vhost013",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\store-postgres"
+    },
+    {
+      "name": "@victframework/sdk",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\sdk"
+    },
+    {
+      "name": "@victframework/runtime",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\runtime"
+    },
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1-q4-007.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\mastra"
+    },
+    {
+      "name": "@victframework/kernel",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\kernel"
+    },
+    {
+      "name": "@victframework/hosted",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\hosted"
+    },
+    {
+      "name": "@victframework/control",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\control"
+    },
+    {
+      "name": "@victframework/contracts",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\contracts"
+    },
+    {
+      "name": "@victframework/application",
+      "version": "0.4.0-rc.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@victframework\\application"
+    },
+    {
+      "name": "@vercel/oidc",
+      "version": "4.0.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\oidc"
+    },
+    {
+      "name": "jose",
+      "version": "5.10.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\oidc\\node_modules\\jose"
+    },
+    {
+      "name": "@vercel/nft",
+      "version": "1.11.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\nft"
+    },
+    {
+      "name": "@vercel/functions",
+      "version": "3.11.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\functions"
+    },
+    {
+      "name": "@vercel/cli-exec",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec"
+    },
+    {
+      "name": "strip-final-newline",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\strip-final-newline"
+    },
+    {
+      "name": "signal-exit",
+      "version": "3.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\signal-exit"
+    },
+    {
+      "name": "npm-run-path",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\npm-run-path"
+    },
+    {
+      "name": "is-stream",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\is-stream"
+    },
+    {
+      "name": "human-signals",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\human-signals"
+    },
+    {
+      "name": "get-stream",
+      "version": "6.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\get-stream"
+    },
+    {
+      "name": "execa",
+      "version": "5.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-exec\\node_modules\\execa"
+    },
+    {
+      "name": "@vercel/cli-config",
+      "version": "0.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-config"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@vercel\\cli-config\\node_modules\\zod"
+    },
+    {
+      "name": "@upsetjs/venn.js",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@upsetjs\\venn.js"
+    },
+    {
+      "name": "@ungap/structured-clone",
+      "version": "1.4.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ungap\\structured-clone"
+    },
+    {
+      "name": "@types/ws",
+      "version": "8.18.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\ws"
+    },
+    {
+      "name": "@types/unist",
+      "version": "3.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\unist"
+    },
+    {
+      "name": "@types/trusted-types",
+      "version": "2.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\trusted-types"
+    },
+    {
+      "name": "@types/resolve",
+      "version": "1.20.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\resolve"
+    },
+    {
+      "name": "@types/pg",
+      "version": "8.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\pg"
+    },
+    {
+      "name": "@types/node",
+      "version": "22.13.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\node"
+    },
+    {
+      "name": "@types/ms",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\ms"
+    },
+    {
+      "name": "@types/mdast",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\mdast"
+    },
+    {
+      "name": "@types/json-schema",
+      "version": "7.0.15",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\json-schema"
+    },
+    {
+      "name": "@types/hast",
+      "version": "3.0.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\hast"
+    },
+    {
+      "name": "@types/geojson",
+      "version": "7946.0.16",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\geojson"
+    },
+    {
+      "name": "@types/estree",
+      "version": "1.0.10",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\estree"
+    },
+    {
+      "name": "@types/debug",
+      "version": "4.1.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\debug"
+    },
+    {
+      "name": "@types/d3-zoom",
+      "version": "3.0.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-zoom"
+    },
+    {
+      "name": "@types/d3-transition",
+      "version": "3.0.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-transition"
+    },
+    {
+      "name": "@types/d3-timer",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-timer"
+    },
+    {
+      "name": "@types/d3-time-format",
+      "version": "4.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-time-format"
+    },
+    {
+      "name": "@types/d3-time",
+      "version": "3.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-time"
+    },
+    {
+      "name": "@types/d3-shape",
+      "version": "3.2.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-shape"
+    },
+    {
+      "name": "@types/d3-selection",
+      "version": "3.0.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-selection"
+    },
+    {
+      "name": "@types/d3-scale-chromatic",
+      "version": "3.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-scale-chromatic"
+    },
+    {
+      "name": "@types/d3-scale",
+      "version": "4.0.9",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-scale"
+    },
+    {
+      "name": "@types/d3-random",
+      "version": "3.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-random"
+    },
+    {
+      "name": "@types/d3-quadtree",
+      "version": "3.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-quadtree"
+    },
+    {
+      "name": "@types/d3-polygon",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-polygon"
+    },
+    {
+      "name": "@types/d3-path",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-path"
+    },
+    {
+      "name": "@types/d3-interpolate",
+      "version": "3.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-interpolate"
+    },
+    {
+      "name": "@types/d3-hierarchy",
+      "version": "3.1.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-hierarchy"
+    },
+    {
+      "name": "@types/d3-geo",
+      "version": "3.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-geo"
+    },
+    {
+      "name": "@types/d3-format",
+      "version": "3.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-format"
+    },
+    {
+      "name": "@types/d3-force",
+      "version": "3.0.10",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-force"
+    },
+    {
+      "name": "@types/d3-fetch",
+      "version": "3.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-fetch"
+    },
+    {
+      "name": "@types/d3-ease",
+      "version": "3.0.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-ease"
+    },
+    {
+      "name": "@types/d3-dsv",
+      "version": "3.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-dsv"
+    },
+    {
+      "name": "@types/d3-drag",
+      "version": "3.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-drag"
+    },
+    {
+      "name": "@types/d3-dispatch",
+      "version": "3.0.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-dispatch"
+    },
+    {
+      "name": "@types/d3-delaunay",
+      "version": "6.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-delaunay"
+    },
+    {
+      "name": "@types/d3-contour",
+      "version": "3.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-contour"
+    },
+    {
+      "name": "@types/d3-color",
+      "version": "3.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-color"
+    },
+    {
+      "name": "@types/d3-chord",
+      "version": "3.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-chord"
+    },
+    {
+      "name": "@types/d3-brush",
+      "version": "3.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-brush"
+    },
+    {
+      "name": "@types/d3-axis",
+      "version": "3.0.6",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-axis"
+    },
+    {
+      "name": "@types/d3-array",
+      "version": "3.2.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3-array"
+    },
+    {
+      "name": "@types/d3",
+      "version": "7.4.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\d3"
+    },
+    {
+      "name": "@types/cookie",
+      "version": "0.6.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@types\\cookie"
+    },
+    {
+      "name": "@tanstack/virtual-core",
+      "version": "3.19.11",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@tanstack\\virtual-core"
+    },
+    {
+      "name": "@tanstack/highlight",
+      "version": "1.2.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@tanstack\\highlight"
+    },
+    {
+      "name": "@swc/helpers",
+      "version": "0.5.24",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@swc\\helpers"
+    },
+    {
+      "name": "@sveltejs/vite-plugin-svelte-inspector",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\vite-plugin-svelte-inspector"
+    },
+    {
+      "name": "@sveltejs/vite-plugin-svelte",
+      "version": "5.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\vite-plugin-svelte"
+    },
+    {
+      "name": "@sveltejs/load-config",
+      "version": "0.2.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\load-config"
+    },
+    {
+      "name": "@sveltejs/kit",
+      "version": "2.70.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\kit"
+    },
+    {
+      "name": "@sveltejs/adapter-vercel",
+      "version": "6.3.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\adapter-vercel"
+    },
+    {
+      "name": "@sveltejs/adapter-node",
+      "version": "5.5.8",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\adapter-node"
+    },
+    {
+      "name": "@sveltejs/acorn-typescript",
+      "version": "1.0.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sveltejs\\acorn-typescript"
+    },
+    {
+      "name": "@supabase/supabase-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\supabase-js"
+    },
+    {
+      "name": "@supabase/storage-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\storage-js"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\storage-js\\node_modules\\tslib"
+    },
+    {
+      "name": "@supabase/ssr",
+      "version": "0.12.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\ssr"
+    },
+    {
+      "name": "cookie",
+      "version": "1.1.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\ssr\\node_modules\\cookie"
+    },
+    {
+      "name": "@supabase/realtime-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\realtime-js"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\realtime-js\\node_modules\\tslib"
+    },
+    {
+      "name": "@supabase/postgrest-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\postgrest-js"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\postgrest-js\\node_modules\\tslib"
+    },
+    {
+      "name": "@supabase/phoenix",
+      "version": "0.4.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\phoenix"
+    },
+    {
+      "name": "@supabase/functions-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\functions-js"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\functions-js\\node_modules\\tslib"
+    },
+    {
+      "name": "@supabase/auth-js",
+      "version": "2.119.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\auth-js"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@supabase\\auth-js\\node_modules\\tslib"
+    },
+    {
+      "name": "@standard-schema/spec",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@standard-schema\\spec"
+    },
+    {
+      "name": "@sindresorhus/transliterate",
+      "version": "1.6.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sindresorhus\\transliterate"
+    },
+    {
+      "name": "@sindresorhus/slugify",
+      "version": "2.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sindresorhus\\slugify"
+    },
+    {
+      "name": "@sindresorhus/merge-streams",
+      "version": "4.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sindresorhus\\merge-streams"
+    },
+    {
+      "name": "@shikijs/vscode-textmate",
+      "version": "10.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\vscode-textmate"
+    },
+    {
+      "name": "@shikijs/types",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\types"
+    },
+    {
+      "name": "@shikijs/themes",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\themes"
+    },
+    {
+      "name": "@shikijs/langs",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\langs"
+    },
+    {
+      "name": "@shikijs/engine-oniguruma",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\engine-oniguruma"
+    },
+    {
+      "name": "@shikijs/engine-javascript",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\engine-javascript"
+    },
+    {
+      "name": "@shikijs/core",
+      "version": "3.20.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shikijs\\core"
+    },
+    {
+      "name": "@shadcn-svelte/primitives",
+      "version": "0.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shadcn-svelte\\primitives"
+    },
+    {
+      "name": "runed",
+      "version": "0.37.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@shadcn-svelte\\primitives\\node_modules\\runed"
+    },
+    {
+      "name": "@sec-ant/readable-stream",
+      "version": "0.4.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@sec-ant\\readable-stream"
+    },
+    {
+      "name": "@rollup/rollup-win32-x64-msvc",
+      "version": "4.68.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\rollup-win32-x64-msvc"
+    },
+    {
+      "name": "@rollup/rollup-win32-x64-gnu",
+      "version": "4.68.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\rollup-win32-x64-gnu"
+    },
+    {
+      "name": "@rollup/pluginutils",
+      "version": "5.5.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\pluginutils"
+    },
+    {
+      "name": "@rollup/plugin-replace",
+      "version": "6.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\plugin-replace"
+    },
+    {
+      "name": "@rollup/plugin-node-resolve",
+      "version": "16.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\plugin-node-resolve"
+    },
+    {
+      "name": "@rollup/plugin-json",
+      "version": "6.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\plugin-json"
+    },
+    {
+      "name": "@rollup/plugin-commonjs",
+      "version": "29.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@rollup\\plugin-commonjs"
+    },
+    {
+      "name": "@posthog/types",
+      "version": "1.425.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@posthog\\types"
+    },
+    {
+      "name": "@posthog/core",
+      "version": "1.68.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@posthog\\core"
+    },
+    {
+      "name": "@polka/url",
+      "version": "1.0.0-next.29",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@polka\\url"
+    },
+    {
+      "name": "@neon-rs/load",
+      "version": "0.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@neon-rs\\load"
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@modelcontextprotocol\\server"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@modelcontextprotocol\\server\\node_modules\\zod"
+    },
+    {
+      "name": "@modelcontextprotocol/core",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@modelcontextprotocol\\core"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@modelcontextprotocol\\core\\node_modules\\zod"
+    },
+    {
+      "name": "@mermaid-js/parser",
+      "version": "1.2.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mermaid-js\\parser"
+    },
+    {
+      "name": "@mastra/schema-compat",
+      "version": "1.3.8",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\schema-compat"
+    },
+    {
+      "name": "@mastra/pg",
+      "version": "1.22.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\pg"
+    },
+    {
+      "name": "@mastra/observability",
+      "version": "1.17.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\observability"
+    },
+    {
+      "name": "@mastra/memory",
+      "version": "1.28.2-q4-007.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\memory"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\memory\\node_modules\\zod"
+    },
+    {
+      "name": "@mastra/libsql",
+      "version": "1.22.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\libsql"
+    },
+    {
+      "name": "@mastra/core",
+      "version": "1.64.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mastra\\core"
+    },
+    {
+      "name": "@mapbox/node-pre-gyp",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@mapbox\\node-pre-gyp"
+    },
+    {
+      "name": "@lukeed/uuid",
+      "version": "2.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@lukeed\\uuid"
+    },
+    {
+      "name": "@lukeed/csprng",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@lukeed\\csprng"
+    },
+    {
+      "name": "@lucide/svelte",
+      "version": "1.27.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@lucide\\svelte"
+    },
+    {
+      "name": "@libsql/win32-x64-msvc",
+      "version": "0.5.29",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@libsql\\win32-x64-msvc"
+    },
+    {
+      "name": "@libsql/isomorphic-ws",
+      "version": "0.1.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@libsql\\isomorphic-ws"
+    },
+    {
+      "name": "@libsql/hrana-client",
+      "version": "0.10.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@libsql\\hrana-client"
+    },
+    {
+      "name": "@libsql/core",
+      "version": "0.17.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@libsql\\core"
+    },
+    {
+      "name": "@libsql/client",
+      "version": "0.17.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@libsql\\client"
+    },
+    {
+      "name": "@jridgewell/trace-mapping",
+      "version": "0.3.31",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@jridgewell\\trace-mapping"
+    },
+    {
+      "name": "@jridgewell/sourcemap-codec",
+      "version": "1.6.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@jridgewell\\sourcemap-codec"
+    },
+    {
+      "name": "@jridgewell/resolve-uri",
+      "version": "3.1.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@jridgewell\\resolve-uri"
+    },
+    {
+      "name": "@jridgewell/remapping",
+      "version": "2.3.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@jridgewell\\remapping"
+    },
+    {
+      "name": "@jridgewell/gen-mapping",
+      "version": "0.3.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@jridgewell\\gen-mapping"
+    },
+    {
+      "name": "@isaacs/ttlcache",
+      "version": "2.1.5",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@isaacs\\ttlcache"
+    },
+    {
+      "name": "@isaacs/nonrecursive-glob-match",
+      "version": "1.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@isaacs\\nonrecursive-glob-match"
+    },
+    {
+      "name": "@isaacs/fs-minipass",
+      "version": "4.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@isaacs\\fs-minipass"
+    },
+    {
+      "name": "@internationalized/date",
+      "version": "3.12.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@internationalized\\date"
+    },
+    {
+      "name": "@iconify/utils",
+      "version": "3.1.7",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@iconify\\utils"
+    },
+    {
+      "name": "@iconify/types",
+      "version": "2.0.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@iconify\\types"
+    },
+    {
+      "name": "@floating-ui/utils",
+      "version": "0.2.12",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@floating-ui\\utils"
+    },
+    {
+      "name": "@floating-ui/dom",
+      "version": "1.8.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@floating-ui\\dom"
+    },
+    {
+      "name": "@floating-ui/core",
+      "version": "1.8.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@floating-ui\\core"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.28.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@esbuild\\win32-x64"
+    },
+    {
+      "name": "@chevrotain/types",
+      "version": "11.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@chevrotain\\types"
+    },
+    {
+      "name": "@chat-adapter/catalog",
+      "version": "4.45.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@chat-adapter\\catalog"
+    },
+    {
+      "name": "@braintree/sanitize-url",
+      "version": "7.1.2",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@braintree\\sanitize-url"
+    },
+    {
+      "name": "@antfu/install-pkg",
+      "version": "2.1.0",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@antfu\\install-pkg"
+    },
+    {
+      "name": "@ai-sdk/provider-v7",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-v7"
+    },
+    {
+      "name": "@ai-sdk/provider-v6",
+      "version": "3.0.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-v6"
+    },
+    {
+      "name": "@ai-sdk/provider-v5",
+      "version": "2.0.3",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-v5"
+    },
+    {
+      "name": "@ai-sdk/provider-utils-v7",
+      "version": "5.0.13",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-utils-v7"
+    },
+    {
+      "name": "@ai-sdk/provider",
+      "version": "4.0.4",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-utils-v7\\node_modules\\@ai-sdk\\provider"
+    },
+    {
+      "name": "@ai-sdk/provider-utils-v6",
+      "version": "4.0.40",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider-utils-v6"
+    },
+    {
+      "name": "@ai-sdk/provider",
+      "version": "3.0.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@ai-sdk\\provider"
+    },
+    {
+      "name": "@a2a-js/sdk-v1",
+      "version": "1.0.1",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@a2a-js\\sdk-v1"
+    },
+    {
+      "name": "@a2a-js/sdk-v0_3",
+      "version": "0.3.14",
+      "path": "C:\\q4-007\\capability\\npm-ci-dry\\node_modules\\@a2a-js\\sdk-v0_3"
+    }
+  ],
+  "added": 516,
+  "audited": 0,
+  "change": [],
+  "changed": 0,
+  "funding": 0,
+  "remove": [],
+  "removed": 0
+}

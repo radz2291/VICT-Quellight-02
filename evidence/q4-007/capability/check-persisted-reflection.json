@@ -1,0 +1,50 @@
+{
+  "outer": [
+    {
+      "status": "available",
+      "id": "derived-group-1",
+      "parentIds": [
+        "c8372d9a745bd43f",
+        "d579bd5e9772f0e9"
+      ],
+      "messageIds": [
+        "acda1ea7-9354-456d-b053-5ba1182694d4",
+        "78a665ed-d687-4efd-8825-6138d4f2612e",
+        "b531f623-2a37-4663-9854-de07f158ad74",
+        "584a2850-431c-47b9-a1ce-2baede801ee2",
+        "77d5e7db-b381-4025-a8b5-bd869558da2c",
+        "7f182736-a69f-4ba2-83e4-d8b58752ceef",
+        "7145957e-7408-4797-bf63-daa004d8e7fb",
+        "ece62267-69af-4fe5-8121-c76b88d937ff"
+      ]
+    }
+  ],
+  "rebuilt": [
+    {
+      "status": "available",
+      "id": "derived-group-1",
+      "parentIds": [
+        "e03e48821eb955f7"
+      ],
+      "messageIds": [
+        "acda1ea7-9354-456d-b053-5ba1182694d4",
+        "77d5e7db-b381-4025-a8b5-bd869558da2c",
+        "a8ba3517-18a3-44fe-ac87-cf00a3e1b018",
+        "7145957e-7408-4797-bf63-daa004d8e7fb"
+      ]
+    }
+  ],
+  "omittedIds": [
+    "a8ba3517-18a3-44fe-ac87-cf00a3e1b018",
+    "74d9162f-b289-4cb2-a4c3-137b3d7de86a"
+  ],
+  "negatives": [
+    "possible-aggregate-fallback",
+    "ordinal-only-fallback",
+    "unverified-output-line",
+    "legacy parent",
+    "ineligible member",
+    "duplicate copied-line attribution"
+  ],
+  "scope": "frozen Q4-006 capture plus public installed Mastra processors; no candidate package or provider call"
+}

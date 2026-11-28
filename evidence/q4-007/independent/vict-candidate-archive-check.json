@@ -1,0 +1,8 @@
+{
+  "package": "@victframework/mastra",
+  "version": "0.4.0-rc.1-q4-007.1",
+  "node": "v22.23.5",
+  "archiveSha256": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+  "filesMatchedExactly": 69,
+  "treeSha256": "3b5c4b0a538daf2204fa00d1d7b59bc067e9046b2c216be605408d3a2920760f"
+}

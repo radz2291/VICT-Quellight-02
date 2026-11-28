@@ -1,0 +1,111 @@
+{
+  "schema": "quellight.q4-007.candidate-install@1",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "canonicalLockSha": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "candidateLockSha256": "9b9c90361392dd0af0f282834ad231011554f04a3e5ac2ab20eff734874563be",
+  "node": "v22.23.5",
+  "npm": "11.21.2",
+  "scope": "fresh pinned app source, real npm offline lock, two tar-installed candidate slots, linked unchanged installed closure",
+  "consumer": "C:\\q4-007\\consumer",
+  "donor": "C:\\q4-001\\app",
+  "candidateSlots": [
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1-q4-007.1",
+      "archiveName": "victframework-mastra-0.4.0-rc.1-q4-007.1.tgz",
+      "sha256": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+      "archive": "C:\\q4-007\\artifacts\\victframework-mastra-0.4.0-rc.1-q4-007.1.tgz",
+      "file": "packs/victframework-mastra-0.4.0-rc.1-q4-007.1.tgz",
+      "integrity": "sha512-jp51o6s3IAVS2wglNXwdpZeQpmI+5jC6q8JdK70Sh2+KL4Axydcq8HRMyP3cJPfYYq7d4M+EPoahwYqKErSYOA=="
+    },
+    {
+      "name": "@mastra/memory",
+      "version": "1.28.2-q4-007.1",
+      "archiveName": "mastra-memory-1.28.2-q4-007.1.tgz",
+      "sha256": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+      "archive": "C:\\q4-007\\artifacts\\mastra-memory-1.28.2-q4-007.1.tgz",
+      "file": "packs/mastra-memory-1.28.2-q4-007.1.tgz",
+      "integrity": "sha512-62R5bbQLXDpNK9ei394LiRDubmQrJz4K2IA8EdMKOK7f3GXppGkggCuhUb9MJ2jKwlj8DisrUjrHm5854iTmsA=="
+    }
+  ],
+  "packageTrees": [
+    {
+      "name": "@victframework/mastra",
+      "files": 69,
+      "fileTreeSha256": "bfbd6d78139c67cae07b340cff1f21a349ad983edaeff09ab779abd34a633f8b"
+    },
+    {
+      "name": "@mastra/memory",
+      "files": 205,
+      "fileTreeSha256": "8ff1276faf0aa1f91fc1444fd64859717be64b6935de04aac14359c940acbbb9"
+    },
+    {
+      "name": "@victframework/ui-media-svelte",
+      "files": 21,
+      "fileTreeSha256": "374714da363b2c8a886448c85fa7350a0dd0cc9fbd5f9e4a65cf871f1c7a2c33"
+    },
+    {
+      "name": "@victframework/ui-patterns-svelte",
+      "files": 32,
+      "fileTreeSha256": "3ddfcf17a7999fd2ea436dfc7923f01609bc4653332762a03b15685bcc44838c"
+    },
+    {
+      "name": "@victframework/application",
+      "files": 34,
+      "fileTreeSha256": "570be4fc92e048fd680d4e7ba093cbaf65024bded031f4c11e9600cd688f69eb"
+    },
+    {
+      "name": "@victframework/contracts",
+      "files": 34,
+      "fileTreeSha256": "3dfb171b1f86e801554a6ba77d26a26c25b35f83c44fc113982b04c638ac6277"
+    },
+    {
+      "name": "@victframework/sdk",
+      "files": 28,
+      "fileTreeSha256": "70322b45cf47ff8898e6bfc2083f9d001901783972d41df784d200bc959c2687"
+    },
+    {
+      "name": "@victframework/ui",
+      "files": 70,
+      "fileTreeSha256": "cff55789016685f42d6892bec0c0cbf054cde75e89e149fc253166b36b8533e8"
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "files": 218,
+      "fileTreeSha256": "2d838a548818b13ac5b2fc4cff831ecd1ea3c48068ac9ff5bde7f8bf4fbbd20a"
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "files": 285,
+      "fileTreeSha256": "6e8d7a8892a8ebcd954f80ccc4bd118ac6a335c25133c6c385f34f679e432e24"
+    },
+    {
+      "name": "@victframework/kernel",
+      "files": 31,
+      "fileTreeSha256": "1d822bd20eaa36d3a4a5e87255f813f42972b7704ab6ebad19a6a595f9bdc18a"
+    },
+    {
+      "name": "@victframework/control",
+      "files": 16,
+      "fileTreeSha256": "f02940b338680cdce920181ede46539ee2e338f4cf679022c66334186e807954"
+    },
+    {
+      "name": "@victframework/runtime",
+      "files": 124,
+      "fileTreeSha256": "152d536d6732db1e04d1e89d2c58d1b160d64d35ad21a012b13c57e03eb48066"
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "files": 30,
+      "fileTreeSha256": "1f6aa96f630cb3d2fb3e935fce451249c1665d8084fb565f5c39d473287ee268"
+    },
+    {
+      "name": "@victframework/hosted",
+      "files": 14,
+      "fileTreeSha256": "361fb1da34919d95d510f2d0d44d3ae2d67fa97c8fb9e4547d39a7332b7990f1"
+    }
+  ],
+  "sharedSlots": 378,
+  "adapterRoute": "node_modules\\@victframework\\mastra\\dist\\index.js",
+  "adapterMemoryRoute": "node_modules\\@mastra\\memory\\dist\\index.js"
+}

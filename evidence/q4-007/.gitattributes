@@ -1,0 +1,4 @@
+*.json -text
+*.mjs -text
+implementation.patch -text whitespace=-blank-at-eol,-blank-at-eof
+SHA256SUMS -text
