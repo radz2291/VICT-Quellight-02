@@ -1,0 +1,136 @@
+{
+  "mode": "authorized-zai",
+  "cases": {
+    "mira": {
+      "equivalentNonRoomSdk": true,
+      "equivalentNonRoomWire": true,
+      "candidateRoomRevision": 3,
+      "candidateBlockBytes": 287,
+      "candidateLookupRowBytes": 307,
+      "absentLookupRowBytes": 2,
+      "draftLookupCeiling": 512,
+      "historicalLookupBytes": 544,
+      "sdkPromptBytes": {
+        "candidate": 34885,
+        "control": 34590,
+        "delta": 295
+      },
+      "firstWireBytes": {
+        "candidate": 42635,
+        "control": 42340,
+        "delta": 295
+      },
+      "firstWireUsage": {
+        "candidate": {
+          "prompt_tokens": 9576,
+          "completion_tokens": 922,
+          "total_tokens": 10498,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 777
+          }
+        },
+        "control": {
+          "prompt_tokens": 9511,
+          "completion_tokens": 327,
+          "total_tokens": 9838,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 274
+          }
+        }
+      },
+      "replies": {
+        "candidate": "Here it is plainly, so you can carry it to the team:\n\n- **The draft:** Cedar-47 is the serial — that's the draft under review in this room.\n- **Final approval:** Yours. Cedar-47 doesn't move without your sign-off; no one else holds it.\n- **Mira's role:** Wording only. She checks the language — she has no approval authority over the draft itself.\n- **Vendor attendance:** Not confirmed. It's still undecided, and I'll keep that question open unless and until you confirm it.\n\nIn one line for the team: you decide, Mira polishes the words, vendor attendance remains an open question.\n\nDesk untouched, as you asked.",
+        "control": "Here is where things stand for Cedar-47, as you last set them — your correction is the version that governs:\n\n**Decision roles**\n- **Final approval: you.** The earlier thought of Mira holding approval is superseded — your words settled it.\n- **Mira: wording checks only.** She reviews language; approval doesn't sit with her.\n\n**Draft serial:** Cedar-47.\n\n**Vendor attendance: not confirmed.** You kept this explicitly open — undecided until you say otherwise. This is the one item the team may press on, so worth walking in with that line held.\n\nThe Desk is untouched — I only read; nothing was written, edited, or moved.\n\nOne thing before you take this to the team: if any of these roles have shifted since your correction, your word updates them. Otherwise — does vendor attendance stay open as you walk in, or is it time to close it?"
+      }
+    },
+    "solo": {
+      "equivalentNonRoomSdk": true,
+      "equivalentNonRoomWire": true,
+      "candidateRoomRevision": 2,
+      "candidateBlockBytes": 242,
+      "candidateLookupRowBytes": 262,
+      "absentLookupRowBytes": 2,
+      "draftLookupCeiling": 512,
+      "historicalLookupBytes": 544,
+      "sdkPromptBytes": {
+        "candidate": 34948,
+        "control": 34698,
+        "delta": 250
+      },
+      "firstWireBytes": {
+        "candidate": 42698,
+        "control": 42448,
+        "delta": 250
+      },
+      "firstWireUsage": {
+        "candidate": {
+          "prompt_tokens": 9600,
+          "completion_tokens": 2775,
+          "total_tokens": 12375,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2502
+          }
+        },
+        "control": {
+          "prompt_tokens": 9544,
+          "completion_tokens": 2399,
+          "total_tokens": 11943,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2159
+          }
+        }
+      },
+      "replies": {
+        "candidate": "Here's the paste-in prompt — it's standalone, so it works in a fresh session tomorrow:\n\n```\nSolo rough-cut review — teaser. One timed moment at a time. I'll add the\ntimed moment and my notes as we go; ask me for the first moment if I\nhaven't given one.\n\nFor each moment:\n1. Start by asking what I noticed — my raw reaction: what felt alive,\n   what fell flat. Wait for my answer before anything else.\n2. Then bring in my notes, only as evidence. Check them against what I\n   noticed and say plainly where the two disagree.\n3. Mirror and question, but never recommend or decide the cut.\n   The final cut is mine.\n4. If I start explaining or fixing instead of noticing, stop me and\n   return me to what I actually felt.\n\nEnd each moment by asking which moment I want next.\n```\n\nThe order in rules 1–2 is the whole design: alone, the notes tend to speak first, and once the ledger starts talking, the alive/dead signal gets drowned. This makes noticing outrank evidence — the job your collaborator's ear was doing. And nothing in it lets the session land on a recommendation, so the cut stays yours.\n\nTrim anything you don't use — it's yours to shape.",
+        "control": "Here it is — paste as-is, fill the two brackets when the moment comes up:\n\n---\n\nReviewing my rough teaser alone. My collaborator normally tells me which moments feel alive — stand in for that ear.\n\nNotes I'm bringing: [add notes]\nTimed moment: [add timestamp + what happens]\n\nFor each moment I bring you:\n1. Ask what I felt first — did time speed up or drag, did I lean in or drift — before any judgment.\n2. Label it only: alive / flat / not sure. No edit ideas unless I ask.\n3. The calls stay mine. You surface the response; I decide.\n\nKeep a running list of the moments that came back alive, so at the end I can see the shape of the whole piece instead of trusting my memory of it.\n\n---\n\nThe one thing doing the work is the order: felt response before judgment. Alone, your analysis floods in first; a collaborator reacts before they have opinions. This forces that same sequence — and the running list at the end is the summary your collaborator would have given you. Re-paste it with a new timed moment for each pass.\n\nDesk stays untouched."
+      }
+    }
+  },
+  "candidateProcess": {
+    "sdkRequestsByRole": {
+      "conversation": 2
+    },
+    "wireRequests": 2,
+    "wireWithUsage": 2,
+    "statuses": [
+      200,
+      200
+    ],
+    "usage": {
+      "prompt_tokens": 19176,
+      "completion_tokens": 3697,
+      "total_tokens": 22873
+    }
+  },
+  "controlProcess": {
+    "sdkRequestsByRole": {
+      "conversation": 5
+    },
+    "wireRequests": 5,
+    "wireWithUsage": 5,
+    "statuses": [
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "usage": {
+      "prompt_tokens": 50045,
+      "completion_tokens": 4532,
+      "total_tokens": 54577
+    }
+  }
+}

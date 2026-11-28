@@ -1,0 +1,66 @@
+{
+  "operation": "deliver",
+  "mode": "authorized-zai",
+  "guidance": "on",
+  "results": {
+    "mira": {
+      "turnId": "quellight:a122453d-1aab-41f6-9886-cdef71593a25",
+      "activationVersion": "v1_956ac59edfdee9332dfb46f6fd8f39c06d77886048f3978e581179f8c141c722",
+      "roomRevision": 3,
+      "block": "<room-guidance>\nUnderstanding: We use this room to review the draft. Cedar-47 is the draft serial.\nIntent: I give final approval for Cedar-47. Mira checks wording only.\nAttunement: Vendor attendance is still undecided. Please keep that question open unless I confirm it.\n</room-guidance>",
+      "promptBytes": 34885,
+      "promptSha256": "16ab90086739697deb617f2168a149f1cb9a7f15cd5332baa2b090e74bc46bda",
+      "nonRoomSdkInputSha256": "b33ed94a7595c4f79d3989f09dcd91847a350e25f37e6f0533609cd7042e2941",
+      "lookupRowBytes": 307,
+      "voiceSha256": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "wire": {
+        "bytes": 42635,
+        "nonRoomInputSha256": "a33ef62b6e6eb6b635f68be26af01775d522f3082780101980a04d204efff4f0",
+        "usage": {
+          "prompt_tokens": 9576,
+          "completion_tokens": 922,
+          "total_tokens": 10498,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 777
+          }
+        }
+      },
+      "reply": "Here it is plainly, so you can carry it to the team:\n\n- **The draft:** Cedar-47 is the serial — that's the draft under review in this room.\n- **Final approval:** Yours. Cedar-47 doesn't move without your sign-off; no one else holds it.\n- **Mira's role:** Wording only. She checks the language — she has no approval authority over the draft itself.\n- **Vendor attendance:** Not confirmed. It's still undecided, and I'll keep that question open unless and until you confirm it.\n\nIn one line for the team: you decide, Mira polishes the words, vendor attendance remains an open question.\n\nDesk untouched, as you asked."
+    },
+    "solo": {
+      "turnId": "quellight:84d01dd2-b746-4d2e-8fbd-6508a9328921",
+      "activationVersion": "v1_637b6eaa960e915cf91f79d25750a8f478f28178cbb9a941f37c532340fffc31",
+      "roomRevision": 2,
+      "block": "<room-guidance>\nUnderstanding: The creator makes the final cut.\nIntent: Make a repeatable solo review using actual rough-cut moments.\nAttunement: Ask what I noticed first, then use my notes as evidence. Leave the cut with me.\n</room-guidance>",
+      "promptBytes": 34948,
+      "promptSha256": "6f903ac00dee4f0f29346c267783aaea7ca213ca92a054efb4cd58728eeb8b47",
+      "nonRoomSdkInputSha256": "9bac072bc165069f124ce041976da712ecdb48cf8a0dcc745977b001bea03409",
+      "lookupRowBytes": 262,
+      "voiceSha256": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "wire": {
+        "bytes": 42698,
+        "nonRoomInputSha256": "bc025ac1f375c0a912b130db7be19ae2e67f31291124352314f21f88200be69b",
+        "usage": {
+          "prompt_tokens": 9600,
+          "completion_tokens": 2775,
+          "total_tokens": 12375,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2502
+          }
+        }
+      },
+      "reply": "Here's the paste-in prompt — it's standalone, so it works in a fresh session tomorrow:\n\n```\nSolo rough-cut review — teaser. One timed moment at a time. I'll add the\ntimed moment and my notes as we go; ask me for the first moment if I\nhaven't given one.\n\nFor each moment:\n1. Start by asking what I noticed — my raw reaction: what felt alive,\n   what fell flat. Wait for my answer before anything else.\n2. Then bring in my notes, only as evidence. Check them against what I\n   noticed and say plainly where the two disagree.\n3. Mirror and question, but never recommend or decide the cut.\n   The final cut is mine.\n4. If I start explaining or fixing instead of noticing, stop me and\n   return me to what I actually felt.\n\nEnd each moment by asking which moment I want next.\n```\n\nThe order in rules 1–2 is the whole design: alone, the notes tend to speak first, and once the ledger starts talking, the alive/dead signal gets drowned. This makes noticing outrank evidence — the job your collaborator's ear was doing. And nothing in it lets the session land on a recommendation, so the cut stays yours.\n\nTrim anything you don't use — it's yours to shape."
+    }
+  },
+  "checks": {
+    "deskItemsBefore": 0,
+    "deskItemsAfter": 0,
+    "passed": true
+  }
+}

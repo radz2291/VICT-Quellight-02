@@ -1,0 +1,74 @@
+{
+  "states": {
+    "state": "retryable",
+    "attempts": 2,
+    "failure_code": "MEMORY_WORK_UNCONFIRMED",
+    "native_status": "running",
+    "durable_checkpoint": false,
+    "events": [
+      {
+        "at": "2026-11-28T11:10:09.052Z",
+        "name": "observe-started"
+      },
+      {
+        "at": "2026-11-28T11:10:09.102Z",
+        "name": "observer-started"
+      },
+      {
+        "at": "2026-11-28T11:11:35.21Z",
+        "name": "abandoned-stage-reconciled"
+      },
+      {
+        "at": "2026-11-28T11:11:36.373Z",
+        "name": "observe-started"
+      },
+      {
+        "at": "2026-11-28T11:11:36.478Z",
+        "name": "observer-started"
+      }
+    ]
+  },
+  "wire": [
+    {
+      "kind": "wire-status",
+      "wire": 10,
+      "status": 200
+    },
+    {
+      "kind": "wire-usage",
+      "wire": 10,
+      "usage": {
+        "prompt_tokens": 4983,
+        "completion_tokens": 1527,
+        "total_tokens": 6510,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1078
+        }
+      }
+    },
+    {
+      "kind": "wire-status",
+      "wire": 12,
+      "status": 200
+    },
+    {
+      "kind": "wire-usage",
+      "wire": 12,
+      "usage": {
+        "prompt_tokens": 4983,
+        "completion_tokens": 1345,
+        "total_tokens": 6328,
+        "prompt_tokens_details": {
+          "cached_tokens": 4928
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 932
+        }
+      }
+    }
+  ],
+  "workaround": "Normal governed owner correction"
+}

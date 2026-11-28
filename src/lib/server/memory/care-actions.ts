@@ -9,6 +9,7 @@ import { openQuellightMemory, QUELLIGHT_NATIVE_MEMORY_SCHEMA } from './native.js
 import { enqueueMemoryJob, publicConversationSources, validateDeliveryActor } from './jobs.js';
 import { loadEffectiveMemorySettings, type EffectiveMemorySettings, type FencedMemorySettingsClient } from './settings.js';
 import { memoryCareScope } from './authority-fence.js';
+import { rebaseRoomGuidanceAfterCare } from '../room-learning/store.js';
 
 const table = 'quellight_product_v1.memory_care_commands';
 const attempts = 'quellight_product_v1.memory_care_attempts';
@@ -34,6 +35,7 @@ export interface MemoryCareCommand {
 /** Trusted server injection only; never accepted from the action transport. */
 export interface MemoryCareDependencies {
   openMemory?: OpenMemory;
+  beforePrepare?(): Promise<void>;
 }
 interface CareContext { stores: PostgresStoreSet; actorId: string; lease: HostedLease; openMemory: OpenMemory }
 
@@ -111,7 +113,7 @@ async function prepare(context: CareContext, actionId: MemoryCareActionId, input
   } finally { await memory.hosted.close(); }
 }
 
-async function finalize(context: CareContext, row: MemoryCareCommand, attemptId: string): Promise<MemoryCareResult> {
+async function finalize(context: CareContext, row: MemoryCareCommand, attemptId: string, excludedIds: readonly string[]): Promise<MemoryCareResult> {
   return sql(context, async client => {
     const current = (await client.query(`SELECT * FROM ${table} WHERE actor_id=$1 AND command_key=$2 FOR UPDATE`, [context.actorId, row.command_key])).rows[0] as MemoryCareCommand;
     if (current.state === 'applied') return current.result!;
@@ -125,6 +127,7 @@ async function finalize(context: CareContext, row: MemoryCareCommand, attemptId:
         VALUES($1,'retryable','OWNER_RETRY')`, [job.id]);
       retryQueued = reset.rows.length;
     } else {
+      await rebaseRoomGuidanceAfterCare(client, context.actorId, row.intended_authority_revision, excludedIds);
       const superseded = await client.query(`UPDATE quellight_product_v1.memory_jobs SET state='superseded',claim_token=NULL,
         claim_expires=NULL,failure_code='MEMORY_AUTHORITY_CHANGED',updated_at=now() WHERE actor_id=$1 AND authority_revision<>$2
         AND state IN ('queued','running','retryable','blocked') RETURNING id`, [context.actorId, row.intended_authority_revision]);
@@ -195,7 +198,11 @@ async function attempt(context: CareContext, prepared: MemoryCareCommand): Promi
             throw new ProductError('MEMORY_CARE_AUTHORITY_UNCONFIRMED', 409);
           await memory.service.reviseAuthority(stored.authority_input!);
         }
-        return await finalize(context, stored, attemptId);
+        const currentAuthority = await memory.service.authority(stored.conversation_id);
+        if (currentAuthority.revision !== stored.intended_authority_revision)
+          throw new ProductError('MEMORY_CARE_AUTHORITY_UNCONFIRMED', 409);
+        return await finalize(context, stored, attemptId, [...(currentAuthority.excludedMessageIds ?? []),
+          ...(currentAuthority.quarantinedMessageIds ?? [])]);
       } catch (error) {
         originalError = error;
         const code = failureCode(error);
@@ -237,6 +244,7 @@ export async function executeMemoryCareAction(stores: PostgresStoreSet, owner: O
       AND state IN ('pending','retryable','blocked') ORDER BY created_at`, [owner.actorId])).rows[0];
     if (pending?.state === 'blocked') throw new ProductError('MEMORY_CARE_UNCONFIRMED', 409);
     if (pending && pending.command_key !== commandKey) await attempt(context, pending);
+    if (!prior) await dependencies.beforePrepare?.();
     const prepared = prior ?? await prepare(context, binding.id, parsed.value, commandKey, argumentDigest);
     return { ok: true as const, value: await attempt(context, prepared), replay: false };
   });

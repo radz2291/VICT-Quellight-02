@@ -17,7 +17,7 @@ export interface MemorySummary extends MemoryInspection { version: string; repli
 export interface MemoryVersion { version: string }
 export interface MemorySourcesPage { sources: MemoryInspection['sources']; nextCursor: string | null; authorityRevision: string }
 export interface MemoryReplyPage { replies: MemoryInspection['replies']; nextCursor: string | null }
-export interface MemoryContextResult { context: MemoryInspection['context']; authorityRevision: string }
+export interface MemoryContextResult { context: MemoryInspection['context']; authorityRevision: string; roomGuidanceRevision?: number | null }
 export interface MemoryObservationHistory { history: MemoryInspection['observations']['history']; authorityRevision: string }
 export const memoryRoles = ['conversation', 'observer', 'reflector', 'recall', 'workingMemory'] as const;
 export type MemoryRole = typeof memoryRoles[number];

@@ -244,6 +244,12 @@ body > [data-local-ui-preview] { display: none; }
 .ql-memory-settings h2, .ql-memory-heading { margin: 0; font-size: 16px; line-height: 1.45; font-weight: 550; letter-spacing: -.2px; }
 .ql-memory-settings .ql-form { gap: 14px; }
 .ql-memory-settings p { margin: 0; }
+.ql-guidance { padding-bottom: 12px; margin: 18px 0; border-bottom: 1px solid var(--vict-color-border); }
+.ql-guidance > .ql-muted { margin: 6px 0 10px; }
+.ql-guidance-field, .ql-guidance-editor, .ql-guidance-source { padding: 10px 0; border-top: 1px solid var(--vict-color-border); }
+.ql-guidance-field h3 { margin: 0; font-size: 13px; line-height: 1.5; font-weight: 600; }
+.ql-guidance :is(.ql-memory-copy, .ql-muted) { margin: 4px 0 8px; }
+.ql-guidance [data-ui-node='roomGuidanceFeedback']:empty { display: none; }
 .ql-memory-field { width: 100%; min-width: 0; }
 .quellight .ql-memory-field label { font-size: 12px; font-weight: 500; }
 .quellight .ql-memory-field textarea { min-height: 92px; padding: 10px 12px; font-family: inherit; font-size: 13px; line-height: 1.6; resize: vertical; border-radius: 9px; }

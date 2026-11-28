@@ -132,7 +132,7 @@ export async function memorySourcePage(stores: PostgresStoreSet, owner: Owner, c
 export async function memoryReplyContext(stores: PostgresStoreSet, owner: Owner, conversationId: string, turnId: string): Promise<MemoryContextResult> {
   const conversation = await getConversation(stores, owner, conversationId);
   if (!turnId || turnId.length > 160 || turnId.includes('\0')) throw new ProductError('TURN_NOT_FOUND', 404);
-  const { rows } = await stores.coordination.pool.query(`SELECT turn_id FROM ${product}.conversation_turns WHERE ${repliesWhere} AND turn_id=$3`,
+  const { rows } = await stores.coordination.pool.query<{ room_guidance_revision: number | null }>(`SELECT room_guidance_revision FROM ${product}.conversation_turns WHERE ${repliesWhere} AND turn_id=$3`,
     [owner.actorId, conversationId, turnId]);
   if (!rows.length) throw new ProductError('TURN_NOT_FOUND', 404);
   const native = await openInspection(stores, owner, conversation);
@@ -140,10 +140,10 @@ export async function memoryReplyContext(stores: PostgresStoreSet, owner: Owner,
     const authority = await native.service.authority(conversationId);
     const selection = await native.service.selectedContext(conversationId, turnId);
     if (policyIdentity(await native.service.authority(conversationId)) !== policyIdentity(authority)) throw new ProductError('MEMORY_CHANGED', 409);
-    return { context: memoryContext(selection, turnId), authorityRevision: authority.revision };
+    return { context: memoryContext(selection, turnId), authorityRevision: authority.revision, roomGuidanceRevision: rows[0].room_guidance_revision };
   } catch (error) {
     if (!unavailableThread(error)) throw error;
-    return { context: memoryContext(null, turnId), authorityRevision: '0' };
+    return { context: memoryContext(null, turnId), authorityRevision: '0', roomGuidanceRevision: rows[0].room_guidance_revision };
   } finally { await native.hosted.close(); }
 }
 

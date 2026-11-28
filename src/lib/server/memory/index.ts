@@ -24,7 +24,7 @@ export const dispatchMemory = createMemoryDispatcher({
   openDatabase: openProductDatabase,
   reconcileConversations: conversations.reconcilePending,
   reconcileCare: (stores, deadline, owner) => processPendingMemoryCare(stores, deadline.getTime(), {}, owner),
-  process: createMemoryJobProcessor({ modelFactory }),
+  process: createMemoryJobProcessor({ modelFactory, roomLearning: true }),
   processMethod: createMethodJobProcessor({ generate: methodExecutor,
     openContext: (stores, job) => createDeskMemoryContext(stores,
       { id: job.actor_id, actorId: job.actor_id, email: '' }, job.conversation_id),

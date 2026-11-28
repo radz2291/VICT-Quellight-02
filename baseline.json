@@ -112,10 +112,10 @@
     },
     {
       "name": "@victframework/mastra",
-      "version": "0.4.0-rc.1",
-      "file": "packs/mastra-0.4.0-rc.1-vhost028-90b2de7c6515.tgz",
-      "sha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
-      "integrity": "sha512-XE9EOIOK8EH2HH6OBLPI32OOl7gECaD6RZSC3iWNoMKCCCPz4A3w4O4MXK5kQWfG1kXVRaF6fNZR0vZLPu7W6A=="
+      "version": "0.4.0-rc.1-q4-007.1",
+      "file": "packs/victframework-mastra-0.4.0-rc.1-q4-007.1.tgz",
+      "sha256": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+      "integrity": "sha512-jp51o6s3IAVS2wglNXwdpZeQpmI+5jC6q8JdK70Sh2+KL4Axydcq8HRMyP3cJPfYYq7d4M+EPoahwYqKErSYOA=="
     },
     {
       "name": "@victframework/hosted",
@@ -129,5 +129,25 @@
     "node": "22.23.5",
     "npm": "11.21.2"
   },
-  "scope": "Pinned VICT Application Layer, ready UI, and qualified public hosted extension inputs for Quellight. The app enablement state is in STATE.md."
+  "scope": "Pinned VICT Application Layer, ready UI, and qualified public hosted extension inputs for Quellight. The app enablement state is in STATE.md.",
+  "researchCandidate": {
+    "ticket": "Q4-007",
+    "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+    "candidates": [
+      {
+        "name": "@victframework/mastra",
+        "version": "0.4.0-rc.1-q4-007.1",
+        "sha256": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+        "file": "packs/victframework-mastra-0.4.0-rc.1-q4-007.1.tgz",
+        "integrity": "sha512-jp51o6s3IAVS2wglNXwdpZeQpmI+5jC6q8JdK70Sh2+KL4Axydcq8HRMyP3cJPfYYq7d4M+EPoahwYqKErSYOA=="
+      },
+      {
+        "name": "@mastra/memory",
+        "version": "1.28.2-q4-007.1",
+        "sha256": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+        "file": "packs/mastra-memory-1.28.2-q4-007.1.tgz",
+        "integrity": "sha512-62R5bbQLXDpNK9ei394LiRDubmQrJz4K2IA8EdMKOK7f3GXppGkggCuhUb9MJ2jKwlj8DisrUjrHm5854iTmsA=="
+      }
+    ]
+  }
 }

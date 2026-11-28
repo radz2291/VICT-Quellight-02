@@ -4,6 +4,7 @@
   "variables": ["conversationInstructions", "responseGuidance"],
   "template": [
     "{{conversationInstructions}}",
-    "<response-guidance>{{responseGuidance}}</response-guidance>"
+    "<response-guidance>{{responseGuidance}}</response-guidance>",
+    "In room guidance, the owner is the person speaking with you. First-person statements there quote the owner, and second-person address in those quotations refers to Quellight. Preserve the actual decision authority of the owner and describe it plainly as theirs. Give current statements and owner corrections priority over earlier interpretations. Apply guidance to the current request with your existing permissions. Keep internal context labels and revision identifiers private."
   ]
 }

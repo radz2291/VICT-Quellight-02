@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { AgentProfileRegistry, type AgentActivationRecord } from '@victframework/runtime';
 import { MASTRA_POSTGRES_ADAPTER_COMPATIBILITY, MASTRA_RECOVERABLE_MEMORY_ADAPTER_COMPATIBILITY } from '@victframework/mastra';
 import { promptCatalog, renderPrompt } from '../prompts/catalog.js';
+import { selectedConversationIdentity } from '../prompts/persona-source.mjs';
 import type { EffectiveMemorySettings } from '../memory/settings.js';
 import type { DeskContextSelection } from '../desk/context.js';
 
@@ -14,16 +15,33 @@ export interface ManagedConversationBinding {
   memory: { id: string; revision: string };
   recall: { id: string; revision: string };
   desk?: { selection: DeskContextSelection; capabilities: readonly { id: string; revision: string }[] };
+  roomGuidance?: { block: string; revision: number } | null;
 }
+function managedInstructions(effective: EffectiveMemorySettings) {
+  const { text, selection } = effective.prompts.roles.conversation;
+  if (!text) throw new Error('CONVERSATION_PROMPT_UNAVAILABLE');
+  const voice = selectedConversationIdentity();
+  if (selection.mode !== 'catalog') return voice + '\n\n' + text;
+  const opening = promptCatalog.conversation.template[0];
+  if (!text.startsWith(opening + '\n')) throw new Error('CONVERSATION_PROMPT_UNAVAILABLE');
+  return voice + text.slice(opening.length);
+}
+
 export function conversationActivation(purpose: string, managed?: ManagedConversationBinding) {
   const baseInstructions = managed ? renderPrompt(promptCatalog.conversationContext, {
-    conversationInstructions: managed.effective.prompts.roles.conversation.text!,
+    conversationInstructions: managedInstructions(managed.effective),
     responseGuidance: managed.effective.configuration.values.responseGuidance,
   }) : renderPrompt(promptCatalog.conversation, { roomPurpose: purpose });
+  const context = managed?.roomGuidance ? renderPrompt({
+    id: 'quellight.conversation.room-context',
+    description: 'Adds the current admitted room revision to the conversation context.',
+    variables: ['base', 'roomGuidance'],
+    template: ['{{base}}', '', '{{roomGuidance}}'],
+  }, { base: baseInstructions.text, roomGuidance: managed.roomGuidance.block }) : baseInstructions;
   const instructions = managed?.desk ? renderPrompt(promptCatalog.conversationDesk, {
-    conversationInstructions: baseInstructions.text,
+    conversationInstructions: context.text,
     deskSelection: JSON.stringify({ roomId: managed.desk.selection.roomId, ...JSON.parse(managed.desk.selection.text) }),
-  }) : baseInstructions;
+  }) : context;
   const capabilities = managed ? [managed.recall, ...(managed.desk?.capabilities ?? [])] : [];
   const revision = createHash('sha256').update(JSON.stringify({ schema: 'quellight-conversation-v3',
     instructions: instructions.revision, memory: managed?.memory, recall: managed?.recall,

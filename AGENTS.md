@@ -46,6 +46,12 @@ This `app` directory is the implementation root, initialized as a Git repository
 - Quiet automatic writes require trusted server policy selecting exact permitted capability revisions; this is not blanket approval for arbitrary effects.
 - Memory and context are core product capabilities. Keep app-owned model prompts in the server-only `src/lib/server/prompts` catalog, with content-derived revisions pinned into activations. Start newly adopted Mastra memory roles with qualified upstream defaults and provide explicit customization modes. Preserve authored overrides when defaults change. Read [prompts and context](docs/PROMPTS-AND-CONTEXT.md) for the current catalog, native prompt boundaries and proposed app/room inheritance.
 
+## Phase 4A local candidate
+
+Q4-014 uses an isolated app candidate on the Q4-007 and Q4-008 installed memory pair. Follow the [local candidate guide](docs/PHASE-4A-LOCAL.md) for the archive pins, private identity setup and synthetic review route. The eight original persona files and their editorial guide travel as separate private files. The conversation prompt editor controls the operating instructions that follow the selected voice.
+
+Room guidance uses eligible original excerpts and an immutable room revision. Keep background source, authority, configuration and prior-revision checks in place. Admit one compact room block before Desk and retain the exact selected revision on the turn. Owner care is reached from More → Memory. Production remains on its separate release record.
+
 ## Current continuity
 
 On 17 November 2026 the owner approved the **Phase 3 collaborative Desk and learned working method**. Delegated backend/UI work, root integration and independent verification completed the [execution plan](docs/PHASE-3-PLAN.md) on existing free services. Local desktop/phone inspection preceded hosted delivery. Desk collaboration means revision-checked saved text/Markdown, not simultaneous cursors. Deeper attunement remains Phase 4 and was not implemented.

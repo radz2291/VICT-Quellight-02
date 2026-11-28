@@ -1,0 +1,685 @@
+{
+  "schema": "quellight.q4-014-learning-evidence@1",
+  "miraInitialTraining": "authorized-zai",
+  "miraCorrection": "governed owner action after the chat-synthesis retry failed",
+  "soloTraining": "deterministic-fixture",
+  "initial": {
+    "room": {
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:08:56.29Z",
+      "id": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "name": "Cedar-47 draft approval",
+      "purpose": "Review the draft and keep the owner’s decisions clear.",
+      "revision": 1,
+      "updatedAt": "2026-11-28T11:08:56.29Z"
+    },
+    "source": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:08:56.544Z",
+      "id": "db9c20a1-edd3-4279-ac9f-90143530847a",
+      "revision": 1,
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "threadId": "quellight-conversation-db9c20a1-edd3-4279-ac9f-90143530847a",
+      "title": "Learning conversation",
+      "updatedAt": "2026-11-28T11:08:56.544Z"
+    },
+    "fresh": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:09:59.269Z",
+      "id": "b94a0824-a859-4afb-9cef-c618074546e3",
+      "revision": 1,
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "threadId": "quellight-conversation-b94a0824-a859-4afb-9cef-c618074546e3",
+      "title": "Fresh review",
+      "updatedAt": "2026-11-28T11:09:59.269Z"
+    },
+    "view": {
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "revision": 1,
+      "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+      "fields": [
+        {
+          "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "understanding",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "We use this room to review the draft. Cedar-47 is the draft serial."
+            }
+          ]
+        },
+        {
+          "text": "I am considering a provisional division of work. Mira might give final approval for Cedar-47.",
+          "origin": "learned",
+          "certainty": "tentative",
+          "dimension": "intent",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "I am considering a provisional division of work. Mira might give final approval for Cedar-47."
+            }
+          ]
+        },
+        {
+          "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "attunement",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "Vendor attendance is still undecided. Please keep that question open unless I confirm it."
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "revision": 1,
+          "previousRevision": 0,
+          "kind": "learned",
+          "changedAt": "2026-11-28T11:09:57.897Z",
+          "changed": [
+            "understanding",
+            "intent",
+            "attunement"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I am considering a provisional division of work. Mira might give final approval for Cedar-47.",
+              "origin": "learned",
+              "certainty": "tentative"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        }
+      ]
+    },
+    "learnedTurn": {
+      "reply": "Acknowledged. Here's the working picture as I'll hold it:\n\n- **Cedar-47** is the draft serial under review in this room.\n- **Division of work — provisional only.** Mira *might* give final approval for Cedar-47; that's a possibility you're considering, not a settled decision. The call remains yours until you make it.\n- **Vendor attendance — open.** I'll treat it as an undecided question and keep it open until you confirm it either way. I won't close it, assume it, or build on it.\n\nThe Desk stays exactly as it is — nothing created, nothing moved.\n\nReady when you bring Cedar-47 in."
+    },
+    "publication": {
+      "job_id": "ecad3ade-2402-4206-8b22-99b17385778b",
+      "source_revision": "537015e069625d844488261797279505dd05a2c461233583c7088a563f0c0c95",
+      "state": "published",
+      "execution_ref": {
+        "jobId": "ecad3ade-2402-4206-8b22-99b17385778b",
+        "status": "completed",
+        "turnId": "quellight:room-learning:869db7c98ee8be86fcabbf5141ffa5424b63e7ccabaabaeb8d4738ad0708f154",
+        "attemptId": "6aae1c52-9145-4f6e-8071-e9135fa12b95",
+        "inputDigest": "7d9c13fda4a5151dd557aa464538a5e83c075acb2ee41d7c24699b0185ffbbdb",
+        "conversationId": "room-learning:869db7c98ee8be86fcabbf5141ffa5424b63e7ccabaabaeb8d4738ad0708f154",
+        "activationVersion": "v1_43b4f46640e088e900be256883f168b762744b736e00bf40b93f8398bc597c1c"
+      }
+    }
+  },
+  "corrected": {
+    "room": {
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:08:56.29Z",
+      "id": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "name": "Cedar-47 draft approval",
+      "purpose": "Review the draft and keep the owner’s decisions clear.",
+      "revision": 1,
+      "updatedAt": "2026-11-28T11:08:56.29Z"
+    },
+    "source": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:08:56.544Z",
+      "id": "db9c20a1-edd3-4279-ac9f-90143530847a",
+      "revision": 1,
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "threadId": "quellight-conversation-db9c20a1-edd3-4279-ac9f-90143530847a",
+      "title": "Learning conversation",
+      "updatedAt": "2026-11-28T11:08:56.544Z"
+    },
+    "fresh": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:09:59.269Z",
+      "id": "b94a0824-a859-4afb-9cef-c618074546e3",
+      "revision": 1,
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "threadId": "quellight-conversation-b94a0824-a859-4afb-9cef-c618074546e3",
+      "title": "Fresh review",
+      "updatedAt": "2026-11-28T11:09:59.269Z"
+    },
+    "view": {
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "revision": 2,
+      "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+      "fields": [
+        {
+          "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "understanding",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "We use this room to review the draft. Cedar-47 is the draft serial."
+            }
+          ]
+        },
+        {
+          "text": "I give final approval for Cedar-47. Mira checks wording only.",
+          "origin": "owner",
+          "certainty": "stated",
+          "dimension": "intent",
+          "sources": []
+        },
+        {
+          "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "attunement",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "Vendor attendance is still undecided. Please keep that question open unless I confirm it."
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "revision": 2,
+          "previousRevision": 1,
+          "kind": "corrected",
+          "changedAt": "2026-11-28T11:12:43.597Z",
+          "changed": [
+            "intent"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I give final approval for Cedar-47. Mira checks wording only.",
+              "origin": "owner",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        },
+        {
+          "revision": 1,
+          "previousRevision": 0,
+          "kind": "learned",
+          "changedAt": "2026-11-28T11:09:57.897Z",
+          "changed": [
+            "understanding",
+            "intent",
+            "attunement"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I am considering a provisional division of work. Mira might give final approval for Cedar-47.",
+              "origin": "learned",
+              "certainty": "tentative"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        }
+      ]
+    },
+    "learnedTurn": {
+      "reply": "Acknowledged. Here's the working picture as I'll hold it:\n\n- **Cedar-47** is the draft serial under review in this room.\n- **Division of work — provisional only.** Mira *might* give final approval for Cedar-47; that's a possibility you're considering, not a settled decision. The call remains yours until you make it.\n- **Vendor attendance — open.** I'll treat it as an undecided question and keep it open until you confirm it either way. I won't close it, assume it, or build on it.\n\nThe Desk stays exactly as it is — nothing created, nothing moved.\n\nReady when you bring Cedar-47 in."
+    },
+    "publication": {
+      "job_id": "ecad3ade-2402-4206-8b22-99b17385778b",
+      "source_revision": "537015e069625d844488261797279505dd05a2c461233583c7088a563f0c0c95",
+      "state": "published",
+      "execution_ref": {
+        "jobId": "ecad3ade-2402-4206-8b22-99b17385778b",
+        "status": "completed",
+        "turnId": "quellight:room-learning:869db7c98ee8be86fcabbf5141ffa5424b63e7ccabaabaeb8d4738ad0708f154",
+        "attemptId": "6aae1c52-9145-4f6e-8071-e9135fa12b95",
+        "inputDigest": "7d9c13fda4a5151dd557aa464538a5e83c075acb2ee41d7c24699b0185ffbbdb",
+        "conversationId": "room-learning:869db7c98ee8be86fcabbf5141ffa5424b63e7ccabaabaeb8d4738ad0708f154",
+        "activationVersion": "v1_43b4f46640e088e900be256883f168b762744b736e00bf40b93f8398bc597c1c"
+      }
+    },
+    "correctionReply": "Acknowledged — and the correction is noted cleanly:\n\n- **Final approval for Cedar-47 is yours.** No longer provisional — that decision is settled, and it sits with you.\n- **Mira checks wording only.** No approval authority.\n- **Cedar-47** remains the draft serial under review — unchanged.\n- **Vendor attendance** stays open — nothing assumed until you confirm.\n- **The Desk** is left exactly as it is — nothing created, nothing moved.\n\nReady whenever Cedar-47 comes in.",
+    "admissionView": {
+      "roomId": "108f7f0d-0ea0-47a9-ad01-4fa61003177e",
+      "revision": 3,
+      "authorityRevision": "care:c585e91e034b21d55f7abb1a1a184cc34fe0bb8ef30ba85f4cbf3dc2b835fb9b",
+      "fields": [
+        {
+          "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "understanding",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "We use this room to review the draft. Cedar-47 is the draft serial."
+            }
+          ]
+        },
+        {
+          "text": "I give final approval for Cedar-47. Mira checks wording only.",
+          "origin": "owner",
+          "certainty": "stated",
+          "dimension": "intent",
+          "sources": []
+        },
+        {
+          "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "attunement",
+          "sources": [
+            {
+              "id": "62691539-c05e-431e-ab3c-02a79da4afc2",
+              "conversationId": "db9c20a1-edd3-4279-ac9f-90143530847a",
+              "quote": "Vendor attendance is still undecided. Please keep that question open unless I confirm it."
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "revision": 3,
+          "previousRevision": 2,
+          "kind": "revalidated",
+          "changedAt": "2026-11-28T11:18:03.696Z",
+          "changed": [],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I give final approval for Cedar-47. Mira checks wording only.",
+              "origin": "owner",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        },
+        {
+          "revision": 2,
+          "previousRevision": 1,
+          "kind": "corrected",
+          "changedAt": "2026-11-28T11:12:43.597Z",
+          "changed": [
+            "intent"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I give final approval for Cedar-47. Mira checks wording only.",
+              "origin": "owner",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        },
+        {
+          "revision": 1,
+          "previousRevision": 0,
+          "kind": "learned",
+          "changedAt": "2026-11-28T11:09:57.897Z",
+          "changed": [
+            "understanding",
+            "intent",
+            "attunement"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "We use this room to review the draft. Cedar-47 is the draft serial.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "I am considering a provisional division of work. Mira might give final approval for Cedar-47.",
+              "origin": "learned",
+              "certainty": "tentative"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Vendor attendance is still undecided. Please keep that question open unless I confirm it.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "solo": {
+    "room": {
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:17:33.286Z",
+      "id": "749b87e1-b313-479e-94a3-8e7c2d884b30",
+      "name": "Solo review working agreement · deterministic training",
+      "purpose": "Review the draft and keep the owner’s decisions clear.",
+      "revision": 1,
+      "updatedAt": "2026-11-28T11:17:33.286Z"
+    },
+    "source": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:17:33.524Z",
+      "id": "fb242150-7c72-4296-b7d5-e676872497b9",
+      "revision": 1,
+      "roomId": "749b87e1-b313-479e-94a3-8e7c2d884b30",
+      "threadId": "quellight-conversation-fb242150-7c72-4296-b7d5-e676872497b9",
+      "title": "Learning conversation",
+      "updatedAt": "2026-11-28T11:17:33.524Z"
+    },
+    "fresh": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:17:39.307Z",
+      "id": "439d02ed-d570-4979-bcc7-12eafdd0aabb",
+      "revision": 1,
+      "roomId": "749b87e1-b313-479e-94a3-8e7c2d884b30",
+      "threadId": "quellight-conversation-439d02ed-d570-4979-bcc7-12eafdd0aabb",
+      "title": "Fresh review",
+      "updatedAt": "2026-11-28T11:17:39.307Z"
+    },
+    "view": {
+      "roomId": "749b87e1-b313-479e-94a3-8e7c2d884b30",
+      "revision": 1,
+      "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+      "fields": [
+        {
+          "text": "The creator makes the final cut.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "understanding",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "The creator makes the final cut."
+            }
+          ]
+        },
+        {
+          "text": "Make a repeatable solo review using actual rough-cut moments.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "intent",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "Make a repeatable solo review using actual rough-cut moments."
+            }
+          ]
+        },
+        {
+          "text": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "attunement",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me."
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "revision": 1,
+          "previousRevision": 0,
+          "kind": "learned",
+          "changedAt": "2026-11-28T11:17:38.299Z",
+          "changed": [
+            "understanding",
+            "intent",
+            "attunement"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "The creator makes the final cut.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "Make a repeatable solo review using actual rough-cut moments.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        }
+      ]
+    },
+    "learnedTurn": {
+      "id": "quellight:515eb406-f090-4772-bedf-72775f65aa69",
+      "reply": "Paste one timestamp and say what you noticed first. Then show the collaborator’s note. I’ll compare it with your observation, name one uncertainty, and suggest one check you can undo. You decide the edit."
+    },
+    "trainingMode": "deterministic-fixture",
+    "publication": {
+      "job_id": "f4c90322-c9f5-4d6f-8dde-33f9ff0024df",
+      "source_revision": "a0bde9eceb6841dda85a73561d75a801e30e7d10a07b37a11b7239f73d33836f",
+      "state": "published",
+      "execution_ref": {
+        "jobId": "f4c90322-c9f5-4d6f-8dde-33f9ff0024df",
+        "status": "completed",
+        "turnId": "quellight:room-learning:8fac994efb5ca447044bcf28e290a238072027fe2e6a3d2749c00aab5af42da3",
+        "attemptId": "bc4687c3-9463-4f76-8288-9aa9fbd0d322",
+        "inputDigest": "4e6ce01486583b3b0069340b83413ff565caab12ca346f95c133ac0b091dfab2",
+        "conversationId": "room-learning:8fac994efb5ca447044bcf28e290a238072027fe2e6a3d2749c00aab5af42da3",
+        "activationVersion": "v1_56c548b47aee0821be89ac0a9c19a25f082c7f73b604ad3bcfdfdd0b72793804"
+      }
+    },
+    "admissionView": {
+      "roomId": "749b87e1-b313-479e-94a3-8e7c2d884b30",
+      "revision": 2,
+      "authorityRevision": "care:c585e91e034b21d55f7abb1a1a184cc34fe0bb8ef30ba85f4cbf3dc2b835fb9b",
+      "fields": [
+        {
+          "text": "The creator makes the final cut.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "understanding",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "The creator makes the final cut."
+            }
+          ]
+        },
+        {
+          "text": "Make a repeatable solo review using actual rough-cut moments.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "intent",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "Make a repeatable solo review using actual rough-cut moments."
+            }
+          ]
+        },
+        {
+          "text": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me.",
+          "origin": "learned",
+          "certainty": "stated",
+          "dimension": "attunement",
+          "sources": [
+            {
+              "id": "f54ea6e2-d30d-498b-a1f0-1bad5e32e548",
+              "conversationId": "fb242150-7c72-4296-b7d5-e676872497b9",
+              "quote": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me."
+            }
+          ]
+        }
+      ],
+      "history": [
+        {
+          "revision": 2,
+          "previousRevision": 1,
+          "kind": "revalidated",
+          "changedAt": "2026-11-28T11:18:03.696Z",
+          "changed": [],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "The creator makes the final cut.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "Make a repeatable solo review using actual rough-cut moments.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        },
+        {
+          "revision": 1,
+          "previousRevision": 0,
+          "kind": "learned",
+          "changedAt": "2026-11-28T11:17:38.299Z",
+          "changed": [
+            "understanding",
+            "intent",
+            "attunement"
+          ],
+          "eligible": true,
+          "fields": [
+            {
+              "dimension": "understanding",
+              "text": "The creator makes the final cut.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "intent",
+              "text": "Make a repeatable solo review using actual rough-cut moments.",
+              "origin": "learned",
+              "certainty": "stated"
+            },
+            {
+              "dimension": "attunement",
+              "text": "Ask what I noticed first, then use my notes as evidence. Leave the cut with me.",
+              "origin": "learned",
+              "certainty": "stated"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scope": {
+    "room": {
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:17:39.524Z",
+      "id": "5b2057e2-230b-4993-9196-d2f5deefca4e",
+      "name": "Other room control",
+      "purpose": "General planning",
+      "revision": 1,
+      "updatedAt": "2026-11-28T11:17:39.524Z"
+    },
+    "conversation": {
+      "actorId": "c1000000-0000-4000-8000-000000000014",
+      "archivedAt": null,
+      "createdAt": "2026-11-28T11:17:39.736Z",
+      "id": "718c32bd-44ad-45c9-82cf-1cb391759299",
+      "revision": 1,
+      "roomId": "5b2057e2-230b-4993-9196-d2f5deefca4e",
+      "threadId": "quellight-conversation-718c32bd-44ad-45c9-82cf-1cb391759299",
+      "title": "Fresh different-room check",
+      "updatedAt": "2026-11-28T11:17:39.736Z"
+    }
+  }
+}

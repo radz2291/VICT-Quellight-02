@@ -6,6 +6,7 @@
   import type { UiValue } from '@victframework/ui';
   import { document, descriptors, implementations, view as initialView, requireRenderPlan } from '$lib/product/definition';
   import { memoryRoles, memoryDraft, memoryDraftContent, describeMemoryPreview, type MemorySummary, type MemoryVersion, type MemorySourcesPage, type MemoryReplyPage, type MemoryContextResult, type MemoryObservationHistory, type MemorySettingsPayload } from '$lib/product/memory-client';
+  import { roomLearningDimensions, roomLearningLabels, type RoomLearningAction, type RoomLearningDimension, type RoomLearningView } from '$lib/product/room-learning';
   import { deskCardPreview, deskAttentionLabels, deskDraftFields, newDeskDraft, deskLocalDraft, deskDraftFromLocal, loadDeskDraft, saveDeskDraft as persistDeskDraft, loadDeskPending, saveDeskPending, deskSaveInput, describeDeskContext, deskMethodDraft, deskMethodContent, describeMethodSettings, type DeskMethodSettings, type DeskMethodView, type DeskContext, type DeskSummaryList, type DeskSummary, type DeskCurrent, type DeskRevisionSummary, type DeskRevisionPage, type DeskRevisionDetail, type DeskDraft, type DeskPending } from '$lib/product/desk-client';
   import type { DeskItem, DeskActionId, DeskActionInput, DeskMethodSettingsActionId, DeskMethodSettingsInput } from '$lib/product/desk-contracts';
   import { request, RequestError, terminal, storageRead, storageWrite, draftKey, pendingKey, clearActorStorage, delayObservation, readPendingSend, followTurn,
@@ -55,6 +56,34 @@
   let memoryConflict = $state(false);
   let memoryConnectionMessage = $state('');
   let memoryReadController: AbortController | undefined;
+  type GuidancePin = { expectedRevision: number; expectedAuthorityRevision: string };
+  let roomGuidance = $state<RoomLearningView | null>(null);
+  let roomGuidanceEdit = $state<(GuidancePin & { dimension: RoomLearningDimension }) | null>(null);
+  let roomGuidanceForget = $state<(GuidancePin & { sourceId: string; sourceConversationId: string; quote: string }) | null>(null);
+  let roomGuidanceReplyRevision = $state<number | null | undefined>();
+  let roomGuidanceLoading = $state(false), roomGuidanceUnavailable = $state(false), roomGuidanceFeedback = $state('');
+  let roomGuidanceRead: AbortController | undefined;
+  let roomGuidanceSequence = 0;
+  let roomGuidanceMutationKey: { signature: string; key: string } | undefined;
+  const roomGuidanceOriginals = $derived.by(() => {
+    const originals = new Map<string, { id: string; sourceId: string; conversationId: string; labels: string[]; quotes: string[] }>();
+    for (const field of roomGuidance?.fields ?? []) {
+      for (const source of field.sources) {
+        const id = source.conversationId + ':' + source.id;
+        const original = originals.get(id) ?? { id, sourceId: source.id, conversationId: source.conversationId, labels: [], quotes: [] };
+        const label = roomLearningLabels[field.dimension];
+        if (!original.labels.includes(label)) original.labels.push(label);
+        if (!original.quotes.includes(source.quote)) original.quotes.push(source.quote);
+        originals.set(id, original);
+      }
+    }
+    return [...originals.values()].map(source => ({ ...source, label: source.labels.join(' · '), quote: source.quotes.join('\n') }));
+  });
+  const roomGuidanceOptions = $derived((roomGuidance?.history ?? [])
+    .filter(item => item.eligible && item.revision < (roomGuidance?.revision ?? 0))
+    .map(item => ({ value: String(item.revision), label: 'Version ' + item.revision })));
+  const roomGuidanceEditConflict = $derived(!!roomGuidanceEdit && !matchesGuidance(roomGuidanceEdit));
+  const roomGuidanceDraftTooLong = $derived(new TextEncoder().encode(String(local.roomGuidanceDraft ?? '').trim()).length > 105);
   let memorySettings = $state<MemorySettingsPayload | null>(null);
   let memorySettingsLoading = $state(false);
   let memorySettingsStatus = $state('');
@@ -92,9 +121,10 @@
     if (!open || !selectedConversation) return;
     const controller = new AbortController();
     untrack(() => { void watchMemory(controller, selectedConversation); });
-    return () => { controller.abort(); memoryReadController?.abort(); ++memoryRequestVersion; };
+    return () => { controller.abort(); memoryReadController?.abort(); roomGuidanceRead?.abort(); ++memoryRequestVersion; };
   });
   const currentRoom = $derived(data?.rooms.find(room => room.id === roomId));
+  const roomGuidanceCannotChange = $derived(pending || roomGuidanceLoading || roomGuidanceUnavailable || !roomGuidance || !!currentRoom?.archivedAt);
   const currentConversation = $derived(data?.conversations.find(item => item.id === conversationId));
   const roomDetails = $derived(!!currentRoom && !currentRoom.archivedAt && page.url.searchParams.get('view') === 'room-details');
   const memoryDefaults = $derived(page.url.searchParams.get('view') === 'memory-defaults');
@@ -227,6 +257,37 @@
     memoryMoreSources: !!memorySourcesCursor, memoryMoreReplies: !!memoryData?.repliesCursor,
     memoryReplyOptions: (memoryData?.replies ?? []).map(reply => ({ value: reply.turnId, label: reply.label })),
     memoryContextText: memoryData?.context ? `${memoryData.context.text}\n\n${memoryData.context.revisionLabel}\nOmitted: ${memoryData.context.omissions.join(', ')}.` : 'Choose a reply with a recorded memory context.',
+    roomGuidanceReady: !!roomGuidance && roomGuidance.roomId === roomId,
+    roomGuidanceNeedsRefresh: roomGuidanceUnavailable || roomGuidanceEditConflict || (!!roomGuidanceForget && !matchesGuidance(roomGuidanceForget)),
+    roomGuidanceState: roomGuidanceUnavailable ? 'Saved guidance could not be refreshed.' : roomGuidanceLoading ? 'Opening room guidance…'
+      : roomGuidance?.revision ? 'Version ' + roomGuidance.revision : 'No room guidance has been saved yet.',
+    ...Object.fromEntries(roomLearningDimensions.flatMap(dimension => {
+      const field = roomGuidance?.fields.find(item => item.dimension === dimension);
+      return [['roomGuidance_' + dimension, field?.text ?? 'Nothing saved yet.'],
+        ['roomGuidanceOrigin_' + dimension, !field ? '' : field.origin === 'owner' ? 'Your correction' : field.certainty === 'tentative' ? 'Tentative' : 'From your messages']];
+    })),
+    roomGuidanceCannotChange, roomGuidanceCannotStartEdit: roomGuidanceCannotChange || !!roomGuidanceEdit, roomGuidanceEditing: !!roomGuidanceEdit,
+    roomGuidanceEditLabel: roomGuidanceEdit ? 'Correct ' + roomLearningLabels[roomGuidanceEdit.dimension].toLowerCase() : '',
+    roomGuidanceEditHelp: roomGuidanceEditConflict ? 'Guidance changed elsewhere. Your draft is kept. Review the current guidance before saving.'
+      : roomGuidanceDraftTooLong ? 'Shorten the correction to save it.' : 'A short sentence works best.',
+    roomGuidanceEditConflict, roomGuidanceCannotSave: roomGuidanceCannotChange || roomGuidanceEditConflict || roomGuidanceDraftTooLong || !String(local.roomGuidanceDraft ?? '').trim(),
+    roomGuidanceSources: roomGuidanceOriginals,
+    roomGuidanceSourcesNote: roomGuidanceOriginals.length ? 'Original excerpts supporting this version.' : 'No learned sources support the current guidance.',
+    roomGuidanceForgetting: !!roomGuidanceForget,
+    roomGuidanceCannotForget: roomGuidanceCannotChange || !roomGuidanceForget || !matchesGuidance(roomGuidanceForget),
+    roomGuidanceForgetQuote: roomGuidanceForget?.quote ?? '',
+    roomGuidanceHistoryText: (roomGuidance?.history ?? []).map(item => ['Version ' + item.revision,
+      { learned: 'Learned', corrected: 'Corrected', forgotten: 'Source forgotten', restored: 'Restored', revalidated: 'Sources checked' }[item.kind],
+      item.changed.map(field => roomLearningLabels[field as RoomLearningDimension] ?? field).join(', '),
+      item.changedAt ? new Date(item.changedAt).toLocaleString() : '', item.eligible ? '' : 'Sources no longer eligible'].filter(Boolean).join(' · ')).join('\n')
+      || 'No room guidance changes are recorded yet.',
+    roomGuidanceHasRestore: roomGuidanceOptions.length > 0, roomGuidanceRestoreOptions: roomGuidanceOptions,
+    roomGuidanceRestorePreview: roomGuidance?.history.find(item => item.eligible && item.revision === Number(local.roomGuidanceRestore))
+      ?.fields?.map(field => roomLearningLabels[field.dimension] + ' · ' + field.text).join('\n') ?? '',
+    roomGuidanceCannotRestore: roomGuidanceCannotChange || !roomGuidanceOptions.some(item => item.value === String(local.roomGuidanceRestore ?? '')),
+    roomGuidanceFeedback,
+    roomGuidanceForReply: roomGuidanceReplyRevision === undefined ? '' : roomGuidanceReplyRevision === null
+      ? 'No room guidance was recorded for this reply.' : 'Room guidance version ' + roomGuidanceReplyRevision + ' was used for this reply.',
     memoryAuthorityRevision: memoryCareRevision, memorySelectedSources: JSON.stringify(selectedSources), memoryCareStatus, memoryChanged,
     memoryCannotCorrect: pending || memoryLoading || memoryChanged || !memoryData?.controls.canCorrect,
     memoryCannotForget: pending || memoryLoading || memoryChanged || !memoryData?.controls.canForget || !selectedSources.length,
@@ -258,9 +319,9 @@
   });
 
   function setLocal(values: Record<string, UiValue>) { local = { ...local, ...values }; }
-  async function focusControl(selector: string) {
+  async function focusControl(selector: string, scroll = false) {
     await tick();
-    globalThis.document.querySelector<HTMLElement>(selector)?.focus({ preventScroll: true });
+    globalThis.document.querySelector<HTMLElement>(selector)?.focus({ preventScroll: !scroll });
   }
   function closeDeskSearchWithEscape(event: KeyboardEvent) {
     if (event.key !== 'Escape' || event.defaultPrevented || !(event.target instanceof HTMLElement) || !event.target.closest('.ql-desk-search-panel')) return;
@@ -288,6 +349,7 @@
     }
     if (key === 'deskHistoryOpen' && value && !deskHistory.length) void loadDeskHistory();
     if (key === 'memoryReply') {
+      roomGuidanceReplyRevision = undefined;
       deskContextText = 'Open the recorded Desk context for this reply.';
       if (memoryData?.context) memoryData = { ...memoryData, context: null };
     }
@@ -481,6 +543,83 @@
     } catch (cause) { if (alive && version === settingsRequestVersion) failure(cause); return false; }
     finally { if (alive && version === settingsRequestVersion) memorySettingsLoading = false; }
   }
+  function guidancePin(): GuidancePin | null {
+    return roomGuidance?.roomId === roomId ? { expectedRevision: roomGuidance.revision, expectedAuthorityRevision: roomGuidance.authorityRevision } : null;
+  }
+  function matchesGuidance(pin: GuidancePin) {
+    return !!roomGuidance && roomGuidance.roomId === roomId && roomGuidance.revision === pin.expectedRevision
+      && roomGuidance.authorityRevision === pin.expectedAuthorityRevision;
+  }
+  function guidancePath(selectedConversation: string) {
+    return '/api/conversations/' + encodeURIComponent(selectedConversation) + '/room-guidance';
+  }
+  async function loadRoomGuidance(background = false, signal?: AbortSignal) {
+    const selectedConversation = conversationId, selectedRoom = roomId;
+    if (!selectedConversation) return false;
+    if (roomGuidance && roomGuidance.roomId !== selectedRoom) {
+      roomGuidance = null; roomGuidanceEdit = null; roomGuidanceForget = null; roomGuidanceFeedback = '';
+    }
+    const version = ++roomGuidanceSequence;
+    roomGuidanceRead?.abort();
+    roomGuidanceRead = new AbortController();
+    const readSignal = signal ? AbortSignal.any([signal, roomGuidanceRead.signal]) : roomGuidanceRead.signal;
+    if (!background) roomGuidanceLoading = true;
+    try {
+      const result = await request<RoomLearningView>(guidancePath(selectedConversation), undefined, readSignal);
+      if (!alive || readSignal.aborted || version !== roomGuidanceSequence || !local.memoryOpen
+        || selectedConversation !== conversationId || selectedRoom !== roomId || result.roomId !== selectedRoom) return false;
+      roomGuidance = result;
+      roomGuidanceUnavailable = false;
+      if (!roomGuidanceOptions.some(item => item.value === String(local.roomGuidanceRestore))) {
+        setLocal({ roomGuidanceRestore: roomGuidanceOptions[0]?.value ?? '' });
+      }
+      return true;
+    } catch (cause) {
+      if (readSignal.aborted || !alive || version !== roomGuidanceSequence || selectedConversation !== conversationId) return false;
+      roomGuidanceUnavailable = true;
+      if (cause instanceof RequestError && cause.status === 401) failure(cause);
+      return false;
+    } finally {
+      if (version === roomGuidanceSequence) roomGuidanceLoading = false;
+    }
+  }
+  async function changeRoomGuidance(action: RoomLearningAction): Promise<ActionResult> {
+    const chat = conversationId, room = roomId, edit = roomGuidanceEdit, forget = roomGuidanceForget;
+    const version = Number(local.roomGuidanceRestore);
+    const current = guidancePin();
+    const input = action === 'correct' && edit && matchesGuidance(edit) && !roomGuidanceDraftTooLong && String(local.roomGuidanceDraft).trim()
+      ? { ...edit, text: String(local.roomGuidanceDraft).trim() }
+      : action === 'forget' && forget && matchesGuidance(forget)
+        ? { expectedRevision: forget.expectedRevision, expectedAuthorityRevision: forget.expectedAuthorityRevision, sourceId: forget.sourceId, sourceConversationId: forget.sourceConversationId }
+        : action === 'restore' && current && roomGuidanceOptions.some(item => item.value === String(version))
+          ? { ...current, revision: version } : null;
+    if (!input || roomGuidanceUnavailable || roomGuidanceLoading || currentRoom?.archivedAt) {
+      roomGuidanceFeedback = 'Refresh the saved guidance before trying again.';
+      return { ok: false, code: 'ROOM_GUIDANCE_INELIGIBLE', message: roomGuidanceFeedback };
+    }
+    roomGuidanceFeedback = '';
+    const signature = JSON.stringify({ chat, action, input });
+    if (roomGuidanceMutationKey?.signature !== signature) roomGuidanceMutationKey = { signature, key: crypto.randomUUID() };
+    try {
+      await request(guidancePath(chat), { action, input, idempotencyKey: roomGuidanceMutationKey.key });
+    } catch (cause) {
+      if (chat !== conversationId || room !== roomId) return { ok: false, code: 'ROOM_GUIDANCE_UNCONFIRMED', message: 'Open the room to check its guidance.' };
+      const rejected = cause instanceof RequestError ? cause : null;
+      if (rejected?.status === 409) await loadRoomGuidance();
+      if (rejected?.status === 401) return failure(cause);
+      roomGuidanceFeedback = rejected?.message ?? 'The guidance change could not be confirmed. Please try again.';
+      return { ok: false, code: rejected?.code ?? 'ROOM_GUIDANCE_UNCONFIRMED', message: roomGuidanceFeedback };
+    }
+    roomGuidanceMutationKey = undefined;
+    if (chat !== conversationId || room !== roomId || !local.memoryOpen) return { ok: true, message: '' };
+    if (action === 'correct') { roomGuidanceEdit = null; setLocal({ roomGuidanceDraft: '' }); }
+    if (action === 'forget') roomGuidanceForget = null;
+    if (action === 'forget') await loadMemory(false);
+    const refreshed = await loadRoomGuidance();
+    if (chat === conversationId) roomGuidanceFeedback = !refreshed ? 'Saved. Refresh to read the current room guidance.'
+      : action === 'correct' ? 'Room correction saved.' : action === 'forget' ? 'Source forgotten from future room guidance.' : 'Room guidance restored as a new version.';
+    return { ok: true, message: '', ...(!refreshed ? { dataStale: true } : {}) };
+  }
   async function loadMemory(reset = false, background = false, signal?: AbortSignal) {
     const selectedConversation = conversationId, version = ++memoryRequestVersion;
     if (!background) memoryLoading = true;
@@ -493,6 +632,7 @@
       if (memoryData && memoryData.authority.revision !== result.authority.revision) deskContextText = 'Memory care changed. Reopen the recorded Desk context to check its availability.';
       const previousReply = String(local.memoryReply ?? '');
       memoryData = result; memoryConnectionMessage = '';
+      roomGuidanceReplyRevision = undefined;
       ++memoryDetailVersion;
       memorySourcesLoaded = false; memorySourcesLoading = false; memorySourcesCursor = null; selectedSources = [];
       if (reset) { memoryCareRevision = result.authority.revision; setLocal({ memoryProfileText: result.personal.text }); }
@@ -551,13 +691,16 @@
     const result = await request<MemoryContextResult>(`/api/conversations/${chat}/memory?view=context&turnId=${encodeURIComponent(turn)}`);
     if (version === memoryDetailVersion && conversationId === chat && local.memoryReply === turn && memoryData && local.memoryOpen && result.authorityRevision === memoryData.authority.revision) {
       memoryData = { ...memoryData, context: result.context };
+      roomGuidanceReplyRevision = result.roomGuidanceRevision;
     }
   }
   async function watchMemory(controller: AbortController, selectedConversation: string) {
+    let guidanceChecks = 0;
     while (alive && !controller.signal.aborted && selectedConversation === conversationId) {
       await delayObservation(controller.signal, 3000);
       if (controller.signal.aborted || !alive || selectedConversation !== conversationId) return;
       if (globalThis.document.visibilityState !== 'visible' || pending || memoryLoading || !memoryData) continue;
+      if (++guidanceChecks % 2 === 0 && !roomGuidanceLoading) void loadRoomGuidance(true, controller.signal);
       try {
         const result = await request<MemoryVersion>(`/api/conversations/${selectedConversation}/memory?view=version`, undefined, controller.signal);
         if (controller.signal.aborted || selectedConversation !== conversationId || pending) continue;
@@ -1030,8 +1173,48 @@
       else if (actionId === 'ui.desk.save') return await mutateDesk(deskSelected === 'new' ? 'desk.create' : 'desk.save');
       else if (['ui.desk.archive', 'ui.desk.restore', 'ui.desk.restore-version'].includes(actionId)) return await mutateDesk(actionId.replace('ui.', '') as DeskActionId);
       else if (actionId === 'ui.memory.open') {
-        setLocal({ moreOpen: false, memoryOpen: true }); await loadMemory(true);
+        roomGuidanceReplyRevision = undefined;
+        setLocal({ moreOpen: false, memoryOpen: true });
+        await Promise.allSettled([loadMemory(true), loadRoomGuidance()]);
       } else if (actionId === 'ui.memory.context') await loadMemoryContext();
+      else if (actionId === 'ui.room-guidance.reload') await loadRoomGuidance();
+      else if (actionId === 'ui.room-guidance.edit') {
+        const dimension = input.id as RoomLearningDimension, pin = guidancePin();
+        if (!roomGuidanceEdit && pin && roomLearningDimensions.includes(dimension)) {
+          roomGuidanceEdit = { ...pin, dimension };
+          roomGuidanceForget = null;
+          roomGuidanceFeedback = '';
+          setLocal({ roomGuidanceDraft: roomGuidance?.fields.find(item => item.dimension === dimension)?.text ?? '' });
+          restoreFocus = '#roomGuidanceCorrection-control';
+        }
+      } else if (actionId === 'ui.room-guidance.cancel' && roomGuidanceEdit) {
+        restoreFocus = '[data-ui-node="roomGuidance-' + roomGuidanceEdit.dimension + '-correct"]';
+        roomGuidanceEdit = null;
+        setLocal({ roomGuidanceDraft: '' });
+      } else if (actionId === 'ui.room-guidance.rebase' && roomGuidanceEdit) {
+        const pin = guidancePin();
+        if (pin) roomGuidanceEdit = { ...roomGuidanceEdit, ...pin };
+        roomGuidanceFeedback = '';
+        restoreFocus = '#roomGuidanceCorrection-control';
+      } else if (actionId === 'ui.room-guidance.forget.select') {
+        const source = roomGuidanceOriginals.find(item => item.id === input.id), pin = guidancePin();
+        if (source && pin) {
+          roomGuidanceForget = { ...pin, sourceId: source.sourceId, sourceConversationId: source.conversationId, quote: source.quote };
+          roomGuidanceFeedback = '';
+          restoreFocus = '[data-ui-node="roomGuidanceForgetCancel"]';
+        }
+      } else if (actionId === 'ui.room-guidance.forget.cancel') {
+        roomGuidanceForget = null;
+        restoreFocus = '[data-ui-node="roomGuidanceSources"][data-ui-part="trigger"]';
+      } else if (actionId === 'ui.room-guidance.correct' || actionId === 'ui.room-guidance.forget' || actionId === 'ui.room-guidance.restore') {
+        const focus = actionId === 'ui.room-guidance.correct' && roomGuidanceEdit
+          ? '[data-ui-node="roomGuidance-' + roomGuidanceEdit.dimension + '-correct"]'
+          : actionId === 'ui.room-guidance.forget' ? '[data-ui-node="roomGuidanceSources"][data-ui-part="trigger"]'
+            : '[data-ui-node="roomGuidanceHistory"][data-ui-part="trigger"]';
+        const outcome = await changeRoomGuidance(actionId.replace('ui.room-guidance.', '') as RoomLearningAction);
+        if (outcome.ok) restoreFocus = focus;
+        return outcome;
+      }
       else if (actionId === 'ui.memory.more-sources') await loadMemorySources(true);
       else if (actionId === 'ui.memory.more-replies') await loadMoreReplies();
       else if (actionId === 'ui.memory.reload') await loadMemory(true);
@@ -1076,7 +1259,7 @@
     } catch (cause) { return failure(cause); }
     finally {
       pending = false;
-      if (restoreFocus) await focusControl(restoreFocus);
+      if (restoreFocus) await focusControl(restoreFocus, restoreFocus.includes('roomGuidance'));
     }
   }
   beforeNavigate(({ to }) => {
@@ -1092,7 +1275,7 @@
       try { await refreshData(); await resolveSelection(true); }
       catch (cause) { failure(cause); loading = false; }
     })();
-    return () => { alive = false; clearTimeout(deskSearchTimer); saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); memoryReadController?.abort(); };
+    return () => { alive = false; clearTimeout(deskSearchTimer); saveDraft(); saveDeskDraft(); observer?.abort(); selectionRequest?.abort(); historyRequest?.abort(); memoryReadController?.abort(); roomGuidanceRead?.abort(); };
   });
 </script>
 

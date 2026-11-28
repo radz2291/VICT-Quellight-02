@@ -1,0 +1,45 @@
+{
+  "sourceCommit": "0025fb0b47fcc7b6f0de4da642898b7e9f79db31",
+  "assembly": {
+    "sha256": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+    "bytes": 30489
+  },
+  "movements": [
+    {
+      "file": "soul.md",
+      "sha256": "4a66903d78492c58c1baf626d0fe52ef6990a6d08b8095e79f4fa23a2e518501"
+    },
+    {
+      "file": "root.md",
+      "sha256": "44d20df820dab2c89a98952f645f6da42e724b014b18371250800e61340b81b7"
+    },
+    {
+      "file": "tradition.md",
+      "sha256": "b74eef4df3f12be887a877112e7599f672eede8966baab9fcd72699c5768d555"
+    },
+    {
+      "file": "moment.md",
+      "sha256": "345fbaf49a2e6c81e4c08e0fbeb10c30e829c25f5843a0c56a5d3f8b79b804cd"
+    },
+    {
+      "file": "knowing.md",
+      "sha256": "68619e6a53f3a22302a0577f7ca92c37e34f6a3388e85736349b6f8e6d16d02d"
+    },
+    {
+      "file": "bond.md",
+      "sha256": "7f3107b646131ae98849b66ff83bcdfa7df6b726888c80feb596d09259207aba"
+    },
+    {
+      "file": "boundary.md",
+      "sha256": "62a000d4efb9a0abbfe834bd109ec70608b24ca9fdad807d074bc7611fe29e0a"
+    },
+    {
+      "file": "tendencies.md",
+      "sha256": "c2a13aebc7e8e764c514124f3635beecd0a348d46923c219194d5db80a6ca09e"
+    }
+  ],
+  "editorialGuide": {
+    "file": "EDITING.md",
+    "sha256": "abc3e14a117f9ea314ddb481023537459841826a6a9f07210db3a2251f792c47"
+  }
+}

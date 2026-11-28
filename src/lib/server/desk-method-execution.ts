@@ -35,30 +35,32 @@ export interface DeskMethodExecutionRef {
 }
 export interface DeskMethodGenerationResult { text: string; executionRef: DeskMethodExecutionRef }
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+export type BackgroundLearningRole = 'desk-method' | 'room-learning';
 const terminal = new Set(['completed', 'failed', 'cancelled', 'blocked']);
 
 /** A dedicated governed VICT turn, with no tools and no second conversation-memory selector. */
-export function deskMethodActivation(request: Omit<DeskMethodGenerationRequest, 'deadline'>) {
-  const revision = hash({ schema: 'quellight.desk-method-execution@1', instructions: request.instructions,
+export function deskMethodActivation(request: Omit<DeskMethodGenerationRequest, 'deadline'>, role: BackgroundLearningRole = 'desk-method') {
+  const agentId = 'quellight.' + role;
+  const revision = hash({ schema: agentId + '-execution@1', instructions: request.instructions,
     input: request.input, configurationRevision: request.revision, model: MODEL });
   const registry = new AgentProfileRegistry({ clock: () => 0 });
   registry.installArtifacts([
-    { kind: 'instructions', id: 'quellight.desk-method.instructions', revision, text: request.instructions },
-    { kind: 'memory-policy', id: 'quellight.desk-method.memory', revision: '1',
+    { kind: 'instructions', id: agentId + '.instructions', revision, text: request.instructions },
+    { kind: 'memory-policy', id: agentId + '.memory', revision: '1',
       config: { lastMessages: false, workingMemory: { enabled: false }, semanticRecall: false } },
   ]);
-  registry.registerProfile({ schema: 'vict.agent-profile@1', id: 'quellight.desk-method', revision,
-    instructions: { id: 'quellight.desk-method.instructions', revision },
-    memoryPolicy: { id: 'quellight.desk-method.memory', revision: '1' },
+  registry.registerProfile({ schema: 'vict.agent-profile@1', id: agentId, revision,
+    instructions: { id: agentId + '.instructions', revision },
+    memoryPolicy: { id: agentId + '.memory', revision: '1' },
     modelProfile: { id: 'quellight.glm-flash', revision: '1', provider: 'zai-coding-plan',
       routerModel: MODEL, providerCredentialVar: CREDENTIAL },
     generation: {}, turnPolicy: { schema: 'vict.agent-turn-policy@2', mode: 'until-completion-or-cancel' },
     capabilities: [], adapter: MASTRA_POSTGRES_ADAPTER_COMPATIBILITY,
   });
-  const activation = registry.activateAgentProfile({ id: 'quellight.desk-method', revision });
+  const activation = registry.activateAgentProfile({ id: agentId, revision });
   const record: AgentActivationRecord = { recordSchema: 'vict.agent-activation-record@1',
     activationVersion: activation.activationVersion, agentProfileVersion: activation.agentProfileVersion,
-    agentId: 'quellight.desk-method', agentRevision: revision, canonicalManifest: activation.canonicalManifestJson,
+    agentId, agentRevision: revision, canonicalManifest: activation.canonicalManifestJson,
     artifacts: activation.artifactList, createdAt: activation.createdAt };
   return { registry, activation, record };
 }
@@ -66,7 +68,9 @@ export function deskMethodActivation(request: Omit<DeskMethodGenerationRequest, 
 export function createDeskMethodExecutor(options: {
   /** Resolve only after checking durable execution. Never called for completed replay. */
   modelFactory(): Promise<MastraProductAgentConfig['modelFactory']>;
+  role?: BackgroundLearningRole;
 }) {
+  const role = options.role ?? 'desk-method';
   return async function generate(stores: PostgresStoreSet, request: DeskMethodGenerationRequest): Promise<DeskMethodGenerationResult> {
     if (![request.jobId, request.attemptId, request.actorId].every(value => typeof value === 'string' && /^[a-zA-Z0-9:_-]+$/.test(value)) ||
       !request.instructions?.trim() || !request.input?.trim() || !request.revision) throw new ProductError('DESK_METHOD_EXECUTION_INVALID', 503);
@@ -74,17 +78,17 @@ export function createDeskMethodExecutor(options: {
     if (!Number.isFinite(remaining) || remaining <= 0) throw new ProductError('DESK_METHOD_HOST_WINDOW_ENDED', 503);
     const actor = authenticatedActorContext(await stores.actors.get(request.actorId), request.actorId);
     assertActorScope(actor, 'agent.turn.start'); assertActorScope(actor, 'app.data.read');
-    const claim = await stores.coordination.acquire({ scopeId: `quellight:desk-method-execution:${request.actorId}:${request.jobId}`,
+    const claim = await stores.coordination.acquire({ scopeId: `quellight:${role}-execution:${request.actorId}:${request.jobId}`,
       actorId: request.actorId, ownerId: randomUUID(), leaseMs: remaining });
     if (claim.status !== 'acquired') throw new ProductError('DESK_METHOD_EXECUTION_BUSY', 409);
     let hosted: Awaited<ReturnType<typeof createPostgresMastraStore>> | undefined;
     let composition: ReturnType<typeof composeMastraTurnExecutor> | undefined;
-    const turnId = `quellight:desk-method:${hash([request.actorId, request.jobId, request.attemptId])}`;
-    const conversationId = `desk-method:${hash([request.actorId, request.jobId, request.attemptId])}`;
+    const turnId = `quellight:${role}:${hash([request.actorId, request.jobId, request.attemptId])}`;
+    const conversationId = `${role}:${hash([request.actorId, request.jobId, request.attemptId])}`;
     const ids = { turnId: () => turnId, streamId: () => `stream:${turnId}`, invocationId: randomUUID,
       approvalId: randomUUID, idempotencyKey: randomUUID, cancelId: randomUUID };
     try {
-      const profile = deskMethodActivation(request), fenced = stores.forLease(claim.lease);
+      const profile = deskMethodActivation(request, role), fenced = stores.forLease(claim.lease);
       const existing = await fenced.turns.getTurn(turnId);
       if (existing && (existing.actorId !== request.actorId || existing.agentProfileVersion !== profile.activation.agentProfileVersion ||
         existing.activationVersion !== undefined && existing.activationVersion !== profile.activation.activationVersion ||
@@ -118,7 +122,7 @@ export function createDeskMethodExecutor(options: {
           },
         });
         const started = await composition.turnService.startTurn(actor, { threadId: mastraThreadIdForConversation(conversationId),
-          input: request.input, inputSummary: 'Reflect on this room’s Desk method' });
+          input: request.input, inputSummary: role === 'desk-method' ? 'Reflect on this room’s Desk method' : 'Learn from eligible room conversation' });
         const outcome = await started.outcomePromise;
         if (outcome.status !== 'completed') throw new ProductError('DESK_METHOD_GENERATION_FAILED', 503);
       }

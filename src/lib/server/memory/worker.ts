@@ -6,11 +6,13 @@ import { enqueueMemoryJob, publicConversationSources, type MemoryJob } from './j
 import { loadEffectiveMemorySettings, type MemorySettingsSqlClient } from './settings.js';
 import { openQuellightMemory } from './native.js';
 import type { MemoryJobOutcome } from './dispatcher.js';
+import { processRoomLearning } from '../room-learning/worker.js';
 import { MEMORY_WORK_LEASE_MS, MEMORY_YIELD, memoryModelForSignal, watchMemoryAttempt } from './foreground.js';
 
 export interface MemoryJobProcessorOptions {
   /** Resolve the explicitly selected provider only when new inference is necessary. */
   modelFactory(job: MemoryJob): Promise<MastraProductAgentConfig['modelFactory']>;
+  roomLearning?: boolean;
 }
 type OpenMemory = Awaited<ReturnType<typeof openQuellightMemory>>;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -47,6 +49,12 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
     const expired = () => Date.now() >= deadline.getTime();
     const retry = (code = 'MEMORY_WORK_UNCONFIRMED'): MemoryJobOutcome => ({ state: 'retryable', code });
 
+    async function learnRoom(): Promise<void> {
+      if (!options.roomLearning || !memory || !conversationLease || !watch || job.kind === 'purge') return;
+      const { signal } = watch;
+      await processRoomLearning({ stores, memory, job, operationId, lease: conversationLease, signal, deadline,
+        modelFactory: async () => memoryModelForSignal(await options.modelFactory(job), signal) });
+    }
     async function supersedeAndEnqueue(code: string): Promise<MemoryJobOutcome> {
       if (expired()) return retry('MEMORY_HOST_WINDOW_ENDED');
       if (!memory || !conversationLease) return retry();
@@ -116,7 +124,7 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
         // This creates a real new reconcile receipt. It never fabricates completion
         // of the original attempt or invokes a model merely to discover its outcome.
         const result = await memory.service.reconcile(request);
-        if (result.disposition === 'completed') return { state: 'completed' };
+        if (result.disposition === 'completed') { await learnRoom(); return { state: 'completed' }; }
         if (result.disposition === 'superseded') return await supersedeAndEnqueue('MEMORY_SOURCE_SUPERSEDED');
       }
 
@@ -141,6 +149,7 @@ export function createMemoryJobProcessor(options: MemoryJobProcessorOptions) {
       // threshold-driven reflection; manual reflection is used only for an explicit job.
       if (job.kind === 'reflect') await memory.service.reflect(request);
       else await memory.service.observe(request);
+      await learnRoom();
       return { state: 'completed' };
     } catch (error) {
       const interruption = watch?.interruption();

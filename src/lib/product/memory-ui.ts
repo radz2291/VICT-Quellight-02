@@ -1,17 +1,18 @@
 import type { UiNode, UiExpression, UiLocalStateDecl, UiStyleDeclaration } from '@victframework/ui';
 import { rheaNativePatterns } from '@victframework/ui-svelte/rhea';
 import { memoryRoles } from './memory-client';
+import { roomLearningDimensions, roomLearningLabels } from './room-learning';
 
 const l = (value: string | number | boolean): UiExpression => ({ type: 'literal', value });
 const r = (path: string): UiExpression => ({ type: 'ref', path });
 const st = (property: string, value: string): UiStyleDeclaration => ({ property, value: { type: 'text', value } });
-const el = (id: string, tag: string, children: string[], classes: string[] = []): UiNode => ({ kind: 'element', id, tag, children, classes });
+const el = (id: string, tag: string, children: string[], classes: string[] = []): Extract<UiNode, { kind: 'element' }> => ({ kind: 'element', id, tag, children, classes });
 const txt = (id: string, text: string, ref = false): UiNode => ({ kind: 'text', id, content: ref ? { type: 'expression', expression: r(text) } : { type: 'literal', value: text } });
 const cond = (id: string, when: string, children: string[]): UiNode => ({ kind: 'conditional', id, branches: [{ when, children }] });
 const quiet = [st('background', 'transparent'), st('color', 'var(--vict-color-textMuted)'), st('border-color', 'transparent'), st('min-height', '34px'), st('font-size', '13px'), st('font-weight', '400')];
 function action(id: string, label: string, actionId: string, input?: Record<string, UiExpression>, disabled = 'pending'): UiNode {
   return { kind: 'component', id, definitionId: 'vict.catalog.button', revision: '1', props: { label: l(label), disabled: r(`view.${disabled}`) },
-    outputs: { press: { invokeAction: { actionId, ...(input ? { input } : {}) } } }, localStyle: quiet };
+    outputs: { press: { invokeAction: { actionId, ...(input ? { input } : {}) } } }, localStyle: id.startsWith('roomGuidance') ? quiet.map(value => value.property === 'min-height' ? st('min-height', 'var(--ql-disclosure-height)') : value) : quiet };
 }
 function copy(id: string, content: string, ref = false, classes: string[] = ['ql-muted']): Record<string, UiNode> {
   return { [id]: el(id, 'p', [`${id}-text`], classes), [`${id}-text`]: txt(`${id}-text`, content, ref) };
@@ -84,13 +85,69 @@ function settingsForm(prefix: string): Record<string, UiNode> {
   });
   return nodes;
 }
+const guidanceRows: Record<string, UiNode> = {};
+for (const dimension of roomLearningDimensions) {
+  const id = 'roomGuidance-' + dimension, label = roomLearningLabels[dimension];
+  Object.assign(guidanceRows, {
+    [id]: el(id, 'article', [id + '-title', id + '-text', id + '-origin', id + '-correct'], ['ql-guidance-field']),
+    [id + '-title']: el(id + '-title', 'h3', [id + '-label']),
+    [id + '-label']: txt(id + '-label', label),
+    ...copy(id + '-text', 'view.roomGuidance_' + dimension, true, ['ql-memory-copy']),
+    ...copy(id + '-origin', 'view.roomGuidanceOrigin_' + dimension, true),
+    [id + '-correct']: action(id + '-correct', 'Correct ' + label.toLowerCase(), 'ui.room-guidance.edit', { id: l(dimension) }, 'roomGuidanceCannotStartEdit'),
+  });
+}
+const guidanceNodes: Record<string, UiNode> = {
+  roomGuidance: el('roomGuidance', 'section', ['roomGuidanceTitle', 'roomGuidanceState', 'roomGuidanceRefresh', 'roomGuidanceContent', 'roomGuidanceFeedback'], ['ql-guidance']),
+  roomGuidanceTitle: el('roomGuidanceTitle', 'h2', ['roomGuidanceTitleText'], ['ql-memory-heading']),
+  roomGuidanceTitleText: txt('roomGuidanceTitleText', 'Room guidance'),
+  ...copy('roomGuidanceState', 'view.roomGuidanceState', true),
+  roomGuidanceRefresh: cond('roomGuidanceRefresh', 'roomGuidanceNeedsRefresh', ['roomGuidanceReload']),
+  roomGuidanceReload: action('roomGuidanceReload', 'Refresh room guidance', 'ui.room-guidance.reload'),
+  roomGuidanceContent: cond('roomGuidanceContent', 'roomGuidanceReady', [
+    ...roomLearningDimensions.map(dimension => 'roomGuidance-' + dimension), 'roomGuidanceEditor', 'roomGuidanceSources', 'roomGuidanceHistory',
+  ]),
+  ...guidanceRows,
+  roomGuidanceEditor: cond('roomGuidanceEditor', 'roomGuidanceEditing', ['roomGuidanceEditPanel']),
+  roomGuidanceEditPanel: el('roomGuidanceEditPanel', 'section', ['roomGuidanceEditLabel', 'roomGuidanceCorrection', 'roomGuidanceEditHelp', 'roomGuidanceEditButtons', 'roomGuidanceConflict'], ['ql-guidance-editor']),
+  ...copy('roomGuidanceEditLabel', 'view.roomGuidanceEditLabel', true),
+  ...field('roomGuidanceCorrection', 'roomGuidanceDraft', 'Corrected room guidance'),
+  ...copy('roomGuidanceEditHelp', 'view.roomGuidanceEditHelp', true),
+  roomGuidanceEditButtons: el('roomGuidanceEditButtons', 'div', ['roomGuidanceSave', 'roomGuidanceCancel'], ['ql-button-row']),
+  roomGuidanceSave: action('roomGuidanceSave', 'Save room correction', 'ui.room-guidance.correct', undefined, 'roomGuidanceCannotSave'),
+  roomGuidanceCancel: action('roomGuidanceCancel', 'Cancel room correction', 'ui.room-guidance.cancel'),
+  roomGuidanceConflict: cond('roomGuidanceConflict', 'roomGuidanceEditConflict', ['roomGuidanceRebase']),
+  roomGuidanceRebase: action('roomGuidanceRebase', 'Keep my draft against the current version', 'ui.room-guidance.rebase', undefined, 'roomGuidanceCannotChange'),
+  roomGuidanceSources: disclosure('roomGuidanceSources', 'Guidance sources', ['roomGuidanceSourcesNote', 'roomGuidanceSourceRows', 'roomGuidanceForgetReview']),
+  ...copy('roomGuidanceSourcesNote', 'view.roomGuidanceSourcesNote', true),
+  roomGuidanceSourceRows: { kind: 'repeat', id: 'roomGuidanceSourceRows', collection: r('view.roomGuidanceSources'), key: r('repeat.original.id'), itemName: 'original', templateRoot: 'roomGuidanceSourceRow' },
+  roomGuidanceSourceRow: el('roomGuidanceSourceRow', 'article', ['roomGuidanceSourceField', 'roomGuidanceSourceQuote', 'roomGuidanceForgetSelect'], ['ql-guidance-source']),
+  ...copy('roomGuidanceSourceField', 'repeat.original.label', true),
+  ...copy('roomGuidanceSourceQuote', 'repeat.original.quote', true, ['ql-memory-copy']),
+  roomGuidanceForgetSelect: action('roomGuidanceForgetSelect', 'Forget source', 'ui.room-guidance.forget.select', { id: r('repeat.original.id') }, 'roomGuidanceCannotChange'),
+  roomGuidanceForgetReview: cond('roomGuidanceForgetReview', 'roomGuidanceForgetting', ['roomGuidanceForgetText', 'roomGuidanceForgetOriginal', 'roomGuidanceForgetButtons']),
+  ...copy('roomGuidanceForgetText', 'Forget this source for future memory? You can still read it in the conversation.'),
+  ...copy('roomGuidanceForgetOriginal', 'view.roomGuidanceForgetQuote', true, ['ql-memory-copy']),
+  roomGuidanceForgetButtons: el('roomGuidanceForgetButtons', 'div', ['roomGuidanceForget', 'roomGuidanceForgetCancel'], ['ql-button-row']),
+  roomGuidanceForget: action('roomGuidanceForget', 'Confirm source forget', 'ui.room-guidance.forget', undefined, 'roomGuidanceCannotForget'),
+  roomGuidanceForgetCancel: action('roomGuidanceForgetCancel', 'Keep source', 'ui.room-guidance.forget.cancel'),
+  roomGuidanceHistory: disclosure('roomGuidanceHistory', 'Guidance history', ['roomGuidanceHistoryText', 'roomGuidanceRestoration']),
+  ...copy('roomGuidanceHistoryText', 'view.roomGuidanceHistoryText', true, ['ql-memory-copy']),
+  roomGuidanceRestoration: cond('roomGuidanceRestoration', 'roomGuidanceHasRestore', ['roomGuidanceRestoreSelect', 'roomGuidanceRestorePreview', 'roomGuidanceRestore']),
+  ...field('roomGuidanceRestoreSelect', 'roomGuidanceRestore', 'Room guidance version', 'roomGuidanceRestoreOptions'),
+  ...copy('roomGuidanceRestorePreview', 'view.roomGuidanceRestorePreview', true, ['ql-memory-copy']),
+  roomGuidanceRestore: action('roomGuidanceRestore', 'Restore room guidance', 'ui.room-guidance.restore', undefined, 'roomGuidanceCannotRestore'),
+  roomGuidanceFeedback: { ...el('roomGuidanceFeedback', 'p', ['roomGuidanceFeedbackText'], ['ql-muted']), attributes: { role: 'status' } },
+  roomGuidanceFeedbackText: txt('roomGuidanceFeedbackText', 'view.roomGuidanceFeedback', true),
+};
 export const memoryNodes: Record<string, UiNode> = {
+  ...guidanceNodes,
   memoryDefaultsPage: el('memoryDefaultsPage', 'section', ['appMemorySettings'], ['ql-room-page']),
   ...settingsForm('appMemorySettings'), ...settingsForm('roomMemorySettings'),
   memoryDrawer: { kind: 'component', id: 'memoryDrawer', definitionId: 'vict.pattern.drawer', revision: '1',
     props: { title: l('Memory'), triggerLabel: l('Open memory'), open: r('state.memoryOpen'), side: l('right'), size: l(440) },
     outputs: { openChange: { setState: { key: 'memoryOpen' } } },
-    slots: { body: { name: 'body', children: ['memoryStatus', 'memoryChangedNotice', 'memoryObservationsTitle', 'memoryObservations', 'memoryHistory', 'memoryPrepared', 'memoryPersonal', 'memoryActivity', 'memorySources', 'memoryContext', 'memoryCare'] } },
+    slots: { body: { name: 'body', children: ['memoryStatus', 'memoryChangedNotice', 'roomGuidance', 'memoryObservationsTitle', 'memoryObservations', 'memoryHistory', 'memoryPrepared', 'memoryPersonal', 'memoryActivity', 'memorySources', 'memoryContext', 'memoryCare'] } },
     partStyles: { trigger: { localStyle: [st('display', 'none')] }, panel: { localStyle: [st('background', 'var(--ql-floating)'), st('color', 'var(--vict-color-text)')] }, header: { localStyle: [st('padding', '8px 14px 8px 20px'), st('min-height', '56px')] }, body: { localStyle: [st('padding', '18px 20px 32px')] } } },
   ...copy('memoryStatus', 'view.memoryStatusLabel', true),
   memoryChangedNotice: cond('memoryChangedNotice', 'memoryChanged', ['memoryChangedCopy', 'memoryReload']),
@@ -121,13 +178,14 @@ export const memoryNodes: Record<string, UiNode> = {
   ...copy('memorySourceStatus', 'view.memorySourceStatus', true),
   memoryMoreSourcesWrap: cond('memoryMoreSourcesWrap', 'memoryMoreSources', ['memoryMoreSourcesButton']),
   memoryMoreSourcesButton: action('memoryMoreSourcesButton', 'Load older sources', 'ui.memory.more-sources'),
-  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryMoreRepliesWrap', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText', 'deskContextLoad', 'deskContextCopy']),
+  memoryContext: disclosure('memoryContext', 'Memory used for a reply', ['memoryReplySelect', 'memoryMoreRepliesWrap', 'memoryContextLoad', 'memoryContextHelp', 'memoryContextText', 'roomGuidanceForReply', 'deskContextLoad', 'deskContextCopy']),
   memoryMoreRepliesWrap: cond('memoryMoreRepliesWrap', 'memoryMoreReplies', ['memoryMoreRepliesButton']),
   memoryMoreRepliesButton: action('memoryMoreRepliesButton', 'Load older replies', 'ui.memory.more-replies'),
   ...field('memoryReplySelect', 'memoryReply', 'Reply', 'memoryReplyOptions'),
   memoryContextLoad: action('memoryContextLoad', 'Show selected reply', 'ui.memory.context'),
   ...copy('memoryContextHelp', 'Memory selected before that reply, rather than its complete prompt or private reasoning.'),
   ...copy('memoryContextText', 'view.memoryContextText', true, ['ql-memory-copy']),
+  ...copy('roomGuidanceForReply', 'view.roomGuidanceForReply', true),
   memoryCare: disclosure('memoryCare', 'Correct or forget', ['memoryCareHelp', 'memoryProfileEdit', 'memoryCareButtons', 'memoryForgetConfirm', 'memoryCareStatus']),
   ...copy('memoryCareHelp', 'Correct personal preferences here. Selected original sources are excluded from future memory and recall; derived observations are rebuilt. Later assistant text that may repeat selected sources is also excluded from memory. Your conversation stays intact.'),
   ...field('memoryProfileEdit', 'memoryProfileText', 'Corrected personal memory'),
@@ -146,16 +204,20 @@ for (const node of Object.values(memoryNodes)) if (node.kind === 'component' && 
   memoryNodes[`${node.id}-chevron`] = { kind: 'component', id: `${node.id}-chevron`, definitionId: 'vict.media.icon', revision: '1', classes: ['ql-memory-chevron'],
     props: { pack: l('lucide'), name: l('chevron-down'), revision: l('1.27.0'), size: l(14), strokeWidth: l(1.65), decorative: l(true) } };
 }
-const stringStates = ['mPurpose', 'mGuidance', 'mGuidanceMode', 'mAutomatic', 'mPersonal', 'mRecall', 'mRestore', 'memoryReply', 'memoryProfileText', ...memoryRoles.flatMap(role => [`m_${role}_mode`, `m_${role}_text`])];
+const stringStates = ['mPurpose', 'mGuidance', 'mGuidanceMode', 'mAutomatic', 'mPersonal', 'mRecall', 'mRestore', 'memoryReply', 'memoryProfileText', 'roomGuidanceDraft', 'roomGuidanceRestore', ...memoryRoles.flatMap(role => [`m_${role}_mode`, `m_${role}_text`])];
 const booleanStates = ['memoryOpen', 'memoryForgetOpen', ...Object.values(memoryNodes).filter(node => node.kind === 'component' && node.definitionId === 'vict.catalog.collapsible').map(node => `${node.id}Open`)];
 export const memoryLocalState: Record<string, UiLocalStateDecl> = Object.fromEntries([...stringStates.map(key => [key, { key, type: 'string', initial: '' }]), ...booleanStates.map(key => [key, { key, type: 'boolean', initial: false }])]) as Record<string, UiLocalStateDecl>;
-const boolViews = ['memoryDefaults', 'memorySettingsLoading', 'hasMemorySettings', 'memoryIsRoom', 'memoryGuidanceCustom', 'hasMemoryPreview', 'memoryCannotCorrect', 'memoryCannotForget', 'memoryCannotRestore', 'memoryOwnerManaged', 'memoryChanged', 'memoryCanRetry', 'memoryCannotRetry', 'memoryMoreSources', 'memoryMoreReplies', ...memoryRoles.map(role => `memory_${role}_custom`)];
-const stringViews = ['memoryTarget', 'memorySettingsRoomId', 'memoryDraftJson', 'memorySettingsTitle', 'memorySettingsIntro', 'memorySettingsStatus', 'memoryPreviewText', 'memoryRevisionLabel', 'memoryStatusLabel', 'memoryObservationText', 'memoryObservationHistory', 'memoryPreparedText', 'memoryPersonalText', 'memoryPersonalHelp', 'memoryActivityText', 'memorySourceStatus', 'memoryContextText', 'memoryAuthorityRevision', 'memorySelectedSources', 'memoryCareStatus'];
-const optionViews = ['memoryBooleanOptions', 'memoryRecallOptions', 'memoryOverrideOptions', 'memoryHistoryOptions', 'memoryReplyOptions', ...memoryRoles.map(role => `memory_${role}_options`)];
+const boolViews = ['memoryDefaults', 'memorySettingsLoading', 'hasMemorySettings', 'memoryIsRoom', 'memoryGuidanceCustom', 'hasMemoryPreview', 'memoryCannotCorrect', 'memoryCannotForget', 'memoryCannotRestore', 'memoryOwnerManaged', 'memoryChanged', 'memoryCanRetry', 'memoryCannotRetry', 'memoryMoreSources', 'memoryMoreReplies', 'roomGuidanceReady', 'roomGuidanceNeedsRefresh', 'roomGuidanceEditing', 'roomGuidanceCannotChange', 'roomGuidanceCannotStartEdit',
+  'roomGuidanceCannotSave', 'roomGuidanceEditConflict', 'roomGuidanceForgetting', 'roomGuidanceCannotForget', 'roomGuidanceHasRestore', 'roomGuidanceCannotRestore', ...memoryRoles.map(role => `memory_${role}_custom`)];
+const stringViews = ['memoryTarget', 'memorySettingsRoomId', 'memoryDraftJson', 'memorySettingsTitle', 'memorySettingsIntro', 'memorySettingsStatus', 'memoryPreviewText', 'memoryRevisionLabel', 'memoryStatusLabel', 'memoryObservationText', 'memoryObservationHistory', 'memoryPreparedText', 'memoryPersonalText', 'memoryPersonalHelp', 'memoryActivityText', 'memorySourceStatus', 'memoryContextText', 'memoryAuthorityRevision', 'memorySelectedSources', 'memoryCareStatus',
+  'roomGuidanceState', 'roomGuidanceEditLabel', 'roomGuidanceEditHelp', 'roomGuidanceFeedback', 'roomGuidanceSourcesNote', 'roomGuidanceHistoryText', 'roomGuidanceForReply', 'roomGuidanceForgetQuote', 'roomGuidanceRestorePreview',
+  ...roomLearningDimensions.flatMap(dimension => ['roomGuidance_' + dimension, 'roomGuidanceOrigin_' + dimension])];
+const optionViews = ['memoryBooleanOptions', 'memoryRecallOptions', 'memoryOverrideOptions', 'memoryHistoryOptions', 'memoryReplyOptions', 'roomGuidanceRestoreOptions', ...memoryRoles.map(role => `memory_${role}_options`)];
 export const memoryViewFields = { ...Object.fromEntries(boolViews.map(key => [key, 'boolean'])), ...Object.fromEntries(stringViews.map(key => [key, 'string'])),
+  roomGuidanceSources: 'array', 'roomGuidanceSources.id': 'string', 'roomGuidanceSources.label': 'string', 'roomGuidanceSources.quote': 'string',
   memorySettingsRevision: 'number', memoryRestoreRevision: 'number', memorySources: 'array', 'memorySources.id': 'string', 'memorySources.label': 'string', 'memorySources.text': 'string', 'memorySources.selected': 'boolean', 'memorySources.excluded': 'boolean',
   ...Object.fromEntries(optionViews.flatMap(key => [[key, 'array'], [`${key}.value`, 'string'], [`${key}.label`, 'string']])) } as Record<string, 'string' | 'number' | 'boolean' | 'array'>;
 export const memoryInitialView = { ...Object.fromEntries(boolViews.map(key => [key, false])), ...Object.fromEntries(stringViews.map(key => [key, ''])),
-  memorySettingsRevision: 0, memoryRestoreRevision: 0, memorySources: [], ...Object.fromEntries(optionViews.map(key => [key, []])) };
+  roomGuidanceSources: [], memorySettingsRevision: 0, memoryRestoreRevision: 0, memorySources: [], ...Object.fromEntries(optionViews.map(key => [key, []])) };
 export const memoryConditions = { ...Object.fromEntries(boolViews.map(id => [id, { id, kind: 'localState' as const, when: r(`view.${id}`) }])),
   memoryForgetOpen: { id: 'memoryForgetOpen', kind: 'localState' as const, when: r('state.memoryForgetOpen') } };

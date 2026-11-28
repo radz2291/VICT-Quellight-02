@@ -1,0 +1,236 @@
+{
+  "operation": "offline",
+  "mode": "deterministic-fixture",
+  "guidance": "on",
+  "results": {
+    "Cedar-47 correction and pending workSource": {
+      "room": {
+        "archivedAt": null,
+        "createdAt": "2026-11-28T11:17:43.691Z",
+        "id": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "name": "Cedar-47 correction and pending work",
+        "purpose": "Review the draft and keep the owner’s decisions clear.",
+        "revision": 1,
+        "updatedAt": "2026-11-28T11:17:43.691Z"
+      },
+      "source": {
+        "actorId": "c1000000-0000-4000-8000-000000000014",
+        "archivedAt": null,
+        "createdAt": "2026-11-28T11:17:43.971Z",
+        "id": "26e0eb42-4030-4367-8150-3e480eac29db",
+        "revision": 1,
+        "roomId": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "threadId": "quellight-conversation-26e0eb42-4030-4367-8150-3e480eac29db",
+        "title": "Learning conversation",
+        "updatedAt": "2026-11-28T11:17:43.971Z"
+      }
+    },
+    "startingRevision": {
+      "room": {
+        "archivedAt": null,
+        "createdAt": "2026-11-28T11:17:43.691Z",
+        "id": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "name": "Cedar-47 correction and pending work",
+        "purpose": "Review the draft and keep the owner’s decisions clear.",
+        "revision": 1,
+        "updatedAt": "2026-11-28T11:17:43.691Z"
+      },
+      "source": {
+        "actorId": "c1000000-0000-4000-8000-000000000014",
+        "archivedAt": null,
+        "createdAt": "2026-11-28T11:17:43.971Z",
+        "id": "26e0eb42-4030-4367-8150-3e480eac29db",
+        "revision": 1,
+        "roomId": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "threadId": "quellight-conversation-26e0eb42-4030-4367-8150-3e480eac29db",
+        "title": "Learning conversation",
+        "updatedAt": "2026-11-28T11:17:43.971Z"
+      },
+      "fresh": {
+        "actorId": "c1000000-0000-4000-8000-000000000014",
+        "archivedAt": null,
+        "createdAt": "2026-11-28T11:17:48.143Z",
+        "id": "ee464a4e-ee8c-45b9-a98d-328b6c5d625b",
+        "revision": 1,
+        "roomId": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "threadId": "quellight-conversation-ee464a4e-ee8c-45b9-a98d-328b6c5d625b",
+        "title": "Fresh review",
+        "updatedAt": "2026-11-28T11:17:48.143Z"
+      },
+      "view": {
+        "roomId": "f44fcade-3092-42f5-ba17-014789b52d97",
+        "revision": 1,
+        "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+        "fields": [
+          {
+            "text": "Cedar-47 is the draft serial.",
+            "origin": "learned",
+            "certainty": "stated",
+            "dimension": "understanding",
+            "sources": [
+              {
+                "id": "15c7feca-4d85-4670-96fc-394f800dd4ca",
+                "conversationId": "26e0eb42-4030-4367-8150-3e480eac29db",
+                "quote": "Cedar-47 is the draft serial."
+              }
+            ]
+          },
+          {
+            "text": "Mira might give final approval for Cedar-47.",
+            "origin": "learned",
+            "certainty": "tentative",
+            "dimension": "intent",
+            "sources": [
+              {
+                "id": "15c7feca-4d85-4670-96fc-394f800dd4ca",
+                "conversationId": "26e0eb42-4030-4367-8150-3e480eac29db",
+                "quote": "Mira might give final approval for Cedar-47."
+              }
+            ]
+          },
+          {
+            "text": "Vendor attendance is still undecided.",
+            "origin": "learned",
+            "certainty": "tentative",
+            "dimension": "attunement",
+            "sources": [
+              {
+                "id": "15c7feca-4d85-4670-96fc-394f800dd4ca",
+                "conversationId": "26e0eb42-4030-4367-8150-3e480eac29db",
+                "quote": "Vendor attendance is still undecided."
+              }
+            ]
+          }
+        ],
+        "history": [
+          {
+            "revision": 1,
+            "previousRevision": 0,
+            "kind": "learned",
+            "changedAt": "2026-11-28T11:17:47.000Z",
+            "changed": [
+              "understanding",
+              "intent",
+              "attunement"
+            ],
+            "eligible": true,
+            "fields": [
+              {
+                "dimension": "understanding",
+                "text": "Cedar-47 is the draft serial.",
+                "origin": "learned",
+                "certainty": "stated"
+              },
+              {
+                "dimension": "intent",
+                "text": "Mira might give final approval for Cedar-47.",
+                "origin": "learned",
+                "certainty": "tentative"
+              },
+              {
+                "dimension": "attunement",
+                "text": "Vendor attendance is still undecided.",
+                "origin": "learned",
+                "certainty": "tentative"
+              }
+            ]
+          }
+        ]
+      },
+      "learnedTurn": {
+        "id": "quellight:3a8f761d-dc89-4f6e-9324-496ef1c09a67",
+        "reply": "I’ve understood this update. Let’s use the next reply to act on the agreed working context."
+      },
+      "trainingMode": "deterministic-fixture",
+      "publication": {
+        "job_id": "e1c76c27-3e63-4aef-bdac-0690aef65d30",
+        "source_revision": "b928c3a1ad1f3fc21bc00b1e77eb05fa4c75d78c8d196d16ab0ccca375b672ed",
+        "state": "published",
+        "execution_ref": {
+          "jobId": "e1c76c27-3e63-4aef-bdac-0690aef65d30",
+          "status": "completed",
+          "turnId": "quellight:room-learning:6734bc12767985a119c8d5701fac16b69fb243057549254c11c52c679f5684f6",
+          "attemptId": "c61779c7-044b-44a2-ba00-84e74dd31b74",
+          "inputDigest": "6561d11154affaff979c1de4179dbe54d183e8bc15eaf662da95433cdd472a89",
+          "conversationId": "room-learning:6734bc12767985a119c8d5701fac16b69fb243057549254c11c52c679f5684f6",
+          "activationVersion": "v1_499c2ccb26ea961e6304bd5d5fbad589c3d3b47416ea5811f2bf569be9df2189"
+        }
+      }
+    },
+    "pendingAndCorrection": {
+      "queued": {
+        "job_id": "ddd168ab-78bd-42fa-8ecf-bc235dfba8fa",
+        "state": "pending",
+        "base_revision": 1
+      },
+      "corrected": {
+        "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+        "revision": 2
+      },
+      "replay": true,
+      "staleCorrectionRejected": true
+    },
+    "offlineReplay": {
+      "staleJob": "ddd168ab-78bd-42fa-8ecf-bc235dfba8fa",
+      "superseded": true,
+      "revision": 2,
+      "preservedDimensions": [
+        "understanding",
+        "attunement"
+      ],
+      "duplicateModelCalls": 0
+    },
+    "offlineAdmission": {
+      "fresh": {
+        "turnId": "quellight:1d0126da-7c12-4b97-ba38-62bc655392a9",
+        "activationVersion": "v1_e8e96b5c059a54df2c8f0a0fe325ce530a8b82d8699cb087971f47d44d2f93cc",
+        "roomRevision": 2,
+        "block": "<room-guidance>\nUnderstanding: Cedar-47 is the draft serial.\nIntent: I give final approval for Cedar-47. Mira checks wording only.\nAttunement: ? Vendor attendance is still undecided.\n</room-guidance>",
+        "promptBytes": 35418,
+        "promptSha256": "2024870b714ed6ca82175e07ab56fff53fa30b0408dbcd195d60669ff6f3e21b",
+        "nonRoomSdkInputSha256": "c9b2ed6d3c8af6b87fe65a779b35d8a67cc040621bc89f6ae0167ce37781bfbb",
+        "lookupRowBytes": 219,
+        "reply": "You give final approval. Mira checks wording only. Keep the draft serial Cedar-47 and leave vendor attendance undecided."
+      },
+      "reopened": {
+        "turnId": "quellight:79358d40-00f5-40f9-81b2-f2db48396bce",
+        "activationVersion": "v1_e501119afbce64259c6b8a1175834600c462883e77116b9e2f10ec6488256182",
+        "roomRevision": 2,
+        "block": "<room-guidance>\nUnderstanding: Cedar-47 is the draft serial.\nIntent: I give final approval for Cedar-47. Mira checks wording only.\nAttunement: ? Vendor attendance is still undecided.\n</room-guidance>",
+        "promptBytes": 42628,
+        "promptSha256": "3e3ad4fc2cbedcb244534832695876aa7f8d223ecfc2ab6c642728672f542df2",
+        "nonRoomSdkInputSha256": "3f648d6bab9db26aeaea8559363f1d559d649a026cbfeabec86fff278e9b3892",
+        "lookupRowBytes": 219,
+        "reply": "You give final approval. Mira checks wording only. Keep the draft serial Cedar-47 and leave vendor attendance undecided."
+      },
+      "isolated": {
+        "turnId": "quellight:1980534b-4cdf-403d-b2cc-15ff1555b9d7",
+        "activationVersion": "v1_8e586580085b34f62433414ef5350d77778c1215b5fa1034257fe7a433c7b36b",
+        "roomRevision": null,
+        "block": null,
+        "promptBytes": 35037,
+        "promptSha256": "64a79957a5160e85038ba9de020a1e22909ef3c8e9696c6495b22f44f74d9e17",
+        "nonRoomSdkInputSha256": "1ce595f128217992c52d3b53f215bc17f7b924c4bac4be7813689088ac712a89",
+        "lookupRowBytes": 2,
+        "reply": "I cannot infer who approves from this message. What approval roles apply?"
+      }
+    },
+    "offlineCare": {
+      "eligibleRestore": {
+        "authorityRevision": "care:cde9e07263ca3c2e1136d60f24ea7fa199fbcdd0ad744c23cb0245cbd4a3e847",
+        "revision": 3
+      },
+      "forgotten": {
+        "revision": 4,
+        "authorityRevision": "care:c585e91e034b21d55f7abb1a1a184cc34fe0bb8ef30ba85f4cbf3dc2b835fb9b"
+      },
+      "refusedRestore": "ROOM_GUIDANCE_RESTORE_INELIGIBLE",
+      "originalTranscriptStillReadable": true
+    }
+  },
+  "checks": {
+    "deskItemsBefore": 0,
+    "deskItemsAfter": 0,
+    "passed": true
+  }
+}

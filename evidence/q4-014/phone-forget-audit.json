@@ -1,0 +1,25 @@
+{
+  "scope": "Q4-014 actual phone flow and read-only governed receipt audit",
+  "phoneConversation": "3a0aa6c4-16e0-4bf9-8105-076e8b55f0bc",
+  "syntheticRoom": "5b52667a-de26-4ddf-9a31-54f8bece9475",
+  "browserObservation": "Correction, reopen, restoration and selected original were visible. The Forget click produced no observed POST acknowledgement.",
+  "careAction": "memory.forget",
+  "careState": "applied",
+  "sourceId": "74c3ce05-8ffa-409d-8776-3e0fca450b17",
+  "commandCreatedMYT": "2026-11-28T19:03:34.22065",
+  "commandAppliedMYT": "2026-11-28T19:03:35.12617",
+  "roomPublishedMYT": "2026-11-28T19:03:35.12617",
+  "sourceWasInPreviousVersion": true,
+  "allReferencedExcerptsRemainInTranscript": true,
+  "previousRevision": 4,
+  "publishedRevision": 5,
+  "publicationKind": "forgotten",
+  "resultAuthorityMatchesPublication": true,
+  "nativeOperation": "quellight-care:9ba0fc5f4197e4a8727ea632736d5e5f0ee97a5bc95c4231c5cbaf74abe01d57",
+  "affectedDimensions": [
+    "understanding",
+    "intent",
+    "attunement"
+  ],
+  "currentFieldCountAtForget": 0
+}

@@ -4,8 +4,8 @@
     "conversation": {
       "id": "quellight.conversation.instructions",
       "label": "Conversation",
-      "editMode": "Full app prompt replacement",
-      "description": "Use the app conversation catalog or replace its full instructions. {{roomPurpose}} is optional in a replacement.",
+      "editMode": "App operating instructions",
+      "description": "Use or replace the app operating instructions appended after the selected Quellight identity. {{roomPurpose}} is optional.",
       "source": "conversation.json"
     },
     "observer": {

@@ -1,0 +1,42 @@
+{
+  "scope": "Real loopback app with synthetic owner and distinct learned rooms",
+  "passed": false,
+  "checks": [
+    "desktop belongs to the signed-in owner",
+    "desktop reads actual learned intent",
+    "desktop displays Understanding",
+    "desktop displays Intent",
+    "desktop displays Attunement",
+    "desktop drawer fits its viewport",
+    "desktop focuses and pre-fills the selected field",
+    "desktop correction publishes a new room version",
+    "desktop retains unrelated understanding",
+    "desktop retains unrelated attunement",
+    "desktop returns to the preserved conversation draft",
+    "desktop correction survives reopening",
+    "desktop restores an eligible version as a new revision",
+    "desktop displays the original source for the current revision",
+    "desktop forgetting excludes source-backed room guidance",
+    "desktop leaves the original in its conversation",
+    "desktop has no browser runtime errors",
+    "phone belongs to the signed-in owner",
+    "phone reads actual learned intent",
+    "phone displays Understanding",
+    "phone displays Intent",
+    "phone displays Attunement",
+    "phone drawer fits its viewport",
+    "phone focuses and pre-fills the selected field",
+    "phone correction publishes a new room version",
+    "phone retains unrelated understanding",
+    "phone retains unrelated attunement",
+    "phone returns to the preserved conversation draft",
+    "phone correction survives reopening",
+    "phone restores an eligible version as a new revision",
+    "phone displays the original source for the current revision"
+  ],
+  "browserErrors": [],
+  "failure": {
+    "viewport": "phone",
+    "message": "page.waitForResponse: Timeout 90000ms exceeded while waiting for event \"response\""
+  }
+}

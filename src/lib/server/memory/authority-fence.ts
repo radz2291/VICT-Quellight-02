@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { PostgresStoreSet } from '@victframework/store-postgres';
 import { ProductError } from '../domain/queries.js';
-import type { FencedMemorySettingsClient } from './settings.js';
+type FencedClient = Parameters<Parameters<PostgresStoreSet['coordination']['withFence']>[1]>[0];
 
 /** All app-owned source-authority changes and derived product writes share this gate. */
 export const memoryCareScope = (actorId: string) => `quellight-memory-care:${actorId}`;
@@ -13,7 +13,7 @@ export const memoryCareScope = (actorId: string) => `quellight-memory-care:${act
  */
 export async function withMemoryAuthorityFence<T>(stores: PostgresStoreSet, actorId: string,
   expectedRevision: string, readAuthority: () => Promise<{ revision: string }>,
-  work: (client: FencedMemorySettingsClient) => Promise<T>,
+  work: (client: FencedClient) => Promise<T>,
   validateBeforeTransaction?: () => Promise<void>): Promise<T> {
   const claim = await stores.coordination.acquire({ scopeId: memoryCareScope(actorId), actorId,
     ownerId: randomUUID(), leaseMs: 60_000 });

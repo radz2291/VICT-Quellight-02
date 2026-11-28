@@ -25,6 +25,7 @@ import { createDeskCapabilities } from '../desk/capabilities.js';
 import { prepareDeskContext, saveDeskContext, type DeskContextSelection } from '../desk/context.js';
 import { guardDeskModel } from '../desk-model-guard.js';
 import { enqueueMethodOccurrence } from '../desk/method-jobs.js';
+import { readRoomGuidance } from '../room-learning/store.js';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ACTIVE = ['queued', 'running'];
@@ -70,6 +71,7 @@ export interface ConversationServiceOptions {
   openDatabase(): Promise<PostgresStoreSet>;
   readCredential(): Promise<string>;
   modelFactory?: MastraProductAgentConfig['modelFactory'];
+  roomGuidance?: boolean;
 }
 function turnIds(turnId: string) {
   return { turnId: () => turnId, streamId: () => `stream:${turnId}`, invocationId: randomUUID,
@@ -257,6 +259,7 @@ export function createConversationService(options: ConversationServiceOptions) {
       prepared = await openQuellightMemory({ stores, ownerActorId: owner.actorId, conversationId,
         effective, modelFactory, leaseMs: Math.min(remaining, HOST_LEASE_MS) });
       let authorityRevision: string;
+      let roomGuidance: Awaited<ReturnType<typeof readRoomGuidance>> = null;
       let profile: ReturnType<typeof conversationActivation>;
       let deskSelection: DeskContextSelection;
       let deskBinding: NonNullable<TurnRow['desk_binding']>;
@@ -287,7 +290,10 @@ export function createConversationService(options: ConversationServiceOptions) {
         deskBinding = { roomId: conversation.roomId, authorityRevision, sourceMessageIds: sources.messages.map(message => message.id) };
         desk = createDeskCapabilities(stores, owner, conversation.roomId, turnId,
           { ...deskBinding, conversationId, authority: deskMemory.authority, withAuthorityFence: deskMemory.withAuthorityFence });
-        profile = conversationActivation(effective.configuration.purpose, { effective,
+        if (options.roomGuidance !== false) {
+          roomGuidance = await readRoomGuidance(stores.coordination.pool, owner.actorId, conversationId, authorityRevision);
+        }
+        profile = conversationActivation(effective.configuration.purpose, { effective, roomGuidance,
           memory: { id: prepared.config.id, revision: prepared.service.configurationRevision },
           recall: { id: prepared.recallCapability.id, revision: prepared.recallCapability.revision },
           desk: { selection: deskSelection, capabilities: desk.identities } });
@@ -299,17 +305,24 @@ export function createConversationService(options: ConversationServiceOptions) {
       const persisted = await fenced.governance.getAgentActivation(profile.activation.activationVersion);
       if (persisted && !profile.registry.restoreActivation(persisted).ok) throw new ProductError('AGENT_ACTIVATION_INVALID', 503);
       await fenced.governance.saveAgentActivation(profile.record);
-      const admitted = await stores.coordination.withFence(lease, async (client) => {
-        const locked = await client.query(`SELECT c.id FROM quellight_product_v1.conversations c
+      const admission = await stores.coordination.withFence(lease, async (client) => {
+        const locked = await client.query<{ id: string; room_guidance_revision: number | null }>(`SELECT c.id,
+          CASE WHEN r.room_guidance_available AND r.room_guidance_authority=$3 THEN r.room_guidance_revision END AS room_guidance_revision
+          FROM quellight_product_v1.conversations c
           JOIN quellight_product_v1.rooms r ON r.id=c.room_id AND r.actor_id=c.actor_id
-          WHERE c.id=$1 AND c.actor_id=$2 AND c.archived_at IS NULL AND r.archived_at IS NULL FOR UPDATE OF c,r`, [conversationId, owner.actorId]);
-        if (!locked.rows.length) throw new ProductError('ROOM_ARCHIVED', 409);
-        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state,memory_configuration,memory_authority_revision,desk_binding)
-          VALUES($1,$2,$3,$4,$5,$6,$7,'queued',$8::jsonb,$9,$10::jsonb) RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input,
-          profile.activation.activationVersion, JSON.stringify(effective), authorityRevision, JSON.stringify(deskBinding)]);
+          WHERE c.id=$1 AND c.actor_id=$2 AND c.archived_at IS NULL AND r.archived_at IS NULL FOR UPDATE OF c,r`, [conversationId, owner.actorId, authorityRevision]);
+        if (!locked.rows.length) return { reason: 'ROOM_ARCHIVED' as const };
+        if (options.roomGuidance !== false && locked.rows[0].room_guidance_revision !== (roomGuidance?.revision ?? null)) {
+          return { reason: 'ROOM_GUIDANCE_CHANGED' as const };
+        }
+        const result = await client.query<TurnRow>(`INSERT INTO ${TABLE}(turn_id,actor_id,conversation_id,request_key,input_digest,input_text,activation_version,execution_state,memory_configuration,memory_authority_revision,desk_binding,room_guidance_revision)
+          VALUES($1,$2,$3,$4,$5,$6,$7,'queued',$8::jsonb,$9,$10::jsonb,$11) RETURNING *`, [turnId, owner.actorId, conversationId, key, digest, input,
+          profile.activation.activationVersion, JSON.stringify(effective), authorityRevision, JSON.stringify(deskBinding), roomGuidance?.revision ?? null]);
         await saveDeskContext(client, owner.actorId, turnId, deskSelection);
-        return result.rows[0];
+        return { row: result.rows[0] };
       });
+      if (admission.reason) throw new ProductError(admission.reason, 409);
+      const admitted = admission.row;
       let ready!: (result: ReturnType<typeof accepted> | undefined) => void;
       const admittedToVICT = new Promise<ReturnType<typeof accepted> | undefined>(resolve => { ready = resolve; });
       // Composition uses the same validated native-memory handle and Desk
