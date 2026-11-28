@@ -1,0 +1,29 @@
+{
+  "paired": {
+    "nativeAttributable": 5,
+    "nativeUnsupported": 5,
+    "nativeAmbiguous": 1,
+    "sourceOnlySupported": 10,
+    "sourceOnlyUnknown": 2
+  },
+  "acceptedFromDuplicateOrControls": 0,
+  "measured": {
+    "shared": {
+      "reads": 2,
+      "bytes": 16119
+    },
+    "native": {
+      "reads": 8,
+      "bytes": 11468,
+      "sourcePasses": 6
+    },
+    "sourceOnly": {
+      "reads": 8,
+      "bytes": 11332,
+      "sourcePasses": 6
+    }
+  },
+  "additionalModelRequests": 0,
+  "additionalForegroundPromptBytes": 0,
+  "additionalSendRoundTrips": 0
+}

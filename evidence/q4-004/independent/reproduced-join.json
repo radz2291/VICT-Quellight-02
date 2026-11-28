@@ -1,0 +1,34 @@
+{
+  "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "tested": "offline captured publication epoch",
+  "positive": {
+    "sourceTurn": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+    "sourceIds": [
+      "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:assistant"
+    ],
+    "nativeIds": [
+      "e95fadeb-d348-440e-b598-1fb10e006e00",
+      "13a0e9fd-98e9-43fd-a2ab-fc418dd913b8"
+    ],
+    "productSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+    "computedJobKey": "0dcb5558468e8c7538c277ef31be97e4d67ee851424814f5d2ee6453586d3545",
+    "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+    "nativeOperation": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+    "historicalNativeStatus": "completed",
+    "publishedAt": "2026-11-27T17:11:48.238Z",
+    "laterNativeStatus": "superseded",
+    "knownReceipt": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+    "capability": "quellight.memory.maintain@1",
+    "receiptStatus": "completed",
+    "semanticNegative": "Visibility was reserved in both source rows. The fixture observation reports an unsupported internal-only decision."
+  },
+  "negative": {
+    "pinnedSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+    "alteredSourceRevision": "decdd44857615b247fa33f5447723fe0a980038c13458fcf529d9f799c899687",
+    "accepted": false,
+    "reason": "source-revision-mismatch"
+  },
+  "scope": "The receipt identification reuses the captured database audit. The native stage source digest cross-checks captured records. No database, model or deployment was contacted."
+}

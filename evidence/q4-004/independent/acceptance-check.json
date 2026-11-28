@@ -1,0 +1,20 @@
+{
+  "caseId": "verified-outcome",
+  "retryDeduplication": {
+    "result": "pass",
+    "intentId": "INT-1",
+    "requestIds": [
+      "R1",
+      "R2"
+    ],
+    "commentId": "COMMENT-1",
+    "storedCommentCount": 1
+  },
+  "versionBindingOnReopen": {
+    "result": "fail",
+    "commentId": "COMMENT-1",
+    "expectedVersion": "v1",
+    "observedVersion": "v2"
+  },
+  "scope": "One synthetic artifact. No causal diagnosis or claim about any later run."
+}

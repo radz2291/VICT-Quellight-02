@@ -1,0 +1,10 @@
+{
+  "mutatedRecord": "R2.cutVersion",
+  "original": "v1",
+  "changed": "v2",
+  "exitCode": 1,
+  "rejectedBeforeResult": true,
+  "rejection": "The independent artifact check must support the label",
+  "runnerSha256": "6c4fb3132beea5388ddbd9bb10f55919b5d781345d40dcd9f1551737f31bebdc",
+  "node": "v22.23.5"
+}

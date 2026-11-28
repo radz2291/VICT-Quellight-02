@@ -1,0 +1,980 @@
+{
+  "schema": "quellight.4r.offline-evidence-result@1",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "lockSha": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "mastraSha": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+  "node": "v22.23.5",
+  "scope": "One captured historical calibration and pre-labelled synthetic case replay using local JSON inputs.",
+  "resources": {
+    "shared": {
+      "reads": 2,
+      "bytes": 16119,
+      "sourcePasses": 0,
+      "sourceBytes": 0,
+      "sourcePassesByCase": {},
+      "ledger": [
+        {
+          "path": "cases.json",
+          "kind": "case-index",
+          "bytes": 13089
+        },
+        {
+          "path": "q4-001-cold-audit.json",
+          "kind": "prior-capture-metadata",
+          "bytes": 3030
+        }
+      ]
+    },
+    "additionalModelRequests": 0,
+    "additionalForegroundPromptBytes": 0,
+    "additionalSendRoundTrips": 0,
+    "durationMs": 28.146
+  },
+  "paired": [
+    {
+      "id": "delegation",
+      "sourceCohort": "delegation",
+      "disposition": "eligible",
+      "nativeAttributable": 2,
+      "nativeUnsupported": 1,
+      "nativeAmbiguous": 0,
+      "sourceOnlySupported": 3,
+      "sourceOnlyUnknown": 1,
+      "omittedFromNative": [
+        "visibility-reserved"
+      ]
+    },
+    {
+      "id": "correction",
+      "sourceCohort": "correction",
+      "disposition": "eligible",
+      "nativeAttributable": 1,
+      "nativeUnsupported": 1,
+      "nativeAmbiguous": 0,
+      "sourceOnlySupported": 2,
+      "sourceOnlyUnknown": 0,
+      "omittedFromNative": [
+        "retain-comments"
+      ]
+    },
+    {
+      "id": "greeting",
+      "sourceCohort": "greeting",
+      "disposition": "no-change",
+      "nativeAttributable": 0,
+      "nativeUnsupported": 1,
+      "nativeAmbiguous": 0,
+      "sourceOnlySupported": 0,
+      "sourceOnlyUnknown": 0,
+      "omittedFromNative": []
+    },
+    {
+      "id": "contradiction",
+      "sourceCohort": "contradiction",
+      "disposition": "eligible",
+      "nativeAttributable": 1,
+      "nativeUnsupported": 1,
+      "nativeAmbiguous": 1,
+      "sourceOnlySupported": 3,
+      "sourceOnlyUnknown": 1,
+      "omittedFromNative": [
+        "current-internal",
+        "permanent-reserved"
+      ]
+    },
+    {
+      "id": "duplicate-delivery",
+      "sourceCohort": "delegation",
+      "disposition": "duplicate-operation",
+      "nativeAttributable": 0,
+      "nativeUnsupported": 0,
+      "nativeAmbiguous": 0,
+      "sourceOnlySupported": 0,
+      "sourceOnlyUnknown": 0,
+      "omittedFromNative": []
+    },
+    {
+      "id": "verified-outcome",
+      "sourceCohort": "verified-outcome",
+      "disposition": "eligible",
+      "nativeAttributable": 1,
+      "nativeUnsupported": 1,
+      "nativeAmbiguous": 0,
+      "sourceOnlySupported": 2,
+      "sourceOnlyUnknown": 0,
+      "omittedFromNative": [
+        "reopen-wrong-version"
+      ]
+    }
+  ],
+  "native": {
+    "rows": [
+      {
+        "id": "delegation",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "observedSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "review-version",
+            "claim": "Keep each comment attached to the reviewed version.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 38,
+              "end": 93,
+              "text": "must keep each comment attached to the reviewed version"
+            },
+            "authority": "owner-requirement",
+            "uncertainty": "confirmed",
+            "nativeSpan": "Cedar Cut comments stay attached to the reviewed version."
+          },
+          {
+            "key": "retry-delegated",
+            "claim": "The owner delegates routine retry design.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 121,
+              "end": 153,
+              "text": "Decide routine retries yourself."
+            },
+            "authority": "owner-delegation",
+            "uncertainty": "confirmed",
+            "nativeSpan": "The owner delegates routine retry reliability"
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "visibility-selected",
+            "nativeSpan": "has selected internal-only unpublished cuts.",
+            "status": "unsupported",
+            "reason": "The original user and assistant reserve the decision. No access policy has been chosen in these sources."
+          }
+        ]
+      },
+      {
+        "id": "correction",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "78092281d788b3ddc50bf9e14b7e21e5c00c4d68b00bc0a9bfa26dfe7e6b9854",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "visibility-fixed",
+            "claim": "The owner chose internal-only visibility for unpublished cuts.",
+            "sourceId": "correction-turn-1:user",
+            "nativeSourceId": "correction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 12,
+              "end": 55,
+              "text": "I chose internal-only for unpublished cuts."
+            },
+            "authority": "owner-decision",
+            "uncertainty": "confirmed",
+            "nativeSpan": "Internal-only visibility is now approved for unpublished cuts."
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "delete-comments",
+            "nativeSpan": "All historical comments can be deleted.",
+            "status": "unsupported",
+            "reason": "The owner asked to keep prior reviewer comments visible."
+          }
+        ]
+      },
+      {
+        "id": "greeting",
+        "sourceCohort": "greeting",
+        "identity": {
+          "turnIds": [
+            "greeting-turn-1"
+          ],
+          "jobId": "synthetic-greeting-observe",
+          "operationId": "memory-job:synthetic-greeting-observe",
+          "receiptId": "synthetic-greeting-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "40438495045c1cd329424df657d825faa2ecb110c71ae302827fd7292782ad0b",
+        "reason": "no-change",
+        "accepted": [],
+        "diagnostics": [
+          {
+            "key": "release-approval",
+            "nativeSpan": "The owner is ready to approve release.",
+            "status": "unsupported",
+            "reason": "The exchange contains only a greeting."
+          }
+        ]
+      },
+      {
+        "id": "contradiction",
+        "sourceCohort": "contradiction",
+        "identity": {
+          "turnIds": [
+            "contradiction-turn-1",
+            "contradiction-turn-2"
+          ],
+          "jobId": "synthetic-contradiction-observe",
+          "operationId": "memory-job:synthetic-contradiction-observe",
+          "receiptId": "synthetic-contradiction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "67f1395572e3f2601c4291497457ea388cd2010a953fd635f3813e8000271533",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "friday-exception",
+            "claim": "Only Alex may see the unpublished cut at Friday’s private session.",
+            "sourceId": "contradiction-turn-1:user",
+            "nativeSourceId": "contradiction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 0,
+              "end": 65,
+              "text": "Only Alex may see the unreleased cut at Friday’s private session."
+            },
+            "authority": "owner-exception",
+            "uncertainty": "confirmed",
+            "nativeSpan": "Alex may view the unpublished cut during Friday’s private session."
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "partner-default",
+            "nativeSpan": "Partner access may become the default.",
+            "status": "ambiguous",
+            "reason": "A one-time exception is compatible with several future policies. The owner left the permanent policy open."
+          },
+          {
+            "key": "public-future",
+            "nativeSpan": "Future links are public.",
+            "status": "unsupported",
+            "reason": "The assistant suggested broader access, but the owner corrected that suggestion and retained authority."
+          }
+        ]
+      },
+      {
+        "id": "duplicate-delivery",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "duplicate-operation",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "verified-outcome",
+        "sourceCohort": "verified-outcome",
+        "identity": {
+          "turnIds": [
+            "verified-outcome-turn-1"
+          ],
+          "jobId": "synthetic-verified-outcome-observe",
+          "operationId": "memory-job:synthetic-verified-outcome-observe",
+          "receiptId": "synthetic-verified-outcome-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "081482ca808c192817d2c682f56e33981bd9b3e9f2a020ba9f2203f340aba8a7",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "retry-one-comment",
+            "claim": "The duplicate submissions resolved to one logical comment in the fixture artifact.",
+            "sourceId": "verified-outcome-turn-1:user",
+            "nativeSourceId": "verified-outcome-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 36,
+              "end": 80,
+              "text": "retry requests R1 and R2 repeat intent INT-1"
+            },
+            "authority": "independent-artifact-verification",
+            "uncertainty": "confirmed",
+            "artifact": {
+              "file": "fixtures/acceptance-run.json",
+              "verified": true,
+              "requestIds": [
+                "R1",
+                "R2"
+              ],
+              "storedCommentIds": [
+                "COMMENT-1"
+              ]
+            },
+            "nativeSpan": "The duplicate submission kept one logical comment."
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "outcome-release",
+            "nativeSpan": "All checks passed and release is approved.",
+            "status": "unsupported",
+            "reason": "The reopened comment returned the wrong cut. Neither source grants release approval."
+          }
+        ],
+        "artifactChecks": {
+          "retry-one-comment": {
+            "verified": true,
+            "requestIds": [
+              "R1",
+              "R2"
+            ],
+            "storedCommentIds": [
+              "COMMENT-1"
+            ]
+          },
+          "reopen-wrong-version": {
+            "verified": true,
+            "commentId": "COMMENT-1",
+            "expected": "v1",
+            "actual": "v2"
+          }
+        }
+      }
+    ],
+    "controls": [
+      {
+        "id": "prepared-only",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "reason": "not-published",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "invalidated-after-prepare",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-1"
+        },
+        "reason": "stale-authority",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "changed-source",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "source-revision-mismatch",
+        "accepted": [],
+        "diagnostics": [],
+        "expectedSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+        "observedSourceRevision": "17fce9e4c9a02c4eb9f8eede644f6ec47f68b1796e4fb5c9f59b6cae615f5686"
+      },
+      {
+        "id": "historical-publication",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "stale-authority",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "foreign-scope",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "scope-mismatch",
+        "accepted": [],
+        "diagnostics": []
+      }
+    ],
+    "usage": {
+      "reads": 8,
+      "bytes": 11468,
+      "sourcePasses": 6,
+      "sourceBytes": 6439,
+      "sourcePassesByCase": {
+        "delegation": 1,
+        "correction": 1,
+        "greeting": 1,
+        "contradiction": 1,
+        "verified-outcome": 1,
+        "changed-source": 1
+      },
+      "ledger": [
+        {
+          "path": "native-labels.json",
+          "kind": "annotation-file",
+          "bytes": 4492
+        },
+        {
+          "path": "sources/delegation.json",
+          "kind": "sources",
+          "caseId": "delegation",
+          "bytes": 1178
+        },
+        {
+          "path": "sources/correction.json",
+          "kind": "sources",
+          "caseId": "correction",
+          "bytes": 888
+        },
+        {
+          "path": "sources/greeting.json",
+          "kind": "sources",
+          "caseId": "greeting",
+          "bytes": 680
+        },
+        {
+          "path": "sources/contradiction.json",
+          "kind": "sources",
+          "caseId": "contradiction",
+          "bytes": 1546
+        },
+        {
+          "path": "sources/verified-outcome.json",
+          "kind": "sources",
+          "caseId": "verified-outcome",
+          "bytes": 953
+        },
+        {
+          "path": "acceptance-run.json",
+          "kind": "independent-outcome",
+          "caseId": "verified-outcome",
+          "bytes": 537
+        },
+        {
+          "path": "sources/changed-source.json",
+          "kind": "sources",
+          "caseId": "changed-source",
+          "bytes": 1194
+        }
+      ]
+    },
+    "elapsedMs": 12.917
+  },
+  "sourceOnly": {
+    "rows": [
+      {
+        "id": "delegation",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "observedSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "review-version",
+            "claim": "Keep each comment attached to the reviewed version.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 38,
+              "end": 93,
+              "text": "must keep each comment attached to the reviewed version"
+            },
+            "authority": "owner-requirement",
+            "uncertainty": "confirmed"
+          },
+          {
+            "key": "retry-delegated",
+            "claim": "The owner delegates routine retry design.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 121,
+              "end": 153,
+              "text": "Decide routine retries yourself."
+            },
+            "authority": "owner-delegation",
+            "uncertainty": "confirmed"
+          },
+          {
+            "key": "visibility-reserved",
+            "claim": "The owner retains the decision about unpublished visibility.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 154,
+              "end": 189,
+              "text": "I decide who sees unpublished cuts."
+            },
+            "authority": "owner-reservation",
+            "uncertainty": "confirmed"
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "unpublished-policy-unknown",
+            "claim": "Specific unpublished-cut visibility is undecided in this snapshot.",
+            "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+            "nativeSourceId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+            "role": "user",
+            "sourceSpan": {
+              "start": 154,
+              "end": 189,
+              "text": "I decide who sees unpublished cuts."
+            },
+            "authority": "owner-reservation",
+            "uncertainty": "unknown",
+            "status": "unknown"
+          }
+        ]
+      },
+      {
+        "id": "correction",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "78092281d788b3ddc50bf9e14b7e21e5c00c4d68b00bc0a9bfa26dfe7e6b9854",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "visibility-fixed",
+            "claim": "The owner chose internal-only visibility for unpublished cuts.",
+            "sourceId": "correction-turn-1:user",
+            "nativeSourceId": "correction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 12,
+              "end": 55,
+              "text": "I chose internal-only for unpublished cuts."
+            },
+            "authority": "owner-decision",
+            "uncertainty": "confirmed"
+          },
+          {
+            "key": "retain-comments",
+            "claim": "Authorized editors must retain access to prior reviewer comments.",
+            "sourceId": "correction-turn-1:user",
+            "nativeSourceId": "correction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 56,
+              "end": 115,
+              "text": "Keep prior reviewer comments visible to authorized editors."
+            },
+            "authority": "owner-requirement",
+            "uncertainty": "confirmed"
+          }
+        ],
+        "diagnostics": []
+      },
+      {
+        "id": "greeting",
+        "sourceCohort": "greeting",
+        "identity": {
+          "turnIds": [
+            "greeting-turn-1"
+          ],
+          "jobId": "synthetic-greeting-observe",
+          "operationId": "memory-job:synthetic-greeting-observe",
+          "receiptId": "synthetic-greeting-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "40438495045c1cd329424df657d825faa2ecb110c71ae302827fd7292782ad0b",
+        "reason": "no-change",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "contradiction",
+        "sourceCohort": "contradiction",
+        "identity": {
+          "turnIds": [
+            "contradiction-turn-1",
+            "contradiction-turn-2"
+          ],
+          "jobId": "synthetic-contradiction-observe",
+          "operationId": "memory-job:synthetic-contradiction-observe",
+          "receiptId": "synthetic-contradiction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "67f1395572e3f2601c4291497457ea388cd2010a953fd635f3813e8000271533",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "friday-exception",
+            "claim": "Only Alex may see the unpublished cut at Friday’s private session.",
+            "sourceId": "contradiction-turn-1:user",
+            "nativeSourceId": "contradiction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 0,
+              "end": 65,
+              "text": "Only Alex may see the unreleased cut at Friday’s private session."
+            },
+            "authority": "owner-exception",
+            "uncertainty": "confirmed"
+          },
+          {
+            "key": "current-internal",
+            "claim": "Existing unpublished links stay internal pending a decision.",
+            "sourceId": "contradiction-turn-2:user",
+            "nativeSourceId": "contradiction-turn-2-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 28,
+              "end": 89,
+              "text": "existing unpublished links stay internal pending my decision."
+            },
+            "authority": "owner-requirement",
+            "uncertainty": "confirmed"
+          },
+          {
+            "key": "permanent-reserved",
+            "claim": "The permanent review policy remains undecided.",
+            "sourceId": "contradiction-turn-1:user",
+            "nativeSourceId": "contradiction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 66,
+              "end": 111,
+              "text": "I haven’t chosen the permanent review policy."
+            },
+            "authority": "owner-reservation",
+            "uncertainty": "confirmed"
+          }
+        ],
+        "diagnostics": [
+          {
+            "key": "future-default-unknown",
+            "claim": "No permanent access default can be inferred from the Friday exception.",
+            "sourceId": "contradiction-turn-1:user",
+            "nativeSourceId": "contradiction-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 66,
+              "end": 111,
+              "text": "I haven’t chosen the permanent review policy."
+            },
+            "authority": "owner-reservation",
+            "uncertainty": "unknown",
+            "status": "unknown"
+          }
+        ]
+      },
+      {
+        "id": "duplicate-delivery",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "duplicate-operation",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "verified-outcome",
+        "sourceCohort": "verified-outcome",
+        "identity": {
+          "turnIds": [
+            "verified-outcome-turn-1"
+          ],
+          "jobId": "synthetic-verified-outcome-observe",
+          "operationId": "memory-job:synthetic-verified-outcome-observe",
+          "receiptId": "synthetic-verified-outcome-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "observedSourceRevision": "081482ca808c192817d2c682f56e33981bd9b3e9f2a020ba9f2203f340aba8a7",
+        "reason": "eligible",
+        "accepted": [
+          {
+            "key": "retry-one-comment",
+            "claim": "The duplicate submissions resolved to one logical comment in the fixture artifact.",
+            "sourceId": "verified-outcome-turn-1:user",
+            "nativeSourceId": "verified-outcome-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 36,
+              "end": 80,
+              "text": "retry requests R1 and R2 repeat intent INT-1"
+            },
+            "authority": "independent-artifact-verification",
+            "uncertainty": "confirmed",
+            "artifact": {
+              "file": "fixtures/acceptance-run.json",
+              "verified": true,
+              "requestIds": [
+                "R1",
+                "R2"
+              ],
+              "storedCommentIds": [
+                "COMMENT-1"
+              ]
+            }
+          },
+          {
+            "key": "reopen-wrong-version",
+            "claim": "The reopened comment returned cut v2. The expected cut was v1.",
+            "sourceId": "verified-outcome-turn-1:user",
+            "nativeSourceId": "verified-outcome-turn-1-native-user",
+            "role": "user",
+            "sourceSpan": {
+              "start": 86,
+              "end": 131,
+              "text": "the reopened comment should remain on cut v1."
+            },
+            "authority": "independent-artifact-verification",
+            "uncertainty": "confirmed",
+            "artifact": {
+              "file": "fixtures/acceptance-run.json",
+              "verified": true,
+              "commentId": "COMMENT-1",
+              "expected": "v1",
+              "actual": "v2"
+            }
+          }
+        ],
+        "diagnostics": [],
+        "artifactChecks": {
+          "retry-one-comment": {
+            "verified": true,
+            "requestIds": [
+              "R1",
+              "R2"
+            ],
+            "storedCommentIds": [
+              "COMMENT-1"
+            ]
+          },
+          "reopen-wrong-version": {
+            "verified": true,
+            "commentId": "COMMENT-1",
+            "expected": "v1",
+            "actual": "v2"
+          }
+        }
+      }
+    ],
+    "controls": [
+      {
+        "id": "prepared-only",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-0"
+        },
+        "reason": "not-published",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "invalidated-after-prepare",
+        "sourceCohort": "correction",
+        "identity": {
+          "turnIds": [
+            "correction-turn-1"
+          ],
+          "jobId": "synthetic-correction-observe",
+          "operationId": "memory-job:synthetic-correction-observe",
+          "receiptId": "synthetic-correction-receipt",
+          "authorityRevision": "synthetic-authority-1"
+        },
+        "reason": "stale-authority",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "changed-source",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "source-revision-mismatch",
+        "accepted": [],
+        "diagnostics": [],
+        "expectedSourceRevision": "ca4e202afe7e32737fb31b3bb70cc91ddd07c89f88cf3c60342715e94d813198",
+        "observedSourceRevision": "17fce9e4c9a02c4eb9f8eede644f6ec47f68b1796e4fb5c9f59b6cae615f5686"
+      },
+      {
+        "id": "historical-publication",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "stale-authority",
+        "accepted": [],
+        "diagnostics": []
+      },
+      {
+        "id": "foreign-scope",
+        "sourceCohort": "delegation",
+        "identity": {
+          "turnIds": [
+            "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f"
+          ],
+          "jobId": "5523ad19-c64e-4496-a521-6268d8035872",
+          "operationId": "memory-job:5523ad19-c64e-4496-a521-6268d8035872",
+          "receiptId": "84eda246-5fa1-4692-897a-8638ea0ed1ec",
+          "authorityRevision": "0"
+        },
+        "reason": "scope-mismatch",
+        "accepted": [],
+        "diagnostics": []
+      }
+    ],
+    "usage": {
+      "reads": 8,
+      "bytes": 11332,
+      "sourcePasses": 6,
+      "sourceBytes": 6439,
+      "sourcePassesByCase": {
+        "delegation": 1,
+        "correction": 1,
+        "greeting": 1,
+        "contradiction": 1,
+        "verified-outcome": 1,
+        "changed-source": 1
+      },
+      "ledger": [
+        {
+          "path": "source-only-labels.json",
+          "kind": "annotation-file",
+          "bytes": 4356
+        },
+        {
+          "path": "sources/delegation.json",
+          "kind": "sources",
+          "caseId": "delegation",
+          "bytes": 1178
+        },
+        {
+          "path": "sources/correction.json",
+          "kind": "sources",
+          "caseId": "correction",
+          "bytes": 888
+        },
+        {
+          "path": "sources/greeting.json",
+          "kind": "sources",
+          "caseId": "greeting",
+          "bytes": 680
+        },
+        {
+          "path": "sources/contradiction.json",
+          "kind": "sources",
+          "caseId": "contradiction",
+          "bytes": 1546
+        },
+        {
+          "path": "sources/verified-outcome.json",
+          "kind": "sources",
+          "caseId": "verified-outcome",
+          "bytes": 953
+        },
+        {
+          "path": "acceptance-run.json",
+          "kind": "independent-outcome",
+          "caseId": "verified-outcome",
+          "bytes": 537
+        },
+        {
+          "path": "sources/changed-source.json",
+          "kind": "sources",
+          "caseId": "changed-source",
+          "bytes": 1194
+        }
+      ]
+    },
+    "elapsedMs": 8.13
+  }
+}
