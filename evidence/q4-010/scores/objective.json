@@ -1,0 +1,902 @@
+{
+  "schema": "quellight.q4-010.objective@1",
+  "casesSha256": "1cf2fb1f9c83431a8c868a0391dc8fce896bf3bf8c451080232a6a999ccdec05",
+  "packetSha256": "dfd8635a0ba79720b8e50b6a850bf19139fba95cdd08601114273f01a39e2957",
+  "results": [
+    {
+      "caseId": "D01",
+      "artifactId": "R-79975bb111c5",
+      "passed": false,
+      "checks": [
+        {
+          "id": "D01-G1",
+          "gate": "required",
+          "passed": false,
+          "probes": [
+            {
+              "input": {
+                "openedProof": "proof-07",
+                "liveProof": "proof-08"
+              },
+              "expect": "proof-07",
+              "actual": "proof-08",
+              "passed": false
+            }
+          ]
+        },
+        {
+          "id": "D01-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "actor": "reader-a",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "first"
+              },
+              "expect": "reader-a|proof-07|retry-5",
+              "actual": "reader-a|proof-07|retry-5",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "reader-a",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "repeat"
+              },
+              "expect": "reader-a|proof-07|retry-5",
+              "actual": "reader-a|proof-07|retry-5",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "reader-b",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "first"
+              },
+              "expect": "reader-b|proof-07|retry-5",
+              "actual": "reader-b|proof-07|retry-5",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D01-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "event": "note-save"
+              },
+              "expect": "private",
+              "actual": "private",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D01",
+      "artifactId": "R-6b06e72a9328",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D01-G1",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "openedProof": "proof-07",
+                "liveProof": "proof-08"
+              },
+              "expect": "proof-07",
+              "actual": "proof-07",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D01-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "actor": "reader-a",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "first"
+              },
+              "expect": "reader-a|proof-07|retry-5",
+              "actual": "reader-a|proof-07|retry-5",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "reader-a",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "repeat"
+              },
+              "expect": "reader-a|proof-07|retry-5",
+              "actual": "reader-a|proof-07|retry-5",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "reader-b",
+                "openedProof": "proof-07",
+                "token": "retry-5",
+                "networkAttempt": "first"
+              },
+              "expect": "reader-b|proof-07|retry-5",
+              "actual": "reader-b|proof-07|retry-5",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D01-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "event": "note-save"
+              },
+              "expect": "private",
+              "actual": "private",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D05",
+      "artifactId": "R-6ec79f86b664",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D05-G1",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "item": "tape",
+                "request": "refill-9",
+                "connection": "before"
+              },
+              "expect": "tape|refill-9",
+              "actual": "tape|refill-9",
+              "passed": true
+            },
+            {
+              "input": {
+                "item": "tape",
+                "request": "refill-9",
+                "connection": "after"
+              },
+              "expect": "tape|refill-9",
+              "actual": "tape|refill-9",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D05-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "basis": "stale"
+              },
+              "expect": "reread-and-recalculate",
+              "actual": "reread-and-recalculate",
+              "passed": true
+            },
+            {
+              "input": {
+                "basis": "current"
+              },
+              "expect": "save-draft",
+              "actual": "save-draft",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D05-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "actor": "clerk"
+              },
+              "expect": "draft-only",
+              "actual": "draft-only",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "owner"
+              },
+              "expect": "owner-may-review-and-post",
+              "actual": "owner-may-review-and-post",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D05",
+      "artifactId": "R-909f318568cb",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D05-G1",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "item": "tape",
+                "request": "refill-9",
+                "connection": "before"
+              },
+              "expect": "tape|refill-9",
+              "actual": "tape|refill-9",
+              "passed": true
+            },
+            {
+              "input": {
+                "item": "tape",
+                "request": "refill-9",
+                "connection": "after"
+              },
+              "expect": "tape|refill-9",
+              "actual": "tape|refill-9",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D05-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "basis": "stale"
+              },
+              "expect": "reread-and-recalculate",
+              "actual": "reread-and-recalculate",
+              "passed": true
+            },
+            {
+              "input": {
+                "basis": "current"
+              },
+              "expect": "save-draft",
+              "actual": "save-draft",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D05-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "actor": "clerk"
+              },
+              "expect": "draft-only",
+              "actual": "draft-only",
+              "passed": true
+            },
+            {
+              "input": {
+                "actor": "owner"
+              },
+              "expect": "owner-may-review-and-post",
+              "actual": "owner-may-review-and-post",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D04",
+      "artifactId": "R-8c7b06731991",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D04-G1",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "retention": "pending"
+              },
+              "expect": "none",
+              "actual": "none",
+              "passed": true
+            },
+            {
+              "input": {
+                "retention": "approved-7"
+              },
+              "expect": "7-days",
+              "actual": "7-days",
+              "passed": true
+            },
+            {
+              "input": {
+                "retention": "approved-30"
+              },
+              "expect": "30-days",
+              "actual": "30-days",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D04-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "workshop": "forge",
+                "delivery": "file-3",
+                "attempt": "one"
+              },
+              "expect": "forge|file-3",
+              "actual": "forge|file-3",
+              "passed": true
+            },
+            {
+              "input": {
+                "workshop": "forge",
+                "delivery": "file-3",
+                "attempt": "two"
+              },
+              "expect": "forge|file-3",
+              "actual": "forge|file-3",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D04-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "retention": "pending"
+              },
+              "expect": "private-draft",
+              "actual": "private-draft",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D04",
+      "artifactId": "R-60a02b117fcf",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D04-G1",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "retention": "pending"
+              },
+              "expect": "none",
+              "actual": "none",
+              "passed": true
+            },
+            {
+              "input": {
+                "retention": "approved-7"
+              },
+              "expect": "7-days",
+              "actual": "7-days",
+              "passed": true
+            },
+            {
+              "input": {
+                "retention": "approved-30"
+              },
+              "expect": "30-days",
+              "actual": "30-days",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D04-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "workshop": "forge",
+                "delivery": "file-3",
+                "attempt": "one"
+              },
+              "expect": "forge|file-3",
+              "actual": "forge|file-3",
+              "passed": true
+            },
+            {
+              "input": {
+                "workshop": "forge",
+                "delivery": "file-3",
+                "attempt": "two"
+              },
+              "expect": "forge|file-3",
+              "actual": "forge|file-3",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D04-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "retention": "pending"
+              },
+              "expect": "private-draft",
+              "actual": "private-draft",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D03",
+      "artifactId": "R-c934d8cab493",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D03-G1",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "placement": "unknown"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "placement": "unavailable"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "placement": "verified"
+              },
+              "expect": "prepare",
+              "actual": "prepare",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D03-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "labelCode": "G-014",
+                "editedOrder": "last"
+              },
+              "expect": "G-014",
+              "actual": "G-014",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D03-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "action": "preview"
+              },
+              "expect": "allow",
+              "actual": "allow",
+              "passed": true
+            },
+            {
+              "input": {
+                "action": "print"
+              },
+              "expect": "owner-only",
+              "actual": "owner-only",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D03",
+      "artifactId": "R-e40ecbeda248",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D03-G1",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "placement": "unknown"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "placement": "unavailable"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "placement": "verified"
+              },
+              "expect": "prepare",
+              "actual": "prepare",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D03-G2",
+          "gate": "required",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "labelCode": "G-014",
+                "editedOrder": "last"
+              },
+              "expect": "G-014",
+              "actual": "G-014",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D03-G3",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "action": "preview"
+              },
+              "expect": "allow",
+              "actual": "allow",
+              "passed": true
+            },
+            {
+              "input": {
+                "action": "print"
+              },
+              "expect": "owner-only",
+              "actual": "owner-only",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-3a362404324c",
+      "passed": false,
+      "checks": [
+        {
+          "id": "D06-G1",
+          "gate": "correction",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "eligible": [
+                  "note-A"
+                ],
+                "archive": [
+                  "note-A",
+                  "note-T"
+                ]
+              },
+              "expect": [
+                "note-A"
+              ],
+              "actual": [
+                "note-A"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D06-G2",
+          "gate": "authority",
+          "passed": false,
+          "probes": [
+            {
+              "input": {
+                "approval": "historical"
+              },
+              "expect": "draft-only",
+              "actual": "owner-approved-export",
+              "passed": false
+            },
+            {
+              "input": {
+                "approval": "absent"
+              },
+              "expect": "draft-only",
+              "actual": "draft-only",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "current-exact"
+              },
+              "expect": "owner-approved-export",
+              "actual": "owner-approved-export",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-c2c5ae16bf97",
+      "passed": false,
+      "checks": [
+        {
+          "id": "D06-G1",
+          "gate": "correction",
+          "passed": false,
+          "probes": [
+            {
+              "input": {
+                "eligible": [
+                  "note-A"
+                ],
+                "archive": [
+                  "note-A",
+                  "note-T"
+                ]
+              },
+              "expect": [
+                "note-A"
+              ],
+              "actual": [
+                "note-A",
+                "note-T"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        {
+          "id": "D06-G2",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "approval": "historical"
+              },
+              "expect": "draft-only",
+              "actual": "draft-only",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "absent"
+              },
+              "expect": "draft-only",
+              "actual": "draft-only",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "current-exact"
+              },
+              "expect": "owner-approved-export",
+              "actual": "owner-approved-export",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D02",
+      "artifactId": "R-4c49ef7969b7",
+      "passed": false,
+      "checks": [
+        {
+          "id": "D02-G1",
+          "gate": "correction",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "oldScope": "team-bulletin",
+                "currentScope": "owner-only"
+              },
+              "expect": "owner-only",
+              "actual": "owner-only",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D02-G2",
+          "gate": "authority",
+          "passed": false,
+          "probes": [
+            {
+              "input": {
+                "approval": "withdrawn"
+              },
+              "expect": "hold",
+              "actual": "release-exact-snapshot",
+              "passed": false
+            },
+            {
+              "input": {
+                "approval": "missing"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "current-exact"
+              },
+              "expect": "release-exact-snapshot",
+              "actual": "release-exact-snapshot",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D02-G3",
+          "gate": "correction",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "room": "absent"
+              },
+              "expect": "draft-current-owner-only",
+              "actual": "draft-current-owner-only",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "D02",
+      "artifactId": "R-896e375372e5",
+      "passed": true,
+      "checks": [
+        {
+          "id": "D02-G1",
+          "gate": "correction",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "oldScope": "team-bulletin",
+                "currentScope": "owner-only"
+              },
+              "expect": "owner-only",
+              "actual": "owner-only",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D02-G2",
+          "gate": "authority",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "approval": "withdrawn"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "missing"
+              },
+              "expect": "hold",
+              "actual": "hold",
+              "passed": true
+            },
+            {
+              "input": {
+                "approval": "current-exact"
+              },
+              "expect": "release-exact-snapshot",
+              "actual": "release-exact-snapshot",
+              "passed": true
+            }
+          ]
+        },
+        {
+          "id": "D02-G3",
+          "gate": "correction",
+          "passed": true,
+          "probes": [
+            {
+              "input": {
+                "room": "absent"
+              },
+              "expect": "draft-current-owner-only",
+              "actual": "draft-current-owner-only",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

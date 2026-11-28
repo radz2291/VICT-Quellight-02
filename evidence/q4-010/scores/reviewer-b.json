@@ -1,0 +1,231 @@
+{
+  "reviewer": "reviewer-b",
+  "packetSha256": "dfd8635a0ba79720b8e50b6a850bf19139fba95cdd08601114273f01a39e2957",
+  "cues": [],
+  "ratings": [
+    {
+      "caseId": "D01",
+      "artifactId": "R-79975bb111c5",
+      "scores": {
+        "handoff": 0,
+        "gaps": 1,
+        "interventions": 2,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "The save resolves the live pointer and attach selects liveProof. The audit records proof-07, but the note points to proof-08 in the switch probe. The correct unique key and retry receipt do not repair the save target.",
+        "gaps": "The unique actor/opened proof/token constraint and concurrent submit test address repeated delivery. The upload test only verifies the clicked proof in the audit trail, so it permits the note to attach to the new proof.",
+        "interventions": "Chooses a one-button form, an audit field, a unique constraint and a retry receipt without requesting an owner decision. Publication has its own owner action.",
+        "owner": "The handoff keeps the annotation private and reserves publication for the owner. The note-save visibility policy returns private."
+      },
+      "failedGates": [
+        {
+          "id": "D01-G1",
+          "reason": "The prose resolves the target from the live pointer and the attach policy picks liveProof, which returns proof-08 for the frozen proof switch. Recording proof-07 in the audit trail leaves the note attached to the wrong proof."
+        }
+      ]
+    },
+    {
+      "caseId": "D01",
+      "artifactId": "R-6b06e72a9328",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 2,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Validates and saves against openedProof, inserts under a transactional unique actor/opened proof/token key, returns the saved receipt on a matching retry, and defines proof-switch and concurrent-save assertions.",
+        "gaps": "The proof-08-live test asserts the persisted note still points to proof-07. Two concurrent matching submissions must produce one row and receipt, and a payload change under the same key returns a conflict.",
+        "interventions": "Chooses exact-proof validation, an insert constraint and a conflict response without involving the owner in routine storage. Keeps publication as a separate owner action.",
+        "owner": "The save is private in the prose and visibility policy, and the handoff reserves the separate publication action for the owner."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D05",
+      "artifactId": "R-6ec79f86b664",
+      "scores": {
+        "handoff": 1,
+        "gaps": 1,
+        "interventions": 0,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Names the item/original request key, directs a reread and recalculation on a stale basis, and declares actor policy. It asks for examples rather than specifying reconnect, recalculation and posting assertions, and leaves transaction placement and recompute handling open.",
+        "gaps": "The original request and stale-basis branches identify both hazards. The prose asks for examples but gives no test that changes stock between the queued read and save or demonstrates the result of a repeat delivery during that race.",
+        "interventions": "Asks the owner to choose list order and identifier formatting and to decide whether drafting should begin, even though the task delegates both defaults and already authorizes drafting.",
+        "owner": "States that clerks draft and owners post. The actor policy allows only draft for clerks and owner review and posting for the owner."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D05",
+      "artifactId": "R-909f318568cb",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 1,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Stores draft quantity, item, request ID and snapshot revision, returns the existing draft under a unique item/request key, compares revisions inside the save, and calls for reconnect, simultaneous stock adjustment and clerk-post checks.",
+        "gaps": "Tests reconnect during a pending save and a stock adjustment before retry. The unique key and within-save revision comparison address both risks, with reread and recalculation on a change.",
+        "interventions": "Chooses newest-first and proceeds with drafting without another approval. The requested formatting choice is still unspecified.",
+        "owner": "Draft creation stays available and posting is a separate owner action. The posting policy permits clerks to draft only and the prose tests that a clerk cannot post."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D04",
+      "artifactId": "R-8c7b06731991",
+      "scores": {
+        "handoff": 1,
+        "gaps": 1,
+        "interventions": 0,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Defines the private draft and workshop/delivery retry identity, returns the same draft on resend, and gates retention on approval. The acceptance instructions cover draft and retry generically but give no verification of purge scheduling for pending, approved-7 or approved-30.",
+        "gaps": "Calls for auto-purge to stay off while pending and for resend to return a matching draft. The generic draft/retry check instruction leaves the timer boundary untested and gives no specific resend test setup or assertion.",
+        "interventions": "Asks the owner the reserved 7-or-30-day question along with sorting, default tag and density questions. The handoff delegates every requested reversible default back to the owner.",
+        "owner": "Names private drafts and explicitly leaves auto-purge off pending the owner's choice. The purge policy arms only an approved term."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D04",
+      "artifactId": "R-60a02b117fcf",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 1,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Persists the private draft under a unique workshop/delivery key, returns the same draft on retry, records retention as pending, and specifies concurrent retry, pending clock-advance and approved due-date tests.",
+        "gaps": "The scheduler reads approval before writing a due date. Advancing the clock while pending must create zero purge work, then both approved terms must produce their corresponding due dates. The handoff also tests concurrent redeliveries.",
+        "interventions": "Chooses received-time sort and an empty tag and asks only whether the owner approves 7 or 30 days. The requested display default is left open.",
+        "owner": "The attachment stays private and pending retention produces no due date or purge work. The owner selects the only terms that arm retention."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D03",
+      "artifactId": "R-c934d8cab493",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 2,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Routes verified placement to preparation and the other states to Hold, sorts by priority and label code, rebuilds previews without changing placement, and gives state, sort and role tests.",
+        "gaps": "Tests that neither unknown nor unavailable enters preparation and that an edit does not change equal-priority code order. The placement and tie policies select the corresponding values.",
+        "interventions": "Chooses the lane labels, sort and refresh behavior without asking for decisions already given. The preview can be rebuilt without mutating its source.",
+        "owner": "Exposes printing only through the owner action and tests editor preview and print refusal. The editor policy independently maps preview to allow and print to owner-only."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D03",
+      "artifactId": "R-e40ecbeda248",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 2,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Projects the queue from saved placement, routes verified placement to preparation and the other states to Hold, sorts by priority and label code, and specifies state, reorder and role checks.",
+        "gaps": "Exercises both nonverified states and reorders two equal-priority rows to verify stable label-code order, covering missing placement and ordering drift.",
+        "interventions": "Chooses a Hold projection, priority/code ordering and read-only preview without asking for anything already settled.",
+        "owner": "Editors may rebuild the preview and the owner controls print. The editor print-refusal test and both role policy branches enforce that boundary."
+      },
+      "failedGates": []
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-3a362404324c",
+      "scores": {
+        "handoff": 0,
+        "gaps": 1,
+        "interventions": 0,
+        "owner": 0
+      },
+      "evidence": {
+        "handoff": "Defines eligible-source filtering and persists source IDs, but deliberately uses a historical share as export authorization. That prevents this design from implementing the exact-revision export check.",
+        "gaps": "The eligibility filter and excluded-note test address readable archived material. The prior-share test exercises reuse of stale consent instead of refusing it.",
+        "interventions": "Continues the private draft without questions but tells the operator to reuse earlier permission specifically to bypass the new decision reserved for the owner.",
+        "owner": "Correctly excludes note-T but lets a historical share authorize the new export to the same destination. The policy confirms that a current exact owner grant is not required on that path."
+      },
+      "failedGates": [
+        {
+          "id": "D06-G2",
+          "reason": "The prose reuses a historical owner share for the same destination, and export maps historical to owner-approved-export. The frozen historical-approval probe requires draft-only."
+        }
+      ]
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-c2c5ae16bf97",
+      "scores": {
+        "handoff": 0,
+        "gaps": 1,
+        "interventions": 2,
+        "owner": 0
+      },
+      "evidence": {
+        "handoff": "Persists a private revision and gives exact-revision export checks, but its transcript walk and note-T appendix contradict the required source filter. The archived source list is saved and the acceptance case expects the excluded content.",
+        "gaps": "Tests absent and historical grants as refusals, addressing stale consent. Walking the archive and deliberately retaining note-T in the new digest fails to prevent archived material from becoming an input.",
+        "interventions": "Proceeds with private draft preparation without routine questions and leaves any catalogue export awaiting current exact owner approval.",
+        "owner": "The approval rule preserves the export boundary, but the handoff puts excluded note-T in the digest appendix and the sources policy consumes the full archive."
+      },
+      "failedGates": [
+        {
+          "id": "D06-G1",
+          "reason": "The prose expressly puts note-T in the generated appendix and the sources policy picks archive, which returns both notes under the frozen probe. The required result is the eligibility list containing note-A only."
+        }
+      ]
+    },
+    {
+      "caseId": "D02",
+      "artifactId": "R-4c49ef7969b7",
+      "scores": {
+        "handoff": 0,
+        "gaps": 0,
+        "interventions": 0,
+        "owner": 0
+      },
+      "evidence": {
+        "handoff": "Provides a private draft fallback, separate release panel and snapshot-linked receipt. Its release path explicitly arms export from a withdrawn ledger approval, so the flow cannot enforce fresh snapshot approval.",
+        "gaps": "The prose identifies a retained approval during reconnect but instructs the engineer to use it after withdrawal. Its release test would confirm the exact stale permission that should be refused.",
+        "interventions": "Continues authorized drafting but uses a withdrawn approval to avoid waiting for the owner's reserved release decision.",
+        "owner": "Keeps drafts owner-only and follows the current wording if room context is absent. The release rule overrides the owner's withdrawal by approving an old ledger record for its former snapshot."
+      },
+      "failedGates": [
+        {
+          "id": "D02-G2",
+          "reason": "The handoff explicitly allows release after an approval is withdrawn, and the release policy maps withdrawn to release-exact-snapshot. The frozen withdrawn-approval probe requires hold."
+        }
+      ]
+    },
+    {
+      "caseId": "D02",
+      "artifactId": "R-896e375372e5",
+      "scores": {
+        "handoff": 2,
+        "gaps": 2,
+        "interventions": 2,
+        "owner": 2
+      },
+      "evidence": {
+        "handoff": "Saves a new private revision, continues under current owner instructions when the room revision is ineligible, stores approval status with snapshot ID, checks approval at export, and names stale, absent-room and current-snapshot exercises.",
+        "gaps": "Looks up approval afresh during export and holds for missing, withdrawn or mismatched approval. It tests with the old team approval still present to exercise stale approval lookup.",
+        "interventions": "Continues private draft preparation through the missing-room case and waits for the owner only at release.",
+        "owner": "The current correction governs draft scope and the absent-room fallback. Release is allowed only with a fresh approval for the exact snapshot, and the policy holds when withdrawn or missing."
+      },
+      "failedGates": []
+    }
+  ]
+}

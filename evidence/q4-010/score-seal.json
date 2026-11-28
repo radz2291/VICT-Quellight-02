@@ -1,0 +1,9 @@
+{
+  "schema": "quellight.q4-010.score-seal@1",
+  "packetSha256": "dfd8635a0ba79720b8e50b6a850bf19139fba95cdd08601114273f01a39e2957",
+  "files": {
+    "scores/objective.json": "1ae3f7ad711221a60d6e63e1a57d526875ad2140c34f0ce15f4d20c547a045bc",
+    "scores/reviewer-a.json": "7b275c5cb475017ee7137f4e205d0bf08fc4f78ad845ce7f961d0fe5db217732",
+    "scores/reviewer-b.json": "e03717f80416ce74fa7c7d3438d8ab24e80039b5f0f7f422dc309a1e9c63915b"
+  }
+}
