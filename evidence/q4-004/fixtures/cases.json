@@ -346,7 +346,8 @@
     {
       "id": "changed-source",
       "case": "delegation",
-      "state": "changed-source"
+      "state": "changed-source",
+      "sourceOverride": "sources/changed-source.json"
     },
     {
       "id": "historical-publication",

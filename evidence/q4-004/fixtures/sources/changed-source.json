@@ -1,0 +1,29 @@
+{
+  "scope": {
+    "actorId": "cb7d8b40-872f-402a-8f12-32ef6ea86087",
+    "roomId": "5a389fc6-64e9-4165-bc27-7dc392975f06",
+    "conversationId": "be9fa0e9-a02d-4522-b9c2-dabfde20b759"
+  },
+  "messages": [
+    {
+      "nativeId": "e95fadeb-d348-440e-b598-1fb10e006e00",
+      "public": {
+        "id": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+        "turnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+        "role": "user",
+        "text": "The fictional Cedar Cut review portal must keep each comment attached to the reviewed version while we prepare the next. Decide routine retries yourself. I decide who sees unpublished cuts. [edited source]",
+        "at": "2026-11-27T17:11:45.584Z"
+      }
+    },
+    {
+      "nativeId": "13a0e9fd-98e9-43fd-a2ab-fc418dd913b8",
+      "public": {
+        "id": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:assistant",
+        "turnId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f",
+        "role": "assistant",
+        "text": "Keep comments on their version. I recommend an idempotent retry key for routine recovery. You decide who can see unpublished cuts.",
+        "at": "2026-11-27T17:11:46.665Z"
+      }
+    }
+  ]
+}
