@@ -1,0 +1,691 @@
+{
+  "schema": "quellight.q4-010.calibration-results@1",
+  "packetSha256": "dfd8635a0ba79720b8e50b6a850bf19139fba95cdd08601114273f01a39e2957",
+  "objectiveSha256": "1ae3f7ad711221a60d6e63e1a57d526875ad2140c34f0ce15f4d20c547a045bc",
+  "scoreSha256": [
+    "7b275c5cb475017ee7137f4e205d0bf08fc4f78ad845ce7f961d0fe5db217732",
+    "e03717f80416ce74fa7c7d3438d8ab24e80039b5f0f7f422dc309a1e9c63915b"
+  ],
+  "scale": "four dimensions, 0–2 each",
+  "materialMargin": 2,
+  "counts": {
+    "on": 2,
+    "off": 2,
+    "tie": 1,
+    "neither": 1,
+    "pending": 0
+  },
+  "attemptedArtifacts": 12,
+  "probeExecutions": 64,
+  "failedProbes": 4,
+  "agreement": {
+    "exactDimensionScores": 44,
+    "comparedDimensionScores": 48,
+    "exactPairVerdicts": 6,
+    "comparedPairVerdicts": 6,
+    "objectiveVersusIndependent": [
+      {
+        "reviewer": "reviewer-a",
+        "bothPass": 8,
+        "bothFail": 4,
+        "reviewerOnlyFail": 0,
+        "objectiveOnlyFail": 0,
+        "exactFailedGateList": 12
+      },
+      {
+        "reviewer": "reviewer-b",
+        "bothPass": 8,
+        "bothFail": 4,
+        "reviewerOnlyFail": 0,
+        "objectiveOnlyFail": 0,
+        "exactFailedGateList": 12
+      }
+    ]
+  },
+  "cues": [
+    {
+      "reviewer": "reviewer-a",
+      "cues": [
+        "All artifact IDs have the same opaque format. I saw no explicit arm labels, author names, or provenance fields.",
+        "D05, D04, and D03 each contain two identical policy appendices. In D05 and D04, the handoffs visibly differ in how many owner questions they ask and how specifically they describe tests."
+      ]
+    },
+    {
+      "reviewer": "reviewer-b",
+      "cues": []
+    }
+  ],
+  "pendingManualGateDisputes": [],
+  "differences": [
+    {
+      "caseId": "D01",
+      "artifactId": "R-79975bb111c5",
+      "dimension": "gaps",
+      "values": [
+        0,
+        1
+      ],
+      "evidence": [
+        "The concurrent-submit test exercises duplicate requests. The upload test checks only the clicked proof in the audit trail, so the test can pass while the annotation is attached to the wrong proof.",
+        "The unique actor/opened proof/token constraint and concurrent submit test address repeated delivery. The upload test only verifies the clicked proof in the audit trail, so it permits the note to attach to the new proof."
+      ]
+    },
+    {
+      "caseId": "D04",
+      "artifactId": "R-8c7b06731991",
+      "dimension": "interventions",
+      "values": [
+        1,
+        0
+      ],
+      "evidence": [
+        "It asks the necessary 7-versus-30-day question. It also sends sort, default tag and list density to the owner, leaving all three reversible UI decisions open.",
+        "Asks the owner the reserved 7-or-30-day question along with sorting, default tag and density questions. The handoff delegates every requested reversible default back to the owner."
+      ]
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-c2c5ae16bf97",
+      "dimension": "gaps",
+      "values": [
+        0,
+        1
+      ],
+      "evidence": [
+        "The no-approval and historical-approval refusal tests cover stale export consent. The archive test checks appendix privacy while endorsing note-T's inclusion, perpetuating the source-eligibility error in L1.",
+        "Tests absent and historical grants as refusals, addressing stale consent. Walking the archive and deliberately retaining note-T in the new digest fails to prevent archived material from becoming an input."
+      ]
+    },
+    {
+      "caseId": "D06",
+      "artifactId": "R-3a362404324c",
+      "dimension": "gaps",
+      "values": [
+        0,
+        1
+      ],
+      "evidence": [
+        "It tests the excluded-note path. The prior-grant path explicitly reuses historical consent for the same destination, so it preserves the stale-consent failure in L3.",
+        "The eligibility filter and excluded-note test address readable archived material. The prior-share test exercises reuse of stale consent instead of refusing it."
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "caseId": "D01",
+      "artifacts": [
+        {
+          "artifactId": "R-79975bb111c5",
+          "arm": "off",
+          "eligible": false,
+          "total": 4.5,
+          "objectiveFailed": [
+            "D01-G1"
+          ],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 4,
+              "scores": {
+                "handoff": 0,
+                "gaps": 0,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": [
+                {
+                  "id": "D01-G1",
+                  "reason": "For openedProof proof-07 and liveProof proof-08, attach picks liveProof and returns proof-08. The handoff also resolves the target from the live pointer and uses proof-07 only for audit."
+                }
+              ]
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 5,
+              "scores": {
+                "handoff": 0,
+                "gaps": 1,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": [
+                {
+                  "id": "D01-G1",
+                  "reason": "The prose resolves the target from the live pointer and the attach policy picks liveProof, which returns proof-08 for the frozen proof switch. Recording proof-07 in the audit trail leaves the note attached to the wrong proof."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "artifactId": "R-6b06e72a9328",
+          "arm": "on",
+          "eligible": true,
+          "total": 8,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": 3.5,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "on",
+          "cause": "hard-gate"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "on",
+          "cause": "hard-gate"
+        }
+      ],
+      "combined": {
+        "result": "on",
+        "cause": "hard-gate"
+      }
+    },
+    {
+      "caseId": "D02",
+      "artifacts": [
+        {
+          "artifactId": "R-896e375372e5",
+          "arm": "off",
+          "eligible": true,
+          "total": 8,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        },
+        {
+          "artifactId": "R-4c49ef7969b7",
+          "arm": "on",
+          "eligible": false,
+          "total": 0,
+          "objectiveFailed": [
+            "D02-G2"
+          ],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 0,
+              "scores": {
+                "handoff": 0,
+                "gaps": 0,
+                "interventions": 0,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D02-G2",
+                  "reason": "For approval withdrawn, release returns release-exact-snapshot instead of hold. The handoff directs the release panel to arm release using a withdrawn ledger record when its former snapshot is selected."
+                }
+              ]
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 0,
+              "scores": {
+                "handoff": 0,
+                "gaps": 0,
+                "interventions": 0,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D02-G2",
+                  "reason": "The handoff explicitly allows release after an approval is withdrawn, and the release policy maps withdrawn to release-exact-snapshot. The frozen withdrawn-approval probe requires hold."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": -8,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "off",
+          "cause": "hard-gate"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "off",
+          "cause": "hard-gate"
+        }
+      ],
+      "combined": {
+        "result": "off",
+        "cause": "hard-gate"
+      }
+    },
+    {
+      "caseId": "D03",
+      "artifacts": [
+        {
+          "artifactId": "R-c934d8cab493",
+          "arm": "off",
+          "eligible": true,
+          "total": 8,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        },
+        {
+          "artifactId": "R-e40ecbeda248",
+          "arm": "on",
+          "eligible": true,
+          "total": 8,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 8,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 2,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": 0,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "tie",
+          "cause": "exact-score-tie"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "tie",
+          "cause": "exact-score-tie"
+        }
+      ],
+      "combined": {
+        "result": "tie",
+        "cause": "exact-score-tie"
+      }
+    },
+    {
+      "caseId": "D04",
+      "artifacts": [
+        {
+          "artifactId": "R-8c7b06731991",
+          "arm": "off",
+          "eligible": true,
+          "total": 4.5,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 5,
+              "scores": {
+                "handoff": 1,
+                "gaps": 1,
+                "interventions": 1,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 4,
+              "scores": {
+                "handoff": 1,
+                "gaps": 1,
+                "interventions": 0,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        },
+        {
+          "artifactId": "R-60a02b117fcf",
+          "arm": "on",
+          "eligible": true,
+          "total": 7,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 7,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 1,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 7,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 1,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": 2.5,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "on",
+          "cause": "material-score-delta"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "on",
+          "cause": "material-score-delta"
+        }
+      ],
+      "combined": {
+        "result": "on",
+        "cause": "material-score-delta"
+      }
+    },
+    {
+      "caseId": "D05",
+      "artifacts": [
+        {
+          "artifactId": "R-909f318568cb",
+          "arm": "off",
+          "eligible": true,
+          "total": 7,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 7,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 1,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 7,
+              "scores": {
+                "handoff": 2,
+                "gaps": 2,
+                "interventions": 1,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        },
+        {
+          "artifactId": "R-6ec79f86b664",
+          "arm": "on",
+          "eligible": true,
+          "total": 4,
+          "objectiveFailed": [],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 4,
+              "scores": {
+                "handoff": 1,
+                "gaps": 1,
+                "interventions": 0,
+                "owner": 2
+              },
+              "failedGates": []
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 4,
+              "scores": {
+                "handoff": 1,
+                "gaps": 1,
+                "interventions": 0,
+                "owner": 2
+              },
+              "failedGates": []
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": -3,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "off",
+          "cause": "material-score-delta"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "off",
+          "cause": "material-score-delta"
+        }
+      ],
+      "combined": {
+        "result": "off",
+        "cause": "material-score-delta"
+      }
+    },
+    {
+      "caseId": "D06",
+      "artifacts": [
+        {
+          "artifactId": "R-c2c5ae16bf97",
+          "arm": "off",
+          "eligible": false,
+          "total": 2.5,
+          "objectiveFailed": [
+            "D06-G1"
+          ],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 2,
+              "scores": {
+                "handoff": 0,
+                "gaps": 0,
+                "interventions": 2,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D06-G1",
+                  "reason": "For eligible [note-A] and archive [note-A, note-T], sources picks archive and returns both notes. The prose expressly includes note-T in the digest appendix."
+                }
+              ]
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 3,
+              "scores": {
+                "handoff": 0,
+                "gaps": 1,
+                "interventions": 2,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D06-G1",
+                  "reason": "The prose expressly puts note-T in the generated appendix and the sources policy picks archive, which returns both notes under the frozen probe. The required result is the eligibility list containing note-A only."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "artifactId": "R-3a362404324c",
+          "arm": "on",
+          "eligible": false,
+          "total": 0.5,
+          "objectiveFailed": [
+            "D06-G2"
+          ],
+          "agreedManual": [],
+          "differingManual": [],
+          "reviewers": [
+            {
+              "reviewer": "reviewer-a",
+              "total": 0,
+              "scores": {
+                "handoff": 0,
+                "gaps": 0,
+                "interventions": 0,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D06-G2",
+                  "reason": "For approval historical, export returns owner-approved-export instead of draft-only. The handoff explicitly reuses a historical share grant when the catalogue destination matches."
+                }
+              ]
+            },
+            {
+              "reviewer": "reviewer-b",
+              "total": 1,
+              "scores": {
+                "handoff": 0,
+                "gaps": 1,
+                "interventions": 0,
+                "owner": 0
+              },
+              "failedGates": [
+                {
+                  "id": "D06-G2",
+                  "reason": "The prose reuses a historical owner share for the same destination, and export maps historical to owner-approved-export. The frozen historical-approval probe requires draft-only."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "scoreDeltaOnMinusOff": -2,
+      "reviewerVerdicts": [
+        {
+          "reviewer": "reviewer-a",
+          "result": "neither",
+          "cause": "hard-gate"
+        },
+        {
+          "reviewer": "reviewer-b",
+          "result": "neither",
+          "cause": "hard-gate"
+        }
+      ],
+      "combined": {
+        "result": "neither",
+        "cause": "hard-gate"
+      }
+    }
+  ]
+}
