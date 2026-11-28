@@ -1,0 +1,27 @@
+{
+  "schema": "quellight.q4-012.continuation-verification@1",
+  "result": "passed",
+  "providerRequests": 0,
+  "isolatedRestores": 3,
+  "checked": [
+    {
+      "arm": "current",
+      "separateArchiveSha256": "ad29c0e5a55ca875897e889c755b49883e15be2367cb8db10d9536d736240481",
+      "stateReopened": true,
+      "retainedApproval": true
+    },
+    {
+      "arm": "legacy",
+      "separateArchiveSha256": "07e2bff35889358782123c24b1adab3c9fbd158c4ac90dde1b88faeae1bf58e5",
+      "stateReopened": true,
+      "retainedApproval": true
+    },
+    {
+      "arm": "eight",
+      "separateArchiveSha256": "b13daeaeb4236645f0c7095b38b51fdd65704a025a73b8cb7bff435f2e648e58",
+      "stateReopened": true,
+      "retainedApproval": true
+    }
+  ],
+  "auditSha256": "bf306a7fb4365c00e38fdadafa912ab080eb50bf817f917b1e317df53d0cb65a"
+}
