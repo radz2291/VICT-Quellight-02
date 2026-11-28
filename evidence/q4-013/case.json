@@ -1,0 +1,31 @@
+{
+  "id": "cedar-label-review",
+  "roomPurpose": "Prepare an internal exhibit-label packet for review.",
+  "originals": [
+    {
+      "id": "U1",
+      "role": "user",
+      "text": "Mira will take the final look before the exhibit label packet goes out. We identify this draft by the serial Cedar-47 on its cover. I haven't decided if the vendor should attend Friday's review."
+    },
+    {
+      "id": "A1",
+      "role": "assistant",
+      "text": "I'll treat Mira as the person who gives final approval for this packet. I'll keep Friday's vendor attendance open."
+    },
+    {
+      "id": "U2",
+      "role": "user",
+      "text": "Correction: Mira checks wording only. I give final approval for this packet myself. The vendor's attendance on Friday is still undecided."
+    },
+    {
+      "id": "A2",
+      "role": "assistant",
+      "text": "Understood. Mira checks wording, you give final approval, and Friday's vendor attendance is still open."
+    }
+  ],
+  "fresh": "Help me prepare the next review step for the label packet. Who does what, how should I identify the draft, and can I confirm the vendor for Friday?",
+  "stageCut": {
+    "before": 2,
+    "after": 4
+  }
+}

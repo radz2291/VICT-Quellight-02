@@ -1,0 +1,639 @@
+{
+  "pins": {
+    "app": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "adapter": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "memory": "f1469f784fbb8385376936e20ad1e89364221f0fe3f53412094955a976527e07",
+      "memoryVersion": "1.28.2",
+      "memoryIntegrity": "sha512-XneY2QdmC/nUjfaax7z4Qdnsw6WgsFWc1QZFd79AkQHl0g0bDvpwjQlbDZ6wnZ2YygRDCWVt0Ew3dDI2Ao3QXg==",
+      "installedBinding": "baseline",
+      "victArchiveCount": 14
+    },
+    "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+    "caseSha256": "ef7a0fb5a19bcae012f204bedcabe121937c9f978dc3c64f286383640851e034",
+    "speaking": {
+      "bytes": 30489,
+      "sha256": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254"
+    },
+    "default": "3e3fa7a54503d2f774c2f0bcb9d57978d8fe2966d186f857c6a5449c58acae68",
+    "conditioned": "3ffff14d03de6bcfe11a5661465ff9033a70bcba011b801923f8c1e02c7c8d04",
+    "postgres": "18.6",
+    "router": "zai-coding-plan/glm-5.3-flash"
+  },
+  "incremental": {
+    "fixtureOnly": true,
+    "providerRequests": 0,
+    "priorOldAssumption": true,
+    "currentOldAssumption": true,
+    "currentCorrection": true,
+    "sameAuthority": true,
+    "firstEvidenceSha256": "d967b9e869c794510b5dddb5c4ed0a975b6252015517ce7d930bbec4b64f43a6",
+    "secondEvidenceSha256": "1bb46e1de907018fa1e63c1e9becca1a8ef9b9c41a7a012448eb4d5ed6c32dd2",
+    "priorSource": "e6867a6aa4770c33c935bee77670a376169856ed4aebee672e01c88d88fa7b4b",
+    "nextSource": "de3ea580c0d88ac9a4873f6161406e16e8db263c1ac0ce33c790279a844979fb",
+    "beforeSnapshotSha256": "18b02e70c7205955f398ed76d12262fed24c93c8ea402d33958d70595a228be8",
+    "afterSnapshotSha256": "6c3c7a5c54fa17b2f5d8dc8fefe9f178cffa26ed3afa4259a01dfa5dc444bfd8"
+  },
+  "usage": {
+    "background": {
+      "default": {
+        "requests": 2,
+        "usageAvailable": 2,
+        "prompt_tokens": 8936,
+        "completion_tokens": 3847,
+        "total_tokens": 12783,
+        "cached_tokens": 4416,
+        "reasoning_tokens": 2968
+      },
+      "conditioned": {
+        "requests": 2,
+        "usageAvailable": 2,
+        "prompt_tokens": 22300,
+        "completion_tokens": 4784,
+        "total_tokens": 27084,
+        "cached_tokens": 11072,
+        "reasoning_tokens": 4021
+      }
+    },
+    "foreground": {
+      "default": {
+        "requests": 5,
+        "usageAvailable": 5,
+        "prompt_tokens": 53069,
+        "completion_tokens": 5104,
+        "total_tokens": 58173,
+        "cached_tokens": 47744,
+        "reasoning_tokens": 3889
+      },
+      "conditioned": {
+        "requests": 4,
+        "usageAvailable": 4,
+        "prompt_tokens": 42467,
+        "completion_tokens": 6438,
+        "total_tokens": 48905,
+        "cached_tokens": 37888,
+        "reasoning_tokens": 5609
+      }
+    },
+    "missing": [
+      "Initial default foreground capture rejected by the local activation evidence check",
+      "Earlier conditioned foreground attempt interrupted during projection by local disk exhaustion"
+    ]
+  },
+  "normalization": {
+    "observerSdk": [
+      "exact conditioned role append",
+      "numeric providerOptions.mastra.createdAt"
+    ],
+    "observerWire": [
+      "exact conditioned role append"
+    ],
+    "foreground": [
+      "exact admitted room block",
+      "numeric providerOptions.mastra.createdAt",
+      "admitted thread ID",
+      "admitted recall revision"
+    ]
+  },
+  "background": [
+    {
+      "arm": "default",
+      "stage": "before",
+      "match": {
+        "sdk": "858a60204ac0375549137b963d21ff7afadf3988e9424e3b5b9377538c8666d8",
+        "wire": "d9c6bec32fd274df386772049b725233a268d7caed05c7f443ed96f3667babf9"
+      },
+      "effectiveRevision": "e9251bfd19054bcb792d6f094a3a5a7bc0c28827f09e4f368d4f0b3a501617ce",
+      "observerRevision": "0f55ad11b99d93f049ed0ca24426e6c4a8b2e1ea82bd88763223a1961f12798a",
+      "config": "91ce2078b03b1fb75aaa2a9df2b591135b058c90fcd5bf7ef4b288a7a74b634c",
+      "retainedObservationsSha256": "cf16869abdd69e5b6ca5d879c3a328474d0f73f459bb21a35f0071c978113104",
+      "rawOutputSha256": "d967b9e869c794510b5dddb5c4ed0a975b6252015517ce7d930bbec4b64f43a6",
+      "observationsBytes": 691,
+      "workingMemorySha256": "5a14887fcb6804852ee9c748cc8d5af336b06c83fd98c5bb1a47863a60e8cfdd",
+      "priorObservationCount": 0,
+      "typedMembership": false,
+      "authority": "0",
+      "nativeSourceDigest": "e6867a6aa4770c33c935bee77670a376169856ed4aebee672e01c88d88fa7b4b",
+      "originals": [
+        {
+          "role": "user",
+          "sha256": "150f2bde381e048ddb79c929f64be329cc77f7b7951ba247f7e5307f55789cbb",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "5b61efc47348d00392e315f81d923e83de5424bdf883b808d1bc4907594e0a53",
+          "eligible": true
+        }
+      ],
+      "operation": {
+        "status": "completed",
+        "support": "quellight.memory.maintain",
+        "invocationStatus": "completed"
+      },
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "cf8db77a15bbcc48ba1b0836d18c5875053b7f036993b5ef66d2f1ec8150dd3a",
+          "usage": {
+            "prompt_tokens": 4443,
+            "completion_tokens": 1159,
+            "total_tokens": 5602,
+            "cached_tokens": 0,
+            "reasoning_tokens": 763
+          },
+          "wireBytes": 20753,
+          "wireSha256": "d9c6bec32fd274df386772049b725233a268d7caed05c7f443ed96f3667babf9",
+          "messagesBytes": 20702,
+          "sdkPromptBytes": 20955
+        }
+      ]
+    },
+    {
+      "arm": "conditioned",
+      "stage": "before",
+      "match": {
+        "sdk": "858a60204ac0375549137b963d21ff7afadf3988e9424e3b5b9377538c8666d8",
+        "wire": "d9c6bec32fd274df386772049b725233a268d7caed05c7f443ed96f3667babf9"
+      },
+      "effectiveRevision": "57c68d2be432f7d3a1baa122d5b37e91574717cf4fc7e9d4c5f16f7c6e448a12",
+      "observerRevision": "7ce7fb7ad7acb9a5a09416d5d3f8d077d0044100fc03e78769482adc1b38a9d4",
+      "config": "1f3266db3704edc01e8cc5dbfbd393f6f4736a34666ce0b3f75d9406b78cae28",
+      "retainedObservationsSha256": "e0ec5aef272d86b239cd23243e3494338349f553ddfe74cef0cc023ce81f6843",
+      "rawOutputSha256": "39ec0bc8df2b74a9c44255aae8885ce5e215f20b710594d7f926572c96b34688",
+      "observationsBytes": 732,
+      "workingMemorySha256": "e9c5b9a68d974bb749980bfafc7790d1acaab73804caa1784c074912efded114",
+      "priorObservationCount": 0,
+      "typedMembership": false,
+      "authority": "0",
+      "nativeSourceDigest": "e6867a6aa4770c33c935bee77670a376169856ed4aebee672e01c88d88fa7b4b",
+      "originals": [
+        {
+          "role": "user",
+          "sha256": "150f2bde381e048ddb79c929f64be329cc77f7b7951ba247f7e5307f55789cbb",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "5b61efc47348d00392e315f81d923e83de5424bdf883b808d1bc4907594e0a53",
+          "eligible": true
+        }
+      ],
+      "operation": {
+        "status": "completed",
+        "support": "quellight.memory.maintain",
+        "invocationStatus": "completed"
+      },
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "cf8db77a15bbcc48ba1b0836d18c5875053b7f036993b5ef66d2f1ec8150dd3a",
+          "usage": {
+            "prompt_tokens": 11125,
+            "completion_tokens": 3080,
+            "total_tokens": 14205,
+            "cached_tokens": 0,
+            "reasoning_tokens": 2703
+          },
+          "wireBytes": 51679,
+          "wireSha256": "1c5b1409b84233090ecc03239e7bb4c812ea2514518c4d7ffed0d18c2db226b2",
+          "messagesBytes": 51628,
+          "sdkPromptBytes": 51881
+        }
+      ]
+    },
+    {
+      "arm": "default",
+      "stage": "after",
+      "match": {
+        "sdk": "d95ba7ff5b3e7fd9f676f88f694232e0bea4c63501aab2975b6df9b8b1f37d34",
+        "wire": "c9ea0451f86ebd46ca65396106b4238039637f68e3121c4a1581825b4f4f98f4"
+      },
+      "effectiveRevision": "e9251bfd19054bcb792d6f094a3a5a7bc0c28827f09e4f368d4f0b3a501617ce",
+      "observerRevision": "0f55ad11b99d93f049ed0ca24426e6c4a8b2e1ea82bd88763223a1961f12798a",
+      "config": "91ce2078b03b1fb75aaa2a9df2b591135b058c90fcd5bf7ef4b288a7a74b634c",
+      "retainedObservationsSha256": "6b276279243de907f4a3c393c86f53c52bc0e4c615b917403c11d0d5a558dd66",
+      "rawOutputSha256": "1bb46e1de907018fa1e63c1e9becca1a8ef9b9c41a7a012448eb4d5ed6c32dd2",
+      "observationsBytes": 851,
+      "workingMemorySha256": "a13fa8117c42ebd55f3ea319ccb9ef67ad75e5cf3163c0b178ca0e5032d6409f",
+      "priorObservationCount": 0,
+      "typedMembership": false,
+      "authority": "0",
+      "nativeSourceDigest": "050b6b97a35bdf63188b36d00d0195c0ca58bbb2976a5ec2d539f39626ad5682",
+      "originals": [
+        {
+          "role": "user",
+          "sha256": "150f2bde381e048ddb79c929f64be329cc77f7b7951ba247f7e5307f55789cbb",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "5b61efc47348d00392e315f81d923e83de5424bdf883b808d1bc4907594e0a53",
+          "eligible": true
+        },
+        {
+          "role": "user",
+          "sha256": "faea2f213ed5e0beae6bacaaa75ade4e8b48bc728eec46838dce34db5b934eb8",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "14a74933e305812c7eed532acfd02fb950ced0a4b2a21568dda856ed2157c49e",
+          "eligible": true
+        }
+      ],
+      "operation": {
+        "status": "completed",
+        "support": "quellight.memory.maintain",
+        "invocationStatus": "completed"
+      },
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "cf8db77a15bbcc48ba1b0836d18c5875053b7f036993b5ef66d2f1ec8150dd3a",
+          "usage": {
+            "prompt_tokens": 4493,
+            "completion_tokens": 2688,
+            "total_tokens": 7181,
+            "cached_tokens": 4416,
+            "reasoning_tokens": 2205
+          },
+          "wireBytes": 21062,
+          "wireSha256": "c9ea0451f86ebd46ca65396106b4238039637f68e3121c4a1581825b4f4f98f4",
+          "messagesBytes": 21011,
+          "sdkPromptBytes": 21378
+        }
+      ]
+    },
+    {
+      "arm": "conditioned",
+      "stage": "after",
+      "match": {
+        "sdk": "d95ba7ff5b3e7fd9f676f88f694232e0bea4c63501aab2975b6df9b8b1f37d34",
+        "wire": "c9ea0451f86ebd46ca65396106b4238039637f68e3121c4a1581825b4f4f98f4"
+      },
+      "effectiveRevision": "57c68d2be432f7d3a1baa122d5b37e91574717cf4fc7e9d4c5f16f7c6e448a12",
+      "observerRevision": "7ce7fb7ad7acb9a5a09416d5d3f8d077d0044100fc03e78769482adc1b38a9d4",
+      "config": "1f3266db3704edc01e8cc5dbfbd393f6f4736a34666ce0b3f75d9406b78cae28",
+      "retainedObservationsSha256": "4e2c21a8d4cad1912d6d32b3851079142fd3ac73cf44592105f2ff2153028ef2",
+      "rawOutputSha256": "75220f0168a7016f2525523045399de0794ec6c409c1f730f457f2ca0b9a33ba",
+      "observationsBytes": 730,
+      "workingMemorySha256": "db19683d00404b13364d714245321550d3761af0b3f9b217486f76d1aeb4a5be",
+      "priorObservationCount": 0,
+      "typedMembership": false,
+      "authority": "0",
+      "nativeSourceDigest": "050b6b97a35bdf63188b36d00d0195c0ca58bbb2976a5ec2d539f39626ad5682",
+      "originals": [
+        {
+          "role": "user",
+          "sha256": "150f2bde381e048ddb79c929f64be329cc77f7b7951ba247f7e5307f55789cbb",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "5b61efc47348d00392e315f81d923e83de5424bdf883b808d1bc4907594e0a53",
+          "eligible": true
+        },
+        {
+          "role": "user",
+          "sha256": "faea2f213ed5e0beae6bacaaa75ade4e8b48bc728eec46838dce34db5b934eb8",
+          "eligible": true
+        },
+        {
+          "role": "assistant",
+          "sha256": "14a74933e305812c7eed532acfd02fb950ced0a4b2a21568dda856ed2157c49e",
+          "eligible": true
+        }
+      ],
+      "operation": {
+        "status": "completed",
+        "support": "quellight.memory.maintain",
+        "invocationStatus": "completed"
+      },
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "cf8db77a15bbcc48ba1b0836d18c5875053b7f036993b5ef66d2f1ec8150dd3a",
+          "usage": {
+            "prompt_tokens": 11175,
+            "completion_tokens": 1704,
+            "total_tokens": 12879,
+            "cached_tokens": 11072,
+            "reasoning_tokens": 1318
+          },
+          "wireBytes": 51988,
+          "wireSha256": "70689ece824b2daf45880b0dee33d5d77326d9015871a2089acd052aca4b4d40",
+          "messagesBytes": 51937,
+          "sdkPromptBytes": 52304
+        }
+      ]
+    }
+  ],
+  "foreground": [
+    {
+      "arm": "default",
+      "scope": "same",
+      "speaker": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "common": {
+        "ordinaryMessages": "ee11b0777ef80e796f79a556642aac2a3edf53bd0312541b02e23bc85234129f",
+        "toolSchemasAndOptions": "51e5cdccaa917997afce9471f927033d399a71e9222b3035eb0ab6b56c2dd12d",
+        "binding": "593dd2721531b14af309f6f7e59cfe226b69f8f35770fbc393d39b0ead2349e1",
+        "profile": "448e94de785e184e7867d8077ccec4105aa16b3913b3bd5c418e4dc143070428",
+        "baseInstructions": "fc739c28e10b1c58e00b7e96bc0399230e2c13f2b8c3a3574b76ed7dfa832f89"
+      },
+      "approval": {
+        "revision": "r2",
+        "oneLookup": true,
+        "sameCurrentAuthority": true,
+        "resultBytes": 398,
+        "blockBytes": 299
+      },
+      "activationVersion": "v1_42fe90df2b43082a617cbdb72be9cf4b2173813d3ce05f5b17906e02f488f215",
+      "settled": true,
+      "replySha256": "fc733721f7a9f558bad5416cf5978d4f2ccd902aaa1f789851855297c38d0775",
+      "invocations": [
+        {
+          "capabilityId": "quellight.desk.search",
+          "effect": "read",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "quellight.desk.append",
+          "effect": "write",
+          "status": "completed"
+        }
+      ],
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 9549,
+            "completion_tokens": 2036,
+            "total_tokens": 11585,
+            "cached_tokens": 9536,
+            "reasoning_tokens": 1899
+          },
+          "wireBytes": 42359,
+          "wireSha256": "f93c39435198270f9ccf454089967d9c4a8bca2c68d4569be9c0a3fb34575242",
+          "messagesBytes": 34527,
+          "sdkPromptBytes": 34609
+        },
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 11784,
+            "completion_tokens": 271,
+            "total_tokens": 12055,
+            "cached_tokens": 9536,
+            "reasoning_tokens": 47
+          },
+          "wireBytes": 52793,
+          "wireSha256": "f7e1352b563de5501f29c8d277dcb3cfb4b8b19c1c967bd81904de34acdedb9c",
+          "messagesBytes": 44961,
+          "sdkPromptBytes": 45546
+        }
+      ]
+    },
+    {
+      "arm": "default",
+      "scope": "other",
+      "speaker": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "common": {
+        "ordinaryMessages": "ee11b0777ef80e796f79a556642aac2a3edf53bd0312541b02e23bc85234129f",
+        "toolSchemasAndOptions": "51e5cdccaa917997afce9471f927033d399a71e9222b3035eb0ab6b56c2dd12d",
+        "binding": "60afde54bfeb7372dfddd897c91c673039b9867430c7132bbdef33817bc56ef7",
+        "profile": "448e94de785e184e7867d8077ccec4105aa16b3913b3bd5c418e4dc143070428",
+        "baseInstructions": "b6506652537bb28b8f1a0c9df1bb8f14074d457d314e156b75f9685e72aba9c9"
+      },
+      "approval": {
+        "revision": null,
+        "oneLookup": true,
+        "sameCurrentAuthority": true,
+        "resultBytes": 2,
+        "blockBytes": 0
+      },
+      "activationVersion": "v1_33d7e30abb92261a568464456e57725b58af4ada9791adff0730ee21a81a6426",
+      "settled": true,
+      "replySha256": "4e7809ad35e0d985bae40bd3f507a6fb353ebea7b7c41237053d488031e1d447",
+      "invocations": [
+        {
+          "capabilityId": "quellight.desk.list",
+          "effect": "read",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "recall",
+          "effect": "read",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "quellight.desk.create",
+          "effect": "write",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "quellight.desk.search",
+          "effect": "read",
+          "status": "completed"
+        }
+      ],
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 9423,
+            "completion_tokens": 326,
+            "total_tokens": 9749,
+            "cached_tokens": 9408,
+            "reasoning_tokens": 290
+          },
+          "wireBytes": 41800,
+          "wireSha256": "1263145bedb2dac68ab43d58b4bbcee8613419a0af3615bff4d93b4411231220",
+          "messagesBytes": 33968,
+          "sdkPromptBytes": 34050
+        },
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 9903,
+            "completion_tokens": 2067,
+            "total_tokens": 11970,
+            "cached_tokens": 9408,
+            "reasoning_tokens": 1618
+          },
+          "wireBytes": 44187,
+          "wireSha256": "22ef1f1893af2980ecb3dced7557be285b107e51d164314fe9ddc89b2ca124ff",
+          "messagesBytes": 36355,
+          "sdkPromptBytes": 36717
+        },
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 12410,
+            "completion_tokens": 404,
+            "total_tokens": 12814,
+            "cached_tokens": 9856,
+            "reasoning_tokens": 35
+          },
+          "wireBytes": 54222,
+          "wireSha256": "d1b9359bc4bacf105304d3195d0ec2c80250e8d85849cb7a142edbfee5e81f02",
+          "messagesBytes": 46390,
+          "sdkPromptBytes": 48163
+        }
+      ]
+    },
+    {
+      "arm": "conditioned",
+      "scope": "same",
+      "speaker": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "common": {
+        "ordinaryMessages": "ee11b0777ef80e796f79a556642aac2a3edf53bd0312541b02e23bc85234129f",
+        "toolSchemasAndOptions": "51e5cdccaa917997afce9471f927033d399a71e9222b3035eb0ab6b56c2dd12d",
+        "binding": "593dd2721531b14af309f6f7e59cfe226b69f8f35770fbc393d39b0ead2349e1",
+        "profile": "448e94de785e184e7867d8077ccec4105aa16b3913b3bd5c418e4dc143070428",
+        "baseInstructions": "fc739c28e10b1c58e00b7e96bc0399230e2c13f2b8c3a3574b76ed7dfa832f89"
+      },
+      "approval": {
+        "revision": "r2",
+        "oneLookup": true,
+        "sameCurrentAuthority": true,
+        "resultBytes": 398,
+        "blockBytes": 299
+      },
+      "activationVersion": "v1_42fe90df2b43082a617cbdb72be9cf4b2173813d3ce05f5b17906e02f488f215",
+      "settled": true,
+      "replySha256": "972fa25849c6211ed8b25a4bb40b5d208367493c4d67320871b87af91f0b3ab4",
+      "invocations": [
+        {
+          "capabilityId": "quellight.desk.append",
+          "effect": "write",
+          "status": "completed"
+        }
+      ],
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 9549,
+            "completion_tokens": 3606,
+            "total_tokens": 13155,
+            "cached_tokens": 9536,
+            "reasoning_tokens": 3271
+          },
+          "wireBytes": 42359,
+          "wireSha256": "f93c39435198270f9ccf454089967d9c4a8bca2c68d4569be9c0a3fb34575242",
+          "messagesBytes": 34527,
+          "sdkPromptBytes": 34609
+        },
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 13359,
+            "completion_tokens": 65,
+            "total_tokens": 13424,
+            "cached_tokens": 9536,
+            "reasoning_tokens": 13
+          },
+          "wireBytes": 59780,
+          "wireSha256": "61a89c6c2c5d0cc08a087216ee9195e1aedeae837b03de4059c3b74b4d10ceb1",
+          "messagesBytes": 51948,
+          "sdkPromptBytes": 52584
+        }
+      ]
+    },
+    {
+      "arm": "conditioned",
+      "scope": "other",
+      "speaker": "23adc723ab5a8d25dcc1371e2a70df248c4f6db1eb9c141df58f5c2ca8b77254",
+      "common": {
+        "ordinaryMessages": "ee11b0777ef80e796f79a556642aac2a3edf53bd0312541b02e23bc85234129f",
+        "toolSchemasAndOptions": "51e5cdccaa917997afce9471f927033d399a71e9222b3035eb0ab6b56c2dd12d",
+        "binding": "60afde54bfeb7372dfddd897c91c673039b9867430c7132bbdef33817bc56ef7",
+        "profile": "448e94de785e184e7867d8077ccec4105aa16b3913b3bd5c418e4dc143070428",
+        "baseInstructions": "b6506652537bb28b8f1a0c9df1bb8f14074d457d314e156b75f9685e72aba9c9"
+      },
+      "approval": {
+        "revision": null,
+        "oneLookup": true,
+        "sameCurrentAuthority": true,
+        "resultBytes": 2,
+        "blockBytes": 0
+      },
+      "activationVersion": "v1_33d7e30abb92261a568464456e57725b58af4ada9791adff0730ee21a81a6426",
+      "settled": true,
+      "replySha256": "923b122537709b54a7b57bd5123d01bbac1ac3cc4cec70031dd023e25cd8bf53",
+      "invocations": [
+        {
+          "capabilityId": "quellight.desk.list",
+          "effect": "read",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "recall",
+          "effect": "read",
+          "status": "completed"
+        },
+        {
+          "capabilityId": "quellight.desk.search",
+          "effect": "read",
+          "status": "completed"
+        }
+      ],
+      "requests": [
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 9423,
+            "completion_tokens": 559,
+            "total_tokens": 9982,
+            "cached_tokens": 9408,
+            "reasoning_tokens": 523
+          },
+          "wireBytes": 41800,
+          "wireSha256": "1263145bedb2dac68ab43d58b4bbcee8613419a0af3615bff4d93b4411231220",
+          "messagesBytes": 33968,
+          "sdkPromptBytes": 34050
+        },
+        {
+          "status": 200,
+          "stream": true,
+          "settingsSha256": "6f320eec7ebf7be54bd45b7f35d870287e6e1c28a5e62fbc7aab2dad4269ae98",
+          "usage": {
+            "prompt_tokens": 10136,
+            "completion_tokens": 2208,
+            "total_tokens": 12344,
+            "cached_tokens": 9408,
+            "reasoning_tokens": 1802
+          },
+          "wireBytes": 45301,
+          "wireSha256": "28b90b31d67582824385eca6f4d5927d2278661905fb7d686a475aefa6dde223",
+          "messagesBytes": 37469,
+          "sdkPromptBytes": 37831
+        }
+      ]
+    }
+  ]
+}

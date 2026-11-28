@@ -1,0 +1,78 @@
+[
+  {
+    "arm": "default",
+    "quotes": {
+      "before": {
+        "misattributed": "Mira is the final approver for this packet",
+        "serial": "serial \"Cedar-47\" on its cover",
+        "vendor": "User hasn't decided whether the vendor should attend Friday's review"
+      },
+      "after": {
+        "serial": "serial \"Cedar-47\" on its cover",
+        "vendor": "Vendor attendance at Friday's review is still undecided",
+        "approval": "Mira checks wording ONLY; User gives final approval"
+      }
+    },
+    "context": {
+      "marker": "cedar-label-r2",
+      "territory": "Identify this exhibit label packet by serial Cedar-47.",
+      "direction": "Friday's vendor attendance remains undecided.",
+      "posture": "Mira checks wording only. The owner gives final approval for this packet."
+    },
+    "sources": {
+      "territory": {
+        "original": "U1",
+        "span": "the serial Cedar-47 on its cover",
+        "observation": "serial"
+      },
+      "direction": {
+        "original": "U2",
+        "span": "The vendor's attendance on Friday is still undecided.",
+        "observation": "vendor"
+      },
+      "posture": {
+        "original": "U2",
+        "span": "Mira checks wording only. I give final approval for this packet myself.",
+        "observation": "approval"
+      }
+    }
+  },
+  {
+    "arm": "conditioned",
+    "quotes": {
+      "before": {
+        "misattributed": "Mira is the final approver for this packet",
+        "serial": "serial \"Cedar-47\" on its cover",
+        "vendor": "User hasn't decided whether the vendor should attend Friday's review"
+      },
+      "after": {
+        "serial": "serial \"Cedar-47\" on its cover",
+        "vendor": "Vendor attendance at Friday's review is still undecided",
+        "approval": "Mira checks wording only; user gives final approval personally"
+      }
+    },
+    "context": {
+      "marker": "cedar-label-r2",
+      "territory": "Identify this exhibit label packet by serial Cedar-47.",
+      "direction": "Friday's vendor attendance remains undecided.",
+      "posture": "Mira checks wording only. The owner gives final approval for this packet."
+    },
+    "sources": {
+      "territory": {
+        "original": "U1",
+        "span": "the serial Cedar-47 on its cover",
+        "observation": "serial"
+      },
+      "direction": {
+        "original": "U2",
+        "span": "The vendor's attendance on Friday is still undecided.",
+        "observation": "vendor"
+      },
+      "posture": {
+        "original": "U2",
+        "span": "Mira checks wording only. I give final approval for this packet myself.",
+        "observation": "approval"
+      }
+    }
+  }
+]
