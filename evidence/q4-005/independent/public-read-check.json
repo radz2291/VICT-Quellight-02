@@ -1,0 +1,24 @@
+{
+  "evidenceSource": "Independent direct reads from the installed app services and public VICT adapter on the synthetic review database",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "postgresReader": "ql_q5_fixture_reader",
+  "operation": "memory-job:1e3b1d84-5bf9-4054-80c4-fb596a0b4147",
+  "correctionConversationId": "2ee7682a-7b71-4aa9-97b2-1a33fc670dda",
+  "correctionPublicTurnId": "quellight:3d030f15-1f84-4e3a-a575-5807852d1d34",
+  "currentAuthorityRevision": "care:3016480a1ada776828baacfd9894fe93553426f63a6064a2e5ade67dbe0bb98c",
+  "correctionNativeSourceId": "c8093bb2-d22c-483d-8584-4c217a192b7a",
+  "span": {
+    "start": 12,
+    "end": 65,
+    "text": "Only the stage manager may open the rehearsal export."
+  },
+  "foreignConversationId": "582093fd-03d5-431c-b840-45add2134f20",
+  "sameTextForeignSourceId": "63210d91-bdd6-4fe8-9825-9806dff6bae1",
+  "foreignOperationRefusal": "VICT_MEMORY_OPERATION_CONFLICT",
+  "staleOperationId": "memory-job:62068089-607a-49f6-8811-83df34423046",
+  "staleOperationState": "superseded",
+  "stalePublishedEventRetained": true,
+  "staleResultRead": null,
+  "staleCheckpointRead": null,
+  "selectedContextDoesNotLinkTheCurrentInput": true
+}

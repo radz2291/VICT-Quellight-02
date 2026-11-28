@@ -1,0 +1,3716 @@
+{
+  "schema": "quellight.q4-005.installed-replay@1",
+  "status": "passed",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "lockSha": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "fixtureCommit": "b588e6ffcd1b648fb42bd20bd8e6909db4db9ed5",
+  "node": "v22.23.5",
+  "fixtureSha256": "f4a2a97e3b3150e0e60ec906b27873e33a083e0b24bca34952fc65d63ba740b9",
+  "archives": [
+    {
+      "name": "@victframework/ui-media-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "234e78dd8f615622097b5166e5bd7f7646574d3663d3607b390d26ac8be11f22"
+    },
+    {
+      "name": "@victframework/ui-patterns-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "778cc1ab1a0b6b8f8135db80232fb26abbb34d7e4d1c8bb786c81794b2d5ee4b"
+    },
+    {
+      "name": "@victframework/application",
+      "version": "0.4.0-rc.1",
+      "sha256": "ea0fdde59f165379154517f4be4ca99e3c8790033862e4a56f6df5fdb09b5db7"
+    },
+    {
+      "name": "@victframework/contracts",
+      "version": "0.4.0-rc.1",
+      "sha256": "5fa012bb69ba3a278da35911d95ee079ac3a697a4c12554c298f9add2b7514e2"
+    },
+    {
+      "name": "@victframework/sdk",
+      "version": "0.4.0-rc.1",
+      "sha256": "c37e97319a52463c9b422a3de2870247beaee97b811fe378b3a4ee8e00e2ce7a"
+    },
+    {
+      "name": "@victframework/ui",
+      "version": "0.4.0-rc.1",
+      "sha256": "15dd5f5da2a38b6cbf0bc56677c7f6ccae190c4c7a5029d8cc7c8994263a7cb2"
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "74df4aac5bed13a556f684373e2d4d8ce021521db24edddfe22a414e46be2ac8"
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "version": "0.4.0-rc.1",
+      "sha256": "f578759a74fb2ac509e52850d27292871115de3103acbe9f7b6fc7d0ef606336"
+    },
+    {
+      "name": "@victframework/kernel",
+      "version": "0.4.0-rc.1",
+      "sha256": "a865551c64cb25b9314862e1a0afa19d5b8f61ebdb817dcb55f68085a431b5a6"
+    },
+    {
+      "name": "@victframework/control",
+      "version": "0.4.0-rc.1",
+      "sha256": "2f42f94df4c2c72ba84e6ee0d9bb59eb3feee8e0766ea248f00e81afb1acb82a"
+    },
+    {
+      "name": "@victframework/runtime",
+      "version": "0.4.0-rc.1",
+      "sha256": "e94ee682d7f57efbbc9722818f2ab6059ad6a9bb3f9c8229e73c24197b0abb3f"
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "version": "0.4.0-rc.1+vhost013",
+      "sha256": "cbe8615cba56511f6d16b303be9ee9258db97f0ccb1c0a13e54ede0bde989210"
+    },
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1",
+      "sha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c"
+    },
+    {
+      "name": "@victframework/hosted",
+      "version": "0.4.0-rc.1",
+      "sha256": "4aa6581aa7d26f067ddb3ec28dc8f7fd67bb34467e08132132972ed25c880de4"
+    }
+  ],
+  "scope": {
+    "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+    "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+    "foreignRoomId": "b1893d14-a906-4b31-afc2-2472c3e9e9c3",
+    "threads": {
+      "A": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "B": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "C": "1b077140-d078-469e-9356-94e876025ef3"
+    }
+  },
+  "settlements": [
+    {
+      "caseId": "original",
+      "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "turnId": "quellight:5106c05f-cd8e-43c9-b6a8-a52ebf593a80",
+      "assistantId": "quellight:5106c05f-cd8e-43c9-b6a8-a52ebf593a80:assistant",
+      "assistantText": "I will invite the volunteers for this rehearsal.",
+      "status": "completed",
+      "projectionSettled": true,
+      "jobId": "d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+      "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+      "queuedAt": "2026-11-28T02:20:17.326Z"
+    },
+    {
+      "caseId": "layout",
+      "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "turnId": "quellight:b7f86290-c723-4692-8eff-3f82518e681e",
+      "assistantId": "quellight:b7f86290-c723-4692-8eff-3f82518e681e:assistant",
+      "assistantText": "The printed layout will use large type and page numbers.",
+      "status": "completed",
+      "projectionSettled": true,
+      "jobId": "a995eb37-77a0-4958-9395-bd19dbb3ad46",
+      "operationId": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+      "queuedAt": "2026-11-28T02:20:18.754Z"
+    },
+    {
+      "caseId": "accessibility",
+      "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "turnId": "quellight:96a6bb48-bba9-49e3-a270-a97609bc8e1e",
+      "assistantId": "quellight:96a6bb48-bba9-49e3-a270-a97609bc8e1e:assistant",
+      "assistantText": "Two seats reserved for the check.",
+      "status": "completed",
+      "projectionSettled": true,
+      "jobId": "0e8b6be8-4413-4807-b60d-ad1ad089e723",
+      "operationId": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+      "queuedAt": "2026-11-28T02:20:20.334Z"
+    },
+    {
+      "caseId": "foreign",
+      "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+      "turnId": "quellight:15954191-a20b-46a2-9831-98f807c3826c",
+      "assistantId": "quellight:15954191-a20b-46a2-9831-98f807c3826c:assistant",
+      "assistantText": "The separate room uses this restriction.",
+      "status": "completed",
+      "projectionSettled": true,
+      "jobId": "b5de9010-8d20-45a9-af6d-3caaccb23f10",
+      "operationId": "memory-job:b5de9010-8d20-45a9-af6d-3caaccb23f10",
+      "queuedAt": "2026-11-28T02:20:21.822Z"
+    },
+    {
+      "caseId": "correction",
+      "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "turnId": "quellight:a61e3d71-2927-4fec-951e-3c6ea9cc03dc",
+      "assistantId": "quellight:a61e3d71-2927-4fec-951e-3c6ea9cc03dc:assistant",
+      "assistantText": "Only the stage manager will have access.",
+      "status": "completed",
+      "projectionSettled": true,
+      "jobId": "25b3468c-0896-49d2-8206-6d8478ea1b9d",
+      "operationId": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+      "queuedAt": "2026-11-28T02:20:25.491Z"
+    }
+  ],
+  "observations": [
+    {
+      "caseId": "original",
+      "operation": {
+        "resource_id": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+        "operation_id": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+        "thread_id": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "request_digest": "34f52cd061df95162eadafd2fb6e6310bb0ceca1baae86ffe608fbc7a58e5372",
+        "source_digest": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+        "authority_revision": "0",
+        "configuration_revision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+              "createdAt": "2026-11-28T02:20:17.951Z",
+              "updatedAt": "2026-11-28T02:20:18.011Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T02:20:17.194Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "a8cd8b59-c429-4635-82cb-01e078848872",
+                "7fcc4da6-0187-499d-8dac-81a116d2898d"
+              ],
+              "totalTokensObserved": 60,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 60,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+              "updatedAt": "2026-11-28T02:20:18.011Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T02:20:17.194Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 60
+            },
+            "history": [
+              {
+                "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+                "updatedAt": "2026-11-28T02:20:18.011Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T02:20:17.194Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 60
+              }
+            ],
+            "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+            "workingMemory": null,
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "sourceRevision": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T02:20:17.895Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T02:20:17.955Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T02:20:18.014Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T02:20:18.048Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T02:20:18.106Z",
+            "name": "published"
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "1",
+          "job_id": "d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T02:20:17.326Z"
+        },
+        {
+          "id": "2",
+          "job_id": "d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T02:20:17.489Z"
+        },
+        {
+          "id": "3",
+          "job_id": "d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T02:20:18.142Z"
+        }
+      ]
+    },
+    {
+      "caseId": "layout",
+      "operation": {
+        "resource_id": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+        "operation_id": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+        "thread_id": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "request_digest": "03d335bf460c844366836d1722fa2b481e26fd93538bb451c7b8847ee58cb9a5",
+        "source_digest": "483379c50ebf4bff83043802526f0925fadaecd4232eb2a4fafbc0bed5d9c7d5",
+        "authority_revision": "0",
+        "configuration_revision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+              "createdAt": "2026-11-28T02:20:17.951Z",
+              "updatedAt": "2026-11-28T02:20:19.479Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T02:20:18.620Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:18.620Z) ---\n\n<observation-group id=\"944752a2a20a0d50\" range=\"6c098d04-28ea-43f5-8369-5eaa368a5de5:1f07b6f0-f580-47b2-aa27-339fe71c9006\">\n- Use 24-point type for the printed cue sheet.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "a8cd8b59-c429-4635-82cb-01e078848872",
+                "7fcc4da6-0187-499d-8dac-81a116d2898d",
+                "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+                "1f07b6f0-f580-47b2-aa27-339fe71c9006"
+              ],
+              "totalTokensObserved": 199,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 139,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+              "updatedAt": "2026-11-28T02:20:19.479Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:18.620Z) ---\n\n<observation-group id=\"944752a2a20a0d50\" range=\"6c098d04-28ea-43f5-8369-5eaa368a5de5:1f07b6f0-f580-47b2-aa27-339fe71c9006\">\n- Use 24-point type for the printed cue sheet.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T02:20:18.620Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 139
+            },
+            "history": [
+              {
+                "id": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76",
+                "updatedAt": "2026-11-28T02:20:19.479Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:18.620Z) ---\n\n<observation-group id=\"944752a2a20a0d50\" range=\"6c098d04-28ea-43f5-8369-5eaa368a5de5:1f07b6f0-f580-47b2-aa27-339fe71c9006\">\n- Use 24-point type for the printed cue sheet.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T02:20:18.620Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 139
+              }
+            ],
+            "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+            "workingMemory": null,
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "sourceRevision": "483379c50ebf4bff83043802526f0925fadaecd4232eb2a4fafbc0bed5d9c7d5",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T02:20:19.402Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T02:20:19.430Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T02:20:19.481Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T02:20:19.520Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T02:20:19.562Z",
+            "name": "published"
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "4",
+          "job_id": "a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T02:20:18.754Z"
+        },
+        {
+          "id": "5",
+          "job_id": "a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T02:20:19.017Z"
+        },
+        {
+          "id": "6",
+          "job_id": "a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T02:20:19.601Z"
+        }
+      ]
+    },
+    {
+      "caseId": "accessibility",
+      "operation": {
+        "resource_id": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+        "operation_id": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+        "thread_id": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "request_digest": "fb0200e3c6c77d5ca2c4302689802679f303abf482e97ede989c38a3bcfa3f62",
+        "source_digest": "aa4b433b3734774b2a7fcf76f95c1741a6b642b316007adaed5254d206bb08d4",
+        "authority_revision": "0",
+        "configuration_revision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "a6e92c85-e910-4753-9585-f357b20b6c99",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+              "createdAt": "2026-11-28T02:20:20.953Z",
+              "updatedAt": "2026-11-28T02:20:21.026Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T02:20:20.180Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"37e37d09dfa04b6c\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:47976932-4190-4e17-a4b0-c9dc63ef8adf\">\n- Reserve two seats for the accessibility check.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "adb625ec-2035-48b8-938c-8c343ffcc959",
+                "47976932-4190-4e17-a4b0-c9dc63ef8adf"
+              ],
+              "totalTokensObserved": 58,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 58,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "a6e92c85-e910-4753-9585-f357b20b6c99",
+              "updatedAt": "2026-11-28T02:20:21.026Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"37e37d09dfa04b6c\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:47976932-4190-4e17-a4b0-c9dc63ef8adf\">\n- Reserve two seats for the accessibility check.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T02:20:20.180Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 58
+            },
+            "history": [
+              {
+                "id": "a6e92c85-e910-4753-9585-f357b20b6c99",
+                "updatedAt": "2026-11-28T02:20:21.026Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"37e37d09dfa04b6c\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:47976932-4190-4e17-a4b0-c9dc63ef8adf\">\n- Reserve two seats for the accessibility check.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T02:20:20.180Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 58
+              }
+            ],
+            "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+            "workingMemory": null,
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "0",
+            "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "sourceRevision": "aa4b433b3734774b2a7fcf76f95c1741a6b642b316007adaed5254d206bb08d4",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T02:20:20.926Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T02:20:20.954Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T02:20:21.028Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T02:20:21.068Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T02:20:21.120Z",
+            "name": "published"
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "7",
+          "job_id": "0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T02:20:20.334Z"
+        },
+        {
+          "id": "8",
+          "job_id": "0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T02:20:20.513Z"
+        },
+        {
+          "id": "9",
+          "job_id": "0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T02:20:21.162Z"
+        }
+      ]
+    },
+    {
+      "caseId": "foreign",
+      "operation": {
+        "resource_id": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+        "operation_id": "memory-job:b5de9010-8d20-45a9-af6d-3caaccb23f10",
+        "thread_id": "vict-conv-1b077140-d078-469e-9356-94e876025ef3",
+        "request_digest": "c3d09299467a336516ad92a039caf8cd721ba24db61b9145cb7503b2453117ae",
+        "source_digest": "85ba1cfc8139ee7809b8efbae04d160c13e5ecb7b5a3d49701d1284451652269",
+        "authority_revision": "0",
+        "configuration_revision": "5984ad86500ec41e532f3e12a453d46dd7daf20ed6521090884e61943a601c60",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "efdf1b6a-f404-44c5-9c7d-9d16e24e32d2",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-1b077140-d078-469e-9356-94e876025ef3",
+              "createdAt": "2026-11-28T02:20:22.374Z",
+              "updatedAt": "2026-11-28T02:20:22.421Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T02:20:21.686Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"e846593e23969103\" range=\"4dbd65a3-6f89-46d1-a79a-1598d37cd51d:90aa3ecc-d55c-40da-9d61-de3dc06b15f2\">\n- Only the stage manager may open the rehearsal export.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "4dbd65a3-6f89-46d1-a79a-1598d37cd51d",
+                "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+              ],
+              "totalTokensObserved": 56,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 56,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "efdf1b6a-f404-44c5-9c7d-9d16e24e32d2",
+              "updatedAt": "2026-11-28T02:20:22.421Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"e846593e23969103\" range=\"4dbd65a3-6f89-46d1-a79a-1598d37cd51d:90aa3ecc-d55c-40da-9d61-de3dc06b15f2\">\n- Only the stage manager may open the rehearsal export.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T02:20:21.686Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 56
+            },
+            "history": [
+              {
+                "id": "efdf1b6a-f404-44c5-9c7d-9d16e24e32d2",
+                "updatedAt": "2026-11-28T02:20:22.421Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"e846593e23969103\" range=\"4dbd65a3-6f89-46d1-a79a-1598d37cd51d:90aa3ecc-d55c-40da-9d61-de3dc06b15f2\">\n- Only the stage manager may open the rehearsal export.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T02:20:21.686Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 56
+              }
+            ],
+            "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+            "workingMemory": null,
+            "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+            "authorityRevision": "0",
+            "configurationRevision": "5984ad86500ec41e532f3e12a453d46dd7daf20ed6521090884e61943a601c60",
+            "quarantinedMessageIds": [],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:b5de9010-8d20-45a9-af6d-3caaccb23f10",
+          "sourceRevision": "85ba1cfc8139ee7809b8efbae04d160c13e5ecb7b5a3d49701d1284451652269",
+          "configurationRevision": "5984ad86500ec41e532f3e12a453d46dd7daf20ed6521090884e61943a601c60"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T02:20:22.355Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T02:20:22.375Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T02:20:22.423Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T02:20:22.449Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T02:20:22.483Z",
+            "name": "published"
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "10",
+          "job_id": "b5de9010-8d20-45a9-af6d-3caaccb23f10",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T02:20:21.822Z"
+        },
+        {
+          "id": "11",
+          "job_id": "b5de9010-8d20-45a9-af6d-3caaccb23f10",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T02:20:21.990Z"
+        },
+        {
+          "id": "12",
+          "job_id": "b5de9010-8d20-45a9-af6d-3caaccb23f10",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T02:20:22.518Z"
+        }
+      ]
+    },
+    {
+      "caseId": "correction",
+      "operation": {
+        "resource_id": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+        "operation_id": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+        "thread_id": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "request_digest": "c2e16a813bc7139b9375ae0ba126298a9b8c8fe54ff36bf4eb1a98ac27f7e2ed",
+        "source_digest": "3cf651c65b150e47dcb079ecdbe39958dfb7feb87a49e3890262d87e1f54c1fe",
+        "authority_revision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "configuration_revision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+        "kind": "observe",
+        "status": "completed",
+        "checkpoint": {
+          "observed": true,
+          "reflected": false,
+          "observations": [
+            {
+              "id": "033fe547-80f5-4098-9a8c-f8ac7147e471",
+              "scope": "thread",
+              "config": {
+                "scope": "thread",
+                "reflection": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    }
+                  ],
+                  "modelSettings": {
+                    "temperature": 0
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 1024
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "observationTokens": 40000,
+                  "activateOnProviderChange": false
+                },
+                "observation": {
+                  "model": {
+                    "modelId": "deterministic-1",
+                    "provider": "offline-fixture",
+                    "supportedUrls": {},
+                    "specificationVersion": "v2",
+                    "providerModelIdentity": "offline-fixture/deterministic-1"
+                  },
+                  "extractors": [
+                    {
+                      "mode": "inline",
+                      "name": "current-task",
+                      "slug": "current-task",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "currentTask",
+                      "instructionsConfig": "State the current task(s) explicitly. Can be single or multiple:\n- Primary: What the agent is currently working on\n- Secondary: Other pending tasks (mark as \"waiting for user\" if appropriate)\n\nIf the agent started doing something without user approval, note that it's off-task.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "inline",
+                      "name": "suggested-response",
+                      "slug": "suggested-response",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": true,
+                      "instructions": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "schemaConfig": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "metadataKeyPath": "suggestedResponse",
+                      "instructionsConfig": "Hint for the agent's immediate next message. Examples:\n- \"I've updated the navigation model. Let me walk you through the changes...\"\n- \"The assistant should wait for the user to respond before continuing.\"\n- Call the view tool on src/example.ts to continue debugging.",
+                      "includePreviousExtraction": true,
+                      "retryStructuredExtractionOnEmptyObject": false
+                    },
+                    {
+                      "mode": "structured",
+                      "name": "Working Memory",
+                      "slug": "working-memory",
+                      "schema": {
+                        "def": {
+                          "type": "string"
+                        },
+                        "type": "string"
+                      },
+                      "internal": false,
+                      "instructions": "",
+                      "metadataKeyPath": false,
+                      "includePreviousExtraction": false,
+                      "retryStructuredExtractionOnEmptyObject": true
+                    }
+                  ],
+                  "threadTitle": false,
+                  "bufferOnIdle": false,
+                  "messageTokens": 1,
+                  "modelSettings": {
+                    "temperature": 0.3
+                  },
+                  "providerOptions": {
+                    "google": {
+                      "thinkingConfig": {
+                        "thinkingBudget": 215
+                      }
+                    }
+                  },
+                  "shareTokenBudget": false,
+                  "maxTokensPerBatch": 10000,
+                  "observeAttachments": true,
+                  "previousObserverTokens": 2000,
+                  "activateOnProviderChange": false
+                }
+              },
+              "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+              "createdAt": "2026-11-28T02:20:24.269Z",
+              "updatedAt": "2026-11-28T02:20:26.173Z",
+              "originType": "initial",
+              "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+              "isObserving": false,
+              "isReflecting": false,
+              "lastObservedAt": "2026-11-28T02:20:25.346Z",
+              "generationCount": 0,
+              "observedTimezone": "Asia/Kuala_Lumpur",
+              "activeObservations": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:25.346Z) ---\n\n<observation-group id=\"282389aadedddf88\" range=\"a03beb8b-1bba-4505-b5df-5435bab5adee:22beac1b-9806-4603-8a7f-e2d820ee997e\">\n- Only the stage manager may open the rehearsal export.\n- The producer approved public sharing.\n</observation-group>",
+              "lastBufferedAtTime": null,
+              "observedMessageIds": [
+                "adb625ec-2035-48b8-938c-8c343ffcc959",
+                "a03beb8b-1bba-4505-b5df-5435bab5adee",
+                "22beac1b-9806-4603-8a7f-e2d820ee997e"
+              ],
+              "totalTokensObserved": 205,
+              "lastBufferedAtTokens": 0,
+              "pendingMessageTokens": 0,
+              "isBufferingReflection": false,
+              "observationTokenCount": 148,
+              "isBufferingObservation": false
+            }
+          ],
+          "workingMemory": null
+        },
+        "result": {
+          "observed": true,
+          "snapshot": {
+            "current": {
+              "id": "033fe547-80f5-4098-9a8c-f8ac7147e471",
+              "updatedAt": "2026-11-28T02:20:26.173Z",
+              "generation": 0,
+              "observations": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:25.346Z) ---\n\n<observation-group id=\"282389aadedddf88\" range=\"a03beb8b-1bba-4505-b5df-5435bab5adee:22beac1b-9806-4603-8a7f-e2d820ee997e\">\n- Only the stage manager may open the rehearsal export.\n- The producer approved public sharing.\n</observation-group>",
+              "lastObservedAt": "2026-11-28T02:20:25.346Z",
+              "bufferedObservations": [],
+              "observationTokenCount": 148
+            },
+            "history": [
+              {
+                "id": "033fe547-80f5-4098-9a8c-f8ac7147e471",
+                "updatedAt": "2026-11-28T02:20:26.173Z",
+                "generation": 0,
+                "observations": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:25.346Z) ---\n\n<observation-group id=\"282389aadedddf88\" range=\"a03beb8b-1bba-4505-b5df-5435bab5adee:22beac1b-9806-4603-8a7f-e2d820ee997e\">\n- Only the stage manager may open the rehearsal export.\n- The producer approved public sharing.\n</observation-group>",
+                "lastObservedAt": "2026-11-28T02:20:25.346Z",
+                "bufferedObservations": [],
+                "observationTokenCount": 148
+              }
+            ],
+            "resourceId": "vict-actor-581f2356-0e43-4ff3-8adc-fb01b9582886",
+            "workingMemory": null,
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+            "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+            "quarantinedMessageIds": [
+              "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+              "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+              "7fcc4da6-0187-499d-8dac-81a116d2898d",
+              "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+            ],
+            "workingMemoryOverride": null
+          },
+          "reflected": false,
+          "operationId": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "sourceRevision": "3cf651c65b150e47dcb079ecdbe39958dfb7feb87a49e3890262d87e1f54c1fe",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4"
+        },
+        "events": [
+          {
+            "at": "2026-11-28T02:20:26.090Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T02:20:26.108Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T02:20:26.175Z",
+            "name": "observer-completed"
+          },
+          {
+            "at": "2026-11-28T02:20:26.211Z",
+            "name": "prepared"
+          },
+          {
+            "at": "2026-11-28T02:20:26.247Z",
+            "name": "published"
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "25",
+          "job_id": "25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "kind": "observe",
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T02:20:25.491Z"
+        },
+        {
+          "id": "26",
+          "job_id": "25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "kind": "observe",
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T02:20:25.666Z"
+        },
+        {
+          "id": "27",
+          "job_id": "25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "kind": "observe",
+          "state": "completed",
+          "code": null,
+          "at": "2026-11-28T02:20:26.289Z"
+        }
+      ]
+    }
+  ],
+  "reads": {
+    "before": [
+      {
+        "caseId": "original",
+        "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+        "accepted": [
+          {
+            "groupId": "d5b691fcceb4d6a5",
+            "sourceId": "a8cd8b59-c429-4635-82cb-01e078848872",
+            "role": "user",
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "sourceText": "Invite all workshop volunteers to preview the rehearsal export.",
+            "span": {
+              "start": 0,
+              "end": 63,
+              "text": "Invite all workshop volunteers to preview the rehearsal export."
+            }
+          }
+        ],
+        "unknown": [],
+        "ranges": [
+          {
+            "groupId": "d5b691fcceb4d6a5",
+            "first": "a8cd8b59-c429-4635-82cb-01e078848872",
+            "last": "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "eligibleEndpointIds": [
+              "a8cd8b59-c429-4635-82cb-01e078848872",
+              "7fcc4da6-0187-499d-8dac-81a116d2898d"
+            ],
+            "disposition": "bounded-two-message-range"
+          }
+        ],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 8163
+          },
+          {
+            "port": "app.memorySourcePage",
+            "resultBytes": 1110
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004"
+        },
+        "currentAuthorityRevision": "0",
+        "exclusions": {
+          "excluded": [],
+          "quarantined": []
+        },
+        "operation": {
+          "id": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "status": "completed",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:17.895Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:17.955Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:18.014Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:18.048Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:18.106Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>",
+          "observationId": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76"
+        },
+        "structuredSourceMembership": "field-absent",
+        "sourcePage": {
+          "nextCursor": null,
+          "rows": [
+            {
+              "id": "a8cd8b59-c429-4635-82cb-01e078848872",
+              "role": "user",
+              "at": "2026-11-28T02:20:17.092Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "7fcc4da6-0187-499d-8dac-81a116d2898d",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:17.194Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+              "role": "user",
+              "at": "2026-11-28T02:20:18.581Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:18.620Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            }
+          ]
+        },
+        "metrics": {
+          "namedReads": 6,
+          "namedResultBytes": 15230,
+          "postgresWire": {
+            "sent": 16484,
+            "received": 27512,
+            "connections": 1
+          },
+          "elapsedMs": 169.715
+        }
+      },
+      {
+        "caseId": "layout",
+        "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "operationId": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+        "accepted": [
+          {
+            "groupId": "944752a2a20a0d50",
+            "sourceId": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+            "role": "user",
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "sourceText": "Use 24-point type for the printed cue sheet. Keep the page number on every page.",
+            "span": {
+              "start": 0,
+              "end": 44,
+              "text": "Use 24-point type for the printed cue sheet."
+            }
+          }
+        ],
+        "unknown": [],
+        "ranges": [
+          {
+            "groupId": "d5b691fcceb4d6a5",
+            "first": "a8cd8b59-c429-4635-82cb-01e078848872",
+            "last": "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "disposition": "previous-range"
+          },
+          {
+            "groupId": "944752a2a20a0d50",
+            "first": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+            "last": "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "eligibleEndpointIds": [
+              "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+              "1f07b6f0-f580-47b2-aa27-339fe71c9006"
+            ],
+            "disposition": "bounded-two-message-range"
+          }
+        ],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 9013
+          },
+          {
+            "port": "app.memorySourcePage",
+            "resultBytes": 1110
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004"
+        },
+        "currentAuthorityRevision": "0",
+        "exclusions": {
+          "excluded": [],
+          "quarantined": []
+        },
+        "operation": {
+          "id": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "status": "completed",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "483379c50ebf4bff83043802526f0925fadaecd4232eb2a4fafbc0bed5d9c7d5",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:19.402Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:19.430Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:19.481Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:19.520Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:19.562Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:18.620Z) ---\n\n<observation-group id=\"944752a2a20a0d50\" range=\"6c098d04-28ea-43f5-8369-5eaa368a5de5:1f07b6f0-f580-47b2-aa27-339fe71c9006\">\n- Use 24-point type for the printed cue sheet.\n</observation-group>",
+          "observationId": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76"
+        },
+        "structuredSourceMembership": "field-absent",
+        "sourcePage": {
+          "nextCursor": null,
+          "rows": [
+            {
+              "id": "a8cd8b59-c429-4635-82cb-01e078848872",
+              "role": "user",
+              "at": "2026-11-28T02:20:17.092Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "7fcc4da6-0187-499d-8dac-81a116d2898d",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:17.194Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+              "role": "user",
+              "at": "2026-11-28T02:20:18.581Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            },
+            {
+              "id": "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:18.620Z",
+              "excluded": false,
+              "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004"
+            }
+          ]
+        },
+        "metrics": {
+          "namedReads": 6,
+          "namedResultBytes": 16080,
+          "postgresWire": {
+            "sent": 16366,
+            "received": 27878,
+            "connections": 0
+          },
+          "elapsedMs": 88.519
+        }
+      },
+      {
+        "caseId": "accessibility",
+        "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "operationId": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+        "accepted": [
+          {
+            "groupId": "37e37d09dfa04b6c",
+            "sourceId": "adb625ec-2035-48b8-938c-8c343ffcc959",
+            "role": "user",
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "0",
+            "sourceText": "Reserve two seats for the accessibility check.",
+            "span": {
+              "start": 0,
+              "end": 46,
+              "text": "Reserve two seats for the accessibility check."
+            }
+          }
+        ],
+        "unknown": [],
+        "ranges": [
+          {
+            "groupId": "37e37d09dfa04b6c",
+            "first": "adb625ec-2035-48b8-938c-8c343ffcc959",
+            "last": "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "eligibleEndpointIds": [
+              "adb625ec-2035-48b8-938c-8c343ffcc959",
+              "47976932-4190-4e17-a4b0-c9dc63ef8adf"
+            ],
+            "disposition": "bounded-two-message-range"
+          }
+        ],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 8112
+          },
+          {
+            "port": "app.memorySourcePage",
+            "resultBytes": 538
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        },
+        "currentAuthorityRevision": "0",
+        "exclusions": {
+          "excluded": [],
+          "quarantined": []
+        },
+        "operation": {
+          "id": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "status": "completed",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "aa4b433b3734774b2a7fcf76f95c1741a6b642b316007adaed5254d206bb08d4",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:20.926Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:20.954Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:21.028Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:21.068Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:21.120Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"37e37d09dfa04b6c\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:47976932-4190-4e17-a4b0-c9dc63ef8adf\">\n- Reserve two seats for the accessibility check.\n</observation-group>",
+          "observationId": "a6e92c85-e910-4753-9585-f357b20b6c99"
+        },
+        "structuredSourceMembership": "field-absent",
+        "sourcePage": {
+          "nextCursor": null,
+          "rows": [
+            {
+              "id": "adb625ec-2035-48b8-938c-8c343ffcc959",
+              "role": "user",
+              "at": "2026-11-28T02:20:20.141Z",
+              "excluded": false,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            },
+            {
+              "id": "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:20.180Z",
+              "excluded": false,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            }
+          ]
+        },
+        "metrics": {
+          "namedReads": 6,
+          "namedResultBytes": 14607,
+          "postgresWire": {
+            "sent": 16366,
+            "received": 25924,
+            "connections": 0
+          },
+          "elapsedMs": 79.316
+        }
+      },
+      {
+        "caseId": "duplicate",
+        "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 304
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 8163
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004"
+        },
+        "currentAuthorityRevision": "0",
+        "exclusions": {
+          "excluded": [],
+          "quarantined": []
+        },
+        "operation": {
+          "id": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "status": "completed",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:17.895Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:17.955Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:18.014Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:18.048Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:18.106Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"d5b691fcceb4d6a5\" range=\"a8cd8b59-c429-4635-82cb-01e078848872:7fcc4da6-0187-499d-8dac-81a116d2898d\">\n- Invite all workshop volunteers to preview the rehearsal export.\n</observation-group>",
+          "observationId": "53e516a4-a032-43a8-99d9-dd6ca5e0cf76"
+        },
+        "refusal": "duplicate-operation",
+        "metrics": {
+          "namedReads": 4,
+          "namedResultBytes": 13816,
+          "postgresWire": {
+            "sent": 6709,
+            "received": 15580,
+            "connections": 0
+          },
+          "elapsedMs": 37.157
+        }
+      },
+      {
+        "caseId": "foreign-room",
+        "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+        "operationId": "memory-job:b5de9010-8d20-45a9-af6d-3caaccb23f10",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "b1893d14-a906-4b31-afc2-2472c3e9e9c3",
+          "threadId": "vict-conv-1b077140-d078-469e-9356-94e876025ef3"
+        },
+        "refusal": "foreign-room",
+        "metrics": {
+          "namedReads": 1,
+          "namedResultBytes": 355,
+          "postgresWire": {
+            "sent": 1375,
+            "received": 2098,
+            "connections": 0
+          },
+          "elapsedMs": 4.601
+        }
+      }
+    ],
+    "after": [
+      {
+        "caseId": "original-stale",
+        "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 843
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004"
+        },
+        "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "exclusions": {
+          "excluded": [
+            "a8cd8b59-c429-4635-82cb-01e078848872"
+          ],
+          "quarantined": [
+            "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+          ]
+        },
+        "operation": {
+          "id": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "status": "superseded",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:17.895Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:17.955Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:18.014Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:18.048Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:18.106Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": false,
+          "checkpointPresent": false,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [],
+          "snapshotFields": [],
+          "currentFields": [],
+          "observation": null,
+          "observationId": null
+        },
+        "refusal": "stale-authority",
+        "metrics": {
+          "namedReads": 4,
+          "namedResultBytes": 7029,
+          "postgresWire": {
+            "sent": 6777,
+            "received": 9262,
+            "connections": 0
+          },
+          "elapsedMs": 39.546
+        }
+      },
+      {
+        "caseId": "layout-stale",
+        "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+        "operationId": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 843
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004"
+        },
+        "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "exclusions": {
+          "excluded": [
+            "a8cd8b59-c429-4635-82cb-01e078848872"
+          ],
+          "quarantined": [
+            "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+          ]
+        },
+        "operation": {
+          "id": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "threadId": "vict-conv-31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "status": "superseded",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "483379c50ebf4bff83043802526f0925fadaecd4232eb2a4fafbc0bed5d9c7d5",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:19.402Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:19.430Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:19.481Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:19.520Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:19.562Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": false,
+          "checkpointPresent": false,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [],
+          "snapshotFields": [],
+          "currentFields": [],
+          "observation": null,
+          "observationId": null
+        },
+        "refusal": "stale-authority",
+        "metrics": {
+          "namedReads": 4,
+          "namedResultBytes": 7029,
+          "postgresWire": {
+            "sent": 6777,
+            "received": 9262,
+            "connections": 0
+          },
+          "elapsedMs": 45.09
+        }
+      },
+      {
+        "caseId": "accessibility-stale",
+        "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "operationId": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 843
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        },
+        "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "exclusions": {
+          "excluded": [
+            "a8cd8b59-c429-4635-82cb-01e078848872"
+          ],
+          "quarantined": [
+            "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+          ]
+        },
+        "operation": {
+          "id": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "status": "superseded",
+          "authorityRevision": "0",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "aa4b433b3734774b2a7fcf76f95c1741a6b642b316007adaed5254d206bb08d4",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:20.926Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:20.954Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:21.028Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:21.068Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:21.120Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": false,
+          "checkpointPresent": false,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [],
+          "snapshotFields": [],
+          "currentFields": [],
+          "observation": null,
+          "observationId": null
+        },
+        "refusal": "stale-authority",
+        "metrics": {
+          "namedReads": 4,
+          "namedResultBytes": 7029,
+          "postgresWire": {
+            "sent": 6777,
+            "received": 9257,
+            "connections": 0
+          },
+          "elapsedMs": 43.192
+        }
+      },
+      {
+        "caseId": "correction",
+        "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "operationId": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+        "accepted": [
+          {
+            "groupId": "282389aadedddf88",
+            "sourceId": "a03beb8b-1bba-4505-b5df-5435bab5adee",
+            "role": "user",
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+            "sourceText": "Correction: Only the stage manager may open the rehearsal export.",
+            "span": {
+              "start": 12,
+              "end": 65,
+              "text": "Only the stage manager may open the rehearsal export."
+            }
+          }
+        ],
+        "unknown": [
+          {
+            "groupId": "282389aadedddf88",
+            "text": "The producer approved public sharing.",
+            "reason": "unique-user-span-unresolved"
+          }
+        ],
+        "ranges": [
+          {
+            "groupId": "d1c14145758976bd",
+            "first": "adb625ec-2035-48b8-938c-8c343ffcc959",
+            "last": "adb625ec-2035-48b8-938c-8c343ffcc959",
+            "disposition": "previous-range"
+          },
+          {
+            "groupId": "282389aadedddf88",
+            "first": "a03beb8b-1bba-4505-b5df-5435bab5adee",
+            "last": "22beac1b-9806-4603-8a7f-e2d820ee997e",
+            "eligibleEndpointIds": [
+              "a03beb8b-1bba-4505-b5df-5435bab5adee",
+              "22beac1b-9806-4603-8a7f-e2d820ee997e"
+            ],
+            "disposition": "bounded-two-message-range"
+          }
+        ],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 9364
+          },
+          {
+            "port": "app.memorySourcePage",
+            "resultBytes": 1133
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        },
+        "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "exclusions": {
+          "excluded": [
+            "a8cd8b59-c429-4635-82cb-01e078848872"
+          ],
+          "quarantined": [
+            "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+          ]
+        },
+        "operation": {
+          "id": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "status": "completed",
+          "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "3cf651c65b150e47dcb079ecdbe39958dfb7feb87a49e3890262d87e1f54c1fe",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:26.090Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:26.108Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:26.175Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:26.211Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:26.247Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:25.346Z) ---\n\n<observation-group id=\"282389aadedddf88\" range=\"a03beb8b-1bba-4505-b5df-5435bab5adee:22beac1b-9806-4603-8a7f-e2d820ee997e\">\n- Only the stage manager may open the rehearsal export.\n- The producer approved public sharing.\n</observation-group>",
+          "observationId": "033fe547-80f5-4098-9a8c-f8ac7147e471"
+        },
+        "structuredSourceMembership": "field-absent",
+        "sourcePage": {
+          "nextCursor": null,
+          "rows": [
+            {
+              "id": "adb625ec-2035-48b8-938c-8c343ffcc959",
+              "role": "user",
+              "at": "2026-11-28T02:20:20.141Z",
+              "excluded": false,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            },
+            {
+              "id": "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:20.180Z",
+              "excluded": true,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            },
+            {
+              "id": "a03beb8b-1bba-4505-b5df-5435bab5adee",
+              "role": "user",
+              "at": "2026-11-28T02:20:25.298Z",
+              "excluded": false,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            },
+            {
+              "id": "22beac1b-9806-4603-8a7f-e2d820ee997e",
+              "role": "assistant",
+              "at": "2026-11-28T02:20:25.346Z",
+              "excluded": false,
+              "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+            }
+          ]
+        },
+        "metrics": {
+          "namedReads": 6,
+          "namedResultBytes": 17520,
+          "postgresWire": {
+            "sent": 16638,
+            "received": 32247,
+            "connections": 0
+          },
+          "elapsedMs": 91.409
+        }
+      },
+      {
+        "caseId": "correction-duplicate",
+        "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "operationId": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+        "accepted": [],
+        "unknown": [],
+        "ranges": [],
+        "reads": [
+          {
+            "port": "app.getConversation",
+            "resultBytes": 355
+          },
+          {
+            "port": "app.loadEffectiveMemorySettings",
+            "resultBytes": 4994
+          },
+          {
+            "port": "vict.authority",
+            "resultBytes": 837
+          },
+          {
+            "port": "vict.operation",
+            "resultBytes": 9364
+          }
+        ],
+        "scope": {
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        },
+        "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "exclusions": {
+          "excluded": [
+            "a8cd8b59-c429-4635-82cb-01e078848872"
+          ],
+          "quarantined": [
+            "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+            "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+            "7fcc4da6-0187-499d-8dac-81a116d2898d",
+            "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+          ]
+        },
+        "operation": {
+          "id": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "status": "completed",
+          "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceDigest": "3cf651c65b150e47dcb079ecdbe39958dfb7feb87a49e3890262d87e1f54c1fe",
+          "events": [
+            {
+              "at": "2026-11-28T02:20:26.090Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T02:20:26.108Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T02:20:26.175Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T02:20:26.211Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T02:20:26.247Z",
+              "name": "published"
+            }
+          ],
+          "resultPresent": true,
+          "checkpointPresent": true,
+          "operationFields": [
+            "authority_revision",
+            "checkpoint",
+            "configuration_revision",
+            "events",
+            "kind",
+            "operation_id",
+            "request_digest",
+            "resource_id",
+            "result",
+            "source_digest",
+            "status",
+            "thread_id"
+          ],
+          "resultFields": [
+            "configurationRevision",
+            "observed",
+            "operationId",
+            "reflected",
+            "snapshot",
+            "sourceRevision"
+          ],
+          "snapshotFields": [
+            "authorityRevision",
+            "configurationRevision",
+            "conversationId",
+            "current",
+            "history",
+            "quarantinedMessageIds",
+            "resourceId",
+            "workingMemory",
+            "workingMemoryOverride"
+          ],
+          "currentFields": [
+            "bufferedObservations",
+            "generation",
+            "id",
+            "lastObservedAt",
+            "observationTokenCount",
+            "observations",
+            "updatedAt"
+          ],
+          "observation": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>\n\n--- message boundary (2026-11-28T02:20:25.346Z) ---\n\n<observation-group id=\"282389aadedddf88\" range=\"a03beb8b-1bba-4505-b5df-5435bab5adee:22beac1b-9806-4603-8a7f-e2d820ee997e\">\n- Only the stage manager may open the rehearsal export.\n- The producer approved public sharing.\n</observation-group>",
+          "observationId": "033fe547-80f5-4098-9a8c-f8ac7147e471"
+        },
+        "refusal": "duplicate-operation",
+        "metrics": {
+          "namedReads": 4,
+          "namedResultBytes": 15550,
+          "postgresWire": {
+            "sent": 6777,
+            "received": 18102,
+            "connections": 0
+          },
+          "elapsedMs": 38.014
+        }
+      }
+    ]
+  },
+  "models": [
+    {
+      "role": "foreground",
+      "caseId": "original"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+      "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "authorityRevision": "0"
+    },
+    {
+      "role": "foreground",
+      "caseId": "layout"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "a995eb37-77a0-4958-9395-bd19dbb3ad46",
+      "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "authorityRevision": "0"
+    },
+    {
+      "role": "foreground",
+      "caseId": "accessibility"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "0e8b6be8-4413-4807-b60d-ad1ad089e723",
+      "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "authorityRevision": "0"
+    },
+    {
+      "role": "foreground",
+      "caseId": "foreign"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "b5de9010-8d20-45a9-af6d-3caaccb23f10",
+      "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+      "authorityRevision": "0"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "574bc1d4-b6be-4a38-bb06-0036710ce5ff",
+      "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+      "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "285be5e2-a464-4988-bbaa-bc5ee2346ca7",
+      "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "7d11ee21-2b61-41a9-956a-7ea46a650a17",
+      "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+      "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55"
+    },
+    {
+      "role": "foreground",
+      "caseId": "correction"
+    },
+    {
+      "role": "observer-fixture",
+      "jobId": "25b3468c-0896-49d2-8206-6d8478ea1b9d",
+      "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55"
+    }
+  ],
+  "evidenceSource": "Installed application services on synthetic loopback PostgreSQL. Deterministic model seam.",
+  "postgres": "18.6",
+  "shadowSqlRole": {
+    "can_insert": false,
+    "can_rewrite": false,
+    "namespaceUpdateBlocked": true
+  },
+  "care": {
+    "excludedId": "a8cd8b59-c429-4635-82cb-01e078848872",
+    "originalConversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+    "correctionConversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+    "fromRevision": "0",
+    "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+    "cleanup": "queued",
+    "purgeQueued": 1,
+    "rebuildQueued": 3,
+    "retryQueued": 0,
+    "dispatch": {
+      "handled": 4,
+      "busy": false
+    },
+    "fixtureModelCalls": 3
+  },
+  "rebuildWitness": {
+    "caseId": "B-rebuilt-accessibility",
+    "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+    "operationId": "memory-job:285be5e2-a464-4988-bbaa-bc5ee2346ca7",
+    "accepted": [
+      {
+        "groupId": "d1c14145758976bd",
+        "sourceId": "adb625ec-2035-48b8-938c-8c343ffcc959",
+        "role": "user",
+        "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+        "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+        "sourceText": "Reserve two seats for the accessibility check.",
+        "span": {
+          "start": 0,
+          "end": 46,
+          "text": "Reserve two seats for the accessibility check."
+        }
+      }
+    ],
+    "unknown": [],
+    "ranges": [
+      {
+        "groupId": "d1c14145758976bd",
+        "first": "adb625ec-2035-48b8-938c-8c343ffcc959",
+        "last": "adb625ec-2035-48b8-938c-8c343ffcc959",
+        "eligibleEndpointIds": [
+          "adb625ec-2035-48b8-938c-8c343ffcc959"
+        ],
+        "disposition": "bounded-single-message-range"
+      }
+    ],
+    "reads": [
+      {
+        "port": "app.getConversation",
+        "resultBytes": 355
+      },
+      {
+        "port": "app.loadEffectiveMemorySettings",
+        "resultBytes": 4994
+      },
+      {
+        "port": "vict.authority",
+        "resultBytes": 837
+      },
+      {
+        "port": "vict.operation",
+        "resultBytes": 8364
+      },
+      {
+        "port": "app.memorySourcePage",
+        "resultBytes": 624
+      },
+      {
+        "port": "vict.authority",
+        "resultBytes": 837
+      }
+    ],
+    "scope": {
+      "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+      "roomId": "7d2449fa-20b5-4028-82e5-6ca6666b40bb",
+      "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+    },
+    "currentAuthorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+    "exclusions": {
+      "excluded": [
+        "a8cd8b59-c429-4635-82cb-01e078848872"
+      ],
+      "quarantined": [
+        "1f07b6f0-f580-47b2-aa27-339fe71c9006",
+        "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+        "7fcc4da6-0187-499d-8dac-81a116d2898d",
+        "90aa3ecc-d55c-40da-9d61-de3dc06b15f2"
+      ]
+    },
+    "operation": {
+      "id": "memory-job:285be5e2-a464-4988-bbaa-bc5ee2346ca7",
+      "threadId": "vict-conv-d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+      "status": "completed",
+      "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+      "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+      "sourceDigest": "85a3077b86da05a3a3a42f2e9ce35e0d445b98368e83a3fd1051fde61d84988c",
+      "events": [
+        {
+          "at": "2026-11-28T02:20:24.233Z",
+          "name": "observe-started"
+        },
+        {
+          "at": "2026-11-28T02:20:24.270Z",
+          "name": "observer-started"
+        },
+        {
+          "at": "2026-11-28T02:20:24.334Z",
+          "name": "observer-completed"
+        },
+        {
+          "at": "2026-11-28T02:20:24.369Z",
+          "name": "prepared"
+        },
+        {
+          "at": "2026-11-28T02:20:24.411Z",
+          "name": "published"
+        }
+      ],
+      "resultPresent": true,
+      "checkpointPresent": true,
+      "operationFields": [
+        "authority_revision",
+        "checkpoint",
+        "configuration_revision",
+        "events",
+        "kind",
+        "operation_id",
+        "request_digest",
+        "resource_id",
+        "result",
+        "source_digest",
+        "status",
+        "thread_id"
+      ],
+      "resultFields": [
+        "configurationRevision",
+        "observed",
+        "operationId",
+        "reflected",
+        "snapshot",
+        "sourceRevision"
+      ],
+      "snapshotFields": [
+        "authorityRevision",
+        "configurationRevision",
+        "conversationId",
+        "current",
+        "history",
+        "quarantinedMessageIds",
+        "resourceId",
+        "workingMemory",
+        "workingMemoryOverride"
+      ],
+      "currentFields": [
+        "bufferedObservations",
+        "generation",
+        "id",
+        "lastObservedAt",
+        "observationTokenCount",
+        "observations",
+        "updatedAt"
+      ],
+      "observation": "<observation-group id=\"d1c14145758976bd\" range=\"adb625ec-2035-48b8-938c-8c343ffcc959:adb625ec-2035-48b8-938c-8c343ffcc959\">\n- Reserve two seats for the accessibility check.\n</observation-group>",
+      "observationId": "033fe547-80f5-4098-9a8c-f8ac7147e471"
+    },
+    "structuredSourceMembership": "field-absent",
+    "sourcePage": {
+      "nextCursor": null,
+      "rows": [
+        {
+          "id": "adb625ec-2035-48b8-938c-8c343ffcc959",
+          "role": "user",
+          "at": "2026-11-28T02:20:20.141Z",
+          "excluded": false,
+          "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        },
+        {
+          "id": "47976932-4190-4e17-a4b0-c9dc63ef8adf",
+          "role": "assistant",
+          "at": "2026-11-28T02:20:20.180Z",
+          "excluded": true,
+          "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc"
+        }
+      ]
+    },
+    "metrics": {
+      "namedReads": 6,
+      "namedResultBytes": 16011,
+      "postgresWire": {
+        "sent": 16638,
+        "received": 30332,
+        "connections": 0
+      },
+      "elapsedMs": 90.094
+    }
+  },
+  "receiptAudit": {
+    "namespaceTurnRecordsRead": 18,
+    "receipts": [
+      {
+        "caseId": "original",
+        "request": {
+          "kind": "observe",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "operationId": "memory-job:d5f0940e-791f-4c27-ab3e-9a75332ae6c2",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceRevision": "4a9a5b3f5b27080f24dfbfa15152fcb75c7fa30d96d62923f7131ae0344f3743",
+          "authorityRevision": "0"
+        },
+        "receipt": {
+          "invocationId": "bdc408da-3770-46cf-8257-cdc3f844f658",
+          "turnId": "quellight-memory:ea3c259e-1a81-4f3d-89d4-b71f68ec6958",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:ea3c259e-1a81-4f3d-89d4-b71f68ec6958:native-memory:quellight.memory.maintain:1:0494e305bc7c77580c6fc36e1a1e3002a3ed1b5a458fe5c1558e90020636ecde",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "argDigest": "0494e305bc7c77580c6fc36e1a1e3002a3ed1b5a458fe5c1558e90020636ecde",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795832417683,
+          "updatedAt": 1795832418117,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-11008-1-a478dc56-7735-4f3d-bab7-9258029b3c8b",
+          "runFenceAt": 1795832417697,
+          "runOwnerIdentity": "vict-tool-bridge:11008:c8cd4cda-36c8-4f04-bd86-3244bef549a8",
+          "runGeneration": 1,
+          "completedAt": 1795832418117,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:ea3c259e-1a81-4f3d-89d4-b71f68ec6958"
+      },
+      {
+        "caseId": "layout",
+        "request": {
+          "kind": "observe",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+          "operationId": "memory-job:a995eb37-77a0-4958-9395-bd19dbb3ad46",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceRevision": "483379c50ebf4bff83043802526f0925fadaecd4232eb2a4fafbc0bed5d9c7d5",
+          "authorityRevision": "0"
+        },
+        "receipt": {
+          "invocationId": "b3431098-893d-4184-b428-38d7dbba632b",
+          "turnId": "quellight-memory:bf207c07-07f8-4188-9b56-af1459aa1fd4",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:bf207c07-07f8-4188-9b56-af1459aa1fd4:native-memory:quellight.memory.maintain:1:2c61492f4c8f9edbaa6401bba90066b8af42a1503113d400be2c99b9bdbc07f8",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "argDigest": "2c61492f4c8f9edbaa6401bba90066b8af42a1503113d400be2c99b9bdbc07f8",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795832419206,
+          "updatedAt": 1795832419574,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-11008-1-7c6552ad-a0ae-48fd-b2f4-b4668bb2eca0",
+          "runFenceAt": 1795832419215,
+          "runOwnerIdentity": "vict-tool-bridge:11008:c8cd4cda-36c8-4f04-bd86-3244bef549a8",
+          "runGeneration": 1,
+          "completedAt": 1795832419574,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:bf207c07-07f8-4188-9b56-af1459aa1fd4"
+      },
+      {
+        "caseId": "accessibility",
+        "request": {
+          "kind": "observe",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "operationId": "memory-job:0e8b6be8-4413-4807-b60d-ad1ad089e723",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceRevision": "aa4b433b3734774b2a7fcf76f95c1741a6b642b316007adaed5254d206bb08d4",
+          "authorityRevision": "0"
+        },
+        "receipt": {
+          "invocationId": "adfa4bac-2b10-4e9d-8504-7cda592076b3",
+          "turnId": "quellight-memory:efb91f81-a3a7-4094-b441-063b78a26889",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:efb91f81-a3a7-4094-b441-063b78a26889:native-memory:quellight.memory.maintain:1:1d8b82bf5d5e18f8e6bee80d80ae1d8f9528e189725e033be82c0012443adae4",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "argDigest": "1d8b82bf5d5e18f8e6bee80d80ae1d8f9528e189725e033be82c0012443adae4",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795832420709,
+          "updatedAt": 1795832421132,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-11008-1-619c112c-153c-453c-9c36-2fbcf3134706",
+          "runFenceAt": 1795832420721,
+          "runOwnerIdentity": "vict-tool-bridge:11008:c8cd4cda-36c8-4f04-bd86-3244bef549a8",
+          "runGeneration": 1,
+          "completedAt": 1795832421132,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:efb91f81-a3a7-4094-b441-063b78a26889"
+      },
+      {
+        "caseId": "foreign",
+        "request": {
+          "kind": "observe",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+          "operationId": "memory-job:b5de9010-8d20-45a9-af6d-3caaccb23f10",
+          "configurationRevision": "5984ad86500ec41e532f3e12a453d46dd7daf20ed6521090884e61943a601c60",
+          "sourceRevision": "85ba1cfc8139ee7809b8efbae04d160c13e5ecb7b5a3d49701d1284451652269",
+          "authorityRevision": "0"
+        },
+        "receipt": {
+          "invocationId": "8c61fae6-ecb9-49ab-8bf2-602fc3a073fd",
+          "turnId": "quellight-memory:b6b1beb7-1b4f-4046-ba95-694b829d415c",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:b6b1beb7-1b4f-4046-ba95-694b829d415c:native-memory:quellight.memory.maintain:1:2adf88baab361928b30d08fd083c775f4b59fb71c0d6cc7b33bbfe8aa0adec18",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "argDigest": "2adf88baab361928b30d08fd083c775f4b59fb71c0d6cc7b33bbfe8aa0adec18",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795832422181,
+          "updatedAt": 1795832422492,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-11008-1-8a84f82a-965d-45a3-b16c-5346db2ecb35",
+          "runFenceAt": 1795832422192,
+          "runOwnerIdentity": "vict-tool-bridge:11008:c8cd4cda-36c8-4f04-bd86-3244bef549a8",
+          "runGeneration": 1,
+          "completedAt": 1795832422492,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:b6b1beb7-1b4f-4046-ba95-694b829d415c"
+      },
+      {
+        "caseId": "correction",
+        "request": {
+          "kind": "observe",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+          "operationId": "memory-job:25b3468c-0896-49d2-8206-6d8478ea1b9d",
+          "configurationRevision": "9b39f70f06b11318cc5b18899c52dc4762f024d496c71a4c51fe7615b3a0e2f4",
+          "sourceRevision": "3cf651c65b150e47dcb079ecdbe39958dfb7feb87a49e3890262d87e1f54c1fe",
+          "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55"
+        },
+        "receipt": {
+          "invocationId": "a719a407-f37b-4827-969a-c229d2489951",
+          "turnId": "quellight-memory:d78098a6-0c4d-4a4a-b965-9a11845df7bb",
+          "toolCallId": "native-memory",
+          "toolName": "quellight.memory.maintain",
+          "capabilityId": "quellight.memory.maintain",
+          "capabilityRevision": "1",
+          "effect": "write",
+          "idempotencyKey": "quellight-memory:d78098a6-0c4d-4a4a-b965-9a11845df7bb:native-memory:quellight.memory.maintain:1:eba9d3367a0906e56ad63df2080858c927d0ecc82bfaa40f62efd49dcc78cade",
+          "actorId": "581f2356-0e43-4ff3-8adc-fb01b9582886",
+          "argDigest": "eba9d3367a0906e56ad63df2080858c927d0ecc82bfaa40f62efd49dcc78cade",
+          "argumentSummary": "object(7 fields)",
+          "status": "completed",
+          "createdAt": 1795832425859,
+          "updatedAt": 1795832426259,
+          "approvalRequired": false,
+          "approvalDisposition": "host-policy-write-without-separate-approval",
+          "effectPolicyIdentity": "vict-effect-policy@1",
+          "runFenceToken": "fence-11008-1-39474043-772a-4a3a-8347-49212a3d3fc0",
+          "runFenceAt": 1795832425874,
+          "runOwnerIdentity": "vict-tool-bridge:11008:c8cd4cda-36c8-4f04-bd86-3244bef549a8",
+          "runGeneration": 1,
+          "completedAt": 1795832426259,
+          "resultSummary": "object(6 fields)"
+        },
+        "maintenanceTurnId": "quellight-memory:d78098a6-0c4d-4a4a-b965-9a11845df7bb"
+      }
+    ]
+  },
+  "foreignControlSource": {
+    "id": "4dbd65a3-6f89-46d1-a79a-1598d37cd51d",
+    "conversationId": "1b077140-d078-469e-9356-94e876025ef3",
+    "label": "Your message",
+    "text": "Correction: Only the stage manager may open the rehearsal export.",
+    "role": "user",
+    "at": "2026-11-28T02:20:21.649Z",
+    "excluded": false
+  },
+  "controlOrigin": {
+    "duplicate": "redelivery authored by fixture",
+    "foreignRoom": "actual separate room and capture",
+    "stale": "actual governed source exclusion and observed public superseded projection"
+  },
+  "comparison": {
+    "before": [
+      {
+        "caseId": "original",
+        "expected": {
+          "case": "original",
+          "thread": "A",
+          "accepted": [
+            "Invite all workshop volunteers to preview the rehearsal export."
+          ]
+        },
+        "accepted": [
+          {
+            "groupId": "d5b691fcceb4d6a5",
+            "sourceId": "a8cd8b59-c429-4635-82cb-01e078848872",
+            "role": "user",
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "sourceText": "Invite all workshop volunteers to preview the rehearsal export.",
+            "span": {
+              "start": 0,
+              "end": 63,
+              "text": "Invite all workshop volunteers to preview the rehearsal export."
+            }
+          }
+        ],
+        "unknown": [],
+        "omissions": [],
+        "structuredSourceMembership": "field-absent"
+      },
+      {
+        "caseId": "layout",
+        "expected": {
+          "case": "layout",
+          "thread": "A",
+          "accepted": [
+            "Use 24-point type for the printed cue sheet."
+          ],
+          "omitted": [
+            "Keep the page number on every page."
+          ]
+        },
+        "accepted": [
+          {
+            "groupId": "944752a2a20a0d50",
+            "sourceId": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+            "role": "user",
+            "conversationId": "31ac1a21-3fe3-49e3-80ee-58712df60004",
+            "authorityRevision": "0",
+            "sourceText": "Use 24-point type for the printed cue sheet. Keep the page number on every page.",
+            "span": {
+              "start": 0,
+              "end": 44,
+              "text": "Use 24-point type for the printed cue sheet."
+            }
+          }
+        ],
+        "unknown": [],
+        "omissions": [
+          {
+            "text": "Keep the page number on every page.",
+            "sourceId": "6c098d04-28ea-43f5-8369-5eaa368a5de5",
+            "start": 45,
+            "authorityRevision": "0"
+          }
+        ],
+        "structuredSourceMembership": "field-absent"
+      },
+      {
+        "caseId": "accessibility",
+        "expected": {
+          "case": "accessibility",
+          "thread": "B",
+          "accepted": [
+            "Reserve two seats for the accessibility check."
+          ]
+        },
+        "accepted": [
+          {
+            "groupId": "37e37d09dfa04b6c",
+            "sourceId": "adb625ec-2035-48b8-938c-8c343ffcc959",
+            "role": "user",
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "0",
+            "sourceText": "Reserve two seats for the accessibility check.",
+            "span": {
+              "start": 0,
+              "end": 46,
+              "text": "Reserve two seats for the accessibility check."
+            }
+          }
+        ],
+        "unknown": [],
+        "omissions": [],
+        "structuredSourceMembership": "field-absent"
+      },
+      {
+        "caseId": "duplicate",
+        "expected": {
+          "case": "duplicate",
+          "thread": "A",
+          "accepted": [],
+          "refusal": "duplicate-operation"
+        },
+        "accepted": [],
+        "refusal": "duplicate-operation",
+        "unknown": [],
+        "omissions": []
+      },
+      {
+        "caseId": "foreign-room",
+        "expected": {
+          "case": "foreign-room",
+          "thread": "C",
+          "accepted": [],
+          "refusal": "foreign-room"
+        },
+        "accepted": [],
+        "refusal": "foreign-room",
+        "unknown": [],
+        "omissions": []
+      }
+    ],
+    "after": [
+      {
+        "caseId": "original-stale",
+        "expected": {
+          "case": "original-stale",
+          "thread": "A",
+          "accepted": [],
+          "refusal": "stale-authority"
+        },
+        "accepted": [],
+        "refusal": "stale-authority",
+        "unknown": [],
+        "omissions": []
+      },
+      {
+        "caseId": "layout-stale",
+        "expected": {
+          "case": "layout-stale",
+          "thread": "A",
+          "accepted": [],
+          "refusal": "stale-authority"
+        },
+        "accepted": [],
+        "refusal": "stale-authority",
+        "unknown": [],
+        "omissions": []
+      },
+      {
+        "caseId": "accessibility-stale",
+        "expected": {
+          "case": "accessibility-stale",
+          "thread": "B",
+          "accepted": [],
+          "refusal": "stale-authority"
+        },
+        "accepted": [],
+        "refusal": "stale-authority",
+        "unknown": [],
+        "omissions": []
+      },
+      {
+        "caseId": "correction",
+        "expected": {
+          "case": "correction",
+          "thread": "B",
+          "accepted": [
+            "Only the stage manager may open the rehearsal export."
+          ],
+          "unknown": [
+            "The producer approved public sharing."
+          ]
+        },
+        "accepted": [
+          {
+            "groupId": "282389aadedddf88",
+            "sourceId": "a03beb8b-1bba-4505-b5df-5435bab5adee",
+            "role": "user",
+            "conversationId": "d96a3df4-7a37-4c23-bbdc-bb04318927fc",
+            "authorityRevision": "care:b30d8ab18736f1678b72a7d706b5c28c7b7255478a611fa43233260e4308ae55",
+            "sourceText": "Correction: Only the stage manager may open the rehearsal export.",
+            "span": {
+              "start": 12,
+              "end": 65,
+              "text": "Only the stage manager may open the rehearsal export."
+            }
+          }
+        ],
+        "unknown": [
+          {
+            "groupId": "282389aadedddf88",
+            "text": "The producer approved public sharing.",
+            "reason": "unique-user-span-unresolved"
+          }
+        ],
+        "omissions": [],
+        "structuredSourceMembership": "field-absent"
+      },
+      {
+        "caseId": "correction-duplicate",
+        "expected": {
+          "case": "correction-duplicate",
+          "thread": "B",
+          "accepted": [],
+          "refusal": "duplicate-operation"
+        },
+        "accepted": [],
+        "refusal": "duplicate-operation",
+        "unknown": [],
+        "omissions": []
+      }
+    ]
+  },
+  "resource": {
+    "fixtureForegroundCalls": 5,
+    "fixtureObserverCalls": 8,
+    "shadowModelCalls": 0,
+    "liveProviderCalls": 0,
+    "addedSendRoundTrips": 0,
+    "addedForegroundPromptBytes": 0
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "source": "Independent verification of installed local fixture capture",
+  "fixtureCommit": "b588e6ffcd1b648fb42bd20bd8e6909db4db9ed5",
+  "fixtureSha256": "f4a2a97e3b3150e0e60ec906b27873e33a083e0b24bca34952fc65d63ba740b9",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "designSha": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "accepted": 4,
+  "receiptsChecked": 5,
+  "observations": {
+    "original": {
+      "operationId": "memory-job:62068089-607a-49f6-8811-83df34423046",
+      "observationId": "10573f91-387b-4255-a06c-fcc75c040a69",
+      "publishedAt": "2026-11-28T02:20:42.164Z",
+      "receiptId": "56099abe-793a-4053-a587-38206b7f749b",
+      "argumentDigest": "5e50116053b89762ea3f3a073efb92d814fcc41e791fd587bdf87e00eb5f1f9b"
+    },
+    "layout": {
+      "operationId": "memory-job:8bc2cc58-d940-433f-9278-2839a386a389",
+      "observationId": "10573f91-387b-4255-a06c-fcc75c040a69",
+      "publishedAt": "2026-11-28T02:20:43.504Z",
+      "receiptId": "e14dae8c-6525-44eb-9cd6-fc9577368ddc",
+      "argumentDigest": "fdc50aedbe86606785191fd6c2bc88780ea14ecfbce38867cbcf8086e6f8cd10"
+    },
+    "accessibility": {
+      "operationId": "memory-job:a8e0644a-c9be-4880-8d6f-7ccbcde2ca81",
+      "observationId": "f5e4dbfc-6373-44e5-833f-e729cd67dcaa",
+      "publishedAt": "2026-11-28T02:20:44.916Z",
+      "receiptId": "bb4c48b1-483f-4b1a-a1ac-3b1013fef8d1",
+      "argumentDigest": "4e4a2c5ce02cd7e6cacae76808aebc41665d6f8fb6f38970b1928edceaa30967"
+    },
+    "foreign": {
+      "operationId": "memory-job:e5660f0d-68ce-48d4-9637-ea888b073482",
+      "observationId": "6b7c2262-6894-4b56-bbb0-360a78fca2dc",
+      "publishedAt": "2026-11-28T02:20:46.269Z",
+      "receiptId": "292a5852-54c4-4ef7-b514-137631786751",
+      "argumentDigest": "2ec04c180d7994e48e229c93585af460dfe40a8a97c7f7e3858a85ad8ef8ea59"
+    },
+    "correction": {
+      "operationId": "memory-job:1e3b1d84-5bf9-4054-80c4-fb596a0b4147",
+      "observationId": "b9e770df-5005-474a-bfcd-b971d9b64af6",
+      "publishedAt": "2026-11-28T02:20:50.757Z",
+      "receiptId": "aeda0e66-15f3-4463-ab45-9263a2aa1cfe",
+      "argumentDigest": "67b173b840f6608754fb55771dad495b6b72d8f5e50403f6b1571e0b5a0dbc37"
+    }
+  },
+  "correction": {
+    "conversationId": "2ee7682a-7b71-4aa9-97b2-1a33fc670dda",
+    "sourceId": "c8093bb2-d22c-483d-8584-4c217a192b7a",
+    "role": "user",
+    "span": {
+      "start": 12,
+      "end": 65,
+      "text": "Only the stage manager may open the rehearsal export."
+    },
+    "authorityRevision": "care:3016480a1ada776828baacfd9894fe93553426f63a6064a2e5ade67dbe0bb98c",
+    "foreignConversationId": "582093fd-03d5-431c-b840-45add2134f20",
+    "sameTextForeignSourceId": "63210d91-bdd6-4fe8-9825-9806dff6bae1",
+    "range": {
+      "groupId": "6e042dc7d03ed3c2",
+      "first": "c8093bb2-d22c-483d-8584-4c217a192b7a",
+      "last": "35568ff8-e7a4-42e5-9bc7-d42e9d25de0c",
+      "eligibleEndpointIds": [
+        "c8093bb2-d22c-483d-8584-4c217a192b7a",
+        "35568ff8-e7a4-42e5-9bc7-d42e9d25de0c"
+      ],
+      "disposition": "bounded-two-message-range"
+    }
+  },
+  "stale": {
+    "originalExcludedId": "ccde804d-e3bc-4462-b509-8fe139b47bcd",
+    "prevAuthority": "0",
+    "newAuthority": "care:3016480a1ada776828baacfd9894fe93553426f63a6064a2e5ade67dbe0bb98c",
+    "rows": [
+      {
+        "caseId": "original-stale",
+        "operationId": "memory-job:62068089-607a-49f6-8811-83df34423046",
+        "state": "superseded",
+        "accepted": 0
+      },
+      {
+        "caseId": "layout-stale",
+        "operationId": "memory-job:8bc2cc58-d940-433f-9278-2839a386a389",
+        "state": "superseded",
+        "accepted": 0
+      },
+      {
+        "caseId": "accessibility-stale",
+        "operationId": "memory-job:a8e0644a-c9be-4880-8d6f-7ccbcde2ca81",
+        "state": "superseded",
+        "accepted": 0
+      }
+    ]
+  },
+  "verifiedOmission": "Keep the page number on every page.",
+  "verifiedUnknown": [
+    "The producer approved public sharing."
+  ],
+  "supplementalRebuild": {
+    "sourceId": "24919529-e60c-4492-92c7-561b8b1e6d55",
+    "span": {
+      "start": 0,
+      "end": 46,
+      "text": "Reserve two seats for the accessibility check."
+    },
+    "authorityRevision": "care:3016480a1ada776828baacfd9894fe93553426f63a6064a2e5ade67dbe0bb98c",
+    "range": {
+      "groupId": "22b304d727e7e092",
+      "first": "24919529-e60c-4492-92c7-561b8b1e6d55",
+      "last": "24919529-e60c-4492-92c7-561b8b1e6d55",
+      "eligibleEndpointIds": [
+        "24919529-e60c-4492-92c7-561b8b1e6d55"
+      ],
+      "disposition": "bounded-single-message-range"
+    },
+    "repeatedInCorrection": "previous-range"
+  },
+  "shadowReadTotals": {
+    "before": {
+      "attempts": 5,
+      "namedReads": 23,
+      "namedResultBytes": 60088,
+      "postgresBytesSent": 57298,
+      "postgresBytesReceived": 98998
+    },
+    "after": {
+      "attempts": 5,
+      "namedReads": 22,
+      "namedResultBytes": 54157,
+      "postgresBytesSent": 43746,
+      "postgresBytesReceived": 78154
+    },
+    "supplemental": {
+      "attempts": 1,
+      "namedReads": 6,
+      "namedResultBytes": 16011,
+      "postgresBytesSent": 16638,
+      "postgresBytesReceived": 30334
+    }
+  },
+  "resource": {
+    "fixtureForegroundCalls": 5,
+    "fixtureObserverCalls": 8,
+    "shadowModelCalls": 0,
+    "liveProviderCalls": 0,
+    "addedSendRoundTrips": 0,
+    "addedForegroundPromptBytes": 0
+  }
+}
