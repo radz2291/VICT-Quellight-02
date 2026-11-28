@@ -1,0 +1,224 @@
+{
+  "captureSha256": "6fa8f0b2151a2bfc408c3ebafa9d347ebe72d5467ca9085a67e435ac906261d5",
+  "captureStatus": "passed",
+  "pins": {
+    "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+    "node": "v22.23.5",
+    "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+    "installLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+    "adapter": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+    "memory": "f1469f784fbb8385376936e20ad1e89364221f0fe3f53412094955a976527e07",
+    "memoryVersion": "1.28.2",
+    "memoryIntegrity": "sha512-XneY2QdmC/nUjfaax7z4Qdnsw6WgsFWc1QZFd79AkQHl0g0bDvpwjQlbDZ6wnZ2YygRDCWVt0Ew3dDI2Ao3QXg==",
+    "installedBinding": "baseline",
+    "victArchiveCount": 14,
+    "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+    "postgres": "18.6"
+  },
+  "armOrder": [
+    "room-block",
+    "control"
+  ],
+  "syntheticPairedCases": 11,
+  "localPrompt": {
+    "stableR1Bytes": 328,
+    "changedR2Bytes": 338,
+    "activeRoomBlockOffsetUtf8": 2162,
+    "sameRevisionPrefixBytes": 4634,
+    "changedRevisionPrefixBytes": 2237,
+    "bytesByCase": [
+      {
+        "caseId": "short-first",
+        "roomBlock": 328,
+        "matchedPromptDelta": 350,
+        "extraRoomReads": 1,
+        "roomReadResult": 427
+      },
+      {
+        "caseId": "short-repeat",
+        "roomBlock": 328,
+        "matchedPromptDelta": 350,
+        "extraRoomReads": 1,
+        "roomReadResult": 427
+      },
+      {
+        "caseId": "short-reopen",
+        "roomBlock": 328,
+        "matchedPromptDelta": 350,
+        "extraRoomReads": 1,
+        "roomReadResult": 427
+      },
+      {
+        "caseId": "short-fresh",
+        "roomBlock": 328,
+        "matchedPromptDelta": 350,
+        "extraRoomReads": 1,
+        "roomReadResult": 427
+      },
+      {
+        "caseId": "short-other-room",
+        "roomBlock": 0,
+        "matchedPromptDelta": 0,
+        "extraRoomReads": 1,
+        "roomReadResult": 2
+      },
+      {
+        "caseId": "short-post-compaction",
+        "roomBlock": 328,
+        "matchedPromptDelta": 350,
+        "extraRoomReads": 1,
+        "roomReadResult": 427
+      },
+      {
+        "caseId": "short-changed",
+        "roomBlock": 338,
+        "matchedPromptDelta": 360,
+        "extraRoomReads": 1,
+        "roomReadResult": 437
+      },
+      {
+        "caseId": "short-reopen-r2",
+        "roomBlock": 338,
+        "matchedPromptDelta": 360,
+        "extraRoomReads": 1,
+        "roomReadResult": 437
+      },
+      {
+        "caseId": "short-after-correction",
+        "roomBlock": 342,
+        "matchedPromptDelta": 364,
+        "extraRoomReads": 1,
+        "roomReadResult": 441
+      },
+      {
+        "caseId": "short-repeat-r3",
+        "roomBlock": 342,
+        "matchedPromptDelta": 364,
+        "extraRoomReads": 1,
+        "roomReadResult": 441
+      },
+      {
+        "caseId": "short-after-exclusion",
+        "roomBlock": 0,
+        "matchedPromptDelta": 0,
+        "extraRoomReads": 1,
+        "roomReadResult": 2
+      }
+    ]
+  },
+  "independentlyChecked": [
+    {
+      "arm": "control",
+      "actorId": "90748777-6675-4f51-a664-87b6ca2fa46e",
+      "roomId": "a020cd32-8fb4-4cd2-b6a1-b3688ba508c1",
+      "reopenedR2": {
+        "turnId": "quellight:f533bdc0-230b-4d19-a2fe-99e909dfd9db",
+        "conversationId": "4199efcf-51cd-4dd9-b5ec-240a08d1ce11",
+        "revision": null,
+        "authority": "care:850bf1ded91b6a0f30cc391197939e945f0a5260dd64eb947fe7fe4f8ee2a85f",
+        "approvedSource": "46ad752b-f116-42af-b357-ac57858f9630",
+        "promptSha256": "d95b4c2648800cf4f645704eafcbe7090477a84a05c99686bdaa8a6a0ad620a4",
+        "activationVersion": "v1_347285a9348488643750495d86fbe639650cfe466ceaee6d036a9ea2d3363522",
+        "markerPositions": [
+          {
+            "index": 7,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "forget": {
+        "originalId": "46ad752b-f116-42af-b357-ac57858f9630",
+        "approvalAuthority": "care:1278bb3deef8474db0ade01d5b6d444fa1c062c717ac2a73d71d4939ad85f2db",
+        "currentAuthority": "care:260b5d6c6cabda45433756edcd056edf7026f605deff45f9905f4500f56bc04a",
+        "commandKey": "b37e40bd-ac88-415c-bf40-e0289e45196f",
+        "argumentDigest": "6221e57c348a641f05e014322c5ea8120f07aed1cc403b80ff29fea2676fc3e3",
+        "before": [
+          {
+            "index": 9,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ],
+        "after": [],
+        "excludedTurnId": "quellight:f045884c-47f2-4d1d-a61c-2ca35d4103b6",
+        "fallbackPromptSha256": "2370362c8959a29db94ccee9e759a860c3a8289f8293f5d4919974ba90257b05",
+        "selectedRevision": null
+      },
+      "compactedCarry": {
+        "observationOperationId": "memory-job:b0139ab4-a984-4f29-b267-56a2dc99e48d",
+        "markerPositions": [
+          {
+            "index": 1,
+            "role": "system",
+            "byteOffsetInContent": 6616
+          }
+        ]
+      }
+    },
+    {
+      "arm": "room-block",
+      "actorId": "7159d8c2-053a-43d7-bb32-ae6bde58be4a",
+      "roomId": "ede0b554-7022-4aab-85ff-1443d0b77d76",
+      "reopenedR2": {
+        "turnId": "quellight:483ec385-734c-4f9c-962f-6cf37f5729c2",
+        "conversationId": "9a14783f-b881-47c4-a4b5-fdb3cb668a38",
+        "revision": "r2",
+        "authority": "care:5851ffa702f075ae6ca46b8fd83d61a769a79733483f232d141794f933ed54c7",
+        "approvedSource": "5dcbd47b-a100-436e-afc3-f30bae55e67b",
+        "promptSha256": "1f1b8bb649b4100d995c36ffd0fd27a75fa61ad1218b0363eb5a447e49d446aa",
+        "activationVersion": "v1_4921b0545fa6d7ccd0c14d9fa6c5284e8a3dcbeb971c41a7a3bce96e30ceaade",
+        "markerPositions": [
+          {
+            "index": 0,
+            "role": "system",
+            "byteOffsetInContent": 2208
+          },
+          {
+            "index": 7,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "forget": {
+        "originalId": "5dcbd47b-a100-436e-afc3-f30bae55e67b",
+        "approvalAuthority": "care:dacf07b7e7d8b1ae6ab80252758291a900ca1b538329f6e40c388beb75278592",
+        "currentAuthority": "care:a37a4f0c2e54a27f6221e7a8c6e5bfea13579292e0d059fa7e8fc21a7a2b7624",
+        "commandKey": "38c776ad-5a5f-45b8-bf9b-3887136997b2",
+        "argumentDigest": "5d4f38691eff05de6298556101b7fa4df8df7a3989e7163bc21cd7effb14a7c1",
+        "before": [
+          {
+            "index": 0,
+            "role": "system",
+            "byteOffsetInContent": 2208
+          },
+          {
+            "index": 9,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ],
+        "after": [],
+        "excludedTurnId": "quellight:69f61083-cc13-47f0-9353-dcd6ee0752e8",
+        "fallbackPromptSha256": "bfe73d3587c069049ff3e0b31f2a157aae0e61249027ddd5db34d4c0af238139",
+        "selectedRevision": null
+      },
+      "compactedCarry": {
+        "observationOperationId": "memory-job:2ef4b0a6-9cc1-4f93-afcc-b2997712ac5c",
+        "markerPositions": [
+          {
+            "index": 0,
+            "role": "system",
+            "byteOffsetInContent": 2208
+          },
+          {
+            "index": 1,
+            "role": "system",
+            "byteOffsetInContent": 6616
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "quellight.q4-009.context-source-witness@1",
+  "appSha": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "scope": "installed API introspection and prior Q4-001 synthetic SDK captures, no database or provider invocation",
+  "old": {
+    "mastraArchive": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+    "adapterSha256": "ac42868333aacdf53a6587a75ed121560589b43bbd092dc4a6fb821756844ac7",
+    "nativeConfigValidationSha256": "3f9e4baf856a8ec3d4d9affdf586230d83b0b1ce999159098b4e64f633add76f",
+    "rawAgentSendStateSignal": true,
+    "victSendStateSignal": false,
+    "victWorkingMemoryStateSignals": false,
+    "victManagedContext": true
+  },
+  "current": {
+    "mastraArchive": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+    "adapterSha256": "ac42868333aacdf53a6587a75ed121560589b43bbd092dc4a6fb821756844ac7",
+    "nativeConfigValidationSha256": "3f9e4baf856a8ec3d4d9affdf586230d83b0b1ce999159098b4e64f633add76f",
+    "rawAgentSendStateSignal": true,
+    "victSendStateSignal": false,
+    "victWorkingMemoryStateSignals": false,
+    "victManagedContext": true
+  },
+  "q4_001TraceSha256": "9427b4586b02e9eca8818631783834307c3209d4213020663ff7a8efa71b390f",
+  "baselineLongForegroundSdkCalls": 100,
+  "baselineDistinctFirstInstructions": 1,
+  "examples": [
+    {
+      "turn": "cold",
+      "roles": [
+        "system",
+        "system",
+        "user"
+      ],
+      "promptJsonBytes": 3713,
+      "activationInstructionsJsonBytes": 2565,
+      "nativeSystemJsonBytes": 845,
+      "selectedObservation": false
+    },
+    {
+      "turn": "warm-correction",
+      "roles": [
+        "system",
+        "system",
+        "user",
+        "user"
+      ],
+      "promptJsonBytes": 11063,
+      "activationInstructionsJsonBytes": 2565,
+      "nativeSystemJsonBytes": 7636,
+      "selectedObservation": true
+    },
+    {
+      "turn": "idle-desk-revision",
+      "roles": [
+        "system",
+        "system",
+        "user",
+        "user"
+      ],
+      "promptJsonBytes": 11280,
+      "activationInstructionsJsonBytes": 2573,
+      "nativeSystemJsonBytes": 7914,
+      "selectedObservation": true
+    },
+    {
+      "turn": "personal-correction",
+      "roles": [
+        "system",
+        "system",
+        "user",
+        "user",
+        "user",
+        "user",
+        "user"
+      ],
+      "promptJsonBytes": 4477,
+      "activationInstructionsJsonBytes": 2573,
+      "nativeSystemJsonBytes": 868,
+      "selectedObservation": false
+    },
+    {
+      "turn": "continuous-001",
+      "roles": [
+        "system",
+        "system",
+        "user"
+      ],
+      "promptJsonBytes": 3418,
+      "activationInstructionsJsonBytes": 2327,
+      "nativeSystemJsonBytes": 845,
+      "selectedObservation": false
+    },
+    {
+      "turn": "continuous-050",
+      "roles": [
+        "system",
+        "system",
+        "user",
+        "user"
+      ],
+      "promptJsonBytes": 24160,
+      "activationInstructionsJsonBytes": 2327,
+      "nativeSystemJsonBytes": 20980,
+      "selectedObservation": true
+    },
+    {
+      "turn": "continuous-100",
+      "roles": [
+        "system",
+        "system",
+        "user",
+        "user"
+      ],
+      "promptJsonBytes": 38060,
+      "activationInstructionsJsonBytes": 2327,
+      "nativeSystemJsonBytes": 34880,
+      "selectedObservation": true
+    }
+  ]
+}

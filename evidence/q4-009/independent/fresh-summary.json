@@ -1,0 +1,2786 @@
+{
+  "schema": "quellight.q4-009.delivery-measurement@1",
+  "capturedRows": 22,
+  "pairedCases": 11,
+  "unmatched": [],
+  "longCompletion": {
+    "target": 0,
+    "paired": 0,
+    "observedIndices": [],
+    "complete": null
+  },
+  "placement": [
+    {
+      "caseId": "short-first",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r1",
+      "selected": "r1",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 328,
+          "sha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+        }
+      ],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "5b7ca19e7c85397094b970cd2afd529a656c103e4156327bfac409686b62ccb8"
+    },
+    {
+      "caseId": "short-repeat",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r1",
+      "selected": "r1",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 328,
+          "sha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+        }
+      ],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "fc957e29575b999d5e1b7fb4f8b6089cd8a1a83c9ead5a38480b93c7c69dd615"
+    },
+    {
+      "caseId": "short-reopen",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r1",
+      "selected": "r1",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 2
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        },
+        {
+          "revision": "r1",
+          "index": 5,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 328,
+          "sha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+        }
+      ],
+      "carry": {
+        "required": "r1",
+        "allowed": [
+          "r1"
+        ],
+        "observed": [
+          {
+            "revision": "r1",
+            "index": 5,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "c0f686f90a476d9667a3bb78bd484f6fe0cc6401554f1ea7473b003c6b107774"
+    },
+    {
+      "caseId": "short-fresh",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r1",
+      "selected": "r1",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 328,
+          "sha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+        }
+      ],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "c814f504a410b85208351788ee34d1f8de3d0bfac24e0fac69b93cabef3166b8"
+    },
+    {
+      "caseId": "short-other-room",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "fd219de05d4d3e17c33cd293852482c55b11347d1ba2024c4c097bc20169b28e"
+    },
+    {
+      "caseId": "short-post-compaction",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r1",
+      "selected": "r1",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 2
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        },
+        {
+          "revision": "r1",
+          "index": 1,
+          "role": "system",
+          "byteOffsetInContent": 6616
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r1",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 328,
+          "sha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+        }
+      ],
+      "carry": {
+        "required": "r1",
+        "allowed": [
+          "r1"
+        ],
+        "observed": [
+          {
+            "revision": "r1",
+            "index": 1,
+            "role": "system",
+            "byteOffsetInContent": 6616
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "9c1e7bed3b7268ecb9f190f885212ab9933dec85f79aa1e68021620cb7a78a5c"
+    },
+    {
+      "caseId": "short-changed",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r2",
+      "selected": "r2",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r2",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r2",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r2",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 338,
+          "sha256": "08adad19eac2aaced28cf6889d3250364d6de10980a11cb55fbd02e65b83df8b"
+        }
+      ],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "de05861d063e33aa3335a085390c1e1759945cbac887d817630d05087c3040b9"
+    },
+    {
+      "caseId": "short-reopen-r2",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r2",
+      "selected": "r2",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r2",
+          "occurrences": 2
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r2",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        },
+        {
+          "revision": "r2",
+          "index": 7,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r2",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 338,
+          "sha256": "08adad19eac2aaced28cf6889d3250364d6de10980a11cb55fbd02e65b83df8b"
+        }
+      ],
+      "carry": {
+        "required": "r2",
+        "allowed": [
+          "r2"
+        ],
+        "observed": [
+          {
+            "revision": "r2",
+            "index": 7,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "1f1b8bb649b4100d995c36ffd0fd27a75fa61ad1218b0363eb5a447e49d446aa"
+    },
+    {
+      "caseId": "short-after-correction",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r3",
+      "selected": "r3",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r3",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r3",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r3",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 342,
+          "sha256": "f3ecc8432ebba537d1e811999aaabbb0ea3954d943b6c0aae68bdd3846c805fb"
+        }
+      ],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "ac6dc6e0d1b1a9a27f2cea5e00968bb2925ea242acacc4506516987698f81ed6"
+    },
+    {
+      "caseId": "short-repeat-r3",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": "r3",
+      "selected": "r3",
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r3",
+          "occurrences": 2
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r3",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2208
+        },
+        {
+          "revision": "r3",
+          "index": 9,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [
+        {
+          "revision": "r3",
+          "index": 0,
+          "role": "system",
+          "byteOffsetInContent": 2162,
+          "bytes": 342,
+          "sha256": "f3ecc8432ebba537d1e811999aaabbb0ea3954d943b6c0aae68bdd3846c805fb"
+        }
+      ],
+      "carry": {
+        "required": "r3",
+        "allowed": [
+          "r3"
+        ],
+        "observed": [
+          {
+            "revision": "r3",
+            "index": 9,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "c52c9c00386cf48f7a2d3ea7699f52952e2c9d005e22e9f8e46db3b8225a81b9"
+    },
+    {
+      "caseId": "short-after-exclusion",
+      "arm": "room-block",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "bfe73d3587c069049ff3e0b31f2a157aae0e61249027ddd5db34d4c0af238139"
+    },
+    {
+      "caseId": "short-first",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "346e49c87b7c0bcbd794f2dfa51655d2b6ab2817ae9e02867554a105c1de0827"
+    },
+    {
+      "caseId": "short-repeat",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "c2e2fe3bcd3a9c7c93c1ba3d0712fa3fe2cee0753a296a621f7bb11aa24d71a1"
+    },
+    {
+      "caseId": "short-reopen",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 5,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [],
+      "carry": {
+        "required": "r1",
+        "allowed": [
+          "r1"
+        ],
+        "observed": [
+          {
+            "revision": "r1",
+            "index": 5,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "0798a4accae0d74f356f6b00b52bcd249683ca87dafea77d82dd440e5c5c27ed"
+    },
+    {
+      "caseId": "short-fresh",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "9cebb0d57f280ca0f8f9b9d2cc093c5f6923987f0b7dff2f1eeb3450c89aee64"
+    },
+    {
+      "caseId": "short-other-room",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "ffb91fe7933299d46ae304dbeaacfcc5b4924831516f225cfbf43ab2821da932"
+    },
+    {
+      "caseId": "short-post-compaction",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r1",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r1",
+          "index": 1,
+          "role": "system",
+          "byteOffsetInContent": 6616
+        }
+      ],
+      "blocks": [],
+      "carry": {
+        "required": "r1",
+        "allowed": [
+          "r1"
+        ],
+        "observed": [
+          {
+            "revision": "r1",
+            "index": 1,
+            "role": "system",
+            "byteOffsetInContent": 6616
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "319e9885aa04787814040666060c202431e9a81050d60b53bc95b6c1d85fb1ae"
+    },
+    {
+      "caseId": "short-changed",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "e528895dc59f788d19af5932987dc8ea2a6628b9baa8f87065eb343f8edc6fbc"
+    },
+    {
+      "caseId": "short-reopen-r2",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r2",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r2",
+          "index": 7,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [],
+      "carry": {
+        "required": "r2",
+        "allowed": [
+          "r2"
+        ],
+        "observed": [
+          {
+            "revision": "r2",
+            "index": 7,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "d95b4c2648800cf4f645704eafcbe7090477a84a05c99686bdaa8a6a0ad620a4"
+    },
+    {
+      "caseId": "short-after-correction",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "19849deef87cf01256c8d4b20bdb7390b845f9522a1e79f3e1f66b31178e9d3a"
+    },
+    {
+      "caseId": "short-repeat-r3",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [
+        {
+          "revision": "r3",
+          "occurrences": 1
+        }
+      ],
+      "placements": [
+        {
+          "revision": "r3",
+          "index": 9,
+          "role": "assistant",
+          "byteOffsetInContent": 104
+        }
+      ],
+      "blocks": [],
+      "carry": {
+        "required": "r3",
+        "allowed": [
+          "r3"
+        ],
+        "observed": [
+          {
+            "revision": "r3",
+            "index": 9,
+            "role": "assistant",
+            "byteOffsetInContent": 104
+          }
+        ]
+      },
+      "exact": true,
+      "modelPromptSha256": "5995027dd0dc2896917f5172b5a47ae04bbc9095282aa4920536c9e64453f99b"
+    },
+    {
+      "caseId": "short-after-exclusion",
+      "arm": "control",
+      "scenario": "short",
+      "expected": null,
+      "selected": null,
+      "selectedRecorded": true,
+      "observed": [],
+      "placements": [],
+      "blocks": [],
+      "carry": {
+        "required": null,
+        "allowed": [],
+        "observed": []
+      },
+      "exact": true,
+      "modelPromptSha256": "2370362c8959a29db94ccee9e759a860c3a8289f8293f5d4919974ba90257b05"
+    }
+  ],
+  "aggregates": {
+    "short": {
+      "matchedCases": 11,
+      "capturedByArm": {
+        "control": 11,
+        "room-block": 11
+      },
+      "metrics": {
+        "promptBytes": {
+          "control": {
+            "n": 11,
+            "minimum": 3336,
+            "p50": 4355,
+            "p95": 10896,
+            "maximum": 10896,
+            "total": 53255
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 3336,
+            "p50": 4705,
+            "p95": 11246,
+            "maximum": 11246,
+            "total": 56453
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 350,
+            "p95": 364,
+            "maximum": 364,
+            "total": 3198
+          }
+        },
+        "promptMessages": {
+          "control": {
+            "n": 11,
+            "minimum": 3,
+            "p50": 7,
+            "p95": 11,
+            "maximum": 11,
+            "total": 72
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 3,
+            "p50": 7,
+            "p95": 11,
+            "maximum": 11,
+            "total": 72
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 0,
+            "p95": 0,
+            "maximum": 0,
+            "total": 0
+          }
+        },
+        "roomBlockBytes": {
+          "control": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 0,
+            "p95": 0,
+            "maximum": 0,
+            "total": 0
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 328,
+            "p95": 342,
+            "maximum": 342,
+            "total": 3000
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 328,
+            "p95": 342,
+            "maximum": 342,
+            "total": 3000
+          }
+        },
+        "modelCalls": {
+          "control": {
+            "n": 11,
+            "minimum": 1,
+            "p50": 1,
+            "p95": 1,
+            "maximum": 1,
+            "total": 11
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 1,
+            "p50": 1,
+            "p95": 1,
+            "maximum": 1,
+            "total": 11
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 0,
+            "p95": 0,
+            "maximum": 0,
+            "total": 0
+          }
+        },
+        "admittedMs": {
+          "control": {
+            "n": 11,
+            "minimum": 364.26,
+            "p50": 435.49,
+            "p95": 600.43,
+            "maximum": 600.43,
+            "total": 4879.67
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 308.26,
+            "p50": 418.4,
+            "p95": 558.68,
+            "maximum": 558.68,
+            "total": 4478.07
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -129.03,
+            "p50": -42.08,
+            "p95": 54.14,
+            "maximum": 54.14,
+            "total": -401.6
+          }
+        },
+        "modelInvocationMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "firstModelDeltaMs": {
+          "control": {
+            "n": 11,
+            "minimum": 679.01,
+            "p50": 813.31,
+            "p95": 918.94,
+            "maximum": 918.94,
+            "total": 8837.69
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 585.75,
+            "p50": 649.25,
+            "p95": 764.96,
+            "maximum": 764.96,
+            "total": 7200.7
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -255.6,
+            "p50": -147.59,
+            "p95": -47.08,
+            "maximum": -47.08,
+            "total": -1636.99
+          }
+        },
+        "postFirstModelDeltaMs": {
+          "control": {
+            "n": 11,
+            "minimum": 258.44,
+            "p50": 302.89,
+            "p95": 355.21,
+            "maximum": 355.21,
+            "total": 3320.9
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 172.2,
+            "p50": 214.29,
+            "p95": 293.58,
+            "maximum": 293.58,
+            "total": 2300.64
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -130.69,
+            "p50": -96.03,
+            "p95": -50.69,
+            "maximum": -50.69,
+            "total": -1020.26
+          }
+        },
+        "firstEventMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "settledMs": {
+          "control": {
+            "n": 11,
+            "minimum": 957.7,
+            "p50": 1099.07,
+            "p95": 1245.88,
+            "maximum": 1245.88,
+            "total": 12158.59
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 802.42,
+            "p50": 842.41,
+            "p95": 955.75,
+            "maximum": 955.75,
+            "total": 9501.34
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -357.11,
+            "p50": -239.95,
+            "p95": -117.83,
+            "maximum": -117.83,
+            "total": -2657.25
+          }
+        },
+        "dbRequestWireBytes": {
+          "control": {
+            "n": 11,
+            "minimum": 148649,
+            "p50": 156021,
+            "p95": 187824,
+            "maximum": 187824,
+            "total": 1791402
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 149083,
+            "p50": 156421,
+            "p95": 188271,
+            "maximum": 188271,
+            "total": 1794929
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -489,
+            "p50": 442,
+            "p95": 619,
+            "maximum": 619,
+            "total": 3527
+          }
+        },
+        "dbResponseWireBytes": {
+          "control": {
+            "n": 11,
+            "minimum": 142307,
+            "p50": 158742,
+            "p95": 194495,
+            "maximum": 194495,
+            "total": 1753034
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 142217,
+            "p50": 158316,
+            "p95": 195042,
+            "maximum": 195042,
+            "total": 1753896
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -426,
+            "p50": 42,
+            "p95": 556,
+            "maximum": 556,
+            "total": 862
+          }
+        },
+        "dbConnections": {
+          "control": {
+            "n": 11,
+            "minimum": 2,
+            "p50": 3,
+            "p95": 3,
+            "maximum": 3,
+            "total": 32
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 2,
+            "p50": 2,
+            "p95": 3,
+            "maximum": 3,
+            "total": 26
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": -1,
+            "p50": -1,
+            "p95": 0,
+            "maximum": 0,
+            "total": -6
+          }
+        },
+        "dbExecuteFrames": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbSelectExecutions": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "namedReads": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "roomSelectionReads": {
+          "control": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 0,
+            "p95": 0,
+            "maximum": 0,
+            "total": 0
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 1,
+            "p50": 1,
+            "p95": 1,
+            "maximum": 1,
+            "total": 11
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 1,
+            "p50": 1,
+            "p95": 1,
+            "maximum": 1,
+            "total": 11
+          }
+        },
+        "roomSelectionResultBytes": {
+          "control": {
+            "n": 11,
+            "minimum": 0,
+            "p50": 0,
+            "p95": 0,
+            "maximum": 0,
+            "total": 0
+          },
+          "roomBlock": {
+            "n": 11,
+            "minimum": 2,
+            "p50": 427,
+            "p95": 441,
+            "maximum": 441,
+            "total": 3895
+          },
+          "pairedDelta": {
+            "n": 11,
+            "minimum": 2,
+            "p50": 427,
+            "p95": 441,
+            "maximum": 441,
+            "total": 3895
+          }
+        }
+      },
+      "providerUsage": {
+        "control": {
+          "providerSamples": 0,
+          "fields": {
+            "inputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "outputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "totalTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "cachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "uncachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            }
+          },
+          "fixtureUsageSamples": 0,
+          "providerCacheStatus": "unavailable"
+        },
+        "roomBlock": {
+          "providerSamples": 0,
+          "fields": {
+            "inputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "outputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "totalTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "cachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "uncachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            }
+          },
+          "fixtureUsageSamples": 0,
+          "providerCacheStatus": "unavailable"
+        }
+      }
+    },
+    "long": {
+      "matchedCases": 0,
+      "capturedByArm": {
+        "control": 0,
+        "room-block": 0
+      },
+      "metrics": {
+        "promptBytes": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "promptMessages": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "roomBlockBytes": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "modelCalls": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "admittedMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "modelInvocationMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "firstModelDeltaMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "postFirstModelDeltaMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "firstEventMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "settledMs": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbRequestWireBytes": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbResponseWireBytes": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbConnections": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbExecuteFrames": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "dbSelectExecutions": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "namedReads": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "roomSelectionReads": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        },
+        "roomSelectionResultBytes": {
+          "control": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "roomBlock": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          },
+          "pairedDelta": {
+            "n": 0,
+            "minimum": null,
+            "p50": null,
+            "p95": null,
+            "maximum": null,
+            "total": null
+          }
+        }
+      },
+      "providerUsage": {
+        "control": {
+          "providerSamples": 0,
+          "fields": {
+            "inputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "outputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "totalTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "cachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "uncachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            }
+          },
+          "fixtureUsageSamples": 0,
+          "providerCacheStatus": "unavailable"
+        },
+        "roomBlock": {
+          "providerSamples": 0,
+          "fields": {
+            "inputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "outputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "totalTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "cachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            },
+            "uncachedInputTokens": {
+              "n": 0,
+              "minimum": null,
+              "p50": null,
+              "p95": null,
+              "maximum": null,
+              "total": null
+            }
+          },
+          "fixtureUsageSamples": 0,
+          "providerCacheStatus": "unavailable"
+        }
+      }
+    }
+  },
+  "controls": {
+    "short": {
+      "authoredInstructionDigestPairs": 11,
+      "ordinaryMemorySettingsPairs": 11,
+      "ordinaryMessagesAfterFirstSystem": {
+        "samples": 11,
+        "equal": 11,
+        "differences": [],
+        "rows": [
+          {
+            "caseId": "short-first",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "ed18d1ce2a960db249949ba340954554d032952b0ae3f22a2bef8cad66ae8523",
+              "roomBlock": "ed18d1ce2a960db249949ba340954554d032952b0ae3f22a2bef8cad66ae8523"
+            }
+          },
+          {
+            "caseId": "short-repeat",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "e38080fc608ccdcd00ee21eb77409ca47e5062f7743b83328f4282565b9c6074",
+              "roomBlock": "e38080fc608ccdcd00ee21eb77409ca47e5062f7743b83328f4282565b9c6074"
+            }
+          },
+          {
+            "caseId": "short-reopen",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "2a387b70c41873459a4c0cf3acb2a2dbaa4d32dd6439b0c0305a29276d74060d",
+              "roomBlock": "2a387b70c41873459a4c0cf3acb2a2dbaa4d32dd6439b0c0305a29276d74060d"
+            }
+          },
+          {
+            "caseId": "short-fresh",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "412586a32575407138dd1ce45db328df637f2847c761bcbcb663b7d74f070595",
+              "roomBlock": "412586a32575407138dd1ce45db328df637f2847c761bcbcb663b7d74f070595"
+            }
+          },
+          {
+            "caseId": "short-other-room",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "a89cafa1f178ea82591883e7e1e4b80b7825694068fdbb22f9a008e112a80449",
+              "roomBlock": "a89cafa1f178ea82591883e7e1e4b80b7825694068fdbb22f9a008e112a80449"
+            }
+          },
+          {
+            "caseId": "short-post-compaction",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "8d7d65d230aac29b12b9e0f99cdc88543fc2c4cf93aec8ddaa0a858b43e6d855",
+              "roomBlock": "8d7d65d230aac29b12b9e0f99cdc88543fc2c4cf93aec8ddaa0a858b43e6d855"
+            }
+          },
+          {
+            "caseId": "short-changed",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "b7f2fff61b089734cb80c566036166267436576afd3523199f4110ecdd341c6d",
+              "roomBlock": "b7f2fff61b089734cb80c566036166267436576afd3523199f4110ecdd341c6d"
+            }
+          },
+          {
+            "caseId": "short-reopen-r2",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "ffd42925e1d6cd6ae3cf55a00315c9dd88a42c36f95c7c30ff699087952a3ba3",
+              "roomBlock": "ffd42925e1d6cd6ae3cf55a00315c9dd88a42c36f95c7c30ff699087952a3ba3"
+            }
+          },
+          {
+            "caseId": "short-after-correction",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "afa00d16de6683e7f3d9ba5c07229cc329ca4881677ea14c45d9c2c380d79b05",
+              "roomBlock": "afa00d16de6683e7f3d9ba5c07229cc329ca4881677ea14c45d9c2c380d79b05"
+            }
+          },
+          {
+            "caseId": "short-repeat-r3",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "7e4608b35e488cce805301e4842f55315692121632ec3f7541a3fbf529593c43",
+              "roomBlock": "7e4608b35e488cce805301e4842f55315692121632ec3f7541a3fbf529593c43"
+            }
+          },
+          {
+            "caseId": "short-after-exclusion",
+            "equal": true,
+            "normalizedDigests": {
+              "control": "9a1cead91e568e7828e5f11f2019bb992b4618f01057c4ffd39f980ce14a4333",
+              "roomBlock": "9a1cead91e568e7828e5f11f2019bb992b4618f01057c4ffd39f980ce14a4333"
+            }
+          }
+        ],
+        "normalization": "UUID and observation-group IDs (first-appearance aliases per arm), ISO timestamps and Mastra createdAt epoch metadata"
+      },
+      "control": {
+        "status": "passed",
+        "roleCounts": {
+          "observe": 4,
+          "reflect": 1
+        },
+        "otherModelCalls": 0,
+        "completedJobs": {
+          "observe": 4,
+          "reflect": 1,
+          "purge": 0
+        },
+        "unsettledModelCalls": [],
+        "desk": [
+          {
+            "revision": 1,
+            "title": "Review checklist",
+            "body": "Verify the versioned upload index."
+          }
+        ],
+        "approvals": [
+          {
+            "revision": "r1",
+            "blockSha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+          },
+          {
+            "revision": "r2",
+            "blockSha256": "08adad19eac2aaced28cf6889d3250364d6de10980a11cb55fbd02e65b83df8b"
+          },
+          {
+            "revision": "r3",
+            "blockSha256": "f3ecc8432ebba537d1e811999aaabbb0ea3954d943b6c0aae68bdd3846c805fb"
+          }
+        ],
+        "maintenance": [
+          {
+            "after": "short-reopen",
+            "reflected": true
+          }
+        ]
+      },
+      "roomBlock": {
+        "status": "passed",
+        "roleCounts": {
+          "observe": 4,
+          "reflect": 1
+        },
+        "otherModelCalls": 0,
+        "completedJobs": {
+          "observe": 4,
+          "reflect": 1,
+          "purge": 0
+        },
+        "unsettledModelCalls": [],
+        "desk": [
+          {
+            "revision": 1,
+            "title": "Review checklist",
+            "body": "Verify the versioned upload index."
+          }
+        ],
+        "approvals": [
+          {
+            "revision": "r1",
+            "blockSha256": "88c6ef7673162546d49af3f131de2d53068703025db97820e487865e997bf67d"
+          },
+          {
+            "revision": "r2",
+            "blockSha256": "08adad19eac2aaced28cf6889d3250364d6de10980a11cb55fbd02e65b83df8b"
+          },
+          {
+            "revision": "r3",
+            "blockSha256": "f3ecc8432ebba537d1e811999aaabbb0ea3954d943b6c0aae68bdd3846c805fb"
+          }
+        ],
+        "maintenance": [
+          {
+            "after": "short-reopen",
+            "reflected": true
+          }
+        ]
+      },
+      "matchedControlState": true,
+      "backgroundModelCallDelta": {
+        "observe": 0,
+        "reflect": 0,
+        "other": 0
+      },
+      "completedJobParity": true,
+      "maintainedParity": true
+    },
+    "long": {
+      "authoredInstructionDigestPairs": 0,
+      "ordinaryMemorySettingsPairs": 0,
+      "ordinaryMessagesAfterFirstSystem": {
+        "samples": 0,
+        "equal": 0,
+        "differences": [],
+        "rows": [],
+        "normalization": "UUID and observation-group IDs (first-appearance aliases per arm), ISO timestamps and Mastra createdAt epoch metadata"
+      }
+    }
+  },
+  "prefixDistribution": {
+    "control": {
+      "unchangedRevision": {
+        "leadingMessages": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "leadingMessageBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "exactJsonPrefixBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        }
+      },
+      "changedRevision": {
+        "leadingMessages": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "leadingMessageBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "exactJsonPrefixBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        }
+      }
+    },
+    "room-block": {
+      "unchangedRevision": {
+        "leadingMessages": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "leadingMessageBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "exactJsonPrefixBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        }
+      },
+      "changedRevision": {
+        "leadingMessages": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "leadingMessageBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        },
+        "exactJsonPrefixBytes": {
+          "n": 0,
+          "minimum": null,
+          "p50": null,
+          "p95": null,
+          "maximum": null,
+          "total": null
+        }
+      }
+    }
+  },
+  "prefixes": [],
+  "samples": [
+    {
+      "caseId": "short-first",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r1",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "346e49c87b7c0bcbd794f2dfa51655d2b6ab2817ae9e02867554a105c1de0827",
+        "promptBytes": 3564,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1086.033,
+        "postgresWire": {
+          "sent": 187824,
+          "received": 159034,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r1",
+        "selection": "r1",
+        "markers": {
+          "r1": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "5b7ca19e7c85397094b970cd2afd529a656c103e4156327bfac409686b62ccb8",
+        "promptBytes": 3914,
+        "roomBlockBytes": 328,
+        "modelCalls": 1,
+        "ms": 842.409,
+        "postgresWire": {
+          "sent": 188271,
+          "received": 159076,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-repeat",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r1",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "c2e2fe3bcd3a9c7c93c1ba3d0712fa3fe2cee0753a296a621f7bb11aa24d71a1",
+        "promptBytes": 3944,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 981.892,
+        "postgresWire": {
+          "sent": 148649,
+          "received": 148129,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r1",
+        "selection": "r1",
+        "markers": {
+          "r1": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "fc957e29575b999d5e1b7fb4f8b6089cd8a1a83c9ead5a38480b93c7c69dd615",
+        "promptBytes": 4294,
+        "roomBlockBytes": 328,
+        "modelCalls": 1,
+        "ms": 802.418,
+        "postgresWire": {
+          "sent": 149083,
+          "received": 148193,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-reopen",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r1",
+        "selection": null,
+        "markers": {
+          "r1": [
+            {
+              "index": 5,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "0798a4accae0d74f356f6b00b52bcd249683ca87dafea77d82dd440e5c5c27ed",
+        "promptBytes": 4355,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 957.696,
+        "postgresWire": {
+          "sent": 148996,
+          "received": 151450,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r1",
+        "selection": "r1",
+        "markers": {
+          "r1": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            },
+            {
+              "index": 5,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "c0f686f90a476d9667a3bb78bd484f6fe0cc6401554f1ea7473b003c6b107774",
+        "promptBytes": 4705,
+        "roomBlockBytes": 328,
+        "modelCalls": 1,
+        "ms": 839.862,
+        "postgresWire": {
+          "sent": 149426,
+          "received": 151475,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-fresh",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r1",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "9cebb0d57f280ca0f8f9b9d2cc093c5f6923987f0b7dff2f1eeb3450c89aee64",
+        "promptBytes": 3548,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1177.374,
+        "postgresWire": {
+          "sent": 187747,
+          "received": 159048,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r1",
+        "selection": "r1",
+        "markers": {
+          "r1": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "c814f504a410b85208351788ee34d1f8de3d0bfac24e0fac69b93cabef3166b8",
+        "promptBytes": 3898,
+        "roomBlockBytes": 328,
+        "modelCalls": 1,
+        "ms": 861.586,
+        "postgresWire": {
+          "sent": 188189,
+          "received": 159051,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-other-room",
+      "scope": "short",
+      "control": {
+        "expectedRevision": null,
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "ffb91fe7933299d46ae304dbeaacfcc5b4924831516f225cfbf43ab2821da932",
+        "promptBytes": 3336,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1182.992,
+        "postgresWire": {
+          "sent": 187301,
+          "received": 158742,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": null,
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "fd219de05d4d3e17c33cd293852482c55b11347d1ba2024c4c097bc20169b28e",
+        "promptBytes": 3336,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 937.28,
+        "postgresWire": {
+          "sent": 187736,
+          "received": 158316,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-post-compaction",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r1",
+        "selection": null,
+        "markers": {
+          "r1": [
+            {
+              "index": 1,
+              "role": "system",
+              "byteOffsetInContent": 6616
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "319e9885aa04787814040666060c202431e9a81050d60b53bc95b6c1d85fb1ae",
+        "promptBytes": 10896,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1165.095,
+        "postgresWire": {
+          "sent": 160091,
+          "received": 194495,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r1",
+        "selection": "r1",
+        "markers": {
+          "r1": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            },
+            {
+              "index": 1,
+              "role": "system",
+              "byteOffsetInContent": 6616
+            }
+          ],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "9c1e7bed3b7268ecb9f190f885212ab9933dec85f79aa1e68021620cb7a78a5c",
+        "promptBytes": 11246,
+        "roomBlockBytes": 328,
+        "modelCalls": 1,
+        "ms": 807.983,
+        "postgresWire": {
+          "sent": 160651,
+          "received": 195042,
+          "connections": 3
+        }
+      }
+    },
+    {
+      "caseId": "short-changed",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r2",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "e528895dc59f788d19af5932987dc8ea2a6628b9baa8f87065eb343f8edc6fbc",
+        "promptBytes": 4275,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1035.836,
+        "postgresWire": {
+          "sent": 156392,
+          "received": 142307,
+          "connections": 2
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r2",
+        "selection": "r2",
+        "markers": {
+          "r1": [],
+          "r2": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            }
+          ],
+          "r3": []
+        },
+        "promptSha256": "de05861d063e33aa3335a085390c1e1759945cbac887d817630d05087c3040b9",
+        "promptBytes": 4635,
+        "roomBlockBytes": 338,
+        "modelCalls": 1,
+        "ms": 803.908,
+        "postgresWire": {
+          "sent": 155903,
+          "received": 142217,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-reopen-r2",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r2",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [
+            {
+              "index": 7,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ],
+          "r3": []
+        },
+        "promptSha256": "d95b4c2648800cf4f645704eafcbe7090477a84a05c99686bdaa8a6a0ad620a4",
+        "promptBytes": 4691,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1060.921,
+        "postgresWire": {
+          "sent": 151650,
+          "received": 165082,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r2",
+        "selection": "r2",
+        "markers": {
+          "r1": [],
+          "r2": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            },
+            {
+              "index": 7,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ],
+          "r3": []
+        },
+        "promptSha256": "1f1b8bb649b4100d995c36ffd0fd27a75fa61ad1218b0363eb5a447e49d446aa",
+        "promptBytes": 5051,
+        "roomBlockBytes": 338,
+        "modelCalls": 1,
+        "ms": 820.967,
+        "postgresWire": {
+          "sent": 151169,
+          "received": 165004,
+          "connections": 3
+        }
+      }
+    },
+    {
+      "caseId": "short-after-correction",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r3",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "19849deef87cf01256c8d4b20bdb7390b845f9522a1e79f3e1f66b31178e9d3a",
+        "promptBytes": 4641,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1165.794,
+        "postgresWire": {
+          "sent": 155802,
+          "received": 148611,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r3",
+        "selection": "r3",
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            }
+          ]
+        },
+        "promptSha256": "ac6dc6e0d1b1a9a27f2cea5e00968bb2925ea242acacc4506516987698f81ed6",
+        "promptBytes": 5005,
+        "roomBlockBytes": 342,
+        "modelCalls": 1,
+        "ms": 933.534,
+        "postgresWire": {
+          "sent": 156421,
+          "received": 149167,
+          "connections": 3
+        }
+      }
+    },
+    {
+      "caseId": "short-repeat-r3",
+      "scope": "short",
+      "control": {
+        "expectedRevision": "r3",
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": [
+            {
+              "index": 9,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ]
+        },
+        "promptSha256": "5995027dd0dc2896917f5172b5a47ae04bbc9095282aa4920536c9e64453f99b",
+        "promptBytes": 5045,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1099.074,
+        "postgresWire": {
+          "sent": 150929,
+          "received": 170872,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": "r3",
+        "selection": "r3",
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": [
+            {
+              "index": 0,
+              "role": "system",
+              "byteOffsetInContent": 2208
+            },
+            {
+              "index": 9,
+              "role": "assistant",
+              "byteOffsetInContent": 104
+            }
+          ]
+        },
+        "promptSha256": "c52c9c00386cf48f7a2d3ea7699f52952e2c9d005e22e9f8e46db3b8225a81b9",
+        "promptBytes": 5409,
+        "roomBlockBytes": 342,
+        "modelCalls": 1,
+        "ms": 895.64,
+        "postgresWire": {
+          "sent": 151440,
+          "received": 170940,
+          "connections": 2
+        }
+      }
+    },
+    {
+      "caseId": "short-after-exclusion",
+      "scope": "short",
+      "control": {
+        "expectedRevision": null,
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "2370362c8959a29db94ccee9e759a860c3a8289f8293f5d4919974ba90257b05",
+        "promptBytes": 4960,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 1245.881,
+        "postgresWire": {
+          "sent": 156021,
+          "received": 155264,
+          "connections": 3
+        }
+      },
+      "roomBlock": {
+        "expectedRevision": null,
+        "selection": null,
+        "markers": {
+          "r1": [],
+          "r2": [],
+          "r3": []
+        },
+        "promptSha256": "bfe73d3587c069049ff3e0b31f2a157aae0e61249027ddd5db34d4c0af238139",
+        "promptBytes": 4960,
+        "roomBlockBytes": 0,
+        "modelCalls": 1,
+        "ms": 955.753,
+        "postgresWire": {
+          "sent": 156640,
+          "received": 155415,
+          "connections": 3
+        }
+      }
+    }
+  ],
+  "problems": [],
+  "manifest": {
+    "pins": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "adapter": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "memory": "f1469f784fbb8385376936e20ad1e89364221f0fe3f53412094955a976527e07",
+      "memoryVersion": "1.28.2",
+      "memoryIntegrity": "sha512-XneY2QdmC/nUjfaax7z4Qdnsw6WgsFWc1QZFd79AkQHl0g0bDvpwjQlbDZ6wnZ2YygRDCWVt0Ew3dDI2Ao3QXg==",
+      "installedBinding": "baseline",
+      "victArchiveCount": 14,
+      "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+      "postgres": "18.6"
+    },
+    "captureDigest": "e3424a4119730a0621352048e2024afaec23f379a2bc333e181aa4b981bad84c",
+    "serializedRowsBytes": 165596
+  }
+}

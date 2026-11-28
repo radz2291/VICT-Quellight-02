@@ -1,0 +1,78 @@
+{
+  "schema": "quellight.q4-009.background-witness@1",
+  "captureSha256": "a07f914fabf8abb28f17a7a778ffb82ff8aac679e17d2fc3d442f7805917f1cb",
+  "findings": [
+    {
+      "mode": "long",
+      "arm": "room-block",
+      "after": "long-080",
+      "call": {
+        "jobId": "907f3b54-ba4d-42a9-984f-9316014d487d",
+        "kind": "observe",
+        "promptSha256": "4e7ad53a0fbcac03eac6b3627012b0eee90150d87fae311017a780fae78cd8ee",
+        "markers": [],
+        "reply": "<observations>\n- Preserve the original cut and retry identifier during fictional portal review.\n</observations>"
+      },
+      "outcome": {
+        "id": "907f3b54-ba4d-42a9-984f-9316014d487d",
+        "kind": "observe",
+        "conversationId": "32e92637-6133-42e3-a284-8f5e01d04add",
+        "authority": "care:3a5df072b80c8cb3aabdfd4020d3e4355a40612a2df75592a1f3df28df7c266b",
+        "state": "superseded",
+        "code": "MEMORY_SOURCE_SUPERSEDED"
+      },
+      "product": {
+        "id": "907f3b54-ba4d-42a9-984f-9316014d487d",
+        "kind": "observe",
+        "state": "superseded",
+        "attempts": 1,
+        "failure_code": "MEMORY_SOURCE_SUPERSEDED",
+        "source_revision": "b3a2f269f6fadef4e2101e847416791e3d49d435fb1929843441f33e81592045",
+        "configuration_revision": "7f444406db6520d12f7c9f77dad021c9af9cb757e959fdbb18b83acee06cf2a2",
+        "authority_revision": "care:3a5df072b80c8cb3aabdfd4020d3e4355a40612a2df75592a1f3df28df7c266b",
+        "conversation_id": "32e92637-6133-42e3-a284-8f5e01d04add"
+      },
+      "events": [
+        {
+          "state": "queued",
+          "code": null,
+          "at": "2026-11-28T05:15:50.600Z"
+        },
+        {
+          "state": "running",
+          "code": null,
+          "at": "2026-11-28T05:16:01.154Z"
+        },
+        {
+          "state": "superseded",
+          "code": "MEMORY_SOURCE_SUPERSEDED",
+          "at": "2026-11-28T05:16:09.058Z"
+        }
+      ],
+      "native": {
+        "kind": "observe",
+        "status": "running",
+        "operation_id": "memory-job:907f3b54-ba4d-42a9-984f-9316014d487d",
+        "source_digest": "c6ec85927b06af7bde17e1fb45d9783da4d9ab1b182826e2f5decfec387e3e3a",
+        "configuration_revision": "1f2600edab2553836a8ef095d57fdeadc653cc69610bb78c0ceb5bdf6545309b",
+        "authority_revision": "care:3a5df072b80c8cb3aabdfd4020d3e4355a40612a2df75592a1f3df28df7c266b",
+        "events": [
+          {
+            "at": "2026-11-28T05:16:05.044Z",
+            "name": "observe-started"
+          },
+          {
+            "at": "2026-11-28T05:16:05.343Z",
+            "name": "observer-started"
+          },
+          {
+            "at": "2026-11-28T05:16:07.799Z",
+            "name": "observer-completed"
+          }
+        ],
+        "has_checkpoint": false,
+        "has_result": false
+      }
+    }
+  ]
+}

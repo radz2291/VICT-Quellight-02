@@ -1,0 +1,397 @@
+{
+  "schema": "quellight.q4-009.selector-timing@1",
+  "captureSha256": "a07f914fabf8abb28f17a7a778ffb82ff8aac679e17d2fc3d442f7805917f1cb",
+  "overlaySha256": "04a1f326c5b062179e5518326de8d67055aab4132036f01caa05410eed140e45",
+  "sqlSha256": "89e75694d8f0e37876b2449939de64e8fc6ab2cfa10471e8b3971450b9cd96d8",
+  "postgres": "18.6",
+  "node": "v22.23.5",
+  "rounds": 20,
+  "warmup": 5,
+  "cases": {
+    "hit": {
+      "caseId": "short-first",
+      "historicalBindParameters": [
+        "b0fb3add-152d-41a4-931a-e9816d1eac16",
+        "f821f878-8cdc-4491-9cb8-0f4b94c47a6e",
+        "878bb77e-2996-4b97-9b60-5733b33bdc25",
+        "0"
+      ],
+      "revision": "r1"
+    },
+    "miss": {
+      "caseId": "short-after-exclusion",
+      "currentBindParameters": [
+        "b0fb3add-152d-41a4-931a-e9816d1eac16",
+        "f821f878-8cdc-4491-9cb8-0f4b94c47a6e",
+        "878bb77e-2996-4b97-9b60-5733b33bdc25",
+        "care:08c51a8af880b83fd8f3f5cf061d33bac609b1e0674807c9c693936649397aba"
+      ],
+      "revision": null
+    }
+  },
+  "hit": {
+    "n": 20,
+    "minMs": 0.619,
+    "p50Ms": 0.659,
+    "p95Ms": 1.134,
+    "maxMs": 1.224
+  },
+  "miss": {
+    "n": 20,
+    "minMs": 0.584,
+    "p50Ms": 0.618,
+    "p95Ms": 1,
+    "maxMs": 1.203
+  },
+  "pairedHitMinusMiss": {
+    "n": 20,
+    "minMs": -0.069,
+    "p50Ms": 0.042,
+    "p95Ms": 0.27,
+    "maxMs": 0.356
+  },
+  "samples": [
+    {
+      "index": 1,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.68,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.794,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 2,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.968,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.698,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 3,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.638,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.659,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 4,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.656,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.632,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 5,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.61,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.648,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 6,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.628,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.599,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 7,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.585,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.635,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 8,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.635,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.618,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 9,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.613,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.674,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 10,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.709,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.61,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 11,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.633,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.635,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 12,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.747,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.705,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 13,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.663,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.916,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 14,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 1.224,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 1,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 15,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 1.203,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 1.134,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 16,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 1.019,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.664,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 17,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.617,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.629,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 18,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.663,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.618,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    },
+    {
+      "index": 19,
+      "order": [
+        "miss",
+        "hit"
+      ],
+      "miss": {
+        "wallMs": 0.584,
+        "rows": 0,
+        "serializedResultBytes": 2
+      },
+      "hit": {
+        "wallMs": 0.626,
+        "rows": 1,
+        "serializedResultBytes": 427
+      }
+    },
+    {
+      "index": 20,
+      "order": [
+        "hit",
+        "miss"
+      ],
+      "hit": {
+        "wallMs": 0.619,
+        "rows": 1,
+        "serializedResultBytes": 427
+      },
+      "miss": {
+        "wallMs": 0.594,
+        "rows": 0,
+        "serializedResultBytes": 2
+      }
+    }
+  ],
+  "method": "One warmed standalone loopback client, fixture writer role in read-only transaction, alternating query order, exact captured SQL and bind arguments.",
+  "scope": "Query round trip only. The successful row uses historical fixture inputs. This does not authorize that revision for a current reply or estimate total foreground latency."
+}

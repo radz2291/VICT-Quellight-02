@@ -1,0 +1,181 @@
+{
+  "captureSha256": "6fa8f0b2151a2bfc408c3ebafa9d347ebe72d5467ca9085a67e435ac906261d5",
+  "bindings": [
+    {
+      "arm": "room-block",
+      "caseId": "short-first",
+      "turnId": "quellight:435f9107-a1a5-4ab2-a317-bfb84d463393",
+      "activation": "v1_216411d1b3f02b05383486b3e111e94d46ca557feb5360f8bf8c120f0989a1d3",
+      "instructionsRevision": "3f0bab9bab2c8661eabfa4159fa26ba407b14e8369282bc10d375a1bebe31fa4",
+      "firstSystemSha256": "eb239a838fe8b38e51e5be64f9336eb67e404f5834983a4f57ed197802f01a2f"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-repeat",
+      "turnId": "quellight:d5079989-10dc-49d1-b1c1-767e8525677a",
+      "activation": "v1_216411d1b3f02b05383486b3e111e94d46ca557feb5360f8bf8c120f0989a1d3",
+      "instructionsRevision": "3f0bab9bab2c8661eabfa4159fa26ba407b14e8369282bc10d375a1bebe31fa4",
+      "firstSystemSha256": "eb239a838fe8b38e51e5be64f9336eb67e404f5834983a4f57ed197802f01a2f"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-reopen",
+      "turnId": "quellight:83a5c270-7188-44b2-8afb-93d877be5a52",
+      "activation": "v1_216411d1b3f02b05383486b3e111e94d46ca557feb5360f8bf8c120f0989a1d3",
+      "instructionsRevision": "3f0bab9bab2c8661eabfa4159fa26ba407b14e8369282bc10d375a1bebe31fa4",
+      "firstSystemSha256": "eb239a838fe8b38e51e5be64f9336eb67e404f5834983a4f57ed197802f01a2f"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-fresh",
+      "turnId": "quellight:982ca98e-3d03-46b1-a6bc-c1cf39ddec42",
+      "activation": "v1_1dd9d1e0f652e48006625835a9932356d52a7c9698d6b16d706fed444a29e241",
+      "instructionsRevision": "3f0bab9bab2c8661eabfa4159fa26ba407b14e8369282bc10d375a1bebe31fa4",
+      "firstSystemSha256": "eb239a838fe8b38e51e5be64f9336eb67e404f5834983a4f57ed197802f01a2f"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-other-room",
+      "turnId": "quellight:a8b4ed38-cc9a-4846-abc6-6d4f47f1af0f",
+      "activation": "v1_215793181d79ee6985e738e998c63d5cfbd80efdfb5e8b9bf46637d41dbf6ab4",
+      "instructionsRevision": "22554fc1df79033043db91da91ab0690669a5789542391539f7b37c6db7bf075",
+      "firstSystemSha256": "59c0cf14cd15548cb0675ec78c5c2446ee4c84c7fb95e0915e07ede688cda193"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-post-compaction",
+      "turnId": "quellight:b40d81d3-cef0-493c-87e5-5a96fa2c6da5",
+      "activation": "v1_216411d1b3f02b05383486b3e111e94d46ca557feb5360f8bf8c120f0989a1d3",
+      "instructionsRevision": "3f0bab9bab2c8661eabfa4159fa26ba407b14e8369282bc10d375a1bebe31fa4",
+      "firstSystemSha256": "eb239a838fe8b38e51e5be64f9336eb67e404f5834983a4f57ed197802f01a2f"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-changed",
+      "turnId": "quellight:fb88fb18-d64a-48c9-a3cc-1fcfa55c2efb",
+      "activation": "v1_4921b0545fa6d7ccd0c14d9fa6c5284e8a3dcbeb971c41a7a3bce96e30ceaade",
+      "instructionsRevision": "b6fd147dcd97d588c66e7ff56804bea515b22f65deef6aed4aa515b27aa705e0",
+      "firstSystemSha256": "f34685c02a5d0fabdfa73903db17da7c21bf535e08a0280937509fc5ddd24da1"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-reopen-r2",
+      "turnId": "quellight:483ec385-734c-4f9c-962f-6cf37f5729c2",
+      "activation": "v1_4921b0545fa6d7ccd0c14d9fa6c5284e8a3dcbeb971c41a7a3bce96e30ceaade",
+      "instructionsRevision": "b6fd147dcd97d588c66e7ff56804bea515b22f65deef6aed4aa515b27aa705e0",
+      "firstSystemSha256": "f34685c02a5d0fabdfa73903db17da7c21bf535e08a0280937509fc5ddd24da1"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-after-correction",
+      "turnId": "quellight:b76b0873-ef0c-49d2-9c17-0124c1b1e01c",
+      "activation": "v1_2fda2e6d0e713b02a55db90cb6b6fadb6e4534bbc51d5a1eae76cb9cf5949410",
+      "instructionsRevision": "3d5b6d1b16856e2dd6d8ff182b458b1975a4966091cc86788a0e6c20bea34bbd",
+      "firstSystemSha256": "0cff7d9950877b949ce3493885d2650b61e7b99c421f5786867e4947ecfdae37"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-repeat-r3",
+      "turnId": "quellight:32053c03-04be-4910-a3e6-f6d758ad1c5e",
+      "activation": "v1_2fda2e6d0e713b02a55db90cb6b6fadb6e4534bbc51d5a1eae76cb9cf5949410",
+      "instructionsRevision": "3d5b6d1b16856e2dd6d8ff182b458b1975a4966091cc86788a0e6c20bea34bbd",
+      "firstSystemSha256": "0cff7d9950877b949ce3493885d2650b61e7b99c421f5786867e4947ecfdae37"
+    },
+    {
+      "arm": "room-block",
+      "caseId": "short-after-exclusion",
+      "turnId": "quellight:69f61083-cc13-47f0-9353-dcd6ee0752e8",
+      "activation": "v1_6978047c9e8fb854794b2ccbddccf581096b9c1239f146458f43123fe9ec726f",
+      "instructionsRevision": "2e0ade01e43ff78e6a036d2f5aa33370d835f794c00ee0ba2c397fae955e9025",
+      "firstSystemSha256": "7da10a3ceac47a2e173fd95bb54b9edacaaa95ff5ae5eb0b1bc52c8de9be0b4a"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-first",
+      "turnId": "quellight:b8dd0846-b858-4f39-8d8a-34cc93ad7976",
+      "activation": "v1_9665fde3f155283f0ccf5873a7288ebd190d64545237b9bf047946eeebac4e5b",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-repeat",
+      "turnId": "quellight:b17b7d20-4793-4db1-86e1-ded2ea4e5864",
+      "activation": "v1_9665fde3f155283f0ccf5873a7288ebd190d64545237b9bf047946eeebac4e5b",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-reopen",
+      "turnId": "quellight:582df4d1-396e-4d69-9ffa-4d7020f60c55",
+      "activation": "v1_9665fde3f155283f0ccf5873a7288ebd190d64545237b9bf047946eeebac4e5b",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-fresh",
+      "turnId": "quellight:f33c24e2-8bb9-4efb-83cf-3843f274f049",
+      "activation": "v1_337c9ce085d77db3b8b6f0bd301d0eed87470fdce57aa3e7bde21d664cb1e163",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-other-room",
+      "turnId": "quellight:9e58470f-e0fb-4be3-a1df-783ee0fab91b",
+      "activation": "v1_177ea93b560dd4951d08888a88fc6533480cef072578c2ba02d6ab41d1e78aaa",
+      "instructionsRevision": "52aa28a0ea4c66e739d869be3f055f946f6313580fce4d9c5f886be3b6ab8c61",
+      "firstSystemSha256": "a84bcf99a01b85b30d865fdf123a04e2a6cbc62191006a2ce547ad2014260ae3"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-post-compaction",
+      "turnId": "quellight:584b5ee8-3629-46f4-b37f-9ec9079be0fa",
+      "activation": "v1_9665fde3f155283f0ccf5873a7288ebd190d64545237b9bf047946eeebac4e5b",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-changed",
+      "turnId": "quellight:8a3881a2-80e8-4555-8729-2e25f0e56a2d",
+      "activation": "v1_347285a9348488643750495d86fbe639650cfe466ceaee6d036a9ea2d3363522",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-reopen-r2",
+      "turnId": "quellight:f533bdc0-230b-4d19-a2fe-99e909dfd9db",
+      "activation": "v1_347285a9348488643750495d86fbe639650cfe466ceaee6d036a9ea2d3363522",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-after-correction",
+      "turnId": "quellight:8aadc841-c317-4d6a-9e0c-be0635ddffa1",
+      "activation": "v1_446e2652a215c155f2e373320f71755e3d4786bfad56d1f705a6d85c2fa38244",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-repeat-r3",
+      "turnId": "quellight:17fdd218-83c6-4d40-9a4c-1411d5a7a58d",
+      "activation": "v1_446e2652a215c155f2e373320f71755e3d4786bfad56d1f705a6d85c2fa38244",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    },
+    {
+      "arm": "control",
+      "caseId": "short-after-exclusion",
+      "turnId": "quellight:f045884c-47f2-4d1d-a61c-2ca35d4103b6",
+      "activation": "v1_6585e3158e48162d541db382b1e7470138473a1a829124d58a4df79b8c8beee9",
+      "instructionsRevision": "85632fab08b382e882f717aca244d9e4e344cf7a9dc400780ef7b10793db3c2a",
+      "firstSystemSha256": "30596d622a8fe072e76a6a3483c5095b5e013b3e3ea84b8960922ce56e651de1"
+    }
+  ]
+}

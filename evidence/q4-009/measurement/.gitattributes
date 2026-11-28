@@ -1,0 +1,5 @@
+*.mjs -text
+README.md -text
+summary.json -text
+selector-timing.json -text
+SHA256SUMS -text
