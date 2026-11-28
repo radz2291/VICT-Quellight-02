@@ -1,0 +1,116 @@
+{
+  "schema": "quellight.q4-006.fixture@1",
+  "room": "Fictional harbor rehearsal",
+  "turns": [
+    {
+      "id": "01",
+      "user": "SYN_U01 Mark the first harbor inspection pass as finished.",
+      "assistant": "SYN_A01 The first harbor inspection pass is recorded."
+    },
+    {
+      "id": "02",
+      "user": "SYN_U02 Remove the temporary boat-pass rule when the trial ends.",
+      "assistant": "SYN_A02 The temporary boat-pass rule is marked for review."
+    },
+    {
+      "id": "03",
+      "user": "SYN_U03 Keep the spare lamps available for night inspection.",
+      "assistant": "SYN_A03 The spare lamps stay available."
+    },
+    {
+      "id": "04",
+      "user": "SYN_U04 Label the printed map with the north entrance.",
+      "assistant": "SYN_A04 The north entrance label is set."
+    },
+    {
+      "id": "05",
+      "user": "SYN_U05 Keep the final handoff at the eastern pier.",
+      "assistant": "SYN_A05 The handoff stays at the eastern pier."
+    }
+  ],
+  "observe": [
+    {
+      "id": "open",
+      "turnIds": [
+        "01",
+        "02",
+        "03"
+      ],
+      "note": "The harbor opening inspection covers lamps and temporary passes.",
+      "expectedTags": [
+        "SYN_U01",
+        "SYN_A01",
+        "SYN_U02",
+        "SYN_A02",
+        "SYN_U03",
+        "SYN_A03"
+      ]
+    },
+    {
+      "id": "middle",
+      "turnIds": [
+        "04"
+      ],
+      "note": "The printed map names the north entrance.",
+      "expectedTags": [
+        "SYN_U04",
+        "SYN_A04"
+      ]
+    },
+    {
+      "id": "close",
+      "turnIds": [
+        "05"
+      ],
+      "note": "The final handoff is at the eastern pier.",
+      "expectedTags": [
+        "SYN_U05",
+        "SYN_A05"
+      ]
+    }
+  ],
+  "reflectBefore": {
+    "id": "outer-combination",
+    "inputParents": [
+      "open",
+      "middle",
+      "close"
+    ],
+    "retainedParents": [
+      "open",
+      "close"
+    ]
+  },
+  "forgetTag": "SYN_U02",
+  "rebuild": {
+    "id": "rebuilt",
+    "note": "The rebuilt record retains the eligible harbor instructions.",
+    "expectedTags": [
+      "SYN_U01",
+      "SYN_U03",
+      "SYN_U04",
+      "SYN_U05"
+    ]
+  },
+  "reflectAfter": {
+    "id": "rebuilt-reflection",
+    "inputParents": [
+      "rebuilt"
+    ],
+    "retainedParents": [
+      "rebuilt"
+    ]
+  },
+  "expectations": {
+    "longObserveMinimumMembers": 3,
+    "reflectionInteriorOverinclusionTags": [
+      "SYN_U04",
+      "SYN_A04"
+    ],
+    "endpointTagsUnaffectedByInteriorExclusion": [
+      "SYN_U01",
+      "SYN_U03"
+    ],
+    "staleResults": "superseded; current result and prepared checkpoint masked"
+  }
+}
