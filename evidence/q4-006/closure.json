@@ -1,0 +1,129 @@
+{
+  "appCommit": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "appTree": "3379f6b58eb91d4a039b428656de422a9221a7f8",
+  "repositoryLockSha256": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+  "checkoutLockSha256": "a05fde3193f0d5b6df5edc33022235108218fd7e26642a47aa56b0b4ec53bd93",
+  "lockDifference": "CRLF checkout only",
+  "nativeMastraVersions": {
+    "core": "1.64.0",
+    "libsql": "1.22.3",
+    "memory": "1.28.2",
+    "observability": "1.17.5",
+    "pg": "1.22.3",
+    "schema-compat": "1.3.8"
+  },
+  "artifacts": [
+    {
+      "name": "@victframework/ui-media-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-media-svelte-0.4.0-rc.1.tgz",
+      "archiveSha256": "234e78dd8f615622097b5166e5bd7f7646574d3663d3607b390d26ac8be11f22",
+      "installedFileCount": 21,
+      "installedTreeSha256": "3b14e0014ad4427b18962961d2f0e758124f73ed221788d9cc2c693ff4f6f530"
+    },
+    {
+      "name": "@victframework/ui-patterns-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-patterns-svelte-0.4.0-rc.1.tgz",
+      "archiveSha256": "778cc1ab1a0b6b8f8135db80232fb26abbb34d7e4d1c8bb786c81794b2d5ee4b",
+      "installedFileCount": 32,
+      "installedTreeSha256": "34525dad748413839ca4a6166b9c885012fd9270fd6432ee367b49081b100622"
+    },
+    {
+      "name": "@victframework/application",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-application-0.4.0-rc.1.tgz",
+      "archiveSha256": "ea0fdde59f165379154517f4be4ca99e3c8790033862e4a56f6df5fdb09b5db7",
+      "installedFileCount": 34,
+      "installedTreeSha256": "e3060d82f8f45b11397e0fa37d886fb4f71c594c4be4b2584233e14a4884b31e"
+    },
+    {
+      "name": "@victframework/contracts",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-contracts-0.4.0-rc.1.tgz",
+      "archiveSha256": "5fa012bb69ba3a278da35911d95ee079ac3a697a4c12554c298f9add2b7514e2",
+      "installedFileCount": 34,
+      "installedTreeSha256": "f2400298c0ca1b64386b0342773d997ca7489d49fd25a14b4cf47e25acc786a4"
+    },
+    {
+      "name": "@victframework/sdk",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-sdk-0.4.0-rc.1.tgz",
+      "archiveSha256": "c37e97319a52463c9b422a3de2870247beaee97b811fe378b3a4ee8e00e2ce7a",
+      "installedFileCount": 28,
+      "installedTreeSha256": "f55eac6b89a6a26406316d915bb138cdf9aaf753fe36c4478c4bab1e6717a90c"
+    },
+    {
+      "name": "@victframework/ui",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-0.4.0-rc.1.tgz",
+      "archiveSha256": "15dd5f5da2a38b6cbf0bc56677c7f6ccae190c4c7a5029d8cc7c8994263a7cb2",
+      "installedFileCount": 70,
+      "installedTreeSha256": "c842a2c1aaa2fedf479e49696d4be48bdfa44590bbc85482dabb0d7be3edb3e0"
+    },
+    {
+      "name": "@victframework/ui-ai-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-ai-svelte-0.4.0-rc.1.tgz",
+      "archiveSha256": "74df4aac5bed13a556f684373e2d4d8ce021521db24edddfe22a414e46be2ac8",
+      "installedFileCount": 218,
+      "installedTreeSha256": "81364a88152c466bf293dc347788ee5994350d17a4dafbf9d30aa438cb4a17a9"
+    },
+    {
+      "name": "@victframework/ui-svelte",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-ui-svelte-0.4.0-rc.1.tgz",
+      "archiveSha256": "f578759a74fb2ac509e52850d27292871115de3103acbe9f7b6fc7d0ef606336",
+      "installedFileCount": 285,
+      "installedTreeSha256": "fa1b974c521b11ba5b893efb522207e92f9aacab57b0b783c83b36638a6c00b5"
+    },
+    {
+      "name": "@victframework/kernel",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-kernel-0.4.0-rc.1.tgz",
+      "archiveSha256": "a865551c64cb25b9314862e1a0afa19d5b8f61ebdb817dcb55f68085a431b5a6",
+      "installedFileCount": 31,
+      "installedTreeSha256": "83045ec7a4f6352b9d8501437e94103e5c178c3434f85adc4036f9f1dd04598f"
+    },
+    {
+      "name": "@victframework/control",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-control-0.4.0-rc.1.tgz",
+      "archiveSha256": "2f42f94df4c2c72ba84e6ee0d9bb59eb3feee8e0766ea248f00e81afb1acb82a",
+      "installedFileCount": 16,
+      "installedTreeSha256": "ddc123e732ad2614bbeccc114e83692d30783e800c625a146668a3e8d84ab370"
+    },
+    {
+      "name": "@victframework/runtime",
+      "version": "0.4.0-rc.1",
+      "file": "packs/runtime-0.4.0-rc.1-memory-e94ee682d7f5.tgz",
+      "archiveSha256": "e94ee682d7f57efbbc9722818f2ab6059ad6a9bb3f9c8229e73c24197b0abb3f",
+      "installedFileCount": 124,
+      "installedTreeSha256": "294fafd82e25f44b570b1619b53c5db51072a4f1759782eb28a12c19bbaf6e58"
+    },
+    {
+      "name": "@victframework/store-postgres",
+      "version": "0.4.0-rc.1+vhost013",
+      "file": "packs/store-postgres-vhost013.tgz",
+      "archiveSha256": "cbe8615cba56511f6d16b303be9ee9258db97f0ccb1c0a13e54ede0bde989210",
+      "installedFileCount": 30,
+      "installedTreeSha256": "3e9976a1b1a3e59ecf302f86ba0f3ff6434803fb754bee034dab6215c8b1222f"
+    },
+    {
+      "name": "@victframework/mastra",
+      "version": "0.4.0-rc.1",
+      "file": "packs/mastra-0.4.0-rc.1-vhost028-90b2de7c6515.tgz",
+      "archiveSha256": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "installedFileCount": 66,
+      "installedTreeSha256": "9cdd04a9248a2423fc4fc4b09803e45071f2279eaf6b45aac505a26dad51ba02"
+    },
+    {
+      "name": "@victframework/hosted",
+      "version": "0.4.0-rc.1",
+      "file": "packs/victframework-hosted-0.4.0-rc.1.tgz",
+      "archiveSha256": "4aa6581aa7d26f067ddb3ec28dc8f7fd67bb34467e08132132972ed25c880de4",
+      "installedFileCount": 14,
+      "installedTreeSha256": "d0a0acfb7987e50022dc47b90a34240804d5c17011cdd1f832a3b989a27fae45"
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "pinnedApp": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "pinnedDesign": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "fixtureCommit": "5166198b4a39a59701455aa1532deb3243c34059",
+  "fixtureSha256": "d038fa9710703434ef123243a76f5efe6e4e7edf749574ee7f26dc207b289fee",
+  "node": "v22.23.5",
+  "postgres": "18.6",
+  "forgottenId": "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+  "retainedSurroundingUserIds": [
+    "08575436-3369-4964-a487-f798ef9967fa",
+    "55771a49-71ca-4e34-b793-b64af05a0083"
+  ],
+  "oldAuthority": "0",
+  "currentAuthority": "care:c5cb4528476eceedd4f2d2dd25b1d8094d648551d0be1dc171cc8d1cc2935f24",
+  "reflected": {
+    "before": {
+      "inputParents": [
+        "023bdd90d6b0efbd",
+        "e0c8e033ef8fb42e",
+        "360753bc43c26e62"
+      ],
+      "copiedParents": [
+        "023bdd90d6b0efbd",
+        "360753bc43c26e62"
+      ],
+      "promptGroupMarkupPresent": false
+    },
+    "after": {
+      "inputParents": [
+        "5680c1f26924750a"
+      ],
+      "copiedParents": [
+        "5680c1f26924750a"
+      ],
+      "promptGroupMarkupPresent": false
+    }
+  },
+  "sourceComparisons": [
+    {
+      "label": "open",
+      "publicationId": "memory-job:f030b255-3858-4bf3-871d-bcb5382df8aa",
+      "groupId": "023bdd90d6b0efbd",
+      "expectedIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40"
+      ],
+      "intervalIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40"
+      ],
+      "intervalEligibleIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40"
+      ],
+      "extra": [],
+      "rejectedIds": [],
+      "acceptedIds": [],
+      "disposition": "observe-interior-membership-unverified"
+    },
+    {
+      "label": "middle",
+      "publicationId": "memory-job:3d3484ef-ec05-481b-a177-17f0a52ac754",
+      "groupId": "e0c8e033ef8fb42e",
+      "expectedIds": [
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "intervalIds": [
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "intervalEligibleIds": [
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "extra": [],
+      "rejectedIds": [],
+      "acceptedIds": [
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "disposition": "bounded-endpoints-resolved"
+    },
+    {
+      "label": "close",
+      "publicationId": "memory-job:79da7526-b519-4e9b-abf6-870f0fe76891",
+      "groupId": "360753bc43c26e62",
+      "expectedIds": [
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "intervalIds": [
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "intervalEligibleIds": [
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "extra": [],
+      "rejectedIds": [],
+      "acceptedIds": [
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "disposition": "bounded-endpoints-resolved"
+    },
+    {
+      "label": "outer-combination",
+      "publicationId": "memory-job:70c2d5f2-3ced-46f9-b8f5-d0ca08b616a7",
+      "groupId": "derived-group-1",
+      "expectedIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "intervalIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "intervalEligibleIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9",
+        "8e7c88f6-a6c7-49e8-b47d-6b232ff4af4e"
+      ],
+      "extra": [
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "rejectedIds": [],
+      "acceptedIds": [],
+      "disposition": "reflected-membership-unverified"
+    },
+    {
+      "label": "rebuilt",
+      "publicationId": "memory-job:714b28a9-35a0-4474-b557-5210abec2a17",
+      "groupId": "5680c1f26924750a",
+      "expectedIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "intervalIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "intervalEligibleIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "extra": [],
+      "rejectedIds": [
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "acceptedIds": [],
+      "disposition": "observe-interior-membership-unverified"
+    },
+    {
+      "label": "rebuilt-reflection",
+      "publicationId": "memory-job:07d6778e-2be8-44bc-bb9f-c6af4dec82e1",
+      "groupId": "derived-group-1",
+      "expectedIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "intervalIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "intervalEligibleIds": [
+        "08575436-3369-4964-a487-f798ef9967fa",
+        "55771a49-71ca-4e34-b793-b64af05a0083",
+        "0668ae0c-30d6-427b-b3de-b6304c63eb40",
+        "7e1f7446-17dd-432d-a8f1-5d34318cbcd9"
+      ],
+      "extra": [],
+      "rejectedIds": [
+        "a3222b40-aa66-4d7e-9dc1-7c6e5bb50616",
+        "6e3fb07d-0c7a-43b4-ad63-60ad4cb605c8",
+        "81d337b3-9965-4da6-afa4-881ab74a6226",
+        "6ea75651-47d7-439f-8966-930a13763c40",
+        "0dca7b63-4a14-4844-91ce-5f1f347261af"
+      ],
+      "acceptedIds": [],
+      "disposition": "reflected-membership-unverified"
+    }
+  ],
+  "stale": [
+    {
+      "label": "old-observe",
+      "operationId": "memory-job:f030b255-3858-4bf3-871d-bcb5382df8aa",
+      "status": "superseded",
+      "accepted": 0,
+      "preservedPublicationEvents": 1
+    },
+    {
+      "label": "old-reflect",
+      "operationId": "memory-job:70c2d5f2-3ced-46f9-b8f5-d0ca08b616a7",
+      "status": "superseded",
+      "accepted": 0,
+      "preservedPublicationEvents": 1
+    }
+  ],
+  "receipts": [
+    {
+      "label": "open",
+      "operationId": "memory-job:f030b255-3858-4bf3-871d-bcb5382df8aa",
+      "receiptId": "8a55dd4b-73d0-4fd7-a6c5-87bbf6cfa24a",
+      "argumentDigest": "2c1099d9ae43275374fb821e0ac09cc3e14a915b88e53cae4b4061c1696d6f5f",
+      "publishedAt": "2026-11-28T02:40:38.685Z"
+    },
+    {
+      "label": "middle",
+      "operationId": "memory-job:3d3484ef-ec05-481b-a177-17f0a52ac754",
+      "receiptId": "fa4753fb-f798-49c2-a7ea-675320774b12",
+      "argumentDigest": "b216143049046bd8612bc4ac339320ff3cacb17a04dfd71e4069780fcd384ad2",
+      "publishedAt": "2026-11-28T02:40:40.275Z"
+    },
+    {
+      "label": "close",
+      "operationId": "memory-job:79da7526-b519-4e9b-abf6-870f0fe76891",
+      "receiptId": "1aaf911a-9cc1-402b-b3d9-3442142a24da",
+      "argumentDigest": "869f7c9940545bdd571aebfbf28fefc159968f51724ba1363516d28c7da9f9d3",
+      "publishedAt": "2026-11-28T02:40:41.608Z"
+    },
+    {
+      "label": "outer-combination",
+      "operationId": "memory-job:70c2d5f2-3ced-46f9-b8f5-d0ca08b616a7",
+      "receiptId": "b96c2992-60f7-4893-a102-7bf95a53f52b",
+      "argumentDigest": "145efd451e1407b2aadf5da1210bd76edbd10c7e221f353b0a47c9057de5dc8e",
+      "publishedAt": "2026-11-28T02:40:42.411Z"
+    },
+    {
+      "label": "rebuilt",
+      "operationId": "memory-job:714b28a9-35a0-4474-b557-5210abec2a17",
+      "receiptId": "21a599ea-bd14-4db8-b1a6-59f15166e8cb",
+      "argumentDigest": "5fc7e158fd6478193df7427bbbd4c7b88d306999c5f1eb32932161a0e904ff43",
+      "publishedAt": "2026-11-28T02:40:43.911Z"
+    },
+    {
+      "label": "rebuilt-reflection",
+      "operationId": "memory-job:07d6778e-2be8-44bc-bb9f-c6af4dec82e1",
+      "receiptId": "60588152-eb09-46fe-8b8e-1dadc47a1cb1",
+      "argumentDigest": "8399a7b7e965cf03f212026d91339f7a70e34535136b6a33e3890755bad34274",
+      "publishedAt": "2026-11-28T02:40:44.769Z"
+    }
+  ],
+  "readTotals": {
+    "attempts": 8,
+    "namedReads": 44,
+    "namedBytes": 130408,
+    "sent": 112410,
+    "received": 234291
+  },
+  "resource": {
+    "chatFixtureCalls": 5,
+    "observeFixtureCalls": 4,
+    "reflectFixtureCalls": 2,
+    "consumerModelCalls": 0,
+    "liveProviderCalls": 0,
+    "addedSendRoundTrips": 0
+  }
+}
