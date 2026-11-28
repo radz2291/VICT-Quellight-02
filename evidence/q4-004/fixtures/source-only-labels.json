@@ -26,6 +26,15 @@
       "quote": "I decide who sees unpublished cuts.",
       "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
       "uncertainty": "confirmed"
+    },
+    {
+      "key": "unpublished-policy-unknown",
+      "claim": "Specific unpublished-cut visibility is undecided in this snapshot.",
+      "role": "user",
+      "authority": "owner-reservation",
+      "quote": "I decide who sees unpublished cuts.",
+      "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+      "uncertainty": "unknown"
     }
   ],
   "correction": [
@@ -76,6 +85,15 @@
       "quote": "I haven’t chosen the permanent review policy.",
       "sourceId": "contradiction-turn-1:user",
       "uncertainty": "confirmed"
+    },
+    {
+      "key": "future-default-unknown",
+      "claim": "No permanent access default can be inferred from the Friday exception.",
+      "role": "user",
+      "authority": "owner-reservation",
+      "quote": "I haven’t chosen the permanent review policy.",
+      "sourceId": "contradiction-turn-1:user",
+      "uncertainty": "unknown"
     }
   ],
   "verified-outcome": [

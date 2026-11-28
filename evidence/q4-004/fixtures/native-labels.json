@@ -4,13 +4,29 @@
       "key": "review-version",
       "nativeSpan": "Cedar Cut comments stay attached to the reviewed version.",
       "status": "attributable",
-      "reason": "The owner explicitly requires version-bound comments."
+      "reason": "The owner explicitly requires version-bound comments.",
+      "support": {
+        "claim": "Keep each comment attached to the reviewed version.",
+        "role": "user",
+        "authority": "owner-requirement",
+        "quote": "must keep each comment attached to the reviewed version",
+        "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+        "uncertainty": "confirmed"
+      }
     },
     {
       "key": "retry-delegated",
       "nativeSpan": "The owner delegates routine retry reliability",
       "status": "attributable",
-      "reason": "The owner delegates routine retry decisions."
+      "reason": "The owner delegates routine retry decisions.",
+      "support": {
+        "claim": "The owner delegates routine retry design.",
+        "role": "user",
+        "authority": "owner-delegation",
+        "quote": "Decide routine retries yourself.",
+        "sourceId": "quellight:bcbf91c1-c4dc-47b7-b20d-3edbd2dc511f:user",
+        "uncertainty": "confirmed"
+      }
     },
     {
       "key": "visibility-selected",
@@ -24,7 +40,15 @@
       "key": "visibility-fixed",
       "nativeSpan": "Internal-only visibility is now approved for unpublished cuts.",
       "status": "attributable",
-      "reason": "The current owner explicitly chose internal-only."
+      "reason": "The current owner explicitly chose internal-only.",
+      "support": {
+        "claim": "The owner chose internal-only visibility for unpublished cuts.",
+        "role": "user",
+        "authority": "owner-decision",
+        "quote": "I chose internal-only for unpublished cuts.",
+        "sourceId": "correction-turn-1:user",
+        "uncertainty": "confirmed"
+      }
     },
     {
       "key": "delete-comments",
@@ -46,7 +70,15 @@
       "key": "friday-exception",
       "nativeSpan": "Alex may view the unpublished cut during Friday’s private session.",
       "status": "attributable",
-      "reason": "The bound time, actor and exception are present in the first user source."
+      "reason": "The bound time, actor and exception are present in the first user source.",
+      "support": {
+        "claim": "Only Alex may see the unpublished cut at Friday’s private session.",
+        "role": "user",
+        "authority": "owner-exception",
+        "quote": "Only Alex may see the unreleased cut at Friday’s private session.",
+        "sourceId": "contradiction-turn-1:user",
+        "uncertainty": "confirmed"
+      }
     },
     {
       "key": "partner-default",
@@ -66,7 +98,16 @@
       "key": "retry-one-comment",
       "nativeSpan": "The duplicate submission kept one logical comment.",
       "status": "attributable",
-      "reason": "The independent check resolves both requests for the same intent to the same stored comment."
+      "reason": "The independent check resolves both requests for the same intent to the same stored comment.",
+      "support": {
+        "claim": "The duplicate submissions resolved to one logical comment in the fixture artifact.",
+        "role": "user",
+        "authority": "independent-artifact-verification",
+        "quote": "retry requests R1 and R2 repeat intent INT-1",
+        "check": "retry-one-comment",
+        "sourceId": "verified-outcome-turn-1:user",
+        "uncertainty": "confirmed"
+      }
     },
     {
       "key": "outcome-release",
