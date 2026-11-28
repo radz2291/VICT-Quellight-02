@@ -1,0 +1,136 @@
+{
+  "schema": "quellight.q4-005.fixture@1",
+  "name": "Beacon rehearsal",
+  "turns": [
+    {
+      "id": "original",
+      "thread": "A",
+      "user": "Invite all workshop volunteers to preview the rehearsal export.",
+      "assistant": "I will invite the volunteers for this rehearsal.",
+      "observed": [
+        "Invite all workshop volunteers to preview the rehearsal export."
+      ]
+    },
+    {
+      "id": "layout",
+      "thread": "A",
+      "user": "Use 24-point type for the printed cue sheet. Keep the page number on every page.",
+      "assistant": "The printed layout will use large type and page numbers.",
+      "observed": [
+        "Use 24-point type for the printed cue sheet."
+      ]
+    },
+    {
+      "id": "accessibility",
+      "thread": "B",
+      "user": "Reserve two seats for the accessibility check.",
+      "assistant": "Two seats reserved for the check.",
+      "observed": [
+        "Reserve two seats for the accessibility check."
+      ]
+    },
+    {
+      "id": "foreign",
+      "thread": "C",
+      "user": "Correction: Only the stage manager may open the rehearsal export.",
+      "assistant": "The separate room uses this restriction.",
+      "observed": [
+        "Only the stage manager may open the rehearsal export."
+      ]
+    },
+    {
+      "id": "correction",
+      "thread": "B",
+      "user": "Correction: Only the stage manager may open the rehearsal export.",
+      "assistant": "Only the stage manager will have access.",
+      "observed": [
+        "Only the stage manager may open the rehearsal export.",
+        "The producer approved public sharing."
+      ]
+    }
+  ],
+  "expected": {
+    "before": [
+      {
+        "case": "original",
+        "thread": "A",
+        "accepted": [
+          "Invite all workshop volunteers to preview the rehearsal export."
+        ]
+      },
+      {
+        "case": "layout",
+        "thread": "A",
+        "accepted": [
+          "Use 24-point type for the printed cue sheet."
+        ],
+        "omitted": [
+          "Keep the page number on every page."
+        ]
+      },
+      {
+        "case": "accessibility",
+        "thread": "B",
+        "accepted": [
+          "Reserve two seats for the accessibility check."
+        ]
+      },
+      {
+        "case": "duplicate",
+        "thread": "A",
+        "accepted": [],
+        "refusal": "duplicate-operation"
+      },
+      {
+        "case": "foreign-room",
+        "thread": "C",
+        "accepted": [],
+        "refusal": "foreign-room"
+      }
+    ],
+    "after": [
+      {
+        "case": "original-stale",
+        "thread": "A",
+        "accepted": [],
+        "refusal": "stale-authority"
+      },
+      {
+        "case": "layout-stale",
+        "thread": "A",
+        "accepted": [],
+        "refusal": "stale-authority"
+      },
+      {
+        "case": "accessibility-stale",
+        "thread": "B",
+        "accepted": [],
+        "refusal": "stale-authority"
+      },
+      {
+        "case": "correction",
+        "thread": "B",
+        "accepted": [
+          "Only the stage manager may open the rehearsal export."
+        ],
+        "unknown": [
+          "The producer approved public sharing."
+        ]
+      },
+      {
+        "case": "correction-duplicate",
+        "thread": "B",
+        "accepted": [],
+        "refusal": "duplicate-operation"
+      }
+    ]
+  },
+  "authorityChange": {
+    "kind": "memory.forget",
+    "thread": "A",
+    "turn": "original",
+    "role": "user",
+    "newCorrectionThread": "B",
+    "foreignTextIsIdentical": true
+  }
+}
