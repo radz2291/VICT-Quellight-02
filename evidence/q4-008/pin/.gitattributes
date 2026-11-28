@@ -1,0 +1,4 @@
+*.mjs -text
+README.md -text
+old-pin.json -text
+SHA256SUMS -text

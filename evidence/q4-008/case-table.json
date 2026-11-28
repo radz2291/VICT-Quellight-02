@@ -1,0 +1,2175 @@
+{
+  "schema": "quellight.q4-008.case-table@1",
+  "pins": {
+    "baseline": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "adapter": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "memory": "f1469f784fbb8385376936e20ad1e89364221f0fe3f53412094955a976527e07",
+      "memoryVersion": "1.28.2",
+      "memoryIntegrity": "sha512-XneY2QdmC/nUjfaax7z4Qdnsw6WgsFWc1QZFd79AkQHl0g0bDvpwjQlbDZ6wnZ2YygRDCWVt0Ew3dDI2Ao3QXg==",
+      "installedBinding": "baseline",
+      "victArchiveCount": 14
+    },
+    "candidate": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "9b9c90361392dd0af0f282834ad231011554f04a3e5ac2ab20eff734874563be",
+      "adapter": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+      "memory": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+      "memoryVersion": "1.28.2-q4-007.1",
+      "memoryIntegrity": "sha512-62R5bbQLXDpNK9ei394LiRDubmQrJz4K2IA8EdMKOK7f3GXppGkggCuhUb9MJ2jKwlj8DisrUjrHm5854iTmsA==",
+      "installedBinding": "candidate",
+      "victArchiveCount": 14
+    }
+  },
+  "captures": {
+    "samePin": "0645a34f15db0bcb7c9f12dd76c5d5012b3017c3d013e7b6aaf6a956fdceafda",
+    "oldPin": "5e9dcc5f2a8e5e7b8d682dfd6bd3633aca3f877826eef9130ec3cca3459ba284",
+    "independent": "b81c944876da295ad05d643824992269fb0a641ed9ff83d5d5bc34a1421bbc0c"
+  },
+  "samePin": [
+    {
+      "case": "before-prepare",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "before-prepare",
+        "position": "after-update-before-commit",
+        "pid": 3852,
+        "operationId": "memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "8cd6280c4ac6715f62babf3c494092e8ebbb444a86cc2ea7ff861475e8c02d9b",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 3852,
+      "restartProcess": 19172,
+      "actualClaimExpiry": {
+        "elapsedMs": 11874,
+        "claimExpires": "2026-11-28T04:40:49.875Z"
+      },
+      "checkpointSeenBeforeKill": null,
+      "commitSeenBeforeKill": null,
+      "interrupted": {
+        "job": {
+          "id": "c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "d0ce99bc13a4fc3e409e739d121037ed518f965e53b358ec93a4be61ab317e8c",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+          "status": "running",
+          "sourceRevision": "8cd6280c4ac6715f62babf3c494092e8ebbb444a86cc2ea7ff861475e8c02d9b",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "92921695ad534d0cafa042798a14f71f48caba3d193077e7300aab90439c85f5",
+          "checkpointDigest": null,
+          "resultDigest": null,
+          "preparations": 0,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "running",
+          "hasCheckpoint": false,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "1",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:32.704Z"
+          },
+          {
+            "id": "2",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:36.983Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:fe49a556-e46b-4cf2-95de-115e2e163d0f",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+            "invocations": [
+              {
+                "invocationId": "b5a7e79e-c696-4dc1-b133-05ffb814e844",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "2ae9aa80723cbaa60aa111e1c2276de604fd933778966d0378bdc0ba27974c66"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+          "state": "completed",
+          "attempts": 2,
+          "sourceRevision": "d0ce99bc13a4fc3e409e739d121037ed518f965e53b358ec93a4be61ab317e8c",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+          "status": "completed",
+          "sourceRevision": "8cd6280c4ac6715f62babf3c494092e8ebbb444a86cc2ea7ff861475e8c02d9b",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "92921695ad534d0cafa042798a14f71f48caba3d193077e7300aab90439c85f5",
+          "checkpointDigest": "7efb3545f9eb8364050d434a977497252213c4d978ba22dafe783fe6602a3c38",
+          "resultDigest": "b3d932a927712d2cb157ae13a632090e968dee63c8dc87ee1da9b34e077d5714",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "658d3f2cd092c042",
+              "messageIds": [
+                "b4cc35bb-710f-4428-b0bf-1db97dfb69aa",
+                "462c70f9-2c3e-4996-9545-94235cf66be1"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "658d3f2cd092c042",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "b4cc35bb-710f-4428-b0bf-1db97dfb69aa",
+                  "462c70f9-2c3e-4996-9545-94235cf66be1"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "1",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:32.704Z"
+          },
+          {
+            "id": "2",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:36.983Z"
+          },
+          {
+            "id": "3",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:40:55.970Z"
+          },
+          {
+            "id": "4",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:55.970Z"
+          },
+          {
+            "id": "5",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:40:57.448Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:4ca128a2-507d-44ac-bbb8-fa944c5aeaa1",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+            "invocations": [
+              {
+                "invocationId": "0808406e-e498-4082-81e2-71dc6e1584e7",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "6f43414b7a8c05611bea8975ddc9ec991340fb3ad1c4df0b08402767d3f7c5f0"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:5da2a398-d231-4a65-bc77-8434d9422fae",
+            "status": "completed",
+            "inputSummary": "memory:observe:memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+            "invocations": [
+              {
+                "invocationId": "6fa03c98-f822-4815-ad23-11947ded66b7",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "2ae9aa80723cbaa60aa111e1c2276de604fd933778966d0378bdc0ba27974c66"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:fe49a556-e46b-4cf2-95de-115e2e163d0f",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c2c75202-3cf8-4f41-a1b6-33ec7e7927e0",
+            "invocations": [
+              {
+                "invocationId": "b5a7e79e-c696-4dc1-b133-05ffb814e844",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "2ae9aa80723cbaa60aa111e1c2276de604fd933778966d0378bdc0ba27974c66"
+              }
+            ]
+          }
+        ]
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 1,
+        "currentReplacement": 0,
+        "duplicate": 0
+      }
+    },
+    {
+      "case": "after-prepare",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "after-prepare",
+        "position": "after-commit-before-return",
+        "pid": 22880,
+        "operationId": "memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "8ce4153f6e32e620159eecd73bf9cf63a45aae0c52c78dcfa4b853b7a20a4251",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 22880,
+      "restartProcess": 24368,
+      "actualClaimExpiry": {
+        "elapsedMs": 11642,
+        "claimExpires": "2026-11-28T04:41:22.859Z"
+      },
+      "checkpointSeenBeforeKill": "29edeaf17367e1b376d66bb3cd711512513adb152c65d2069e3cca1b7138e822",
+      "commitSeenBeforeKill": null,
+      "interrupted": {
+        "job": {
+          "id": "806d048e-7b0a-42f6-a5cc-592f6da87323",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "8e356dc28d69cdc3368fdb149b41825f913b9ef82e9884681d4be37b64af578d",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+          "status": "prepared",
+          "sourceRevision": "8ce4153f6e32e620159eecd73bf9cf63a45aae0c52c78dcfa4b853b7a20a4251",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "b5480d5acd1d53b903fcc0839562377c6fbc1726cf8a34143c790d2a179b4a4a",
+          "checkpointDigest": "29edeaf17367e1b376d66bb3cd711512513adb152c65d2069e3cca1b7138e822",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "bc9631e0677e1940",
+              "messageIds": [
+                "9c0ad90e-d47b-44b0-9fcb-f30d319422b5",
+                "f23411da-a49e-4afe-9469-eb77b19766a7"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "6",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:41:04.975Z"
+          },
+          {
+            "id": "7",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:09.955Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:6ece04e7-77b1-45ac-8280-4c0800582dc6",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+            "invocations": [
+              {
+                "invocationId": "8f99f4ee-c6f7-4c85-a9d7-82e994d659e5",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "801499525b34bc482bbbd62042dbba702ecc49ddee72c5489b24e36174d2f806"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "806d048e-7b0a-42f6-a5cc-592f6da87323",
+          "state": "completed",
+          "attempts": 2,
+          "sourceRevision": "8e356dc28d69cdc3368fdb149b41825f913b9ef82e9884681d4be37b64af578d",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+          "status": "completed",
+          "sourceRevision": "8ce4153f6e32e620159eecd73bf9cf63a45aae0c52c78dcfa4b853b7a20a4251",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "b5480d5acd1d53b903fcc0839562377c6fbc1726cf8a34143c790d2a179b4a4a",
+          "checkpointDigest": "29edeaf17367e1b376d66bb3cd711512513adb152c65d2069e3cca1b7138e822",
+          "resultDigest": "60fb224109333147a7e5fc8c3e095dc73d92f09ccc0083d8067bb82743234d50",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "bc9631e0677e1940",
+              "messageIds": [
+                "9c0ad90e-d47b-44b0-9fcb-f30d319422b5",
+                "f23411da-a49e-4afe-9469-eb77b19766a7"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "bc9631e0677e1940",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "9c0ad90e-d47b-44b0-9fcb-f30d319422b5",
+                  "f23411da-a49e-4afe-9469-eb77b19766a7"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "6",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:41:04.975Z"
+          },
+          {
+            "id": "7",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:09.955Z"
+          },
+          {
+            "id": "8",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:27.893Z"
+          },
+          {
+            "id": "9",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:27.893Z"
+          },
+          {
+            "id": "10",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:28.472Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:6ece04e7-77b1-45ac-8280-4c0800582dc6",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+            "invocations": [
+              {
+                "invocationId": "8f99f4ee-c6f7-4c85-a9d7-82e994d659e5",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "801499525b34bc482bbbd62042dbba702ecc49ddee72c5489b24e36174d2f806"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:97e04276-8b44-49d7-9b75-2dc41fba10ed",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+            "invocations": [
+              {
+                "invocationId": "3fa69636-40e2-4354-8441-d203c77c50f3",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "e5c0036ca2d396cc36451621d92a4bfe2b146248929a274f1e23369dfe43269d"
+              }
+            ]
+          }
+        ]
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 0,
+        "currentReplacement": 0,
+        "duplicate": 0
+      }
+    },
+    {
+      "case": "after-publish",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "after-publish",
+        "position": "after-commit-before-return",
+        "pid": 20376,
+        "operationId": "memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+        "transition": "completed",
+        "nativeAuthority": "0",
+        "nativeSource": "b9f97509ba7004dde92ccd5e81b101ee479601aeeada3b56b1cac6fb81a3b6d8",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 20376,
+      "restartProcess": 1460,
+      "actualClaimExpiry": {
+        "elapsedMs": 11616,
+        "claimExpires": "2026-11-28T04:41:52.007Z"
+      },
+      "checkpointSeenBeforeKill": "888f3e027f72daa82b82f02d2b61fd6e663ad83d5e90c9487505f1ca78ca20fc",
+      "commitSeenBeforeKill": "73d7616699ce37dab80ed2dfe6be981192b36d5f41f97409e7df05192cf3e7b9",
+      "interrupted": {
+        "job": {
+          "id": "ff5a5a72-2085-403a-8e9d-5781d79660c7",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "6b0e83ee5197778326d4efdeca1544ad319ed7cf6ea3d08e4e7aa73d2b7b78c6",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+          "status": "completed",
+          "sourceRevision": "b9f97509ba7004dde92ccd5e81b101ee479601aeeada3b56b1cac6fb81a3b6d8",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "1d6712ddcc8bd3176e2d6993bb4eff7b92442e2b8494aa166ffdaf2d3026c491",
+          "checkpointDigest": "888f3e027f72daa82b82f02d2b61fd6e663ad83d5e90c9487505f1ca78ca20fc",
+          "resultDigest": "73d7616699ce37dab80ed2dfe6be981192b36d5f41f97409e7df05192cf3e7b9",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "5a67b0aa36480263",
+              "messageIds": [
+                "8b228622-a021-4d60-9ffb-3173892d71bc",
+                "27b5360d-5638-41d4-a5ca-16d9d6ad182e"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "5a67b0aa36480263",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "8b228622-a021-4d60-9ffb-3173892d71bc",
+                  "27b5360d-5638-41d4-a5ca-16d9d6ad182e"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "11",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:41:34.693Z"
+          },
+          {
+            "id": "12",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:39.101Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:be171dd9-a8e9-46d6-be0b-c01f8c5b3fb0",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+            "invocations": [
+              {
+                "invocationId": "9cd79148-934a-4bda-883d-514f30e8eedf",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "32597c7e1086a22086d3e0516e5b58c20b6ea1d0784f7a0bb1c9ff66468ecf3d"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "ff5a5a72-2085-403a-8e9d-5781d79660c7",
+          "state": "completed",
+          "attempts": 2,
+          "sourceRevision": "6b0e83ee5197778326d4efdeca1544ad319ed7cf6ea3d08e4e7aa73d2b7b78c6",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+          "status": "completed",
+          "sourceRevision": "b9f97509ba7004dde92ccd5e81b101ee479601aeeada3b56b1cac6fb81a3b6d8",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "1d6712ddcc8bd3176e2d6993bb4eff7b92442e2b8494aa166ffdaf2d3026c491",
+          "checkpointDigest": "888f3e027f72daa82b82f02d2b61fd6e663ad83d5e90c9487505f1ca78ca20fc",
+          "resultDigest": "73d7616699ce37dab80ed2dfe6be981192b36d5f41f97409e7df05192cf3e7b9",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "5a67b0aa36480263",
+              "messageIds": [
+                "8b228622-a021-4d60-9ffb-3173892d71bc",
+                "27b5360d-5638-41d4-a5ca-16d9d6ad182e"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "5a67b0aa36480263",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "8b228622-a021-4d60-9ffb-3173892d71bc",
+                  "27b5360d-5638-41d4-a5ca-16d9d6ad182e"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "11",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:41:34.693Z"
+          },
+          {
+            "id": "12",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:39.101Z"
+          },
+          {
+            "id": "13",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:55.609Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:55.609Z"
+          },
+          {
+            "id": "15",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:56.202Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:3fe1a7a3-eed5-4408-b509-0088d3823b5a",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+            "invocations": [
+              {
+                "invocationId": "ec6793e4-e32f-4d23-946e-4d2f4a093190",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "b48551d4457050ed90de1b0b5d9abf5184bf401ea21141fe0b8a452562e6c62a"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:be171dd9-a8e9-46d6-be0b-c01f8c5b3fb0",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:ff5a5a72-2085-403a-8e9d-5781d79660c7",
+            "invocations": [
+              {
+                "invocationId": "9cd79148-934a-4bda-883d-514f30e8eedf",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "32597c7e1086a22086d3e0516e5b58c20b6ea1d0784f7a0bb1c9ff66468ecf3d"
+              }
+            ]
+          }
+        ]
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 0,
+        "currentReplacement": 0,
+        "duplicate": 0
+      }
+    },
+    {
+      "case": "cross-thread",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "after-prepare",
+        "position": "after-commit-before-return",
+        "pid": 20000,
+        "operationId": "memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "f7284f5319ad874c55dc5dd7cd5cd289fe905eceb1f4d2358cd1e0a88f54e8c9",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 20000,
+      "restartProcess": 2704,
+      "actualClaimExpiry": {
+        "elapsedMs": 11808,
+        "claimExpires": "2026-11-28T04:42:19.485Z"
+      },
+      "checkpointSeenBeforeKill": "df01cb0195a4b9d18d9e06a780286a5421665eba13f893da2d73d83832a1c6e1",
+      "commitSeenBeforeKill": null,
+      "interrupted": {
+        "job": {
+          "id": "473a5484-3dbc-433d-8f07-ff435323f576",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "6ebf629ba66a62f4a57afc9ee040aa0a45a763006726a8d575acf0e9ee7bf260",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+          "status": "prepared",
+          "sourceRevision": "f7284f5319ad874c55dc5dd7cd5cd289fe905eceb1f4d2358cd1e0a88f54e8c9",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "70342d1714b45cb3c1546a713ddb5ac5bd45d72a17ad1ed3f556758777029d4e",
+          "checkpointDigest": "df01cb0195a4b9d18d9e06a780286a5421665eba13f893da2d73d83832a1c6e1",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "74221051c7b6bb6b",
+              "messageIds": [
+                "b42b44ad-3922-4b3c-a1de-9f2b08297854",
+                "a5a2ee13-5ce3-483b-9719-3a673175615a"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "16",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:42:01.296Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:42:06.680Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:6dfc20e5-0ea0-47e6-ba80-a94b58299d14",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+            "invocations": [
+              {
+                "invocationId": "45d31a75-a8c6-4a3f-89d7-ae497e954e2e",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "a917dd236124ca0bbe3cd14324d692177248c47d07afd1907854c5a4d2d272c3"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "45af0613-1957-4081-af13-f89b97aba174",
+          "state": "completed",
+          "attempts": 1,
+          "sourceRevision": "6ebf629ba66a62f4a57afc9ee040aa0a45a763006726a8d575acf0e9ee7bf260",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:45af0613-1957-4081-af13-f89b97aba174",
+          "status": "completed",
+          "sourceRevision": "88c135a0a4d8ec5b06ed462735d339eb1afc394b1c6d6b5aad1371450571481b",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+          "requestDigest": "02019fd4395b478e1f98d91e5c488a02ef846611b64a67a691541bdac5b3e2ea",
+          "checkpointDigest": "b86fe95c4a954afe91fb5d5460e8eb1838bccdb535fef65c60b001c32aecd98e",
+          "resultDigest": "ed8d1afa931bf3b30ad16c036b92443d5ebffd50d465ac1f59d29fb6c8ea6137",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "8a55a312a2c0c086",
+              "messageIds": [
+                "b42b44ad-3922-4b3c-a1de-9f2b08297854"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "8a55a312a2c0c086",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "b42b44ad-3922-4b3c-a1de-9f2b08297854"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "22",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:42:19.947Z"
+          },
+          {
+            "id": "26",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:42:24.687Z"
+          },
+          {
+            "id": "27",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:42:25.468Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:e4cd7e9c-c0b3-4d9e-857c-3226e2254d9d",
+            "status": "completed",
+            "inputSummary": "memory:observe:memory-job:45af0613-1957-4081-af13-f89b97aba174",
+            "invocations": [
+              {
+                "invocationId": "78bc8bc9-d235-4e29-80ab-fe63f75472c4",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "cd4953b54995808ef514737a6ec6860032401e9f85eb2ff5669041576def399d"
+              }
+            ]
+          }
+        ]
+      },
+      "stale": {
+        "job": {
+          "id": "473a5484-3dbc-433d-8f07-ff435323f576",
+          "state": "superseded",
+          "attempts": 1,
+          "sourceRevision": "6ebf629ba66a62f4a57afc9ee040aa0a45a763006726a8d575acf0e9ee7bf260",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": "MEMORY_AUTHORITY_CHANGED"
+        },
+        "operation": {
+          "id": "memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+          "status": "superseded",
+          "sourceRevision": "f7284f5319ad874c55dc5dd7cd5cd289fe905eceb1f4d2358cd1e0a88f54e8c9",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "70342d1714b45cb3c1546a713ddb5ac5bd45d72a17ad1ed3f556758777029d4e",
+          "checkpointDigest": null,
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "superseded",
+          "hasCheckpoint": false,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "16",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:42:01.296Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:42:06.680Z"
+          },
+          {
+            "id": "20",
+            "state": "superseded",
+            "code": "MEMORY_AUTHORITY_CHANGED",
+            "at": "2026-11-28T04:42:19.947Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:6dfc20e5-0ea0-47e6-ba80-a94b58299d14",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+            "invocations": [
+              {
+                "invocationId": "45d31a75-a8c6-4a3f-89d7-ae497e954e2e",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "a917dd236124ca0bbe3cd14324d692177248c47d07afd1907854c5a4d2d272c3"
+              }
+            ]
+          }
+        ]
+      },
+      "care": {
+        "ok": true,
+        "value": {
+          "authorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+          "cleanup": "queued",
+          "purgeQueued": 1,
+          "rebuildQueued": 2,
+          "retryQueued": 0
+        },
+        "replay": false,
+        "request": {
+          "conversationId": "8d924e76-17ca-472a-b70e-91f4ff924929",
+          "expectedAuthorityRevision": "0",
+          "sourceMessageIds": "[\"94221134-2b93-46e4-9555-bf0ca79b87c4\"]"
+        },
+        "command": {
+          "command_key": "203878c4-687a-4d84-b056-c4abbc1b7a4a",
+          "conversation_id": "8d924e76-17ca-472a-b70e-91f4ff924929",
+          "action_id": "memory.forget",
+          "argument_digest": "4b73faf10c10ed9654208cf4fd70b0e117a5cf08839bc524054fd013335c23ff",
+          "state": "applied",
+          "expected_authority_revision": "0",
+          "intended_authority_revision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+          "authority_input": {
+            "revision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+            "operationId": "quellight-care:00dda475f2690bf8a7eed902364f7ebed9fdf3b62c01c99856f96ca74cb25e74",
+            "conversationId": "8d924e76-17ca-472a-b70e-91f4ff924929",
+            "expectedRevision": "0",
+            "excludedMessageIds": [
+              "94221134-2b93-46e4-9555-bf0ca79b87c4"
+            ],
+            "correctedWorkingMemory": null
+          },
+          "result": {
+            "cleanup": "queued",
+            "purgeQueued": 1,
+            "retryQueued": 0,
+            "rebuildQueued": 2,
+            "authorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38"
+          }
+        }
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 0,
+        "currentReplacement": 1,
+        "duplicate": 0
+      }
+    }
+  ],
+  "oldPin": [
+    {
+      "case": "queued-without-native-operation",
+      "before": {
+        "job": {
+          "id": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "state": "queued",
+          "attempts": 0,
+          "sourceRevision": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "status": null,
+          "sourceRevision": null,
+          "configurationRevision": null,
+          "authorityRevision": null,
+          "requestDigest": null,
+          "checkpointDigest": null,
+          "resultDigest": null,
+          "preparations": 0,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": null,
+        "history": [
+          {
+            "id": "12",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:50.616Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": []
+      },
+      "candidate": {
+        "job": {
+          "id": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "state": "completed",
+          "attempts": 1,
+          "sourceRevision": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "status": "completed",
+          "sourceRevision": "f58b7119db110480a8a32686256e375c99df9f9b04a88e09e748ca3e7ac11a9f",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "2ffbef8a2d7a1b19153510100e2627f8832f8458b0116cd2754387e1c2527a6f",
+          "checkpointDigest": "2926672dae682d78b66b072ed33defaa2322872bf9b0c3cc703a5e0ccaf2327e",
+          "resultDigest": "0934177b08ba3dc9d0e3f7409e968c302af159ef74977b8772847527d672216b",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "54f45a1fddadea7f",
+              "messageIds": [
+                "a6b95c78-6094-4c46-a031-032e472b622e",
+                "896b288f-6ba5-45a9-a620-1403b31e0478"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "54f45a1fddadea7f",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "a6b95c78-6094-4c46-a031-032e472b622e",
+                  "896b288f-6ba5-45a9-a620-1403b31e0478"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "12",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:50.616Z"
+          },
+          {
+            "id": "15",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:04.898Z"
+          },
+          {
+            "id": "16",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:06.195Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:8a2ca5df-c4d6-4a2e-bbd7-ea613973bbdb",
+            "status": "completed",
+            "inputSummary": "memory:observe:memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+            "invocations": [
+              {
+                "invocationId": "47bfd5da-af27-40fa-8e3a-7823cbb7105d",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4c4f599de7f420bacbd252017ff1beae7fcfcb14b50cb859efc14ba6b217a21a"
+              }
+            ]
+          }
+        ]
+      },
+      "candidateModelCalls": 1,
+      "disposition": "same-product-job-adopted-by-current-native-pin"
+    },
+    {
+      "case": "prepared-with-old-native-operation",
+      "interrupted": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "status": "prepared",
+          "sourceRevision": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "authorityRevision": "0",
+          "requestDigest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "checkpointDigest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          }
+        ]
+      },
+      "candidateRefusal": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "state": "blocked",
+          "attempts": 2,
+          "sourceRevision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": "MEMORY_NATIVE_OPERATION_CONFLICT"
+        },
+        "operation": {
+          "id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "status": "prepared",
+          "sourceRevision": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "authorityRevision": "0",
+          "requestDigest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "checkpointDigest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          }
+        ]
+      },
+      "governedOldPinRetry": {
+        "ok": true,
+        "value": {
+          "authorityRevision": "0",
+          "cleanup": "not-required",
+          "purgeQueued": 0,
+          "rebuildQueued": 0,
+          "retryQueued": 1
+        },
+        "replay": false,
+        "request": {
+          "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "expectedAuthorityRevision": "0",
+          "sourceMessageIds": "[]"
+        },
+        "command": {
+          "command_key": "99e3b0fb-8e1c-42a3-9d63-aa95750508ce",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "action_id": "memory.retry",
+          "argument_digest": "64cd1de1e6786c93075d5ddf49447f26725a8ca7cabecee17861bb706d3ba200",
+          "state": "applied",
+          "expected_authority_revision": "0",
+          "intended_authority_revision": "0",
+          "authority_input": null,
+          "result": {
+            "cleanup": "not-required",
+            "purgeQueued": 0,
+            "retryQueued": 1,
+            "rebuildQueued": 0,
+            "authorityRevision": "0"
+          }
+        }
+      },
+      "oldPinDrain": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "state": "completed",
+          "attempts": 3,
+          "sourceRevision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "status": "completed",
+          "sourceRevision": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "authorityRevision": "0",
+          "requestDigest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "checkpointDigest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "resultDigest": "bc56f01d2474465cde8635c133aafb250ec17151d9153511fd1bf3a8053824e9",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "8da2a822ba974ef8",
+                "status": "unavailable"
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          },
+          {
+            "id": "20",
+            "state": "retryable",
+            "code": "OWNER_RETRY",
+            "at": "2026-11-28T04:41:15.464Z"
+          },
+          {
+            "id": "21",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:19.549Z"
+          },
+          {
+            "id": "22",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:20.121Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:c9898ac6-a8f1-4035-9bf5-95598b3f25fe",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "d2357ca1-01c3-4a31-b753-7f4ac26eb05a",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "3e8196ba5c684abee549cf6ed479dec7d86a93226574514f7a91a01340864652"
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "state": "completed",
+          "attempts": 3,
+          "sourceRevision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "status": "completed",
+          "sourceRevision": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "authorityRevision": "0",
+          "requestDigest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "checkpointDigest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "resultDigest": "bc56f01d2474465cde8635c133aafb250ec17151d9153511fd1bf3a8053824e9",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "8da2a822ba974ef8",
+                "status": "unavailable"
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          },
+          {
+            "id": "20",
+            "state": "retryable",
+            "code": "OWNER_RETRY",
+            "at": "2026-11-28T04:41:15.464Z"
+          },
+          {
+            "id": "21",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:19.549Z"
+          },
+          {
+            "id": "22",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:20.121Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:c9898ac6-a8f1-4035-9bf5-95598b3f25fe",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "d2357ca1-01c3-4a31-b753-7f4ac26eb05a",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "3e8196ba5c684abee549cf6ed479dec7d86a93226574514f7a91a01340864652"
+              }
+            ]
+          }
+        ]
+      },
+      "inference": {
+        "initialOldPin": 1,
+        "candidate": 0,
+        "oldPinDrain": 0,
+        "duplicate": 0
+      },
+      "disposition": "blocked-by-existing-native-configuration-pin"
+    }
+  ],
+  "independent": [
+    {
+      "case": "after-prepare",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "after-prepare",
+        "position": "after-commit-before-return",
+        "pid": 16444,
+        "operationId": "memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "0cb1e2f8b61f076fab7c1f98d9171f781f7d7797ed0fc8f8ccea25e037f45084",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 16444,
+      "restartProcess": 22028,
+      "actualClaimExpiry": {
+        "elapsedMs": 11684,
+        "claimExpires": "2026-11-28T04:43:24.846Z"
+      },
+      "checkpointSeenBeforeKill": "0d5919618323fcc0d1c84db0d9b9588f5e2fe72fe0ef5244335608596241bca7",
+      "commitSeenBeforeKill": null,
+      "interrupted": {
+        "job": {
+          "id": "e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "7a38f58ac56c224e9326ef88652ae9ad756d2db13d4791fc6f3697833eccf8ba",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+          "status": "prepared",
+          "sourceRevision": "0cb1e2f8b61f076fab7c1f98d9171f781f7d7797ed0fc8f8ccea25e037f45084",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "698e9dc88d7fa1e5752e2de64048b9ee4fea416cdf8601f047fe792fd0e647f3",
+          "checkpointDigest": "0d5919618323fcc0d1c84db0d9b9588f5e2fe72fe0ef5244335608596241bca7",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "4ca127cebbbe20a2",
+              "messageIds": [
+                "c7b09bef-4ba3-4c85-bbef-b599349f2e4e",
+                "8facfa97-02d1-4aab-9a9a-e95f3740efe7"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "1",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:43:07.681Z"
+          },
+          {
+            "id": "2",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:11.942Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:1ce6cd3e-c961-48da-93a0-e7343f010b42",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+            "invocations": [
+              {
+                "invocationId": "6934dcad-504a-4712-98f1-c5c5697f7ffe",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "08eb3f8cb30858303b4a4857882e6a6c673cb2fbeb4498ae75120eba4c09feae"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+          "state": "completed",
+          "attempts": 2,
+          "sourceRevision": "7a38f58ac56c224e9326ef88652ae9ad756d2db13d4791fc6f3697833eccf8ba",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+          "status": "completed",
+          "sourceRevision": "0cb1e2f8b61f076fab7c1f98d9171f781f7d7797ed0fc8f8ccea25e037f45084",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "698e9dc88d7fa1e5752e2de64048b9ee4fea416cdf8601f047fe792fd0e647f3",
+          "checkpointDigest": "0d5919618323fcc0d1c84db0d9b9588f5e2fe72fe0ef5244335608596241bca7",
+          "resultDigest": "6b4e6fee90eeb69ec58f869853445e8659b9961ecd13113eeb57e7bf9b87ae0e",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "4ca127cebbbe20a2",
+              "messageIds": [
+                "c7b09bef-4ba3-4c85-bbef-b599349f2e4e",
+                "8facfa97-02d1-4aab-9a9a-e95f3740efe7"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "4ca127cebbbe20a2",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "c7b09bef-4ba3-4c85-bbef-b599349f2e4e",
+                  "8facfa97-02d1-4aab-9a9a-e95f3740efe7"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "1",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:43:07.681Z"
+          },
+          {
+            "id": "2",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:11.942Z"
+          },
+          {
+            "id": "3",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:43:28.414Z"
+          },
+          {
+            "id": "4",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:28.414Z"
+          },
+          {
+            "id": "5",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:43:28.964Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:1ce6cd3e-c961-48da-93a0-e7343f010b42",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+            "invocations": [
+              {
+                "invocationId": "6934dcad-504a-4712-98f1-c5c5697f7ffe",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "08eb3f8cb30858303b4a4857882e6a6c673cb2fbeb4498ae75120eba4c09feae"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:ff3ec8e8-addf-43da-92a1-87141d91610e",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:e7fabcde-5f6f-47de-b60e-e4e5f963e274",
+            "invocations": [
+              {
+                "invocationId": "24934caf-1b23-4d9a-b7b3-24cecba2723d",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "56f33159a3bd712d70ef68bdf636b29c2ecea6bd6a6883c6801c90e2d147ec89"
+              }
+            ]
+          }
+        ]
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 0,
+        "currentReplacement": 0,
+        "duplicate": 0
+      }
+    },
+    {
+      "case": "cross-thread",
+      "interruption": {
+        "type": "barrier",
+        "barrier": "after-prepare",
+        "position": "after-commit-before-return",
+        "pid": 23504,
+        "operationId": "memory-job:bd61553d-fd45-495c-8ab6-644c5c40008d",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "918b65792767ebe7e28cac5519e534185a67e2dfb73c8aedd728d0d367390e36",
+        "nativeConfig": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e"
+      },
+      "pausedProcess": 23504,
+      "restartProcess": 26024,
+      "actualClaimExpiry": {
+        "elapsedMs": 11879,
+        "claimExpires": "2026-11-28T04:43:51.920Z"
+      },
+      "checkpointSeenBeforeKill": "88196ea96449b95eaf2a64ea6581984dabd121698a7e416643fc16cc73e9dce8",
+      "commitSeenBeforeKill": null,
+      "interrupted": {
+        "job": {
+          "id": "bd61553d-fd45-495c-8ab6-644c5c40008d",
+          "state": "running",
+          "attempts": 1,
+          "sourceRevision": "d2b79e47d2bde1aed9c31dc1321bf78165db1cbeb26ef56e59b505609c58e3bd",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:bd61553d-fd45-495c-8ab6-644c5c40008d",
+          "status": "prepared",
+          "sourceRevision": "918b65792767ebe7e28cac5519e534185a67e2dfb73c8aedd728d0d367390e36",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "8ebf4ea61fb5d39b5ecee81064022dd5e8915a495d9a3fabd2621af1ce3d11f7",
+          "checkpointDigest": "88196ea96449b95eaf2a64ea6581984dabd121698a7e416643fc16cc73e9dce8",
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "573c9d3e486b07af",
+              "messageIds": [
+                "a393f488-656d-4c06-b953-2c6fd0a454f1",
+                "3ac8bcec-4c74-43c2-bc2c-c02fe23f7f07"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "6",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:43:33.856Z"
+          },
+          {
+            "id": "8",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:39.008Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "0"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:f318bacd-9a44-47ce-a1b2-b13c69541419",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:bd61553d-fd45-495c-8ab6-644c5c40008d",
+            "invocations": [
+              {
+                "invocationId": "83709ea3-d705-45c6-b53e-9e7ef213789e",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "f43fcb19b54b62c728d91f6b0ad531d415e4a349a7a30a00e4bac00f3ba58a01"
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "job": {
+          "id": "16f08859-96fd-41aa-9ac6-428319eb5af5",
+          "state": "completed",
+          "attempts": 1,
+          "sourceRevision": "d2b79e47d2bde1aed9c31dc1321bf78165db1cbeb26ef56e59b505609c58e3bd",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c",
+          "failure": null
+        },
+        "operation": {
+          "id": "memory-job:16f08859-96fd-41aa-9ac6-428319eb5af5",
+          "status": "completed",
+          "sourceRevision": "96bffd71aa3ab2f8ec57705184607a9a26089ed8c98cbf4298101775a04b4922",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c",
+          "requestDigest": "3b5f725276063cd65be94bda78e155f2394496f77292783d05e1c77cc78ad2dc",
+          "checkpointDigest": "df51444c4e9415425e90fef0a06c6eedafbc755d3cc60f84f0ea3c0cbd52ab5f",
+          "resultDigest": "fa01fbd173c94c4bf09d1249f454f3f10eedd82badf8719ffe74ebcd4cf25e55",
+          "preparations": 1,
+          "publications": 1
+        },
+        "preparedMembership": {
+          "groups": [
+            {
+              "basis": "observe-input",
+              "status": "available",
+              "groupId": "352f8a0c30d7adff",
+              "messageIds": [
+                "a393f488-656d-4c06-b953-2c6fd0a454f1"
+              ]
+            }
+          ],
+          "schema": "vict.mastra-observation-membership@1"
+        },
+        "publicProjection": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "352f8a0c30d7adff",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "a393f488-656d-4c06-b953-2c6fd0a454f1"
+                ]
+              }
+            ]
+          }
+        },
+        "history": [
+          {
+            "id": "12",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:43:52.418Z"
+          },
+          {
+            "id": "16",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:56.967Z"
+          },
+          {
+            "id": "17",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:43:57.737Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:476bf667-dbf7-4204-9d71-fe5db490927c",
+            "status": "completed",
+            "inputSummary": "memory:observe:memory-job:16f08859-96fd-41aa-9ac6-428319eb5af5",
+            "invocations": [
+              {
+                "invocationId": "e812e4ff-81f9-490e-a19e-73ece1179c1e",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "37e6549b1288a3f23177bc64157d2ed4105cf91a77947d258dae33c15c3c9dbe"
+              }
+            ]
+          }
+        ]
+      },
+      "stale": {
+        "job": {
+          "id": "bd61553d-fd45-495c-8ab6-644c5c40008d",
+          "state": "superseded",
+          "attempts": 1,
+          "sourceRevision": "d2b79e47d2bde1aed9c31dc1321bf78165db1cbeb26ef56e59b505609c58e3bd",
+          "configurationRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authorityRevision": "0",
+          "failure": "MEMORY_AUTHORITY_CHANGED"
+        },
+        "operation": {
+          "id": "memory-job:bd61553d-fd45-495c-8ab6-644c5c40008d",
+          "status": "superseded",
+          "sourceRevision": "918b65792767ebe7e28cac5519e534185a67e2dfb73c8aedd728d0d367390e36",
+          "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "authorityRevision": "0",
+          "requestDigest": "8ebf4ea61fb5d39b5ecee81064022dd5e8915a495d9a3fabd2621af1ce3d11f7",
+          "checkpointDigest": null,
+          "resultDigest": null,
+          "preparations": 1,
+          "publications": 0
+        },
+        "preparedMembership": null,
+        "publicProjection": {
+          "status": "superseded",
+          "hasCheckpoint": false,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        },
+        "history": [
+          {
+            "id": "6",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:43:33.856Z"
+          },
+          {
+            "id": "8",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:43:39.008Z"
+          },
+          {
+            "id": "10",
+            "state": "superseded",
+            "code": "MEMORY_AUTHORITY_CHANGED",
+            "at": "2026-11-28T04:43:52.418Z"
+          }
+        ],
+        "scopes": {
+          "activeNativeConfigurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "activeAuthorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c"
+        },
+        "governedReceipts": [
+          {
+            "turnId": "quellight-memory:f318bacd-9a44-47ce-a1b2-b13c69541419",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:bd61553d-fd45-495c-8ab6-644c5c40008d",
+            "invocations": [
+              {
+                "invocationId": "83709ea3-d705-45c6-b53e-9e7ef213789e",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "f43fcb19b54b62c728d91f6b0ad531d415e4a349a7a30a00e4bac00f3ba58a01"
+              }
+            ]
+          }
+        ]
+      },
+      "care": {
+        "ok": true,
+        "value": {
+          "authorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c",
+          "cleanup": "queued",
+          "purgeQueued": 1,
+          "rebuildQueued": 2,
+          "retryQueued": 0
+        },
+        "replay": false,
+        "request": {
+          "conversationId": "1122d452-b3cd-4872-a8f0-70aae38eb428",
+          "expectedAuthorityRevision": "0",
+          "sourceMessageIds": "[\"124eb4c6-b079-420c-a709-7c37a9caf898\"]"
+        },
+        "command": {
+          "command_key": "b27ad099-33a5-4b86-b020-8b7e025c2671",
+          "conversation_id": "1122d452-b3cd-4872-a8f0-70aae38eb428",
+          "action_id": "memory.forget",
+          "argument_digest": "c9f5af4398d03c555298586a70d7bb2f1af27741b881b5989808271e0ef6f14d",
+          "state": "applied",
+          "expected_authority_revision": "0",
+          "intended_authority_revision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c",
+          "authority_input": {
+            "revision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c",
+            "operationId": "quellight-care:5535f52a18e5dd2579573df5c1d721590544dc7f60f2c03baf4f49887f5da8ec",
+            "conversationId": "1122d452-b3cd-4872-a8f0-70aae38eb428",
+            "expectedRevision": "0",
+            "excludedMessageIds": [
+              "124eb4c6-b079-420c-a709-7c37a9caf898"
+            ],
+            "correctedWorkingMemory": null
+          },
+          "result": {
+            "cleanup": "queued",
+            "purgeQueued": 1,
+            "retryQueued": 0,
+            "rebuildQueued": 2,
+            "authorityRevision": "care:e05d68e390cbdcb5ecb9b6533498b6184e175c3a8bcde55ca85d409f74ce068c"
+          }
+        }
+      },
+      "inference": {
+        "original": 1,
+        "repeatedForSameJob": 0,
+        "currentReplacement": 1,
+        "duplicate": 0
+      }
+    }
+  ]
+}

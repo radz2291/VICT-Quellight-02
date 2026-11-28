@@ -1,0 +1,1244 @@
+{
+  "schema": "quellight.q4-008.old-pin-qualification@1",
+  "status": "passed",
+  "cases": {
+    "oldQueued": {
+      "scenario": {
+        "label": "old-pin-queued",
+        "owner": {
+          "actorId": "36741458-f356-45b4-a7ec-8f3c8921a392",
+          "id": "36741458-f356-45b4-a7ec-8f3c8921a392",
+          "email": "harbor-restart@fixture.invalid"
+        },
+        "roomId": "2680de42-3f1f-4a54-8ca5-12b38bc73827",
+        "conversationId": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+        "otherConversationId": null
+      },
+      "seed": {
+        "turnId": "quellight:446ece20-29a7-460f-8692-cda417ee86af",
+        "conversationId": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+        "job": {
+          "id": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "conversation_id": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+          "kind": "observe",
+          "state": "queued",
+          "attempts": 0,
+          "claim_expires": null,
+          "source_revision": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "b44257caac1487b4924e6186cfd52f0801b9b80a06911e76cfbb39ee93a63761"
+        },
+        "originals": {
+          "sources": [
+            {
+              "id": "a6b95c78-6094-4c46-a031-032e472b622e",
+              "conversationId": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+              "label": "Your message",
+              "text": "SYN_U01 The first harbor inspection uses a paper log.",
+              "role": "user",
+              "at": "2026-11-28T04:40:50.271Z",
+              "excluded": false
+            },
+            {
+              "id": "896b288f-6ba5-45a9-a620-1403b31e0478",
+              "conversationId": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+              "label": "Quellight reply",
+              "text": "SYN_A01 I recorded the paper log for the first inspection.",
+              "role": "assistant",
+              "at": "2026-11-28T04:40:50.401Z",
+              "excluded": false
+            }
+          ],
+          "nextCursor": null,
+          "authorityRevision": "0"
+        }
+      },
+      "before": {
+        "job": {
+          "id": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "conversation_id": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+          "kind": "observe",
+          "state": "queued",
+          "attempts": 0,
+          "claim_expires": null,
+          "source_revision": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "b44257caac1487b4924e6186cfd52f0801b9b80a06911e76cfbb39ee93a63761"
+        },
+        "row": null,
+        "history": [
+          {
+            "id": "12",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:50.616Z"
+          }
+        ],
+        "receipts": [],
+        "authority": "0",
+        "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+        "public": null
+      },
+      "dispatch": {
+        "receipt": {
+          "pid": 20588,
+          "code": 0,
+          "signal": null,
+          "events": [
+            {
+              "type": "ready",
+              "pid": 20588,
+              "actorId": "36741458-f356-45b4-a7ec-8f3c8921a392",
+              "barrier": "none"
+            },
+            {
+              "type": "delivery",
+              "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+              "attempt": 1,
+              "kind": "observe",
+              "deadline": "2026-11-28T04:41:17.760Z",
+              "claimExpires": "2026-11-28T04:41:17.760Z",
+              "authority": "0",
+              "productSource": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+              "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+            },
+            {
+              "type": "model",
+              "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+              "attempt": 1,
+              "kind": "observe",
+              "tags": [
+                "SYN_U01",
+                "SYN_A01"
+              ],
+              "reply": "<observations>\n- The harbor inspection uses a paper log.\n</observations>"
+            },
+            {
+              "type": "outcome",
+              "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+              "outcome": {
+                "state": "completed"
+              }
+            },
+            {
+              "type": "dispatch",
+              "result": {
+                "handled": 1,
+                "busy": false
+              }
+            }
+          ]
+        },
+        "modelCalls": 1,
+        "events": [
+          {
+            "type": "ready",
+            "pid": 20588,
+            "actorId": "36741458-f356-45b4-a7ec-8f3c8921a392",
+            "barrier": "none"
+          },
+          {
+            "type": "delivery",
+            "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+            "attempt": 1,
+            "kind": "observe",
+            "deadline": "2026-11-28T04:41:17.760Z",
+            "claimExpires": "2026-11-28T04:41:17.760Z",
+            "authority": "0",
+            "productSource": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+            "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+          },
+          {
+            "type": "model",
+            "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+            "attempt": 1,
+            "kind": "observe",
+            "tags": [
+              "SYN_U01",
+              "SYN_A01"
+            ],
+            "reply": "<observations>\n- The harbor inspection uses a paper log.\n</observations>"
+          },
+          {
+            "type": "outcome",
+            "jobId": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+            "outcome": {
+              "state": "completed"
+            }
+          },
+          {
+            "type": "dispatch",
+            "result": {
+              "handled": 1,
+              "busy": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "job": {
+          "id": "e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "conversation_id": "c3e98118-287a-4410-93e1-c088b2fa46e1",
+          "kind": "observe",
+          "state": "completed",
+          "attempts": 1,
+          "claim_expires": null,
+          "source_revision": "76a6c8399377740ec4bb95130c9eaf1ed845676e24e05d2b2e2525d44e3ea555",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "b44257caac1487b4924e6186cfd52f0801b9b80a06911e76cfbb39ee93a63761"
+        },
+        "row": {
+          "operation_id": "memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+          "thread_id": "vict-conv-c3e98118-287a-4410-93e1-c088b2fa46e1",
+          "request_digest": "2ffbef8a2d7a1b19153510100e2627f8832f8458b0116cd2754387e1c2527a6f",
+          "source_digest": "f58b7119db110480a8a32686256e375c99df9f9b04a88e09e748ca3e7ac11a9f",
+          "authority_revision": "0",
+          "configuration_revision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+          "kind": "observe",
+          "status": "completed",
+          "events": [
+            {
+              "at": "2026-11-28T04:41:05.567Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T04:41:05.671Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T04:41:05.962Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T04:41:06.022Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T04:41:06.134Z",
+              "name": "published"
+            }
+          ],
+          "prepared_membership": {
+            "groups": [
+              {
+                "basis": "observe-input",
+                "status": "available",
+                "groupId": "54f45a1fddadea7f",
+                "messageIds": [
+                  "a6b95c78-6094-4c46-a031-032e472b622e",
+                  "896b288f-6ba5-45a9-a620-1403b31e0478"
+                ]
+              }
+            ],
+            "schema": "vict.mastra-observation-membership@1"
+          },
+          "has_checkpoint": true,
+          "published_membership": {
+            "groups": [
+              {
+                "basis": "observe-input",
+                "status": "available",
+                "groupId": "54f45a1fddadea7f",
+                "messageIds": [
+                  "a6b95c78-6094-4c46-a031-032e472b622e",
+                  "896b288f-6ba5-45a9-a620-1403b31e0478"
+                ]
+              }
+            ],
+            "schema": "vict.mastra-observation-membership@1"
+          },
+          "has_result": true,
+          "checkpoint_digest": "2926672dae682d78b66b072ed33defaa2322872bf9b0c3cc703a5e0ccaf2327e",
+          "result_digest": "0934177b08ba3dc9d0e3f7409e968c302af159ef74977b8772847527d672216b"
+        },
+        "history": [
+          {
+            "id": "12",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:50.616Z"
+          },
+          {
+            "id": "15",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:04.898Z"
+          },
+          {
+            "id": "16",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:06.195Z"
+          }
+        ],
+        "receipts": [
+          {
+            "turnId": "quellight-memory:8a2ca5df-c4d6-4a2e-bbd7-ea613973bbdb",
+            "status": "completed",
+            "inputSummary": "memory:observe:memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+            "invocations": [
+              {
+                "invocationId": "47bfd5da-af27-40fa-8e3a-7823cbb7105d",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4c4f599de7f420bacbd252017ff1beae7fcfcb14b50cb859efc14ba6b217a21a"
+              }
+            ]
+          }
+        ],
+        "authority": "0",
+        "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:e22ecf1b-acbe-456f-b088-66b3c29caff7",
+        "public": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "54f45a1fddadea7f",
+                "status": "available",
+                "basis": "observe-input",
+                "messageIds": [
+                  "a6b95c78-6094-4c46-a031-032e472b622e",
+                  "896b288f-6ba5-45a9-a620-1403b31e0478"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "disposition": "same-product-job-adopted-by-current-native-pin"
+    },
+    "oldPrepared": {
+      "scenario": {
+        "label": "old-pin-prepared",
+        "owner": {
+          "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+          "id": "e92c24c0-62a4-49a9-a660-7661332413d0",
+          "email": "harbor-restart@fixture.invalid"
+        },
+        "roomId": "6aaec1b6-c443-47cb-a862-5a73472787a5",
+        "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+        "otherConversationId": null
+      },
+      "seed": {
+        "turnId": "quellight:1b6a0a27-136e-43c9-8e96-15e7a4de5c8b",
+        "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "kind": "observe",
+          "state": "queued",
+          "attempts": 0,
+          "claim_expires": null,
+          "source_revision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "fbd48deda2d3944eed4f7a8a0496954ca5b0c7a9ef999a76649abe71a852a7b7"
+        },
+        "originals": {
+          "sources": [
+            {
+              "id": "6c118b38-e60d-4d5f-901b-185c3533f8aa",
+              "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+              "label": "Your message",
+              "text": "SYN_U01 The first harbor inspection uses a paper log.",
+              "role": "user",
+              "at": "2026-11-28T04:40:51.856Z",
+              "excluded": false
+            },
+            {
+              "id": "b72d2ff4-cf3e-40ad-b3f2-225dde941953",
+              "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+              "label": "Quellight reply",
+              "text": "SYN_A01 I recorded the paper log for the first inspection.",
+              "role": "assistant",
+              "at": "2026-11-28T04:40:51.918Z",
+              "excluded": false
+            }
+          ],
+          "nextCursor": null,
+          "authorityRevision": "0"
+        }
+      },
+      "barrier": {
+        "type": "barrier",
+        "barrier": "after-prepare",
+        "position": "after-commit-before-return",
+        "pid": 26092,
+        "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+        "transition": "prepared",
+        "nativeAuthority": "0",
+        "nativeSource": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+        "nativeConfig": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a"
+      },
+      "atBarrier": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "kind": "observe",
+          "state": "running",
+          "attempts": 1,
+          "claim_expires": "2026-11-28T04:41:10.456Z",
+          "source_revision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "fbd48deda2d3944eed4f7a8a0496954ca5b0c7a9ef999a76649abe71a852a7b7"
+        },
+        "row": {
+          "operation_id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "thread_id": "vict-conv-38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "request_digest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "source_digest": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "authority_revision": "0",
+          "configuration_revision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "kind": "observe",
+          "status": "prepared",
+          "events": [
+            {
+              "at": "2026-11-28T04:40:58.239Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.333Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.596Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T04:40:58.672Z",
+              "name": "prepared"
+            }
+          ],
+          "prepared_membership": null,
+          "has_checkpoint": true,
+          "published_membership": null,
+          "has_result": false,
+          "checkpoint_digest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "result_digest": null
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          }
+        ],
+        "receipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          }
+        ],
+        "authority": "0",
+        "configurationRevision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+        "public": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        }
+      },
+      "interrupt": {
+        "pid": 26092,
+        "code": null,
+        "signal": "SIGKILL",
+        "events": [
+          {
+            "type": "ready",
+            "pid": 26092,
+            "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+            "barrier": "after-prepare"
+          },
+          {
+            "type": "delivery",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "attempt": 1,
+            "kind": "observe",
+            "deadline": "2026-11-28T04:41:10.456Z",
+            "claimExpires": "2026-11-28T04:41:10.456Z",
+            "authority": "0",
+            "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+            "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+          },
+          {
+            "type": "model",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "attempt": 1,
+            "kind": "observe",
+            "tags": [
+              "SYN_U01",
+              "SYN_A01"
+            ],
+            "reply": "<observations>\n- The harbor inspection uses a paper log.\n</observations>"
+          },
+          {
+            "type": "barrier",
+            "barrier": "after-prepare",
+            "position": "after-commit-before-return",
+            "pid": 26092,
+            "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "transition": "prepared",
+            "nativeAuthority": "0",
+            "nativeSource": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+            "nativeConfig": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a"
+          }
+        ]
+      },
+      "initialModelCalls": 1,
+      "initialEvents": [
+        {
+          "type": "ready",
+          "pid": 26092,
+          "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+          "barrier": "after-prepare"
+        },
+        {
+          "type": "delivery",
+          "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "attempt": 1,
+          "kind": "observe",
+          "deadline": "2026-11-28T04:41:10.456Z",
+          "claimExpires": "2026-11-28T04:41:10.456Z",
+          "authority": "0",
+          "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+        },
+        {
+          "type": "model",
+          "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "attempt": 1,
+          "kind": "observe",
+          "tags": [
+            "SYN_U01",
+            "SYN_A01"
+          ],
+          "reply": "<observations>\n- The harbor inspection uses a paper log.\n</observations>"
+        },
+        {
+          "type": "barrier",
+          "barrier": "after-prepare",
+          "position": "after-commit-before-return",
+          "pid": 26092,
+          "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "transition": "prepared",
+          "nativeAuthority": "0",
+          "nativeSource": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "nativeConfig": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a"
+        }
+      ],
+      "expiry": {
+        "elapsedMs": 3375,
+        "claimExpires": "2026-11-28T04:41:10.456Z"
+      },
+      "candidateDispatch": {
+        "receipt": {
+          "pid": 17976,
+          "code": 0,
+          "signal": null,
+          "events": [
+            {
+              "type": "ready",
+              "pid": 17976,
+              "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+              "barrier": "none"
+            },
+            {
+              "type": "delivery",
+              "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+              "attempt": 2,
+              "kind": "observe",
+              "deadline": "2026-11-28T04:41:27.410Z",
+              "claimExpires": "2026-11-28T04:41:27.410Z",
+              "authority": "0",
+              "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+              "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+            },
+            {
+              "type": "outcome",
+              "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+              "outcome": {
+                "state": "blocked",
+                "code": "MEMORY_NATIVE_OPERATION_CONFLICT"
+              }
+            },
+            {
+              "type": "dispatch",
+              "result": {
+                "handled": 1,
+                "busy": false
+              }
+            }
+          ]
+        },
+        "modelCalls": 0,
+        "events": [
+          {
+            "type": "ready",
+            "pid": 17976,
+            "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+            "barrier": "none"
+          },
+          {
+            "type": "delivery",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "attempt": 2,
+            "kind": "observe",
+            "deadline": "2026-11-28T04:41:27.410Z",
+            "claimExpires": "2026-11-28T04:41:27.410Z",
+            "authority": "0",
+            "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+            "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+          },
+          {
+            "type": "outcome",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "outcome": {
+              "state": "blocked",
+              "code": "MEMORY_NATIVE_OPERATION_CONFLICT"
+            }
+          },
+          {
+            "type": "dispatch",
+            "result": {
+              "handled": 1,
+              "busy": false
+            }
+          }
+        ]
+      },
+      "candidateRefusal": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "kind": "observe",
+          "state": "blocked",
+          "attempts": 2,
+          "claim_expires": null,
+          "source_revision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+          "job_key": "fbd48deda2d3944eed4f7a8a0496954ca5b0c7a9ef999a76649abe71a852a7b7"
+        },
+        "row": {
+          "operation_id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "thread_id": "vict-conv-38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "request_digest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "source_digest": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "authority_revision": "0",
+          "configuration_revision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "kind": "observe",
+          "status": "prepared",
+          "events": [
+            {
+              "at": "2026-11-28T04:40:58.239Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.333Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.596Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T04:40:58.672Z",
+              "name": "prepared"
+            }
+          ],
+          "prepared_membership": null,
+          "has_checkpoint": true,
+          "published_membership": null,
+          "has_result": false,
+          "checkpoint_digest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "result_digest": null
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          }
+        ],
+        "receipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          }
+        ],
+        "authority": "0",
+        "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+        "public": {
+          "status": "prepared",
+          "hasCheckpoint": true,
+          "hasResult": false,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": null
+        }
+      },
+      "disposition": "blocked-by-existing-native-configuration-pin",
+      "retry": {
+        "ok": true,
+        "value": {
+          "authorityRevision": "0",
+          "cleanup": "not-required",
+          "purgeQueued": 0,
+          "rebuildQueued": 0,
+          "retryQueued": 1
+        },
+        "replay": false,
+        "request": {
+          "conversationId": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "expectedAuthorityRevision": "0",
+          "sourceMessageIds": "[]"
+        },
+        "command": {
+          "command_key": "99e3b0fb-8e1c-42a3-9d63-aa95750508ce",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "action_id": "memory.retry",
+          "argument_digest": "64cd1de1e6786c93075d5ddf49447f26725a8ca7cabecee17861bb706d3ba200",
+          "state": "applied",
+          "expected_authority_revision": "0",
+          "intended_authority_revision": "0",
+          "authority_input": null,
+          "result": {
+            "cleanup": "not-required",
+            "purgeQueued": 0,
+            "retryQueued": 1,
+            "rebuildQueued": 0,
+            "authorityRevision": "0"
+          }
+        }
+      },
+      "drain": {
+        "receipt": {
+          "pid": 19932,
+          "code": 0,
+          "signal": null,
+          "events": [
+            {
+              "type": "ready",
+              "pid": 19932,
+              "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+              "barrier": "none"
+            },
+            {
+              "type": "delivery",
+              "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+              "attempt": 3,
+              "kind": "observe",
+              "deadline": "2026-11-28T04:41:32.446Z",
+              "claimExpires": "2026-11-28T04:41:32.446Z",
+              "authority": "0",
+              "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+              "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+            },
+            {
+              "type": "outcome",
+              "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+              "outcome": {
+                "state": "completed"
+              }
+            },
+            {
+              "type": "dispatch",
+              "result": {
+                "handled": 1,
+                "busy": false
+              }
+            }
+          ]
+        },
+        "modelCalls": 0,
+        "events": [
+          {
+            "type": "ready",
+            "pid": 19932,
+            "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+            "barrier": "none"
+          },
+          {
+            "type": "delivery",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "attempt": 3,
+            "kind": "observe",
+            "deadline": "2026-11-28T04:41:32.446Z",
+            "claimExpires": "2026-11-28T04:41:32.446Z",
+            "authority": "0",
+            "productSource": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+            "productConfig": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297"
+          },
+          {
+            "type": "outcome",
+            "jobId": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "outcome": {
+              "state": "completed"
+            }
+          },
+          {
+            "type": "dispatch",
+            "result": {
+              "handled": 1,
+              "busy": false
+            }
+          }
+        ]
+      },
+      "candidateReadAfterDrain": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "kind": "observe",
+          "state": "completed",
+          "attempts": 3,
+          "claim_expires": null,
+          "source_revision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "fbd48deda2d3944eed4f7a8a0496954ca5b0c7a9ef999a76649abe71a852a7b7"
+        },
+        "row": {
+          "operation_id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "thread_id": "vict-conv-38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "request_digest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "source_digest": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "authority_revision": "0",
+          "configuration_revision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "kind": "observe",
+          "status": "completed",
+          "events": [
+            {
+              "at": "2026-11-28T04:40:58.239Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.333Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.596Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T04:40:58.672Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T04:41:20.080Z",
+              "name": "published"
+            }
+          ],
+          "prepared_membership": null,
+          "has_checkpoint": true,
+          "published_membership": null,
+          "has_result": true,
+          "checkpoint_digest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "result_digest": "bc56f01d2474465cde8635c133aafb250ec17151d9153511fd1bf3a8053824e9"
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          },
+          {
+            "id": "20",
+            "state": "retryable",
+            "code": "OWNER_RETRY",
+            "at": "2026-11-28T04:41:15.464Z"
+          },
+          {
+            "id": "21",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:19.549Z"
+          },
+          {
+            "id": "22",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:20.121Z"
+          }
+        ],
+        "receipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:c9898ac6-a8f1-4035-9bf5-95598b3f25fe",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "d2357ca1-01c3-4a31-b753-7f4ac26eb05a",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "3e8196ba5c684abee549cf6ed479dec7d86a93226574514f7a91a01340864652"
+              }
+            ]
+          }
+        ],
+        "authority": "0",
+        "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+        "public": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "8da2a822ba974ef8",
+                "status": "unavailable"
+              }
+            ]
+          }
+        }
+      },
+      "duplicateDelivery": {
+        "receipt": {
+          "pid": 12764,
+          "code": 0,
+          "signal": null,
+          "events": [
+            {
+              "type": "ready",
+              "pid": 12764,
+              "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+              "barrier": "none"
+            },
+            {
+              "type": "dispatch",
+              "result": {
+                "handled": 0,
+                "busy": false
+              }
+            }
+          ]
+        },
+        "modelCalls": 0,
+        "events": [
+          {
+            "type": "ready",
+            "pid": 12764,
+            "actorId": "e92c24c0-62a4-49a9-a660-7661332413d0",
+            "barrier": "none"
+          },
+          {
+            "type": "dispatch",
+            "result": {
+              "handled": 0,
+              "busy": false
+            }
+          }
+        ]
+      },
+      "afterDuplicate": {
+        "job": {
+          "id": "c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "conversation_id": "38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "kind": "observe",
+          "state": "completed",
+          "attempts": 3,
+          "claim_expires": null,
+          "source_revision": "35122249549d3d65ad5b2af9138d89f4f4edc928596e304171f74f7ea4fbc354",
+          "configuration_revision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+          "authority_revision": "0",
+          "supersedes_job_id": null,
+          "failure_code": null,
+          "job_key": "fbd48deda2d3944eed4f7a8a0496954ca5b0c7a9ef999a76649abe71a852a7b7"
+        },
+        "row": {
+          "operation_id": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+          "thread_id": "vict-conv-38aa15dc-4890-4964-bfa6-f08d7e9c1e55",
+          "request_digest": "1a407e8ce8a79c21ced9f121c10862458c2663155d3dd5baf64d9d8ac36b3952",
+          "source_digest": "2155dba0b70cfce55e951327f0fbe40a422123ce7e9b9f7ba689ee77df3e5a66",
+          "authority_revision": "0",
+          "configuration_revision": "ee406d674cf841f960593f7672aa280f1d4658330f9ae23fd0e72919efeda74a",
+          "kind": "observe",
+          "status": "completed",
+          "events": [
+            {
+              "at": "2026-11-28T04:40:58.239Z",
+              "name": "observe-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.333Z",
+              "name": "observer-started"
+            },
+            {
+              "at": "2026-11-28T04:40:58.596Z",
+              "name": "observer-completed"
+            },
+            {
+              "at": "2026-11-28T04:40:58.672Z",
+              "name": "prepared"
+            },
+            {
+              "at": "2026-11-28T04:41:20.080Z",
+              "name": "published"
+            }
+          ],
+          "prepared_membership": null,
+          "has_checkpoint": true,
+          "published_membership": null,
+          "has_result": true,
+          "checkpoint_digest": "8c16795bae70d94eb03c427481841e134ff7b22032173ae31b9aa4dfaeac49b9",
+          "result_digest": "bc56f01d2474465cde8635c133aafb250ec17151d9153511fd1bf3a8053824e9"
+        },
+        "history": [
+          {
+            "id": "13",
+            "state": "queued",
+            "code": null,
+            "at": "2026-11-28T04:40:52.107Z"
+          },
+          {
+            "id": "14",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:40:57.582Z"
+          },
+          {
+            "id": "17",
+            "state": "retryable",
+            "code": "HOST_INTERRUPTED",
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "18",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:14.599Z"
+          },
+          {
+            "id": "19",
+            "state": "blocked",
+            "code": "MEMORY_NATIVE_OPERATION_CONFLICT",
+            "at": "2026-11-28T04:41:14.765Z"
+          },
+          {
+            "id": "20",
+            "state": "retryable",
+            "code": "OWNER_RETRY",
+            "at": "2026-11-28T04:41:15.464Z"
+          },
+          {
+            "id": "21",
+            "state": "running",
+            "code": null,
+            "at": "2026-11-28T04:41:19.549Z"
+          },
+          {
+            "id": "22",
+            "state": "completed",
+            "code": null,
+            "at": "2026-11-28T04:41:20.121Z"
+          }
+        ],
+        "receipts": [
+          {
+            "turnId": "quellight-memory:866d8cd8-b247-41aa-921c-2506fdba80dc",
+            "status": "running",
+            "inputSummary": "memory:observe:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "05993f0e-5972-48a0-a673-e650d8a8190f",
+                "status": "running",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "4d7c80b8af7c7c6d06ecf8915a899dec42e618bd7a4587fef44efaafae781e1e"
+              }
+            ]
+          },
+          {
+            "turnId": "quellight-memory:c9898ac6-a8f1-4035-9bf5-95598b3f25fe",
+            "status": "completed",
+            "inputSummary": "memory:reconcile:memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+            "invocations": [
+              {
+                "invocationId": "d2357ca1-01c3-4a31-b753-7f4ac26eb05a",
+                "status": "completed",
+                "effect": "write",
+                "capabilityId": "quellight.memory.maintain",
+                "argDigest": "3e8196ba5c684abee549cf6ed479dec7d86a93226574514f7a91a01340864652"
+              }
+            ]
+          }
+        ],
+        "authority": "0",
+        "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+        "effectiveRevision": "5d3a50bc5c76d527a01f466243df79d2194e7da9e6473b3a35b101893036b297",
+        "operationId": "memory-job:c20eb53e-1b60-43c0-bdcc-01550ab6da4e",
+        "public": {
+          "status": "completed",
+          "hasCheckpoint": true,
+          "hasResult": true,
+          "exposesCheckpointMembership": false,
+          "sourceMembership": {
+            "schema": "vict.mastra-observation-membership@1",
+            "groups": [
+              {
+                "groupId": "8da2a822ba974ef8",
+                "status": "unavailable"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "liveProviderCalls": 0,
+  "postgres": "18.6",
+  "pins": {
+    "baseline": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "adapter": "90b2de7c6515785e23b4e6370c92be019959ffca430a7980f6752d5d104c9b2c",
+      "memory": "f1469f784fbb8385376936e20ad1e89364221f0fe3f53412094955a976527e07",
+      "memoryVersion": "1.28.2",
+      "memoryIntegrity": "sha512-XneY2QdmC/nUjfaax7z4Qdnsw6WgsFWc1QZFd79AkQHl0g0bDvpwjQlbDZ6wnZ2YygRDCWVt0Ew3dDI2Ao3QXg==",
+      "installedBinding": "baseline",
+      "victArchiveCount": 14
+    },
+    "candidate": {
+      "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+      "node": "v22.23.5",
+      "sourceLock": "31b606ed8bdffa497bd4621f87877900ed3767f2f0ee0a5681f384e75d75e225",
+      "installLock": "9b9c90361392dd0af0f282834ad231011554f04a3e5ac2ab20eff734874563be",
+      "adapter": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+      "memory": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+      "memoryVersion": "1.28.2-q4-007.1",
+      "memoryIntegrity": "sha512-62R5bbQLXDpNK9ei394LiRDubmQrJz4K2IA8EdMKOK7f3GXppGkggCuhUb9MJ2jKwlj8DisrUjrHm5854iTmsA==",
+      "installedBinding": "candidate",
+      "victArchiveCount": 14
+    }
+  },
+  "recommendation": "Drain eligible prepared operations on their exact old package pin before cutover. Carry never-started queued jobs into the candidate only after checking there is no native operation and source and authority remain current. Treat any blocked old native operation as a pin conflict requiring controlled old-pin drainage, or an explicit separately qualified replacement."
+}

@@ -1,0 +1,137 @@
+{
+  "captureSha256": "0645a34f15db0bcb7c9f12dd76c5d5012b3017c3d013e7b6aaf6a956fdceafda",
+  "app": "14b6ccaf6f409eac3e041dc3d9abd0bb9f875344",
+  "design": "9dbfd28175d86b28f9a52340aa4939b4ed11db81",
+  "node": "v22.23.5",
+  "postgres": "18.6",
+  "adapterSha256": "9f75998297af4755bfa1abe567f198c7b0731dd304fca1c6c06163f480e03184",
+  "memorySha256": "ed2e8db8e55c60afe1dd4eb3b93b3c5308f35d7accaeff939d488724339c0ea6",
+  "independentCases": [
+    {
+      "label": "after-prepare",
+      "roomId": "6b012f38-885a-436e-a626-4ca6bb52156c",
+      "actorId": "55398f30-67b4-46f9-b6b9-4d4eeaefcd5d",
+      "interruptedPid": 22880,
+      "restartedPid": 24368,
+      "jobId": "806d048e-7b0a-42f6-a5cc-592f6da87323",
+      "operationId": "memory-job:806d048e-7b0a-42f6-a5cc-592f6da87323",
+      "sourceRevision": "8ce4153f6e32e620159eecd73bf9cf63a45aae0c52c78dcfa4b853b7a20a4251",
+      "applicationSourceRevision": "8e356dc28d69cdc3368fdb149b41825f913b9ef82e9884681d4be37b64af578d",
+      "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+      "authorityRevision": "0",
+      "orderedMembership": [
+        "9c0ad90e-d47b-44b0-9fcb-f30d319422b5",
+        "f23411da-a49e-4afe-9469-eb77b19766a7"
+      ],
+      "publishedGroupId": "bc9631e0677e1940",
+      "preparedCount": 1,
+      "publishedCount": 1,
+      "originalModelCalls": 1,
+      "resumedModelCalls": 0,
+      "duplicateModelCalls": 0,
+      "retries": [
+        [
+          "queued",
+          null
+        ],
+        [
+          "running",
+          null
+        ],
+        [
+          "retryable",
+          "HOST_INTERRUPTED"
+        ],
+        [
+          "running",
+          null
+        ],
+        [
+          "completed",
+          null
+        ]
+      ],
+      "receipts": [
+        {
+          "kind": "observe",
+          "turnId": "quellight-memory:6ece04e7-77b1-45ac-8280-4c0800582dc6",
+          "turnStatus": "running",
+          "id": "8f99f4ee-c6f7-4c85-a9d7-82e994d659e5",
+          "status": "running",
+          "digest": "801499525b34bc482bbbd62042dbba702ecc49ddee72c5489b24e36174d2f806"
+        },
+        {
+          "kind": "reconcile",
+          "turnId": "quellight-memory:97e04276-8b44-49d7-9b75-2dc41fba10ed",
+          "turnStatus": "completed",
+          "id": "3fa69636-40e2-4354-8441-d203c77c50f3",
+          "status": "completed",
+          "digest": "e5c0036ca2d396cc36451621d92a4bfe2b146248929a274f1e23369dfe43269d"
+        }
+      ]
+    },
+    {
+      "label": "cross-thread",
+      "roomId": "bd026013-398e-4d5a-8d2c-39fc40dd6b5c",
+      "actorId": "45b302aa-8870-4fd8-b4ad-24d4bd9e2170",
+      "interruptedPid": 20000,
+      "restartedPid": 2704,
+      "jobId": "45af0613-1957-4081-af13-f89b97aba174",
+      "operationId": "memory-job:45af0613-1957-4081-af13-f89b97aba174",
+      "sourceRevision": "88c135a0a4d8ec5b06ed462735d339eb1afc394b1c6d6b5aad1371450571481b",
+      "applicationSourceRevision": "6ebf629ba66a62f4a57afc9ee040aa0a45a763006726a8d575acf0e9ee7bf260",
+      "configurationRevision": "61369ae773c6f18f45a40ec1bd061f02b053cb7926d7c006a66592bb87ac697e",
+      "authorityRevision": "care:a8c5a4b99bbb519d156311e732380df24015eb1ded4f13b05da57a36e6655b38",
+      "orderedMembership": [
+        "b42b44ad-3922-4b3c-a1de-9f2b08297854"
+      ],
+      "publishedGroupId": "8a55a312a2c0c086",
+      "preparedCount": 1,
+      "publishedCount": 1,
+      "originalModelCalls": 1,
+      "resumedModelCalls": 1,
+      "duplicateModelCalls": 0,
+      "retries": [
+        [
+          "queued",
+          null
+        ],
+        [
+          "running",
+          null
+        ],
+        [
+          "completed",
+          null
+        ]
+      ],
+      "receipts": [
+        {
+          "kind": "observe",
+          "turnId": "quellight-memory:e4cd7e9c-c0b3-4d9e-857c-3226e2254d9d",
+          "turnStatus": "completed",
+          "id": "78bc8bc9-d235-4e29-80ab-fe63f75472c4",
+          "status": "completed",
+          "digest": "cd4953b54995808ef514737a6ec6860032401e9f85eb2ff5669041576def399d"
+        }
+      ],
+      "careThread": "8d924e76-17ca-472a-b70e-91f4ff924929",
+      "forgottenId": "94221134-2b93-46e4-9555-bf0ca79b87c4",
+      "careCommandKey": "203878c4-687a-4d84-b056-c4abbc1b7a4a",
+      "careArgumentDigest": "4b73faf10c10ed9654208cf4fd70b0e117a5cf08839bc524054fd013335c23ff",
+      "maskedOldOperation": "memory-job:473a5484-3dbc-433d-8f07-ff435323f576",
+      "maskedOldStatus": "superseded",
+      "stalePublishCount": 0,
+      "oldOperationAttempts": [
+        {
+          "kind": "observe",
+          "turnId": "quellight-memory:6dfc20e5-0ea0-47e6-ba80-a94b58299d14",
+          "turnStatus": "running",
+          "id": "45d31a75-a8c6-4a3f-89d7-ae497e954e2e",
+          "status": "running",
+          "digest": "a917dd236124ca0bbe3cd14324d692177248c47d07afd1907854c5a4d2d272c3"
+        }
+      ]
+    }
+  ]
+}
