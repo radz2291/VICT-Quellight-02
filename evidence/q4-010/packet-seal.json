@@ -1,0 +1,7 @@
+{
+  "schema": "quellight.q4-010.blind-seal@1",
+  "casesSha256": "1cf2fb1f9c83431a8c868a0391dc8fce896bf3bf8c451080232a6a999ccdec05",
+  "packetSha256": "dfd8635a0ba79720b8e50b6a850bf19139fba95cdd08601114273f01a39e2957",
+  "freezeCommit": "505d0bfc32aebdc0b1d46f0dfb25473248ba5538",
+  "commitmentSha256": "efc547ca5dcf7595237c6d9a34f2b9e90f02b7a4d6b47fbe1c86231295606126"
+}
