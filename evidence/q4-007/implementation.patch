@@ -1,0 +1,661 @@
+From d30a63434645a594359cfd157cc6ab7a9b66245c Mon Sep 17 00:00:00 2001
+From: Codex <codex@users.noreply.github.com>
+Date: Sat, 28 Nov 2026 12:02:24 +0800
+Subject: [PATCH] Publish verified native observation source membership
+
+---
+ packages/mastra/NOTICE                        |   4 +
+ packages/mastra/package.json                  |   4 +-
+ packages/mastra/review/q4-007/patch-mastra.py | 160 ++++++++++++++++++
+ packages/mastra/src/compatibility.ts          |   2 +-
+ packages/mastra/src/index.ts                  |   6 +
+ packages/mastra/src/native-membership.ts      | 128 ++++++++++++++
+ packages/mastra/src/native-memory.ts          |  57 ++++++-
+ packages/mastra/src/native-stage.ts           |  34 +++-
+ packages/mastra/src/postgres-storage.ts       |  21 +++
+ 9 files changed, 405 insertions(+), 11 deletions(-)
+ create mode 100644 packages/mastra/review/q4-007/patch-mastra.py
+ create mode 100644 packages/mastra/src/native-membership.ts
+
+diff --git a/packages/mastra/NOTICE b/packages/mastra/NOTICE
+index 05d4c830..1805f18f 100644
+--- a/packages/mastra/NOTICE
++++ b/packages/mastra/NOTICE
+@@ -8,4 +8,8 @@ change notice. The VICT C12 base source is
+ a22615b014aa69f7501dc1504da5f9daad639786 and the applied source revision is
+ db7f1ae5f004b64715fba76916a3d265683331e0.
+ 
++Q4-007 adds governed observation membership publication to the native
++memory staging, recovery and storage paths. This review candidate pins a
++separately packaged Mastra dependency carrying the corresponding proof seam.
++
+ Registry dependencies are installed separately under their respective licenses.
+diff --git a/packages/mastra/package.json b/packages/mastra/package.json
+index f222b402..b80fa905 100644
+--- a/packages/mastra/package.json
++++ b/packages/mastra/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@victframework/mastra",
+-  "version": "0.4.0-rc.1",
++  "version": "0.4.0-rc.1-q4-007.1",
+   "type": "module",
+   "description": "Optional Mastra-backed implementation of the neutral VICT ProductAgent boundary: pinned Mastra versions, deterministic offline model fixture, pure helper-tool enforcement, qualified local and PostgreSQL storage, payload-safe tracing, and governed memory lifecycle. Imports the neutral VICT packages; never imported by them.",
+   "exports": {
+@@ -21,7 +21,7 @@
+   "dependencies": {
+     "@mastra/core": "1.64.0",
+     "@mastra/libsql": "1.22.3",
+-    "@mastra/memory": "1.28.2",
++    "@mastra/memory": "1.28.2-q4-007.1",
+     "@mastra/observability": "1.17.5",
+     "@mastra/pg": "1.22.3",
+     "@types/json-schema": "7.0.15",
+diff --git a/packages/mastra/review/q4-007/patch-mastra.py b/packages/mastra/review/q4-007/patch-mastra.py
+new file mode 100644
+index 00000000..48acded5
+--- /dev/null
++++ b/packages/mastra/review/q4-007/patch-mastra.py
+@@ -0,0 +1,160 @@
++"""Build the isolated Mastra dependency archive from the pinned registry bytes."""
++
++import argparse
++import base64
++import gzip
++import hashlib
++import io
++import json
++import tarfile
++from pathlib import Path
++
++
++BASE_VERSION = '1.28.2'
++VERSION = '1.28.2-q4-007.1'
++MODULE = 'package/dist/src-BYrxAUzs.js'
++MODULE_SHA256 = '68020175639768e6c7442f0f74bf7dd5fa48fa3c52fcfdd2397ed9d0e3ccbdeb'
++
++
++def patch_module(data):
++    if hashlib.sha256(data).hexdigest() != MODULE_SHA256:
++        raise ValueError('Unexpected installed Mastra module identity')
++    source = data.decode()
++
++    def replace(old, new, count=1):
++        nonlocal source
++        if source.count(old) != count:
++            raise ValueError(f'Unexpected Mastra source seam: {old[:100]}')
++        source = source.replace(old, new)
++
++    replace('function buildObserverHistoryMessage(messages, options) {', '''const publicationProof = Symbol.for("vict.mastra.observation-publication-proof@1");
++function buildObserverHistoryMessage(messages, options, inputIds) {''')
++    replace('''		context = appendFormattedObserverMessage(content, formatted, context);
++	});
++	return {''', '''		const start = content.length;
++		context = appendFormattedObserverMessage(content, formatted, context);
++		if (content.length > start) inputIds?.push(message.id);
++	});
++	return {''')
++    replace('''		const attachmentFilter = this.resolveAttachmentFilter(resolvedModel.model, options?.requestContext);
++		const observerMessages = [{''', '''		const attachmentFilter = this.resolveAttachmentFilter(resolvedModel.model, options?.requestContext);
++		const inputIds = [];
++		const observerMessages = [{''')
++    replace('buildObserverHistoryMessage(messagesToObserve, { attachmentFilter })',
++            'buildObserverHistoryMessage(messagesToObserve, { attachmentFilter }, inputIds)')
++    replace('''		const usage = result.totalUsage ?? result.usage;
++		return {
++			observations: parsed.observations,''', '''		const usage = result.totalUsage ?? result.usage;
++		return {
++			[publicationProof]: inputIds,
++			observations: parsed.observations,''')
++    replace('''		const newObservations = await this.wrapObservations(output.observations, existingObservations, threadId, lastObservedAt, messageRange);
++''', '''		const newObservations = await this.wrapObservations(output.observations, existingObservations, threadId, lastObservedAt, messageRange);
++		const appended = this.scope === "thread" && messageRange && newObservations.startsWith(existingObservations)
++			? parseObservationGroups(newObservations.slice(existingObservations.length))
++			: [];
++		const group = appended.length === 1 ? appended[0] : void 0;
++		const proof = group && group.content && group.content === output.observations.trim() &&
++			!/<\\/?observation-group\\b/i.test(group.content) && output[publicationProof]?.length
++			? { groupId: group.id, messageIds: output[publicationProof] }
++			: void 0;
++''')
++    replace('''			observations: newObservations,
++			observationTokens,
++			cycleObservationTokens,
++			observedMessageIds,
++			lastObservedAt,''', '''			observations: newObservations,
++			observationTokens,
++			cycleObservationTokens,
++			observedMessageIds,
++			[publicationProof]: proof,
++			lastObservedAt,''')
++    replace('''			observedMessageIds: processed.observedMessageIds
++		});
++		await this.indexObservationGroups''', '''			observedMessageIds: processed.observedMessageIds,
++			[publicationProof]: processed[publicationProof]
++		});
++		await this.indexObservationGroups''')
++    replace('function deriveObservationGroupProvenance(content, groups) {',
++            'function deriveObservationGroupProvenance(content, groups, publicationGroups) {')
++    replace('''		return {
++			id: getCanonicalGroupId(section.heading, index),
++			range: combineObservationGroupRanges(resolvedGroups),''', '''		const id = getCanonicalGroupId(section.heading, index);
++		if (publicationGroups && bodyLines.size > 0 && matchingGroups.length > 0) {
++			const lineOwners = new Map();
++			for (const parent of matchingGroups) {
++				for (const line of new Set(parent.content.split("\\n").map((line) => line.trim()).filter(Boolean))) {
++					if (!bodyLines.has(line)) continue;
++					lineOwners.set(line, (lineOwners.get(line) ?? 0) + 1);
++				}
++			}
++			if ([...bodyLines].every((line) => lineOwners.get(line) === 1) &&
++				matchingGroups.every((parent) => groups.filter((group) => group.id === parent.id).length === 1)) {
++				publicationGroups.push({ groupId: id, parentIds: matchingGroups.map((group) => group.id) });
++			}
++		}
++		return {
++			id,
++			range: combineObservationGroupRanges(resolvedGroups),''')
++    replace('function reconcileObservationGroupsFromReflection(content, sourceObservations) {',
++            'function reconcileObservationGroupsFromReflection(content, sourceObservations, publicationGroups) {')
++    replace('deriveObservationGroupProvenance(normalizedContent, sourceGroups);',
++            'deriveObservationGroupProvenance(normalizedContent, sourceGroups, publicationGroups);')
++    replace('''	const sanitizedObservations = sanitizeObservationLines(stripEphemeralAnchorIds(parsed.observations || ""));
++	return {
++		observations: (sourceObservations ? reconcileObservationGroupsFromReflection(sanitizedObservations, sourceObservations) : null) ?? sanitizedObservations,''', '''	const sanitizedObservations = sanitizeObservationLines(stripEphemeralAnchorIds(parsed.observations || ""));
++	const publicationGroups = [];
++	return {
++		observations: (sourceObservations ? reconcileObservationGroupsFromReflection(sanitizedObservations, sourceObservations, publicationGroups) : null) ?? sanitizedObservations,
++		[publicationProof]: publicationGroups,''')
++    replace('''			usage: totalUsage.totalTokens > 0 ? totalUsage : void 0,
++			providerMetadata: finalProviderMetadata''', '''			usage: totalUsage.totalTokens > 0 ? totalUsage : void 0,
++			[publicationProof]: parsed[publicationProof],
++			providerMetadata: finalProviderMetadata''')
++    replace('''				reflection: reflectResult.observations,
++				tokenCount: reflectionTokenCount''', '''				reflection: reflectResult.observations,
++				[publicationProof]: reflectResult[publicationProof],
++				tokenCount: reflectionTokenCount''', 2)
++    return source.replace('//# sourceMappingURL=src-BYrxAUzs.js.map', '').encode()
++
++
++def pack(baseline, integrity, output):
++    with baseline.open('rb') as original:
++        digest = hashlib.file_digest(original, 'sha512').digest()
++    if f'sha512-{base64.b64encode(digest).decode()}' != integrity:
++        raise ValueError('Registry tarball does not match the Quellight lock integrity')
++    with tarfile.open(baseline, 'r:gz') as original, output.open('wb') as target:
++        with gzip.GzipFile(filename='', fileobj=target, mode='wb', mtime=0) as zipped:
++            with tarfile.open(fileobj=zipped, mode='w|', format=tarfile.PAX_FORMAT) as candidate:
++                for item in original:
++                    data = original.extractfile(item)
++                    if item.name == f'{MODULE}.map':
++                        continue
++                    if item.name in (MODULE, 'package/package.json'):
++                        assert data is not None
++                        body = data.read()
++                        if item.name == MODULE:
++                            body = patch_module(body)
++                        else:
++                            manifest = json.loads(body)
++                            assert manifest['version'] == BASE_VERSION
++                            manifest['version'] = VERSION
++                            body = (json.dumps(manifest, indent=2) + '\n').encode()
++                        data = io.BytesIO(body)
++                        item.size = len(body)
++                    candidate.addfile(item, data)
++                notice = (b'Q4-007 changes the installed Observer and Reflector bundle to carry private\n'
++                          b'publication lineage proofs at staged writes. The changed bundle has no source map.\n')
++                item = tarfile.TarInfo('package/Q4-007-NOTICE.txt')
++                item.size = len(notice)
++                candidate.addfile(item, io.BytesIO(notice))
++
++
++if __name__ == '__main__':
++    cli = argparse.ArgumentParser(description=__doc__)
++    cli.add_argument('baseline', type=Path)
++    cli.add_argument('lock', type=Path)
++    cli.add_argument('output', type=Path)
++    args = cli.parse_args()
++    lock = json.loads(args.lock.read_text(encoding='utf-8'))
++    pack(args.baseline, lock['packages']['node_modules/@mastra/memory']['integrity'], args.output)
+diff --git a/packages/mastra/src/compatibility.ts b/packages/mastra/src/compatibility.ts
+index a757806c..015a8779 100644
+--- a/packages/mastra/src/compatibility.ts
++++ b/packages/mastra/src/compatibility.ts
+@@ -44,7 +44,7 @@ export const MASTRA_ADAPTER_REVISION = '6';
+ /** Exact pinned Mastra package versions used by this adapter. */
+ export const MASTRA_PINNED_VERSIONS = {
+   '@mastra/core': '1.64.0',
+-  '@mastra/memory': '1.28.2',
++  '@mastra/memory': '1.28.2-q4-007.1',
+   '@mastra/libsql': '1.22.3',
+   '@mastra/observability': '1.17.5',
+ } as const;
+diff --git a/packages/mastra/src/index.ts b/packages/mastra/src/index.ts
+index b8e4c1cb..0e6eab00 100644
+--- a/packages/mastra/src/index.ts
++++ b/packages/mastra/src/index.ts
+@@ -194,6 +194,11 @@ export {
+   VictNativeMemoryError,
+   MASTRA_NATIVE_MEMORY_REVISION,
+ } from './native-memory.js';
++
++export type {
++  MemoryObservationGroupMembership,
++  MemoryObservationSourceMembership,
++} from './native-membership.js';
+ export type {
+   MastraNativeMemoryConfig,
+   MemoryWriteRequest,
+@@ -202,6 +207,7 @@ export type {
+   MemoryObservationView,
+   MemoryMutationResult,
+   MemoryPurgeResult,
++  NativeMemoryOperationReceipt,
+ } from './native-memory.js';
+ 
+ export type {
+diff --git a/packages/mastra/src/native-membership.ts b/packages/mastra/src/native-membership.ts
+new file mode 100644
+index 00000000..b320aa05
+--- /dev/null
++++ b/packages/mastra/src/native-membership.ts
+@@ -0,0 +1,128 @@
++import { parseObservationGroups } from '@mastra/memory/processors';
++import type { MastraDBMessage } from '@mastra/core/memory';
++
++export type MemoryObservationGroupMembership =
++  | { readonly groupId: string; readonly status: 'unavailable' }
++  | {
++      readonly groupId: string;
++      readonly status: 'available';
++      readonly basis: 'observe-input' | 'retained-parents';
++      readonly messageIds: readonly string[];
++    };
++
++export interface MemoryObservationSourceMembership {
++  readonly schema: 'vict.mastra-observation-membership@1';
++  readonly groups: readonly MemoryObservationGroupMembership[];
++}
++
++type Available = Extract<MemoryObservationGroupMembership, { status: 'available' }>;
++type ObservationProof = { groupId: string; messageIds: readonly string[] };
++type ReflectionProof = readonly { groupId: string; parentIds: readonly string[] }[];
++export const nativePublicationProof = Symbol.for('vict.mastra.observation-publication-proof@1');
++
++function uniqueGroups(observations: string) {
++  const groups = new Map<string, ReturnType<typeof parseObservationGroups>[number] | undefined>();
++  for (const group of parseObservationGroups(observations))
++    groups.set(group.id, groups.has(group.id) ? undefined : group);
++  return groups;
++}
++
++export function publicationMembership(
++  observations: string,
++  proof?: unknown,
++): MemoryObservationSourceMembership {
++  const dto = proof as MemoryObservationSourceMembership | undefined;
++  const members = new Map<string, MemoryObservationGroupMembership | undefined>();
++  if (dto?.schema === 'vict.mastra-observation-membership@1' && Array.isArray(dto.groups)) {
++    for (const entry of dto.groups) {
++      if (typeof entry?.groupId !== 'string') continue;
++      const available = entry.status === 'available' &&
++        (entry.basis === 'observe-input' || entry.basis === 'retained-parents') &&
++        Array.isArray(entry.messageIds) && entry.messageIds.length > 0 &&
++        entry.messageIds.every((id: unknown) => typeof id === 'string' && id.length > 0) &&
++        new Set(entry.messageIds).size === entry.messageIds.length;
++      members.set(entry.groupId, !members.has(entry.groupId) && available
++        ? { groupId: entry.groupId, status: 'available', basis: entry.basis, messageIds: entry.messageIds }
++        : undefined);
++    }
++  }
++  return {
++    schema: 'vict.mastra-observation-membership@1',
++    groups: [...uniqueGroups(observations)].map(([groupId, group]) =>
++      (group && members.get(groupId)) || { groupId, status: 'unavailable' },
++    ),
++  };
++}
++
++/** Staged facts are private until the authority-fenced operation commits. */
++export class NativeStageMembership {
++  #sourceOrder: Map<string, number>;
++  #observations: string;
++  #published: MemoryObservationSourceMembership;
++
++  constructor(
++    messages: readonly MastraDBMessage[],
++    observations: string,
++    prior?: unknown,
++  ) {
++    this.#sourceOrder = new Map(messages.map((message, index) => [message.id, index]));
++    this.#observations = observations;
++    const previous = publicationMembership(observations, prior);
++    this.#published = publicationMembership(observations, {
++      ...previous,
++      groups: previous.groups.flatMap((entry) => {
++        if (entry.status !== 'available') return [];
++        const valid = this.#available(entry.groupId, entry.messageIds, entry.basis);
++        return valid ? [valid] : [];
++      }),
++    });
++  }
++
++  #available(groupId: string, ids: readonly string[], basis: Available['basis']): Available | undefined {
++    if (!ids.length || ids.some((id) => !this.#sourceOrder.has(id))) return;
++    const messageIds = [...new Set(ids)].sort(
++      (left, right) => this.#sourceOrder.get(left)! - this.#sourceOrder.get(right)!,
++    );
++    return { groupId, status: 'available', basis, messageIds };
++  }
++
++  observe(observations: string, proof: ObservationProof | undefined) {
++    const previous = uniqueGroups(this.#observations);
++    const current = uniqueGroups(observations);
++    const inherited = this.#published.groups.filter(({ groupId }) => {
++      const group = current.get(groupId);
++      const prior = previous.get(groupId);
++      return group && prior && group.content === prior.content && group.range === prior.range &&
++        group.kind === prior.kind;
++    });
++    const member = proof && current.get(proof.groupId) && !previous.has(proof.groupId)
++      ? this.#available(proof.groupId, proof.messageIds, 'observe-input')
++      : undefined;
++    this.#observations = observations;
++    this.#published = publicationMembership(observations, {
++      ...this.#published,
++      groups: member ? [...inherited, member] : inherited,
++    });
++  }
++
++  reflect(source: string, observations: string, proof: ReflectionProof | undefined) {
++    const known = new Map(this.#published.groups.map((entry) => [entry.groupId, entry]));
++    const members: Available[] = [];
++    if (source === this.#observations) {
++      for (const { groupId, parentIds } of proof ?? []) {
++        const parents = parentIds.map((id) => known.get(id));
++        if (!parents.length || !parents.every((entry) => entry?.status === 'available')) continue;
++        const member = this.#available(groupId, parents.flatMap((entry) => entry.messageIds), 'retained-parents');
++        if (member) members.push(member);
++      }
++    }
++    this.#observations = observations;
++    this.#published = publicationMembership(observations, { ...this.#published, groups: members });
++  }
++
++  finish(observations: string) {
++    return observations === this.#observations
++      ? this.#published
++      : publicationMembership(observations);
++  }
++}
+diff --git a/packages/mastra/src/native-memory.ts b/packages/mastra/src/native-memory.ts
+index a35b6f19..30dd0239 100644
+--- a/packages/mastra/src/native-memory.ts
++++ b/packages/mastra/src/native-memory.ts
+@@ -20,6 +20,7 @@ import { HostedPostgresMastraStore } from './postgres-storage.js';
+ import { mastraResourceIdForActor, mastraThreadIdForConversation } from './memory.js';
+ import type { MastraProductAgentConfig } from './adapter.js';
+ import { MASTRA_POSTGRES_PINNED_VERSIONS } from './compatibility.js';
++import { publicationMembership, type MemoryObservationSourceMembership } from './native-membership.js';
+ 
+ /** Separate operation identity; no existing chat activation changes implicitly. */
+ export const MASTRA_NATIVE_MEMORY_REVISION = 'vict.mastra-native-memory@2';
+@@ -82,6 +83,16 @@ export interface MemoryMutationResult {
+   readonly observed: boolean;
+   readonly reflected: boolean;
+   readonly snapshot: MemoryInspection;
++  readonly sourceMembership?: MemoryObservationSourceMembership;
++}
++
++function publishedMutationResult(value: unknown): MemoryMutationResult {
++  const result = value as MemoryMutationResult;
++  const sourceMembership = publicationMembership(
++    result.snapshot?.current?.observations ?? '',
++    result.sourceMembership,
++  );
++  return { ...result, sourceMembership };
+ }
+ export interface MemoryPurgeResult {
+   readonly authorityRevision: string;
+@@ -89,6 +100,9 @@ export interface MemoryPurgeResult {
+   readonly contexts: number;
+   readonly operations: number;
+ }
++export interface NativeMemoryOperationReceipt extends Readonly<Record<string, unknown>> {
++  readonly result?: MemoryMutationResult | MemoryPurgeResult | null;
++}
+ export class VictNativeMemoryError extends Error {
+   constructor(
+     readonly code:
+@@ -798,7 +812,7 @@ export class MastraMemoryService {
+       return record;
+     });
+   }
+-  operation(conversationId: string, operationId: string) {
++  operation(conversationId: string, operationId: string): Promise<NativeMemoryOperationReceipt | null> {
+     identifier(operationId);
+     return this.#read(conversationId, async (threadId) => {
+       const row = this.#recoverable
+@@ -812,6 +826,20 @@ export class MastraMemoryService {
+         row.authority_revision !== (await this.#store.nativeAuthority()).revision
+       )
+         return { ...row, status: 'superseded', checkpoint: null, result: null };
++      if (this.#recoverable && row && (row.kind === 'observe' || row.kind === 'reflect')) {
++        const checkpoint = row.checkpoint as NativeStageCheckpoint | null;
++        const publicCheckpoint = checkpoint && {
++          observations: checkpoint.observations,
++          workingMemory: checkpoint.workingMemory,
++          observed: checkpoint.observed,
++          reflected: checkpoint.reflected,
++        };
++        return {
++          ...row,
++          checkpoint: publicCheckpoint,
++          result: row.status === 'completed' && row.result ? publishedMutationResult(row.result) : null,
++        };
++      }
+       return row;
+     });
+   }
+@@ -963,13 +991,19 @@ export class MastraMemoryService {
+           },
+         });
+       await this.#store.markNativePublication(authorityRevision);
++      const snapshot = await this.#snapshot(conversationId);
+       const output: MemoryMutationResult = {
+         operationId: row.operation_id as string,
+         configurationRevision: this.configurationRevision,
+         sourceRevision: row.source_digest as string,
+         observed: checkpoint.observed,
+         reflected: checkpoint.reflected,
+-        snapshot: await this.#snapshot(conversationId),
++        snapshot,
++        sourceMembership: publicationMembership(
++          snapshot.current?.observations ?? '',
++          checkpoint.observations[0]?.activeObservations === snapshot.current?.observations
++            ? checkpoint.sourceMembership : undefined,
++        ),
+       };
+       await this.#store.nativeRecoveryRecord({
+         operation: 'update',
+@@ -1009,7 +1043,7 @@ export class MastraMemoryService {
+       if (row && row.request_digest !== requestDigest)
+         throw new VictNativeMemoryError('VICT_MEMORY_OPERATION_CONFLICT');
+       if (row?.status === 'completed')
+-        return { source, result: row.result as unknown as MemoryMutationResult };
++        return { source, result: publishedMutationResult(row.result) };
+       if (row?.status === 'running') throw new VictNativeMemoryError('VICT_MEMORY_OUTCOME_UNKNOWN');
+       if (row?.status === 'superseded') throw new VictNativeMemoryError('VICT_MEMORY_SUPERSEDED');
+       return { source };
+@@ -1047,7 +1081,7 @@ export class MastraMemoryService {
+             if (row) {
+               if (row.request_digest !== requestDigest)
+                 throw new VictNativeMemoryError('VICT_MEMORY_OPERATION_CONFLICT');
+-              if (row.status === 'completed') return row.result as unknown as MemoryMutationResult;
++              if (row.status === 'completed') return publishedMutationResult(row.result);
+               if (row.status === 'prepared')
+                 return this.#publishRecovery(captured.conversationId, row);
+               if (row.status !== 'retryable')
+@@ -1080,6 +1114,15 @@ export class MastraMemoryService {
+             let staged: Awaited<ReturnType<typeof openNativeStage>> | undefined;
+             let checkpointSaved = false;
+             try {
++              const current = source.observations[0];
++              const priorMembership = current?.activeObservations
++                ? await this.#store.nativePublishedSourceMembership(
++                    captured.authorityRevision,
++                    this.configurationRevision,
++                    current.id,
++                    current.activeObservations,
++                  )
++                : undefined;
+               staged = await openNativeStage(
+                 source,
+                 this.#store,
+@@ -1099,6 +1142,7 @@ export class MastraMemoryService {
+                       },
+                     },
+                   }),
++                priorMembership,
+               );
+               const engine = await staged.memory.omEngine;
+               if (!engine) throw new VictNativeMemoryError('VICT_MEMORY_CONFIG_INVALID');
+@@ -1137,6 +1181,7 @@ export class MastraMemoryService {
+                   observed: 'observed' in result ? result.observed : false,
+                   reflected: result.reflected,
+                 },
++                staged.membership,
+               );
+               await this.#store.nativeAtomic(captured.authorityRevision, async () => {
+                 row = await this.#store.nativeRecoveryRecord({
+@@ -1156,7 +1201,7 @@ export class MastraMemoryService {
+                 .nativeRecoveryRecord({ operation: 'get', operationId: captured.operationId })
+                 .catch(() => null);
+               if (durable?.status === 'completed')
+-                return durable.result as unknown as MemoryMutationResult;
++                return publishedMutationResult(durable.result);
+               checkpointSaved ||= durable?.status === 'prepared';
+               const authority = await this.#store.nativeAuthority().catch(() => null);
+               const superseded = authority?.revision !== captured.authorityRevision;
+@@ -1258,7 +1303,7 @@ export class MastraMemoryService {
+             if (current.status === 'completed')
+               return {
+                 disposition: 'completed',
+-                result: current.result as unknown as MemoryMutationResult,
++                result: publishedMutationResult(current.result),
+               };
+             if (current.status === 'prepared')
+               return {
+diff --git a/packages/mastra/src/native-stage.ts b/packages/mastra/src/native-stage.ts
+index dcd95e61..8cf9ca3c 100644
+--- a/packages/mastra/src/native-stage.ts
++++ b/packages/mastra/src/native-stage.ts
+@@ -11,6 +11,11 @@ import type {
+ import type { MastraDBMessage, StorageThreadType } from '@mastra/core/memory';
+ import type { HostedPostgresMastraStore, NativeMemoryAuthority } from './postgres-storage.js';
+ import { canonicalJson } from '@victframework/kernel';
++import {
++  NativeStageMembership,
++  nativePublicationProof,
++  type MemoryObservationSourceMembership,
++} from './native-membership.js';
+ 
+ export interface NativeStageSource {
+   thread: StorageThreadType;
+@@ -26,6 +31,7 @@ export interface NativeStageCheckpoint {
+   workingMemory: string | null;
+   observed: boolean;
+   reflected: boolean;
++  sourceMembership?: MemoryObservationSourceMembership;
+ }
+ export function nativeDataHash(value: unknown): string {
+   return createHash('sha256')
+@@ -130,9 +136,15 @@ export async function openNativeStage(
+   source: NativeStageSource,
+   hosted: HostedPostgresMastraStore,
+   makeMemory: (storage: MastraCompositeStore) => Memory,
+-): Promise<{ memory: Memory; domain: MemoryStorage; close: () => Promise<void> }> {
++  priorMembership?: unknown,
++): Promise<{ memory: Memory; domain: MemoryStorage; membership: NativeStageMembership; close: () => Promise<void> }> {
+   const client = new NativeScratchSqlite();
+   const domain = new MemoryLibSQL({ client });
++  const membership = new NativeStageMembership(
++    source.messages,
++    source.observations[0]?.activeObservations ?? '',
++    priorMembership,
++  );
+   domain.__setLogger(hosted.safeLogger);
+   const storage = new MastraCompositeStore({
+     id: 'vict-native-stage',
+@@ -154,9 +166,25 @@ export async function openNativeStage(
+     if (source.messages.length) await domain.saveMessages({ messages: source.messages });
+     for (const record of [...source.observations].reverse())
+       await domain.insertObservationalMemoryRecord(record);
++    // Only the exact pinned Mastra cycle carries the private proof on these staged writes.
++    const update = domain.updateActiveObservations.bind(domain);
++    domain.updateActiveObservations = async (input: Parameters<typeof update>[0] & {
++      [nativePublicationProof]?: Parameters<NativeStageMembership['observe']>[1];
++    }) => {
++      await update(input);
++      membership.observe(input.observations, input[nativePublicationProof]);
++    };
++    const reflect = domain.createReflectionGeneration.bind(domain);
++    domain.createReflectionGeneration = async (input: Parameters<typeof reflect>[0] & {
++      [nativePublicationProof]?: Parameters<NativeStageMembership['reflect']>[2];
++    }) => {
++      const result = await reflect(input);
++      membership.reflect(input.currentRecord.activeObservations ?? '', input.reflection, input[nativePublicationProof]);
++      return result;
++    };
+     const memory = makeMemory(storage);
+     memory.__setLogger(hosted.safeLogger);
+-    return { memory, domain, close };
++    return { memory, domain, membership, close };
+   } catch {
+     await close().catch(() => undefined);
+     throw new Error('VICT_MEMORY_STAGE_FAILED');
+@@ -167,10 +195,12 @@ export async function captureStageCheckpoint(
+   threadId: string,
+   resourceId: string,
+   result: { observed: boolean; reflected: boolean },
++  membership: NativeStageMembership,
+ ): Promise<NativeStageCheckpoint> {
+   const current = await domain.getObservationalMemory(threadId, resourceId);
+   return {
+     ...result,
++    sourceMembership: membership.finish(current?.activeObservations ?? ''),
+     observations: current
+       ? await domain.getObservationalMemoryHistory(
+           threadId,
+diff --git a/packages/mastra/src/postgres-storage.ts b/packages/mastra/src/postgres-storage.ts
+index 51637d9d..007dc649 100644
+--- a/packages/mastra/src/postgres-storage.ts
++++ b/packages/mastra/src/postgres-storage.ts
+@@ -1031,6 +1031,27 @@ export class HostedPostgresMastraStore extends MastraCompositeStore {
+       [scope.resourceId, command.operationId],
+     );
+   }
++  /** The staged current record must match a publication under the same governing scope. */
++  async nativePublishedSourceMembership(
++    authorityRevision: string,
++    configurationRevision: string,
++    observationId: string,
++    observations: string,
++  ): Promise<unknown> {
++    const scope = this.#scope.getStore();
++    if (!scope?.resourceLease || this.memoryProfile !== 'native-thread-recoverable')
++      throw new VictMastraPostgresError('VICT_MASTRA_POSTGRES_SCOPE_REQUIRED');
++    const row = await this.#memoryDb.oneOrNone<{ membership: unknown }>(
++      `SELECT CASE WHEN count(DISTINCT result->'sourceMembership')=1
++                   THEN min((result->'sourceMembership')::text)::jsonb END AS membership
++       FROM "${this.schemaName}".vict_memory_recovery
++       WHERE resource_id=$1 AND thread_id=$2 AND authority_revision=$3 AND configuration_revision=$4
++         AND status='completed' AND kind IN ('observe','reflect') AND result ? 'sourceMembership'
++         AND result#>>'{snapshot,current,id}'=$5 AND result#>>'{snapshot,current,observations}'=$6`,
++      [scope.resourceId, scope.threadId, authorityRevision, configurationRevision, observationId, observations],
++    );
++    return row?.membership;
++  }
+   /** Native memory work holds a resource generation in addition to the thread generation. */
+   async withNativeMemory<T>(
+     threadId: string,
